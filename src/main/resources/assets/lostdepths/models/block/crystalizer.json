@@ -1,0 +1,9 @@
+{
+  "parent": "lostdepths:custom/crystallizer",
+  "textures": {
+    "all": "lostdepths:block/crystalizer_icon",
+    "particle": "lostdepths:block/crystalizer_icon",
+    "0": "lostdepths:block/crystallizer"
+  },
+  "render_type": "cutout_mipped"
+}

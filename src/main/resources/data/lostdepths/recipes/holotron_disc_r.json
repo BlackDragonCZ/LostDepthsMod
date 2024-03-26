@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " ab",
+    "aca",
+    " a "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:celestial_iron"
+    },
+    "b": {
+      "item": "lostdepths:power_coil"
+    },
+    "c": {
+      "item": "lostdepths:holoscreen"
+    }
+  },
+  "result": {
+    "item": "lostdepths:holotron_disc",
+    "count": 1
+  }
+}

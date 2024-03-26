@@ -1,0 +1,74 @@
+{
+	"name": "Galactic Workstation",
+	"icon": "lostdepths:workstation_1",
+	"category": "lostdepths:workstations",
+	"read_by_default": true,
+	"pages": [
+		{
+			"type": "spotlight",
+			"item": "lostdepths:workstation_1",
+			"link_recipe": true,
+			"title": "Galactic Workstation",
+			"text": "$()Basic crafting terminal for semi-advanced recipes.$(br)This wokrstation require energy to work."
+		},
+		{
+			"type": "crafting",
+			"recipe": "lostdepths:workstation_1_r"
+		},
+		{
+			"type": "lostdepths:templateworkstation",
+			"headertext": "Rod of Transformation",
+			"item1": "minecraft:air",
+			"item2": "minecraft:nether_star",
+			"item3": "minecraft:air",
+			"item4": "minecraft:diamond",
+			"item5": "minecraft:diamond",
+			"item6": "lostdepths:iron_golem_essence",
+			"output": "lostdepths:rod_of_transformation",
+			"description": "Convert mobs into their aggressive form."
+		},
+		{
+			"type": "lostdepths:templateworkstation",
+			"headertext": "The Destroyer Recipe",
+			"item1": "lostdepths:energyzed_alloy",
+			"item2": "lostdepths:infused_crystal",
+			"item3": "lostdepths:energyzed_alloy",
+			"item4": "minecraft:netherite_axe",
+			"item5": "minecraft:netherite_sword",
+			"item6": "lostdepths:iron_golem_essence",
+			"output": "lostdepths:the_destroyer",
+			"description": "Big Sword"
+		},
+		{
+			"type": "spotlight",
+			"item": "lostdepths:the_destroyer",
+			"anchor": "the_destroyer",
+			"title": "The Destroyer",
+			"text": "The Destroyer is sword type which deal great damage to entities, except players. Players get % damage instead of full damage of the sword. In some cases The Destroyer can let entities drop special items like infused crystal from The Protector."
+		},
+		{
+			"type": "lostdepths:templateworkstation",
+			"headertext": "Ion Crystal Recipe",
+			"item1": "lostdepths:infused_crystal",
+			"item2": "lostdepths:infused_crystal",
+			"item3": "lostdepths:infused_crystal",
+			"item4": "lostdepths:infused_redstone",
+			"item5": "lostdepths:infused_redstone",
+			"item6": "minecraft:nether_star",
+			"output": "lostdepths:ion_crystal",
+			"description": "Full of energy"
+		},
+		{
+			"type": "lostdepths:templateworkstation",
+			"headertext": "Access Pass 1 Recipe",
+			"item1": "lostdepths:condensed_morfarite",
+			"item2": "lostdepths:power_core",
+			"item3": "lostdepths:condensed_morfarite",
+			"item4": "lostdepths:condensed_melworite",
+			"item5": "lostdepths:condensed_melworite",
+			"item6": "lostdepths:unbreakable_chain",
+			"output": "lostdepths:security_pass_1",
+			"description": "First layer of security"
+		}
+	]
+}

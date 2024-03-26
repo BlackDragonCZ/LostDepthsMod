@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "cac",
+    "def"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:infused_crystal"
+    },
+    "b": {
+      "item": "lostdepths:infused_iron"
+    },
+    "c": {
+      "item": "minecraft:copper_ingot"
+    },
+    "d": {
+      "item": "minecraft:iron_block"
+    },
+    "e": {
+      "item": "minecraft:gold_block"
+    },
+    "f": {
+      "item": "minecraft:redstone_block"
+    }
+  },
+  "result": {
+    "item": "lostdepths:energyzed_alloy",
+    "count": 1
+  }
+}

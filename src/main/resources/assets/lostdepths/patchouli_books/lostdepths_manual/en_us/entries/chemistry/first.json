@@ -1,0 +1,26 @@
+{
+	"name": "Basic Chemistry",
+	"icon": "lostdepths:magma_solution",
+	"category": "lostdepths:chemistry",
+	"read_by_default": false,
+	"pages": [
+		{
+			"type": "spotlight",
+			"item": "lostdepths:magma_solution",
+			"title": "Magma Solution",
+			"text": "Craftable by brewing magma compound with water bottle(s) in brewing stand"
+		},
+		{
+			"type": "spotlight",
+			"item": "lostdepths:madrigen_solution",
+			"title": "Madrigen Solution",
+			"text": "Craftable by brewing corrosive tear with magma solution in brewing stand"
+		},
+		{
+			"type": "spotlight",
+			"item": "lostdepths:ender_voltaic_solution",
+			"title": "Ender-Voltaic Solution",
+			"text": "Craftable by brewing power core with madrigen solution in brewing stand"
+		}
+	]
+}

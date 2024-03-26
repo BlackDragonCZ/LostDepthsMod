@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "lostdepths:block/factory_floor",
+    "up": "lostdepths:block/factory_floor",
+    "north": "lostdepths:block/factory_floor2",
+    "east": "lostdepths:block/factory_floor3",
+    "south": "lostdepths:block/factory_floor2",
+    "west": "lostdepths:block/factory_floor3",
+    "particle": "lostdepths:block/factory_floor"
+  },
+  "render_type": "solid"
+}

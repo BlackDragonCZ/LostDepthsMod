@@ -1,0 +1,9 @@
+{
+  "type": "lostdepths:structure_feature",
+  "config": {
+    "structure": "lostdepths:small_structure_treasure",
+    "random_rotation": true,
+    "random_mirror": true,
+    "ignored_blocks": "minecraft:structure_block"
+  }
+}

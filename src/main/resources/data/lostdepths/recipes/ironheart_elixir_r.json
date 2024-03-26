@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "abc",
+    "ded",
+    " d "
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:milk_bucket"
+    },
+    "b": {
+      "item": "lostdepths:gem_imposition"
+    },
+    "c": {
+      "item": "lostdepths:scorched_pipe"
+    },
+    "d": {
+      "item": "lostdepths:enraged_iron"
+    },
+    "e": {
+      "item": "lostdepths:stone_of_rebirth"
+    }
+  },
+  "result": {
+    "item": "lostdepths:ironheart_elixir",
+    "count": 1
+  }
+}

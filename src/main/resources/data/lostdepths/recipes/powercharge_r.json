@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a",
+    "b",
+    "a"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:infused_redstone"
+    },
+    "b": {
+      "item": "lostdepths:magma_solution"
+    }
+  },
+  "result": {
+    "item": "lostdepths:power_charge",
+    "count": 1
+  }
+}

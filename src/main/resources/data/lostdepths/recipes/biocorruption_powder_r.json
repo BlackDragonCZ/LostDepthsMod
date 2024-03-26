@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab",
+    "cc"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:carbonic_acid"
+    },
+    "b": {
+      "item": "lostdepths:mysterios_gloop"
+    },
+    "c": {
+      "item": "lostdepths:corrupted_solution"
+    }
+  },
+  "result": {
+    "item": "lostdepths:biocorruption_powder",
+    "count": 1
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "lostdepths:block/sunderleaves3",
+    "particle": "lostdepths:block/sunderleaves3"
+  },
+  "render_type": "solid"
+}

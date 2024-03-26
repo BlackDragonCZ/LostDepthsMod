@@ -1,0 +1,42 @@
+{
+	"name": "Module Creator",
+	"icon": "lostdepths:module_creator",
+	"category": "lostdepths:workstations",
+	"read_by_default": true,
+	"pages": [
+		{
+			"type": "spotlight",
+			"item": "lostdepths:module_creator",
+			"link_recipe": true,
+			"title": "Module Creator",
+			"text": "$()Special Workstation located behind security 2 gate in Manufactory building."
+		},
+		{
+			"type": "lostdepths:templatemodule",
+			"headertext": "Module of Acceleration",
+			"item1": "lostdepths:ender_voltaic_solution",
+			"item2": "lostdepths:power_core",
+			"item3": "lostdepths:serpentine_crystal",
+			"output": "lostdepths:module_acceleration",
+			"description": "Module of Acceleration"
+		},
+		{
+			"type": "lostdepths:templatemodule",
+			"headertext": "Module of Power",
+			"item1": "lostdepths:power_core",
+			"item2": "lostdepths:over_charge_coil",
+			"item3": "lostdepths:power_clamp",
+			"output": "lostdepths:module_power",
+			"description": "Module of Power"
+		},
+		{
+			"type": "lostdepths:templatemodule",
+			"headertext": "Module of Conversion",
+			"item1": "lostdepths:dual_power_assembly",
+			"item2": "lostdepths:condensed_zerithium",
+			"item3": "lostdepths:condensed_cryzulite",
+			"output": "lostdepths:module_conversion",
+			"description": "Module of Conversion"
+		}
+	]
+}

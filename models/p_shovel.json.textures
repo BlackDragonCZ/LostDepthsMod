@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "1": "p_animations_2",
+        "3": "p_shovel"
+      },
+      "name": "default"
+    }
+  }
+}

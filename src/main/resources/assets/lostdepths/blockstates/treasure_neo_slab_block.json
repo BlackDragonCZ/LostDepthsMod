@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "lostdepths:block/treasure_neo_slab_block",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "lostdepths:block/treasure_neo_slab_block"
+    },
+    "axis=z": {
+      "model": "lostdepths:block/treasure_neo_slab_block",
+      "x": 90
+    }
+  }
+}

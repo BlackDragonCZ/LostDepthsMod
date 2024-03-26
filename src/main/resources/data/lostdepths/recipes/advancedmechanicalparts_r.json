@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " a ",
+    "aba",
+    "cac"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:titanium_metalloy"
+    },
+    "b": {
+      "item": "lostdepths:infused_iron"
+    },
+    "c": {
+      "item": "lostdepths:condensed_morfarite"
+    }
+  },
+  "result": {
+    "item": "lostdepths:advanced_mechanical_parts",
+    "count": 1
+  }
+}

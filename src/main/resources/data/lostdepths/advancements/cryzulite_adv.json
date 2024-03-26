@@ -1,0 +1,36 @@
+{
+  "display": {
+    "icon": {
+      "item": "lostdepths:condensed_cryzulite"
+    },
+    "title": {
+      "translate": "advancements.cryzulite_adv.title"
+    },
+    "description": {
+      "translate": "advancements.cryzulite_adv.descr"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "cryzulite_adv": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "lostdepths:condensed_cryzulite"
+            ],
+            "count": {
+              "min": 1,
+              "max": 1
+            }
+          }
+        ]
+      }
+    }
+  },
+  "parent": "lostdepths:galactic_compresser_adv"
+}

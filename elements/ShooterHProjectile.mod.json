@@ -1,0 +1,22 @@
+{
+  "_fv": 57,
+  "_type": "projectile",
+  "definition": {
+    "projectileItem": {
+      "value": "CUSTOM:CosmicFireball"
+    },
+    "showParticles": false,
+    "actionSound": {
+      "value": "entity.enderdragon.shoot"
+    },
+    "igniteFire": false,
+    "power": 5.0,
+    "damage": 30.0,
+    "knockback": 10,
+    "entityModel": "Default",
+    "customModelTexture": "",
+    "onHitsBlock": {
+      "name": "ShooterHProjectileHitsBlock"
+    }
+  }
+}

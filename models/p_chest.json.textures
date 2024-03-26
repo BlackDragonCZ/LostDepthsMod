@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "protocal_chest",
+        "1": "p_animations_2"
+      },
+      "name": "default"
+    }
+  }
+}

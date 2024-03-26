@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "lostdepths:block/treasureslabs"
+    },
+    "type=top": {
+      "model": "lostdepths:block/treasureslabs_top"
+    },
+    "type=double": {
+      "model": "lostdepths:block/treasureslabs_full"
+    }
+  }
+}

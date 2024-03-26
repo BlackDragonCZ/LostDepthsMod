@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "experience": 1,
+  "cookingtime": 600,
+  "ingredient": {
+    "item": "lostdepths:raw_melworite"
+  },
+  "result": "lostdepths:melworite_ingot"
+}

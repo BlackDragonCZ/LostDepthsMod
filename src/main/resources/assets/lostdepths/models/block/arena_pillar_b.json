@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "lostdepths:block/arena_pillar_blue",
+    "particle": "lostdepths:block/arena_pillar_blue"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab",
+    "c "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:hardened_bone_blocks"
+    },
+    "b": {
+      "item": "lostdepths:crystalized_snowball"
+    },
+    "c": {
+      "item": "lostdepths:enriched_prismarine"
+    }
+  },
+  "result": {
+    "item": "lostdepths:crystalized_bone_blocks",
+    "count": 1
+  }
+}

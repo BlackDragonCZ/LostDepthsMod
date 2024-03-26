@@ -1,0 +1,48 @@
+{
+  "_fv": 57,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "recipeRetstackSize": 32,
+    "group": "",
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "CUSTOM:LifestrainEnigma"
+      },
+      {
+        "value": "CUSTOM:HeatResistanceGlass"
+      },
+      {
+        "value": "CUSTOM:LifestrainEnigma"
+      },
+      {
+        "value": "CUSTOM:HeatResistanceGlass"
+      },
+      {
+        "value": "CUSTOM:NeoGlass"
+      },
+      {
+        "value": "CUSTOM:HeatResistanceGlass"
+      },
+      {
+        "value": "CUSTOM:LifestrainEnigma"
+      },
+      {
+        "value": "CUSTOM:HeatResistanceGlass"
+      },
+      {
+        "value": "CUSTOM:LifestrainEnigma"
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:UltraResistiveGlass"
+    },
+    "name": "ultra_resistive_glass_r",
+    "namespace": "mod"
+  }
+}

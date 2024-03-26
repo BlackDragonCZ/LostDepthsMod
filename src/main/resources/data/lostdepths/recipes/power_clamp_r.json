@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "cdc",
+    " c "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:condensed_melworite"
+    },
+    "b": {
+      "item": "lostdepths:power_coil"
+    },
+    "c": {
+      "item": "lostdepths:giga_charge_coil"
+    },
+    "d": {
+      "item": "lostdepths:titanium_metalloy"
+    }
+  },
+  "result": {
+    "item": "lostdepths:power_clamp",
+    "count": 1
+  }
+}

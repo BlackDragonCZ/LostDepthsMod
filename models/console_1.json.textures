@@ -1,0 +1,12 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "reactor_console",
+        "1": "warning_8",
+        "2": "buttons"
+      },
+      "name": "default"
+    }
+  }
+}

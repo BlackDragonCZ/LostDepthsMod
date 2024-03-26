@@ -1,0 +1,11 @@
+{
+  "type": "forge:add_features",
+  "biomes": [
+    "lostdepths:lost_souls",
+    "lostdepths:sun_forest",
+    "lostdepths:sun_forest_2",
+    "lostdepths:sun_forest_3"
+  ],
+  "features": "lostdepths:small_teasure_room_feature",
+  "step": "surface_structures"
+}

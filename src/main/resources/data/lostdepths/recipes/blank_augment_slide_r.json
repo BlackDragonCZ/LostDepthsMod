@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a  ",
+    "ab ",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:luminescent_cubes"
+    },
+    "b": {
+      "item": "lostdepths:digital_panel"
+    }
+  },
+  "result": {
+    "item": "lostdepths:blank_augment_slide",
+    "count": 1
+  }
+}

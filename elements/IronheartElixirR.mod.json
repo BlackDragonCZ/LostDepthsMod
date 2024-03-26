@@ -1,0 +1,48 @@
+{
+  "_fv": 57,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "recipeRetstackSize": 1,
+    "group": "",
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "Items.MILK_BUCKET"
+      },
+      {
+        "value": "CUSTOM:GemImposition"
+      },
+      {
+        "value": "CUSTOM:ScorchedPipe"
+      },
+      {
+        "value": "CUSTOM:EnragedIron"
+      },
+      {
+        "value": "CUSTOM:StoneOfRebirth"
+      },
+      {
+        "value": "CUSTOM:EnragedIron"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "CUSTOM:EnragedIron"
+      },
+      {
+        "value": ""
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:IronheartElixir"
+    },
+    "name": "ironheart_elixir_r",
+    "namespace": "mod"
+  }
+}

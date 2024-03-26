@@ -1,0 +1,8 @@
+{
+  "parent": "block/template_wall_side",
+  "textures": {
+    "wall": "lostdepths:block/voidcutbrick_dark",
+    "particle": "lostdepths:block/voidcutbrick_dark"
+  },
+  "render_type": "cutout_mipped"
+}

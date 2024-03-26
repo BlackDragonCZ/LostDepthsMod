@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab ",
+    "bcd",
+    " de"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:condensed_melworite"
+    },
+    "b": {
+      "item": "lostdepths:condensed_firerite"
+    },
+    "c": {
+      "item": "lostdepths:power_core"
+    },
+    "d": {
+      "item": "lostdepths:condensed_morfarite"
+    },
+    "e": {
+      "item": "lostdepths:unbreakable_chain"
+    }
+  },
+  "result": {
+    "item": "lostdepths:venom_knife",
+    "count": 1
+  }
+}

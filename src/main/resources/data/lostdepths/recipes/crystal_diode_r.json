@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " a ",
+    "bcb",
+    " bd"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:infused_redstone"
+    },
+    "b": {
+      "item": "lostdepths:enraged_iron"
+    },
+    "c": {
+      "item": "lostdepths:heavy_crystal"
+    },
+    "d": {
+      "item": "lostdepths:power_coil"
+    }
+  },
+  "result": {
+    "item": "lostdepths:crystal_diode",
+    "count": 1
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "lostdepths:factory_block"
+  },
+  "result": "lostdepths:o_factory_block"
+}

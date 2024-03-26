@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "aba",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "tag": "forge:stained_glass"
+    },
+    "b": {
+      "item": "lostdepths:infused_iron"
+    }
+  },
+  "result": {
+    "item": "lostdepths:neo_glass",
+    "count": 8
+  }
+}

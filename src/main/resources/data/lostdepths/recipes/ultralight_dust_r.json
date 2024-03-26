@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "bbb"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:cyclone_dust"
+    },
+    "b": {
+      "item": "lostdepths:gravity_dust"
+    }
+  },
+  "result": {
+    "item": "lostdepths:ultralight_dust",
+    "count": 1
+  }
+}

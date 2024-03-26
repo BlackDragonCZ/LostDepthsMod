@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab ",
+    "bcd",
+    " de"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:vibrant_capacitor"
+    },
+    "b": {
+      "item": "lostdepths:condensed_malicium"
+    },
+    "c": {
+      "item": "lostdepths:crystalized_alloy"
+    },
+    "d": {
+      "item": "lostdepths:reinforced_plate"
+    },
+    "e": {
+      "item": "lostdepths:the_destroyer"
+    }
+  },
+  "result": {
+    "item": "lostdepths:blade_of_forgotten",
+    "count": 1
+  }
+}

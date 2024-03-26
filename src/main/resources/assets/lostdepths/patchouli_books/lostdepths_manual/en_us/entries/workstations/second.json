@@ -1,0 +1,30 @@
+{
+	"name": "Galactic Compressor",
+	"icon": "lostdepths:galactic_compressor",
+	"category": "lostdepths:workstations",
+	"read_by_default": true,
+	"pages": [
+		{
+			"type": "spotlight",
+			"item": "lostdepths:galactic_compressor",
+			"link_recipe": true,
+			"title": "Galactic Compressor",
+			"text": "$()Long lost galactic machine and the only available in the known universe of compressing ancient minerals like:$(li)$(4)Melworite Ingot$(li)Firerite Ingot$(li)Morfarite Ingot$()$()$(br)This machine doesn't need energy to work.$(br)Input: 15 ingots => 1 condensed crystal."
+		},
+		{
+			"type": "crafting",
+			"recipe": "lostdepths:galactic_compressor_r"
+		},
+		{
+			"type": "spotlight",
+			"item": "lostdepths:extra_terestrial_compressor",
+			"link_recipe": true,
+			"title": "Extra-Terestrial Compressor",
+			"text": "$()Long lost galactic machine and the only available in the known universe of compressing ancient minerals like:$(li)$(4)Melworite Ingot$(li)Firerite Ingot$(li)Morfarite Ingot$()$()$(br)This machine doesn't need energy to work.$(br)Input: 10 ingots => 1 condensed crystal."
+		},
+		{
+			"type": "crafting",
+			"recipe": "lostdepths:extra_terestrial_compressor_r"
+		}
+	]
+}

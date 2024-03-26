@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "lostdepths:block/compressiontable_top",
+    "up": "lostdepths:block/super_charger_top",
+    "north": "lostdepths:block/super_charger_side",
+    "east": "lostdepths:block/super_charger_side",
+    "south": "lostdepths:block/super_charger_side",
+    "west": "lostdepths:block/super_charger_side",
+    "particle": "lostdepths:block/compressiontable_top"
+  },
+  "render_type": "solid"
+}

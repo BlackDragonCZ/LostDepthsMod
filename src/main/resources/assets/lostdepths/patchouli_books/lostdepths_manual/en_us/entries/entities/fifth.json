@@ -1,0 +1,21 @@
+{
+	"name": "Astralclaw",
+	"icon": "lostdepths:razor_fang",
+	"category": "lostdepths:entities",
+	"read_by_default": false,
+	"pages": [
+		{
+			"type": "spotlight",
+			"item": "lostdepths:razor_fang",
+			"title": "Astralclaw",
+			"text": "Health: $(4)200♥$(0)$(br)Damage: $(4)16 HP$(0) per hit$(br)$(4)This robotic wolf can jump on it's prey. Metalic bites!$(br)He is very fast.$(0)$(br)Drops:$(li)Infused Iron$(li)Razor Fang$(li)$(0)Neosteel nuggets"
+		},
+		{
+			"type": "entity",
+			"entity": "lostdepths:astralclaw",
+			"rotate": true,
+			"title": "Astralclaw",
+			"text": " Unprotected firewall"
+		}
+	]
+}

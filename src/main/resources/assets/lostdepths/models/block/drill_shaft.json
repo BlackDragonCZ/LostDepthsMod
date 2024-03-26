@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "lostdepths:block/pipe_none",
+    "up": "lostdepths:block/pipe_none",
+    "north": "lostdepths:block/drill_shaft",
+    "east": "lostdepths:block/drill_shaft",
+    "south": "lostdepths:block/drill_shaft",
+    "west": "lostdepths:block/drill_shaft",
+    "particle": "lostdepths:block/pipe_none"
+  },
+  "render_type": "solid"
+}

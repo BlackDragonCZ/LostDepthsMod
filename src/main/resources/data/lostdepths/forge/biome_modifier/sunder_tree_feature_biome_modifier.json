@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_features",
+  "biomes": [
+    "lostdepths:sun_forest",
+    "lostdepths:sun_forest_2",
+    "lostdepths:sun_forest_3"
+  ],
+  "features": "lostdepths:sunder_tree_feature",
+  "step": "surface_structures"
+}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab",
+    "c "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:burning_sap"
+    },
+    "b": {
+      "item": "lostdepths:clovinite_power_bank"
+    },
+    "c": {
+      "item": "lostdepths:ionite_crystal"
+    }
+  },
+  "result": {
+    "item": "lostdepths:biocut_metal",
+    "count": 1
+  }
+}

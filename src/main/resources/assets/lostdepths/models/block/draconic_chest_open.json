@@ -1,0 +1,11 @@
+{
+  "parent": "lostdepths:custom/ld_chest_opening",
+  "textures": {
+    "all": "lostdepths:block/little_dragon_chest",
+    "particle": "lostdepths:block/little_dragon_chest",
+    "1": "lostdepths:block/little_dragon",
+    "2": "lostdepths:block/little_dragon_chest",
+    "3": "lostdepths:block/animations_flame_03"
+  },
+  "render_type": "cutout_mipped"
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a",
+    "b",
+    "a"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:condensed_morfarite"
+    },
+    "b": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "lostdepths:dark_fuse_diamond",
+    "count": 1
+  }
+}

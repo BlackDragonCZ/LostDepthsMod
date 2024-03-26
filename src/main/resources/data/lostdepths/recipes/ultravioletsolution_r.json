@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab",
+    "cd"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:glowblood_solution"
+    },
+    "b": {
+      "item": "lostdepths:corrupted_solution"
+    },
+    "c": {
+      "item": "lostdepths:myrite_crystal"
+    },
+    "d": {
+      "item": "lostdepths:volatile_blood"
+    }
+  },
+  "result": {
+    "item": "lostdepths:ultraviolet_solution",
+    "count": 1
+  }
+}

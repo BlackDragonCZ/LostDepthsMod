@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "lostdepths:block/neoglass",
+    "particle": "lostdepths:block/neoglass"
+  },
+  "render_type": "translucent"
+}

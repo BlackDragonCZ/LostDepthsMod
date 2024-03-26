@@ -1,0 +1,48 @@
+{
+  "_fv": 57,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "recipeRetstackSize": 1,
+    "group": "",
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "CUSTOM:ModulePower"
+      },
+      {
+        "value": "CUSTOM:ModuleAcceleration"
+      },
+      {
+        "value": "CUSTOM:ModuleConversion"
+      },
+      {
+        "value": "CUSTOM:CondensedCosmerite"
+      },
+      {
+        "value": "CUSTOM:GalacticCompressor"
+      },
+      {
+        "value": "CUSTOM:CondensedCosmerite"
+      },
+      {
+        "value": "CUSTOM:AdvancedConstructionParts"
+      },
+      {
+        "value": "CUSTOM:AdvancedElectronicParts"
+      },
+      {
+        "value": "CUSTOM:AdvancedConstructionParts"
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:ExtraTerestrialCompressor"
+    },
+    "name": "extraterestrialcompressor_r",
+    "namespace": "mod"
+  }
+}

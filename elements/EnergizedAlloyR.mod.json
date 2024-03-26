@@ -1,0 +1,48 @@
+{
+  "_fv": 57,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "recipeRetstackSize": 1,
+    "group": "",
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "CUSTOM:InfusedCrystal"
+      },
+      {
+        "value": "CUSTOM:InfusedIron"
+      },
+      {
+        "value": "CUSTOM:InfusedCrystal"
+      },
+      {
+        "value": "Items.COPPER_INGOT"
+      },
+      {
+        "value": "CUSTOM:InfusedCrystal"
+      },
+      {
+        "value": "Items.COPPER_INGOT"
+      },
+      {
+        "value": "Blocks.IRON_BLOCK"
+      },
+      {
+        "value": "Blocks.GOLD_BLOCK"
+      },
+      {
+        "value": "Blocks.REDSTONE_BLOCK"
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:EnergyzedAlloy"
+    },
+    "name": "energized_alloy_r",
+    "namespace": "mod"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "cdc",
+    "ccc"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:infused_redstone"
+    },
+    "b": {
+      "item": "lostdepths:workbench_grid"
+    },
+    "c": {
+      "item": "lostdepths:infused_iron"
+    },
+    "d": {
+      "item": "lostdepths:power_charge"
+    }
+  },
+  "result": {
+    "item": "lostdepths:terminal_console_1",
+    "count": 1
+  }
+}

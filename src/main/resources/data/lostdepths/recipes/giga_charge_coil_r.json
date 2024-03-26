@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "lostdepths:ancient_template"
+  },
+  "base": {
+    "item": "lostdepths:over_charge_coil"
+  },
+  "addition": {
+    "item": "lostdepths:power_charge_solutions"
+  },
+  "result": {
+    "item": "lostdepths:giga_charge_coil"
+  }
+}

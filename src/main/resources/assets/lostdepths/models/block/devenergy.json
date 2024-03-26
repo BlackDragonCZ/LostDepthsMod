@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "lostdepths:block/cosmic_carpet",
+    "particle": "lostdepths:block/cosmic_carpet"
+  },
+  "render_type": "solid"
+}

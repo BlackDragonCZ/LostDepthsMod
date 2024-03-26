@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "abc",
+    "de "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:security_pass_3"
+    },
+    "b": {
+      "item": "lostdepths:interspace_transmitter"
+    },
+    "c": {
+      "item": "lostdepths:radiochronic_isotope"
+    },
+    "d": {
+      "item": "lostdepths:power_supply_module"
+    },
+    "e": {
+      "item": "lostdepths:crystal_of_curses"
+    }
+  },
+  "result": {
+    "item": "lostdepths:security_pass_4",
+    "count": 1
+  }
+}

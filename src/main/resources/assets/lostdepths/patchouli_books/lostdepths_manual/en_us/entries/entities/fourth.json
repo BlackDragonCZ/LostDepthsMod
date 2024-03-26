@@ -1,0 +1,21 @@
+{
+	"name": "Neuroblaze",
+	"icon": "lostdepths:ion_blaze_rod",
+	"category": "lostdepths:entities",
+	"read_by_default": false,
+	"pages": [
+		{
+			"type": "spotlight",
+			"item": "lostdepths:ion_blaze_rod",
+			"title": "Neuroblaze",
+			"text": "Health: $(4)180♥$(0)$(br)Damage: $(4)16 HP$(0) per hit$(br)$(4)The Living turret!$(0)$(br)Drops:$(li)Ion Blaze Rod$(li)infused iron$(li)$(0)Blaze Rod"
+		},
+		{
+			"type": "entity",
+			"entity": "lostdepths:neuroblaze",
+			"rotate": true,
+			"title": "Neuroblaze",
+			"text": " Electricity consumer."
+		}
+	]
+}

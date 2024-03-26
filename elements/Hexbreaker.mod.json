@@ -1,0 +1,35 @@
+{
+  "_fv": 57,
+  "_type": "tool",
+  "definition": {
+    "toolType": "Special",
+    "renderType": 0,
+    "blockingRenderType": 0,
+    "texture": "hexbreaker",
+    "customModelName": "Normal",
+    "blockingModelName": "Normal blocking",
+    "name": "Hexbreaker",
+    "specialInformation": {
+      "fixedValue": [
+        "§5When held off-hand, constantly removes ALL curable potion effects."
+      ]
+    },
+    "creativeTab": {
+      "value": "CUSTOM:LDTools"
+    },
+    "harvestLevel": 1,
+    "efficiency": 4.0,
+    "attackSpeed": 1.0,
+    "enchantability": 2,
+    "damageVsEntity": 4.0,
+    "usageCount": 0,
+    "blocksAffected": [],
+    "repairItems": [],
+    "immuneToFire": false,
+    "stayInGridWhenCrafting": false,
+    "damageOnCrafting": false,
+    "onItemInInventoryTick": {
+      "name": "HexbreakerToolInHandTick"
+    }
+  }
+}

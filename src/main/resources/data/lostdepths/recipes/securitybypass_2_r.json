@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "abc",
+    "de "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:security_pass_1"
+    },
+    "b": {
+      "item": "lostdepths:condensed_zerithium"
+    },
+    "c": {
+      "item": "lostdepths:condensed_cryzulite"
+    },
+    "d": {
+      "item": "lostdepths:serpentine_bar"
+    },
+    "e": {
+      "item": "lostdepths:condensed_cosmerite"
+    }
+  },
+  "result": {
+    "item": "lostdepths:security_pass_2",
+    "count": 1
+  }
+}

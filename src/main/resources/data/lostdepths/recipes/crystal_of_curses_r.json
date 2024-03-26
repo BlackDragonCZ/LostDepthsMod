@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a a",
+    "bcb",
+    "a a"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:gaze_of_nightmares"
+    },
+    "b": {
+      "item": "minecraft:quartz"
+    },
+    "c": {
+      "item": "lostdepths:hard_crystals"
+    }
+  },
+  "result": {
+    "item": "lostdepths:crystal_of_curses",
+    "count": 1
+  }
+}

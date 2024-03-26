@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "bcb",
+    "d d"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:condensed_cosmerite"
+    },
+    "b": {
+      "item": "lostdepths:condensed_firerite"
+    },
+    "c": {
+      "item": "minecraft:netherite_leggings"
+    },
+    "d": {
+      "item": "lostdepths:unbreakable_chain"
+    }
+  },
+  "result": {
+    "item": "lostdepths:celestial_armor_leggings",
+    "count": 1
+  }
+}

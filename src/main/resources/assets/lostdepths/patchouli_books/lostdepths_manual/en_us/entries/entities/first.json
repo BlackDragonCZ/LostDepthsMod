@@ -1,0 +1,20 @@
+{
+	"name": "The Protector",
+	"icon": "lostdepths:infused_iron",
+	"category": "lostdepths:entities",
+	"read_by_default": false,
+	"pages": [
+		{
+			"type": "spotlight",
+			"item": "lostdepths:infused_iron",
+			"title": "The Protector",
+			"text": "Health: $(4)300♥$(0)$(br)Damage: $(4)15 HP$(0) per hit$(br)Drops:$(li)Iron Block$(li)infused iron$(li)$(9)Infused Crystal $(0)if $(9)The Destroyer$(0) is used."
+		},
+		{
+			"type": "entity",
+			"entity": "lostdepths:the_protector",
+			"scale": 1.0,
+			"text": " Golem without his master"
+		}
+	]
+}

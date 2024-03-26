@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "bbb",
+    " c "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:morfarite_ingot"
+    },
+    "b": {
+      "item": "lostdepths:hardened_glass_panel"
+    },
+    "c": {
+      "item": "lostdepths:enraged_iron"
+    }
+  },
+  "result": {
+    "item": "lostdepths:heat_resistance_glass",
+    "count": 3
+  }
+}

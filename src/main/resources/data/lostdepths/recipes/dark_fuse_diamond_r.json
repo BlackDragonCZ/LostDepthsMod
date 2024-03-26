@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "bcb",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:energyzed_alloy"
+    },
+    "b": {
+      "item": "lostdepths:infused_redstone"
+    },
+    "c": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "lostdepths:dark_fuse_diamond",
+    "count": 1
+  }
+}

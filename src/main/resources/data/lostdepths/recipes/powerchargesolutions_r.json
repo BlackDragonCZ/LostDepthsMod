@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "abc",
+    "adc"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:madrigen_solution"
+    },
+    "b": {
+      "item": "lostdepths:dark_fuse_diamond"
+    },
+    "c": {
+      "item": "lostdepths:ender_voltaic_solution"
+    },
+    "d": {
+      "item": "lostdepths:infused_redstone"
+    }
+  },
+  "result": {
+    "item": "lostdepths:power_charge_solutions",
+    "count": 1
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "lostdepths:block/neo_beam_top",
+    "up": "lostdepths:block/starforge_top",
+    "north": "lostdepths:block/voidcut_block",
+    "east": "lostdepths:block/voidcut_block",
+    "south": "lostdepths:block/voidcut_block",
+    "west": "lostdepths:block/voidcut_block",
+    "particle": "lostdepths:block/neo_beam_top"
+  },
+  "render_type": "solid"
+}

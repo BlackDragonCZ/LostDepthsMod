@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "lostdepths:block/starforge_top",
+    "up": "lostdepths:block/compressiontable_top",
+    "north": "lostdepths:block/compressingtable",
+    "east": "lostdepths:block/compressingtable",
+    "south": "lostdepths:block/compressingtable",
+    "west": "lostdepths:block/compressingtable",
+    "particle": "lostdepths:block/starforge_top"
+  },
+  "render_type": "solid"
+}

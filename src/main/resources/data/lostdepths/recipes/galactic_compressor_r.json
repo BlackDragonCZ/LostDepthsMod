@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "cdc",
+    "efe"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:infused_iron"
+    },
+    "b": {
+      "item": "lostdepths:infused_redstone"
+    },
+    "c": {
+      "item": "lostdepths:energyzed_alloy"
+    },
+    "d": {
+      "item": "lostdepths:power_core"
+    },
+    "e": {
+      "item": "lostdepths:infused_crystal"
+    },
+    "f": {
+      "item": "minecraft:crafting_table"
+    }
+  },
+  "result": {
+    "item": "lostdepths:galactic_compressor",
+    "count": 1
+  }
+}

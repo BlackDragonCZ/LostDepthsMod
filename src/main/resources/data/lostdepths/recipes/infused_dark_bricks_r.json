@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " a ",
+    "aba",
+    " a "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:infused_iron"
+    },
+    "b": {
+      "item": "minecraft:black_dye"
+    }
+  },
+  "result": {
+    "item": "lostdepths:infused_dark_bricks",
+    "count": 4
+  }
+}

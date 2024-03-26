@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "abc",
+    "def",
+    "fff"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:condensed_polarium"
+    },
+    "b": {
+      "item": "lostdepths:lucient_bar"
+    },
+    "c": {
+      "item": "lostdepths:upgrade_kit_iii"
+    },
+    "d": {
+      "item": "lostdepths:synthesized_astrometal"
+    },
+    "e": {
+      "item": "lostdepths:security_pass_5"
+    },
+    "f": {
+      "item": "lostdepths:question_icon"
+    }
+  },
+  "result": {
+    "item": "lostdepths:security_pass_6",
+    "count": 1
+  }
+}

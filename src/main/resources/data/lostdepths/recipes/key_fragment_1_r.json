@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " a ",
+    "aba",
+    " aa"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:cryzulite_ingot"
+    },
+    "b": {
+      "item": "lostdepths:power_core"
+    }
+  },
+  "result": {
+    "item": "lostdepths:key_fragment_1",
+    "count": 1
+  }
+}

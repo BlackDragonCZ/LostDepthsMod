@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "lostdepths:block/champion_heat_trap",
+    "particle": "lostdepths:block/champion_heat_trap"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,44 @@
+{
+	"name": "Dimensions",
+	"icon": "lostdepths:quantum_transporter",
+	"category": "lostdepths:dimensions",
+	"read_by_default": true,
+	"pages": [
+		{
+			"type": "crafting",
+			"recipe": "lostdepths:quantum_transporter_r",
+			"title": "Quantum Transporter",
+			"text": "This device is same as nether portal, instead there you have to right click on it with hand or special item to choose where you teleport, your overworld location will be temporary stored in teleporter's buffer."
+		},
+		{
+			"type": "text",
+			"text": "So if you use same block on the other side, it will teleport you back on your last position near teleporter.$(br2)Make sure you take your personal transporter to the dimension, because there can be missing for quantum reasons."
+		},
+		{
+			"type": "empty"
+		},
+		{
+			"type": "spotlight",
+			"item": "lostdepths:question_icon",
+			"title": "Below Bedrock Dimension",
+			"text": "You can find lava here.$(br)Important part are resources in this location, you can find few ancient structures and a lot of Ancient Ores.$(br)$(c)$(l)Accessed by right-clicking $(9)Quantum Transporter."
+		},
+		{
+			"type": "spotlight",
+			"item": "lostdepths:question_icon",
+			"title": "Above Bedrock Dimension",
+			"text": "You can find lava here.$(br)Metalic trees grow in this area.$(br)$(c)$(l)Accessed by right-clicking $(9)Quantum Transporter $(c)with $(9)Forgefire Pickaxe$(c)."
+		},
+		{
+			"type": "image",
+			"images": ["lostdepths:textures/gui/guidebook/deepslate_dim.png"],
+			"text": "$(8)By: Atlas Personal$()"
+		},
+		{
+			"type": "spotlight",
+			"item": "lostdepths:question_icon",
+			"title": "LostDungeons",
+			"text": "You can find lava here.$(br)Metalic trees grow in this area.$(br)$(c)$(l)Accessed by submerging yourself with $(9)Forgefire Pickaxe$(c) in hand into deep lava."
+		}
+	]
+}

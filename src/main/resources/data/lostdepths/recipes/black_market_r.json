@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "cdc",
+    "aba"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:enraged_iron"
+    },
+    "b": {
+      "item": "lostdepths:corrupted_gemstone"
+    },
+    "c": {
+      "item": "lostdepths:heat_resistance_glass"
+    },
+    "d": {
+      "tag": "minecraft:anvil"
+    }
+  },
+  "result": {
+    "item": "lostdepths:black_market",
+    "count": 1
+  }
+}

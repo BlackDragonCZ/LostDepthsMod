@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "aba",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:stone"
+    },
+    "b": {
+      "item": "lostdepths:infused_iron"
+    }
+  },
+  "result": {
+    "item": "lostdepths:factory_block",
+    "count": 16
+  }
+}

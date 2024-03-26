@@ -1,0 +1,9 @@
+{
+  "parent": "lostdepths:custom/p_hammer",
+  "textures": {
+    "2": "lostdepths:block/p_animations_4",
+    "3": "lostdepths:block/p_animations_3",
+    "5": "lostdepths:block/p_hammer",
+    "particle": "lostdepths:item/p_hammer"
+  }
+}

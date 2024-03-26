@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " a ",
+    "bcb",
+    " a "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:crystalized_bone_blocks"
+    },
+    "b": {
+      "item": "lostdepths:polishing_solution"
+    },
+    "c": {
+      "item": "lostdepths:energyzed_alloy"
+    }
+  },
+  "result": {
+    "item": "lostdepths:crystalized_alloy",
+    "count": 1
+  }
+}

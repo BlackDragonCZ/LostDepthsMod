@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "cdc",
+    "efg"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:dual_power_assembly"
+    },
+    "b": {
+      "item": "lostdepths:workbench_grid"
+    },
+    "c": {
+      "item": "lostdepths:corrosive_tear"
+    },
+    "d": {
+      "item": "lostdepths:power_core"
+    },
+    "e": {
+      "item": "lostdepths:advanced_mechanical_parts"
+    },
+    "f": {
+      "item": "lostdepths:advanced_electronic_parts"
+    },
+    "g": {
+      "item": "lostdepths:advanced_construction_parts"
+    }
+  },
+  "result": {
+    "item": "lostdepths:workstation_2",
+    "count": 1
+  }
+}

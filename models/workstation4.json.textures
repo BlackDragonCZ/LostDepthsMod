@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "workstation4",
+        "missing": "workstation4"
+      },
+      "name": "default"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "lostdepths:block/pipe_none",
+    "up": "lostdepths:block/pipe_none",
+    "north": "lostdepths:block/combustion_engine",
+    "east": "lostdepths:block/combustion_engine",
+    "south": "lostdepths:block/combustion_engine",
+    "west": "lostdepths:block/combustion_engine",
+    "particle": "lostdepths:block/pipe_none"
+  },
+  "render_type": "translucent"
+}

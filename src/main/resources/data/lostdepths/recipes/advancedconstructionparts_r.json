@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " a ",
+    "aba",
+    "cdc"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:melworite_ingot"
+    },
+    "b": {
+      "item": "lostdepths:titanium_metalloy"
+    },
+    "c": {
+      "item": "lostdepths:power_charge"
+    },
+    "d": {
+      "item": "lostdepths:ion_crystal"
+    }
+  },
+  "result": {
+    "item": "lostdepths:advanced_construction_parts",
+    "count": 1
+  }
+}

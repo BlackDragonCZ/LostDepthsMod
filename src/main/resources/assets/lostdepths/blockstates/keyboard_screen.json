@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "lostdepths:block/keyboard_screen"
+    },
+    "facing=east": {
+      "model": "lostdepths:block/keyboard_screen",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "lostdepths:block/keyboard_screen",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "lostdepths:block/keyboard_screen",
+      "y": 270
+    },
+    "facing=up": {
+      "model": "lostdepths:block/keyboard_screen",
+      "x": 270
+    },
+    "facing=down": {
+      "model": "lostdepths:block/keyboard_screen",
+      "x": 90
+    }
+  }
+}

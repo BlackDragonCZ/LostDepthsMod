@@ -1,0 +1,21 @@
+{
+	"name": "DM1-2",
+	"icon": "lostdepths:question_icon",
+	"category": "lostdepths:entities",
+	"read_by_default": false,
+	"pages": [
+		{
+			"type": "spotlight",
+			"item": "lostdepths:question_icon",
+			"title": "Security DM1-2",
+			"text": "Health: $(4)60♥$(0)$(br)Damage: $(4)2 HP$(0) per hit$(br)$(4)Security Robot. Range attack.$(0)$(br)No Drops"
+		},
+		{
+			"type": "entity",
+			"entity": "lostdepths:dm_12",
+			"rotate": true,
+			"title": "Security DM1-2",
+			"text": " The Prototype"
+		}
+	]
+}

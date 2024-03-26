@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "lostdepths:block/timeline_stabilizer_capsule",
+    "particle": "lostdepths:block/timeline_stabilizer_capsule"
+  },
+  "render_type": "solid"
+}

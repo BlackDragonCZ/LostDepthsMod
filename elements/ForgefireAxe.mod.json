@@ -1,0 +1,39 @@
+{
+  "_fv": 57,
+  "_type": "tool",
+  "definition": {
+    "toolType": "Axe",
+    "renderType": 0,
+    "blockingRenderType": 0,
+    "texture": "forgefire_axe",
+    "customModelName": "Normal",
+    "blockingModelName": "Normal blocking",
+    "name": "§6Forgefire Axe",
+    "specialInformation": {
+      "fixedValue": [
+        "§dAllows you to retrieve special materials from wood."
+      ]
+    },
+    "creativeTab": {
+      "value": "CUSTOM:LDTools"
+    },
+    "harvestLevel": 1,
+    "efficiency": 2.0,
+    "attackSpeed": 1.0,
+    "enchantability": 2,
+    "damageVsEntity": 6.0,
+    "usageCount": 0,
+    "blocksAffected": [],
+    "glowCondition": {
+      "fixedValue": true,
+      "name": "CrystalizedPickaxeMakeItemGlow"
+    },
+    "repairItems": [],
+    "immuneToFire": true,
+    "stayInGridWhenCrafting": false,
+    "damageOnCrafting": false,
+    "onEntitySwing": {
+      "name": "ForgefireAxeEntitySwingsItem"
+    }
+  }
+}

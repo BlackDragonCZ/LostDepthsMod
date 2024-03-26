@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab",
+    "bc"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:bone"
+    },
+    "b": {
+      "item": "lostdepths:enraged_iron"
+    },
+    "c": {
+      "item": "lostdepths:infused_iron"
+    }
+  },
+  "result": {
+    "item": "lostdepths:metal_bone",
+    "count": 1
+  }
+}

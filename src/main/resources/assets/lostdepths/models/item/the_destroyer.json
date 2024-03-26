@@ -1,0 +1,7 @@
+{
+  "parent": "lostdepths:custom/big_sword",
+  "textures": {
+    "5": "lostdepths:block/big_sword_texture",
+    "particle": "lostdepths:item/big_sword_icon"
+  }
+}

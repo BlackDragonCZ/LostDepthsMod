@@ -1,0 +1,46 @@
+{
+    "entity": "lostdepths:neuroblaze",
+    "variants": [],
+    "name": "entity.lostdepths.neuroblaze",
+    "name_color": "#179dbe",
+    "gui_scale": 1.0,
+    "gui_x_offset": 0.0,
+    "gui_y_offset": 0.0,
+    "gui_z_offset": 0.0,
+    "sim_cost": 525,
+    "input": {
+        "item": "hostilenetworks:prediction_matrix",
+        "count": 1
+    },
+    "base_drop": {
+        "item": "minecraft:blaze_rod",
+        "count": 1
+    },
+    "trivia": "hostilenetworks.trivia.neuroblaze",
+    "fabricator_drops": [
+        {
+            "item": "lostdepths:ion_blaze_rod",
+            "count": 12
+        },
+        {
+            "item": "minecraft:blaze_rod",
+            "count": 32
+        },
+        {
+            "item": "lostdepths:infused_iron",
+            "count": 16
+        }
+    ],
+    "tier_data": [
+        6,
+        54,
+        354,
+        1254
+    ],
+    "data_per_kill": [
+        1,
+        4,
+        10,
+        18
+    ]
+}

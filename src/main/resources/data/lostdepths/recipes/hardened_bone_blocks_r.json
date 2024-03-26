@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aa ",
+    " b ",
+    " aa"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:hardened_calcium"
+    },
+    "b": {
+      "item": "lostdepths:metal_bone"
+    }
+  },
+  "result": {
+    "item": "lostdepths:hardened_bone_blocks",
+    "count": 1
+  }
+}

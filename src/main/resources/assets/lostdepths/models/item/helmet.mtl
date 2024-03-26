@@ -1,0 +1,20 @@
+newmtl m_01d44da4-c6f7-4352-f32d-4a635ad5f841
+Ka 0.0 0.0 0.0
+Kd 0.0 0.0 0.0
+Ks 0.0 0.0 0.0
+map_Kd lostdepths:blocks/animation_1
+Ns 100.0
+d 1.0
+newmtl m_73cd4bb5-a8d9-d5df-8f0b-548f7909dd1b
+Ka 0.0 0.0 0.0
+Kd 0.0 0.0 0.0
+Ks 0.0 0.0 0.0
+map_Kd lostdepths:blocks/helmet
+Ns 100.0
+d 1.0
+newmtl none
+Ka 0.0 0.0 0.0
+Kd 0.0 0.0 0.0
+Ks 0.0 0.0 0.0
+Ns 100.0
+d 1.0

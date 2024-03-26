@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "lostdepths:ancient_template"
+  },
+  "base": {
+    "item": "lostdepths:condensed_cosmerite"
+  },
+  "addition": {
+    "item": "lostdepths:madrigen_solution"
+  },
+  "result": {
+    "item": "lostdepths:geo_magnetic_glue"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "2": "p_staff",
+        "3": "p_animations_3",
+        "4": "staff_cube"
+      },
+      "name": "default"
+    }
+  }
+}

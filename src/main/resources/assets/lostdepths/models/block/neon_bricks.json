@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "lostdepths:block/neon_bricks_aqua",
+    "particle": "lostdepths:block/neon_bricks_aqua"
+  },
+  "render_type": "solid"
+}

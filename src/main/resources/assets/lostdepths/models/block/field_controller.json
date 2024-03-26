@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "lostdepths:block/deviation_field_top",
+    "up": "lostdepths:block/deviation_field_top",
+    "north": "lostdepths:block/deviation_field_side",
+    "east": "lostdepths:block/deviation_field_side",
+    "south": "lostdepths:block/deviation_field_side",
+    "west": "lostdepths:block/deviation_field_side",
+    "particle": "lostdepths:block/deviation_field_top"
+  },
+  "render_type": "solid"
+}

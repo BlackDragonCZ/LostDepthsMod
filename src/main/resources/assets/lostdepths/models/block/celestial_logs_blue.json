@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "lostdepths:block/logs_celestial_top",
+    "up": "lostdepths:block/logs_celestial_top",
+    "north": "lostdepths:block/logs_celestial_side",
+    "east": "lostdepths:block/logs_celestial_side",
+    "south": "lostdepths:block/logs_celestial_side",
+    "west": "lostdepths:block/logs_celestial_side",
+    "particle": "lostdepths:block/logs_celestial_top"
+  },
+  "render_type": "solid"
+}

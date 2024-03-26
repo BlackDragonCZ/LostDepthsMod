@@ -1,0 +1,48 @@
+{
+  "_fv": 57,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "recipeRetstackSize": 1,
+    "group": "",
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": ""
+      },
+      {
+        "value": "CUSTOM:InfusedIron"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "CUSTOM:InfusedIron"
+      },
+      {
+        "value": "CUSTOM:Clovinite"
+      },
+      {
+        "value": "CUSTOM:InfusedIron"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "CUSTOM:InfusedIron"
+      },
+      {
+        "value": ""
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:ClovinitePowerBank"
+    },
+    "name": "clovinite_power_bank_r",
+    "namespace": "mod"
+  }
+}

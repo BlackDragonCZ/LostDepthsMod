@@ -1,0 +1,48 @@
+{
+  "_fv": 57,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "recipeRetstackSize": 1,
+    "group": "",
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "CUSTOM:CondensedCosmerite"
+      },
+      {
+        "value": "CUSTOM:UnbreakableChain"
+      },
+      {
+        "value": "CUSTOM:CondensedCosmerite"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "CUSTOM:MetalBranch"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "CUSTOM:MetalBranch"
+      },
+      {
+        "value": ""
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:CrystalizedPickaxe"
+    },
+    "name": "crystalized_pickaxe_r",
+    "namespace": "mod"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "display": {
+    "icon": {
+      "item": "lostdepths:soul_key"
+    },
+    "title": {
+      "translate": "advancements.keymaster_adv.title"
+    },
+    "description": {
+      "translate": "advancements.keymaster_adv.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "keymaster_adv": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "lostdepths:soul_key"
+            ],
+            "count": {
+              "min": 1,
+              "max": 1
+            }
+          }
+        ]
+      }
+    }
+  },
+  "parent": "lostdepths:getting_started"
+}

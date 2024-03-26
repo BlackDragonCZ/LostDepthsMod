@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:clovinite_power_bank"
+    },
+    "b": {
+      "item": "lostdepths:power_coil"
+    }
+  },
+  "result": {
+    "item": "lostdepths:external_clovinite_battery",
+    "count": 1
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "bottom": "lostdepths:block/neo_slab_top",
+    "top": "lostdepths:block/neo_slab_top",
+    "side": "lostdepths:block/neo_slab_side"
+  },
+  "render_type": "solid"
+}

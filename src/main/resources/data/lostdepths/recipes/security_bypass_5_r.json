@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "abc",
+    "de "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:security_pass_4"
+    },
+    "b": {
+      "item": "lostdepths:augmenticon_box_charged"
+    },
+    "c": {
+      "item": "lostdepths:upgrade_kit_ii"
+    },
+    "d": {
+      "item": "lostdepths:poly_ionite"
+    },
+    "e": {
+      "item": "lostdepths:condensed_polarium"
+    }
+  },
+  "result": {
+    "item": "lostdepths:security_pass_5",
+    "count": 1
+  }
+}

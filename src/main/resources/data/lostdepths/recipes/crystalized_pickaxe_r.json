@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    " c ",
+    " c "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:condensed_cosmerite"
+    },
+    "b": {
+      "item": "lostdepths:unbreakable_chain"
+    },
+    "c": {
+      "item": "lostdepths:metal_branch"
+    }
+  },
+  "result": {
+    "item": "lostdepths:crystalized_pickaxe",
+    "count": 1
+  }
+}

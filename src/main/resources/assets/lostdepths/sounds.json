@@ -1,0 +1,187 @@
+{
+  "metal1": {
+    "sounds": [
+      {
+        "name": "lostdepths:metal1",
+        "stream": false
+      }
+    ]
+  },
+  "metal2": {
+    "sounds": [
+      {
+        "name": "lostdepths:metal7",
+        "stream": false
+      }
+    ]
+  },
+  "metal_step": {
+    "sounds": [
+      {
+        "name": "lostdepths:metal9",
+        "stream": false
+      }
+    ]
+  },
+  "security_gate_sound_effect": {
+    "subtitle": "subtitles.security_gate_sound_effect",
+    "sounds": [
+      {
+        "name": "lostdepths:security_gate_soundeffect",
+        "stream": false
+      }
+    ]
+  },
+  "security_gate_sound_zap": {
+    "subtitle": "subtitles.security_gate_sound_zap",
+    "sounds": [
+      {
+        "name": "lostdepths:security_gate_soundzap",
+        "stream": false
+      }
+    ]
+  },
+  "dark_activation_effect": {
+    "subtitle": "subtitles.dark_activation_effect",
+    "sounds": [
+      {
+        "name": "lostdepths:dark_activation_effect",
+        "stream": false
+      }
+    ]
+  },
+  "security_gate_clear": {
+    "subtitle": "subtitles.security_gate_clear",
+    "sounds": [
+      {
+        "name": "lostdepths:security_clear",
+        "stream": false
+      }
+    ]
+  },
+  "flapper_ambient": {
+    "sounds": [
+      {
+        "name": "lostdepths:flapper_ambient",
+        "stream": false
+      }
+    ]
+  },
+  "flapper_death": {
+    "sounds": [
+      {
+        "name": "lostdepths:flapper_death",
+        "stream": false
+      }
+    ]
+  },
+  "flapper_hit": {
+    "sounds": [
+      {
+        "name": "lostdepths:flapper_hit",
+        "stream": false
+      }
+    ]
+  },
+  "plucked_eye_ambient": {
+    "sounds": [
+      {
+        "name": "lostdepths:lurcher_hurt",
+        "stream": false
+      }
+    ]
+  },
+  "venom_attack": {
+    "sounds": [
+      {
+        "name": "lostdepths:magic_weapon_5",
+        "stream": false
+      }
+    ]
+  },
+  "evil_smile": {
+    "sounds": [
+      {
+        "name": "lostdepths:evil_laugh",
+        "stream": false
+      }
+    ]
+  },
+  "dm1_attack": {
+    "subtitle": "subtitles.dm1_attack",
+    "sounds": [
+      {
+        "name": "lostdepths:dm1_2mg",
+        "stream": false
+      }
+    ]
+  },
+  "dm1_move": {
+    "subtitle": "subtitles.dm1_move",
+    "sounds": [
+      {
+        "name": "lostdepths:dm1_2footsteps",
+        "stream": false
+      }
+    ]
+  },
+  "dm1_idle": {
+    "subtitle": "subtitles.dm1_idle",
+    "sounds": [
+      {
+        "name": "lostdepths:dm1_2sound",
+        "stream": false
+      }
+    ]
+  },
+  "far_detonation": {
+    "subtitle": "subtitles.far_detonation",
+    "sounds": [
+      {
+        "name": "lostdepths:core_shockwave",
+        "stream": false
+      }
+    ]
+  },
+  "crabnoise_ambient": {
+    "sounds": [
+      {
+        "name": "lostdepths:skycrab_ambient",
+        "stream": false
+      }
+    ]
+  },
+  "worm_sleeping": {
+    "sounds": [
+      {
+        "name": "lostdepths:rockworm_sleeping",
+        "stream": false
+      }
+    ]
+  },
+  "crab_target": {
+    "sounds": [
+      {
+        "name": "lostdepths:skycrab_target",
+        "stream": false
+      }
+    ]
+  },
+  "gate_error": {
+    "sounds": [
+      {
+        "name": "lostdepths:weapon_error",
+        "stream": false
+      }
+    ]
+  },
+  "reactor_alarm": {
+    "subtitle": "subtitles.reactor_alarm",
+    "sounds": [
+      {
+        "name": "lostdepths:reactor_alarm",
+        "stream": false
+      }
+    ]
+  }
+}

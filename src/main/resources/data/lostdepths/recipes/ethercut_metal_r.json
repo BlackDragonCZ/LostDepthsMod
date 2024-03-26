@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab",
+    "c "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:super_charged_coil"
+    },
+    "b": {
+      "item": "lostdepths:spectral_ingot"
+    },
+    "c": {
+      "item": "lostdepths:ultralight_dust"
+    }
+  },
+  "result": {
+    "item": "lostdepths:ethercut_metal",
+    "count": 1
+  }
+}

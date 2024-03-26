@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aab",
+    "acb",
+    "def"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:firerite_ingot"
+    },
+    "b": {
+      "item": "lostdepths:unbreakable_chain"
+    },
+    "c": {
+      "item": "minecraft:netherite_axe"
+    },
+    "d": {
+      "item": "lostdepths:power_charge"
+    },
+    "e": {
+      "item": "lostdepths:energyzed_alloy"
+    },
+    "f": {
+      "item": "lostdepths:magma_solution"
+    }
+  },
+  "result": {
+    "item": "lostdepths:forgefire_axe",
+    "count": 1
+  }
+}

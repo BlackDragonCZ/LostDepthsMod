@@ -1,0 +1,11 @@
+{
+  "_fv": 57,
+  "_type": "tab",
+  "definition": {
+    "name": "LD: Eggs",
+    "icon": {
+      "value": "Items.WARDEN_SPAWN_EGG"
+    },
+    "showSearch": true
+  }
+}

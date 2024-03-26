@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "lostdepths:block/ferrolog_top",
+    "up": "lostdepths:block/ferrolog_top",
+    "north": "lostdepths:block/ferrolog2",
+    "east": "lostdepths:block/ferrolog2",
+    "south": "lostdepths:block/ferrolog2",
+    "west": "lostdepths:block/ferrolog2",
+    "particle": "lostdepths:block/ferrolog_top"
+  },
+  "render_type": "solid"
+}

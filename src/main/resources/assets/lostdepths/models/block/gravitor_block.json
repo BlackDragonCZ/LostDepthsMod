@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "lostdepths:block/factory_platform_top",
+    "up": "lostdepths:block/factory_platform_top",
+    "north": "lostdepths:block/astrosteel",
+    "east": "lostdepths:block/astrosteel",
+    "south": "lostdepths:block/astrosteel",
+    "west": "lostdepths:block/astrosteel",
+    "particle": "lostdepths:block/factory_platform_top"
+  },
+  "render_type": "solid"
+}

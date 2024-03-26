@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "aba",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:weak_polarcronite"
+    },
+    "b": {
+      "item": "lostdepths:ion_crystal"
+    }
+  },
+  "result": {
+    "item": "lostdepths:potent_polarcronite",
+    "count": 1
+  }
+}

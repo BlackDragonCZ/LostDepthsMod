@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "lostdepths:block/chip_formatter_b",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "lostdepths:block/chip_formatter_b"
+    },
+    "axis=z": {
+      "model": "lostdepths:block/chip_formatter_b",
+      "x": 90
+    }
+  }
+}

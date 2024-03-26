@@ -1,0 +1,8 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "lostdepths:block/druidsflower",
+    "particle": "lostdepths:block/druidsflower"
+  },
+  "render_type": "cutout"
+}

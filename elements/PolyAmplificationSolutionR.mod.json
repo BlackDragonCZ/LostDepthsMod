@@ -1,0 +1,48 @@
+{
+  "_fv": 57,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "recipeRetstackSize": 1,
+    "group": "",
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "CUSTOM:PolychargeSolution"
+      },
+      {
+        "value": "CUSTOM:PolychargeSolution"
+      },
+      {
+        "value": "CUSTOM:PolychargeSolution"
+      },
+      {
+        "value": "CUSTOM:QuickflameSolution"
+      },
+      {
+        "value": "CUSTOM:QuickflameSolution"
+      },
+      {
+        "value": "CUSTOM:QuickflameSolution"
+      },
+      {
+        "value": "CUSTOM:GiantDuskerEggs"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:PolyAmplificationSolution"
+    },
+    "name": "poly_amplification_solution_r",
+    "namespace": "mod"
+  }
+}

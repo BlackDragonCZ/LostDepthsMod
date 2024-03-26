@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aa",
+    "ab"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:corrosive_mix"
+    },
+    "b": {
+      "item": "lostdepths:concentrated_acid_bucket"
+    }
+  },
+  "result": {
+    "item": "lostdepths:carbonic_acid",
+    "count": 1
+  }
+}

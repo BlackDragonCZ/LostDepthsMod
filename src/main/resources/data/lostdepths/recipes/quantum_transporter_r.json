@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "cdc",
+    "ccc"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:infused_redstone"
+    },
+    "b": {
+      "item": "lostdepths:power_charge"
+    },
+    "c": {
+      "item": "lostdepths:energyzed_alloy"
+    },
+    "d": {
+      "item": "lostdepths:infused_crystal"
+    }
+  },
+  "result": {
+    "item": "lostdepths:quantum_transporter",
+    "count": 2
+  }
+}

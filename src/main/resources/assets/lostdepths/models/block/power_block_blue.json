@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "lostdepths:block/power_block_blue",
+    "particle": "lostdepths:block/power_block_blue"
+  },
+  "render_type": "solid"
+}

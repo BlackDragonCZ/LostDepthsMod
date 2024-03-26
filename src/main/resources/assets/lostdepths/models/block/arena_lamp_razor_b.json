@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "lostdepths:block/arena_lamprazor_red",
+    "particle": "lostdepths:block/arena_lamprazor_red"
+  },
+  "render_type": "solid"
+}

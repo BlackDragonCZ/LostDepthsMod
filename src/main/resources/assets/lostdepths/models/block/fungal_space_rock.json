@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "lostdepths:block/fungal_astrorock",
+    "particle": "lostdepths:block/fungal_astrorock"
+  },
+  "render_type": "solid"
+}

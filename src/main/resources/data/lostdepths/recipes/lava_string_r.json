@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "aba",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:string"
+    },
+    "b": {
+      "item": "lostdepths:magma_solution"
+    }
+  },
+  "result": {
+    "item": "lostdepths:lava_string",
+    "count": 8
+  }
+}

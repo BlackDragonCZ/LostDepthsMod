@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " a ",
+    "bcb",
+    "bdb"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:dual_power_assembly"
+    },
+    "b": {
+      "item": "lostdepths:reinforced_plate"
+    },
+    "c": {
+      "item": "lostdepths:infused_redstone"
+    },
+    "d": {
+      "item": "lostdepths:ion_crystal"
+    }
+  },
+  "result": {
+    "item": "lostdepths:vibrant_capacitor",
+    "count": 1
+  }
+}

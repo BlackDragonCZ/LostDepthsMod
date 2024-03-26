@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "lostdepths:block/treasure_dark_tiles",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "lostdepths:block/treasure_dark_tiles"
+    },
+    "axis=z": {
+      "model": "lostdepths:block/treasure_dark_tiles",
+      "x": 90
+    }
+  }
+}

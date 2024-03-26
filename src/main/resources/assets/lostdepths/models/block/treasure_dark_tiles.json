@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "lostdepths:block/voidcutbrick_side_dark",
+    "up": "lostdepths:block/voidcutbrick_side_dark",
+    "north": "lostdepths:block/voidcutbrick_dark",
+    "east": "lostdepths:block/voidcutbrick_dark",
+    "south": "lostdepths:block/voidcutbrick_dark",
+    "west": "lostdepths:block/voidcutbrick_dark",
+    "particle": "lostdepths:block/voidcutbrick_side_dark"
+  },
+  "render_type": "solid"
+}

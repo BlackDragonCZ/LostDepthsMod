@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "lostdepths:block/celestial_chest"
+    },
+    "facing=east": {
+      "model": "lostdepths:block/celestial_chest",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "lostdepths:block/celestial_chest",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "lostdepths:block/celestial_chest",
+      "y": 270
+    }
+  }
+}

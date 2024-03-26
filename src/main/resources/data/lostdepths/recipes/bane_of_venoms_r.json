@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " ab",
+    "cda",
+    "dc "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:venom_knife"
+    },
+    "b": {
+      "item": "lostdepths:clovinite_power_hub"
+    },
+    "c": {
+      "item": "lostdepths:crystalized_alloy"
+    },
+    "d": {
+      "item": "lostdepths:volatility_solution"
+    }
+  },
+  "result": {
+    "item": "lostdepths:bane_of_venoms",
+    "count": 1
+  }
+}

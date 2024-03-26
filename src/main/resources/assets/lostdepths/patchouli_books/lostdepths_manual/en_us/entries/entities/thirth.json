@@ -1,0 +1,22 @@
+{
+	"name": "Lost Dark",
+	"icon": "lostdepths:corrosive_tear",
+	"category": "lostdepths:entities",
+	"read_by_default": false,
+	"pages": [
+		{
+			"type": "spotlight",
+			"item": "lostdepths:corrosive_tear",
+			"title": "Lost Dark",
+			"text": "Health: $(4)110♥$(0)$(br)Damage: $(4)19 HP$(0) per hit$(br)$(4)$(l)*MULTIPLE LIVES*$()$(br)$(4)Slowly moving 'balloon', but still do damage.$(0)$(br)Drops:$(li)Corrosive Tear"
+		},
+		{
+			"type": "entity",
+			"entity": "lostdepths:lost_dark",
+			"rotate": true,
+			"title": "Lost Dark",
+			"scale": 0.5,
+			"text": " Aggressive nether balloon"
+		}
+	]
+}

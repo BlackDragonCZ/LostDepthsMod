@@ -1,0 +1,27 @@
+{
+	"name": "Ruins & Structures",
+	"icon": "lostdepths:infused_iron_bricks",
+	"category": "lostdepths:dimensions",
+	"read_by_default": false,
+	"pages": [
+		{
+			"type": "spotlight",
+			"item": "lostdepths:question_icon",
+			"title": "Ruins & Structures",
+			"text": "Database is corrupted and all pages are currently gone, if you find datadrive, you can get new pages unlocked.$(br)$(8)By: D.A.N.S."
+		},
+		{
+			"type": "spotlight",
+			"item": "lostdepths:security_clearance_gate_1",
+			"advancement": "lostdepths:ruins_adv",
+			"title": "Security Gates",
+			"text": "Protection for caches with rare resources and research materials.$(br)$(9)Access Pass$() needed."
+		},
+		{
+			"type": "image",
+			"images": ["lostdepths:textures/gui/guidebook/security_gate.png"],
+			"text": "Security Gate",
+			"border": true
+		}
+	]
+}

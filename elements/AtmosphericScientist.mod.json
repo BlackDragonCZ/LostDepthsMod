@@ -1,0 +1,16 @@
+{
+  "_fv": 57,
+  "_type": "villagerprofession",
+  "definition": {
+    "displayName": "Atmospheric Scientist",
+    "pointOfInterest": {
+      "value": "CUSTOM:AtmosTech"
+    },
+    "actionSound": {
+      "value": "block.smithing_table.use"
+    },
+    "hat": "None",
+    "professionTextureFile": "dimensional_scientist.png",
+    "zombifiedProfessionTextureFile": "dimensional_scientist.png"
+  }
+}

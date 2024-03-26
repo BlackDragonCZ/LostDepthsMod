@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "lostdepths:block/champion_steel_beam",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "lostdepths:block/champion_steel_beam"
+    },
+    "axis=z": {
+      "model": "lostdepths:block/champion_steel_beam",
+      "x": 90
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "  a",
+    " aa",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:infused_iron_bricks"
+    }
+  },
+  "result": {
+    "item": "lostdepths:infused_iron_brick_stairs",
+    "count": 4
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "cbc",
+    "aba"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:cryzulite_ingot"
+    },
+    "b": {
+      "item": "lostdepths:factory_block"
+    },
+    "c": {
+      "item": "lostdepths:zerithium_ingot"
+    }
+  },
+  "result": {
+    "item": "lostdepths:factory_pillar",
+    "count": 3
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "1": "little_dragon",
+        "4": "animations_flame_02",
+        "7": "flag"
+      },
+      "name": "default"
+    }
+  }
+}

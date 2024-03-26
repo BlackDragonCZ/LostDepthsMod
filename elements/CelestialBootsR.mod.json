@@ -1,0 +1,48 @@
+{
+  "_fv": 57,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "recipeRetstackSize": 1,
+    "group": "",
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "CUSTOM:CondensedCosmerite"
+      },
+      {
+        "value": "Items.NETHERITE_BOOTS"
+      },
+      {
+        "value": "CUSTOM:CondensedCosmerite"
+      },
+      {
+        "value": "CUSTOM:UnbreakableChain"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "CUSTOM:UnbreakableChain"
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:CelestialArmor.boots"
+    },
+    "name": "celestial_boots_r",
+    "namespace": "mod"
+  }
+}

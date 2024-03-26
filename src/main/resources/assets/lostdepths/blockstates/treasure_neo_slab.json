@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "lostdepths:block/treasure_neo_slab"
+    },
+    "type=top": {
+      "model": "lostdepths:block/treasure_neo_slab_top"
+    },
+    "type=double": {
+      "model": "lostdepths:block/treasure_neo_slab_full"
+    }
+  }
+}

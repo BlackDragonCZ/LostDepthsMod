@@ -1,0 +1,9 @@
+{
+  "parent": "lostdepths:custom/star_carpet",
+  "textures": {
+    "all": "lostdepths:block/cosmic_carpet",
+    "particle": "lostdepths:block/cosmic_carpet",
+    "0": "lostdepths:block/cosmic_carpet"
+  },
+  "render_type": "cutout_mipped"
+}

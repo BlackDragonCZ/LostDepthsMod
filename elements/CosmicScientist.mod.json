@@ -1,0 +1,16 @@
+{
+  "_fv": 57,
+  "_type": "villagerprofession",
+  "definition": {
+    "displayName": "Cosmic Scientist",
+    "pointOfInterest": {
+      "value": "CUSTOM:PrintTech"
+    },
+    "actionSound": {
+      "value": "entity.villager.work_toolsmith"
+    },
+    "hat": "None",
+    "professionTextureFile": "dimensionalmerchant_default.png",
+    "zombifiedProfessionTextureFile": "dimensionalmerchant_default.png"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "lostdepths:ancient_template"
+  },
+  "base": {
+    "item": "lostdepths:infused_iron"
+  },
+  "addition": {
+    "item": "minecraft:netherite_ingot"
+  },
+  "result": {
+    "item": "lostdepths:enraged_iron"
+  }
+}

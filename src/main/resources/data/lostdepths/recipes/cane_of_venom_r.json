@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:bane_of_venoms"
+    },
+    "b": {
+      "item": "lostdepths:gem_resolve"
+    }
+  },
+  "result": {
+    "item": "lostdepths:cane_of_venom",
+    "count": 1
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "cdc",
+    "aca"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:celestial_iron"
+    },
+    "b": {
+      "item": "lostdepths:clovinite_power_bank"
+    },
+    "c": {
+      "item": "lostdepths:infused_iron"
+    },
+    "d": {
+      "item": "lostdepths:print_tech"
+    }
+  },
+  "result": {
+    "item": "lostdepths:atmos_tech",
+    "count": 1
+  }
+}

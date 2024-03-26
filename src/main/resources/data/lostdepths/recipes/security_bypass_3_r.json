@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "abc",
+    "de "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:security_pass_2"
+    },
+    "b": {
+      "item": "lostdepths:power_clamp"
+    },
+    "c": {
+      "item": "lostdepths:neosteel_ingot"
+    },
+    "d": {
+      "item": "lostdepths:titanium_metalloy"
+    },
+    "e": {
+      "item": "lostdepths:ionite_bar"
+    }
+  },
+  "result": {
+    "item": "lostdepths:security_pass_3",
+    "count": 1
+  }
+}

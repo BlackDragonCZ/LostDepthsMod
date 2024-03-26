@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " a ",
+    "bcb",
+    "ddd"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:dual_power_assembly"
+    },
+    "b": {
+      "item": "lostdepths:power_connector_assembly"
+    },
+    "c": {
+      "item": "lostdepths:super_charged_coil"
+    },
+    "d": {
+      "item": "lostdepths:condensed_morfarite"
+    }
+  },
+  "result": {
+    "item": "lostdepths:advanced_power_core",
+    "count": 1
+  }
+}

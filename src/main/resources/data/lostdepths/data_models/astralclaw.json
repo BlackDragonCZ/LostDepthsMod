@@ -1,0 +1,46 @@
+{
+    "entity": "lostdepths:astralclaw",
+    "variants": [],
+    "name": "entity.lostdepths.astralclaw",
+    "name_color": "#2589d7",
+    "gui_scale": 1.0,
+    "gui_x_offset": 0.0,
+    "gui_y_offset": 0.0,
+    "gui_z_offset": 0.0,
+    "sim_cost": 750,
+    "input": {
+        "item": "hostilenetworks:prediction_matrix",
+        "count": 1
+    },
+    "base_drop": {
+        "item": "minecraft:bone",
+        "count": 1
+    },
+    "trivia": "hostilenetworks.trivia.astralclaw",
+    "fabricator_drops": [
+        {
+            "item": "lostdepths:razor_fang",
+            "count": 12
+        },
+        {
+            "item": "lostdepths:infused_iron",
+            "count": 16
+        },
+        {
+            "item": "lostdepths:neosteel_nuggets",
+            "count": 2
+        }
+    ],
+    "tier_data": [
+        6,
+        54,
+        354,
+        1254
+    ],
+    "data_per_kill": [
+        1,
+        4,
+        10,
+        18
+    ]
+}

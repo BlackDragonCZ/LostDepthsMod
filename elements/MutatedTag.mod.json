@@ -1,0 +1,28 @@
+{
+  "_fv": 57,
+  "_type": "tag",
+  "definition": {
+    "type": "Entities",
+    "items": [],
+    "blocks": [],
+    "functions": [],
+    "entities": [
+      {
+        "value": "CUSTOM:TheProtector"
+      },
+      {
+        "value": "CUSTOM:Maelstrom"
+      },
+      {
+        "value": "CUSTOM:LostDark"
+      },
+      {
+        "value": "CUSTOM:Guoon"
+      }
+    ],
+    "biomes": [],
+    "damageTypes": [],
+    "name": "mutated",
+    "namespace": "mod"
+  }
+}

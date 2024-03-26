@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "bbb",
+    "c  "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:polycharge_solution"
+    },
+    "b": {
+      "item": "lostdepths:quickflame_solution"
+    },
+    "c": {
+      "item": "lostdepths:giant_dusker_eggs"
+    }
+  },
+  "result": {
+    "item": "lostdepths:poly_amplification_solution",
+    "count": 1
+  }
+}

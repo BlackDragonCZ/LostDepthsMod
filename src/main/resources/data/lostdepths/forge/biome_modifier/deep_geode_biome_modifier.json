@@ -1,0 +1,9 @@
+{
+  "type": "forge:add_features",
+  "biomes": [
+    "lostdepths:sun_forest_2",
+    "lostdepths:sun_forest_3"
+  ],
+  "features": "lostdepths:deep_geode",
+  "step": "underground_structures"
+}

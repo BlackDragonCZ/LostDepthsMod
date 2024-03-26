@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "lostdepths:block/neo_slab_top",
+    "up": "lostdepths:block/neo_slab_top",
+    "north": "lostdepths:block/neo_slab_side",
+    "east": "lostdepths:block/neo_slab_side",
+    "south": "lostdepths:block/neo_slab_side",
+    "west": "lostdepths:block/neo_slab_side",
+    "particle": "lostdepths:block/neo_slab_top"
+  },
+  "render_type": "solid"
+}

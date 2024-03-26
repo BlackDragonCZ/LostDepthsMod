@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "lostdepths:block/glowsteel",
+    "particle": "lostdepths:block/glowsteel"
+  },
+  "render_type": "solid"
+}

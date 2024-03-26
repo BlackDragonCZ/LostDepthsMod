@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab",
+    "c "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:slimed_bedrock"
+    },
+    "b": {
+      "item": "lostdepths:slippery_ingot"
+    },
+    "c": {
+      "item": "lostdepths:celestial_diamond"
+    }
+  },
+  "result": {
+    "item": "lostdepths:terracut_metal",
+    "count": 1
+  }
+}

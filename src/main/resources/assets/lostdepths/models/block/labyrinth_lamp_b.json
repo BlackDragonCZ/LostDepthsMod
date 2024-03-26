@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "lostdepths:block/labyrinth_lamp_blue",
+    "particle": "lostdepths:block/labyrinth_lamp_blue"
+  },
+  "render_type": "solid"
+}

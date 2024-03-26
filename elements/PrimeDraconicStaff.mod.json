@@ -1,0 +1,46 @@
+{
+  "_fv": 57,
+  "_type": "tool",
+  "definition": {
+    "toolType": "Sword",
+    "renderType": 1,
+    "blockingRenderType": 0,
+    "texture": "p_staff",
+    "customModelName": "p_staff:default",
+    "blockingModelName": "Normal blocking",
+    "name": "§4Prime Draconic Staff",
+    "specialInformation": {
+      "fixedValue": [
+        "§6Right Click: Activate speed and regeneration"
+      ]
+    },
+    "creativeTab": {
+      "value": "CUSTOM:LDTools"
+    },
+    "harvestLevel": 1,
+    "efficiency": 4.0,
+    "attackSpeed": 1.0999999999999999,
+    "enchantability": 15,
+    "damageVsEntity": 10.0,
+    "usageCount": 1024,
+    "blocksAffected": [],
+    "glowCondition": {
+      "fixedValue": false,
+      "name": "CrystalizedPickaxeMakeItemGlow"
+    },
+    "repairItems": [
+      {
+        "value": "CUSTOM:CondensedMalicium"
+      }
+    ],
+    "immuneToFire": true,
+    "stayInGridWhenCrafting": false,
+    "damageOnCrafting": false,
+    "onRightClickedInAir": {
+      "name": "PrimeDraconicPickaxeRightclicked"
+    },
+    "onRightClickedOnBlock": {
+      "name": "PrimeDraconicPickaxeRightclicked"
+    }
+  }
+}

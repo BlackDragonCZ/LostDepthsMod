@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "lostdepths:block/power_conduit",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "lostdepths:block/power_conduit"
+    },
+    "axis=z": {
+      "model": "lostdepths:block/power_conduit",
+      "x": 90
+    }
+  }
+}

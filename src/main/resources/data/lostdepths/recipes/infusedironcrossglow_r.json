@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a",
+    "b"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:glowstone"
+    },
+    "b": {
+      "item": "lostdepths:infusediron_pillar_cross"
+    }
+  },
+  "result": {
+    "item": "lostdepths:infused_iron_cross_glow",
+    "count": 1
+  }
+}

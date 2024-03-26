@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "aba",
+    "aca"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:voidcut_metal"
+    },
+    "b": {
+      "item": "lostdepths:glistening_crystals"
+    },
+    "c": {
+      "item": "lostdepths:polycharge_solution"
+    }
+  },
+  "result": {
+    "item": "lostdepths:digital_panel",
+    "count": 1
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "lostdepths:block/parkour_platform_slippery",
+    "particle": "lostdepths:block/parkour_platform_slippery"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,21 @@
+{
+	"name": "Maelstrom",
+	"icon": "lostdepths:infused_redstone",
+	"category": "lostdepths:entities",
+	"read_by_default": false,
+	"pages": [
+		{
+			"type": "spotlight",
+			"item": "lostdepths:infused_redstone",
+			"title": "Maelstrom",
+			"text": "Health: $(4)250♥$(0)$(br)Damage: $(4)27 HP$(0) per hit$(br)$(4)This creeper doesn't explode, instead it will bite!$(br)Might explode after death.$(0)$(br)Drops:$(li)Gunpowder$(li)infused redstone"
+		},
+		{
+			"type": "entity",
+			"entity": "lostdepths:maelstrom",
+			"rotate": true,
+			"title": "Maelstrom",
+			"text": " An experiment gone wrong"
+		}
+	]
+}

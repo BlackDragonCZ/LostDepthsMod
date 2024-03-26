@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "lostdepths:block/enghouled_astrorock",
+    "particle": "lostdepths:block/enghouled_astrorock"
+  },
+  "render_type": "solid"
+}

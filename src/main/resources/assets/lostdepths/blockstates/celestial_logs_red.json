@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "lostdepths:block/celestial_logs_red",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "lostdepths:block/celestial_logs_red"
+    },
+    "axis=z": {
+      "model": "lostdepths:block/celestial_logs_red",
+      "x": 90
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "lostdepths:block/drill_head_end",
+    "up": "lostdepths:block/drill_head_end",
+    "north": "lostdepths:block/drill_head",
+    "east": "lostdepths:block/drill_head",
+    "south": "lostdepths:block/drill_head",
+    "west": "lostdepths:block/drill_head",
+    "particle": "lostdepths:block/drill_head_end"
+  },
+  "render_type": "solid"
+}

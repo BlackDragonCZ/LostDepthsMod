@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "lostdepths:block/astrobarrier_purple",
+    "particle": "lostdepths:block/astrobarrier_purple"
+  },
+  "render_type": "translucent"
+}

@@ -1,0 +1,25 @@
+{
+  "_fv": 57,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Brewing",
+    "recipeRetstackSize": 1,
+    "group": "",
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "brewingInputStack": {
+      "value": "Items.POTIONITEM"
+    },
+    "brewingIngredientStack": {
+      "value": "CUSTOM:VolatileBlood"
+    },
+    "brewingReturnStack": {
+      "value": "CUSTOM:VolatilitySolution"
+    },
+    "name": "volatility_solution_r",
+    "namespace": "mod"
+  }
+}

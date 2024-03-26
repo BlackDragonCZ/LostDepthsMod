@@ -1,0 +1,10 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "ruined_workstation1"
+      },
+      "name": "default"
+    }
+  }
+}

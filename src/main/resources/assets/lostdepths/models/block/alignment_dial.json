@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "lostdepths:block/alignment_dial_game",
+    "particle": "lostdepths:block/alignment_dial_game"
+  },
+  "render_type": "solid"
+}

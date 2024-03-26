@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "lostdepths:block/neosteel_lantern_top",
+    "up": "lostdepths:block/factory_platform_top",
+    "north": "lostdepths:block/item_crate",
+    "east": "lostdepths:block/item_crate",
+    "south": "lostdepths:block/item_crate",
+    "west": "lostdepths:block/item_crate",
+    "particle": "lostdepths:block/neosteel_lantern_top"
+  },
+  "render_type": "solid"
+}

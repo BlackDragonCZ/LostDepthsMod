@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "1": "shield",
+        "2": "animation_1"
+      },
+      "name": "default"
+    }
+  }
+}

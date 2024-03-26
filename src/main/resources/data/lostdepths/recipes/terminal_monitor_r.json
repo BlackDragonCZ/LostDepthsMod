@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "abc",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:infused_iron"
+    },
+    "b": {
+      "item": "lostdepths:power_charge"
+    },
+    "c": {
+      "item": "lostdepths:neo_glass"
+    }
+  },
+  "result": {
+    "item": "lostdepths:terminal_monitor",
+    "count": 1
+  }
+}

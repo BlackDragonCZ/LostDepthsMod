@@ -1,0 +1,26 @@
+{
+	"name": "Trees",
+	"icon": "lostdepths:metal_branch",
+	"category": "lostdepths:nature",
+	"read_by_default": false,
+	"pages": [
+		{
+			"type": "spotlight",
+			"item": "lostdepths:metal_branch",
+			"title": "Metal Branch",
+			"text": "Drop from ferro log in world above, minable by only forgefire axe"
+		},
+		{
+			"type": "spotlight",
+			"item": "lostdepths:ferro_log",
+			"title": "Ferro Log",
+			"text": "Unbreakable log from special ancient trees in world above. Planet go through big explosion of neutron star and was pushed away to other solar system, where gain more unnatural abilities, metalic trees."
+		},
+		{
+			"type": "spotlight",
+			"item": "lostdepths:sunder_log",
+			"title": "Sunder Log",
+			"text": "Sun resisted log."
+		}
+	]
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " ab",
+    " ca",
+    "c  "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:crystalized_alloy"
+    },
+    "b": {
+      "item": "lostdepths:power_supply_module"
+    },
+    "c": {
+      "item": "lostdepths:enraged_iron"
+    }
+  },
+  "result": {
+    "item": "lostdepths:celestial_pickaxe",
+    "count": 1
+  }
+}

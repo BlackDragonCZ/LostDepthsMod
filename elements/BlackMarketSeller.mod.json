@@ -1,0 +1,16 @@
+{
+  "_fv": 57,
+  "_type": "villagerprofession",
+  "definition": {
+    "displayName": "Black Market Seller",
+    "pointOfInterest": {
+      "value": "CUSTOM:BlackMarket"
+    },
+    "actionSound": {
+      "value": "block.anvil.use"
+    },
+    "hat": "None",
+    "professionTextureFile": "dimensional_scientist.png",
+    "zombifiedProfessionTextureFile": "dimensional_scientist.png"
+  }
+}

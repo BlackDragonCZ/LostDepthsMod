@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " ab",
+    "bab",
+    "ba "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:metal_branch"
+    },
+    "b": {
+      "item": "lostdepths:enraged_iron"
+    }
+  },
+  "result": {
+    "item": "lostdepths:reinforced_plate",
+    "count": 2
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "_fv": 57,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "recipeRetstackSize": 1,
+    "group": "",
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "CUSTOM:CycloneDust"
+      },
+      {
+        "value": "CUSTOM:CycloneDust"
+      },
+      {
+        "value": "CUSTOM:CycloneDust"
+      },
+      {
+        "value": "CUSTOM:GravityDust"
+      },
+      {
+        "value": "CUSTOM:GravityDust"
+      },
+      {
+        "value": "CUSTOM:GravityDust"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:UltralightDust"
+    },
+    "name": "ultralight_dust_r",
+    "namespace": "mod"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "lostdepths:custom/pickaxe",
+  "textures": {
+    "2": "lostdepths:block/animation_1",
+    "4": "lostdepths:block/pickaxe",
+    "particle": "lostdepths:item/pickaxe_icon"
+  }
+}

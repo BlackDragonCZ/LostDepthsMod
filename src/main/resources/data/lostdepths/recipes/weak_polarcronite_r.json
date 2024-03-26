@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "abc",
+    "ccc"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:positive_magnecronite"
+    },
+    "b": {
+      "item": "lostdepths:volatility_solution"
+    },
+    "c": {
+      "item": "lostdepths:negative_magnecronite"
+    }
+  },
+  "result": {
+    "item": "lostdepths:weak_polarcronite",
+    "count": 1
+  }
+}

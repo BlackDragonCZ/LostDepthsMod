@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " aa",
+    "aba",
+    "ca "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:ferro_rock"
+    },
+    "b": {
+      "item": "lostdepths:ion_crystal"
+    },
+    "c": {
+      "item": "lostdepths:power_charge"
+    }
+  },
+  "result": {
+    "item": "lostdepths:power_core",
+    "count": 1
+  }
+}

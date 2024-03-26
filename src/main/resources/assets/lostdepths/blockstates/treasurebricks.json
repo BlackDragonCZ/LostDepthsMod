@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "lostdepths:block/treasurebricks",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "lostdepths:block/treasurebricks"
+    },
+    "axis=z": {
+      "model": "lostdepths:block/treasurebricks",
+      "x": 90
+    }
+  }
+}

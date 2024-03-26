@@ -1,0 +1,48 @@
+{
+  "_fv": 57,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "recipeRetstackSize": 16,
+    "group": "",
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": ""
+      },
+      {
+        "value": "CUSTOM:InfusedIron"
+      },
+      {
+        "value": "CUSTOM:InfusedIron"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "CUSTOM:LavaString"
+      },
+      {
+        "value": "CUSTOM:LavaString"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "CUSTOM:LavaString"
+      },
+      {
+        "value": "CUSTOM:LavaString"
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:CosmicCarpet"
+    },
+    "name": "cosmic_carpet_r",
+    "namespace": "mod"
+  }
+}

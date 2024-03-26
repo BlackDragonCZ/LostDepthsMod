@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "abc",
+    " db",
+    "d a"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:phototenzyte_bar"
+    },
+    "b": {
+      "item": "lostdepths:neosteel_ingot"
+    },
+    "c": {
+      "item": "lostdepths:nightmare_powder"
+    },
+    "d": {
+      "item": "lostdepths:crystalized_alloy"
+    }
+  },
+  "result": {
+    "item": "lostdepths:nightmare_pickaxe",
+    "count": 1
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "_fv": 57,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "recipeRetstackSize": 1,
+    "group": "",
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "CUSTOM:CondensedPolarium"
+      },
+      {
+        "value": "CUSTOM:LucientBar"
+      },
+      {
+        "value": "CUSTOM:UpgradeKitIII"
+      },
+      {
+        "value": "CUSTOM:SynthesizedAstrometal"
+      },
+      {
+        "value": "CUSTOM:SecurityPass5"
+      },
+      {
+        "value": "CUSTOM:QuestionIcon"
+      },
+      {
+        "value": "CUSTOM:QuestionIcon"
+      },
+      {
+        "value": "CUSTOM:QuestionIcon"
+      },
+      {
+        "value": "CUSTOM:QuestionIcon"
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:SecurityPass6"
+    },
+    "name": "security_bypass_6_r",
+    "namespace": "mod"
+  }
+}

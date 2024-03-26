@@ -1,0 +1,12 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "1": "staff",
+        "2": "animation_1",
+        "particle": "animations_2"
+      },
+      "name": "default"
+    }
+  }
+}

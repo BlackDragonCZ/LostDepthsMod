@@ -1,0 +1,71 @@
+{
+	"name": "Alloy Workstations",
+	"icon": "lostdepths:workstation_2",
+	"category": "lostdepths:workstations",
+	"read_by_default": true,
+	"pages": [
+		{
+			"type": "spotlight",
+			"item": "lostdepths:workstation_2",
+			"link_recipe": true,
+			"title": "Alloy Workstation",
+			"text": "$()Advanced crafting terminal for alloy and advanced recipes.$(br)This workstation require energy to work."
+		},
+		{
+			"type": "crafting",
+			"recipe": "lostdepths:workstation_2_r"
+		},
+		{
+			"type": "lostdepths:templatealloy",
+			"headertext": "Celestial Key",
+			"item1": "lostdepths:key_fragment_1",
+			"item2": "lostdepths:key_fragment_2",
+			"item3": "lostdepths:key_fragment_3",
+			"item4": "lostdepths:titanium_metalloy",
+			"item5": "lostdepths:geo_magnetic_glue",
+			"item6": "lostdepths:geo_magnetic_glue",
+			"item7": "lostdepths:geo_magnetic_glue",
+			"output": "lostdepths:soul_key",
+			"description": "Treasure Key"
+		},
+		{
+			"type": "lostdepths:templatealloy",
+			"headertext": "Condensed Cosmerite",
+			"item1": "lostdepths:condensed_morfarite",
+			"item2": "lostdepths:condensed_firerite",
+			"item3": "lostdepths:condensed_firerite",
+			"item4": "minecraft:netherite_ingot",
+			"item5": "lostdepths:condensed_melworite",
+			"item6": "lostdepths:condensed_melworite",
+			"item7": "lostdepths:condensed_morfarite",
+			"output": "lostdepths:condensed_cosmerite",
+			"description": "Tough Alloy"
+		},
+		{
+			"type": "lostdepths:templatealloy",
+			"headertext": "Neosteel Nuggets",
+			"item1": "lostdepths:condensed_cosmerite",
+			"item2": "lostdepths:condensed_cosmerite",
+			"item3": "lostdepths:condensed_cosmerite",
+			"item4": "lostdepths:titanium_metalloy",
+			"item5": "lostdepths:condensed_zerithium",
+			"item6": "lostdepths:condensed_zerithium",
+			"item7": "lostdepths:condensed_zerithium",
+			"output": "lostdepths:neosteel_nuggets",
+			"description": "Ancient Alloy"
+		},
+		{
+			"type": "lostdepths:templatealloy",
+			"headertext": "Radiochronic Isotope",
+			"item1": "lostdepths:vial_of_solarum",
+			"item2": "lostdepths:poly_amplification_solution",
+			"item3": "lostdepths:vial_of_solarum",
+			"item4": "lostdepths:astral_generator",
+			"item5": "lostdepths:radioactive_isotopes",
+			"item6": "lostdepths:poly_amplification_solution",
+			"item7": "lostdepths:radioactive_isotopes",
+			"output": "lostdepths:radiochronic_isotope",
+			"description": "Radioactive chemical"
+		}
+	]
+}

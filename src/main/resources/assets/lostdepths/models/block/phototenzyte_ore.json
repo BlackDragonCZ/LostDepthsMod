@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "lostdepths:block/phototenzyte_ore_inactive",
+    "particle": "lostdepths:block/phototenzyte_ore_inactive"
+  },
+  "render_type": "solid"
+}

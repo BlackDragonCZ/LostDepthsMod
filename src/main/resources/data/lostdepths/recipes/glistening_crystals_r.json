@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aa",
+    "ab"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:mysterios_gloop"
+    },
+    "b": {
+      "item": "lostdepths:corrupted_gemstone"
+    }
+  },
+  "result": {
+    "item": "lostdepths:glistening_crystals",
+    "count": 1
+  }
+}

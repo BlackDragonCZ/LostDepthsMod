@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " ab",
+    "bab",
+    "ba "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:metal_branch"
+    },
+    "b": {
+      "item": "lostdepths:reinforced_plate"
+    }
+  },
+  "result": {
+    "item": "lostdepths:power_coil",
+    "count": 1
+  }
+}

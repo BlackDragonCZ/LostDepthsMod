@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:deepslate",
+    "lostdepths:space_rock_dirt",
+    "lostdepths:space_rock",
+    "lostdepths:deep_space_rock",
+    "lostdepths:fungal_space_rock"
+  ]
+}

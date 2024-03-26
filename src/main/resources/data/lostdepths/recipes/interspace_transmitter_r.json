@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "bcb",
+    "ddd"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:power_supply_module"
+    },
+    "b": {
+      "item": "lostdepths:heat_resistance_glass"
+    },
+    "c": {
+      "item": "lostdepths:astral_generator"
+    },
+    "d": {
+      "item": "lostdepths:conductive_bar"
+    }
+  },
+  "result": {
+    "item": "lostdepths:interspace_transmitter",
+    "count": 1
+  }
+}

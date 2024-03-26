@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "lostdepths:block/chip_formatter_top",
+    "up": "lostdepths:block/chip_formatter_top",
+    "north": "lostdepths:block/chip_formatter_side",
+    "east": "lostdepths:block/chip_formatter_side",
+    "south": "lostdepths:block/chip_formatter_side",
+    "west": "lostdepths:block/chip_formatter_side",
+    "particle": "lostdepths:block/chip_formatter_top"
+  },
+  "render_type": "solid"
+}

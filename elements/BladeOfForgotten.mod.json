@@ -1,0 +1,36 @@
+{
+  "_fv": 57,
+  "_type": "tool",
+  "definition": {
+    "toolType": "Sword",
+    "renderType": 0,
+    "blockingRenderType": 0,
+    "texture": "dark_sword",
+    "customModelName": "Normal",
+    "blockingModelName": "Normal blocking",
+    "name": "Blade of Forgotten",
+    "specialInformation": {
+      "fixedValue": [
+        "§6Deals 30% Health True Damage if you currently have,§6above 50% Max Health",
+        "§4Otherwise deals 60% Max Health"
+      ]
+    },
+    "creativeTab": {
+      "value": "CUSTOM:LDTools"
+    },
+    "harvestLevel": 1,
+    "efficiency": 4.0,
+    "attackSpeed": 1.6,
+    "enchantability": 0,
+    "damageVsEntity": 1.5,
+    "usageCount": 2000,
+    "blocksAffected": [],
+    "repairItems": [],
+    "immuneToFire": true,
+    "stayInGridWhenCrafting": false,
+    "damageOnCrafting": false,
+    "onEntityHitWith": {
+      "name": "BladeOfForgottenLivingEntityIsHitWithTool"
+    }
+  }
+}

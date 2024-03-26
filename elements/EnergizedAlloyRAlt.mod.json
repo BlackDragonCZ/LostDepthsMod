@@ -1,0 +1,48 @@
+{
+  "_fv": 57,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "recipeRetstackSize": 3,
+    "group": "",
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "CUSTOM:CondensedMorfarite"
+      },
+      {
+        "value": "CUSTOM:CondensedFirerite"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "CUSTOM:CondensedMelworite"
+      },
+      {
+        "value": "CUSTOM:PowerCore"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:EnergyzedAlloy"
+    },
+    "name": "energized_alloy_r_alt",
+    "namespace": "mod"
+  }
+}

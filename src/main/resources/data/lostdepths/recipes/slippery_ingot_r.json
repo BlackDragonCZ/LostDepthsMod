@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab",
+    "b "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:frozen_ingot"
+    },
+    "b": {
+      "item": "lostdepths:acidic_ooze"
+    }
+  },
+  "result": {
+    "item": "lostdepths:slippery_ingot",
+    "count": 1
+  }
+}

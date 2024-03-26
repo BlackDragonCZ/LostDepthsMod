@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "lostdepths:block/logs_nitro_top",
+    "up": "lostdepths:block/logs_nitro_top",
+    "north": "lostdepths:block/logs_nitro_side",
+    "east": "lostdepths:block/logs_nitro_side",
+    "south": "lostdepths:block/logs_nitro_side",
+    "west": "lostdepths:block/logs_nitro_side",
+    "particle": "lostdepths:block/logs_nitro_top"
+  },
+  "render_type": "solid"
+}

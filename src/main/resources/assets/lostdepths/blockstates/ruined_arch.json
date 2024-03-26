@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "lostdepths:block/ruined_arch"
+    },
+    "facing=east": {
+      "model": "lostdepths:block/ruined_arch",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "lostdepths:block/ruined_arch",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "lostdepths:block/ruined_arch",
+      "y": 270
+    }
+  }
+}

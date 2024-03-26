@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "bcb",
+    "aba"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:lifestrain_enigma"
+    },
+    "b": {
+      "item": "lostdepths:heat_resistance_glass"
+    },
+    "c": {
+      "item": "lostdepths:neo_glass"
+    }
+  },
+  "result": {
+    "item": "lostdepths:ultra_resistive_glass",
+    "count": 32
+  }
+}

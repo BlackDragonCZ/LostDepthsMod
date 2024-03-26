@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "1": "p_animations_3",
+        "3": "p_wings"
+      },
+      "name": "default"
+    }
+  }
+}

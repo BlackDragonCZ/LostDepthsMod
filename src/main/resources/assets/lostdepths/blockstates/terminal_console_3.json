@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "lostdepths:block/terminal_console_3"
+    },
+    "facing=east": {
+      "model": "lostdepths:block/terminal_console_3",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "lostdepths:block/terminal_console_3",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "lostdepths:block/terminal_console_3",
+      "y": 270
+    }
+  }
+}

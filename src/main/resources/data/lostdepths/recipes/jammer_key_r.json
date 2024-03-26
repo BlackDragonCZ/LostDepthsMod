@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab",
+    "cd"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:jammer_fragment_c"
+    },
+    "b": {
+      "item": "lostdepths:jammer_fragment_d"
+    },
+    "c": {
+      "item": "lostdepths:jammer_fragment_a"
+    },
+    "d": {
+      "item": "lostdepths:jammer_fragment_b"
+    }
+  },
+  "result": {
+    "item": "lostdepths:jammer_key",
+    "count": 1
+  }
+}

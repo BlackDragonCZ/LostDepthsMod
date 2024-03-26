@@ -1,0 +1,11 @@
+{
+  "parent": "lostdepths:custom/ld_flag",
+  "textures": {
+    "all": "lostdepths:block/flag",
+    "particle": "lostdepths:block/flag",
+    "1": "lostdepths:block/little_dragon",
+    "4": "lostdepths:block/animations_flame_02",
+    "7": "lostdepths:block/flag"
+  },
+  "render_type": "cutout_mipped"
+}

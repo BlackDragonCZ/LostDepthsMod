@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "lostdepths:block/voidcut_block_top",
+    "up": "lostdepths:block/voidcut_block_top",
+    "north": "lostdepths:block/security_gate_5",
+    "east": "lostdepths:block/security_gate_5",
+    "south": "lostdepths:block/security_gate_5",
+    "west": "lostdepths:block/security_gate_5",
+    "particle": "lostdepths:block/voidcut_block_top"
+  },
+  "render_type": "solid"
+}

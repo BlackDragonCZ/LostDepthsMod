@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "abc",
+    "cc "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:ironheart_elixir"
+    },
+    "b": {
+      "item": "lostdepths:gem_resolve"
+    },
+    "c": {
+      "item": "lostdepths:biocorruption_powder"
+    }
+  },
+  "result": {
+    "item": "lostdepths:guardian_elixir",
+    "count": 1
+  }
+}

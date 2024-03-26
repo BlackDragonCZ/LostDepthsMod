@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab",
+    "c "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:frozen_ingot"
+    },
+    "b": {
+      "item": "lostdepths:electron_recycler"
+    },
+    "c": {
+      "item": "lostdepths:reflective_shard"
+    }
+  },
+  "result": {
+    "item": "lostdepths:conductive_bar",
+    "count": 1
+  }
+}

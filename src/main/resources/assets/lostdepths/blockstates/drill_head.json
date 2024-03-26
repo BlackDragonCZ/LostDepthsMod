@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "lostdepths:block/drill_head",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "lostdepths:block/drill_head"
+    },
+    "axis=z": {
+      "model": "lostdepths:block/drill_head",
+      "x": 90
+    }
+  }
+}

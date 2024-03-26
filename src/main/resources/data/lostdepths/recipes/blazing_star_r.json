@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "abc",
+    "ded",
+    "cba"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:volatile_blood"
+    },
+    "b": {
+      "item": "lostdepths:ion_blaze_rod"
+    },
+    "c": {
+      "item": "lostdepths:burning_sap"
+    },
+    "d": {
+      "item": "lostdepths:razor_fang"
+    },
+    "e": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "result": {
+    "item": "lostdepths:blazing_star",
+    "count": 1
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "_fv": 57,
+  "_type": "villagertrade",
+  "definition": {
+    "tradeEntries": [
+      {
+        "villagerProfession": {
+          "value": "CUSTOM:ChemistryOperator"
+        },
+        "entries": [
+          {
+            "price1": {
+              "value": "CUSTOM:ReinforcedBottle"
+            },
+            "countPrice1": 3,
+            "price2": {
+              "value": ""
+            },
+            "countPrice2": 1,
+            "offer": {
+              "value": "CUSTOM:SolariumToxic"
+            },
+            "countOffer": 2,
+            "level": 1,
+            "maxTrades": 1024,
+            "xp": 5,
+            "priceMultiplier": 0.05
+          },
+          {
+            "price1": {
+              "value": "CUSTOM:SolariumToxic"
+            },
+            "countPrice1": 25,
+            "price2": {
+              "value": ""
+            },
+            "countPrice2": 1,
+            "offer": {
+              "value": "CUSTOM:ExplosiveSac"
+            },
+            "countOffer": 1,
+            "level": 1,
+            "maxTrades": 1024,
+            "xp": 5,
+            "priceMultiplier": 0.05
+          },
+          {
+            "price1": {
+              "value": "CUSTOM:SolariumToxic"
+            },
+            "countPrice1": 25,
+            "price2": {
+              "value": "CUSTOM:InfusedRedstone"
+            },
+            "countPrice2": 2,
+            "offer": {
+              "value": "CUSTOM:EmberSac"
+            },
+            "countOffer": 1,
+            "level": 2,
+            "maxTrades": 1024,
+            "xp": 5,
+            "priceMultiplier": 0.05
+          },
+          {
+            "price1": {
+              "value": "CUSTOM:SolariumToxic"
+            },
+            "countPrice1": 25,
+            "price2": {
+              "value": "CUSTOM:InfusedIron"
+            },
+            "countPrice2": 2,
+            "offer": {
+              "value": "CUSTOM:GlowingSac"
+            },
+            "countOffer": 1,
+            "level": 2,
+            "maxTrades": 1024,
+            "xp": 5,
+            "priceMultiplier": 0.05
+          },
+          {
+            "price1": {
+              "value": "CUSTOM:SolariumToxic"
+            },
+            "countPrice1": 35,
+            "price2": {
+              "value": ""
+            },
+            "countPrice2": 1,
+            "offer": {
+              "value": "CUSTOM:AcidTongue"
+            },
+            "countOffer": 1,
+            "level": 3,
+            "maxTrades": 1024,
+            "xp": 5,
+            "priceMultiplier": 0.05
+          },
+          {
+            "price1": {
+              "value": "CUSTOM:SolariumToxic"
+            },
+            "countPrice1": 15,
+            "price2": {
+              "value": ""
+            },
+            "countPrice2": 1,
+            "offer": {
+              "value": "CUSTOM:ReflectiveShard"
+            },
+            "countOffer": 1,
+            "level": 3,
+            "maxTrades": 1024,
+            "xp": 5,
+            "priceMultiplier": 0.05
+          }
+        ]
+      }
+    ]
+  }
+}

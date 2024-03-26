@@ -1,0 +1,74 @@
+{
+	"name": "Where to start",
+	"icon": "lostdepths:infused_crystal",
+	"category": "lostdepths:intro_cat",
+
+	"pages": [
+		{
+			"type": "spotlight",
+			"item": "lostdepths:question_icon",
+			"title": "Blocks & Decorations",
+			"text": "Welcome to LostDepths mod."
+		},
+		{
+			"type": "smithing",
+			"recipe": "lostdepths:geo_magnetic_glue_r",
+			"recipe2": "lostdepths:super_charge_coil_r"
+		},
+		{
+			"type": "smithing",
+			"recipe": "lostdepths:giga_charge_coil_r",
+			"recipe2": "lostdepths:enraged_ingot_r"
+		},
+		{
+			"type": "smithing",
+			"recipe": "lostdepths:haunted_ingot_r"
+		},
+		{
+			"type": "crafting",
+			"title": "Infused Iron Bricks",
+			"recipe": "lostdepths:infusedironbricks_r"
+		},
+		{
+			"type": "crafting",
+			"title": "Infused Iron Pillar",
+			"recipe": "lostdepths:infusedironpillar_r"
+		},
+		{
+			"type": "crafting",
+			"title": "Infused Glass",
+			"recipe": "lostdepths:neo_glass_r"
+		},
+		{
+			"type": "stonecutting",
+			"title": "Infused Pillar Cross",
+			"recipe": "lostdepths:infusedironpillarcrossr"
+		},
+		{
+			"type": "crafting",
+			"title": "Infused Cross (Glow)",
+			"recipe": "lostdepths:infusedironcrossglow_r"
+		},
+		{
+			"type": "crafting",
+			"title": "Power Charge",
+			"recipe": "lostdepths:powercharge_r"
+		},
+		{
+			"type": "crafting",
+			"title": "Cosmic Carpet",
+			"recipe": "lostdepths:cosmic_carpet_r"
+		},
+		{
+			"type": "crafting",
+			"title": "Tech Printer",
+			"recipe": "lostdepths:print_tech_r"
+		},
+		{
+			"type": "spotlight",
+			"item": "lostdepths:print_tech",
+			"title": "Print Tech",
+			"text": "This block allow you to convert villager to new profession which is important for crafting some of the items."
+		}
+	]
+}

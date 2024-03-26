@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aab",
+    "acd",
+    "efc"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:crystalized_bone_blocks"
+    },
+    "b": {
+      "item": "lostdepths:advanced_power_core"
+    },
+    "c": {
+      "item": "lostdepths:crystalized_alloy"
+    },
+    "d": {
+      "item": "lostdepths:power_supply_module"
+    },
+    "e": {
+      "item": "lostdepths:titanium_metalloy"
+    },
+    "f": {
+      "item": "lostdepths:power_coil"
+    }
+  },
+  "result": {
+    "item": "lostdepths:galaxy_dragon_staff",
+    "count": 1
+  }
+}

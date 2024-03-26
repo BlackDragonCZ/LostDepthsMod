@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "lostdepths:block/sunder_slab"
+    },
+    "type=top": {
+      "model": "lostdepths:block/sunder_slab_top"
+    },
+    "type=double": {
+      "model": "lostdepths:block/sunder_slab_full"
+    }
+  }
+}

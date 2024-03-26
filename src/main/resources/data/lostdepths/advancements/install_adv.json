@@ -1,0 +1,23 @@
+{
+  "display": {
+    "background": "lostdepths:textures/screens/voidcutbrick.png",
+    "icon": {
+      "item": "lostdepths:advicon"
+    },
+    "title": {
+      "translate": "advancements.install_adv.title"
+    },
+    "description": {
+      "translate": "advancements.install_adv.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": true
+  },
+  "criteria": {
+    "install_adv": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

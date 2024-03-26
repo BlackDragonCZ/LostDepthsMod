@@ -1,0 +1,9 @@
+{
+  "parent": "block/slab",
+  "textures": {
+    "bottom": "lostdepths:block/voidcutbrick_top",
+    "top": "lostdepths:block/voidcutbrick",
+    "side": "lostdepths:block/voidcutbrick"
+  },
+  "render_type": "solid"
+}

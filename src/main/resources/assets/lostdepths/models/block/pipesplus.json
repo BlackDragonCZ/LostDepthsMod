@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "lostdepths:block/pipe_cross",
+    "particle": "lostdepths:block/pipe_cross"
+  },
+  "render_type": "solid"
+}

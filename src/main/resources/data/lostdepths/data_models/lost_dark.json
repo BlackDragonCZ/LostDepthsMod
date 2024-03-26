@@ -1,0 +1,50 @@
+{
+    "entity": "lostdepths:lost_dark",
+    "variants": [],
+    "name": "entity.lostdepths.lost_dark",
+    "name_color": "#4F0A17",
+    "gui_scale": 1.0,
+    "gui_x_offset": 0.0,
+    "gui_y_offset": 0.0,
+    "gui_z_offset": 0.0,
+    "sim_cost": 2467,
+    "input": {
+        "item": "hostilenetworks:prediction_matrix",
+        "count": 1
+    },
+    "base_drop": {
+        "item": "minecraft:gunpowder",
+        "count": 1
+    },
+    "trivia": "hostilenetworks.trivia.lost_dark",
+    "fabricator_drops": [
+        {
+            "item": "lostdepths:corrosive_tear",
+            "count": 4
+        },
+        {
+            "item": "minecraft:gunpowder",
+            "count": 16
+        },
+        {
+          "item": "lostdepths:neosteel_nuggets",
+          "count": 1
+        },
+        {
+          "item": "lostdepths:volatile_blood",
+          "count": 1
+        }
+    ],
+    "tier_data": [
+        6,
+        54,
+        354,
+        1254
+    ],
+    "data_per_kill": [
+        1,
+        4,
+        10,
+        18
+    ]
+}

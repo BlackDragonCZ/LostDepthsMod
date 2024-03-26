@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aa",
+    "aa"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:sunder_log"
+    }
+  },
+  "result": {
+    "item": "lostdepths:sunder_planks",
+    "count": 4
+  }
+}

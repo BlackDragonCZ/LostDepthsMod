@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "lostdepths:block/xerovium_ore",
+    "particle": "lostdepths:block/xerovium_ore"
+  },
+  "render_type": "solid"
+}

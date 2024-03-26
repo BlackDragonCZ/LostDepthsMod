@@ -1,0 +1,36 @@
+{
+  "display": {
+    "icon": {
+      "item": "lostdepths:atmos_tech"
+    },
+    "title": {
+      "translate": "advancements.atmos_tech_adv.title"
+    },
+    "description": {
+      "translate": "advancements.atmos_tech_adv.descr"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "atmos_tech_adv": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "lostdepths:atmos_tech"
+            ],
+            "count": {
+              "min": 1,
+              "max": 1
+            }
+          }
+        ]
+      }
+    }
+  },
+  "parent": "lostdepths:tech_adv"
+}

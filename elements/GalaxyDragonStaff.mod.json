@@ -1,0 +1,39 @@
+{
+  "_fv": 57,
+  "_type": "tool",
+  "definition": {
+    "toolType": "Special",
+    "renderType": 0,
+    "blockingRenderType": 0,
+    "texture": "galaxy_dragon_staff",
+    "customModelName": "Normal",
+    "blockingModelName": "Normal blocking",
+    "name": "Galaxy Dragon",
+    "specialInformation": {
+      "fixedValue": []
+    },
+    "creativeTab": {
+      "value": "CUSTOM:LDTools"
+    },
+    "harvestLevel": 1,
+    "efficiency": 4.0,
+    "attackSpeed": 1.0,
+    "enchantability": 0,
+    "damageVsEntity": 2.0,
+    "usageCount": 0,
+    "blocksAffected": [],
+    "glowCondition": {
+      "fixedValue": false
+    },
+    "repairItems": [],
+    "immuneToFire": true,
+    "stayInGridWhenCrafting": false,
+    "damageOnCrafting": false,
+    "onRightClickedInAir": {
+      "name": "GalaxyDragonStaffRightclickedOnBlock"
+    },
+    "onRightClickedOnBlock": {
+      "name": "GalaxyDragonStaffRightclickedOnBlock"
+    }
+  }
+}

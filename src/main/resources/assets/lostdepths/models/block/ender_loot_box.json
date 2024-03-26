@@ -1,0 +1,9 @@
+{
+  "parent": "lostdepths:custom/ender_lootchest",
+  "textures": {
+    "all": "lostdepths:block/ender_lootchest",
+    "particle": "lostdepths:block/ender_lootchest",
+    "0": "lostdepths:block/ender_lootchest"
+  },
+  "render_type": "cutout_mipped"
+}

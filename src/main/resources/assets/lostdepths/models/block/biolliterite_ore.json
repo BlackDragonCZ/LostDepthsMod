@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "lostdepths:block/vellorium_ore",
+    "particle": "lostdepths:block/vellorium_ore"
+  },
+  "render_type": "solid"
+}

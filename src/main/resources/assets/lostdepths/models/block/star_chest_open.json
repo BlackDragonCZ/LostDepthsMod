@@ -1,0 +1,10 @@
+{
+  "parent": "lostdepths:custom/p_chest_opening",
+  "textures": {
+    "all": "lostdepths:block/protocal_chest",
+    "particle": "lostdepths:block/protocal_chest",
+    "0": "lostdepths:block/protocal_chest",
+    "1": "lostdepths:block/p_animations_2"
+  },
+  "render_type": "cutout_mipped"
+}

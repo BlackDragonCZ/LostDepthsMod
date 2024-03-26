@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "abc",
+    "ded",
+    " e "
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:trident"
+    },
+    "b": {
+      "item": "lostdepths:infused_golem_essence"
+    },
+    "c": {
+      "item": "minecraft:netherite_sword"
+    },
+    "d": {
+      "item": "lostdepths:condensed_malicium"
+    },
+    "e": {
+      "item": "lostdepths:etherium_ingot"
+    }
+  },
+  "result": {
+    "item": "lostdepths:draconic_trident",
+    "count": 1
+  }
+}

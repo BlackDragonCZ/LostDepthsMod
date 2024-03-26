@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "lostdepths:block/augmentor_top",
+    "up": "lostdepths:block/augmentor_top",
+    "north": "lostdepths:block/augmentor_side",
+    "east": "lostdepths:block/augmentor_side",
+    "south": "lostdepths:block/augmentor_side",
+    "west": "lostdepths:block/augmentor_side",
+    "particle": "lostdepths:block/augmentor_top"
+  },
+  "render_type": "solid"
+}

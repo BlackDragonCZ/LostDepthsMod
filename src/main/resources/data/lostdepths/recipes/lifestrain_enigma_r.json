@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "bcb",
+    "aba"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:power_funnel"
+    },
+    "b": {
+      "item": "lostdepths:energyzed_alloy"
+    },
+    "c": {
+      "item": "lostdepths:power_charge"
+    }
+  },
+  "result": {
+    "item": "lostdepths:lifestrain_enigma",
+    "count": 1
+  }
+}

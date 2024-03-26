@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "bbb",
+    "ccc"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:fireblood_solution"
+    },
+    "b": {
+      "item": "lostdepths:acidblood_solution"
+    },
+    "c": {
+      "item": "lostdepths:concentrated_venom"
+    }
+  },
+  "result": {
+    "item": "lostdepths:corrosive_mix",
+    "count": 1
+  }
+}

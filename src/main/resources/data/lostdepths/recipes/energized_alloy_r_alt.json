@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab",
+    "cd"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:condensed_morfarite"
+    },
+    "b": {
+      "item": "lostdepths:condensed_firerite"
+    },
+    "c": {
+      "item": "lostdepths:condensed_melworite"
+    },
+    "d": {
+      "item": "lostdepths:power_core"
+    }
+  },
+  "result": {
+    "item": "lostdepths:energyzed_alloy",
+    "count": 3
+  }
+}

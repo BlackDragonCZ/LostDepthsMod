@@ -1,0 +1,9 @@
+{
+  "parent": "lostdepths:custom/monitor",
+  "textures": {
+    "all": "lostdepths:block/workstation1_icon",
+    "particle": "lostdepths:block/workstation1_icon",
+    "0": "lostdepths:block/reactor_console"
+  },
+  "render_type": "cutout_mipped"
+}

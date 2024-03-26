@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "lostdepths:infused_iron_pillar"
+  },
+  "result": "lostdepths:infusediron_pillar_cross"
+}

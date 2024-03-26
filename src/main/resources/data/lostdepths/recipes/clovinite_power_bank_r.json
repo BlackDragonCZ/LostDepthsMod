@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " a ",
+    "aba",
+    " a "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:infused_iron"
+    },
+    "b": {
+      "item": "lostdepths:clovinite"
+    }
+  },
+  "result": {
+    "item": "lostdepths:clovinite_power_bank",
+    "count": 1
+  }
+}

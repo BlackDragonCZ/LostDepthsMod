@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "lostdepths:block/treasure_power_beam",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "lostdepths:block/treasure_power_beam"
+    },
+    "axis=z": {
+      "model": "lostdepths:block/treasure_power_beam",
+      "x": 90
+    }
+  }
+}

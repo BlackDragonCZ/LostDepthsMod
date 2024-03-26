@@ -1,0 +1,48 @@
+{
+  "_fv": 57,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "recipeRetstackSize": 1,
+    "group": "",
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": ""
+      },
+      {
+        "value": "CUSTOM:CryzuliteIngot"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "CUSTOM:CryzuliteIngot"
+      },
+      {
+        "value": "CUSTOM:PowerCore"
+      },
+      {
+        "value": "CUSTOM:CryzuliteIngot"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "CUSTOM:CryzuliteIngot"
+      },
+      {
+        "value": "CUSTOM:CryzuliteIngot"
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:KeyFragment1"
+    },
+    "name": "key_fragment_1_r",
+    "namespace": "mod"
+  }
+}

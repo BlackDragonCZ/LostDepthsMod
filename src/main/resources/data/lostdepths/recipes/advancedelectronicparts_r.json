@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " a ",
+    "bbb",
+    "cdc"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:power_core"
+    },
+    "b": {
+      "item": "lostdepths:infused_redstone"
+    },
+    "c": {
+      "item": "lostdepths:dual_power_assembly"
+    },
+    "d": {
+      "item": "lostdepths:advanced_power_core"
+    }
+  },
+  "result": {
+    "item": "lostdepths:advanced_electronic_parts",
+    "count": 1
+  }
+}

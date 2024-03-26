@@ -1,0 +1,58 @@
+{
+  "_fv": 57,
+  "_type": "tag",
+  "definition": {
+    "type": "Blocks",
+    "items": [],
+    "blocks": [
+      {
+        "value": "CUSTOM:CloviniteOre"
+      },
+      {
+        "value": "CUSTOM:SunderWood"
+      },
+      {
+        "value": "CUSTOM:SunderWoodSap"
+      },
+      {
+        "value": "CUSTOM:CelestialLogsBlue"
+      },
+      {
+        "value": "CUSTOM:CelestialLogsRed"
+      },
+      {
+        "value": "CUSTOM:CelestialLeavesBlue"
+      },
+      {
+        "value": "CUSTOM:CelestialLeavesRed"
+      },
+      {
+        "value": "CUSTOM:SunderLeaves"
+      },
+      {
+        "value": "CUSTOM:SunderPlanks"
+      },
+      {
+        "value": "CUSTOM:SunderStairs"
+      },
+      {
+        "value": "CUSTOM:SunderFence"
+      },
+      {
+        "value": "CUSTOM:SunderSlab"
+      },
+      {
+        "value": "CUSTOM:FerroLog"
+      },
+      {
+        "value": "CUSTOM:FerroLeaves"
+      }
+    ],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "damageTypes": [],
+    "name": "mineable/axe",
+    "namespace": "minecraft"
+  }
+}

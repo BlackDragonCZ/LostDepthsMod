@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "bcb",
+    " d "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:dark_fuse_diamond"
+    },
+    "b": {
+      "item": "lostdepths:unbreakable_chain"
+    },
+    "c": {
+      "item": "minecraft:netherite_pickaxe"
+    },
+    "d": {
+      "item": "lostdepths:power_charge"
+    }
+  },
+  "result": {
+    "item": "lostdepths:forgefire_pickaxe",
+    "count": 1
+  }
+}

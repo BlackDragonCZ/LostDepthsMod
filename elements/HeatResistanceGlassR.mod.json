@@ -1,0 +1,48 @@
+{
+  "_fv": 57,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "recipeRetstackSize": 3,
+    "group": "",
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "CUSTOM:MorfariteIngot"
+      },
+      {
+        "value": "CUSTOM:MorfariteIngot"
+      },
+      {
+        "value": "CUSTOM:MorfariteIngot"
+      },
+      {
+        "value": "CUSTOM:HardenedGlassPanel"
+      },
+      {
+        "value": "CUSTOM:HardenedGlassPanel"
+      },
+      {
+        "value": "CUSTOM:HardenedGlassPanel"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "CUSTOM:EnragedIron"
+      },
+      {
+        "value": ""
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:HeatResistanceGlass"
+    },
+    "name": "heat_resistance_glass_r",
+    "namespace": "mod"
+  }
+}

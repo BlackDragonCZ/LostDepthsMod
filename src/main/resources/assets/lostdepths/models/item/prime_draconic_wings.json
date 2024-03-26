@@ -1,0 +1,8 @@
+{
+  "parent": "lostdepths:custom/p_wings",
+  "textures": {
+    "1": "lostdepths:block/p_animations_3",
+    "3": "lostdepths:block/p_wings",
+    "particle": "lostdepths:item/p_wings"
+  }
+}

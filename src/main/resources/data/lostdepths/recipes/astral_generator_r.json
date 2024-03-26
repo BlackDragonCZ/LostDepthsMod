@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "bcb",
+    "aba"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:clovinite_power_hub"
+    },
+    "b": {
+      "item": "lostdepths:power_supply_module"
+    },
+    "c": {
+      "item": "lostdepths:blazing_star"
+    }
+  },
+  "result": {
+    "item": "lostdepths:astral_generator",
+    "count": 1
+  }
+}

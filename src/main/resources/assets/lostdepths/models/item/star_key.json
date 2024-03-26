@@ -1,0 +1,7 @@
+{
+  "parent": "lostdepths:custom/p_key",
+  "textures": {
+    "0": "lostdepths:block/protocal_key",
+    "particle": "lostdepths:item/p_key_icon"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " a ",
+    "b c",
+    " a "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:nightmare_solution"
+    },
+    "b": {
+      "item": "lostdepths:hypnotic_eye"
+    },
+    "c": {
+      "item": "lostdepths:perfect_pearl"
+    }
+  },
+  "result": {
+    "item": "lostdepths:gaze_of_nightmares",
+    "count": 1
+  }
+}

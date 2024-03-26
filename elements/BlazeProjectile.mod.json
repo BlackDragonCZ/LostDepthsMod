@@ -1,0 +1,19 @@
+{
+  "_fv": 57,
+  "_type": "projectile",
+  "definition": {
+    "projectileItem": {
+      "value": "CUSTOM:IonBlazeRod"
+    },
+    "showParticles": false,
+    "actionSound": {
+      "value": "entity.blaze.shoot"
+    },
+    "igniteFire": true,
+    "power": 1.0,
+    "damage": 5.0,
+    "knockback": 1,
+    "entityModel": "Default",
+    "customModelTexture": ""
+  }
+}

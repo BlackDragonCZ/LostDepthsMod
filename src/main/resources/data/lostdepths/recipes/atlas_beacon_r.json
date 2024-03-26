@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "bcb",
+    "aba"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:power_connector_assembly"
+    },
+    "b": {
+      "item": "lostdepths:magic_stone"
+    },
+    "c": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "result": {
+    "item": "lostdepths:atlas_beacon",
+    "count": 1
+  }
+}

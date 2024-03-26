@@ -1,0 +1,12 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "2": "p_animations_4",
+        "3": "p_animations_3",
+        "5": "p_hammer"
+      },
+      "name": "default"
+    }
+  }
+}

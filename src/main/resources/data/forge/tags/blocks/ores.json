@@ -1,0 +1,28 @@
+{
+  "replace": false,
+  "values": [
+    "lostdepths:firerite_ore",
+    "lostdepths:melworium_ore",
+    "lostdepths:morfarite_ore",
+    "lostdepths:cryzulite_ore",
+    "lostdepths:zerithium_ore",
+    "lostdepths:serpentine_ore_unpowered",
+    "lostdepths:serpentine_ore",
+    "lostdepths:hard_crystal_b",
+    "lostdepths:hard_crystal_r",
+    "lostdepths:myrite_ore",
+    "lostdepths:myrite_ore_active",
+    "lostdepths:lucient_ore",
+    "lostdepths:lucient_ore_active",
+    "lostdepths:hyperium_ore",
+    "lostdepths:psycherium_ore",
+    "lostdepths:varllerium_ore",
+    "lostdepths:biolliterite_ore",
+    "lostdepths:necrotonite_ore",
+    "lostdepths:noxhertium_ore",
+    "lostdepths:cognitium_ore",
+    "lostdepths:multiversite_ore",
+    "lostdepths:phototenzyte_ore",
+    "lostdepths:phototenzyte_ore_active"
+  ]
+}

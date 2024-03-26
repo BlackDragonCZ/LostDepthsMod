@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "lostdepths:block/factory_pillar",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "lostdepths:block/factory_pillar"
+    },
+    "axis=z": {
+      "model": "lostdepths:block/factory_pillar",
+      "x": 90
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "_fv": 57,
+  "_type": "keybind",
+  "definition": {
+    "triggerKey": "NUMPADCOMMA",
+    "keyBindingName": "Tool Action",
+    "keyBindingCategoryKey": "gameplay",
+    "onKeyPressed": {
+      "name": "ActionButtonOnKeyPressed"
+    }
+  }
+}

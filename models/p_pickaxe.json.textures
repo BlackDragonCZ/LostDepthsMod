@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "1": "p_animations_1",
+        "2": "p_pickaxe"
+      },
+      "name": "default"
+    }
+  }
+}

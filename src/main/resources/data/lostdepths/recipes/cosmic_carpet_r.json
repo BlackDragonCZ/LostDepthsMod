@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aa",
+    "bb",
+    "bb"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:infused_iron"
+    },
+    "b": {
+      "item": "lostdepths:lava_string"
+    }
+  },
+  "result": {
+    "item": "lostdepths:cosmic_carpet",
+    "count": 16
+  }
+}

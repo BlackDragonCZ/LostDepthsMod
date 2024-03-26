@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "lostdepths:ancient_template"
+  },
+  "base": {
+    "item": "lostdepths:enraged_iron"
+  },
+  "addition": {
+    "item": "lostdepths:clovinite_power_hub"
+  },
+  "result": {
+    "item": "lostdepths:haunted_ingot"
+  }
+}

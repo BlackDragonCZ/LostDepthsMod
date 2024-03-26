@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "lostdepths:block/nitro_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "lostdepths:block/nitro_log"
+    },
+    "axis=z": {
+      "model": "lostdepths:block/nitro_log",
+      "x": 90
+    }
+  }
+}

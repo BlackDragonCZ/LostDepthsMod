@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "cdc",
+    "aca"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:enraged_iron"
+    },
+    "b": {
+      "item": "lostdepths:atlas_beacon"
+    },
+    "c": {
+      "item": "lostdepths:hard_crystals"
+    },
+    "d": {
+      "item": "lostdepths:gem_imposition"
+    }
+  },
+  "result": {
+    "item": "lostdepths:portable_beacon",
+    "count": 1
+  }
+}

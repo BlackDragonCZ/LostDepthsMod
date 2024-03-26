@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "lostdepths:block/arena_slabs",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "lostdepths:block/arena_slabs"
+    },
+    "axis=z": {
+      "model": "lostdepths:block/arena_slabs",
+      "x": 90
+    }
+  }
+}

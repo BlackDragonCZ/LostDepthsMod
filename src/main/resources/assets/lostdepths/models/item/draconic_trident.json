@@ -1,0 +1,10 @@
+{
+  "parent": "lostdepths:custom/ld_trident",
+  "textures": {
+    "1": "lostdepths:block/little_dragon",
+    "4": "lostdepths:block/animations_flame_02",
+    "5": "lostdepths:block/animations_flame_04",
+    "7": "lostdepths:block/ld_trident",
+    "particle": "lostdepths:item/ld_trident"
+  }
+}

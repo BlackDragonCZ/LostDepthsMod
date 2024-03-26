@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab",
+    " c",
+    " c"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:red_wool"
+    },
+    "b": {
+      "item": "lostdepths:malicium_ingot"
+    },
+    "c": {
+      "item": "lostdepths:ion_blaze_rod"
+    }
+  },
+  "result": {
+    "item": "lostdepths:draconic_flag",
+    "count": 1
+  }
+}

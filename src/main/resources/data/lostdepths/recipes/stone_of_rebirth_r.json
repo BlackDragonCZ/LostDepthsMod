@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " a ",
+    "bcb",
+    " d "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:lifestrain_enigma"
+    },
+    "b": {
+      "item": "lostdepths:corrupted_gemstone"
+    },
+    "c": {
+      "item": "lostdepths:plucked_eye"
+    },
+    "d": {
+      "item": "lostdepths:hollow_voidstone"
+    }
+  },
+  "result": {
+    "item": "lostdepths:stone_of_rebirth",
+    "count": 1
+  }
+}

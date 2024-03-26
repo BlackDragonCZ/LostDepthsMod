@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "abc",
+    "ded",
+    "fgf"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:module_power"
+    },
+    "b": {
+      "item": "lostdepths:module_acceleration"
+    },
+    "c": {
+      "item": "lostdepths:module_conversion"
+    },
+    "d": {
+      "item": "lostdepths:condensed_cosmerite"
+    },
+    "e": {
+      "item": "lostdepths:galactic_compressor"
+    },
+    "f": {
+      "item": "lostdepths:advanced_construction_parts"
+    },
+    "g": {
+      "item": "lostdepths:advanced_electronic_parts"
+    }
+  },
+  "result": {
+    "item": "lostdepths:extra_terestrial_compressor",
+    "count": 1
+  }
+}

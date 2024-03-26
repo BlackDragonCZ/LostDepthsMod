@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "bcb",
+    " b "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:metal_branch"
+    },
+    "b": {
+      "item": "lostdepths:clovinite"
+    },
+    "c": {
+      "item": "lostdepths:digital_panel"
+    }
+  },
+  "result": {
+    "item": "lostdepths:fresh_data_chip",
+    "count": 1
+  }
+}

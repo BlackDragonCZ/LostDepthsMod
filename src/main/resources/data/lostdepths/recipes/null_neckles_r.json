@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "aba",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:null_element"
+    },
+    "b": {
+      "item": "lostdepths:augmenticon_box_charged"
+    }
+  },
+  "result": {
+    "item": "lostdepths:null_neckles",
+    "count": 1
+  }
+}

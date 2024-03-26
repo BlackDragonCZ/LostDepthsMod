@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a",
+    "b",
+    "a"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:jar_of_syrup"
+    },
+    "b": {
+      "item": "lostdepths:fresh_data_chip"
+    }
+  },
+  "result": {
+    "item": "lostdepths:basic_storage_chip",
+    "count": 1
+  }
+}

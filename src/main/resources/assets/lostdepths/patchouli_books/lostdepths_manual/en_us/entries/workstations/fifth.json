@@ -1,0 +1,55 @@
+{
+	"name": "Meta Marializer",
+	"icon": "lostdepths:meta_materializer",
+	"category": "lostdepths:workstations",
+	"read_by_default": false,
+	"pages": [
+		{
+			"type": "spotlight",
+			"item": "lostdepths:meta_materializer",
+			"link_recipe": true,
+			"title": "Meta Marializer",
+			"text": "$()Elite mega crafting for intergalactic recipes.$(br)This wokrstation is located in Manufactory."
+		},
+		{
+			"type": "lostdepths:templatemeta",
+			"headertext": "Malicium Ingot",
+			"item1": "lostdepths:melworite_ingot",
+			"item2": "lostdepths:morfarite_ingot",
+			"item3": "lostdepths:ionite_crystal",
+			"itemhand": "lostdepths:magma_solution",
+			"output": "lostdepths:malicium_ingot",
+			"description": "One of the most powerful super alloys."
+		},
+		{
+			"type": "lostdepths:templatemeta",
+			"headertext": "Polarium Ingot",
+			"item1": "lostdepths:hyperium_ingot",
+			"item2": "lostdepths:volatile_blood",
+			"item3": "lostdepths:plucked_eye",
+			"itemhand": "lostdepths:weak_polarcronite",
+			"output": "lostdepths:polarium_ingot",
+			"description": "One of the most powerful super alloys."
+		},
+		{
+			"type": "lostdepths:templatemeta",
+			"headertext": "Etherium Ingot",
+			"item1": "lostdepths:necrotonite_ingot",
+			"item2": "lostdepths:razor_fang",
+			"item3": "lostdepths:infused_golem_essence",
+			"itemhand": "lostdepths:power_core",
+			"output": "lostdepths:etherium_ingot",
+			"description": "One of the most powerful super alloys."
+		},
+		{
+			"type": "lostdepths:templatemeta",
+			"headertext": "Kyvorium Ingot",
+			"item1": "lostdepths:cognitium_ingot",
+			"item2": "lostdepths:giant_dusker_eggs",
+			"item3": "lostdepths:crystal_diode",
+			"itemhand": "lostdepths:clovinite_power_bank",
+			"output": "lostdepths:kyvorium_ingot",
+			"description": "One of the most powerful super alloys."
+		}
+	]
+}

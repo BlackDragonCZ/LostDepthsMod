@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "lostdepths:block/crystalizer"
+    },
+    "facing=east": {
+      "model": "lostdepths:block/crystalizer",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "lostdepths:block/crystalizer",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "lostdepths:block/crystalizer",
+      "y": 270
+    }
+  }
+}

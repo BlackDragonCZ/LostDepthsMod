@@ -1,0 +1,20 @@
+{
+  "replace": false,
+  "values": [
+    "lostdepths:treasurebricks",
+    "lostdepths:treasurepillar",
+    "lostdepths:treasurestairs",
+    "lostdepths:treasureslabs",
+    "lostdepths:treasurecross",
+    "lostdepths:treasure_glass",
+    "lostdepths:treasure_cross_glow",
+    "lostdepths:treasure_power_beam",
+    "lostdepths:treasure_neo_slab",
+    "lostdepths:treasure_factory_pillar",
+    "lostdepths:treasure_dark_bricks",
+    "lostdepths:treasure_dark_tiles",
+    "lostdepths:treasure_glowsteel",
+    "lostdepths:treasure_neo_slab_block",
+    "lostdepths:ultra_resistive_glass"
+  ]
+}

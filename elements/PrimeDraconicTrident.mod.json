@@ -1,0 +1,40 @@
+{
+  "_fv": 57,
+  "_type": "tool",
+  "definition": {
+    "toolType": "Sword",
+    "renderType": 1,
+    "blockingRenderType": 0,
+    "texture": "p_trident",
+    "customModelName": "p_trident:default",
+    "blockingModelName": "Normal blocking",
+    "name": "§4§kA§r§4 Prime Draconic Trident §kA§r",
+    "specialInformation": {
+      "fixedValue": [
+        "§7Not throwable weapon"
+      ]
+    },
+    "creativeTab": {
+      "value": "CUSTOM:LDTools"
+    },
+    "harvestLevel": 0,
+    "efficiency": 4.0,
+    "attackSpeed": 1.2999999999999998,
+    "enchantability": 15,
+    "damageVsEntity": 37.0,
+    "usageCount": 840,
+    "blocksAffected": [],
+    "glowCondition": {
+      "fixedValue": false,
+      "name": "CrystalizedPickaxeMakeItemGlow"
+    },
+    "repairItems": [
+      {
+        "value": "CUSTOM:CondensedEtherium"
+      }
+    ],
+    "immuneToFire": true,
+    "stayInGridWhenCrafting": false,
+    "damageOnCrafting": false
+  }
+}

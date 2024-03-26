@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "lostdepths:block/infused_dark_bricks",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "lostdepths:block/infused_dark_bricks"
+    },
+    "axis=z": {
+      "model": "lostdepths:block/infused_dark_bricks",
+      "x": 90
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "_fv": 57,
+  "_type": "tab",
+  "definition": {
+    "name": "LD: Modules",
+    "icon": {
+      "value": "CUSTOM:EmptyModuleContainer"
+    },
+    "showSearch": false
+  }
+}

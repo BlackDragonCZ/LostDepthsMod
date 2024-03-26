@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "cdc",
+    "cec"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:cryzulite_ingot"
+    },
+    "b": {
+      "item": "lostdepths:polycharge_solution"
+    },
+    "c": {
+      "item": "lostdepths:reinforced_plate"
+    },
+    "d": {
+      "item": "lostdepths:vibrant_capacitor"
+    },
+    "e": {
+      "item": "lostdepths:power_charge"
+    }
+  },
+  "result": {
+    "item": "lostdepths:power_supply_module",
+    "count": 1
+  }
+}

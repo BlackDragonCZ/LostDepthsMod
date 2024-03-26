@@ -1,0 +1,10 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "cosmic_carpet"
+      },
+      "name": "default"
+    }
+  }
+}

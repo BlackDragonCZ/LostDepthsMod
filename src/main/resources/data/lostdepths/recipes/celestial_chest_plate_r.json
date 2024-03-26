@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a a",
+    "bcb",
+    "bbb"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:unbreakable_chain"
+    },
+    "b": {
+      "item": "lostdepths:condensed_cosmerite"
+    },
+    "c": {
+      "item": "minecraft:netherite_chestplate"
+    }
+  },
+  "result": {
+    "item": "lostdepths:celestial_armor_chestplate",
+    "count": 1
+  }
+}

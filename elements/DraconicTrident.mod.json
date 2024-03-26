@@ -1,0 +1,40 @@
+{
+  "_fv": 57,
+  "_type": "tool",
+  "definition": {
+    "toolType": "Sword",
+    "renderType": 1,
+    "blockingRenderType": 0,
+    "texture": "ld_trident",
+    "customModelName": "ld_trident:default",
+    "blockingModelName": "Normal blocking",
+    "name": "§4§kA§r§4 Draconic Trident §kA§r",
+    "specialInformation": {
+      "fixedValue": [
+        "§7Not throwable weapon"
+      ]
+    },
+    "creativeTab": {
+      "value": "CUSTOM:LDTools"
+    },
+    "harvestLevel": 0,
+    "efficiency": 4.0,
+    "attackSpeed": 1.6,
+    "enchantability": 15,
+    "damageVsEntity": 21.0,
+    "usageCount": 520,
+    "blocksAffected": [],
+    "glowCondition": {
+      "fixedValue": false,
+      "name": "CrystalizedPickaxeMakeItemGlow"
+    },
+    "repairItems": [
+      {
+        "value": "CUSTOM:CondensedPolarium"
+      }
+    ],
+    "immuneToFire": true,
+    "stayInGridWhenCrafting": false,
+    "damageOnCrafting": false
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "_fv": 57,
+  "_type": "tab",
+  "definition": {
+    "name": "LD: Ingots",
+    "icon": {
+      "value": "CUSTOM:CondensedMorfarite"
+    },
+    "showSearch": false
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "lostdepths:block/labyrinth_portal_red",
+    "particle": "lostdepths:block/labyrinth_portal_red"
+  },
+  "render_type": "solid"
+}

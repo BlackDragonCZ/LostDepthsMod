@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "lostdepths:clovinite_ore",
+    "lostdepths:sunder_wood",
+    "lostdepths:sunder_wood_sap",
+    "lostdepths:celestial_logs_blue",
+    "lostdepths:celestial_logs_red",
+    "lostdepths:celestial_leaves_blue",
+    "lostdepths:celestial_leaves_red",
+    "lostdepths:sunder_leaves",
+    "lostdepths:sunder_planks",
+    "lostdepths:sunder_stairs",
+    "lostdepths:sunder_fence",
+    "lostdepths:sunder_slab",
+    "lostdepths:ferro_log",
+    "lostdepths:ferro_leaves"
+  ]
+}

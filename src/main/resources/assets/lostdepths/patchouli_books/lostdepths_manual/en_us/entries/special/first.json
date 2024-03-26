@@ -1,0 +1,32 @@
+{
+	"name": "Interactive Ores",
+	"icon": "lostdepths:serpentine_ore",
+	"category": "lostdepths:special",
+	"read_by_default": false,
+	"pages": [
+		{
+			"type": "spotlight",
+			"item": "lostdepths:serpentine_crystal",
+			"title": "Serpentine Ores",
+			"text": "Use right click with Ender-Voltaic Solution in hand to convert into active ore which can be mined."
+		},
+		{
+			"type": "spotlight",
+			"item": "lostdepths:myrite_crystal",
+			"title": "Myrite Ores",
+			"text": "Use right click with Ultraviolet Solution in hand to convert into active ore which can be mined."
+		},
+		{
+			"type": "spotlight",
+			"item": "lostdepths:lucient_ore",
+			"title": "Lucient Ores",
+			"text": "Use right click with Corrupted Solution in hand to convert into active ore which can be mined."
+		},
+		{
+			"type": "spotlight",
+			"item": "lostdepths:phototenzyte_ore",
+			"title": "Phototenzyte Ores",
+			"text": "Use right click with Poly-Amplification Solution in hand to convert into active ore which can be mined."
+		}
+	]
+}

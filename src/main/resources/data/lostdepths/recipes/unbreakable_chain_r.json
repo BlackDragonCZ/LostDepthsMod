@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a",
+    "b",
+    "a"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:dark_fuse_diamond"
+    },
+    "b": {
+      "item": "lostdepths:energyzed_alloy"
+    }
+  },
+  "result": {
+    "item": "lostdepths:unbreakable_chain",
+    "count": 1
+  }
+}

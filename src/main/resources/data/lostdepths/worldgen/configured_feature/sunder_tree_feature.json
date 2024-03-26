@@ -1,0 +1,11 @@
+{
+  "type": "lostdepths:structure_feature",
+  "config": {
+    "structure": "lostdepths:sunder_feature",
+    "ignored_blocks": [
+      "minecraft:air",
+      "minecraft:structure_block",
+      "lostdepths:manufactory_generator"
+    ]
+  }
+}

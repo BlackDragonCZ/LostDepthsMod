@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "lostdepths:block/serpentine_ore",
+    "particle": "lostdepths:block/serpentine_ore"
+  },
+  "render_type": "solid"
+}

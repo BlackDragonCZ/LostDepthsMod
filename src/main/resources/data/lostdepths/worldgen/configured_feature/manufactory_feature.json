@@ -1,0 +1,7 @@
+{
+  "type": "lostdepths:structure_feature",
+  "config": {
+    "structure": "lostdepths:manufactory_core_block",
+    "ignored_blocks": "minecraft:structure_block"
+  }
+}

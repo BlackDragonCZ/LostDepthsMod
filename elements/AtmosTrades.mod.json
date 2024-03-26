@@ -1,0 +1,195 @@
+{
+  "_fv": 57,
+  "_type": "villagertrade",
+  "definition": {
+    "tradeEntries": [
+      {
+        "villagerProfession": {
+          "value": "CUSTOM:AtmosphericScientist"
+        },
+        "entries": [
+          {
+            "price1": {
+              "value": "CUSTOM:SolariumSky"
+            },
+            "countPrice1": 2,
+            "price2": {
+              "value": "CUSTOM:CelestialDiamond"
+            },
+            "countPrice2": 1,
+            "offer": {
+              "value": "CUSTOM:SolariumCore"
+            },
+            "countOffer": 4,
+            "level": 1,
+            "maxTrades": 1024,
+            "xp": 5,
+            "priceMultiplier": 0.05
+          },
+          {
+            "price1": {
+              "value": "CUSTOM:SolariumCore"
+            },
+            "countPrice1": 2,
+            "price2": {
+              "value": ""
+            },
+            "countPrice2": 1,
+            "offer": {
+              "value": "CUSTOM:GravityDust"
+            },
+            "countOffer": 1,
+            "level": 1,
+            "maxTrades": 1024,
+            "xp": 5,
+            "priceMultiplier": 0.05
+          },
+          {
+            "price1": {
+              "value": "CUSTOM:SolariumCore"
+            },
+            "countPrice1": 2,
+            "price2": {
+              "value": "Items.AMETHYST_SHARD"
+            },
+            "countPrice2": 1,
+            "offer": {
+              "value": "CUSTOM:CycloneDust"
+            },
+            "countOffer": 1,
+            "level": 2,
+            "maxTrades": 1024,
+            "xp": 5,
+            "priceMultiplier": 0.05
+          },
+          {
+            "price1": {
+              "value": "CUSTOM:SolariumCore"
+            },
+            "countPrice1": 20,
+            "price2": {
+              "value": "CUSTOM:MagmaSolution"
+            },
+            "countPrice2": 2,
+            "offer": {
+              "value": "CUSTOM:EnderVoltaicSolution"
+            },
+            "countOffer": 1,
+            "level": 2,
+            "maxTrades": 1024,
+            "xp": 5,
+            "priceMultiplier": 0.05
+          },
+          {
+            "price1": {
+              "value": "CUSTOM:SolariumCore"
+            },
+            "countPrice1": 50,
+            "price2": {
+              "value": "CUSTOM:SolariumSky"
+            },
+            "countPrice2": 50,
+            "offer": {
+              "value": "CUSTOM:AstrometalAmalgamationGlue"
+            },
+            "countOffer": 1,
+            "level": 3,
+            "maxTrades": 1024,
+            "xp": 5,
+            "priceMultiplier": 0.05
+          },
+          {
+            "price1": {
+              "value": "CUSTOM:SolariumCore"
+            },
+            "countPrice1": 60,
+            "price2": {
+              "value": "CUSTOM:IoniteCrystal"
+            },
+            "countPrice2": 1,
+            "offer": {
+              "value": "CUSTOM:IoniteCrystal"
+            },
+            "countOffer": 2,
+            "level": 3,
+            "maxTrades": 1024,
+            "xp": 5,
+            "priceMultiplier": 0.05
+          },
+          {
+            "price1": {
+              "value": "CUSTOM:IronGolemEssence"
+            },
+            "countPrice1": 1,
+            "price2": {
+              "value": ""
+            },
+            "countPrice2": 1,
+            "offer": {
+              "value": "CUSTOM:SolariumCore"
+            },
+            "countOffer": 1,
+            "level": 4,
+            "maxTrades": 1024,
+            "xp": 5,
+            "priceMultiplier": 0.05
+          },
+          {
+            "price1": {
+              "value": "CUSTOM:CelestialIron"
+            },
+            "countPrice1": 22,
+            "price2": {
+              "value": "CUSTOM:SolariumCore"
+            },
+            "countPrice2": 5,
+            "offer": {
+              "value": "CUSTOM:LuminescentCubes"
+            },
+            "countOffer": 1,
+            "level": 4,
+            "maxTrades": 1024,
+            "xp": 5,
+            "priceMultiplier": 0.05
+          },
+          {
+            "price1": {
+              "value": "CUSTOM:ExternalCloviniteBattery"
+            },
+            "countPrice1": 10,
+            "price2": {
+              "value": "CUSTOM:ElectronRecycler"
+            },
+            "countPrice2": 5,
+            "offer": {
+              "value": "CUSTOM:ClovinitePowerHub"
+            },
+            "countOffer": 1,
+            "level": 5,
+            "maxTrades": 1024,
+            "xp": 5,
+            "priceMultiplier": 0.05
+          },
+          {
+            "price1": {
+              "value": "CUSTOM:SolariumCore"
+            },
+            "countPrice1": 20,
+            "price2": {
+              "value": "CUSTOM:SolariumCore"
+            },
+            "countPrice2": 20,
+            "offer": {
+              "value": "CUSTOM:PowerFunnel"
+            },
+            "countOffer": 1,
+            "level": 5,
+            "maxTrades": 1024,
+            "xp": 5,
+            "priceMultiplier": 0.05
+          }
+        ]
+      }
+    ]
+  }
+}

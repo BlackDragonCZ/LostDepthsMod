@@ -1,0 +1,49 @@
+{
+  "_fv": 57,
+  "_type": "tool",
+  "definition": {
+    "toolType": "Pickaxe",
+    "renderType": 1,
+    "blockingRenderType": 0,
+    "texture": "p_hammer",
+    "customModelName": "p_hammer:default",
+    "blockingModelName": "Normal blocking",
+    "name": "§4Prime Draconic Hammer",
+    "specialInformation": {
+      "fixedValue": [
+        "§6Right Click: Activate speed and regeneration"
+      ]
+    },
+    "creativeTab": {
+      "value": "CUSTOM:LDTools"
+    },
+    "harvestLevel": 1,
+    "efficiency": 4.0,
+    "attackSpeed": 1.4000000000000001,
+    "enchantability": 15,
+    "damageVsEntity": 18.0,
+    "usageCount": 1024,
+    "blocksAffected": [],
+    "glowCondition": {
+      "fixedValue": false,
+      "name": "CrystalizedPickaxeMakeItemGlow"
+    },
+    "repairItems": [
+      {
+        "value": "CUSTOM:CondensedMalicium"
+      }
+    ],
+    "immuneToFire": true,
+    "stayInGridWhenCrafting": false,
+    "damageOnCrafting": false,
+    "onRightClickedInAir": {
+      "name": "PrimeDraconicPickaxeRightclicked"
+    },
+    "onRightClickedOnBlock": {
+      "name": "PrimeDraconicPickaxeRightclicked"
+    },
+    "onBlockDestroyedWithTool": {
+      "name": "PrimeDraconicHammerBlockDestroyedWithTool"
+    }
+  }
+}

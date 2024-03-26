@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "bbb",
+    "bbb"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:celestial_iron"
+    },
+    "b": {
+      "item": "lostdepths:crystalized_snowball"
+    }
+  },
+  "result": {
+    "item": "lostdepths:frozen_ingot",
+    "count": 1
+  }
+}

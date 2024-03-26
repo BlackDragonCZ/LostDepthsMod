@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a a",
+    "bcb",
+    "aba"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:haunted_ingot"
+    },
+    "b": {
+      "item": "lostdepths:crystal_of_curses"
+    },
+    "c": {
+      "item": "lostdepths:gem_ingenuity"
+    }
+  },
+  "result": {
+    "item": "lostdepths:hexbreaker",
+    "count": 1
+  }
+}

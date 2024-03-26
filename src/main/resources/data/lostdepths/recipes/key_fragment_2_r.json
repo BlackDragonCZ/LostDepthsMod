@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a",
+    "b",
+    "a"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:neosteel_ingot"
+    },
+    "b": {
+      "item": "lostdepths:titanium_metalloy"
+    }
+  },
+  "result": {
+    "item": "lostdepths:key_fragment_2",
+    "count": 1
+  }
+}

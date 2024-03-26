@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "lostdepths:block/leaves_celestial_sea",
+    "particle": "lostdepths:block/leaves_celestial_sea"
+  },
+  "render_type": "solid"
+}

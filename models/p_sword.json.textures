@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "p_sword",
+        "1": "p_animations_1"
+      },
+      "name": "default"
+    }
+  }
+}

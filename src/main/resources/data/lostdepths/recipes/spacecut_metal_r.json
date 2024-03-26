@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab",
+    "c "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:perfect_pearl"
+    },
+    "b": {
+      "item": "lostdepths:celestial_iron"
+    },
+    "c": {
+      "item": "lostdepths:hardened_calcium"
+    }
+  },
+  "result": {
+    "item": "lostdepths:spacecut_metal",
+    "count": 1
+  }
+}

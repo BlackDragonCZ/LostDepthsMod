@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "lostdepths:block/sunderwood_top",
+    "up": "lostdepths:block/sunderwood_top",
+    "north": "lostdepths:block/sunderwood",
+    "east": "lostdepths:block/sunderwood",
+    "south": "lostdepths:block/sunderwood",
+    "west": "lostdepths:block/sunderwood",
+    "particle": "lostdepths:block/sunderwood_top"
+  },
+  "render_type": "solid"
+}

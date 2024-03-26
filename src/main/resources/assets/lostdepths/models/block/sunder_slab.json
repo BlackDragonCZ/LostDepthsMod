@@ -1,0 +1,9 @@
+{
+  "parent": "block/slab",
+  "textures": {
+    "bottom": "lostdepths:block/sunderwood_planks",
+    "top": "lostdepths:block/sunderwood_planks",
+    "side": "lostdepths:block/sunderwood_planks"
+  },
+  "render_type": "cutout_mipped"
+}

@@ -1,0 +1,34 @@
+{
+  "_fv": 57,
+  "_type": "tag",
+  "definition": {
+    "type": "Items",
+    "items": [
+      {
+        "value": "CUSTOM:SecurityPass1"
+      },
+      {
+        "value": "CUSTOM:SecurityPass2"
+      },
+      {
+        "value": "CUSTOM:SecurityPass3"
+      },
+      {
+        "value": "CUSTOM:SecurityPass4"
+      },
+      {
+        "value": "CUSTOM:SecurityPass5"
+      },
+      {
+        "value": "CUSTOM:SecurityPass6"
+      }
+    ],
+    "blocks": [],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "damageTypes": [],
+    "name": "security_1",
+    "namespace": "mod"
+  }
+}

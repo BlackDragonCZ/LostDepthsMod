@@ -1,0 +1,37 @@
+{
+	"name": "Osiris Station C9",
+	"icon": "lostdepths:infused_crystal",
+	"category": "lostdepths:lores",
+	"advancement": "lostdepths:databaseadv",
+
+	"pages": [
+		{
+			"type": "patchouli:multiblock",
+			"name": "Osiris Station",
+			"text": "Osiris station build 2133 by Atlas HQ",
+			"enable_visualizer": true,
+			"multiblock": {
+				"pattern": [
+					[
+						"   ",
+						" 0 ",
+						"   "
+					],
+					[
+						"SSS",
+						"SFS",
+						"SSS"
+					]
+				],
+				"mapping": {
+					"0": "minecraft:cauldron",
+					"S": "minecraft:fire",
+					"F": "minecraft:mossy_stone_bricks"
+				},
+				"symmetrical": true,
+				"offset": [0,0,0],
+				"view_offset": [0,0,0]
+			}
+		}
+	]
+}

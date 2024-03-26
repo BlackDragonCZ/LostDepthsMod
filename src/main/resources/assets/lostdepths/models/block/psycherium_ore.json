@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "lostdepths:block/kylaxium_ore",
+    "particle": "lostdepths:block/kylaxium_ore"
+  },
+  "render_type": "solid"
+}

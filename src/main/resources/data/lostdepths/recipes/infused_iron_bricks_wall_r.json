@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "lostdepths:infused_iron_bricks"
+  },
+  "result": "lostdepths:infused_iron_bricks_wall"
+}

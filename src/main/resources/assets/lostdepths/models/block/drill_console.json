@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "lostdepths:block/neosteel_power_beam_top",
+    "up": "lostdepths:block/neosteel_power_beam_top",
+    "north": "lostdepths:block/drill_console",
+    "east": "lostdepths:block/drill_console",
+    "south": "lostdepths:block/drill_console",
+    "west": "lostdepths:block/drill_console",
+    "particle": "lostdepths:block/neosteel_power_beam_top"
+  },
+  "render_type": "solid"
+}

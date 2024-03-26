@@ -1,0 +1,9 @@
+{
+  "parent": "lostdepths:custom/chest_opening",
+  "textures": {
+    "all": "lostdepths:block/chest",
+    "particle": "lostdepths:block/chest",
+    "0": "lostdepths:block/chest"
+  },
+  "render_type": "cutout_mipped"
+}

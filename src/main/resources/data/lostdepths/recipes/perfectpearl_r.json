@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "aba",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:enriched_prismarine"
+    },
+    "b": {
+      "item": "minecraft:ender_pearl"
+    }
+  },
+  "result": {
+    "item": "lostdepths:perfect_pearl",
+    "count": 1
+  }
+}

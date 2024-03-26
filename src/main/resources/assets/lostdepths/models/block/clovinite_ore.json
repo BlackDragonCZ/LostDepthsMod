@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "lostdepths:block/sunderwood_top",
+    "up": "lostdepths:block/sunderwood_top",
+    "north": "lostdepths:block/clovinite_ore",
+    "east": "lostdepths:block/clovinite_ore",
+    "south": "lostdepths:block/clovinite_ore",
+    "west": "lostdepths:block/clovinite_ore",
+    "particle": "lostdepths:block/sunderwood_top"
+  },
+  "render_type": "solid"
+}

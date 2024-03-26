@@ -1,0 +1,8 @@
+{
+  "parent": "lostdepths:custom/ld_key",
+  "textures": {
+    "0": "lostdepths:block/little_dragon_key",
+    "1": "lostdepths:block/animations_flame_02",
+    "particle": "lostdepths:item/ld_key_icon"
+  }
+}

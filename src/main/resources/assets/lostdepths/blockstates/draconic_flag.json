@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "lostdepths:block/draconic_flag"
+    },
+    "facing=east": {
+      "model": "lostdepths:block/draconic_flag",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "lostdepths:block/draconic_flag",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "lostdepths:block/draconic_flag",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "type": "minecraft:geode",
+  "config": {
+    "blocks": {
+      "filling_provider": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:air"
+        }
+      },
+      "inner_layer_provider": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "lostdepths:fungal_space_rock"
+        }
+      },
+      "alternate_inner_layer_provider": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "lostdepths:lucient_ore"
+        }
+      },
+      "middle_layer_provider": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "lostdepths:space_rock"
+        }
+      },
+      "outer_layer_provider": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:crying_obsidian"
+        }
+      },
+      "inner_placements": [
+        {
+          "Name": "minecraft:air"
+        }
+      ],
+      "cannot_replace": "#lostdepths:unbreakable",
+      "invalid_blocks": "#lostdepths:unbreakable"
+    },
+    "layers": {},
+    "crack": {},
+    "invalid_blocks_threshold": 1,
+    "use_alternate_layer0_chance": 0.083
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "lostdepths:block/arena_steel_blue",
+    "up": "lostdepths:block/arena_steel_blue",
+    "north": "lostdepths:block/arena_summoner_side",
+    "east": "lostdepths:block/arena_summoner_side",
+    "south": "lostdepths:block/arena_summoner_side",
+    "west": "lostdepths:block/arena_summoner_side",
+    "particle": "lostdepths:block/arena_steel_blue"
+  },
+  "render_type": "solid"
+}

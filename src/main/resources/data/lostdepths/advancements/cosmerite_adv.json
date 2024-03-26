@@ -1,0 +1,39 @@
+{
+  "display": {
+    "icon": {
+      "item": "lostdepths:condensed_cosmerite"
+    },
+    "title": {
+      "translate": "advancements.cosmerite_adv.title"
+    },
+    "description": {
+      "translate": "advancements.cosmerite_adv.descr"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "cosmerite_adv": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "lostdepths:condensed_cosmerite"
+            ],
+            "count": {
+              "min": 1,
+              "max": 1
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 20
+  },
+  "parent": "lostdepths:morfarite_adv"
+}

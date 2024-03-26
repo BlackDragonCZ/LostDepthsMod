@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "arrow",
+    "spectral_arrow",
+    "ender_pearl",
+    "egg",
+    "snowball",
+    "fireball",
+    "firework_rocket"
+  ]
+}

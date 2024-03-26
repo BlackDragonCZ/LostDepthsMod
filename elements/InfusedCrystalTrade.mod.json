@@ -1,0 +1,33 @@
+{
+  "_fv": 34,
+  "_type": "villagertrade",
+  "definition": {
+    "tradeEntries": [
+      {
+        "villagerProfession": {
+          "value": "TOOLSMITH"
+        },
+        "entries": [
+          {
+            "price1": {
+              "value": "CUSTOM:InfusedIron"
+            },
+            "countPrice1": 42,
+            "price2": {
+              "value": "Blocks.NETHERITE_BLOCK"
+            },
+            "countPrice2": 5,
+            "offer": {
+              "value": "CUSTOM:InfusedCrystal"
+            },
+            "countOffer": 1,
+            "level": 5,
+            "maxTrades": 10,
+            "xp": 5,
+            "priceMultiplier": 0.05
+          }
+        ]
+      }
+    ]
+  }
+}

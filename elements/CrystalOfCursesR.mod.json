@@ -1,0 +1,48 @@
+{
+  "_fv": 57,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "recipeRetstackSize": 1,
+    "group": "",
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "CUSTOM:GazeOfNightmares"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "CUSTOM:GazeOfNightmares"
+      },
+      {
+        "value": "Items.QUARTZ"
+      },
+      {
+        "value": "CUSTOM:HardCrystals"
+      },
+      {
+        "value": "Items.QUARTZ"
+      },
+      {
+        "value": "CUSTOM:GazeOfNightmares"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "CUSTOM:GazeOfNightmares"
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:CrystalOfCurses"
+    },
+    "name": "crystal_of_curses_r",
+    "namespace": "mod"
+  }
+}

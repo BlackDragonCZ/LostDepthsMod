@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "cdc",
+    "eee"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:energyzed_alloy"
+    },
+    "b": {
+      "item": "lostdepths:workbench_grid"
+    },
+    "c": {
+      "item": "lostdepths:heat_resistance_glass"
+    },
+    "d": {
+      "item": "minecraft:brewing_stand"
+    },
+    "e": {
+      "item": "lostdepths:infused_iron"
+    }
+  },
+  "result": {
+    "item": "lostdepths:chem_tech",
+    "count": 1
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " a ",
+    "bcb",
+    " a "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:condensed_melworite"
+    },
+    "b": {
+      "item": "lostdepths:infused_redstone"
+    },
+    "c": {
+      "item": "lostdepths:power_core"
+    }
+  },
+  "result": {
+    "item": "lostdepths:power_connector_assembly",
+    "count": 1
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "bcb",
+    "dbd"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:neosteel_ingot"
+    },
+    "b": {
+      "item": "lostdepths:neo_glass"
+    },
+    "c": {
+      "item": "minecraft:glowstone"
+    },
+    "d": {
+      "item": "lostdepths:infused_iron"
+    }
+  },
+  "result": {
+    "item": "lostdepths:neosteel_lantern_2",
+    "count": 1
+  }
+}

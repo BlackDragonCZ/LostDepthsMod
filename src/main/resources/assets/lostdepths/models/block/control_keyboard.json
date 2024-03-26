@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "lostdepths:block/keyboardmonitor_top",
+    "up": "lostdepths:block/keyboardmonitor_top",
+    "north": "lostdepths:block/keyboardmonitor_front",
+    "east": "lostdepths:block/keyboardmonitor_side",
+    "south": "lostdepths:block/keyboardmonitor_side",
+    "west": "lostdepths:block/keyboardmonitor_side",
+    "particle": "lostdepths:block/keyboardmonitor_top"
+  },
+  "render_type": "solid"
+}

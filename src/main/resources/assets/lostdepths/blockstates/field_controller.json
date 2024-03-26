@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "lostdepths:block/field_controller",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "lostdepths:block/field_controller"
+    },
+    "axis=z": {
+      "model": "lostdepths:block/field_controller",
+      "x": 90
+    }
+  }
+}

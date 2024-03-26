@@ -1,0 +1,48 @@
+{
+  "_fv": 57,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "recipeRetstackSize": 1,
+    "group": "",
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "CUSTOM:IronheartElixir"
+      },
+      {
+        "value": "CUSTOM:GemResolve"
+      },
+      {
+        "value": "CUSTOM:BiocorruptionPowder"
+      },
+      {
+        "value": "CUSTOM:BiocorruptionPowder"
+      },
+      {
+        "value": "CUSTOM:BiocorruptionPowder"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:GuardianElixir"
+    },
+    "name": "guardian_elixir_r",
+    "namespace": "mod"
+  }
+}

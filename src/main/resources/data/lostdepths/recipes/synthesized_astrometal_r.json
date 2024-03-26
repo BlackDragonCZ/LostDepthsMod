@@ -1,0 +1,42 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "abc",
+    "def",
+    "ghi"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:voidcut_metal"
+    },
+    "b": {
+      "item": "lostdepths:ethercut_metal"
+    },
+    "c": {
+      "item": "lostdepths:starcut_metal"
+    },
+    "d": {
+      "item": "lostdepths:spacecut_metal"
+    },
+    "e": {
+      "item": "lostdepths:terracut_metal"
+    },
+    "f": {
+      "item": "lostdepths:lightcut_metal"
+    },
+    "g": {
+      "item": "lostdepths:biocut_metal"
+    },
+    "h": {
+      "item": "lostdepths:enraged_iron"
+    },
+    "i": {
+      "item": "lostdepths:astrometal_amalgamation_glue"
+    }
+  },
+  "result": {
+    "item": "lostdepths:synthesized_astrometal",
+    "count": 1
+  }
+}

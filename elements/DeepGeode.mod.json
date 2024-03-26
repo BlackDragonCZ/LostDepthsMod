@@ -1,0 +1,16 @@
+{
+  "_fv": 57,
+  "_type": "feature",
+  "definition": {
+    "generationStep": "UNDERGROUND_STRUCTURES",
+    "restrictionBiomes": [
+      {
+        "value": "CUSTOM:SunForest2"
+      },
+      {
+        "value": "CUSTOM:SunForest3"
+      }
+    ],
+    "featurexml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"feature_container\" deletable=\"false\" x=\"291\" y=\"-25\"><value name=\"feature\"><block type=\"feature_geode_simple\"><mutation xmlns=\"http://www.w3.org/1999/xhtml\" inputs=\"1\"></mutation><field name=\"size\">1</field><field name=\"cannot_replace_tag\">lostdepths:unbreakable</field><field name=\"invalid_blocks_count\">1</field><field name=\"invalid_blocks_tag\">lostdepths:unbreakable</field><value name=\"filling\"><block type=\"mcitem_allblocks\"><field name=\"value\">Blocks.AIR</field></block></value><value name=\"inner_layer\"><block type=\"mcitem_allblocks\"><field name=\"value\">CUSTOM:DeepSpaceRock</field></block></value><value name=\"alternate_inner_layer\"><block type=\"mcitem_allblocks\"><field name=\"value\">CUSTOM:PhototenzyteOre</field></block></value><value name=\"middle_layer\"><block type=\"mcitem_allblocks\"><field name=\"value\">CUSTOM:SpaceRock</field></block></value><value name=\"outer_layer\"><block type=\"mcitem_allblocks\"><field name=\"value\">Blocks.OBSIDIAN</field></block></value><value name=\"crystal0\"><block type=\"mcitem_allblocks\"><field name=\"value\">Blocks.AIR</field></block></value></block></value><next><block type=\"placement_rarity\"><field name=\"rarity\">24</field><next><block type=\"placement_in_square\"><next><block type=\"placement_biome_filter\"><next><block type=\"placement_heightmap\"><field name=\"heightmap\">WORLD_SURFACE_WG</field><next><block type=\"placement_heightmap\"><field name=\"heightmap\">WORLD_SURFACE</field><next><block type=\"placement_height_range\"><value name=\"height\"><block type=\"height_provider_constant\"><value name=\"value\"><block type=\"vertical_anchor_absolute\"><field name=\"value\">-20</field></block></value></block></value></block></next></block></next></block></next></block></next></block></next></block></next></block></xml>"
+  }
+}

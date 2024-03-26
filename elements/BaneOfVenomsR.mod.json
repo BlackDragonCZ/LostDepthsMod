@@ -1,0 +1,48 @@
+{
+  "_fv": 57,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "recipeRetstackSize": 1,
+    "group": "",
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": ""
+      },
+      {
+        "value": "CUSTOM:VenomKnife"
+      },
+      {
+        "value": "CUSTOM:ClovinitePowerHub"
+      },
+      {
+        "value": "CUSTOM:CrystalizedAlloy"
+      },
+      {
+        "value": "CUSTOM:VolatilitySolution"
+      },
+      {
+        "value": "CUSTOM:VenomKnife"
+      },
+      {
+        "value": "CUSTOM:VolatilitySolution"
+      },
+      {
+        "value": "CUSTOM:CrystalizedAlloy"
+      },
+      {
+        "value": ""
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:BaneOfVenoms"
+    },
+    "name": "bane_of_venoms_r",
+    "namespace": "mod"
+  }
+}

@@ -1,0 +1,12 @@
+{
+	"name": "§9Lostdepths Guide Book",
+	"landing_text": "Welcome to the LostDepths GuideBook.$(br2)LostDepths is a mod all about mysteries of old civilization that existed before first villager was born, most items are rare or hard to obtain.",
+	"version": 1,
+	"subtitle": "MC 1.20.1",
+	"creative_tab": "minecraft:tools_and_utilities",
+	"show_toasts": false,
+	"show_progress": false,
+	"book_texture": "lostdepths:textures/gui/guidebook/books_drago.png",
+	"model": "lostdepths:lostdepthsmanual",
+	"use_resource_pack": true
+}

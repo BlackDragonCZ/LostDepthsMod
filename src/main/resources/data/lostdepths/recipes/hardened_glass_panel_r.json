@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab",
+    "bb"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:corrupted_gemstone"
+    },
+    "b": {
+      "item": "lostdepths:hardened_calcium"
+    }
+  },
+  "result": {
+    "item": "lostdepths:hardened_glass_panel",
+    "count": 1
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "lostdepths:block/deep_rock_empty",
+    "up": "lostdepths:block/deep_rock_empty",
+    "north": "lostdepths:block/deep_rock_empty",
+    "east": "lostdepths:block/deep_rock_empty",
+    "south": "lostdepths:block/deep_rock_empty",
+    "west": "lostdepths:block/deep_rock_empty",
+    "particle": "lostdepths:block/deep_rock_empty"
+  },
+  "render_type": "solid"
+}

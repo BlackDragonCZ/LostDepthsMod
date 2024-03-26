@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "aba",
+    "aba"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:celestial_iron"
+    },
+    "b": {
+      "item": "lostdepths:celestial_redstone"
+    }
+  },
+  "result": {
+    "item": "lostdepths:super_charged_coil",
+    "count": 1
+  }
+}

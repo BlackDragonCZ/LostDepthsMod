@@ -1,0 +1,40 @@
+{
+  "_fv": 57,
+  "_type": "tool",
+  "definition": {
+    "toolType": "Pickaxe",
+    "renderType": 0,
+    "blockingRenderType": 0,
+    "texture": "forgefirepickaxe",
+    "customModelName": "Normal",
+    "blockingModelName": "Normal blocking",
+    "name": "§6Forgefire Pickaxe",
+    "specialInformation": {
+      "fixedValue": []
+    },
+    "creativeTab": {
+      "value": "CUSTOM:LDTools"
+    },
+    "harvestLevel": 1,
+    "efficiency": 2.0,
+    "attackSpeed": 1.0,
+    "enchantability": 15,
+    "damageVsEntity": 4.0,
+    "usageCount": 0,
+    "blocksAffected": [],
+    "glowCondition": {
+      "fixedValue": true,
+      "name": "CrystalizedPickaxeMakeItemGlow"
+    },
+    "repairItems": [],
+    "immuneToFire": true,
+    "stayInGridWhenCrafting": false,
+    "damageOnCrafting": false,
+    "onItemInUseTick": {
+      "name": "ForgefirePickaxeToolInHandTick"
+    },
+    "onEntitySwing": {
+      "name": "ForgefireAxeEntitySwingsItem"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "lostdepths:block/puzzlelantern",
+    "particle": "lostdepths:block/puzzlelantern"
+  },
+  "render_type": "solid"
+}

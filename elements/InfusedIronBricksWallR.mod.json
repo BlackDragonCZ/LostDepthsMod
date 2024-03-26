@@ -1,0 +1,22 @@
+{
+  "_fv": 57,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Stone cutting",
+    "recipeRetstackSize": 1,
+    "group": "",
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "stoneCuttingInputStack": {
+      "value": "CUSTOM:InfusedIronBricks"
+    },
+    "stoneCuttingReturnStack": {
+      "value": "CUSTOM:InfusedIronBricksWall"
+    },
+    "name": "infused_iron_bricks_wall_r",
+    "namespace": "mod"
+  }
+}

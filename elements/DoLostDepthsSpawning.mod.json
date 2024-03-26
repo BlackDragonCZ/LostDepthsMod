@@ -1,0 +1,12 @@
+{
+  "_fv": 57,
+  "_type": "gamerule",
+  "definition": {
+    "type": "Logic",
+    "displayName": "Spawning setting",
+    "description": "Allow or Disallow spawning The Protector",
+    "category": "SPAWNING",
+    "defaultValueLogic": true,
+    "defaultValueNumber": 0
+  }
+}
