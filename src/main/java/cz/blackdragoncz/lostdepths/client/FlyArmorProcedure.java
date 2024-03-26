@@ -6,14 +6,10 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameType;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(value = Dist.CLIENT)
 public class FlyArmorProcedure {
-    @SubscribeEvent
+
     public static void onEquipChange(LivingEquipmentChangeEvent event) {
         if (!(event.getSlot() == EquipmentSlot.FEET || event.getSlot() == EquipmentSlot.LEGS || event.getSlot() == EquipmentSlot.CHEST)) {
             return;

@@ -3238,9 +3238,6 @@
       "locked_code": false,
       "registry_name": "full_armor_action",
       "metadata": {
-        "files": [
-          "src/main/java/cz/blackdragoncz/lostdepths/procedures/FullArmorActionProcedure.java"
-        ],
         "dependencies": [
           {
             "name": "entity",
@@ -5273,9 +5270,6 @@
       "locked_code": false,
       "registry_name": "meta_materializer_on_block_right_clicked",
       "metadata": {
-        "files": [
-          "src/main/java/cz/blackdragoncz/lostdepths/procedures/MetaMaterializerOnBlockRightClickedProcedure.java"
-        ],
         "dependencies": [
           {
             "name": "entity",
@@ -20160,7 +20154,7 @@
   "workspaceSettings": {
     "modid": "lostdepths",
     "modName": "LostDepths",
-    "version": "1.17.8",
+    "version": "1.17.9b",
     "description": "Add ancient mystery of underground and past.",
     "author": "BlackDragonCZ",
     "websiteURL": "https://blackdragoncz.cz/",
