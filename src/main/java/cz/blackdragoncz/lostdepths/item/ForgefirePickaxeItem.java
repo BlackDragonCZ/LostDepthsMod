@@ -12,12 +12,10 @@ import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.network.chat.Component;
 
 import java.util.List;
 
-import cz.blackdragoncz.lostdepths.procedures.ForgefirePickaxeToolInHandTickProcedure;
 import cz.blackdragoncz.lostdepths.procedures.ForgefireAxeEntitySwingsItemProcedure;
 import cz.blackdragoncz.lostdepths.procedures.CrystalizedPickaxeMakeItemGlowProcedure;
 
@@ -60,13 +58,6 @@ public class ForgefirePickaxeItem extends PickaxeItem {
 		boolean retval = super.onEntitySwing(itemstack, entity);
 		ForgefireAxeEntitySwingsItemProcedure.execute(itemstack);
 		return retval;
-	}
-
-	@Override
-	public void inventoryTick(ItemStack itemstack, Level world, Entity entity, int slot, boolean selected) {
-		super.inventoryTick(itemstack, world, entity, slot, selected);
-		if (selected)
-			ForgefirePickaxeToolInHandTickProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
 	}
 
 	@Override

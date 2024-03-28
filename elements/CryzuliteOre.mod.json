@@ -123,7 +123,29 @@
       "name": "CryzuliteOreBlockDestroy"
     },
     "generateFeature": true,
-    "restrictionBiomes": [],
+    "restrictionBiomes": [
+      {
+        "value": "CUSTOM:AncientBiome"
+      },
+      {
+        "value": "CUSTOM:AncientBiomeAbove"
+      },
+      {
+        "value": "CUSTOM:Depth"
+      },
+      {
+        "value": "CUSTOM:LostSouls"
+      },
+      {
+        "value": "CUSTOM:SunForest"
+      },
+      {
+        "value": "CUSTOM:SunForest2"
+      },
+      {
+        "value": "CUSTOM:SunForest3"
+      }
+    ],
     "blocksToReplace": [
       {
         "value": "CUSTOM:SpaceRock"

@@ -122,11 +122,8 @@
     "onDestroyedByPlayer": {
       "name": "FungalSpaceRockBlockDestroyedByPlayer"
     },
-    "generateFeature": false,
+    "generateFeature": true,
     "restrictionBiomes": [
-      {
-        "value": "CUSTOM:Druidsvalley"
-      },
       {
         "value": "CUSTOM:LostSouls"
       },

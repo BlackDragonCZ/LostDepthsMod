@@ -122,7 +122,7 @@
     "onDestroyedByPlayer": {
       "name": "DeepSpaceRockBlockDestroyedByPlayer"
     },
-    "generateFeature": false,
+    "generateFeature": true,
     "restrictionBiomes": [
       {
         "value": "CUSTOM:LostSouls"
@@ -135,9 +135,6 @@
       },
       {
         "value": "CUSTOM:SunForest3"
-      },
-      {
-        "value": "CUSTOM:Druidsvalley"
       }
     ],
     "blocksToReplace": [

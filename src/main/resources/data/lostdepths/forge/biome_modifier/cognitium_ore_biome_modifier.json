@@ -7,8 +7,7 @@
     "lostdepths:sun_forest_3",
     "lostdepths:ancient_biome",
     "lostdepths:ancient_biome_above",
-    "lostdepths:depth",
-    "lostdepths:druids_valley"
+    "lostdepths:depth"
   ],
   "features": "lostdepths:cognitium_ore",
   "step": "underground_ores"

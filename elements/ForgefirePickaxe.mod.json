@@ -30,9 +30,6 @@
     "immuneToFire": true,
     "stayInGridWhenCrafting": false,
     "damageOnCrafting": false,
-    "onItemInUseTick": {
-      "name": "ForgefirePickaxeToolInHandTick"
-    },
     "onEntitySwing": {
       "name": "ForgefireAxeEntitySwingsItem"
     }

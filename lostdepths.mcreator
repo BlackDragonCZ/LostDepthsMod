@@ -2136,42 +2136,6 @@
       "path": "~/crafting"
     },
     {
-      "name": "ForgefirePickaxeToolInHandTick",
-      "type": "procedure",
-      "sortid": 207,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "forgefire_pickaxe_tool_in_hand_tick",
-      "metadata": {
-        "files": [
-          "src/main/java/cz/blackdragoncz/lostdepths/procedures/ForgefirePickaxeToolInHandTickProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/tools/code"
-    },
-    {
       "name": "MutatedTag",
       "type": "tag",
       "sortid": 208,
@@ -4543,20 +4507,6 @@
         ]
       },
       "path": "~/dimensions"
-    },
-    {
-      "name": "Druidsvalley",
-      "type": "biome",
-      "sortid": 308,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "druids_valley",
-      "metadata": {
-        "files": [
-          "src/main/resources/data/lostdepths/worldgen/biome/druids_valley.json"
-        ]
-      },
-      "path": "~/dev"
     },
     {
       "name": "Ruins2Adv",
@@ -17256,7 +17206,10 @@
       "registry_name": "deep_space_rock",
       "metadata": {
         "files": [
+          "src/main/resources/data/lostdepths/worldgen/configured_feature/deep_space_rock.json",
+          "src/main/resources/data/lostdepths/forge/biome_modifier/deep_space_rock_biome_modifier.json",
           "src/main/resources/assets/lostdepths/models/item/deep_space_rock.json",
+          "src/main/resources/data/lostdepths/worldgen/placed_feature/deep_space_rock.json",
           "src/main/resources/assets/lostdepths/blockstates/deep_space_rock.json",
           "src/main/java/cz/blackdragoncz/lostdepths/block/DeepSpaceRockBlock.java",
           "src/main/resources/assets/lostdepths/models/block/deep_space_rock.json"
@@ -17274,8 +17227,11 @@
       "metadata": {
         "files": [
           "src/main/resources/assets/lostdepths/models/item/fungal_space_rock.json",
+          "src/main/resources/data/lostdepths/forge/biome_modifier/fungal_space_rock_biome_modifier.json",
+          "src/main/resources/data/lostdepths/worldgen/configured_feature/fungal_space_rock.json",
           "src/main/java/cz/blackdragoncz/lostdepths/block/FungalSpaceRockBlock.java",
           "src/main/resources/assets/lostdepths/models/block/fungal_space_rock.json",
+          "src/main/resources/data/lostdepths/worldgen/placed_feature/fungal_space_rock.json",
           "src/main/resources/assets/lostdepths/blockstates/fungal_space_rock.json"
         ]
       },
@@ -18917,7 +18873,6 @@
       "item.lostdepths.enraged_iron": "§4Enraged Iron",
       "item.lostdepths.celestial_pickaxe": "§bCelestial Pickaxe",
       "advancements.hardened_glass_adv.title": "Stronger Glass",
-      "biome.lostdepths.druids_valley": "Druids valley (deprecated)",
       "item.lostdepths.power_coil": "§6High Tolerance Wire",
       "block.lostdepths.drill_shaft": "Drill Shaft",
       "block.lostdepths.neo_glass": "Neo Glass",
@@ -19682,7 +19637,6 @@
       "item.lostdepths.enraged_iron": "§4Enraged Iron",
       "item.lostdepths.celestial_pickaxe": "§bCelestial Pickaxe",
       "advancements.hardened_glass_adv.title": "Stronger Glass",
-      "biome.lostdepths.druids_valley": "Druids valley (deprecated)",
       "item.lostdepths.power_coil": "Power Coil",
       "block.lostdepths.drill_shaft": "Drill Shaft",
       "block.lostdepths.neo_glass": "Neo Glass",
@@ -20154,7 +20108,7 @@
   "workspaceSettings": {
     "modid": "lostdepths",
     "modName": "LostDepths",
-    "version": "1.17.9b",
+    "version": "1.18.0",
     "description": "Add ancient mystery of underground and past.",
     "author": "BlackDragonCZ",
     "websiteURL": "https://blackdragoncz.cz/",
