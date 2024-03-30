@@ -19,6 +19,7 @@ import cz.blackdragoncz.lostdepths.block.entity.SunderWoodSapBlockEntity;
 import cz.blackdragoncz.lostdepths.block.entity.OreEmptyBlockEntity;
 import cz.blackdragoncz.lostdepths.block.entity.MorfariteOreBlockEntity;
 import cz.blackdragoncz.lostdepths.block.entity.ModuleCreatorBlockEntity;
+import cz.blackdragoncz.lostdepths.block.entity.ModulatorBlockEntity;
 import cz.blackdragoncz.lostdepths.block.entity.MetaMaterializerBlockEntity;
 import cz.blackdragoncz.lostdepths.block.entity.MetaCollectorBlockEntity;
 import cz.blackdragoncz.lostdepths.block.entity.MelworiumOreBlockEntity;
@@ -61,6 +62,7 @@ public class LostdepthsModBlockEntities {
 	public static final RegistryObject<BlockEntityType<?>> JAMMER_ACCESS_MODULE = register("jammer_access_module", LostdepthsModBlocks.JAMMER_ACCESS_MODULE, JammerAccessModuleBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<?>> JAMMER_GATE = register("jammer_gate", LostdepthsModBlocks.JAMMER_GATE, JammerGateBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<?>> JAMMER_GATE_OFF = register("jammer_gate_off", LostdepthsModBlocks.JAMMER_GATE_OFF, JammerGateOffBlockEntity::new);
+	public static final RegistryObject<BlockEntityType<?>> MODULATOR = register("modulator", LostdepthsModBlocks.MODULATOR, ModulatorBlockEntity::new);
 
 	private static RegistryObject<BlockEntityType<?>> register(String registryname, RegistryObject<Block> block, BlockEntityType.BlockEntitySupplier<?> supplier) {
 		return REGISTRY.register(registryname, () -> BlockEntityType.Builder.of(supplier, block.get()).build(null));

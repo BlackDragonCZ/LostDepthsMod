@@ -125,6 +125,7 @@ import cz.blackdragoncz.lostdepths.block.MyriteOreActiveBlock;
 import cz.blackdragoncz.lostdepths.block.MultiversiteOreBlock;
 import cz.blackdragoncz.lostdepths.block.MorfariteOreBlock;
 import cz.blackdragoncz.lostdepths.block.ModuleCreatorBlock;
+import cz.blackdragoncz.lostdepths.block.ModulatorBlock;
 import cz.blackdragoncz.lostdepths.block.MetaMaterializerBlock;
 import cz.blackdragoncz.lostdepths.block.MetaCollectorBlock;
 import cz.blackdragoncz.lostdepths.block.MelworiumOreBlock;
@@ -528,4 +529,5 @@ public class LostdepthsModBlocks {
 	public static final RegistryObject<Block> CELESTIAL_LOGS_RED = REGISTRY.register("celestial_logs_red", () -> new CelestialLogsRedBlock());
 	public static final RegistryObject<Block> CELESTIAL_LEAVES_BLUE = REGISTRY.register("celestial_leaves_blue", () -> new CelestialLeavesBlueBlock());
 	public static final RegistryObject<Block> CELESTIAL_LEAVES_RED = REGISTRY.register("celestial_leaves_red", () -> new CelestialLeavesRedBlock());
+	public static final RegistryObject<Block> MODULATOR = REGISTRY.register("modulator", () -> new ModulatorBlock());
 }

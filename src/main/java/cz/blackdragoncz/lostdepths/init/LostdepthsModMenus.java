@@ -15,6 +15,7 @@ import cz.blackdragoncz.lostdepths.world.inventory.WSGUI2Menu;
 import cz.blackdragoncz.lostdepths.world.inventory.WSGUI1Menu;
 import cz.blackdragoncz.lostdepths.world.inventory.PortableBeaconGUIMenu;
 import cz.blackdragoncz.lostdepths.world.inventory.ModuleCreatorGUIMenu;
+import cz.blackdragoncz.lostdepths.world.inventory.ModulatorGUIMenu;
 import cz.blackdragoncz.lostdepths.world.inventory.MetaCollectorGUIMenu;
 import cz.blackdragoncz.lostdepths.world.inventory.CrystalizerGUIMenu;
 import cz.blackdragoncz.lostdepths.world.inventory.CompressorGUIMenu;
@@ -29,4 +30,5 @@ public class LostdepthsModMenus {
 	public static final RegistryObject<MenuType<ModuleCreatorGUIMenu>> MODULE_CREATOR_GUI = REGISTRY.register("module_creator_gui", () -> IForgeMenuType.create(ModuleCreatorGUIMenu::new));
 	public static final RegistryObject<MenuType<MetaCollectorGUIMenu>> META_COLLECTOR_GUI = REGISTRY.register("meta_collector_gui", () -> IForgeMenuType.create(MetaCollectorGUIMenu::new));
 	public static final RegistryObject<MenuType<PortableBeaconGUIMenu>> PORTABLE_BEACON_GUI = REGISTRY.register("portable_beacon_gui", () -> IForgeMenuType.create(PortableBeaconGUIMenu::new));
+	public static final RegistryObject<MenuType<ModulatorGUIMenu>> MODULATOR_GUI = REGISTRY.register("modulator_gui", () -> IForgeMenuType.create(ModulatorGUIMenu::new));
 }

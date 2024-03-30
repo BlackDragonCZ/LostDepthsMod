@@ -893,6 +893,7 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> POTENT_POLARCRONITE = REGISTRY.register("potent_polarcronite", () -> new PotentPolarcroniteItem());
 	public static final RegistryObject<Item> POWERFUL_POLARCRONITE = REGISTRY.register("powerful_polarcronite", () -> new PowerfulPolarcroniteItem());
 	public static final RegistryObject<Item> EMPTY_DATA_DRIVE = REGISTRY.register("empty_data_drive", () -> new EmptyDataDriveItem());
+	public static final RegistryObject<Item> MODULATOR = block(LostdepthsModBlocks.MODULATOR);
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));

@@ -15,6 +15,7 @@ import cz.blackdragoncz.lostdepths.client.gui.WSGUI2Screen;
 import cz.blackdragoncz.lostdepths.client.gui.WSGUI1Screen;
 import cz.blackdragoncz.lostdepths.client.gui.PortableBeaconGUIScreen;
 import cz.blackdragoncz.lostdepths.client.gui.ModuleCreatorGUIScreen;
+import cz.blackdragoncz.lostdepths.client.gui.ModulatorGUIScreen;
 import cz.blackdragoncz.lostdepths.client.gui.MetaCollectorGUIScreen;
 import cz.blackdragoncz.lostdepths.client.gui.CrystalizerGUIScreen;
 import cz.blackdragoncz.lostdepths.client.gui.CompressorGUIScreen;
@@ -31,6 +32,7 @@ public class LostdepthsModScreens {
 			MenuScreens.register(LostdepthsModMenus.MODULE_CREATOR_GUI.get(), ModuleCreatorGUIScreen::new);
 			MenuScreens.register(LostdepthsModMenus.META_COLLECTOR_GUI.get(), MetaCollectorGUIScreen::new);
 			MenuScreens.register(LostdepthsModMenus.PORTABLE_BEACON_GUI.get(), PortableBeaconGUIScreen::new);
+			MenuScreens.register(LostdepthsModMenus.MODULATOR_GUI.get(), ModulatorGUIScreen::new);
 		});
 	}
 }

@@ -17256,7 +17256,10 @@
       "registry_name": "deep_space_rock",
       "metadata": {
         "files": [
+          "src/main/resources/data/lostdepths/worldgen/configured_feature/deep_space_rock.json",
+          "src/main/resources/data/lostdepths/forge/biome_modifier/deep_space_rock_biome_modifier.json",
           "src/main/resources/assets/lostdepths/models/item/deep_space_rock.json",
+          "src/main/resources/data/lostdepths/worldgen/placed_feature/deep_space_rock.json",
           "src/main/resources/assets/lostdepths/blockstates/deep_space_rock.json",
           "src/main/java/cz/blackdragoncz/lostdepths/block/DeepSpaceRockBlock.java",
           "src/main/resources/assets/lostdepths/models/block/deep_space_rock.json"
@@ -17274,8 +17277,11 @@
       "metadata": {
         "files": [
           "src/main/resources/assets/lostdepths/models/item/fungal_space_rock.json",
+          "src/main/resources/data/lostdepths/forge/biome_modifier/fungal_space_rock_biome_modifier.json",
+          "src/main/resources/data/lostdepths/worldgen/configured_feature/fungal_space_rock.json",
           "src/main/java/cz/blackdragoncz/lostdepths/block/FungalSpaceRockBlock.java",
           "src/main/resources/assets/lostdepths/models/block/fungal_space_rock.json",
+          "src/main/resources/data/lostdepths/worldgen/placed_feature/fungal_space_rock.json",
           "src/main/resources/assets/lostdepths/blockstates/fungal_space_rock.json"
         ]
       },
@@ -20154,7 +20160,7 @@
   "workspaceSettings": {
     "modid": "lostdepths",
     "modName": "LostDepths",
-    "version": "1.17.9b",
+    "version": "1.17.9c",
     "description": "Add ancient mystery of underground and past.",
     "author": "BlackDragonCZ",
     "websiteURL": "https://blackdragoncz.cz/",
