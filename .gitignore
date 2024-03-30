@@ -6,6 +6,9 @@ bin
 .classpath
 .project
 
+# creator
+.mcreator
+
 # idea
 out
 *.ipr
