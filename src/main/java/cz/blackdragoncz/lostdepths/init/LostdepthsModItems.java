@@ -117,6 +117,7 @@ import cz.blackdragoncz.lostdepths.item.PolariumIngotItem;
 import cz.blackdragoncz.lostdepths.item.PluckedEyeItem;
 import cz.blackdragoncz.lostdepths.item.PhototenzyteItem;
 import cz.blackdragoncz.lostdepths.item.PhototenzyteBarItem;
+import cz.blackdragoncz.lostdepths.item.PhantomBladeItem;
 import cz.blackdragoncz.lostdepths.item.PerfectPearlItem;
 import cz.blackdragoncz.lostdepths.item.OverChargeCoilItem;
 import cz.blackdragoncz.lostdepths.item.OmniPickaxeItem;
@@ -894,6 +895,7 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> POWERFUL_POLARCRONITE = REGISTRY.register("powerful_polarcronite", () -> new PowerfulPolarcroniteItem());
 	public static final RegistryObject<Item> EMPTY_DATA_DRIVE = REGISTRY.register("empty_data_drive", () -> new EmptyDataDriveItem());
 	public static final RegistryObject<Item> MODULATOR = block(LostdepthsModBlocks.MODULATOR);
+	public static final RegistryObject<Item> PHANTOM_BLADE = REGISTRY.register("phantom_blade", () -> new PhantomBladeItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));

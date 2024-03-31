@@ -12,13 +12,13 @@
     "recipeShapeless": false,
     "recipeSlots": [
       {
-        "value": "CUSTOM:LifestrainEnigma"
+        "value": "CUSTOM:MagmaSolution"
       },
       {
         "value": "CUSTOM:HeatResistanceGlass"
       },
       {
-        "value": "CUSTOM:LifestrainEnigma"
+        "value": "CUSTOM:MagmaSolution"
       },
       {
         "value": "CUSTOM:HeatResistanceGlass"
@@ -30,13 +30,13 @@
         "value": "CUSTOM:HeatResistanceGlass"
       },
       {
-        "value": "CUSTOM:LifestrainEnigma"
+        "value": "CUSTOM:MagmaSolution"
       },
       {
         "value": "CUSTOM:HeatResistanceGlass"
       },
       {
-        "value": "CUSTOM:LifestrainEnigma"
+        "value": "CUSTOM:MagmaSolution"
       }
     ],
     "recipeReturnStack": {

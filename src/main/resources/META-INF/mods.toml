@@ -9,7 +9,7 @@ displayName="LostDepths"
 displayURL="https://blackdragoncz.cz/"
 logoFile="logo.png"
 credits="Structures: SniperMan_CZ | Models: AsLan, Polygony, MikMikTG, Muurr | Textures: ConfusionFloof, MikMikTG , Muurr"
-authors="BlackDragonCZ"
+authors="BlackDragonCZ, SamCZEK"
 description="Add ancient mystery of underground and past."
 
 [[dependencies.lostdepths]]
@@ -35,8 +35,8 @@ description="Add ancient mystery of underground and past."
     side="BOTH"
 [[dependencies.lostdepths]]
     modId="jei"
-    mandatory=true
+    mandatory=false
     versionRange="[0,)"
-    ordering="AFTER"
+    ordering="NONE"
     side="BOTH"
 

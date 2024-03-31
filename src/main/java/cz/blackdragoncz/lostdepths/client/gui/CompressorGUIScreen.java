@@ -49,7 +49,7 @@ public class CompressorGUIScreen extends AbstractContainerScreen<CompressorGUIMe
 		RenderSystem.defaultBlendFunc();
 		guiGraphics.blit(texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
 
-		guiGraphics.blit(new ResourceLocation("lostdepths:textures/screens/recipebook_arrow.png"), this.leftPos + 78, this.topPos + 34, 0, 0, 24, 17, 24, 17);
+		guiGraphics.blit(new ResourceLocation("lostdepths:textures/screens/compression_table.png"), this.leftPos + 0, this.topPos + 0, 0, 0, 176, 166, 176, 166);
 
 		RenderSystem.disableBlend();
 	}
@@ -72,7 +72,7 @@ public class CompressorGUIScreen extends AbstractContainerScreen<CompressorGUIMe
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
 		guiGraphics.drawString(this.font,
 
-				CompressorGUIValueTitleProcedure.execute(world, x, y, z), 6, 7, -6750208, false);
+				CompressorGUIValueTitleProcedure.execute(world, x, y, z), 4, 5, -6750208, false);
 		guiGraphics.drawString(this.font,
 
 				CompressorGUIValueProcedure.execute(world, x, y, z), 6, 70, -12829636, false);

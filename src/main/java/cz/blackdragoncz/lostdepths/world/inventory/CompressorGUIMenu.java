@@ -77,7 +77,7 @@ public class CompressorGUIMenu extends AbstractContainerMenu implements Supplier
 					});
 			}
 		}
-		this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 133, 35) {
+		this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 116, 35) {
 			private final int slot = 1;
 
 			@Override
@@ -85,7 +85,7 @@ public class CompressorGUIMenu extends AbstractContainerMenu implements Supplier
 				return false;
 			}
 		}));
-		this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 25, 35) {
+		this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 39, 35) {
 			private final int slot = 0;
 		}));
 		for (int si = 0; si < 3; ++si)

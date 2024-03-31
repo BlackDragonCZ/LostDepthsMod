@@ -26,7 +26,7 @@ public class CelestialLeavesRedBlock extends Block {
 	public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.AXIS;
 
 	public CelestialLeavesRedBlock() {
-		super(BlockBehaviour.Properties.of().ignitedByLava().sound(SoundType.GRASS).strength(6f, 12f).pushReaction(PushReaction.BLOCK).noLootTable());
+		super(BlockBehaviour.Properties.of().ignitedByLava().sound(SoundType.GRASS).strength(2f, 10f).pushReaction(PushReaction.BLOCK).noLootTable());
 		this.registerDefaultState(this.stateDefinition.any().setValue(AXIS, Direction.Axis.Y));
 	}
 

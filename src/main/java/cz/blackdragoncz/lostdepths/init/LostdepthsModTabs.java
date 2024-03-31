@@ -231,6 +231,7 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModItems.PRIME_DRACONIC_HAMMER.get());
 				tabData.accept(LostdepthsModItems.PRIME_DRACONIC_STAFF.get());
 				tabData.accept(LostdepthsModItems.PRIME_DRACONIC_WINGS.get());
+				tabData.accept(LostdepthsModItems.PHANTOM_BLADE.get());
 			})
 
 					.build());

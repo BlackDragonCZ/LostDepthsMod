@@ -2,17 +2,15 @@
   "_fv": 57,
   "_type": "tool",
   "definition": {
-    "toolType": "Pickaxe",
+    "toolType": "Sword",
     "renderType": 0,
     "blockingRenderType": 0,
-    "texture": "nightmare_pickaxe",
+    "texture": "phantom_blade",
     "customModelName": "Normal",
     "blockingModelName": "Normal blocking",
-    "name": "Nightmare Pickaxe",
+    "name": "Phantom Blade",
     "specialInformation": {
-      "fixedValue": [
-        "§5Can mine ores with dark abilities."
-      ]
+      "fixedValue": []
     },
     "creativeTab": {
       "value": "CUSTOM:LDTools"
@@ -20,19 +18,16 @@
     "harvestLevel": 1,
     "efficiency": 4.0,
     "attackSpeed": 1.0,
-    "enchantability": 2,
-    "damageVsEntity": 4.0,
+    "enchantability": 15,
+    "damageVsEntity": 1.5,
     "usageCount": 0,
     "blocksAffected": [],
     "glowCondition": {
       "fixedValue": false
     },
     "repairItems": [],
-    "immuneToFire": false,
+    "immuneToFire": true,
     "stayInGridWhenCrafting": false,
-    "damageOnCrafting": false,
-    "onEntitySwing": {
-      "name": "ForgefireAxeEntitySwingsItem"
-    }
+    "damageOnCrafting": false
   }
 }

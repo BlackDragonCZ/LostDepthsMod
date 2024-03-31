@@ -270,7 +270,7 @@
           "src/main/resources/assets/lostdepths/models/item/crystalizer.json"
         ]
       },
-      "path": "~/furniture"
+      "path": "~/furniture/unused"
     },
     {
       "name": "Workstation1",
@@ -4868,26 +4868,6 @@
       "path": "~/blocks/treasures/gates"
     },
     {
-      "name": "ModuleCreatorOnBlockRightClicked",
-      "type": "procedure",
-      "sortid": 320,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "module_creator_on_block_right_clicked",
-      "metadata": {
-        "files": [
-          "src/main/java/cz/blackdragoncz/lostdepths/procedures/ModuleCreatorOnBlockRightClickedProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
-      },
-      "path": "~/furniture/code"
-    },
-    {
       "name": "SerpentineOreUnpowered",
       "type": "block",
       "sortid": 35,
@@ -6539,7 +6519,7 @@
           "src/main/java/cz/blackdragoncz/lostdepths/block/PrintTechBlock.java"
         ]
       },
-      "path": "~/furniture"
+      "path": "~/furniture/villagers"
     },
     {
       "name": "SecurityBypass3R",
@@ -7853,7 +7833,7 @@
           "src/main/resources/assets/lostdepths/models/block/atmos_tech.json"
         ]
       },
-      "path": "~/furniture"
+      "path": "~/furniture/villagers"
     },
     {
       "name": "AtmosphericScientist",
@@ -10405,7 +10385,7 @@
           "src/main/java/cz/blackdragoncz/lostdepths/block/BlackMarketBlock.java"
         ]
       },
-      "path": "~/furniture"
+      "path": "~/furniture/villagers"
     },
     {
       "name": "BaneOfVenomsR",
@@ -11851,7 +11831,7 @@
           "src/main/java/cz/blackdragoncz/lostdepths/block/ChemTechBlock.java"
         ]
       },
-      "path": "~/furniture"
+      "path": "~/furniture/villagers"
     },
     {
       "name": "ChemTechR",
@@ -14518,7 +14498,7 @@
           "src/main/resources/assets/lostdepths/models/item/gravitor_block.json"
         ]
       },
-      "path": "~/furniture"
+      "path": "~/furniture/decorative"
     },
     {
       "name": "WhenPlayerClickInAirWithBlock",
@@ -15461,7 +15441,7 @@
           "src/main/resources/assets/lostdepths/blockstates/draconic_flag.json"
         ]
       },
-      "path": "~/furniture"
+      "path": "~/furniture/decorative"
     },
     {
       "name": "CondensedEtherium",
@@ -18046,6 +18026,21 @@
         ]
       },
       "path": "~/furniture"
+    },
+    {
+      "name": "PhantomBlade",
+      "type": "tool",
+      "sortid": 1093,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "phantom_blade",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/lostdepths/models/item/phantom_blade.json",
+          "src/main/java/cz/blackdragoncz/lostdepths/item/PhantomBladeItem.java"
+        ]
+      },
+      "path": "~/tools"
     }
   ],
   "variable_elements": [
@@ -18607,6 +18602,7 @@
       "block.lostdepths.black_market": "Black Market",
       "item.lostdepths.everwatching_eye": "Everwatching Eye",
       "item.lostdepths.blank_augment_slide": "Blank Augment Slide",
+      "item.lostdepths.phantom_blade": "Phantom Blade",
       "item.lostdepths.draconic_key": "Draconic Key",
       "block.lostdepths.security_clearance_6": "Security Clearance Gate (Level 6)",
       "block.lostdepths.security_clearance_5": "Security Clearance Gate (Level 5)",
@@ -19373,6 +19369,7 @@
       "block.lostdepths.black_market": "Black Market",
       "item.lostdepths.everwatching_eye": "Everwatching Eye",
       "item.lostdepths.blank_augment_slide": "Blank Augment Slide",
+      "item.lostdepths.phantom_blade": "Phantom Blade",
       "item.lostdepths.draconic_key": "Draconic Key",
       "block.lostdepths.security_clearance_6": "Security Clearance Gate (Level 4)",
       "block.lostdepths.security_clearance_5": "Security Clearance Gate (Level 4)",
@@ -19983,6 +19980,18 @@
           {
             "name": "lootbox",
             "children": []
+          },
+          {
+            "name": "villagers",
+            "children": []
+          },
+          {
+            "name": "unused",
+            "children": []
+          },
+          {
+            "name": "decorative",
+            "children": []
           }
         ]
       },
@@ -20130,7 +20139,7 @@
     "modName": "LostDepths",
     "version": "1.18.0",
     "description": "Add ancient mystery of underground and past.",
-    "author": "BlackDragonCZ",
+    "author": "BlackDragonCZ, SamCZEK",
     "websiteURL": "https://blackdragoncz.cz/",
     "license": "All Rights Reserved",
     "disableForgeVersionCheck": true,
@@ -20147,7 +20156,7 @@
     "currentGenerator": "forge-1.20.1",
     "credits": "Structures: SniperMan_CZ | Models: AsLan, Polygony, MikMikTG, Muurr | Textures: ConfusionFloof, MikMikTG , Muurr",
     "modElementsPackage": "cz.blackdragoncz.lostdepths",
-    "lockBaseModFiles": false
+    "lockBaseModFiles": true
   },
   "mcreatorVersion": 202300452316
 }
