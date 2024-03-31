@@ -35,8 +35,8 @@ description="Add ancient mystery of underground and past."
     side="BOTH"
 [[dependencies.lostdepths]]
     modId="jei"
-    mandatory=false
+    mandatory=true
     versionRange="[0,)"
-    ordering="NONE"
+    ordering="AFTER"
     side="BOTH"
 

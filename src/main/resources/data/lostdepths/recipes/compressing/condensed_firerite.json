@@ -1,0 +1,11 @@
+{
+  "type": "lostdepths:compressing",
+  "machine": "lostdepths:galactic_compressor",
+  "input": {
+    "item": "lostdepths:firerite_ingot",
+    "count": 15
+  },
+  "output": {
+    "item": "lostdepths:condensed_firerite"
+  }
+}

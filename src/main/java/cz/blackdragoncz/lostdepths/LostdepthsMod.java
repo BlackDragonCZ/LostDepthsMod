@@ -13,6 +13,8 @@
  */
 package cz.blackdragoncz.lostdepths;
 
+import cz.blackdragoncz.lostdepths.init.*;
+import cz.blackdragoncz.lostdepths.recipe.LDRecipeType;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
@@ -39,19 +41,6 @@ import java.util.ArrayList;
 import java.util.AbstractMap;
 
 import cz.blackdragoncz.lostdepths.world.features.StructureFeature;
-import cz.blackdragoncz.lostdepths.init.LostdepthsModVillagerProfessions;
-import cz.blackdragoncz.lostdepths.init.LostdepthsModTabs;
-import cz.blackdragoncz.lostdepths.init.LostdepthsModSounds;
-import cz.blackdragoncz.lostdepths.init.LostdepthsModPotions;
-import cz.blackdragoncz.lostdepths.init.LostdepthsModParticleTypes;
-import cz.blackdragoncz.lostdepths.init.LostdepthsModMobEffects;
-import cz.blackdragoncz.lostdepths.init.LostdepthsModMenus;
-import cz.blackdragoncz.lostdepths.init.LostdepthsModItems;
-import cz.blackdragoncz.lostdepths.init.LostdepthsModFluids;
-import cz.blackdragoncz.lostdepths.init.LostdepthsModFluidTypes;
-import cz.blackdragoncz.lostdepths.init.LostdepthsModEntities;
-import cz.blackdragoncz.lostdepths.init.LostdepthsModBlocks;
-import cz.blackdragoncz.lostdepths.init.LostdepthsModBlockEntities;
 
 @Mod("lostdepths")
 public class LostdepthsMod {
@@ -66,6 +55,8 @@ public class LostdepthsMod {
 		LostdepthsModBlockEntities.REGISTRY.register(bus);
 		LostdepthsModItems.REGISTRY.register(bus);
 		LostdepthsModEntities.REGISTRY.register(bus);
+		LostdepthsModRecipes.REGISTRY_SERIALIZER.register(bus);
+		LDRecipeType.REGISTRY.register(bus);
 
 		LostdepthsModTabs.REGISTRY.register(bus);
 
