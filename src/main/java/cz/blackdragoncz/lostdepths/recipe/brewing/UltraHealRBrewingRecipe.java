@@ -1,10 +1,10 @@
 
-package cz.blackdragoncz.lostdepths.recipes.brewing;
+package cz.blackdragoncz.lostdepths.recipe.brewing;
 
+import net.minecraftforge.common.brewing.BrewingRecipe;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.common.brewing.IBrewingRecipe;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 
 import net.minecraft.world.item.crafting.Ingredient;
@@ -18,7 +18,11 @@ import cz.blackdragoncz.lostdepths.init.LostdepthsModPotions;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModBlocks;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-public class UltraHealRBrewingRecipe implements IBrewingRecipe {
+public class UltraHealRBrewingRecipe extends BrewingRecipe {
+	public UltraHealRBrewingRecipe() {
+		super(Ingredient.of(Items.POTION), Ingredient.of(Items.POTION), new ItemStack(Items.POTION));
+	}
+
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> BrewingRecipeRegistry.addRecipe(new UltraHealRBrewingRecipe()));
