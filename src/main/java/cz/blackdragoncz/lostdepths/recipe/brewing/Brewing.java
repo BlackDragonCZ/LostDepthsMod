@@ -1,6 +1,9 @@
 
 package cz.blackdragoncz.lostdepths.recipe.brewing;
 
+import cz.blackdragoncz.lostdepths.init.LostdepthsModPotions;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraftforge.common.brewing.BrewingRecipe;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -19,13 +22,13 @@ public class Brewing {
 	public static void init(FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
 			BrewingRecipeRegistry.addRecipe(new BrewingRecipe(
-					Ingredient.of(new ItemStack(Items.POTION)),
+					Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WATER)),
 					Ingredient.of(new ItemStack(LostdepthsModItems.ACID_TONGUE.get())),
 					new ItemStack(LostdepthsModItems.ACIDBLOOD_SOLUTION.get())
 			));
 
 			BrewingRecipeRegistry.addRecipe(new BrewingRecipe(
-					Ingredient.of(new ItemStack(Items.POTION)),
+					Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WATER)),
 					Ingredient.of(new ItemStack(LostdepthsModItems.INFUSED_REDSTONE.get())),
 					new ItemStack(LostdepthsModItems.CORRUPTED_SOLUTION.get())
 			));
@@ -37,13 +40,13 @@ public class Brewing {
 			));
 
 			BrewingRecipeRegistry.addRecipe(new BrewingRecipe(
-					Ingredient.of(new ItemStack(Items.POTION)),
+					Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WATER)),
 					Ingredient.of(new ItemStack(LostdepthsModItems.EXPLOSIVE_SAC.get())),
 					new ItemStack(LostdepthsModItems.FIREBLOOD_SOLUTION.get())
 			));
 
 			BrewingRecipeRegistry.addRecipe(new BrewingRecipe(
-					Ingredient.of(new ItemStack(Items.POTION)),
+					Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WATER)),
 					Ingredient.of(new ItemStack(LostdepthsModItems.GLOWING_SAC.get())),
 					new ItemStack(LostdepthsModItems.GLOWBLOOD_SOLUTION.get())
 			));
@@ -55,25 +58,25 @@ public class Brewing {
 			));
 
 			BrewingRecipeRegistry.addRecipe(new BrewingRecipe(
-					Ingredient.of(new ItemStack(Items.POTION)),
+					Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WATER)),
 					Ingredient.of(new ItemStack(LostdepthsModItems.MAGMA_COMPOUND.get())),
 					new ItemStack(LostdepthsModItems.MAGMA_SOLUTION.get())
 			));
 
 			BrewingRecipeRegistry.addRecipe(new BrewingRecipe(
-					Ingredient.of(new ItemStack(Items.POTION)),
+					Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WATER)),
 					Ingredient.of(new ItemStack(LostdepthsModItems.NIGHTMARE_POWDER.get())),
 					new ItemStack(LostdepthsModItems.NIGHTMARE_SOLUTION.get())
 			));
 
 			BrewingRecipeRegistry.addRecipe(new BrewingRecipe(
-					Ingredient.of(new ItemStack(Items.POTION)),
+					Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WATER)),
 					Ingredient.of(new ItemStack(LostdepthsModItems.DUSKER_EGGS.get())),
 					new ItemStack(LostdepthsModItems.POLYCHARGE_SOLUTION.get())
 			));
 
 			BrewingRecipeRegistry.addRecipe(new BrewingRecipe(
-					Ingredient.of(new ItemStack(Items.POTION)),
+					Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WATER)),
 					Ingredient.of(new ItemStack(LostdepthsModItems.EMBER_SAC.get())),
 					new ItemStack(LostdepthsModItems.QUICKFLAME_SOLUTION.get())
 			));
@@ -85,9 +88,15 @@ public class Brewing {
 			));
 
 			BrewingRecipeRegistry.addRecipe(new BrewingRecipe(
-					Ingredient.of(new ItemStack(Items.POTION)),
+					Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WATER)),
 					Ingredient.of(new ItemStack(LostdepthsModItems.VOLATILE_BLOOD.get())),
 					new ItemStack(LostdepthsModItems.VOLATILITY_SOLUTION.get())
+			));
+
+			BrewingRecipeRegistry.addRecipe(new BrewingRecipe(
+					Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.HEALING)),
+					Ingredient.of(new ItemStack(LostdepthsModItems.DRUIDS_FLOWER.get())),
+					PotionUtils.setPotion(new ItemStack(Items.POTION), LostdepthsModPotions.ULTRA_HEAL_POTION.get())
 			));
 
 
