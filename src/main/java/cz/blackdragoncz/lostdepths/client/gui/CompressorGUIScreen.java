@@ -1,5 +1,7 @@
 package cz.blackdragoncz.lostdepths.client.gui;
 
+import cz.blackdragoncz.lostdepths.block.entity.GalacticCompressorBlockEntity;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
@@ -15,12 +17,16 @@ import cz.blackdragoncz.lostdepths.procedures.CompressorGUIValueTitleProcedure;
 import cz.blackdragoncz.lostdepths.procedures.CompressorGUIValueProcedure;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.entity.BlockEntity;
 
 public class CompressorGUIScreen extends AbstractContainerScreen<CompressorGUIMenu> {
 	private final static HashMap<String, Object> guistate = CompressorGUIMenu.guistate;
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
+
+	private final GalacticCompressorBlockEntity blockEntity;
 
 	public CompressorGUIScreen(CompressorGUIMenu container, Inventory inventory, Component text) {
 		super(container, inventory, text);
@@ -31,6 +37,7 @@ public class CompressorGUIScreen extends AbstractContainerScreen<CompressorGUIMe
 		this.entity = container.entity;
 		this.imageWidth = 176;
 		this.imageHeight = 166;
+		this.blockEntity = (GalacticCompressorBlockEntity) container.boundBlockEntity;
 	}
 
 	private static final ResourceLocation texture = new ResourceLocation("lostdepths:textures/screens/compressor_gui.png");
@@ -73,9 +80,10 @@ public class CompressorGUIScreen extends AbstractContainerScreen<CompressorGUIMe
 		guiGraphics.drawString(this.font,
 
 				CompressorGUIValueTitleProcedure.execute(world, x, y, z), 4, 5, -6750208, false);
-		guiGraphics.drawString(this.font,
 
-				CompressorGUIValueProcedure.execute(world, x, y, z), 6, 70, -12829636, false);
+
+		String val = "Progress: " + new java.text.DecimalFormat("##.#").format(this.blockEntity.progress) + "%";
+		guiGraphics.drawString(this.font, val, 6, 70, -12829636, false);
 	}
 
 	@Override

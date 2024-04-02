@@ -1,5 +1,11 @@
 package cz.blackdragoncz.lostdepths.block.entity;
 
+import com.mojang.logging.LogUtils;
+import cz.blackdragoncz.lostdepths.recipe.CompressingRecipe;
+import cz.blackdragoncz.lostdepths.recipe.LDRecipeType;
+import mezz.jei.api.recipe.RecipeType;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.common.util.LazyOptional;
@@ -23,6 +29,7 @@ import net.minecraft.core.BlockPos;
 
 import javax.annotation.Nullable;
 
+import java.util.List;
 import java.util.stream.IntStream;
 
 import io.netty.buffer.Unpooled;
@@ -34,8 +41,13 @@ public class GalacticCompressorBlockEntity extends RandomizableContainerBlockEnt
 	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(2, ItemStack.EMPTY);
 	private final LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.values());
 
+	private LDRecipeType<CompressingRecipe> recipeType;
+
+	public double progress = 0;
+
 	public GalacticCompressorBlockEntity(BlockPos position, BlockState state) {
 		super(LostdepthsModBlockEntities.GALACTIC_COMPRESSOR.get(), position, state);
+		recipeType = LDRecipeType.COMPRESSING.get();
 	}
 
 	@Override
@@ -44,6 +56,7 @@ public class GalacticCompressorBlockEntity extends RandomizableContainerBlockEnt
 		if (!this.tryLoadLootTable(compound))
 			this.stacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
 		ContainerHelper.loadAllItems(compound, this.stacks);
+		this.progress = compound.getDouble("processTime");
 	}
 
 	@Override
@@ -52,6 +65,7 @@ public class GalacticCompressorBlockEntity extends RandomizableContainerBlockEnt
 		if (!this.trySaveLootTable(compound)) {
 			ContainerHelper.saveAllItems(compound, this.stacks);
 		}
+		compound.putDouble("processTime", this.progress);
 	}
 
 	@Override
@@ -143,5 +157,25 @@ public class GalacticCompressorBlockEntity extends RandomizableContainerBlockEnt
 		super.setRemoved();
 		for (LazyOptional<? extends IItemHandler> handler : handlers)
 			handler.invalidate();
+	}
+
+	public boolean canProcess(ItemStack itemStack) {
+		List<CompressingRecipe> recipes = this.level.getRecipeManager().getAllRecipesFor(LDRecipeType.COMPRESSING.get());
+
+		for (CompressingRecipe recipe : recipes) {
+			if (recipe.getInput().getItem() == itemStack.getItem() && itemStack.getCount() >= recipe.getInput().getCount()) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	public static void serverTick(Level level, BlockPos blockPos, BlockState blockState, GalacticCompressorBlockEntity blockEntity) {
+		if (blockEntity.canProcess(blockEntity.getItem(0))) {
+			blockEntity.progress += 0.1f;
+			//setChanged(level, blockPos, blockState);
+			level.sendBlockUpdated(blockPos, blockState, blockState, 3);
+		}
 	}
 }

@@ -1,6 +1,11 @@
 
 package cz.blackdragoncz.lostdepths.block;
 
+import cz.blackdragoncz.lostdepths.init.LostdepthsModBlockEntities;
+import cz.blackdragoncz.lostdepths.procedures.GalacticCompressorUpdateTickProcedure;
+import cz.blackdragoncz.lostdepths.util.NothingNullByDefault;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.*;
 import net.minecraftforge.network.NetworkHooks;
 
 import net.minecraft.world.phys.BlockHitResult;
@@ -9,10 +14,6 @@ import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.EntityBlock;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.item.TooltipFlag;
@@ -38,12 +39,18 @@ import java.util.Collections;
 import io.netty.buffer.Unpooled;
 
 import cz.blackdragoncz.lostdepths.world.inventory.CompressorGUIMenu;
-import cz.blackdragoncz.lostdepths.procedures.GalacticCompressorUpdateTickProcedure;
 import cz.blackdragoncz.lostdepths.block.entity.GalacticCompressorBlockEntity;
+import org.jetbrains.annotations.Nullable;
 
-public class GalacticCompressorBlock extends Block implements EntityBlock {
+@NothingNullByDefault
+public class GalacticCompressorBlock extends BaseEntityBlock {
 	public GalacticCompressorBlock() {
 		super(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(6f, 16f).pushReaction(PushReaction.BLOCK));
+	}
+
+	@Override
+	public RenderShape getRenderShape(BlockState p_49232_) {
+		return RenderShape.MODEL;
 	}
 
 	@Override
@@ -72,7 +79,13 @@ public class GalacticCompressorBlock extends Block implements EntityBlock {
 	@Override
 	public void onPlace(BlockState blockstate, Level world, BlockPos pos, BlockState oldState, boolean moving) {
 		super.onPlace(blockstate, world, pos, oldState, moving);
-		world.scheduleTick(pos, this, 1);
+		//world.scheduleTick(pos, this, 1);
+	}
+
+	@Nullable
+	@Override
+	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> blockEntityType) {
+		return level.isClientSide ? null : createTickerHelper(null, null, GalacticCompressorBlockEntity::serverTick);
 	}
 
 	@Override
@@ -81,8 +94,8 @@ public class GalacticCompressorBlock extends Block implements EntityBlock {
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();
-		GalacticCompressorUpdateTickProcedure.execute(world, x, y, z);
-		world.scheduleTick(pos, this, 1);
+		//GalacticCompressorUpdateTickProcedure.execute(world, x, y, z);
+		//world.scheduleTick(pos, this, 1);
 	}
 
 	@Override

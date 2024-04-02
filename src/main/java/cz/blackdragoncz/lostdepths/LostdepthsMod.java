@@ -73,6 +73,10 @@ public class LostdepthsMod {
 		workQueue.add(new AbstractMap.SimpleEntry(action, tick));
 	}
 
+	public static ResourceLocation rl(String path) {
+		return new ResourceLocation(MODID, path);
+	}
+
 	@SubscribeEvent
 	public void tick(TickEvent.ServerTickEvent event) {
 		if (event.phase == TickEvent.Phase.END) {

@@ -1,6 +1,8 @@
 
 package cz.blackdragoncz.lostdepths.world.inventory;
 
+import cz.blackdragoncz.lostdepths.recipe.CompressingRecipe;
+import cz.blackdragoncz.lostdepths.recipe.LDRecipeType;
 import net.minecraftforge.items.SlotItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.IItemHandler;
@@ -19,11 +21,13 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
+import java.util.List;
 import java.util.function.Supplier;
 import java.util.Map;
 import java.util.HashMap;
 
 import cz.blackdragoncz.lostdepths.init.LostdepthsModMenus;
+import org.jetbrains.annotations.NotNull;
 
 public class CompressorGUIMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
 	public final static HashMap<String, Object> guistate = new HashMap<>();
@@ -36,7 +40,7 @@ public class CompressorGUIMenu extends AbstractContainerMenu implements Supplier
 	private boolean bound = false;
 	private Supplier<Boolean> boundItemMatcher = null;
 	private Entity boundEntity = null;
-	private BlockEntity boundBlockEntity = null;
+	public BlockEntity boundBlockEntity = null;
 
 	public CompressorGUIMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
 		super(LostdepthsModMenus.COMPRESSOR_GUI.get(), id);
@@ -52,42 +56,27 @@ public class CompressorGUIMenu extends AbstractContainerMenu implements Supplier
 			access = ContainerLevelAccess.create(world, pos);
 		}
 		if (pos != null) {
-			if (extraData.readableBytes() == 1) { // bound to item
-				byte hand = extraData.readByte();
-				ItemStack itemstack = hand == 0 ? this.entity.getMainHandItem() : this.entity.getOffhandItem();
-				this.boundItemMatcher = () -> itemstack == (hand == 0 ? this.entity.getMainHandItem() : this.entity.getOffhandItem());
-				itemstack.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+			boundBlockEntity = this.world.getBlockEntity(pos);
+			if (boundBlockEntity != null)
+				boundBlockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 					this.internal = capability;
 					this.bound = true;
 				});
-			} else if (extraData.readableBytes() > 1) { // bound to entity
-				extraData.readByte(); // drop padding
-				boundEntity = world.getEntity(extraData.readVarInt());
-				if (boundEntity != null)
-					boundEntity.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-						this.internal = capability;
-						this.bound = true;
-					});
-			} else { // might be bound to block
-				boundBlockEntity = this.world.getBlockEntity(pos);
-				if (boundBlockEntity != null)
-					boundBlockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-						this.internal = capability;
-						this.bound = true;
-					});
-			}
 		}
 		this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 116, 35) {
-			private final int slot = 1;
-
 			@Override
 			public boolean mayPlace(ItemStack stack) {
 				return false;
 			}
 		}));
+
 		this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 39, 35) {
-			private final int slot = 0;
+			@Override
+			public boolean mayPlace(@NotNull ItemStack stack) {
+				return canPutItem(stack);
+			}
 		}));
+
 		for (int si = 0; si < 3; ++si)
 			for (int sj = 0; sj < 9; ++sj)
 				this.addSlot(new Slot(inv, sj + (si + 1) * 9, 0 + 8 + sj * 18, 0 + 84 + si * 18));
@@ -98,21 +87,28 @@ public class CompressorGUIMenu extends AbstractContainerMenu implements Supplier
 	@Override
 	public boolean stillValid(Player player) {
 		if (this.bound) {
-			if (this.boundItemMatcher != null)
-				return this.boundItemMatcher.get();
-			else if (this.boundBlockEntity != null)
-				return AbstractContainerMenu.stillValid(this.access, player, this.boundBlockEntity.getBlockState().getBlock());
-			else if (this.boundEntity != null)
-				return this.boundEntity.isAlive();
+			return AbstractContainerMenu.stillValid(this.access, player, this.boundBlockEntity.getBlockState().getBlock());
 		}
 		return true;
 	}
 
+	protected boolean canPutItem(ItemStack itemStack) {
+		List<CompressingRecipe> recipes = this.world.getRecipeManager().getAllRecipesFor(LDRecipeType.COMPRESSING.get());
+
+		for (CompressingRecipe recipe : recipes) {
+			if (recipe.getInput().getItem() == itemStack.getItem()) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 	@Override
-	public ItemStack quickMoveStack(Player playerIn, int index) {
+	public ItemStack quickMoveStack(@NotNull Player playerIn, int index) {
 		ItemStack itemstack = ItemStack.EMPTY;
-		Slot slot = (Slot) this.slots.get(index);
-		if (slot != null && slot.hasItem()) {
+		Slot slot = this.slots.get(index);
+		if (slot.hasItem() && canPutItem(slot.getItem())) {
 			ItemStack itemstack1 = slot.getItem();
 			itemstack = itemstack1.copy();
 			if (index < 2) {
@@ -141,72 +137,72 @@ public class CompressorGUIMenu extends AbstractContainerMenu implements Supplier
 	}
 
 	@Override
-	protected boolean moveItemStackTo(ItemStack p_38904_, int p_38905_, int p_38906_, boolean p_38907_) {
+	protected boolean moveItemStackTo(ItemStack itemStack, int startIndex, int endIndex, boolean reverseDirection) {
 		boolean flag = false;
-		int i = p_38905_;
-		if (p_38907_) {
-			i = p_38906_ - 1;
+		int i = startIndex;
+		if (reverseDirection) {
+			i = endIndex - 1;
 		}
-		if (p_38904_.isStackable()) {
-			while (!p_38904_.isEmpty()) {
-				if (p_38907_) {
-					if (i < p_38905_) {
+		if (itemStack.isStackable()) {
+			while (!itemStack.isEmpty()) {
+				if (reverseDirection) {
+					if (i < startIndex) {
 						break;
 					}
-				} else if (i >= p_38906_) {
+				} else if (i >= endIndex) {
 					break;
 				}
 				Slot slot = this.slots.get(i);
 				ItemStack itemstack = slot.getItem();
-				if (slot.mayPlace(itemstack) && !itemstack.isEmpty() && ItemStack.isSameItemSameTags(p_38904_, itemstack)) {
-					int j = itemstack.getCount() + p_38904_.getCount();
-					int maxSize = Math.min(slot.getMaxStackSize(), p_38904_.getMaxStackSize());
+				if (slot.mayPlace(itemstack) && !itemstack.isEmpty() && ItemStack.isSameItemSameTags(itemStack, itemstack)) {
+					int j = itemstack.getCount() + itemStack.getCount();
+					int maxSize = Math.min(slot.getMaxStackSize(), itemStack.getMaxStackSize());
 					if (j <= maxSize) {
-						p_38904_.setCount(0);
+						itemStack.setCount(0);
 						itemstack.setCount(j);
 						slot.set(itemstack);
 						flag = true;
 					} else if (itemstack.getCount() < maxSize) {
-						p_38904_.shrink(maxSize - itemstack.getCount());
+						itemStack.shrink(maxSize - itemstack.getCount());
 						itemstack.setCount(maxSize);
 						slot.set(itemstack);
 						flag = true;
 					}
 				}
-				if (p_38907_) {
+				if (reverseDirection) {
 					--i;
 				} else {
 					++i;
 				}
 			}
 		}
-		if (!p_38904_.isEmpty()) {
-			if (p_38907_) {
-				i = p_38906_ - 1;
+		if (!itemStack.isEmpty()) {
+			if (reverseDirection) {
+				i = endIndex - 1;
 			} else {
-				i = p_38905_;
+				i = startIndex;
 			}
 			while (true) {
-				if (p_38907_) {
-					if (i < p_38905_) {
+				if (reverseDirection) {
+					if (i < startIndex) {
 						break;
 					}
-				} else if (i >= p_38906_) {
+				} else if (i >= endIndex) {
 					break;
 				}
 				Slot slot1 = this.slots.get(i);
 				ItemStack itemstack1 = slot1.getItem();
-				if (itemstack1.isEmpty() && slot1.mayPlace(p_38904_)) {
-					if (p_38904_.getCount() > slot1.getMaxStackSize()) {
-						slot1.setByPlayer(p_38904_.split(slot1.getMaxStackSize()));
+				if (itemstack1.isEmpty() && slot1.mayPlace(itemStack)) {
+					if (itemStack.getCount() > slot1.getMaxStackSize()) {
+						slot1.setByPlayer(itemStack.split(slot1.getMaxStackSize()));
 					} else {
-						slot1.setByPlayer(p_38904_.split(p_38904_.getCount()));
+						slot1.setByPlayer(itemStack.split(itemStack.getCount()));
 					}
 					slot1.setChanged();
 					flag = true;
 					break;
 				}
-				if (p_38907_) {
+				if (reverseDirection) {
 					--i;
 				} else {
 					++i;

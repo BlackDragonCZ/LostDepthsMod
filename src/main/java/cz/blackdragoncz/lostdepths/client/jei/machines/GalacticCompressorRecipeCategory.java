@@ -1,10 +1,12 @@
 package cz.blackdragoncz.lostdepths.client.jei.machines;
 
+import cz.blackdragoncz.lostdepths.LostdepthsMod;
 import cz.blackdragoncz.lostdepths.client.jei.BaseRecipeCategory;
 import cz.blackdragoncz.lostdepths.client.recipe_view.IRecipeViewerRecipeType;
 import cz.blackdragoncz.lostdepths.recipe.CompressingRecipe;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
@@ -14,11 +16,17 @@ import net.minecraft.resources.ResourceLocation;
 
 public class GalacticCompressorRecipeCategory extends BaseRecipeCategory<CompressingRecipe> {
 
+    private final int arrowWidth = 24;
+    private final int arrowHeight = 17;
     private final IDrawable slot;
+    protected final IDrawable arrowBg;
+    protected final IDrawableAnimated arrow;
 
     public GalacticCompressorRecipeCategory(IGuiHelper helper, IRecipeViewerRecipeType<CompressingRecipe> recipeType) {
         super(helper, recipeType);
         slot = helper.getSlotDrawable();
+        this.arrowBg = helper.drawableBuilder(new ResourceLocation("textures/gui/container/furnace.png"), 80, 35, arrowWidth, arrowHeight).build();
+        this.arrow = helper.drawableBuilder(new ResourceLocation("textures/gui/container/furnace.png"), 176, 14, arrowWidth, arrowHeight).buildAnimated(100, IDrawableAnimated.StartDirection.LEFT, false);
     }
 
     @Override
@@ -28,7 +36,10 @@ public class GalacticCompressorRecipeCategory extends BaseRecipeCategory<Compres
         slot.draw(guiGraphics, 35, 1);
         slot.draw(guiGraphics, 95, 1);
 
-        guiGraphics.blit(new ResourceLocation("lostdepths:textures/screens/recipebook_arrow.png"), 28 + 35, 2, 0, 0, 24, 17, 24, 17);
+        int w = this.getBackground().getWidth();
+        int h = this.getBackground().getHeight();
+        arrowBg.draw(guiGraphics, w / 2 - arrowWidth / 2 + 1, h / 2 - arrowHeight / 2 + 1);
+        arrow.draw(guiGraphics, w / 2 - arrowWidth / 2, h / 2 - arrowHeight / 2);
     }
 
     @Override
