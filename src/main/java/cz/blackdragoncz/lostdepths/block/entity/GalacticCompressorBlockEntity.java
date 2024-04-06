@@ -1,11 +1,8 @@
 package cz.blackdragoncz.lostdepths.block.entity;
 
-import com.mojang.logging.LogUtils;
 import cz.blackdragoncz.lostdepths.recipe.CompressingRecipe;
 import cz.blackdragoncz.lostdepths.recipe.LDRecipeType;
-import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.common.util.LazyOptional;
@@ -47,7 +44,7 @@ public class GalacticCompressorBlockEntity extends RandomizableContainerBlockEnt
 
 	public GalacticCompressorBlockEntity(BlockPos position, BlockState state) {
 		super(LostdepthsModBlockEntities.GALACTIC_COMPRESSOR.get(), position, state);
-		recipeType = LDRecipeType.COMPRESSING.get();
+		recipeType = LDRecipeType.V1_COMPRESSING.get();
 	}
 
 	@Override
@@ -160,7 +157,7 @@ public class GalacticCompressorBlockEntity extends RandomizableContainerBlockEnt
 	}
 
 	public boolean canProcess(ItemStack itemStack) {
-		List<CompressingRecipe> recipes = this.level.getRecipeManager().getAllRecipesFor(LDRecipeType.COMPRESSING.get());
+		List<CompressingRecipe> recipes = this.level.getRecipeManager().getAllRecipesFor(LDRecipeType.V1_COMPRESSING.get());
 
 		for (CompressingRecipe recipe : recipes) {
 			if (recipe.getInput().getItem() == itemStack.getItem() && itemStack.getCount() >= recipe.getInput().getCount()) {

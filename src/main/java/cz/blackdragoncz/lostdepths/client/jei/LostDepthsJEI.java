@@ -34,21 +34,23 @@ public class LostDepthsJEI implements IModPlugin {
 
     @Override
     public void registerRecipeCatalysts(@NotNull IRecipeCatalystRegistration registry) {
-        registry.addRecipeCatalyst(new ItemStack(LostdepthsModItems.GALACTIC_COMPRESSOR.get(), 1), recipeType(RecipeViewerRecipeType.COMPRESSING));
+        registry.addRecipeCatalyst(new ItemStack(LostdepthsModItems.GALACTIC_COMPRESSOR.get(), 1), recipeType(RecipeViewerRecipeType.V1_COMPRESSING));
+        registry.addRecipeCatalyst(new ItemStack(LostdepthsModItems.EXTRA_TERESTRIAL_COMPRESSOR.get(), 1), recipeType(RecipeViewerRecipeType.V2_COMPRESSING));
     }
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
         IGuiHelper guiHelper = registry.getJeiHelpers().getGuiHelper();
 
-        registry.addRecipeCategories(new GalacticCompressorRecipeCategory(guiHelper, RecipeViewerRecipeType.COMPRESSING));
+        registry.addRecipeCategories(new GalacticCompressorRecipeCategory(guiHelper, RecipeViewerRecipeType.V1_COMPRESSING));
+        registry.addRecipeCategories(new GalacticCompressorRecipeCategory(guiHelper, RecipeViewerRecipeType.V2_COMPRESSING));
     }
 
 
     @Override
     public void registerRecipes(@NotNull IRecipeRegistration registry) {
-        LDRecipeType<CompressingRecipe> recipeType = LDRecipeType.COMPRESSING.get().getRecipeType();
-        registry.addRecipes(recipeType(RecipeViewerRecipeType.COMPRESSING), recipeType.getRecipes(Minecraft.getInstance().level));
+        registry.addRecipes(recipeType(RecipeViewerRecipeType.V1_COMPRESSING), LDRecipeType.V1_COMPRESSING.get().getRecipeType().getRecipes(Minecraft.getInstance().level));
+        registry.addRecipes(recipeType(RecipeViewerRecipeType.V2_COMPRESSING), LDRecipeType.V2_COMPRESSING.get().getRecipeType().getRecipes(Minecraft.getInstance().level));
     }
 
     @Override

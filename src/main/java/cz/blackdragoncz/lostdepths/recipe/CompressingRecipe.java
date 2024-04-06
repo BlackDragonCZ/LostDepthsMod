@@ -8,7 +8,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import org.jetbrains.annotations.NotNull;
 
-public class CompressingRecipe extends LDRecipe {
+public abstract class CompressingRecipe extends LDRecipe {
 
     private final ItemStack input;
     private final ItemStack output;
@@ -25,16 +25,6 @@ public class CompressingRecipe extends LDRecipe {
 
     public ItemStack getOutput() {
         return output;
-    }
-
-    @Override
-    public RecipeSerializer<?> getSerializer() {
-        return LostdepthsModRecipes.COMPRESSING.get();
-    }
-
-    @Override
-    public RecipeType<?> getType() {
-        return LDRecipeType.COMPRESSING.get();
     }
 
     @Override

@@ -1,6 +1,5 @@
 {
-  "type": "lostdepths:compressing",
-  "machine": "lostdepths:galactic_compressor",
+  "type": "lostdepths:v1_compressing",
   "input": {
     "item": "lostdepths:firerite_ingot",
     "count": 15

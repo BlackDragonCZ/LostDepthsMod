@@ -1,5 +1,5 @@
 {
-  "type": "lostdepths:compressing",
+  "type": "lostdepths:v1_compressing",
   "machine": "lostdepths:galactic_compressor",
   "input": {
     "item": "lostdepths:melworite_ingot",

@@ -8,17 +8,16 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import org.checkerframework.checker.units.qual.A;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
 import java.util.List;
 
 public class LDRecipeType<RECIPE extends LDRecipe> implements RecipeType<RECIPE>, ILDRecipeTypeProvider<RECIPE> {
 
     public static final DeferredRegister<RecipeType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.RECIPE_TYPES, LostdepthsMod.MODID);
 
-    public static final RegistryObject<LDRecipeType<CompressingRecipe>> COMPRESSING = REGISTRY.register("compressing", () -> new LDRecipeType<>(new ResourceLocation(LostdepthsMod.MODID, "compressing")));
+    public static final RegistryObject<LDRecipeType<CompressingRecipe>> V1_COMPRESSING = REGISTRY.register("v1_compressing", () -> new LDRecipeType<>(new ResourceLocation(LostdepthsMod.MODID, "v1_compressing")));
+    public static final RegistryObject<LDRecipeType<CompressingRecipe>> V2_COMPRESSING = REGISTRY.register("v2_compressing", () -> new LDRecipeType<>(new ResourceLocation(LostdepthsMod.MODID, "v2_compressing")));
 
     private final ResourceLocation registryName;
 

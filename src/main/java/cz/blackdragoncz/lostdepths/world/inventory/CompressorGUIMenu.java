@@ -93,7 +93,7 @@ public class CompressorGUIMenu extends AbstractContainerMenu implements Supplier
 	}
 
 	protected boolean canPutItem(ItemStack itemStack) {
-		List<CompressingRecipe> recipes = this.world.getRecipeManager().getAllRecipesFor(LDRecipeType.COMPRESSING.get());
+		List<CompressingRecipe> recipes = this.world.getRecipeManager().getAllRecipesFor(LDRecipeType.V1_COMPRESSING.get());
 
 		for (CompressingRecipe recipe : recipes) {
 			if (recipe.getInput().getItem() == itemStack.getItem()) {
