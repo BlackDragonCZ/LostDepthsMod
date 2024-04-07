@@ -1,0 +1,9 @@
+{
+  "type": "lostdepths:v2_compressing",
+  "input": {
+    "item": "lostdepths:psycherium_ingot"
+  },
+  "output": {
+    "item": "lostdepths:condensed_psycherium"
+  }
+}

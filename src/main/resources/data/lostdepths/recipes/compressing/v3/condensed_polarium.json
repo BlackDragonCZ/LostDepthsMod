@@ -1,0 +1,9 @@
+{
+  "type": "lostdepths:v3_compressing",
+  "input": {
+    "item": "lostdepths:polarium_ingot"
+  },
+  "output": {
+    "item": "lostdepths:condensed_polarium"
+  }
+}

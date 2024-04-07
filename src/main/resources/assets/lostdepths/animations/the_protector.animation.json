@@ -46,7 +46,7 @@
 				"arm1": {
 					"rotation": {
 						"0.0": ["((math.abs(math.mod(query.modified_distance_moved, 13) - 6.5) - 3.25) / 2.25) * -30.0", 0, 0],
-						"0.84": ["((math.abs(math.mod(query.modified_distance_moved, 13) - 6.5) - 3.25) / 2.25) * +42.5", 0, 0],
+						"0.84": ["((math.abs(math.mod(query.modified_distance_moved, 13) - 6.5) - 3.25) / 2.25) * 42.5", 0, 0],
 						"1.44": ["((math.abs(math.mod(query.modified_distance_moved, 13) - 6.5) - 3.25) / 2.25) * -30.0", 0, 0]
 					}
 				},

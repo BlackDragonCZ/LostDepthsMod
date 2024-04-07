@@ -1,0 +1,9 @@
+{
+  "type": "lostdepths:v2_compressing",
+  "input": {
+    "item": "lostdepths:biolliterite_ingot"
+  },
+  "output": {
+    "item": "lostdepths:condensed_biolliterite"
+  }
+}

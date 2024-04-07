@@ -103,7 +103,7 @@
     "breakHarvestLevel": 1,
     "isBonemealable": false,
     "hasInventory": true,
-    "guiBoundTo": "CompressorGUI",
+    "guiBoundTo": "<NONE>",
     "openGUIOnRightClick": true,
     "inventorySize": 2,
     "inventoryStackSize": 64,

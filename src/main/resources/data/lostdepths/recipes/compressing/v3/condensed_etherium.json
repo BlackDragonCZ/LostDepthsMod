@@ -1,0 +1,9 @@
+{
+  "type": "lostdepths:v3_compressing",
+  "input": {
+    "item": "lostdepths:etherium_ingot"
+  },
+  "output": {
+    "item": "lostdepths:condensed_etherium"
+  }
+}

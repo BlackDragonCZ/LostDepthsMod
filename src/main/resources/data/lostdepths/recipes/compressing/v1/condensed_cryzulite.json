@@ -1,0 +1,9 @@
+{
+  "type": "lostdepths:v1_compressing",
+  "input": {
+    "item": "lostdepths:cryzulite_ingot"
+  },
+  "output": {
+    "item": "lostdepths:condensed_cryzulite"
+  }
+}

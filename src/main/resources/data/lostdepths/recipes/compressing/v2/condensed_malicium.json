@@ -1,5 +1,5 @@
 {
-  "type": "lostdepths:v1_compressing",
+  "type": "lostdepths:v2_compressing",
   "input": {
     "item": "lostdepths:malicium_ingot"
   },

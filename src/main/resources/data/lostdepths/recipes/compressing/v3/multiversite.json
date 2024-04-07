@@ -1,0 +1,9 @@
+{
+  "type": "lostdepths:v3_compressing",
+  "input": {
+    "item": "lostdepths:fractured_multiversite"
+  },
+  "output": {
+    "item": "lostdepths:multiversite_plates"
+  }
+}

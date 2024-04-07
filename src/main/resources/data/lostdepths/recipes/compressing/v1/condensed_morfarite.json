@@ -1,0 +1,9 @@
+{
+  "type": "lostdepths:v1_compressing",
+  "input": {
+    "item": "lostdepths:morfarite_ingot"
+  },
+  "output": {
+    "item": "lostdepths:condensed_morfarite"
+  }
+}

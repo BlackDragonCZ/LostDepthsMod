@@ -184,6 +184,7 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModItems.CONDENSED_NOXHERTIUM.get());
 				tabData.accept(LostdepthsModItems.CONDENSED_COGNITIUM.get());
 				tabData.accept(LostdepthsModItems.PHOTOTENZYTE_BAR.get());
+				tabData.accept(LostdepthsModItems.MULTIVERSITE_PLATES.get());
 			})
 
 					.build());

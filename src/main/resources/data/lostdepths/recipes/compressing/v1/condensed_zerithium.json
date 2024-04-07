@@ -1,0 +1,9 @@
+{
+  "type": "lostdepths:v1_compressing",
+  "input": {
+    "item": "lostdepths:zerithium_ingot"
+  },
+  "output": {
+    "item": "lostdepths:condensed_zerithium"
+  }
+}

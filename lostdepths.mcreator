@@ -1793,7 +1793,7 @@
       "type": "block",
       "sortid": 16,
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "galactic_compressor",
       "metadata": {
         "files": [
@@ -1805,53 +1805,6 @@
         ]
       },
       "path": "~/furniture"
-    },
-    {
-      "name": "CompressorGUI",
-      "type": "gui",
-      "sortid": 191,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "compressor_gui",
-      "metadata": {
-        "files": [
-          "src/main/java/cz/blackdragoncz/lostdepths/world/inventory/CompressorGUIMenu.java",
-          "src/main/java/cz/blackdragoncz/lostdepths/client/gui/CompressorGUIScreen.java"
-        ]
-      },
-      "path": "~/GUI"
-    },
-    {
-      "name": "GalacticCompressorUpdateTick",
-      "type": "procedure",
-      "sortid": 192,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "galactic_compressor_update_tick",
-      "metadata": {
-        "files": [
-          "src/main/java/cz/blackdragoncz/lostdepths/procedures/GalacticCompressorUpdateTickProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/furniture/code"
     },
     {
       "name": "GalacticCompressorR",
@@ -5666,7 +5619,7 @@
       "type": "block",
       "sortid": 42,
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "extra_terestrial_compressor",
       "metadata": {
         "files": [
@@ -5678,38 +5631,6 @@
         ]
       },
       "path": "~/furniture"
-    },
-    {
-      "name": "ExtraTerestrialCompressorTick",
-      "type": "procedure",
-      "sortid": 349,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "extra_terestrial_compressor_tick",
-      "metadata": {
-        "files": [
-          "src/main/java/cz/blackdragoncz/lostdepths/procedures/ExtraTerestrialCompressorTickProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/furniture/code"
     },
     {
       "name": "CompressorGUIValueTitle",
@@ -9575,7 +9496,7 @@
       "type": "animatedentity",
       "sortid": 598,
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "the_protector",
       "metadata": {
         "files": [
@@ -17862,7 +17783,7 @@
       "type": "block",
       "sortid": 1094,
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "black_hole_compressor",
       "metadata": {
         "files": [
@@ -18134,6 +18055,14 @@
       ],
       "category": "master",
       "subtitle": "ambient sound"
+    },
+    {
+      "name": "manufacture_machine",
+      "files": [
+        "manufacture_machine"
+      ],
+      "category": "master",
+      "subtitle": ""
     }
   ],
   "language_map": {
@@ -18674,6 +18603,7 @@
       "item.lostdepths.jammer_key": "Quantum Jammer Access",
       "entity.minecraft.villager.lostdepths:chemistry_operator": "Chemistry Operator",
       "block.lostdepths.hyperium_ore": "Hyperium Ore",
+      "subtitles.manufacture_machine": "",
       "item.lostdepths.external_clovinite_battery": "§5External Clovinite Battery",
       "subtitles.worm_sleeping": "",
       "item.lostdepths.prime_draconic_trident": "§4§kA§r§4 Prime Draconic Trident §kA§r",
@@ -19442,6 +19372,7 @@
       "item.lostdepths.jammer_key": "Quantum Jammer Access",
       "entity.minecraft.villager.lostdepths:chemistry_operator": "",
       "block.lostdepths.hyperium_ore": "Hyperium Ore",
+      "subtitles.manufacture_machine": "",
       "item.lostdepths.external_clovinite_battery": "§5External Clovinite Battery",
       "subtitles.worm_sleeping": "",
       "item.lostdepths.prime_draconic_trident": "§kA§r§4 Draconic Trident §kA§r",

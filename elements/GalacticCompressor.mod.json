@@ -103,7 +103,7 @@
     "breakHarvestLevel": 2,
     "isBonemealable": false,
     "hasInventory": true,
-    "guiBoundTo": "CompressorGUI",
+    "guiBoundTo": "<NONE>",
     "openGUIOnRightClick": true,
     "inventorySize": 2,
     "inventoryStackSize": 64,
@@ -123,9 +123,6 @@
     "isFluidTank": false,
     "fluidCapacity": 8000,
     "fluidRestrictions": [],
-    "onTickUpdate": {
-      "name": "GalacticCompressorUpdateTick"
-    },
     "generateFeature": false,
     "restrictionBiomes": [],
     "blocksToReplace": [],
