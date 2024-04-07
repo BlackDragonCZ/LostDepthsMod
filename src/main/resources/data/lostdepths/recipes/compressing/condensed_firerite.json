@@ -1,8 +1,7 @@
 {
   "type": "lostdepths:v1_compressing",
   "input": {
-    "item": "lostdepths:firerite_ingot",
-    "count": 15
+    "item": "lostdepths:firerite_ingot"
   },
   "output": {
     "item": "lostdepths:condensed_firerite"

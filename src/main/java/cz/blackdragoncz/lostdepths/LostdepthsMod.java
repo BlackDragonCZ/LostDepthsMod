@@ -1,7 +1,7 @@
 package cz.blackdragoncz.lostdepths;
 
 import cz.blackdragoncz.lostdepths.init.*;
-import cz.blackdragoncz.lostdepths.recipe.LDRecipeType;
+import cz.blackdragoncz.lostdepths.init.LostDepthsModRecipeType;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
@@ -42,8 +42,8 @@ public class LostdepthsMod {
 		LostdepthsModBlockEntities.REGISTRY.register(bus);
 		LostdepthsModItems.REGISTRY.register(bus);
 		LostdepthsModEntities.REGISTRY.register(bus);
-		LostdepthsModRecipes.REGISTRY_SERIALIZER.register(bus);
-		LDRecipeType.REGISTRY.register(bus);
+		LostdepthsModRecipeSerializers.REGISTRY_SERIALIZER.register(bus);
+		LostDepthsModRecipeType.REGISTRY.register(bus);
 
 		LostdepthsModTabs.REGISTRY.register(bus);
 

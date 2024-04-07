@@ -1,9 +1,7 @@
 {
-  "type": "lostdepths:compressing",
-  "machine": "lostdepths:galactic_compressor",
+  "type": "lostdepths:v1_compressing",
   "input": {
-    "item": "lostdepths:malicium_ingot",
-    "count": 10
+    "item": "lostdepths:malicium_ingot"
   },
   "output": {
     "item": "lostdepths:condensed_malicium"

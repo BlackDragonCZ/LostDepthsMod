@@ -1,14 +1,12 @@
 
 package cz.blackdragoncz.lostdepths.world.inventory;
 
-import cz.blackdragoncz.lostdepths.recipe.CompressingRecipe;
-import cz.blackdragoncz.lostdepths.recipe.LDRecipeType;
+import cz.blackdragoncz.lostdepths.block.entity.AbstractCompressorBlockEntity;
 import net.minecraftforge.items.SlotItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.inventory.Slot;
@@ -21,7 +19,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
-import java.util.List;
 import java.util.function.Supplier;
 import java.util.Map;
 import java.util.HashMap;
@@ -40,7 +37,7 @@ public class CompressorGUIMenu extends AbstractContainerMenu implements Supplier
 	private boolean bound = false;
 	private Supplier<Boolean> boundItemMatcher = null;
 	private Entity boundEntity = null;
-	public BlockEntity boundBlockEntity = null;
+	public AbstractCompressorBlockEntity boundBlockEntity = null;
 
 	public CompressorGUIMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
 		super(LostdepthsModMenus.COMPRESSOR_GUI.get(), id);
@@ -56,7 +53,7 @@ public class CompressorGUIMenu extends AbstractContainerMenu implements Supplier
 			access = ContainerLevelAccess.create(world, pos);
 		}
 		if (pos != null) {
-			boundBlockEntity = this.world.getBlockEntity(pos);
+			boundBlockEntity = (AbstractCompressorBlockEntity) this.world.getBlockEntity(pos);
 			if (boundBlockEntity != null)
 				boundBlockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 					this.internal = capability;
@@ -92,30 +89,22 @@ public class CompressorGUIMenu extends AbstractContainerMenu implements Supplier
 		return true;
 	}
 
-	protected boolean canPutItem(ItemStack itemStack) {
-		List<CompressingRecipe> recipes = this.world.getRecipeManager().getAllRecipesFor(LDRecipeType.V1_COMPRESSING.get());
-
-		for (CompressingRecipe recipe : recipes) {
-			if (recipe.getInput().getItem() == itemStack.getItem()) {
-				return true;
-			}
-		}
-
-		return false;
+	protected boolean canPutItem(ItemStack stack) {
+		return boundBlockEntity.findRecipe(stack) != null;
 	}
 
 	@Override
 	public ItemStack quickMoveStack(@NotNull Player playerIn, int index) {
 		ItemStack itemstack = ItemStack.EMPTY;
 		Slot slot = this.slots.get(index);
-		if (slot.hasItem() && canPutItem(slot.getItem())) {
+		if (slot.hasItem()) {
 			ItemStack itemstack1 = slot.getItem();
 			itemstack = itemstack1.copy();
 			if (index < 2) {
 				if (!this.moveItemStackTo(itemstack1, 2, this.slots.size(), true))
 					return ItemStack.EMPTY;
 				slot.onQuickCraft(itemstack1, itemstack);
-			} else if (!this.moveItemStackTo(itemstack1, 0, 2, false)) {
+			} else if (canPutItem(slot.getItem()) && !this.moveItemStackTo(itemstack1, 0, 2, false)) {
 				if (index < 2 + 27) {
 					if (!this.moveItemStackTo(itemstack1, 2 + 27, this.slots.size(), true))
 						return ItemStack.EMPTY;

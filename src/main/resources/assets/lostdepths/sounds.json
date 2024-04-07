@@ -183,5 +183,13 @@
         "stream": false
       }
     ]
+  },
+  "manufacture_machine": {
+    "sounds": [
+      {
+        "name": "lostdepths:manufacture_machine",
+        "stream": false
+      }
+    ]
   }
 }

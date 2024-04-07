@@ -37,4 +37,5 @@ public class LostdepthsModSounds {
 	public static final RegistryObject<SoundEvent> CRAB_TARGET = REGISTRY.register("crab_target", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("lostdepths", "crab_target")));
 	public static final RegistryObject<SoundEvent> GATE_ERROR = REGISTRY.register("gate_error", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("lostdepths", "gate_error")));
 	public static final RegistryObject<SoundEvent> REACTOR_ALARM = REGISTRY.register("reactor_alarm", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("lostdepths", "reactor_alarm")));
+	public static final RegistryObject<SoundEvent> MANUFACTURE_MACHINE = REGISTRY.register("manufacture_machine", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("lostdepths", "manufacture_machine")));
 }

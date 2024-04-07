@@ -1,6 +1,7 @@
 package cz.blackdragoncz.lostdepths.recipe;
 
 import cz.blackdragoncz.lostdepths.client.recipe_view.IRecipeViewerRecipeType;
+import cz.blackdragoncz.lostdepths.init.LostDepthsModRecipeType;
 import cz.blackdragoncz.lostdepths.util.IItemProvider;
 import cz.blackdragoncz.lostdepths.util.NothingNullByDefault;
 import net.minecraft.network.chat.Component;
@@ -56,7 +57,7 @@ public record RecipeTypeWrapper<RECIPE extends LDRecipe>(
     }
 
     @Override
-    public LDRecipeType<RECIPE> getRecipeType() {
+    public LostDepthsModRecipeType<RECIPE> getRecipeType() {
         return vanillaProvider.getRecipeType();
     }
 }

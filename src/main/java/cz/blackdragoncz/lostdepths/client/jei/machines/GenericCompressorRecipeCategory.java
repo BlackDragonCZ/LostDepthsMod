@@ -1,6 +1,5 @@
 package cz.blackdragoncz.lostdepths.client.jei.machines;
 
-import cz.blackdragoncz.lostdepths.LostdepthsMod;
 import cz.blackdragoncz.lostdepths.client.jei.BaseRecipeCategory;
 import cz.blackdragoncz.lostdepths.client.recipe_view.IRecipeViewerRecipeType;
 import cz.blackdragoncz.lostdepths.recipe.CompressingRecipe;
@@ -13,17 +12,20 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 
-public class GalacticCompressorRecipeCategory extends BaseRecipeCategory<CompressingRecipe> {
+public class GenericCompressorRecipeCategory extends BaseRecipeCategory<CompressingRecipe> {
 
+    private final int neededStackSize;
     private final int arrowWidth = 24;
     private final int arrowHeight = 17;
     private final IDrawable slot;
     protected final IDrawable arrowBg;
     protected final IDrawableAnimated arrow;
 
-    public GalacticCompressorRecipeCategory(IGuiHelper helper, IRecipeViewerRecipeType<CompressingRecipe> recipeType) {
+    public GenericCompressorRecipeCategory(IGuiHelper helper, IRecipeViewerRecipeType<CompressingRecipe> recipeType, int neededStackSize) {
         super(helper, recipeType);
+        this.neededStackSize = neededStackSize;
         slot = helper.getSlotDrawable();
         this.arrowBg = helper.drawableBuilder(new ResourceLocation("textures/gui/container/furnace.png"), 80, 35, arrowWidth, arrowHeight).build();
         this.arrow = helper.drawableBuilder(new ResourceLocation("textures/gui/container/furnace.png"), 176, 14, arrowWidth, arrowHeight).buildAnimated(100, IDrawableAnimated.StartDirection.LEFT, false);
@@ -44,7 +46,7 @@ public class GalacticCompressorRecipeCategory extends BaseRecipeCategory<Compres
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, CompressingRecipe recipe, IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.INPUT, 35 + 1, 2).addItemStack(recipe.getInput());
+        builder.addSlot(RecipeIngredientRole.INPUT, 35 + 1, 2).addItemStack(new ItemStack(recipe.getInput().getItem(), neededStackSize));
         builder.addSlot(RecipeIngredientRole.OUTPUT, 95 + 1, 2).addItemStack(recipe.getOutput());
     }
 }
