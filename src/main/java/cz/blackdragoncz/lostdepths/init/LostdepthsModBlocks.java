@@ -242,6 +242,7 @@ import cz.blackdragoncz.lostdepths.block.CelestialChestBlock;
 import cz.blackdragoncz.lostdepths.block.CelestialBarrierBlock;
 import cz.blackdragoncz.lostdepths.block.BlightIdolBlock;
 import cz.blackdragoncz.lostdepths.block.BlackMarketBlock;
+import cz.blackdragoncz.lostdepths.block.BlackHoleCompressorBlock;
 import cz.blackdragoncz.lostdepths.block.BiolliteriteOreBlock;
 import cz.blackdragoncz.lostdepths.block.AtmosTechBlock;
 import cz.blackdragoncz.lostdepths.block.AstrosteelBlock;
@@ -530,4 +531,5 @@ public class LostdepthsModBlocks {
 	public static final RegistryObject<Block> CELESTIAL_LEAVES_BLUE = REGISTRY.register("celestial_leaves_blue", () -> new CelestialLeavesBlueBlock());
 	public static final RegistryObject<Block> CELESTIAL_LEAVES_RED = REGISTRY.register("celestial_leaves_red", () -> new CelestialLeavesRedBlock());
 	public static final RegistryObject<Block> MODULATOR = REGISTRY.register("modulator", () -> new ModulatorBlock());
+	public static final RegistryObject<Block> BLACK_HOLE_COMPRESSOR = REGISTRY.register("black_hole_compressor", () -> new BlackHoleCompressorBlock());
 }
