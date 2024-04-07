@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "lostdepths:block/shipment_filler",
+    "up": "lostdepths:block/shipment_filler",
+    "north": "lostdepths:block/factory_block_pillar",
+    "east": "lostdepths:block/factory_block_pillar",
+    "south": "lostdepths:block/factory_block_pillar",
+    "west": "lostdepths:block/factory_block_pillar",
+    "particle": "lostdepths:block/factory_block_pillar"
+  },
+  "render_type": "solid"
+}

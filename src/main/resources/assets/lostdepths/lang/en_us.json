@@ -712,6 +712,8 @@
   "advancements.ruins_2_adv.descr": "Locate and Enter Factory structure",
   "advancements.slime_on_bedrock.descr": "Craft Slimed Bedrock",
   "block.lostdepths.quantum_lab_floor": "Quantum Lab Floor",
+  "block.lostdepths.shipment_filler_block": "Shipment Filler",
+  "block.lostdepths.item_crate": "Item Crate",
   "block.lostdepths.sunder_wood": "Sunder Wood",
   "item.lostdepths.explosive_sac": "Explosive Sac",
   "item.lostdepths.fractured_multiversite": "Fractured Multiversite",
