@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "lostdepths:block/shipment_filler_block"
+    }
+  }
+}
