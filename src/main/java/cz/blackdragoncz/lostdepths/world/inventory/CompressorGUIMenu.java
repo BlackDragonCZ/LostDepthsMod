@@ -72,6 +72,12 @@ public class CompressorGUIMenu extends AbstractContainerMenu implements Supplier
 			public boolean mayPlace(@NotNull ItemStack stack) {
 				return canPutItem(stack);
 			}
+
+			@Override
+			public void onTake(Player pPlayer, ItemStack pStack) {
+				super.onTake(pPlayer, pStack);
+				boundBlockEntity.markForRecipeCheck();
+			}
 		}));
 
 		for (int si = 0; si < 3; ++si)

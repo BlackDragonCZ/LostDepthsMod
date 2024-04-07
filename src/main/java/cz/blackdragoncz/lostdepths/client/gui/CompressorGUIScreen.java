@@ -28,19 +28,11 @@ import net.minecraftforge.energy.EnergyStorage;
 
 public class CompressorGUIScreen extends AbstractContainerScreen<CompressorGUIMenu> {
 	private final static HashMap<String, Object> guistate = CompressorGUIMenu.guistate;
-	private final Level world;
-	private final int x, y, z;
-	private final Player entity;
 
 	private final AbstractCompressorBlockEntity blockEntity;
 
 	public CompressorGUIScreen(CompressorGUIMenu container, Inventory inventory, Component text) {
 		super(container, inventory, text);
-		this.world = container.world;
-		this.x = container.x;
-		this.y = container.y;
-		this.z = container.z;
-		this.entity = container.entity;
 		this.imageWidth = 176;
 		this.imageHeight = 166;
 		this.blockEntity = container.boundBlockEntity;

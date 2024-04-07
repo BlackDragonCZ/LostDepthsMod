@@ -9,7 +9,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.IntTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.sounds.SoundSource;
@@ -49,7 +48,7 @@ public abstract class AbstractCompressorBlockEntity extends RandomizableContaine
     private int currentCraftTime = 0;
     private Item lastUsedRecipeItem;
     private boolean canProcess = false;
-    public boolean firstEverInit = true;
+    public boolean tickRecipeCheck = true;
     private EnergyStorage energyStorage;
 
     protected AbstractCompressorBlockEntity(List<LostDepthsModRecipeType<CompressingRecipe>> recipeTypes, int craftTickTime, int requiredStackSize, int energyStorageCapacity, int energyCost, int maxEnergyTransfer, BlockEntityType<?> blockEntityType, BlockPos blockPos, BlockState blockState) {
@@ -265,6 +264,10 @@ public abstract class AbstractCompressorBlockEntity extends RandomizableContaine
         return energyCost;
     }
 
+    public void markForRecipeCheck() {
+        tickRecipeCheck = true;
+    }
+
     private boolean canFitOutput() {
         ItemStack stack = getItem(1);
         return stack.getCount() + this.requiredStackSize <= stack.getMaxStackSize();
@@ -292,8 +295,8 @@ public abstract class AbstractCompressorBlockEntity extends RandomizableContaine
     }
 
     public static void serverTick(Level level, BlockPos blockPos, BlockState blockState, AbstractCompressorBlockEntity blockEntity) {
-        if (blockEntity.firstEverInit) {
-            blockEntity.firstEverInit = false;
+        if (blockEntity.tickRecipeCheck) {
+            blockEntity.tickRecipeCheck = false;
             blockEntity.tryInitializeRecipe(blockEntity.getItem(0));
         }
 
