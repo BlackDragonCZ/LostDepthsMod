@@ -42,9 +42,9 @@ public class LostDepthsJEI implements IModPlugin {
     public void registerCategories(IRecipeCategoryRegistration registry) {
         IGuiHelper guiHelper = registry.getJeiHelpers().getGuiHelper();
 
-        registry.addRecipeCategories(new GenericCompressorRecipeCategory(guiHelper, RecipeViewerRecipeType.V1_COMPRESSING, 15));
-        registry.addRecipeCategories(new GenericCompressorRecipeCategory(guiHelper, RecipeViewerRecipeType.V2_COMPRESSING, 10));
-        registry.addRecipeCategories(new GenericCompressorRecipeCategory(guiHelper, RecipeViewerRecipeType.V3_COMPRESSING, 5));
+        registry.addRecipeCategories(new GenericCompressorRecipeCategory(guiHelper, RecipeViewerRecipeType.V1_COMPRESSING, 15, false));
+        registry.addRecipeCategories(new GenericCompressorRecipeCategory(guiHelper, RecipeViewerRecipeType.V2_COMPRESSING, 10, false));
+        registry.addRecipeCategories(new GenericCompressorRecipeCategory(guiHelper, RecipeViewerRecipeType.V3_COMPRESSING, 5, true));
     }
 
 

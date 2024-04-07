@@ -1,5 +1,6 @@
 package cz.blackdragoncz.lostdepths.client.jei.machines;
 
+import cz.blackdragoncz.lostdepths.LostdepthsMod;
 import cz.blackdragoncz.lostdepths.client.jei.BaseRecipeCategory;
 import cz.blackdragoncz.lostdepths.client.recipe_view.IRecipeViewerRecipeType;
 import cz.blackdragoncz.lostdepths.recipe.CompressingRecipe;
@@ -17,18 +18,24 @@ import net.minecraft.world.item.ItemStack;
 public class GenericCompressorRecipeCategory extends BaseRecipeCategory<CompressingRecipe> {
 
     private final int neededStackSize;
+    private final boolean requiresPower;
+
     private final int arrowWidth = 24;
     private final int arrowHeight = 17;
     private final IDrawable slot;
     protected final IDrawable arrowBg;
+    protected final IDrawable powerIcon;
     protected final IDrawableAnimated arrow;
 
-    public GenericCompressorRecipeCategory(IGuiHelper helper, IRecipeViewerRecipeType<CompressingRecipe> recipeType, int neededStackSize) {
+    public GenericCompressorRecipeCategory(IGuiHelper helper, IRecipeViewerRecipeType<CompressingRecipe> recipeType, int neededStackSize, boolean requiresPower) {
         super(helper, recipeType);
         this.neededStackSize = neededStackSize;
+        this.requiresPower = requiresPower;
+
         slot = helper.getSlotDrawable();
         this.arrowBg = helper.drawableBuilder(new ResourceLocation("textures/gui/container/furnace.png"), 80, 35, arrowWidth, arrowHeight).build();
         this.arrow = helper.drawableBuilder(new ResourceLocation("textures/gui/container/furnace.png"), 176, 14, arrowWidth, arrowHeight).buildAnimated(100, IDrawableAnimated.StartDirection.LEFT, false);
+        this.powerIcon = helper.drawableBuilder(LostdepthsMod.rl("textures/gui/jei_handler.png"), 224, 96, 15, 14).build();
     }
 
     @Override
@@ -42,6 +49,10 @@ public class GenericCompressorRecipeCategory extends BaseRecipeCategory<Compress
         int h = this.getBackground().getHeight();
         arrowBg.draw(guiGraphics, w / 2 - arrowWidth / 2 + 1, h / 2 - arrowHeight / 2 + 1);
         arrow.draw(guiGraphics, w / 2 - arrowWidth / 2, h / 2 - arrowHeight / 2);
+
+        if (requiresPower) {
+            powerIcon.draw(guiGraphics, 8, h / 2 - 14 / 2);
+        }
     }
 
     @Override
