@@ -3,11 +3,11 @@
   "textures": {
     "down": "lostdepths:block/shipment_filler",
     "up": "lostdepths:block/shipment_filler",
-    "north": "lostdepths:block/factory_block_pillar",
-    "east": "lostdepths:block/factory_block_pillar",
-    "south": "lostdepths:block/factory_block_pillar",
-    "west": "lostdepths:block/factory_block_pillar",
-    "particle": "lostdepths:block/factory_block_pillar"
+    "north": "lostdepths:block/voidcut_block",
+    "east": "lostdepths:block/voidcut_block",
+    "south": "lostdepths:block/voidcut_block",
+    "west": "lostdepths:block/voidcut_block",
+    "particle": "lostdepths:block/voidcut_block"
   },
   "render_type": "solid"
 }
