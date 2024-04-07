@@ -224,6 +224,7 @@ public class TheProtectorEntity extends Monster implements GeoEntity {
 			if (this.isAggressive() && event.isMoving()) {
 				return event.setAndContinue(RawAnimation.begin().thenLoop("animation.the_protector.walk"));
 			}
+			return event.setAndContinue(RawAnimation.begin().thenLoop("animation.the_protector.move"));
 		}
 		return PlayState.STOP;
 	}
