@@ -1,0 +1,48 @@
+{
+  "_fv": 57,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "recipeRetstackSize": 1,
+    "group": "",
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "CUSTOM:ModuleAcceleration"
+      },
+      {
+        "value": "CUSTOM:ModuleConversion"
+      },
+      {
+        "value": "CUSTOM:RadiochronicIsotope"
+      },
+      {
+        "value": "CUSTOM:CondensedMalicium"
+      },
+      {
+        "value": "CUSTOM:ExtraTerestrialCompressor"
+      },
+      {
+        "value": "CUSTOM:CondensedMalicium"
+      },
+      {
+        "value": "CUSTOM:PowerfulPolarcronite"
+      },
+      {
+        "value": "CUSTOM:PowerfulPolarcronite"
+      },
+      {
+        "value": "CUSTOM:PowerfulPolarcronite"
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:BlackHoleCompressor"
+    },
+    "name": "black_hole_compressor_r",
+    "namespace": "mod"
+  }
+}

@@ -35,6 +35,7 @@ import cz.blackdragoncz.lostdepths.block.entity.ExtraTerestrialCompressorBlockEn
 import cz.blackdragoncz.lostdepths.block.entity.DevenergyBlockEntity;
 import cz.blackdragoncz.lostdepths.block.entity.CryzuliteOreBlockEntity;
 import cz.blackdragoncz.lostdepths.block.entity.CrystalizerBlockEntity;
+import cz.blackdragoncz.lostdepths.block.entity.BlackHoleCompressorBlockEntity;
 import cz.blackdragoncz.lostdepths.LostdepthsMod;
 
 public class LostdepthsModBlockEntities {
@@ -63,6 +64,7 @@ public class LostdepthsModBlockEntities {
 	public static final RegistryObject<BlockEntityType<?>> JAMMER_GATE = register("jammer_gate", LostdepthsModBlocks.JAMMER_GATE, JammerGateBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<?>> JAMMER_GATE_OFF = register("jammer_gate_off", LostdepthsModBlocks.JAMMER_GATE_OFF, JammerGateOffBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<?>> MODULATOR = register("modulator", LostdepthsModBlocks.MODULATOR, ModulatorBlockEntity::new);
+	public static final RegistryObject<BlockEntityType<?>> BLACK_HOLE_COMPRESSOR = register("black_hole_compressor", LostdepthsModBlocks.BLACK_HOLE_COMPRESSOR, BlackHoleCompressorBlockEntity::new);
 
 	private static RegistryObject<BlockEntityType<?>> register(String registryname, RegistryObject<Block> block, BlockEntityType.BlockEntitySupplier<?> supplier) {
 		return REGISTRY.register(registryname, () -> BlockEntityType.Builder.of(supplier, block.get()).build(null));

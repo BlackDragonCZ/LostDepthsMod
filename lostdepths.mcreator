@@ -562,20 +562,6 @@
       "path": "~/crafting"
     },
     {
-      "name": "MagmaSolutionR",
-      "type": "recipe",
-      "sortid": 152,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "magma_solution_r",
-      "metadata": {
-        "files": [
-          "src/main/java/cz/blackdragoncz/lostdepths/recipes/brewing/MagmaSolutionRBrewingRecipe.java"
-        ]
-      },
-      "path": "~/crafting"
-    },
-    {
       "name": "FactoryBlock",
       "type": "block",
       "sortid": 12,
@@ -3775,20 +3761,6 @@
       "path": "~/crafting"
     },
     {
-      "name": "MadrigenSolutionR",
-      "type": "recipe",
-      "sortid": 282,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "madrigen_solution_r",
-      "metadata": {
-        "files": [
-          "src/main/java/cz/blackdragoncz/lostdepths/recipes/brewing/MadrigenSolutionRBrewingRecipe.java"
-        ]
-      },
-      "path": "~/crafting"
-    },
-    {
       "name": "EnderVoltaicSolution",
       "type": "item",
       "sortid": 50,
@@ -3802,34 +3774,6 @@
         ]
       },
       "path": "~/items/chemistry"
-    },
-    {
-      "name": "UltraHealR",
-      "type": "recipe",
-      "sortid": 283,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "ultra_heal_r",
-      "metadata": {
-        "files": [
-          "src/main/java/cz/blackdragoncz/lostdepths/recipes/brewing/UltraHealRBrewingRecipe.java"
-        ]
-      },
-      "path": "~/crafting"
-    },
-    {
-      "name": "EndervoltaicsolutionR",
-      "type": "recipe",
-      "sortid": 284,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "endervoltaicsolution_r",
-      "metadata": {
-        "files": [
-          "src/main/java/cz/blackdragoncz/lostdepths/recipes/brewing/EndervoltaicsolutionRBrewingRecipe.java"
-        ]
-      },
-      "path": "~/crafting"
     },
     {
       "name": "ChestSmallTreasure",
@@ -3987,9 +3931,6 @@
       "locked_code": false,
       "registry_name": "update_config",
       "metadata": {
-        "files": [
-          "src/main/java/cz/blackdragoncz/lostdepths/procedures/UpdateConfigProcedure.java"
-        ],
         "dependencies": [
           {
             "name": "entity",
@@ -4184,7 +4125,7 @@
       "type": "gui",
       "sortid": 299,
       "compiles": true,
-      "locked_code": true,
+      "locked_code": false,
       "registry_name": "module_creator_gui",
       "metadata": {
         "files": [
@@ -8575,20 +8516,6 @@
       "path": "~/items/chemistry"
     },
     {
-      "name": "VolatilitySolutionR",
-      "type": "recipe",
-      "sortid": 526,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "volatility_solution_r",
-      "metadata": {
-        "files": [
-          "src/main/java/cz/blackdragoncz/lostdepths/recipes/brewing/VolatilitySolutionRBrewingRecipe.java"
-        ]
-      },
-      "path": "~/crafting"
-    },
-    {
       "name": "OnEntityDeath",
       "type": "procedure",
       "sortid": 527,
@@ -9160,20 +9087,6 @@
       "path": "~/items/chemistry"
     },
     {
-      "name": "PolychargeSolutionR",
-      "type": "recipe",
-      "sortid": 566,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "polycharge_solution_r",
-      "metadata": {
-        "files": [
-          "src/main/java/cz/blackdragoncz/lostdepths/recipes/brewing/PolychargeSolutionRBrewingRecipe.java"
-        ]
-      },
-      "path": "~/crafting"
-    },
-    {
       "name": "ConcentratedAcid",
       "type": "fluid",
       "sortid": 567,
@@ -9478,20 +9391,6 @@
         ]
       },
       "path": "~/entities"
-    },
-    {
-      "name": "NightmareSolutionR",
-      "type": "recipe",
-      "sortid": 587,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "nightmare_solution_r",
-      "metadata": {
-        "files": [
-          "src/main/java/cz/blackdragoncz/lostdepths/recipes/brewing/NightmareSolutionRBrewingRecipe.java"
-        ]
-      },
-      "path": "~/crafting"
     },
     {
       "name": "ElectronRecycler",
@@ -11368,20 +11267,6 @@
       "path": "~/crafting"
     },
     {
-      "name": "CorruptedSolutionR",
-      "type": "recipe",
-      "sortid": 703,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "corrupted_solution_r",
-      "metadata": {
-        "files": [
-          "src/main/java/cz/blackdragoncz/lostdepths/recipes/brewing/CorruptedSolutionRBrewingRecipe.java"
-        ]
-      },
-      "path": "~/crafting"
-    },
-    {
       "name": "CookedEye",
       "type": "item",
       "sortid": 704,
@@ -11775,48 +11660,6 @@
       "path": "~/crafting"
     },
     {
-      "name": "GlowbloodSolutionR",
-      "type": "recipe",
-      "sortid": 724,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "glowblood_solution_r",
-      "metadata": {
-        "files": [
-          "src/main/java/cz/blackdragoncz/lostdepths/recipes/brewing/GlowbloodSolutionRBrewingRecipe.java"
-        ]
-      },
-      "path": "~/crafting"
-    },
-    {
-      "name": "QuickflameSolutionR",
-      "type": "recipe",
-      "sortid": 725,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "quickflame_solution_r",
-      "metadata": {
-        "files": [
-          "src/main/java/cz/blackdragoncz/lostdepths/recipes/brewing/QuickflameSolutionRBrewingRecipe.java"
-        ]
-      },
-      "path": "~/crafting"
-    },
-    {
-      "name": "FirebloodSolutionR",
-      "type": "recipe",
-      "sortid": 726,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "fireblood_solution_r",
-      "metadata": {
-        "files": [
-          "src/main/java/cz/blackdragoncz/lostdepths/recipes/brewing/FirebloodSolutionRBrewingRecipe.java"
-        ]
-      },
-      "path": "~/crafting"
-    },
-    {
       "name": "ChemTech",
       "type": "block",
       "sortid": 727,
@@ -12106,20 +11949,6 @@
         ]
       },
       "path": "~/items/drops"
-    },
-    {
-      "name": "AcidbloodSolutionR",
-      "type": "recipe",
-      "sortid": 742,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "acidblood_solution_r",
-      "metadata": {
-        "files": [
-          "src/main/java/cz/blackdragoncz/lostdepths/recipes/brewing/AcidbloodSolutionRBrewingRecipe.java"
-        ]
-      },
-      "path": "~/crafting"
     },
     {
       "name": "FlapperLoot",
@@ -15869,20 +15698,6 @@
       "path": "~/crafting"
     },
     {
-      "name": "JeiModIntegrator",
-      "type": "code",
-      "sortid": 982,
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "jei_mod_integrator",
-      "metadata": {
-        "files": [
-          "src/main/java/cz/blackdragoncz/lostdepths/JeiModIntegrator.java"
-        ]
-      },
-      "path": "~/compat"
-    },
-    {
       "name": "SunderTreeFeature",
       "type": "feature",
       "sortid": 983,
@@ -18041,6 +17856,38 @@
         ]
       },
       "path": "~/tools"
+    },
+    {
+      "name": "BlackHoleCompressor",
+      "type": "block",
+      "sortid": 1094,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "black_hole_compressor",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/lostdepths/blockstates/black_hole_compressor.json",
+          "src/main/resources/assets/lostdepths/models/item/black_hole_compressor.json",
+          "src/main/java/cz/blackdragoncz/lostdepths/block/BlackHoleCompressorBlock.java",
+          "src/main/java/cz/blackdragoncz/lostdepths/block/entity/BlackHoleCompressorBlockEntity.java",
+          "src/main/resources/assets/lostdepths/models/block/black_hole_compressor.json"
+        ]
+      },
+      "path": "~/furniture"
+    },
+    {
+      "name": "BlackHoleCompressorR",
+      "type": "recipe",
+      "sortid": 1095,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "black_hole_compressor_r",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/lostdepths/recipes/black_hole_compressor_r.json"
+        ]
+      },
+      "path": "~/crafting"
     }
   ],
   "variable_elements": [
@@ -18451,6 +18298,7 @@
       "key.lostdepths.dragon_up": "Dragon move up",
       "item.lostdepths.pyre_log": "Pyre Log",
       "advancements.from_above.title": "Between underworld and overworld",
+      "block.lostdepths.black_hole_compressor": "BlackHole Compressor",
       "block.lostdepths.workstation_2": "Alloy Workbench",
       "item.lostdepths.crystalized_bone_blocks": "§3Crystalized Bone Blocks",
       "block.lostdepths.power_conduit": "Power Conduit",
@@ -19218,6 +19066,7 @@
       "item.lostdepths.pyre_log": "Pyre Log",
       "key.lostdepths.dragon_up": "Dragon move up",
       "advancements.from_above.title": "Between underworld and overworld",
+      "block.lostdepths.black_hole_compressor": "BlackHole Compressor",
       "block.lostdepths.workstation_2": "Alloy Workbench",
       "item.lostdepths.crystalized_bone_blocks": "Crystalized Bone Blocks",
       "block.lostdepths.power_conduit": "Power Conduit",
@@ -20126,10 +19975,6 @@
       },
       {
         "name": "fluids",
-        "children": []
-      },
-      {
-        "name": "compat",
         "children": []
       }
     ]

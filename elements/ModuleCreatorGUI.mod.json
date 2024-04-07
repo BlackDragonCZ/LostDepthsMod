@@ -118,6 +118,15 @@
           "x": 222,
           "y": 71
         }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "mcgui.png",
+          "use1Xscale": false,
+          "x": 126,
+          "y": 27
+        }
       }
     ],
     "gridSettings": {
@@ -125,7 +134,7 @@
       "sy": 18,
       "ox": 11,
       "oy": 15,
-      "snapOnGrid": true
+      "snapOnGrid": false
     }
   }
 }

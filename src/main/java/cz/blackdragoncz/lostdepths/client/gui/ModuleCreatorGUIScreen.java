@@ -48,6 +48,9 @@ public class ModuleCreatorGUIScreen extends AbstractContainerScreen<ModuleCreato
 		RenderSystem.enableBlend();
 		RenderSystem.defaultBlendFunc();
 		guiGraphics.blit(texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
+
+		guiGraphics.blit(new ResourceLocation("lostdepths:textures/screens/mcgui.png"), this.leftPos + 0, this.topPos + 0, 0, 0, 176, 186, 176, 186);
+
 		RenderSystem.disableBlend();
 	}
 

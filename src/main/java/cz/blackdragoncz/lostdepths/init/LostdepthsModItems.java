@@ -896,6 +896,7 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> EMPTY_DATA_DRIVE = REGISTRY.register("empty_data_drive", () -> new EmptyDataDriveItem());
 	public static final RegistryObject<Item> MODULATOR = block(LostdepthsModBlocks.MODULATOR);
 	public static final RegistryObject<Item> PHANTOM_BLADE = REGISTRY.register("phantom_blade", () -> new PhantomBladeItem());
+	public static final RegistryObject<Item> BLACK_HOLE_COMPRESSOR = block(LostdepthsModBlocks.BLACK_HOLE_COMPRESSOR);
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));

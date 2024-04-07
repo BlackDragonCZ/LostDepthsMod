@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "abc",
+    "ded",
+    "fff"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:module_acceleration"
+    },
+    "b": {
+      "item": "lostdepths:module_conversion"
+    },
+    "c": {
+      "item": "lostdepths:radiochronic_isotope"
+    },
+    "d": {
+      "item": "lostdepths:condensed_malicium"
+    },
+    "e": {
+      "item": "lostdepths:extra_terestrial_compressor"
+    },
+    "f": {
+      "item": "lostdepths:powerful_polarcronite"
+    }
+  },
+  "result": {
+    "item": "lostdepths:black_hole_compressor",
+    "count": 1
+  }
+}

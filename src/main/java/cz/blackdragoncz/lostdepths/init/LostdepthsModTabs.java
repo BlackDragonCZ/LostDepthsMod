@@ -100,6 +100,7 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModBlocks.CELESTIAL_LEAVES_BLUE.get().asItem());
 				tabData.accept(LostdepthsModBlocks.CELESTIAL_LEAVES_RED.get().asItem());
 				tabData.accept(LostdepthsModBlocks.MODULATOR.get().asItem());
+				tabData.accept(LostdepthsModBlocks.BLACK_HOLE_COMPRESSOR.get().asItem());
 			})
 
 					.build());
