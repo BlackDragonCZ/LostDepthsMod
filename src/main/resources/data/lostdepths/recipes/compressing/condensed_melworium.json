@@ -1,9 +1,7 @@
 {
-  "type": "lostdepths:compressing",
-  "machine": "lostdepths:galactic_compressor",
+  "type": "lostdepths:v1_compressing",
   "input": {
-    "item": "lostdepths:melworite_ingot",
-    "count": 15
+    "item": "lostdepths:melworite_ingot"
   },
   "output": {
     "item": "lostdepths:condensed_melworite"

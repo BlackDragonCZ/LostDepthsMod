@@ -1,14 +1,11 @@
 package cz.blackdragoncz.lostdepths.recipe;
 
-import cz.blackdragoncz.lostdepths.init.LostdepthsModRecipes;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeType;
 import org.jetbrains.annotations.NotNull;
 
-public class CompressingRecipe extends LDRecipe {
+public abstract class CompressingRecipe extends LDRecipe {
 
     private final ItemStack input;
     private final ItemStack output;
@@ -25,16 +22,6 @@ public class CompressingRecipe extends LDRecipe {
 
     public ItemStack getOutput() {
         return output;
-    }
-
-    @Override
-    public RecipeSerializer<?> getSerializer() {
-        return LostdepthsModRecipes.COMPRESSING.get();
-    }
-
-    @Override
-    public RecipeType<?> getType() {
-        return LDRecipeType.COMPRESSING.get();
     }
 
     @Override
