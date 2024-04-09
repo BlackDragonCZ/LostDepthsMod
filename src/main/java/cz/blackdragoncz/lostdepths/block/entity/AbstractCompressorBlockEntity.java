@@ -138,7 +138,7 @@ public abstract class AbstractCompressorBlockEntity extends RandomizableContaine
 
     @Override
     public boolean canPlaceItem(int index, @NotNull ItemStack stack) {
-        return index != 1;
+        return index != 1 && findRecipe(stack) != null;
     }
 
     @Override
@@ -207,6 +207,7 @@ public abstract class AbstractCompressorBlockEntity extends RandomizableContaine
         return null;
     }
 
+
     private void tryInitializeRecipe(ItemStack stack) {
         if (stack.getCount() < requiredStackSize) {
             canProcess = false;
@@ -216,12 +217,15 @@ public abstract class AbstractCompressorBlockEntity extends RandomizableContaine
         if (currentRecipe == null || stack.getItem() != lastUsedRecipeItem) {
             currentRecipe = findRecipe(stack);
             lastUsedRecipeItem = stack.getItem();
+            currentCraftTime = 0;
         }
 
         if (currentRecipe != null) {
             canProcess = true;
         }
     }
+
+
 
     @Override
     public void setItem(int index, ItemStack stack) {

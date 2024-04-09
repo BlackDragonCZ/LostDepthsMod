@@ -57,8 +57,9 @@ public class CompressorGUIScreen extends AbstractContainerScreen<CompressorGUIMe
 		guiGraphics.blit(BG_RES, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
 
 		float percent = ((float)blockEntity.getCurrentCraftTime() / (float)blockEntity.getCraftTickTime());
-		guiGraphics.blit(FURNACE_RES, this.leftPos + 77, this.topPos + 35, 177, 14, Math.round(24.0f * percent), 17, 254, 254);
 		RenderSystem.disableBlend();
+
+		guiGraphics.blit(FURNACE_RES, this.leftPos + 77, this.topPos + 35, 177, 14, Math.round(20.0f * percent), 17, 254, 254);
 
 		EnergyStorage energyStorage = blockEntity.getEnergyStorage();
 		if (energyStorage != null) {
