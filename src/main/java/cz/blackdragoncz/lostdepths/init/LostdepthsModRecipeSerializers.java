@@ -3,10 +3,15 @@ package cz.blackdragoncz.lostdepths.init;
 import cz.blackdragoncz.lostdepths.LostdepthsMod;
 import cz.blackdragoncz.lostdepths.recipe.CompressingRecipe;
 import cz.blackdragoncz.lostdepths.recipe.CompressingRecipeSerializer;
+import cz.blackdragoncz.lostdepths.recipe.LDShapedRecipe;
+import cz.blackdragoncz.lostdepths.recipe.LDShapedRecipeSerializer;
+import net.minecraft.core.NonNullList;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -48,6 +53,18 @@ public class LostdepthsModRecipeSerializers {
         @Override
         public @NotNull RecipeSerializer<?> getSerializer() {
             return LostdepthsModRecipeSerializers.V3_COMPRESSING.get();
+        }
+    }));
+
+    public static final RegistryObject<LDShapedRecipeSerializer> GALACTIC_WORKSTATION = REGISTRY_SERIALIZER.register("galactic_workstation", () -> new LDShapedRecipeSerializer((ResourceLocation id, int width, int height, NonNullList<Ingredient> recipeItems, ItemStack result) -> new LDShapedRecipe(id, width, height, recipeItems, result) {
+        @Override
+        public @NotNull RecipeType<?> getType() {
+            return LostDepthsModRecipeType.GALACTIC_WORKSTATION.get();
+        }
+
+        @Override
+        public @NotNull RecipeSerializer<?> getSerializer() {
+            return LostdepthsModRecipeSerializers.GALACTIC_WORKSTATION.get();
         }
     }));
 }

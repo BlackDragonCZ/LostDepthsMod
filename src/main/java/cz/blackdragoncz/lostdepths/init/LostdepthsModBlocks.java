@@ -31,7 +31,7 @@ public class LostdepthsModBlocks {
 	public static final RegistryObject<Block> ITEM_CRATE = REGISTRY.register("item_crate", () -> new ItemCrateBlock());
 	public static final RegistryObject<Block> O_FACTORY_BLOCK = REGISTRY.register("o_factory_block", () -> new OFactoryBlockBlock());
 	public static final RegistryObject<Block> COSMIC_CARPET = REGISTRY.register("cosmic_carpet", () -> new CosmicCarpetBlock());
-	public static final RegistryObject<Block> WORKSTATION_1 = REGISTRY.register("workstation_1", () -> new Workstation1Block());
+	public static final RegistryObject<Block> WORKSTATION_1 = REGISTRY.register("workstation_1", () -> new GalacticWorkstationBlock());
 	public static final RegistryObject<Block> GALACTIC_COMPRESSOR = REGISTRY.register("galactic_compressor", () -> new GalacticCompressorBlock());
 	public static final RegistryObject<Block> DRUIDS_FLOWER = REGISTRY.register("druids_flower", () -> new DruidsFlowerBlock());
 	public static final RegistryObject<Block> QUANTUM_TRANSPORTER = REGISTRY.register("quantum_transporter", () -> new QuantumTransporterBlock());

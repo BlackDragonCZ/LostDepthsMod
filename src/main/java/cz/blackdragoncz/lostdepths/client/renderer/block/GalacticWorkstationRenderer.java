@@ -1,8 +1,8 @@
 package cz.blackdragoncz.lostdepths.client.renderer.block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import cz.blackdragoncz.lostdepths.block.Workstation1Block;
-import cz.blackdragoncz.lostdepths.block.entity.Workstation1BlockEntity;
+import cz.blackdragoncz.lostdepths.block.GalacticWorkstationBlock;
+import cz.blackdragoncz.lostdepths.block.entity.GalacticWorkstationBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
@@ -11,9 +11,9 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 
-public class Workstation1Renderer extends BlockEntityRenderBase<Workstation1BlockEntity> {
+public class GalacticWorkstationRenderer extends BlockEntityRenderBase<GalacticWorkstationBlockEntity> {
 
-    public Workstation1Renderer(BlockEntityRendererProvider.Context context) {
+    public GalacticWorkstationRenderer(BlockEntityRendererProvider.Context context) {
     }
 
     private float getRotation(Direction direction) {
@@ -28,10 +28,8 @@ public class Workstation1Renderer extends BlockEntityRenderBase<Workstation1Bloc
     }
 
     @Override
-    public void render(Workstation1BlockEntity blockEntity, float pPartialTick, PoseStack poseStack, MultiBufferSource source, int packedLight, int packedOverlay) {
+    public void render(GalacticWorkstationBlockEntity blockEntity, float pPartialTick, PoseStack poseStack, MultiBufferSource source, int packedLight, int packedOverlay) {
         final ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
-
-        int index = 1;
 
         for (int y = 0; y < 3; y++) {
             for (int x = 0; x < 3; x++) {
@@ -40,13 +38,13 @@ public class Workstation1Renderer extends BlockEntityRenderBase<Workstation1Bloc
                 if (y == 2 && (x == 0 || x == 2))
                     continue;
 
-                ItemStack stack = blockEntity.getItem(index++);
+                ItemStack stack = blockEntity.getItem(x + y * 3);
                 if (stack.isEmpty())
                     continue;
 
                 poseStack.pushPose();
                 poseStack.translate(0.5, 0.62f, 0.5);
-                poseStack.last().pose().rotate((float)Math.toRadians(getRotation(blockEntity.getBlockState().getValue(Workstation1Block.FACING))), 0, 1, 0);
+                poseStack.last().pose().rotate((float)Math.toRadians(getRotation(blockEntity.getBlockState().getValue(GalacticWorkstationBlock.FACING))), 0, 1, 0);
                 poseStack.pushPose();
                 poseStack.translate(-0.15f + (2 - x) * 0.15f, 0, 0.05f - y * 0.15f);
                 poseStack.pushPose();

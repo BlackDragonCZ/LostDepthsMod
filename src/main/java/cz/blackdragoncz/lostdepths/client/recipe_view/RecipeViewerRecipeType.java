@@ -3,7 +3,9 @@ package cz.blackdragoncz.lostdepths.client.recipe_view;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModItems;
 import cz.blackdragoncz.lostdepths.recipe.CompressingRecipe;
 import cz.blackdragoncz.lostdepths.init.LostDepthsModRecipeType;
+import cz.blackdragoncz.lostdepths.recipe.LDShapedRecipe;
 import cz.blackdragoncz.lostdepths.recipe.RecipeTypeWrapper;
+import cz.blackdragoncz.lostdepths.recipe.VanillaRecipeType;
 import cz.blackdragoncz.lostdepths.util.IItemProvider;
 import net.minecraft.world.item.Item;
 import org.jetbrains.annotations.NotNull;
@@ -28,6 +30,13 @@ public class RecipeViewerRecipeType {
         @Override
         public @NotNull Item asItem() {
             return LostdepthsModItems.BLACK_HOLE_COMPRESSOR.get();
+        }
+    });
+
+    public static final RecipeTypeWrapper<LDShapedRecipe> GALACTIC_WORKSTATION = new RecipeTypeWrapper<>(LostDepthsModRecipeType.GALACTIC_WORKSTATION.get(), LDShapedRecipe.class, 0, 0, 160, 60, new IItemProvider() {
+        @Override
+        public @NotNull Item asItem() {
+            return LostdepthsModItems.WORKSTATION_1.get();
         }
     });
 

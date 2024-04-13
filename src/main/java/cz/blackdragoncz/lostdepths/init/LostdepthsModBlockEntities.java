@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.Block;
 
 import cz.blackdragoncz.lostdepths.block.entity.ZerithiumOreBlockEntity;
 import cz.blackdragoncz.lostdepths.block.entity.Workstation2BlockEntity;
-import cz.blackdragoncz.lostdepths.block.entity.Workstation1BlockEntity;
+import cz.blackdragoncz.lostdepths.block.entity.GalacticWorkstationBlockEntity;
 import cz.blackdragoncz.lostdepths.block.entity.SunderWoodSapEmptyBlockEntity;
 import cz.blackdragoncz.lostdepths.block.entity.SunderWoodSapBlockEntity;
 import cz.blackdragoncz.lostdepths.block.entity.OreEmptyBlockEntity;
@@ -44,7 +44,7 @@ public class LostdepthsModBlockEntities {
 	public static final RegistryObject<BlockEntityType<FireriteOreBlockEntity>> FIRERITE_ORE = register("firerite_ore", LostdepthsModBlocks.FIRERITE_ORE, FireriteOreBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<MelworiumOreBlockEntity>> MELWORIUM_ORE = register("melworium_ore", LostdepthsModBlocks.MELWORIUM_ORE, MelworiumOreBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<MorfariteOreBlockEntity>> MORFARITE_ORE = register("morfarite_ore", LostdepthsModBlocks.MORFARITE_ORE, MorfariteOreBlockEntity::new);
-	public static final RegistryObject<BlockEntityType<Workstation1BlockEntity>> WORKSTATION_1 = register("workstation_1", LostdepthsModBlocks.WORKSTATION_1, Workstation1BlockEntity::new);
+	public static final RegistryObject<BlockEntityType<GalacticWorkstationBlockEntity>> WORKSTATION_1 = register("workstation_1", LostdepthsModBlocks.WORKSTATION_1, GalacticWorkstationBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<GalacticCompressorBlockEntity>> GALACTIC_COMPRESSOR = register("galactic_compressor", LostdepthsModBlocks.GALACTIC_COMPRESSOR, GalacticCompressorBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<Workstation2BlockEntity>> WORKSTATION_2 = register("workstation_2", LostdepthsModBlocks.WORKSTATION_2, Workstation2BlockEntity::new);
 	public static final RegistryObject<BlockEntityType<CryzuliteOreBlockEntity>> CRYZULITE_ORE = register("cryzulite_ore", LostdepthsModBlocks.CRYZULITE_ORE, CryzuliteOreBlockEntity::new);

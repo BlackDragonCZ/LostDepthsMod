@@ -1,6 +1,7 @@
 
 package cz.blackdragoncz.lostdepths.block;
 
+import cz.blackdragoncz.lostdepths.world.inventory.WorkstationMenu;
 import net.minecraft.world.level.block.*;
 import net.minecraftforge.network.NetworkHooks;
 
@@ -29,9 +30,7 @@ import net.minecraft.world.MenuProvider;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.Containers;
-import net.minecraft.util.RandomSource;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.Direction;
@@ -42,15 +41,20 @@ import java.util.Collections;
 
 import io.netty.buffer.Unpooled;
 
-import cz.blackdragoncz.lostdepths.world.inventory.WSGUI1Menu;
-import cz.blackdragoncz.lostdepths.procedures.Workstation1UpdateTickProcedure;
-import cz.blackdragoncz.lostdepths.block.entity.Workstation1BlockEntity;
+import cz.blackdragoncz.lostdepths.block.entity.GalacticWorkstationBlockEntity;
+import org.jetbrains.annotations.NotNull;
 
-public class Workstation1Block extends Block implements EntityBlock {
+public class GalacticWorkstationBlock extends Block implements EntityBlock {
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
-	public Workstation1Block() {
-		super(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(2f, 12f).noOcclusion().pushReaction(PushReaction.BLOCK).isRedstoneConductor((bs, br, bp) -> false));
+	public GalacticWorkstationBlock() {
+		super(BlockBehaviour.Properties.of()
+				.sound(SoundType.METAL)
+				.strength(2f, 12f)
+				.noOcclusion()
+				.pushReaction(PushReaction.BLOCK)
+				.isRedstoneConductor((bs, br, bp) -> false)
+		);
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
 
@@ -94,11 +98,11 @@ public class Workstation1Block extends Block implements EntityBlock {
 		return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
 	}
 
-	public BlockState rotate(BlockState state, Rotation rot) {
+	public @NotNull BlockState rotate(BlockState state, Rotation rot) {
 		return state.setValue(FACING, rot.rotate(state.getValue(FACING)));
 	}
 
-	public BlockState mirror(BlockState state, Mirror mirrorIn) {
+	public @NotNull BlockState mirror(BlockState state, Mirror mirrorIn) {
 		return state.rotate(mirrorIn.getRotation(state.getValue(FACING)));
 	}
 
@@ -108,27 +112,11 @@ public class Workstation1Block extends Block implements EntityBlock {
 	}
 
 	@Override
-	public List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
+	public @NotNull List<ItemStack> getDrops(@NotNull BlockState state, LootParams.@NotNull Builder builder) {
 		List<ItemStack> dropsOriginal = super.getDrops(state, builder);
 		if (!dropsOriginal.isEmpty())
 			return dropsOriginal;
 		return Collections.singletonList(new ItemStack(this, 1));
-	}
-
-	@Override
-	public void onPlace(BlockState blockstate, Level world, BlockPos pos, BlockState oldState, boolean moving) {
-		super.onPlace(blockstate, world, pos, oldState, moving);
-		world.scheduleTick(pos, this, 1);
-	}
-
-	@Override
-	public void tick(BlockState blockstate, ServerLevel world, BlockPos pos, RandomSource random) {
-		super.tick(blockstate, world, pos, random);
-		int x = pos.getX();
-		int y = pos.getY();
-		int z = pos.getZ();
-		Workstation1UpdateTickProcedure.execute(world, x, y, z);
-		world.scheduleTick(pos, this, 1);
 	}
 
 	@Override
@@ -143,7 +131,7 @@ public class Workstation1Block extends Block implements EntityBlock {
 
 				@Override
 				public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-					return new WSGUI1Menu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
+					return new WorkstationMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
 				}
 			}, pos);
 		}
@@ -158,7 +146,7 @@ public class Workstation1Block extends Block implements EntityBlock {
 
 	@Override
 	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-		return new Workstation1BlockEntity(pos, state);
+		return new GalacticWorkstationBlockEntity(pos, state);
 	}
 
 	@Override
@@ -172,7 +160,7 @@ public class Workstation1Block extends Block implements EntityBlock {
 	public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
 		if (state.getBlock() != newState.getBlock()) {
 			BlockEntity blockEntity = world.getBlockEntity(pos);
-			if (blockEntity instanceof Workstation1BlockEntity be) {
+			if (blockEntity instanceof GalacticWorkstationBlockEntity be) {
 				Containers.dropContents(world, pos, be);
 				world.updateNeighbourForOutputSignal(pos, this);
 			}

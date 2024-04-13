@@ -1,0 +1,23 @@
+{
+  "type": "lostdepths:galactic_workstation",
+  "pattern": [
+    " S ",
+    "D D",
+    " G "
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:nether_star"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "G": {
+      "item": "lostdepths:iron_golem_essence"
+    }
+  },
+  "result": {
+    "item": "lostdepths:rod_of_transformation",
+    "count": 1
+  }
+}

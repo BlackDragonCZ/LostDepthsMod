@@ -1,0 +1,23 @@
+{
+  "type": "lostdepths:galactic_workstation",
+  "pattern": [
+    "III",
+    "R R",
+    " S "
+  ],
+  "key": {
+    "I": {
+      "item": "lostdepths:infused_crystal"
+    },
+    "R": {
+      "item": "lostdepths:infused_redstone"
+    },
+    "S": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "result": {
+    "item": "lostdepths:ion_crystal",
+    "count": 1
+  }
+}

@@ -2,11 +2,6 @@ package cz.blackdragoncz.lostdepths.client.gui;
 
 import cz.blackdragoncz.lostdepths.LostdepthsMod;
 import cz.blackdragoncz.lostdepths.block.entity.AbstractCompressorBlockEntity;
-import cz.blackdragoncz.lostdepths.block.entity.GalacticCompressorBlockEntity;
-import cz.blackdragoncz.lostdepths.init.LostdepthsModBlocks;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
@@ -14,16 +9,11 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.GuiGraphics;
 
 import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.util.HashMap;
 
 import cz.blackdragoncz.lostdepths.world.inventory.CompressorGUIMenu;
-import cz.blackdragoncz.lostdepths.procedures.CompressorGUIValueTitleProcedure;
-import cz.blackdragoncz.lostdepths.procedures.CompressorGUIValueProcedure;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.energy.EnergyStorage;
 
 public class CompressorGUIScreen extends AbstractContainerScreen<CompressorGUIMenu> {

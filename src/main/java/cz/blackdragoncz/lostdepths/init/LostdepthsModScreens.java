@@ -12,7 +12,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraft.client.gui.screens.MenuScreens;
 
 import cz.blackdragoncz.lostdepths.client.gui.WSGUI2Screen;
-import cz.blackdragoncz.lostdepths.client.gui.WSGUI1Screen;
+import cz.blackdragoncz.lostdepths.client.gui.GalacticWorkstationScreen;
 import cz.blackdragoncz.lostdepths.client.gui.PortableBeaconGUIScreen;
 import cz.blackdragoncz.lostdepths.client.gui.ModuleCreatorGUIScreen;
 import cz.blackdragoncz.lostdepths.client.gui.ModulatorGUIScreen;
@@ -25,7 +25,7 @@ public class LostdepthsModScreens {
 	@SubscribeEvent
 	public static void clientLoad(FMLClientSetupEvent event) {
 		event.enqueueWork(() -> {
-			MenuScreens.register(LostdepthsModMenus.WSGUI_1.get(), WSGUI1Screen::new);
+			MenuScreens.register(LostdepthsModMenus.WSGUI_1.get(), GalacticWorkstationScreen::new);
 			MenuScreens.register(LostdepthsModMenus.CRYSTALIZER_GUI.get(), CrystalizerGUIScreen::new);
 			MenuScreens.register(LostdepthsModMenus.COMPRESSOR_GUI.get(), CompressorGUIScreen::new);
 			MenuScreens.register(LostdepthsModMenus.WSGUI_2.get(), WSGUI2Screen::new);

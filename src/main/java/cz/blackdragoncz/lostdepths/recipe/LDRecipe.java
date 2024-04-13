@@ -2,6 +2,7 @@ package cz.blackdragoncz.lostdepths.recipe;
 
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.Level;
@@ -9,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public abstract class LDRecipe implements Recipe<IgnoredIInventory> {
+public abstract class LDRecipe implements Recipe<CraftingContainer> {
 
     private final ResourceLocation id;
 
@@ -23,7 +24,7 @@ public abstract class LDRecipe implements Recipe<IgnoredIInventory> {
     }
 
     @Override
-    public boolean matches(@NotNull IgnoredIInventory inv, @NotNull Level world) {
+    public boolean matches(@NotNull CraftingContainer inv, @NotNull Level world) {
         return !isIncomplete();
     }
 
@@ -37,7 +38,7 @@ public abstract class LDRecipe implements Recipe<IgnoredIInventory> {
 
     @NotNull
     @Override
-    public ItemStack assemble(@NotNull IgnoredIInventory inv, @NotNull RegistryAccess registryAccess) {
+    public ItemStack assemble(@NotNull CraftingContainer inv, @NotNull RegistryAccess registryAccess) {
         return ItemStack.EMPTY;
     }
 
@@ -51,5 +52,6 @@ public abstract class LDRecipe implements Recipe<IgnoredIInventory> {
     public ItemStack getResultItem(@NotNull RegistryAccess registryAccess) {
         return ItemStack.EMPTY;
     }
+
 
 }

@@ -1,0 +1,29 @@
+{
+  "type": "lostdepths:galactic_workstation",
+  "pattern": [
+    "EIE",
+    "A S",
+    " G "
+  ],
+  "key": {
+    "E": {
+      "item": "lostdepths:energyzed_alloy"
+    },
+    "I": {
+      "item": "lostdepths:infused_crystal"
+    },
+    "A": {
+      "item": "minecraft:netherite_axe"
+    },
+    "S": {
+      "item": "minecraft:netherite_sword"
+    },
+    "G": {
+      "item": "lostdepths:iron_golem_essence"
+    }
+  },
+  "result": {
+    "item": "lostdepths:the_destroyer",
+    "count": 1
+  }
+}

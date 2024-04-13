@@ -1,0 +1,26 @@
+{
+  "type": "lostdepths:galactic_workstation",
+  "pattern": [
+    "RPR",
+    "W W",
+    " U "
+  ],
+  "key": {
+    "P": {
+      "item": "lostdepths:power_core"
+    },
+    "R": {
+      "item": "lostdepths:condensed_morfarite"
+    },
+    "W": {
+      "item": "lostdepths:condensed_melworite"
+    },
+    "U": {
+      "item": "lostdepths:unbreakable_chain"
+    }
+  },
+  "result": {
+    "item": "lostdepths:security_pass_1",
+    "count": 1
+  }
+}

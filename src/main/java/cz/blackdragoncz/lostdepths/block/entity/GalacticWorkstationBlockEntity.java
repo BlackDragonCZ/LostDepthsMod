@@ -1,5 +1,8 @@
 package cz.blackdragoncz.lostdepths.block.entity;
 
+import cz.blackdragoncz.lostdepths.world.inventory.WorkstationMenu;
+import net.minecraft.world.entity.player.StackedContents;
+import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.energy.EnergyStorage;
@@ -29,14 +32,14 @@ import java.util.stream.IntStream;
 
 import io.netty.buffer.Unpooled;
 
-import cz.blackdragoncz.lostdepths.world.inventory.WSGUI1Menu;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModBlockEntities;
 
-public class Workstation1BlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
-	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(7, ItemStack.EMPTY);
+public class GalacticWorkstationBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer, CraftingContainer {
+
+	private NonNullList<ItemStack> items = NonNullList.withSize(3 * 3, ItemStack.EMPTY);
 	private final LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.values());
 
-	public Workstation1BlockEntity(BlockPos position, BlockState state) {
+	public GalacticWorkstationBlockEntity(BlockPos position, BlockState state) {
 		super(LostdepthsModBlockEntities.WORKSTATION_1.get(), position, state);
 	}
 
@@ -44,8 +47,8 @@ public class Workstation1BlockEntity extends RandomizableContainerBlockEntity im
 	public void load(CompoundTag compound) {
 		super.load(compound);
 		if (!this.tryLoadLootTable(compound))
-			this.stacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
-		ContainerHelper.loadAllItems(compound, this.stacks);
+			this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
+		ContainerHelper.loadAllItems(compound, this.items);
 		if (compound.get("energyStorage") instanceof IntTag intTag)
 			energyStorage.deserializeNBT(intTag);
 	}
@@ -54,7 +57,7 @@ public class Workstation1BlockEntity extends RandomizableContainerBlockEntity im
 	public void saveAdditional(CompoundTag compound) {
 		super.saveAdditional(compound);
 		if (!this.trySaveLootTable(compound)) {
-			ContainerHelper.saveAllItems(compound, this.stacks);
+			ContainerHelper.saveAllItems(compound, this.items);
 		}
 		compound.put("energyStorage", energyStorage.serializeNBT());
 	}
@@ -71,12 +74,12 @@ public class Workstation1BlockEntity extends RandomizableContainerBlockEntity im
 
 	@Override
 	public int getContainerSize() {
-		return stacks.size();
+		return items.size();
 	}
 
 	@Override
 	public boolean isEmpty() {
-		for (ItemStack itemstack : this.stacks)
+		for (ItemStack itemstack : this.items)
 			if (!itemstack.isEmpty())
 				return false;
 		return true;
@@ -94,7 +97,7 @@ public class Workstation1BlockEntity extends RandomizableContainerBlockEntity im
 
 	@Override
 	public AbstractContainerMenu createMenu(int id, Inventory inventory) {
-		return new WSGUI1Menu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(this.worldPosition));
+		return new WorkstationMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(this.worldPosition));
 	}
 
 	@Override
@@ -103,19 +106,29 @@ public class Workstation1BlockEntity extends RandomizableContainerBlockEntity im
 	}
 
 	@Override
-	protected NonNullList<ItemStack> getItems() {
-		return this.stacks;
+	public int getWidth() {
+		return 3;
+	}
+
+	@Override
+	public int getHeight() {
+		return 3;
+	}
+
+	@Override
+	public NonNullList<ItemStack> getItems() {
+		return this.items;
 	}
 
 	@Override
 	protected void setItems(NonNullList<ItemStack> stacks) {
-		this.stacks = stacks;
+		this.items = stacks;
 	}
 
 	@Override
 	public boolean canPlaceItem(int index, ItemStack stack) {
-		return true;
-	}
+        return index != 4 && index != 6 && index != 8;
+    }
 
 	@Override
 	public int[] getSlotsForFace(Direction side) {
@@ -169,4 +182,11 @@ public class Workstation1BlockEntity extends RandomizableContainerBlockEntity im
 		for (LazyOptional<? extends IItemHandler> handler : handlers)
 			handler.invalidate();
 	}
+
+	@Override
+	public void fillStackedContents(StackedContents pContents) {
+
+	}
+
+
 }
