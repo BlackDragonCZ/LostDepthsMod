@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.texture.AbstractTexture;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ChunkHolder;
 import net.minecraft.server.level.ServerChunkCache;
@@ -85,6 +86,17 @@ public abstract class BlockEntityRenderBase<T extends BlockEntity> implements Bl
             return Optional.empty();
         }
         return Optional.of(world.getBlockState(pos));
+    }
+
+    public static float getRotation(Direction direction) {
+        return switch (direction) {
+            case NORTH -> 0;
+            case EAST -> 270;
+
+            case SOUTH -> 180;
+            case WEST -> 90;
+            default -> 0;
+        };
     }
 
 }

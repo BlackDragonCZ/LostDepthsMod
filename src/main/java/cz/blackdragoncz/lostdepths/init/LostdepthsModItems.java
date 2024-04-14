@@ -32,7 +32,7 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> FACTORY_BLOCK = block(LostdepthsModBlocks.FACTORY_BLOCK);
 	public static final RegistryObject<Item> O_FACTORY_BLOCK = block(LostdepthsModBlocks.O_FACTORY_BLOCK);
 	public static final RegistryObject<Item> COSMIC_CARPET = block(LostdepthsModBlocks.COSMIC_CARPET);
-	public static final RegistryObject<Item> WORKSTATION_1 = block(LostdepthsModBlocks.WORKSTATION_1);
+	public static final RegistryObject<Item> GALACTIC_WORKSTATION = block(LostdepthsModBlocks.GALACTIC_WORKSTATION);
 	public static final RegistryObject<Item> GALACTIC_COMPRESSOR = block(LostdepthsModBlocks.GALACTIC_COMPRESSOR);
 	public static final RegistryObject<Item> DRUIDS_FLOWER = block(LostdepthsModBlocks.DRUIDS_FLOWER);
 	public static final RegistryObject<Item> QUANTUM_TRANSPORTER = block(LostdepthsModBlocks.QUANTUM_TRANSPORTER);
@@ -42,7 +42,7 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> INFUSEDIRON_PILLAR_CROSS = block(LostdepthsModBlocks.INFUSEDIRON_PILLAR_CROSS);
 	public static final RegistryObject<Item> INFUSED_IRON_CROSS_GLOW = block(LostdepthsModBlocks.INFUSED_IRON_CROSS_GLOW);
 	public static final RegistryObject<Item> NEO_GLASS = block(LostdepthsModBlocks.NEO_GLASS);
-	public static final RegistryObject<Item> WORKSTATION_2 = block(LostdepthsModBlocks.WORKSTATION_2);
+	public static final RegistryObject<Item> ALLOY_WORKSTATION = block(LostdepthsModBlocks.ALLOY_WORKSTATION);
 	public static final RegistryObject<Item> ADVANCED_MECHANICAL_PARTS = REGISTRY.register("advanced_mechanical_parts", () -> new AdvancedMechanicalPartsItem());
 	public static final RegistryObject<Item> ADVANCED_CONSTRUCTION_PARTS = REGISTRY.register("advanced_construction_parts", () -> new AdvancedConstructionPartsItem());
 	public static final RegistryObject<Item> ADVANCED_ELECTRONIC_PARTS = REGISTRY.register("advanced_electronic_parts", () -> new AdvancedElectronicPartsItem());

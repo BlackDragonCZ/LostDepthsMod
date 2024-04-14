@@ -35,7 +35,14 @@ public class RecipeViewerRecipeType {
     public static final RecipeTypeWrapper<LDShapedRecipe> GALACTIC_WORKSTATION = new RecipeTypeWrapper<>(LostDepthsModRecipeType.GALACTIC_WORKSTATION.get(), LDShapedRecipe.class, 0, 0, 160, 60, new IItemProvider() {
         @Override
         public @NotNull Item asItem() {
-            return LostdepthsModItems.WORKSTATION_1.get();
+            return LostdepthsModItems.GALACTIC_WORKSTATION.get();
+        }
+    });
+
+    public static final RecipeTypeWrapper<LDShapedRecipe> ALLOY_WORKSTATION = new RecipeTypeWrapper<>(LostDepthsModRecipeType.ALLOY_WORKSTATION.get(), LDShapedRecipe.class, 0, 0, 160, 60 + 18, new IItemProvider() {
+        @Override
+        public @NotNull Item asItem() {
+            return LostdepthsModItems.ALLOY_WORKSTATION.get();
         }
     });
 

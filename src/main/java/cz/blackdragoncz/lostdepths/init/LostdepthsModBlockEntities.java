@@ -13,7 +13,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.Block;
 
 import cz.blackdragoncz.lostdepths.block.entity.ZerithiumOreBlockEntity;
-import cz.blackdragoncz.lostdepths.block.entity.Workstation2BlockEntity;
+import cz.blackdragoncz.lostdepths.block.entity.AlloyWorkstationBlockEntity;
 import cz.blackdragoncz.lostdepths.block.entity.GalacticWorkstationBlockEntity;
 import cz.blackdragoncz.lostdepths.block.entity.SunderWoodSapEmptyBlockEntity;
 import cz.blackdragoncz.lostdepths.block.entity.SunderWoodSapBlockEntity;
@@ -44,9 +44,9 @@ public class LostdepthsModBlockEntities {
 	public static final RegistryObject<BlockEntityType<FireriteOreBlockEntity>> FIRERITE_ORE = register("firerite_ore", LostdepthsModBlocks.FIRERITE_ORE, FireriteOreBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<MelworiumOreBlockEntity>> MELWORIUM_ORE = register("melworium_ore", LostdepthsModBlocks.MELWORIUM_ORE, MelworiumOreBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<MorfariteOreBlockEntity>> MORFARITE_ORE = register("morfarite_ore", LostdepthsModBlocks.MORFARITE_ORE, MorfariteOreBlockEntity::new);
-	public static final RegistryObject<BlockEntityType<GalacticWorkstationBlockEntity>> WORKSTATION_1 = register("workstation_1", LostdepthsModBlocks.WORKSTATION_1, GalacticWorkstationBlockEntity::new);
+	public static final RegistryObject<BlockEntityType<GalacticWorkstationBlockEntity>> GALACTIC_WORKSTATION = register("workstation_1", LostdepthsModBlocks.GALACTIC_WORKSTATION, GalacticWorkstationBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<GalacticCompressorBlockEntity>> GALACTIC_COMPRESSOR = register("galactic_compressor", LostdepthsModBlocks.GALACTIC_COMPRESSOR, GalacticCompressorBlockEntity::new);
-	public static final RegistryObject<BlockEntityType<Workstation2BlockEntity>> WORKSTATION_2 = register("workstation_2", LostdepthsModBlocks.WORKSTATION_2, Workstation2BlockEntity::new);
+	public static final RegistryObject<BlockEntityType<AlloyWorkstationBlockEntity>> ALLOY_WORKSTATION = register("workstation_2", LostdepthsModBlocks.ALLOY_WORKSTATION, AlloyWorkstationBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<CryzuliteOreBlockEntity>> CRYZULITE_ORE = register("cryzulite_ore", LostdepthsModBlocks.CRYZULITE_ORE, CryzuliteOreBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<ZerithiumOreBlockEntity>> ZERITHIUM_ORE = register("zerithium_ore", LostdepthsModBlocks.ZERITHIUM_ORE, ZerithiumOreBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<ExtraTerestrialCompressorBlockEntity>> EXTRA_TERESTRIAL_COMPRESSOR = register("extra_terestrial_compressor", LostdepthsModBlocks.EXTRA_TERESTRIAL_COMPRESSOR, ExtraTerestrialCompressorBlockEntity::new);

@@ -1,5 +1,6 @@
 package cz.blackdragoncz.lostdepths.client;
 
+import cz.blackdragoncz.lostdepths.client.renderer.block.AlloyWorkstationRenderer;
 import cz.blackdragoncz.lostdepths.client.renderer.block.GalacticWorkstationRenderer;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModBlockEntities;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
@@ -18,7 +19,8 @@ public class ClientSide {
     }
 
     public void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        BlockEntityRenderers.register(LostdepthsModBlockEntities.WORKSTATION_1.get(), GalacticWorkstationRenderer::new);
+        BlockEntityRenderers.register(LostdepthsModBlockEntities.GALACTIC_WORKSTATION.get(), GalacticWorkstationRenderer::new);
+        BlockEntityRenderers.register(LostdepthsModBlockEntities.ALLOY_WORKSTATION.get(), AlloyWorkstationRenderer::new);
     }
 
 }

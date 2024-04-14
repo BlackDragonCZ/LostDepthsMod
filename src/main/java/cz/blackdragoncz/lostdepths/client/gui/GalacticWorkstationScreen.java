@@ -1,6 +1,6 @@
 package cz.blackdragoncz.lostdepths.client.gui;
 
-import cz.blackdragoncz.lostdepths.world.inventory.WorkstationMenu;
+import cz.blackdragoncz.lostdepths.world.inventory.GalacticWorkstationMenu;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
@@ -9,9 +9,9 @@ import net.minecraft.client.gui.GuiGraphics;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 
-public class GalacticWorkstationScreen extends AbstractContainerScreen<WorkstationMenu> {
+public class GalacticWorkstationScreen extends AbstractContainerScreen<GalacticWorkstationMenu> {
 
-	public GalacticWorkstationScreen(WorkstationMenu container, Inventory inventory, Component text) {
+	public GalacticWorkstationScreen(GalacticWorkstationMenu container, Inventory inventory, Component text) {
 		super(container, inventory, text);
 		this.imageWidth = 176;
 		this.imageHeight = 166;

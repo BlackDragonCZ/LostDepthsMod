@@ -24,6 +24,7 @@ public class LostDepthsModRecipeType<RECIPE extends LDRecipe> implements RecipeT
     public static final RegistryObject<LostDepthsModRecipeType<CompressingRecipe>> V2_COMPRESSING = REGISTRY.register("v2_compressing", () -> new LostDepthsModRecipeType<>("v2_compressing"));
     public static final RegistryObject<LostDepthsModRecipeType<CompressingRecipe>> V3_COMPRESSING = REGISTRY.register("v3_compressing", () -> new LostDepthsModRecipeType<>("v3_compressing"));
     public static final RegistryObject<LostDepthsModRecipeType<LDShapedRecipe>> GALACTIC_WORKSTATION = REGISTRY.register("galactic_workstation", () -> new LostDepthsModRecipeType<>("galactic_workstation"));
+    public static final RegistryObject<LostDepthsModRecipeType<LDShapedRecipe>> ALLOY_WORKSTATION = REGISTRY.register("alloy_workstation", () -> new LostDepthsModRecipeType<>("alloy_workstation"));
 
     private final ResourceLocation registryName;
 

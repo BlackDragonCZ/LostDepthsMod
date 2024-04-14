@@ -10,23 +10,14 @@ import net.minecraft.client.gui.GuiGraphics;
 
 import java.util.HashMap;
 
-import cz.blackdragoncz.lostdepths.world.inventory.WSGUI2Menu;
+import cz.blackdragoncz.lostdepths.world.inventory.AlloyWorkstationMenu;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 
-public class WSGUI2Screen extends AbstractContainerScreen<WSGUI2Menu> {
-	private final static HashMap<String, Object> guistate = WSGUI2Menu.guistate;
-	private final Level world;
-	private final int x, y, z;
-	private final Player entity;
+public class AlloyWorkstationScreen extends AbstractContainerScreen<AlloyWorkstationMenu> {
 
-	public WSGUI2Screen(WSGUI2Menu container, Inventory inventory, Component text) {
+	public AlloyWorkstationScreen(AlloyWorkstationMenu container, Inventory inventory, Component text) {
 		super(container, inventory, text);
-		this.world = container.world;
-		this.x = container.x;
-		this.y = container.y;
-		this.z = container.z;
-		this.entity = container.entity;
 		this.imageWidth = 176;
 		this.imageHeight = 206;
 	}
@@ -59,22 +50,7 @@ public class WSGUI2Screen extends AbstractContainerScreen<WSGUI2Menu> {
 	}
 
 	@Override
-	public void containerTick() {
-		super.containerTick();
-	}
-
-	@Override
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
 		guiGraphics.drawString(this.font, Component.translatable("gui.lostdepths.wsgui_2.label_alloy_workbench"), 6, 9, -16750849, false);
-	}
-
-	@Override
-	public void onClose() {
-		super.onClose();
-	}
-
-	@Override
-	public void init() {
-		super.init();
 	}
 }

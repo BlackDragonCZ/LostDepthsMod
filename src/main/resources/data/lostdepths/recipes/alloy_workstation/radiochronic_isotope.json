@@ -1,0 +1,18 @@
+{
+  "type": "lostdepths:alloy_workstation",
+  "pattern": [
+    "PVV",
+    " G ",
+    "IIP"
+  ],
+  "key": {
+    "P": { "item": "lostdepths:poly_amplification_solution" },
+    "V": { "item": "lostdepths:vial_of_solarum" },
+    "I": { "item": "lostdepths:radioactive_isotopes" },
+    "G": { "item": "lostdepths:astral_generator" }
+  },
+  "result": {
+    "item": "lostdepths:radiochronic_isotope",
+    "count": 1
+  }
+}

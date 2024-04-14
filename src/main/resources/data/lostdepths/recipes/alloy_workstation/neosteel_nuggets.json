@@ -1,0 +1,17 @@
+{
+  "type": "lostdepths:alloy_workstation",
+  "pattern": [
+    "CCC",
+    " T ",
+    "ZZZ"
+  ],
+  "key": {
+    "C": { "item": "lostdepths:condensed_cosmerite" },
+    "Z": { "item": "lostdepths:condensed_zerithium" },
+    "T": { "item": "lostdepths:titanium_metalloy" }
+  },
+  "result": {
+    "item": "lostdepths:neosteel_nuggets",
+    "count": 1
+  }
+}

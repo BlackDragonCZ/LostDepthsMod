@@ -33,7 +33,7 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModBlocks.FACTORY_BLOCK.get().asItem());
 				tabData.accept(LostdepthsModBlocks.O_FACTORY_BLOCK.get().asItem());
 				tabData.accept(LostdepthsModBlocks.COSMIC_CARPET.get().asItem());
-				tabData.accept(LostdepthsModBlocks.WORKSTATION_1.get().asItem());
+				tabData.accept(LostdepthsModBlocks.GALACTIC_WORKSTATION.get().asItem());
 				tabData.accept(LostdepthsModBlocks.GALACTIC_COMPRESSOR.get().asItem());
 				tabData.accept(LostdepthsModBlocks.DRUIDS_FLOWER.get().asItem());
 				tabData.accept(LostdepthsModBlocks.QUANTUM_TRANSPORTER.get().asItem());
@@ -43,7 +43,7 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModBlocks.INFUSEDIRON_PILLAR_CROSS.get().asItem());
 				tabData.accept(LostdepthsModBlocks.INFUSED_IRON_CROSS_GLOW.get().asItem());
 				tabData.accept(LostdepthsModBlocks.NEO_GLASS.get().asItem());
-				tabData.accept(LostdepthsModBlocks.WORKSTATION_2.get().asItem());
+				tabData.accept(LostdepthsModBlocks.ALLOY_WORKSTATION.get().asItem());
 				tabData.accept(LostdepthsModBlocks.CRYZULITE_ORE.get().asItem());
 				tabData.accept(LostdepthsModBlocks.ZERITHIUM_ORE.get().asItem());
 				tabData.accept(LostdepthsModBlocks.INFUSED_IRON_BRICKS_A.get().asItem());

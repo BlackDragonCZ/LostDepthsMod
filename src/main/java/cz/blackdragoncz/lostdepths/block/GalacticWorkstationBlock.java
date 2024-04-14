@@ -1,7 +1,7 @@
 
 package cz.blackdragoncz.lostdepths.block;
 
-import cz.blackdragoncz.lostdepths.world.inventory.WorkstationMenu;
+import cz.blackdragoncz.lostdepths.world.inventory.GalacticWorkstationMenu;
 import net.minecraft.world.level.block.*;
 import net.minecraftforge.network.NetworkHooks;
 
@@ -131,7 +131,7 @@ public class GalacticWorkstationBlock extends Block implements EntityBlock {
 
 				@Override
 				public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-					return new WorkstationMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
+					return new GalacticWorkstationMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
 				}
 			}, pos);
 		}

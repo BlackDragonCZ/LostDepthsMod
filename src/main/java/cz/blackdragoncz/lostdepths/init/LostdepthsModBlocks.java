@@ -31,14 +31,14 @@ public class LostdepthsModBlocks {
 	public static final RegistryObject<Block> ITEM_CRATE = REGISTRY.register("item_crate", () -> new ItemCrateBlock());
 	public static final RegistryObject<Block> O_FACTORY_BLOCK = REGISTRY.register("o_factory_block", () -> new OFactoryBlockBlock());
 	public static final RegistryObject<Block> COSMIC_CARPET = REGISTRY.register("cosmic_carpet", () -> new CosmicCarpetBlock());
-	public static final RegistryObject<Block> WORKSTATION_1 = REGISTRY.register("workstation_1", () -> new GalacticWorkstationBlock());
+	public static final RegistryObject<Block> GALACTIC_WORKSTATION = REGISTRY.register("workstation_1", GalacticWorkstationBlock::new);
 	public static final RegistryObject<Block> GALACTIC_COMPRESSOR = REGISTRY.register("galactic_compressor", () -> new GalacticCompressorBlock());
 	public static final RegistryObject<Block> DRUIDS_FLOWER = REGISTRY.register("druids_flower", () -> new DruidsFlowerBlock());
 	public static final RegistryObject<Block> QUANTUM_TRANSPORTER = REGISTRY.register("quantum_transporter", () -> new QuantumTransporterBlock());
 	public static final RegistryObject<Block> INFUSEDIRON_PILLAR_CROSS = REGISTRY.register("infusediron_pillar_cross", () -> new InfusedironPillarCrossBlock());
 	public static final RegistryObject<Block> INFUSED_IRON_CROSS_GLOW = REGISTRY.register("infused_iron_cross_glow", () -> new InfusedIronCrossGlowBlock());
 	public static final RegistryObject<Block> NEO_GLASS = REGISTRY.register("neo_glass", () -> new NeoGlassBlock());
-	public static final RegistryObject<Block> WORKSTATION_2 = REGISTRY.register("workstation_2", () -> new Workstation2Block());
+	public static final RegistryObject<Block> ALLOY_WORKSTATION = REGISTRY.register("workstation_2", () -> new AlloyWorkstationBlock());
 	public static final RegistryObject<Block> CRYZULITE_ORE = REGISTRY.register("cryzulite_ore", () -> new CryzuliteOreBlock());
 	public static final RegistryObject<Block> ZERITHIUM_ORE = REGISTRY.register("zerithium_ore", () -> new ZerithiumOreBlock());
 	public static final RegistryObject<Block> INFUSED_IRON_BRICKS_A = REGISTRY.register("infused_iron_bricks_a", () -> new InfusedIronBricksABlock());

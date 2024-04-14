@@ -1,12 +1,14 @@
 package cz.blackdragoncz.lostdepths.client.jei;
 
 import cz.blackdragoncz.lostdepths.LostdepthsMod;
+import cz.blackdragoncz.lostdepths.client.jei.machines.AlloyWorkstationRecipeCategory;
 import cz.blackdragoncz.lostdepths.client.jei.machines.GenericCompressorRecipeCategory;
-import cz.blackdragoncz.lostdepths.client.jei.machines.WorkstationRecipeCategory;
+import cz.blackdragoncz.lostdepths.client.jei.machines.GalacticWorkstationRecipeCategory;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModItems;
 import cz.blackdragoncz.lostdepths.init.LostDepthsModRecipeType;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModMenus;
-import cz.blackdragoncz.lostdepths.world.inventory.WorkstationMenu;
+import cz.blackdragoncz.lostdepths.world.inventory.AlloyWorkstationMenu;
+import cz.blackdragoncz.lostdepths.world.inventory.GalacticWorkstationMenu;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.helpers.IGuiHelper;
@@ -34,7 +36,8 @@ public class LostDepthsJEI implements IModPlugin {
 
     @Override
     public void registerRecipeTransferHandlers(IRecipeTransferRegistration registration) {
-        registration.addRecipeTransferHandler(WorkstationMenu.class, LostdepthsModMenus.WSGUI_1.get(), recipeType(RecipeViewerRecipeType.GALACTIC_WORKSTATION), 1, 6, 7, 36);
+        registration.addRecipeTransferHandler(GalacticWorkstationMenu.class, LostdepthsModMenus.GALACTIC_WORKSTATION_MENU.get(), recipeType(RecipeViewerRecipeType.GALACTIC_WORKSTATION), 1, 6, 7, 36);
+        registration.addRecipeTransferHandler(AlloyWorkstationMenu.class, LostdepthsModMenus.ALLOY_WORKSTATION_MENU.get(), recipeType(RecipeViewerRecipeType.ALLOY_WORKSTATION), 1, 7, 8, 36);
     }
 
     @Override
@@ -42,7 +45,8 @@ public class LostDepthsJEI implements IModPlugin {
         registry.addRecipeCatalyst(new ItemStack(LostdepthsModItems.GALACTIC_COMPRESSOR.get(), 1), recipeType(RecipeViewerRecipeType.V1_COMPRESSING));
         registry.addRecipeCatalyst(new ItemStack(LostdepthsModItems.EXTRA_TERESTRIAL_COMPRESSOR.get(), 1), recipeType(RecipeViewerRecipeType.V2_COMPRESSING));
         registry.addRecipeCatalyst(new ItemStack(LostdepthsModItems.BLACK_HOLE_COMPRESSOR.get(), 1), recipeType(RecipeViewerRecipeType.V3_COMPRESSING));
-        registry.addRecipeCatalyst(new ItemStack(LostdepthsModItems.WORKSTATION_1.get(), 1), recipeType(RecipeViewerRecipeType.GALACTIC_WORKSTATION));
+        registry.addRecipeCatalyst(new ItemStack(LostdepthsModItems.GALACTIC_WORKSTATION.get(), 1), recipeType(RecipeViewerRecipeType.GALACTIC_WORKSTATION));
+        registry.addRecipeCatalyst(new ItemStack(LostdepthsModItems.ALLOY_WORKSTATION.get(), 1), recipeType(RecipeViewerRecipeType.ALLOY_WORKSTATION));
     }
 
     @Override
@@ -52,7 +56,8 @@ public class LostDepthsJEI implements IModPlugin {
         registry.addRecipeCategories(new GenericCompressorRecipeCategory(guiHelper, RecipeViewerRecipeType.V1_COMPRESSING, 15, false));
         registry.addRecipeCategories(new GenericCompressorRecipeCategory(guiHelper, RecipeViewerRecipeType.V2_COMPRESSING, 10, false));
         registry.addRecipeCategories(new GenericCompressorRecipeCategory(guiHelper, RecipeViewerRecipeType.V3_COMPRESSING, 5, true));
-        registry.addRecipeCategories(new WorkstationRecipeCategory(guiHelper, RecipeViewerRecipeType.GALACTIC_WORKSTATION));
+        registry.addRecipeCategories(new GalacticWorkstationRecipeCategory(guiHelper, RecipeViewerRecipeType.GALACTIC_WORKSTATION));
+        registry.addRecipeCategories(new AlloyWorkstationRecipeCategory(guiHelper, RecipeViewerRecipeType.ALLOY_WORKSTATION));
     }
 
 
@@ -68,6 +73,7 @@ public class LostDepthsJEI implements IModPlugin {
         registry.addRecipes(recipeType(RecipeViewerRecipeType.V3_COMPRESSING), LostDepthsModRecipeType.V3_COMPRESSING.get().getRecipeType().getRecipes(Minecraft.getInstance().level));
 
         registry.addRecipes(recipeType(RecipeViewerRecipeType.GALACTIC_WORKSTATION), LostDepthsModRecipeType.GALACTIC_WORKSTATION.get().getRecipeType().getRecipes(Minecraft.getInstance().level));
+        registry.addRecipes(recipeType(RecipeViewerRecipeType.ALLOY_WORKSTATION), LostDepthsModRecipeType.ALLOY_WORKSTATION.get().getRecipeType().getRecipes(Minecraft.getInstance().level));
     }
 
     @Override

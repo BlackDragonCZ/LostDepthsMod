@@ -12,15 +12,15 @@ import net.minecraftforge.common.extensions.IForgeMenuType;
 
 import net.minecraft.world.inventory.MenuType;
 
-import cz.blackdragoncz.lostdepths.world.inventory.WorkstationMenu;
+import cz.blackdragoncz.lostdepths.world.inventory.GalacticWorkstationMenu;
 import cz.blackdragoncz.lostdepths.LostdepthsMod;
 
 public class LostdepthsModMenus {
 	public static final DeferredRegister<MenuType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.MENU_TYPES, LostdepthsMod.MODID);
-	public static final RegistryObject<MenuType<WorkstationMenu>> WSGUI_1 = REGISTRY.register("wsgui_1", () -> IForgeMenuType.create(WorkstationMenu::new));
+	public static final RegistryObject<MenuType<GalacticWorkstationMenu>> GALACTIC_WORKSTATION_MENU = REGISTRY.register("wsgui_1", () -> IForgeMenuType.create(GalacticWorkstationMenu::new));
 	public static final RegistryObject<MenuType<CrystalizerGUIMenu>> CRYSTALIZER_GUI = REGISTRY.register("crystalizer_gui", () -> IForgeMenuType.create(CrystalizerGUIMenu::new));
 	public static final RegistryObject<MenuType<CompressorGUIMenu>> COMPRESSOR_GUI = REGISTRY.register("compressor_gui", () -> IForgeMenuType.create(CompressorGUIMenu::new));
-	public static final RegistryObject<MenuType<WSGUI2Menu>> WSGUI_2 = REGISTRY.register("wsgui_2", () -> IForgeMenuType.create(WSGUI2Menu::new));
+	public static final RegistryObject<MenuType<AlloyWorkstationMenu>> ALLOY_WORKSTATION_MENU = REGISTRY.register("wsgui_2", () -> IForgeMenuType.create(AlloyWorkstationMenu::new));
 	public static final RegistryObject<MenuType<ModuleCreatorGUIMenu>> MODULE_CREATOR_GUI = REGISTRY.register("module_creator_gui", () -> IForgeMenuType.create(ModuleCreatorGUIMenu::new));
 	public static final RegistryObject<MenuType<MetaCollectorGUIMenu>> META_COLLECTOR_GUI = REGISTRY.register("meta_collector_gui", () -> IForgeMenuType.create(MetaCollectorGUIMenu::new));
 	public static final RegistryObject<MenuType<PortableBeaconGUIMenu>> PORTABLE_BEACON_GUI = REGISTRY.register("portable_beacon_gui", () -> IForgeMenuType.create(PortableBeaconGUIMenu::new));

@@ -67,4 +67,16 @@ public class LostdepthsModRecipeSerializers {
             return LostdepthsModRecipeSerializers.GALACTIC_WORKSTATION.get();
         }
     }));
+
+    public static final RegistryObject<LDShapedRecipeSerializer> ALLOY_WORKSTATION = REGISTRY_SERIALIZER.register("alloy_workstation", () -> new LDShapedRecipeSerializer((ResourceLocation id, int width, int height, NonNullList<Ingredient> recipeItems, ItemStack result) -> new LDShapedRecipe(id, width, height, recipeItems, result) {
+        @Override
+        public @NotNull RecipeType<?> getType() {
+            return LostDepthsModRecipeType.ALLOY_WORKSTATION.get();
+        }
+
+        @Override
+        public @NotNull RecipeSerializer<?> getSerializer() {
+            return LostdepthsModRecipeSerializers.ALLOY_WORKSTATION.get();
+        }
+    }));
 }

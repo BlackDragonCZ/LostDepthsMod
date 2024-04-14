@@ -1,6 +1,7 @@
 
 package cz.blackdragoncz.lostdepths.block;
 
+import cz.blackdragoncz.lostdepths.util.NothingNullByDefault;
 import net.minecraftforge.network.NetworkHooks;
 
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -34,9 +35,7 @@ import net.minecraft.world.MenuProvider;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.Containers;
-import net.minecraft.util.RandomSource;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.Direction;
@@ -47,20 +46,23 @@ import java.util.Collections;
 
 import io.netty.buffer.Unpooled;
 
-import cz.blackdragoncz.lostdepths.world.inventory.WSGUI2Menu;
-import cz.blackdragoncz.lostdepths.block.entity.Workstation2BlockEntity;
+import cz.blackdragoncz.lostdepths.world.inventory.AlloyWorkstationMenu;
+import cz.blackdragoncz.lostdepths.block.entity.AlloyWorkstationBlockEntity;
+import org.jetbrains.annotations.Nullable;
 
-public class Workstation2Block extends Block implements EntityBlock {
+@NothingNullByDefault
+@SuppressWarnings("deprecation")
+public class AlloyWorkstationBlock extends Block implements EntityBlock {
+
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
-	public Workstation2Block() {
-		super(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(6f, 12f).noOcclusion().pushReaction(PushReaction.BLOCK).isRedstoneConductor((bs, br, bp) -> false));
+	public AlloyWorkstationBlock() {
+		super(BlockBehaviour.Properties.of()
+				.sound(SoundType.METAL)
+				.strength(6f, 12f)
+				.noOcclusion().pushReaction(PushReaction.BLOCK)
+				.isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
-	}
-
-	@Override
-	public void appendHoverText(ItemStack itemstack, BlockGetter world, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(itemstack, world, list, flag);
 	}
 
 	@Override
@@ -98,16 +100,18 @@ public class Workstation2Block extends Block implements EntityBlock {
 		return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
 	}
 
+	@Override
 	public BlockState rotate(BlockState state, Rotation rot) {
 		return state.setValue(FACING, rot.rotate(state.getValue(FACING)));
 	}
 
+	@Override
 	public BlockState mirror(BlockState state, Mirror mirrorIn) {
 		return state.rotate(mirrorIn.getRotation(state.getValue(FACING)));
 	}
 
 	@Override
-	public BlockPathTypes getBlockPathType(BlockState state, BlockGetter world, BlockPos pos, Mob entity) {
+	public BlockPathTypes getBlockPathType(BlockState state, BlockGetter world, BlockPos pos, @Nullable Mob entity) {
 		return BlockPathTypes.BLOCKED;
 	}
 
@@ -131,7 +135,7 @@ public class Workstation2Block extends Block implements EntityBlock {
 
 				@Override
 				public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-					return new WSGUI2Menu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
+					return new AlloyWorkstationMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
 				}
 			}, pos);
 		}
@@ -146,21 +150,21 @@ public class Workstation2Block extends Block implements EntityBlock {
 
 	@Override
 	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-		return new Workstation2BlockEntity(pos, state);
+		return new AlloyWorkstationBlockEntity(pos, state);
 	}
 
 	@Override
 	public boolean triggerEvent(BlockState state, Level world, BlockPos pos, int eventID, int eventParam) {
 		super.triggerEvent(state, world, pos, eventID, eventParam);
 		BlockEntity blockEntity = world.getBlockEntity(pos);
-		return blockEntity == null ? false : blockEntity.triggerEvent(eventID, eventParam);
+		return blockEntity != null && blockEntity.triggerEvent(eventID, eventParam);
 	}
 
 	@Override
 	public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
 		if (state.getBlock() != newState.getBlock()) {
 			BlockEntity blockEntity = world.getBlockEntity(pos);
-			if (blockEntity instanceof Workstation2BlockEntity be) {
+			if (blockEntity instanceof AlloyWorkstationBlockEntity be) {
 				Containers.dropContents(world, pos, be);
 				world.updateNeighbourForOutputSignal(pos, this);
 			}
@@ -176,7 +180,7 @@ public class Workstation2Block extends Block implements EntityBlock {
 	@Override
 	public int getAnalogOutputSignal(BlockState blockState, Level world, BlockPos pos) {
 		BlockEntity tileentity = world.getBlockEntity(pos);
-		if (tileentity instanceof Workstation2BlockEntity be)
+		if (tileentity instanceof AlloyWorkstationBlockEntity be)
 			return AbstractContainerMenu.getRedstoneSignalFromContainer(be);
 		else
 			return 0;

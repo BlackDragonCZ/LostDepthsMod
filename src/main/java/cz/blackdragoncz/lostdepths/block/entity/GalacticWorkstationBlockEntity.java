@@ -1,6 +1,6 @@
 package cz.blackdragoncz.lostdepths.block.entity;
 
-import cz.blackdragoncz.lostdepths.world.inventory.WorkstationMenu;
+import cz.blackdragoncz.lostdepths.world.inventory.GalacticWorkstationMenu;
 import net.minecraft.world.entity.player.StackedContents;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
@@ -40,7 +40,7 @@ public class GalacticWorkstationBlockEntity extends RandomizableContainerBlockEn
 	private final LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.values());
 
 	public GalacticWorkstationBlockEntity(BlockPos position, BlockState state) {
-		super(LostdepthsModBlockEntities.WORKSTATION_1.get(), position, state);
+		super(LostdepthsModBlockEntities.GALACTIC_WORKSTATION.get(), position, state);
 	}
 
 	@Override
@@ -97,7 +97,7 @@ public class GalacticWorkstationBlockEntity extends RandomizableContainerBlockEn
 
 	@Override
 	public AbstractContainerMenu createMenu(int id, Inventory inventory) {
-		return new WorkstationMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(this.worldPosition));
+		return new GalacticWorkstationMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(this.worldPosition));
 	}
 
 	@Override

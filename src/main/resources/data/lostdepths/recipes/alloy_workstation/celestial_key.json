@@ -1,0 +1,19 @@
+{
+  "type": "lostdepths:alloy_workstation",
+  "pattern": [
+    "213",
+    " T ",
+    "GGG"
+  ],
+  "key": {
+    "1": { "item": "lostdepths:key_fragment_1" },
+    "2": { "item": "lostdepths:key_fragment_2" },
+    "3": { "item": "lostdepths:key_fragment_3" },
+    "T": { "item": "lostdepths:titanium_metalloy" },
+    "G": { "item": "lostdepths:geo_magnetic_glue" }
+  },
+  "result": {
+    "item": "lostdepths:soul_key",
+    "count": 1
+  }
+}

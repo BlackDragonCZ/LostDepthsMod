@@ -1,0 +1,18 @@
+{
+  "type": "lostdepths:alloy_workstation",
+  "pattern": [
+    "FMF",
+    " N ",
+    "RMR"
+  ],
+  "key": {
+    "F": { "item": "lostdepths:condensed_firerite" },
+    "M": { "item": "lostdepths:condensed_morfarite" },
+    "R": { "item": "lostdepths:condensed_melworite" },
+    "N": { "item": "minecraft:netherite_ingot" }
+  },
+  "result": {
+    "item": "lostdepths:condensed_cosmerite",
+    "count": 1
+  }
+}
