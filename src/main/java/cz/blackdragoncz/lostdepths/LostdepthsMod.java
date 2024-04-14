@@ -4,6 +4,7 @@ import cz.blackdragoncz.lostdepths.client.ClientSide;
 import cz.blackdragoncz.lostdepths.init.*;
 import cz.blackdragoncz.lostdepths.init.LostDepthsModRecipeType;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.DistExecutor;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
@@ -94,5 +95,11 @@ public class LostdepthsMod {
 			actions.forEach(e -> e.getKey().run());
 			workQueue.removeAll(actions);
 		}
+	}
+
+	@SubscribeEvent
+	public void onServerStarting(ServerStartingEvent event)
+	{
+		LOGGER.info("Mlem all other mods.");
 	}
 }

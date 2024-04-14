@@ -23,7 +23,12 @@ import java.util.Collections;
 
 public class UltraResistiveGlassBlock extends Block {
 	public UltraResistiveGlassBlock() {
-		super(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.HAT).sound(SoundType.GLASS).strength(6f, 12f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
+		super(BlockBehaviour.Properties.of()
+				.instrument(NoteBlockInstrument.HAT)
+				.sound(SoundType.GLASS)
+				.strength(6f, 1200.0f)
+				.noOcclusion()
+				.isRedstoneConductor((bs, br, bp) -> false));
 	}
 
 	@Override
