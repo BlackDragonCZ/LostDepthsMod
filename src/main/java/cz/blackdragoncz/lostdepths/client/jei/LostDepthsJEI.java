@@ -3,27 +3,21 @@ package cz.blackdragoncz.lostdepths.client.jei;
 import cz.blackdragoncz.lostdepths.LostdepthsMod;
 import cz.blackdragoncz.lostdepths.client.jei.machines.GenericCompressorRecipeCategory;
 import cz.blackdragoncz.lostdepths.client.jei.machines.WorkstationRecipeCategory;
-import cz.blackdragoncz.lostdepths.client.recipe_view.IRecipeViewerRecipeType;
-import cz.blackdragoncz.lostdepths.client.recipe_view.RecipeViewerRecipeType;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModItems;
 import cz.blackdragoncz.lostdepths.init.LostDepthsModRecipeType;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModMenus;
-import cz.blackdragoncz.lostdepths.recipe.LDShapedRecipe;
 import cz.blackdragoncz.lostdepths.world.inventory.WorkstationMenu;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
-import mezz.jei.api.constants.RecipeTypes;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.ShapedRecipe;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @JeiPlugin

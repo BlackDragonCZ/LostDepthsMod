@@ -1,7 +1,7 @@
 package cz.blackdragoncz.lostdepths.client.jei.machines;
 
 import cz.blackdragoncz.lostdepths.client.jei.BaseRecipeCategory;
-import cz.blackdragoncz.lostdepths.client.recipe_view.IRecipeViewerRecipeType;
+import cz.blackdragoncz.lostdepths.client.jei.IRecipeViewerRecipeType;
 import cz.blackdragoncz.lostdepths.recipe.LDShapedRecipe;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;

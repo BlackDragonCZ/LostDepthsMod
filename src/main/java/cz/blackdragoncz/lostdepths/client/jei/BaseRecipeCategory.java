@@ -4,7 +4,6 @@ import com.mojang.blaze3d.platform.InputConstants;
 import cz.blackdragoncz.lostdepths.client.gui.element.GuiElement;
 import cz.blackdragoncz.lostdepths.client.gui.IGuiWrapper;
 import cz.blackdragoncz.lostdepths.client.gui.element.IProgressInfoHandler;
-import cz.blackdragoncz.lostdepths.client.recipe_view.IRecipeViewerRecipeType;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.ITickTimer;
 import mezz.jei.api.gui.drawable.IDrawable;

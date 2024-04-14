@@ -1,11 +1,10 @@
-package cz.blackdragoncz.lostdepths.client.recipe_view;
+package cz.blackdragoncz.lostdepths.client.jei;
 
 import cz.blackdragoncz.lostdepths.init.LostdepthsModItems;
 import cz.blackdragoncz.lostdepths.recipe.CompressingRecipe;
 import cz.blackdragoncz.lostdepths.init.LostDepthsModRecipeType;
 import cz.blackdragoncz.lostdepths.recipe.LDShapedRecipe;
 import cz.blackdragoncz.lostdepths.recipe.RecipeTypeWrapper;
-import cz.blackdragoncz.lostdepths.recipe.VanillaRecipeType;
 import cz.blackdragoncz.lostdepths.util.IItemProvider;
 import net.minecraft.world.item.Item;
 import org.jetbrains.annotations.NotNull;

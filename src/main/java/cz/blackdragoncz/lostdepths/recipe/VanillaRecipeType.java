@@ -1,6 +1,6 @@
 package cz.blackdragoncz.lostdepths.recipe;
 
-import cz.blackdragoncz.lostdepths.client.recipe_view.IRecipeViewerRecipeType;
+import cz.blackdragoncz.lostdepths.client.jei.IRecipeViewerRecipeType;
 import cz.blackdragoncz.lostdepths.util.IItemProvider;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;

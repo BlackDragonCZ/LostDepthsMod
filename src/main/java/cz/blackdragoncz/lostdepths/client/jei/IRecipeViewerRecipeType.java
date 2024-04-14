@@ -1,4 +1,4 @@
-package cz.blackdragoncz.lostdepths.client.recipe_view;
+package cz.blackdragoncz.lostdepths.client.jei;
 
 import cz.blackdragoncz.lostdepths.util.IHasTextComponent;
 import net.minecraft.resources.ResourceLocation;
