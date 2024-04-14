@@ -34,7 +34,7 @@ import io.netty.buffer.Unpooled;
 import cz.blackdragoncz.lostdepths.world.inventory.AlloyWorkstationMenu;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModBlockEntities;
 
-public class AlloyWorkstationBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer, CraftingContainer {
+public class AlloyWorkstationBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer, CraftingContainer, IEnergyAccessor {
 	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(3 * 3, ItemStack.EMPTY);
 	private final LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.values());
 
@@ -141,24 +141,10 @@ public class AlloyWorkstationBlockEntity extends RandomizableContainerBlockEntit
 
 	@Override
 	public boolean canTakeItemThroughFace(int index, ItemStack stack, Direction direction) {
-		if (index == 1)
-			return false;
-		if (index == 2)
-			return false;
-		if (index == 3)
-			return false;
-		if (index == 4)
-			return false;
-		if (index == 5)
-			return false;
-		if (index == 6)
-			return false;
-		if (index == 7)
-			return false;
-		return true;
+		return false;
 	}
 
-	private final EnergyStorage energyStorage = new EnergyStorage(20000, 1000, 5000, 0) {
+	private final EnergyStorage energyStorage = new EnergyStorage(25000, 1000, 5000, 0) {
 		@Override
 		public int receiveEnergy(int maxReceive, boolean simulate) {
 			int retval = super.receiveEnergy(maxReceive, simulate);
@@ -199,5 +185,10 @@ public class AlloyWorkstationBlockEntity extends RandomizableContainerBlockEntit
 	@Override
 	public void fillStackedContents(StackedContents stackedContents) {
 
+	}
+
+	@Override
+	public EnergyStorage getEnergyStorage() {
+		return energyStorage;
 	}
 }

@@ -1,7 +1,7 @@
 package cz.blackdragoncz.lostdepths.world.inventory;
 
+import cz.blackdragoncz.lostdepths.block.entity.IEnergyAccessor;
 import cz.blackdragoncz.lostdepths.client.gui.ContainerWrapper;
-import cz.blackdragoncz.lostdepths.init.LostDepthsModRecipeType;
 import cz.blackdragoncz.lostdepths.recipe.LDShapedRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
@@ -22,7 +22,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.Supplier;
 
-public class AbstractWorkstationMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>>  {
+public abstract class AbstractWorkstationMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>>  {
 
     protected final Player player;
     protected final Level level;
@@ -34,10 +34,13 @@ public class AbstractWorkstationMenu extends AbstractContainerMenu implements Su
     protected final RecipeType<LDShapedRecipe> recipeType;
     protected final Map<Integer, Slot> customSlots = new HashMap<>();
     protected final ResultContainer resultContainer = new ResultContainer();
+    protected final IEnergyAccessor energyAccessor;
+    protected final int requiredEnergyToCraft;
 
-    protected AbstractWorkstationMenu(@Nullable MenuType<?> menuType, int slotCount, RecipeType<LDShapedRecipe> recipeType, int id, Inventory inv, FriendlyByteBuf extraData) {
+    protected AbstractWorkstationMenu(@Nullable MenuType<?> menuType, int slotCount, RecipeType<LDShapedRecipe> recipeType, int id, Inventory inv, FriendlyByteBuf extraData, int requiredEnergyToCraft) {
         super(menuType, id);
         this.player = inv.player;
+        this.requiredEnergyToCraft = requiredEnergyToCraft;
         this.level = this.player.level();
         this.slotCount = slotCount;
         this.recipeType = recipeType;
@@ -50,6 +53,13 @@ public class AbstractWorkstationMenu extends AbstractContainerMenu implements Su
             this.craftingContainer = (CraftingContainer) this.blockEntity;
         }
 
+        if (this.blockEntity instanceof IEnergyAccessor ea) {
+            this.energyAccessor = ea;
+        }
+        else {
+            this.energyAccessor = null;
+        }
+
         this.containerWrapper = new ContainerWrapper(this.craftingContainer) {
             @Override
             public void setChanged() {
@@ -59,18 +69,20 @@ public class AbstractWorkstationMenu extends AbstractContainerMenu implements Su
         };
     }
 
+    public abstract CustomResultSlot<LDShapedRecipe> getResultSlot();
+
     @Override
     public void slotsChanged(Container container) {
         this.access.execute(((level, blockPos) -> {
             if (!level.isClientSide) {
                 ServerPlayer serverplayer = (ServerPlayer)this.player;
 
-                Optional<LDShapedRecipe> recipe = level.getRecipeManager().getRecipeFor(this.recipeType, this.craftingContainer, level);
+                Optional<LDShapedRecipe> foundRecipe = level.getRecipeManager().getRecipeFor(this.recipeType, this.craftingContainer, level);
 
                 ItemStack stack = ItemStack.EMPTY;
 
-                if (recipe.isPresent()) {
-                    ItemStack resultItem = recipe.get().assemble(this.craftingContainer, level.registryAccess());
+                if (foundRecipe.isPresent()) {
+                    ItemStack resultItem = foundRecipe.get().assemble(this.craftingContainer, level.registryAccess());
 
                     if (resultItem.isItemEnabled(level.enabledFeatures())) {
                         stack = resultItem;
@@ -83,6 +95,10 @@ public class AbstractWorkstationMenu extends AbstractContainerMenu implements Su
                 serverplayer.connection.send(new ClientboundContainerSetSlotPacket(containerId, incrementStateId(), 0, stack));
             }
         }));
+    }
+
+    public boolean hasFoundRecipe() {
+        return getResultSlot().hasItem();
     }
 
     @Override
@@ -201,5 +217,17 @@ public class AbstractWorkstationMenu extends AbstractContainerMenu implements Su
     @Override
     public boolean stillValid(Player player) {
         return AbstractContainerMenu.stillValid(this.access, player, this.blockEntity.getBlockState().getBlock());
+    }
+
+    public BlockEntity getBlockEntity() {
+        return blockEntity;
+    }
+
+    public IEnergyAccessor getEnergyAccessor() {
+        return energyAccessor;
+    }
+
+    public int getRequiredEnergyToCraft() {
+        return requiredEnergyToCraft;
     }
 }

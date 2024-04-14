@@ -31,10 +31,31 @@ import cz.blackdragoncz.lostdepths.init.LostdepthsModMenus;
 
 public class GalacticWorkstationMenu extends AbstractWorkstationMenu {
 
-	public GalacticWorkstationMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-		super(LostdepthsModMenus.GALACTIC_WORKSTATION_MENU.get(), 8, LostDepthsModRecipeType.GALACTIC_WORKSTATION.get(), id, inv, extraData);
+	private CustomResultSlot<LDShapedRecipe> customResultSlot;
 
-		this.addSlot(new CustomResultSlot<>(LostDepthsModRecipeType.GALACTIC_WORKSTATION.get(), this, inv.player, this.craftingContainer, resultContainer, 0, 142, 35));
+	public GalacticWorkstationMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
+		super(LostdepthsModMenus.GALACTIC_WORKSTATION_MENU.get(), 8, LostDepthsModRecipeType.GALACTIC_WORKSTATION.get(), id, inv, extraData, 122);
+
+		this.addSlot(customResultSlot = new CustomResultSlot<>(LostDepthsModRecipeType.GALACTIC_WORKSTATION.get(), this, inv.player, this.craftingContainer, resultContainer, 0, 142, 35) {
+			@Override
+			public boolean mayPickup(Player pPlayer) {
+				if (energyAccessor != null) {
+					if (energyAccessor.getEnergyStorage().getEnergyStored() < requiredEnergyToCraft) {
+						return false;
+					}
+				}
+
+				return super.mayPickup(pPlayer);
+			}
+
+			@Override
+			public void onTake(Player pPlayer, ItemStack pStack) {
+				super.onTake(pPlayer, pStack);
+				if (energyAccessor != null) {
+					energyAccessor.getEnergyStorage().extractEnergy(requiredEnergyToCraft, false);
+				}
+			}
+		});
 
 		int uiIndex = 0;
 		for (int y = 0; y < 3; y++) {
@@ -56,5 +77,10 @@ public class GalacticWorkstationMenu extends AbstractWorkstationMenu {
 			this.addSlot(new Slot(inv, si, 0 + 8 + si * 18, 0 + 142));
 
 		slotsChanged(this.craftingContainer);
+	}
+
+	@Override
+	public CustomResultSlot<LDShapedRecipe> getResultSlot() {
+		return customResultSlot;
 	}
 }

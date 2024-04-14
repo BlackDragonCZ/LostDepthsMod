@@ -2,18 +2,42 @@
 package cz.blackdragoncz.lostdepths.world.inventory;
 
 import cz.blackdragoncz.lostdepths.init.LostDepthsModRecipeType;
+import cz.blackdragoncz.lostdepths.recipe.LDShapedRecipe;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.network.FriendlyByteBuf;
 
 import cz.blackdragoncz.lostdepths.init.LostdepthsModMenus;
+import net.minecraft.world.item.ItemStack;
 
 public class AlloyWorkstationMenu extends AbstractWorkstationMenu {
 
-	public AlloyWorkstationMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-		super(LostdepthsModMenus.ALLOY_WORKSTATION_MENU.get(), 9, LostDepthsModRecipeType.ALLOY_WORKSTATION.get(), id, inv, extraData);
+	private CustomResultSlot<LDShapedRecipe> customResultSlot;
 
-		this.addSlot(new CustomResultSlot<>(LostDepthsModRecipeType.ALLOY_WORKSTATION.get(), this, inv.player, this.craftingContainer, resultContainer, 0, 142, 55));
+	public AlloyWorkstationMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
+		super(LostdepthsModMenus.ALLOY_WORKSTATION_MENU.get(), 9, LostDepthsModRecipeType.ALLOY_WORKSTATION.get(), id, inv, extraData, 257);
+
+		this.addSlot(customResultSlot = new CustomResultSlot<>(LostDepthsModRecipeType.ALLOY_WORKSTATION.get(), this, inv.player, this.craftingContainer, resultContainer, 0, 142, 55) {
+			@Override
+			public boolean mayPickup(Player pPlayer) {
+				if (energyAccessor != null) {
+					if (energyAccessor.getEnergyStorage().getEnergyStored() < requiredEnergyToCraft) {
+						return false;
+					}
+				}
+
+				return super.mayPickup(pPlayer);
+			}
+
+			@Override
+			public void onTake(Player pPlayer, ItemStack pStack) {
+				super.onTake(pPlayer, pStack);
+				if (energyAccessor != null) {
+					energyAccessor.getEnergyStorage().extractEnergy(requiredEnergyToCraft, false);
+				}
+			}
+		});
 
 		this.customSlots.put(0, this.addSlot(new Slot(containerWrapper, 0, 7, 46)));
 		this.customSlots.put(1, this.addSlot(new Slot(containerWrapper, 1, 34, 37)));
@@ -33,5 +57,10 @@ public class AlloyWorkstationMenu extends AbstractWorkstationMenu {
 			this.addSlot(new Slot(inv, si, 0 + 8 + si * 18, 42 + 142));
 
 		slotsChanged(this.craftingContainer);
+	}
+
+	@Override
+	public CustomResultSlot<LDShapedRecipe> getResultSlot() {
+		return customResultSlot;
 	}
 }

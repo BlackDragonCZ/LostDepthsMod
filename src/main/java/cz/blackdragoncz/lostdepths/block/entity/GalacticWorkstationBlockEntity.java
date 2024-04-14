@@ -34,7 +34,7 @@ import io.netty.buffer.Unpooled;
 
 import cz.blackdragoncz.lostdepths.init.LostdepthsModBlockEntities;
 
-public class GalacticWorkstationBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer, CraftingContainer {
+public class GalacticWorkstationBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer, CraftingContainer, IEnergyAccessor {
 
 	private NonNullList<ItemStack> items = NonNullList.withSize(3 * 3, ItemStack.EMPTY);
 	private final LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.values());
@@ -142,7 +142,7 @@ public class GalacticWorkstationBlockEntity extends RandomizableContainerBlockEn
 
 	@Override
 	public boolean canTakeItemThroughFace(int index, ItemStack stack, Direction direction) {
-		return true;
+		return false;
 	}
 
 	private final EnergyStorage energyStorage = new EnergyStorage(10000, 100, 500, 0) {
@@ -189,4 +189,8 @@ public class GalacticWorkstationBlockEntity extends RandomizableContainerBlockEn
 	}
 
 
+	@Override
+	public EnergyStorage getEnergyStorage() {
+		return this.energyStorage;
+	}
 }
