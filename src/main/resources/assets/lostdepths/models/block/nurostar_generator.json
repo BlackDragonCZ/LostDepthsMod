@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "lostdepths:block/black_hole_compressor",
+    "up": "lostdepths:block/black_hole_compressor",
+    "north": "lostdepths:block/black_hole_compressor",
+    "east": "lostdepths:block/black_hole_compressor",
+    "south": "lostdepths:block/black_hole_compressor",
+    "west": "lostdepths:block/black_hole_compressor",
+    "particle": "lostdepths:block/black_hole_compressor"
+  },
+  "render_type": "solid"
+}

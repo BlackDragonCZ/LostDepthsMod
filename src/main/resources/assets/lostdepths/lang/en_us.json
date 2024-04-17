@@ -768,5 +768,6 @@
   "advancements.cosmic_battery_adv.title": "Cosmic Power Supply",
   "item.lostdepths.voidcut_metal": "§1Voidcut Metal",
   "advancements.install_adv.title": "LostDepths",
-  "item.lostdepths.powerful_polarcronite": "Powerful Polarcronite"
+  "item.lostdepths.powerful_polarcronite": "Powerful Polarcronite",
+  "block.lostdepths.nurostar_generator": "Nurostar Generator"
 }

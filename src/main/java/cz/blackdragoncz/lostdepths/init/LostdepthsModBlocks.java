@@ -276,4 +276,5 @@ public class LostdepthsModBlocks {
 	public static final RegistryObject<Block> CELESTIAL_LEAVES_RED = REGISTRY.register("celestial_leaves_red", () -> new CelestialLeavesRedBlock());
 	public static final RegistryObject<Block> MODULATOR = REGISTRY.register("modulator", () -> new ModulatorBlock());
 	public static final RegistryObject<Block> BLACK_HOLE_COMPRESSOR = REGISTRY.register("black_hole_compressor", () -> new BlackHoleCompressorBlock());
+	public static final RegistryObject<Block> NUROSTAR_GENERATOR = REGISTRY.register("nurostar_generator", () -> new NurostarGeneratorBlock());
 }

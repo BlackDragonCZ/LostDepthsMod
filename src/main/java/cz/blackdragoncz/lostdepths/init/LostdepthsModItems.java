@@ -599,6 +599,7 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> BLACK_HOLE_COMPRESSOR = block(LostdepthsModBlocks.BLACK_HOLE_COMPRESSOR);
 	public static final RegistryObject<Item> ITEM_CRATE = block(LostdepthsModBlocks.ITEM_CRATE);
 	public static final RegistryObject<Item> SHIPMENT_FILLER_BLOCK = block(LostdepthsModBlocks.SHIPMENT_FILLER_BLOCK);
+	public static final RegistryObject<Item> NUROSTAR_GENERATOR = block(LostdepthsModBlocks.NUROSTAR_GENERATOR);
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));
