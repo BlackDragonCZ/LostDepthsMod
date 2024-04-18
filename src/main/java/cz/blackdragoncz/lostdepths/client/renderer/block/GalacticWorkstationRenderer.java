@@ -1,13 +1,12 @@
 package cz.blackdragoncz.lostdepths.client.renderer.block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import cz.blackdragoncz.lostdepths.block.GalacticWorkstationBlock;
+import cz.blackdragoncz.lostdepths.block.machine.GalacticWorkstationBlock;
 import cz.blackdragoncz.lostdepths.block.entity.GalacticWorkstationBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
-import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 

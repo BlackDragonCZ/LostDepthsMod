@@ -24,7 +24,18 @@
 		},
 		{
 			"type": "crafting",
-			"recipe": "lostdepths:extra_terestrial_compressor_r"
+			"recipe": "lostdepths:extraterestrialcompressor_r"
+		},
+		{
+			"type": "spotlight",
+			"item": "lostdepths:black_hole_compressor",
+			"link_recipe": true,
+			"title": "BlackHole Compressor",
+			"text": "$()Long lost galactic machine and the only available in the known universe of compressing ancient minerals like:$(li)$(4)Melworite Ingot$(li)Firerite Ingot$(li)Morfarite Ingot$()$()$(br)This machine need energy to work.$(br)Input: 5 ingots => 1 condensed crystal."
+		},
+		{
+			"type": "crafting",
+			"recipe": "lostdepths:black_hole_compressor_r"
 		}
 	]
 }

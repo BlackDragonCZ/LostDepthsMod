@@ -1,10 +1,19 @@
-
-/*
- *    MCreator note: This file will be REGENERATED on each build.
- */
 package cz.blackdragoncz.lostdepths.init;
 
-import cz.blackdragoncz.lostdepths.item.*;
+import cz.blackdragoncz.lostdepths.item.armor.*;
+import cz.blackdragoncz.lostdepths.item.chemistry.*;
+import cz.blackdragoncz.lostdepths.item.drop.*;
+import cz.blackdragoncz.lostdepths.item.food.*;
+import cz.blackdragoncz.lostdepths.item.gem.*;
+import cz.blackdragoncz.lostdepths.item.icon.*;
+import cz.blackdragoncz.lostdepths.item.ingot.*;
+import cz.blackdragoncz.lostdepths.item.legacy.*;
+import cz.blackdragoncz.lostdepths.item.lootbox.*;
+import cz.blackdragoncz.lostdepths.item.module.*;
+import cz.blackdragoncz.lostdepths.item.part.*;
+import cz.blackdragoncz.lostdepths.item.tool.*;
+import cz.blackdragoncz.lostdepths.item.villager.*;
+import cz.blackdragoncz.lostdepths.item.security.*;
 import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.DeferredRegister;
@@ -114,7 +123,7 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> BLADE_OF_FORGOTTEN = REGISTRY.register("blade_of_forgotten", () -> new BladeOfForgottenItem());
 	public static final RegistryObject<Item> FORGEFIRE_PICKAXE = REGISTRY.register("forgefire_pickaxe", () -> new ForgefirePickaxeItem());
 	public static final RegistryObject<Item> FORGEFIRE_AXE = REGISTRY.register("forgefire_axe", () -> new ForgefireAxeItem());
-	public static final RegistryObject<Item> ROD_OF_TRANSFORMATION = REGISTRY.register("rod_of_transformation", () -> new RoTItem());
+	public static final RegistryObject<Item> ROD_OF_TRANSFORMATION = REGISTRY.register("rod_of_transformation", () -> new RotOfTransformation());
 	public static final RegistryObject<Item> VENOM_KNIFE = REGISTRY.register("venom_knife", () -> new VenomKnifeItem());
 	public static final RegistryObject<Item> CRYSTALIZED_PICKAXE = REGISTRY.register("crystalized_pickaxe", () -> new CrystalizedPickaxeItem());
 	public static final RegistryObject<Item> SOUL_KEY = REGISTRY.register("soul_key", () -> new SoulKeyItem());

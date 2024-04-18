@@ -1,7 +1,7 @@
 package cz.blackdragoncz.lostdepths.client.renderer.block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import cz.blackdragoncz.lostdepths.block.GalacticWorkstationBlock;
+import cz.blackdragoncz.lostdepths.block.machine.GalacticWorkstationBlock;
 import cz.blackdragoncz.lostdepths.block.entity.AlloyWorkstationBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;

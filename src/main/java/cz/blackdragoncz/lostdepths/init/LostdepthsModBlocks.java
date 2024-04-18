@@ -1,10 +1,16 @@
-
-/*
- *    MCreator note: This file will be REGENERATED on each build.
- */
 package cz.blackdragoncz.lostdepths.init;
 
-import cz.blackdragoncz.lostdepths.block.*;
+import cz.blackdragoncz.lostdepths.block.creative.*;
+import cz.blackdragoncz.lostdepths.block.decor.*;
+import cz.blackdragoncz.lostdepths.block.fluid.*;
+import cz.blackdragoncz.lostdepths.block.ore.*;
+import cz.blackdragoncz.lostdepths.block.plant.*;
+import cz.blackdragoncz.lostdepths.block.power.*;
+import cz.blackdragoncz.lostdepths.block.machine.*;
+import cz.blackdragoncz.lostdepths.block.puzzle.*;
+import cz.blackdragoncz.lostdepths.block.security.*;
+import cz.blackdragoncz.lostdepths.block.structure.*;
+import cz.blackdragoncz.lostdepths.block.villager.*;
 import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.DeferredRegister;
