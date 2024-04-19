@@ -1,5 +1,6 @@
 package cz.blackdragoncz.lostdepths.block.entity;
 
+import cz.blackdragoncz.lostdepths.util.IEnergyAccessor;
 import net.minecraft.world.entity.player.StackedContents;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;

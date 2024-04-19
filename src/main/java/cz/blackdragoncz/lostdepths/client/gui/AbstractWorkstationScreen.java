@@ -1,7 +1,7 @@
 package cz.blackdragoncz.lostdepths.client.gui;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import cz.blackdragoncz.lostdepths.block.entity.IEnergyAccessor;
+import cz.blackdragoncz.lostdepths.util.IEnergyAccessor;
 import cz.blackdragoncz.lostdepths.world.inventory.AbstractWorkstationMenu;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;

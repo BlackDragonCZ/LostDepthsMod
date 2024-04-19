@@ -1,4 +1,4 @@
-package cz.blackdragoncz.lostdepths.block.entity;
+package cz.blackdragoncz.lostdepths.util;
 
 import net.minecraftforge.energy.EnergyStorage;
 

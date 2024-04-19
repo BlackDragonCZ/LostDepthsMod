@@ -102,6 +102,7 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModBlocks.MODULATOR.get().asItem());
 				tabData.accept(LostdepthsModBlocks.BLACK_HOLE_COMPRESSOR.get().asItem());
 				tabData.accept(LostdepthsModBlocks.NUROSTAR_GENERATOR.get().asItem());
+				tabData.accept(LostdepthsModBlocks.NUROSTAR_CABLE.get().asItem());
 			})
 
 					.build());
@@ -235,6 +236,7 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModItems.PRIME_DRACONIC_STAFF.get());
 				tabData.accept(LostdepthsModItems.PRIME_DRACONIC_WINGS.get());
 				tabData.accept(LostdepthsModItems.PHANTOM_BLADE.get());
+				tabData.accept(LostdepthsModItems.INFUSED_CUTTERS.get());
 			})
 
 					.build());

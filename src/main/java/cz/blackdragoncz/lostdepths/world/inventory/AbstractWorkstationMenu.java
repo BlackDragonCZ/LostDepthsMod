@@ -1,6 +1,6 @@
 package cz.blackdragoncz.lostdepths.world.inventory;
 
-import cz.blackdragoncz.lostdepths.block.entity.IEnergyAccessor;
+import cz.blackdragoncz.lostdepths.util.IEnergyAccessor;
 import cz.blackdragoncz.lostdepths.client.gui.ContainerWrapper;
 import cz.blackdragoncz.lostdepths.recipe.LDShapedRecipe;
 import net.minecraft.core.BlockPos;

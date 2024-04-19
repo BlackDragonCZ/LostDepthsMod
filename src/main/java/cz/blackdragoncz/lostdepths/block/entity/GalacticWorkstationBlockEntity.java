@@ -1,5 +1,6 @@
 package cz.blackdragoncz.lostdepths.block.entity;
 
+import cz.blackdragoncz.lostdepths.util.IEnergyAccessor;
 import cz.blackdragoncz.lostdepths.world.inventory.GalacticWorkstationMenu;
 import net.minecraft.world.entity.player.StackedContents;
 import net.minecraft.world.inventory.CraftingContainer;

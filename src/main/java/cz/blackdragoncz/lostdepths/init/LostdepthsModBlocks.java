@@ -283,4 +283,5 @@ public class LostdepthsModBlocks {
 	public static final RegistryObject<Block> MODULATOR = REGISTRY.register("modulator", () -> new ModulatorBlock());
 	public static final RegistryObject<Block> BLACK_HOLE_COMPRESSOR = REGISTRY.register("black_hole_compressor", () -> new BlackHoleCompressorBlock());
 	public static final RegistryObject<Block> NUROSTAR_GENERATOR = REGISTRY.register("nurostar_generator", () -> new NurostarGeneratorBlock());
+	public static final RegistryObject<Block> NUROSTAR_CABLE = REGISTRY.register("nurostar_cable", () -> new NurostarCableBlock());
 }

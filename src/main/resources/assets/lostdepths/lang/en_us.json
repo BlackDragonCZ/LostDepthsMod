@@ -769,5 +769,7 @@
   "item.lostdepths.voidcut_metal": "§1Voidcut Metal",
   "advancements.install_adv.title": "LostDepths",
   "item.lostdepths.powerful_polarcronite": "Powerful Polarcronite",
-  "block.lostdepths.nurostar_generator": "Nurostar Generator"
+  "block.lostdepths.nurostar_generator": "Nurostar Generator",
+  "block.lostdepths.nurostar_cable": "Nurostar Cable",
+  "item.lostdepths.infused_cutters": "Infused Wire Cutters"
 }
