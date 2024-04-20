@@ -4,6 +4,7 @@
  */
 package cz.blackdragoncz.lostdepths.init;
 
+import cz.blackdragoncz.lostdepths.block.entity.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -12,31 +13,6 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.Block;
 
-import cz.blackdragoncz.lostdepths.block.entity.ZerithiumOreBlockEntity;
-import cz.blackdragoncz.lostdepths.block.entity.AlloyWorkstationBlockEntity;
-import cz.blackdragoncz.lostdepths.block.entity.GalacticWorkstationBlockEntity;
-import cz.blackdragoncz.lostdepths.block.entity.SunderWoodSapEmptyBlockEntity;
-import cz.blackdragoncz.lostdepths.block.entity.SunderWoodSapBlockEntity;
-import cz.blackdragoncz.lostdepths.block.entity.OreEmptyBlockEntity;
-import cz.blackdragoncz.lostdepths.block.entity.MorfariteOreBlockEntity;
-import cz.blackdragoncz.lostdepths.block.entity.ModuleCreatorBlockEntity;
-import cz.blackdragoncz.lostdepths.block.entity.ModulatorBlockEntity;
-import cz.blackdragoncz.lostdepths.block.entity.MetaMaterializerBlockEntity;
-import cz.blackdragoncz.lostdepths.block.entity.MetaCollectorBlockEntity;
-import cz.blackdragoncz.lostdepths.block.entity.MelworiumOreBlockEntity;
-import cz.blackdragoncz.lostdepths.block.entity.LightPuzzleControllerBlockEntity;
-import cz.blackdragoncz.lostdepths.block.entity.LightPuzzleBBlockEntity;
-import cz.blackdragoncz.lostdepths.block.entity.LightPuzzleABlockEntity;
-import cz.blackdragoncz.lostdepths.block.entity.JammerGateOffBlockEntity;
-import cz.blackdragoncz.lostdepths.block.entity.JammerGateBlockEntity;
-import cz.blackdragoncz.lostdepths.block.entity.JammerAccessModuleBlockEntity;
-import cz.blackdragoncz.lostdepths.block.entity.GalacticCompressorBlockEntity;
-import cz.blackdragoncz.lostdepths.block.entity.FireriteOreBlockEntity;
-import cz.blackdragoncz.lostdepths.block.entity.ExtraTerestrialCompressorBlockEntity;
-import cz.blackdragoncz.lostdepths.block.entity.DevenergyBlockEntity;
-import cz.blackdragoncz.lostdepths.block.entity.CryzuliteOreBlockEntity;
-import cz.blackdragoncz.lostdepths.block.entity.CrystalizerBlockEntity;
-import cz.blackdragoncz.lostdepths.block.entity.BlackHoleCompressorBlockEntity;
 import cz.blackdragoncz.lostdepths.LostdepthsMod;
 
 public class LostdepthsModBlockEntities {
@@ -66,6 +42,7 @@ public class LostdepthsModBlockEntities {
 	public static final RegistryObject<BlockEntityType<JammerGateOffBlockEntity>> JAMMER_GATE_OFF = register("jammer_gate_off", LostdepthsModBlocks.JAMMER_GATE_OFF, JammerGateOffBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<ModulatorBlockEntity>> MODULATOR = register("modulator", LostdepthsModBlocks.MODULATOR, ModulatorBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<BlackHoleCompressorBlockEntity>> BLACK_HOLE_COMPRESSOR = register("black_hole_compressor", LostdepthsModBlocks.BLACK_HOLE_COMPRESSOR, BlackHoleCompressorBlockEntity::new);
+	public static final RegistryObject<BlockEntityType<NurostarCableBlockEntity>> NUROSTAR_CABLE = register("nurostar_cable", LostdepthsModBlocks.NUROSTAR_CABLE, NurostarCableBlockEntity::new);
 
 	private static <T extends BlockEntity> RegistryObject<BlockEntityType<T>> register(String registryname, RegistryObject<Block> block, BlockEntityType.BlockEntitySupplier<T> supplier) {
 		return REGISTRY.register(registryname, () -> BlockEntityType.Builder.of(supplier, block.get()).build(null));
