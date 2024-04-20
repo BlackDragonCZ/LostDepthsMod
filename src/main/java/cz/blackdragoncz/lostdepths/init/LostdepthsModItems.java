@@ -14,6 +14,7 @@ import cz.blackdragoncz.lostdepths.item.part.*;
 import cz.blackdragoncz.lostdepths.item.tool.*;
 import cz.blackdragoncz.lostdepths.item.villager.*;
 import cz.blackdragoncz.lostdepths.item.security.*;
+import net.minecraft.world.item.Rarity;
 import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.DeferredRegister;
@@ -602,7 +603,7 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> WEAK_POLARCRONITE = REGISTRY.register("weak_polarcronite", () -> new WeakPolarcroniteItem());
 	public static final RegistryObject<Item> POTENT_POLARCRONITE = REGISTRY.register("potent_polarcronite", () -> new PotentPolarcroniteItem());
 	public static final RegistryObject<Item> POWERFUL_POLARCRONITE = REGISTRY.register("powerful_polarcronite", () -> new PowerfulPolarcroniteItem());
-	public static final RegistryObject<Item> EMPTY_DATA_DRIVE = REGISTRY.register("empty_data_drive", () -> new EmptyDataDriveItem());
+	public static final RegistryObject<Item> EMPTY_DATA_DRIVE = REGISTRY.register("empty_data_drive", () -> new Item(new Item.Properties().stacksTo(64).fireResistant().rarity(Rarity.COMMON)));
 	public static final RegistryObject<Item> MODULATOR = block(LostdepthsModBlocks.MODULATOR);
 	public static final RegistryObject<Item> PHANTOM_BLADE = REGISTRY.register("phantom_blade", () -> new PhantomBladeItem());
 	public static final RegistryObject<Item> BLACK_HOLE_COMPRESSOR = block(LostdepthsModBlocks.BLACK_HOLE_COMPRESSOR);
