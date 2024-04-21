@@ -104,12 +104,11 @@ dependencies {
     runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.20.1-81-FORGE")
 
     implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.20.1:4.4.2')
+    implementation fg.deobf("curse.maven:jade-324717:4986594")
 
     compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"))
     compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"))
     runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
-
-    runtimeOnly fg.deobf("curse.maven:jade-324717:4986594")
 
     runtimeOnly fg.deobf("curse.maven:worldedit-225608:4586218")
 }
