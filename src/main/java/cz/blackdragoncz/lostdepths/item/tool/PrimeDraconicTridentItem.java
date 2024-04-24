@@ -1,6 +1,9 @@
 
 package cz.blackdragoncz.lostdepths.item.tool;
 
+import cz.blackdragoncz.lostdepths.init.LostdepthsModEntities;
+import cz.blackdragoncz.lostdepths.world.entity.projectile.ThrownDraconicTrident;
+import net.minecraft.world.entity.EntityType;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.api.distmarker.Dist;
 
@@ -18,7 +21,7 @@ import java.util.List;
 import cz.blackdragoncz.lostdepths.procedures.CrystalizedPickaxeMakeItemGlowProcedure;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModItems;
 
-public class PrimeDraconicTridentItem extends SwordItem {
+public class PrimeDraconicTridentItem extends AbstractCustomTrident {
 	public PrimeDraconicTridentItem() {
 		super(new Tier() {
 			public int getUses() {
@@ -48,9 +51,8 @@ public class PrimeDraconicTridentItem extends SwordItem {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(itemstack, world, list, flag);
-		list.add(Component.literal("\u00A77Not throwable weapon"));
+	protected EntityType<ThrownDraconicTrident> getThrowEntity() {
+		return LostdepthsModEntities.THROWN_PRIME_DRACONIC_TRIDENT.get();
 	}
 
 	@Override

@@ -4,6 +4,7 @@
  */
 package cz.blackdragoncz.lostdepths.init;
 
+import cz.blackdragoncz.lostdepths.client.renderer.projectile.ThrownDraconicTridentRenderer;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -44,5 +45,7 @@ public class LostdepthsModEntityRenderers {
 		event.registerEntityRenderer(LostdepthsModEntities.DM_12.get(), Dm12Renderer::new);
 		event.registerEntityRenderer(LostdepthsModEntities.ARACHNOTA_PROJECTILE.get(), ThrownItemRenderer::new);
 		event.registerEntityRenderer(LostdepthsModEntities.ARACHNOTA.get(), ArachnotaRenderer::new);
+		event.registerEntityRenderer(LostdepthsModEntities.THROWN_DRACONIC_TRIDENT.get(), ThrownDraconicTridentRenderer::new);
+		event.registerEntityRenderer(LostdepthsModEntities.THROWN_PRIME_DRACONIC_TRIDENT.get(), ThrownDraconicTridentRenderer::new);
 	}
 }

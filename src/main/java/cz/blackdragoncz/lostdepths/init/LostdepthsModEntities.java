@@ -1,5 +1,6 @@
 package cz.blackdragoncz.lostdepths.init;
 
+import cz.blackdragoncz.lostdepths.world.entity.projectile.ThrownDraconicTrident;
 import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.DeferredRegister;
@@ -79,6 +80,9 @@ public class LostdepthsModEntities {
 			EntityType.Builder.<ArachnotaEntity>of(ArachnotaEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(ArachnotaEntity::new)
 
 					.sized(0.6f, 1.8f));
+
+	public static final RegistryObject<EntityType<ThrownDraconicTrident>> THROWN_DRACONIC_TRIDENT = register("projectile_draconic_trident", EntityType.Builder.<ThrownDraconicTrident>of(((pEntityType, pLevel) -> new ThrownDraconicTrident(LostdepthsModItems.DRACONIC_TRIDENT.get(), pEntityType, pLevel)), MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20));
+	public static final RegistryObject<EntityType<ThrownDraconicTrident>> THROWN_PRIME_DRACONIC_TRIDENT = register("projectile_prime_draconic_trident", EntityType.Builder.<ThrownDraconicTrident>of(((pEntityType, pLevel) -> new ThrownDraconicTrident(LostdepthsModItems.PRIME_DRACONIC_TRIDENT.get(), pEntityType, pLevel)), MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20));
 
 	private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
 		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));
