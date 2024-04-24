@@ -108,6 +108,19 @@ public class RodOfTransformationLivingEntityIsHitWithItemProcedure {
 					}
 				}
 			}
+			if (entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("lostdepths:spider")))) {
+				x = entity.getX();
+				y = entity.getY();
+				z = entity.getZ();
+				if (!entity.level().isClientSide())
+					entity.discard();
+				if (world instanceof ServerLevel _level) {
+					Entity entityToSpawn = LostdepthsModEntities.ARACHNOTA.get().spawn(_level, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
+					if (entityToSpawn != null) {
+						entityToSpawn.setDeltaMovement(0, 0, 0);
+					}
+				}
+			}
 			if (entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("lostdepths:wolf")))) {
 				x = entity.getX();
 				y = entity.getY();

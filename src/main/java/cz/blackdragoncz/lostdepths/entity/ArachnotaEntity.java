@@ -67,7 +67,7 @@ public class ArachnotaEntity extends Monster implements RangedAttackMob, GeoEnti
 
 	public ArachnotaEntity(EntityType<ArachnotaEntity> type, Level world) {
 		super(type, world);
-		xpReward = 0;
+		xpReward = 5;
 		setNoAi(false);
 	}
 
@@ -95,7 +95,7 @@ public class ArachnotaEntity extends Monster implements RangedAttackMob, GeoEnti
 	@Override
 	protected void registerGoals() {
 		super.registerGoals();
-		this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.2, false) {
+		this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0f, true) {
 			@Override
 			protected double getAttackReachSqr(LivingEntity entity) {
 				return this.mob.getBbWidth() * this.mob.getBbWidth() + entity.getBbWidth();
@@ -261,7 +261,7 @@ public class ArachnotaEntity extends Monster implements RangedAttackMob, GeoEnti
 	public static AttributeSupplier.Builder createAttributes() {
 		AttributeSupplier.Builder builder = Mob.createMobAttributes();
 		builder = builder.add(Attributes.MOVEMENT_SPEED, 0.3);
-		builder = builder.add(Attributes.MAX_HEALTH, 10);
+		builder = builder.add(Attributes.MAX_HEALTH, 370);
 		builder = builder.add(Attributes.ARMOR, 0);
 		builder = builder.add(Attributes.ATTACK_DAMAGE, 3);
 		builder = builder.add(Attributes.FOLLOW_RANGE, 16);

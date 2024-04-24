@@ -1,0 +1,22 @@
+{
+	"name": "Arachnota",
+	"icon": "lostdepths:everwatching_eye",
+	"category": "lostdepths:entities",
+	"read_by_default": false,
+	"pages": [
+		{
+			"type": "spotlight",
+			"item": "lostdepths:everwatching_eye",
+			"title": "Arachnota",
+			"text": "Health: $(4)370♥$(0)$(br)Damage: $(4)14 HP$(0) per hit$(br)$(4)Semi-mutated spider, basically a spider cyborg.$(0)$(br)Drops:$(li)Everwatching Eye"
+		},
+		{
+			"type": "entity",
+			"entity": "lostdepths:arachnota",
+			"rotate": true,
+			"title": "Arachnota",
+			"scale": 0.5,
+			"text": " Big spider"
+		}
+	]
+}

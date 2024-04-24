@@ -103,6 +103,10 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModBlocks.BLACK_HOLE_COMPRESSOR.get().asItem());
 				tabData.accept(LostdepthsModBlocks.NUROSTAR_GENERATOR.get().asItem());
 				tabData.accept(LostdepthsModBlocks.NUROSTAR_CABLE.get().asItem());
+				tabData.accept(LostdepthsModBlocks.TERMINAL_MONITOR.get().asItem());
+				tabData.accept(LostdepthsModBlocks.TERMINAL_CONSOLE_1.get().asItem());
+				tabData.accept(LostdepthsModBlocks.TERMINAL_CONSOLE_2.get().asItem());
+				tabData.accept(LostdepthsModBlocks.TERMINAL_CONSOLE_3.get().asItem());
 			})
 
 					.build());
@@ -391,10 +395,6 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModBlocks.KEYBOARD_SCREEN.get().asItem());
 				tabData.accept(LostdepthsModBlocks.SECURITY_CLEARANCE_5.get().asItem());
 				tabData.accept(LostdepthsModBlocks.SECURITY_CLEARANCE_6.get().asItem());
-				tabData.accept(LostdepthsModBlocks.TERMINAL_MONITOR.get().asItem());
-				tabData.accept(LostdepthsModBlocks.TERMINAL_CONSOLE_1.get().asItem());
-				tabData.accept(LostdepthsModBlocks.TERMINAL_CONSOLE_2.get().asItem());
-				tabData.accept(LostdepthsModBlocks.TERMINAL_CONSOLE_3.get().asItem());
 				tabData.accept(LostdepthsModBlocks.ITEM_CRATE.get().asItem());
 				tabData.accept(LostdepthsModBlocks.SHIPMENT_FILLER_BLOCK.get().asItem());
 				tabData.accept(LostdepthsModBlocks.MYRITE_ORE.get().asItem());
