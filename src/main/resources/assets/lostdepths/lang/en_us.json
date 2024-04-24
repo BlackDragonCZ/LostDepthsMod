@@ -773,5 +773,6 @@
   "block.lostdepths.nurostar_cable": "Nurostar Cable",
   "item.lostdepths.infused_cutters": "Infused Wire Cutters",
   "config.jade.plugin_lostdepths.time": "Test",
-  "lostdepths.time": "Time: %d s"
+  "lostdepths.time": "Time: %d s",
+  "block.lostdepths.infused_sign": "Infused Sign"
 }

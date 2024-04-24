@@ -606,6 +606,7 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> NUROSTAR_GENERATOR = block(LostdepthsModBlocks.NUROSTAR_GENERATOR);
 	public static final RegistryObject<Item> NUROSTAR_CABLE = block(LostdepthsModBlocks.NUROSTAR_CABLE);
 	public static final RegistryObject<Item> INFUSED_CUTTERS = REGISTRY.register("infused_cutters", () -> new InfusedCuttersItem());
+	public static final RegistryObject<Item> INFUSED_SIGN = block(LostdepthsModBlocks.INFUSED_SIGN);
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));

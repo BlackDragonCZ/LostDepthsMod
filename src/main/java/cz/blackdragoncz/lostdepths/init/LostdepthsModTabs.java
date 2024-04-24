@@ -107,6 +107,7 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModBlocks.TERMINAL_CONSOLE_1.get().asItem());
 				tabData.accept(LostdepthsModBlocks.TERMINAL_CONSOLE_2.get().asItem());
 				tabData.accept(LostdepthsModBlocks.TERMINAL_CONSOLE_3.get().asItem());
+				tabData.accept(LostdepthsModBlocks.INFUSED_SIGN.get().asItem());
 			})
 
 					.build());
