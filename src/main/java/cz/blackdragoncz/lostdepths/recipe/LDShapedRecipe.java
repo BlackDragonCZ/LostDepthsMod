@@ -45,21 +45,11 @@ public abstract class LDShapedRecipe extends LDRecipe {
     }
 
     @Override
-    public RecipeSerializer<?> getSerializer() {
-        return null;
-    }
-
-    @Override
-    public RecipeType<?> getType() {
-        return null;
-    }
-
-    @Override
     public @NotNull ItemStack getResultItem(@NotNull RegistryAccess registryAccess) {
         return this.result;
     }
 
-    public NonNullList<Ingredient> getIngredients() {
+    public @NotNull NonNullList<Ingredient> getIngredients() {
         return this.recipeItems;
     }
 

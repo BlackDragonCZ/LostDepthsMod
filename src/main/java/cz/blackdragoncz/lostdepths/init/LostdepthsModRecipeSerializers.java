@@ -1,10 +1,7 @@
 package cz.blackdragoncz.lostdepths.init;
 
 import cz.blackdragoncz.lostdepths.LostdepthsMod;
-import cz.blackdragoncz.lostdepths.recipe.CompressingRecipe;
-import cz.blackdragoncz.lostdepths.recipe.CompressingRecipeSerializer;
-import cz.blackdragoncz.lostdepths.recipe.LDShapedRecipe;
-import cz.blackdragoncz.lostdepths.recipe.LDShapedRecipeSerializer;
+import cz.blackdragoncz.lostdepths.recipe.*;
 import net.minecraft.core.NonNullList;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -77,6 +74,18 @@ public class LostdepthsModRecipeSerializers {
         @Override
         public @NotNull RecipeSerializer<?> getSerializer() {
             return LostdepthsModRecipeSerializers.ALLOY_WORKSTATION.get();
+        }
+    }));
+
+    public static final RegistryObject<ModuleRecipe.Serializer> MODULE_CREATOR = REGISTRY_SERIALIZER.register("module_creator", () -> new ModuleRecipe.Serializer((ResourceLocation id, NonNullList<Ingredient> recipeItems, ItemStack result) -> new ModuleRecipe(id, recipeItems, result) {
+        @Override
+        public @NotNull RecipeType<?> getType() {
+            return LostDepthsModRecipeType.MODULE_CREATOR.get();
+        }
+
+        @Override
+        public @NotNull RecipeSerializer<?> getSerializer() {
+            return LostdepthsModRecipeSerializers.MODULE_CREATOR.get();
         }
     }));
 }

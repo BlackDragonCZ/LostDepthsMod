@@ -4,6 +4,7 @@ import cz.blackdragoncz.lostdepths.init.LostdepthsModItems;
 import cz.blackdragoncz.lostdepths.recipe.CompressingRecipe;
 import cz.blackdragoncz.lostdepths.init.LostDepthsModRecipeType;
 import cz.blackdragoncz.lostdepths.recipe.LDShapedRecipe;
+import cz.blackdragoncz.lostdepths.recipe.ModuleRecipe;
 import cz.blackdragoncz.lostdepths.recipe.RecipeTypeWrapper;
 import cz.blackdragoncz.lostdepths.util.IItemProvider;
 import net.minecraft.world.item.Item;
@@ -43,6 +44,13 @@ public class RecipeViewerRecipeType {
         @Override
         public @NotNull Item asItem() {
             return LostdepthsModItems.ALLOY_WORKSTATION.get();
+        }
+    });
+
+    public static final RecipeTypeWrapper<ModuleRecipe> MODULE_CREATOR = new RecipeTypeWrapper<>(LostDepthsModRecipeType.MODULE_CREATOR.get(), ModuleRecipe.class, 0, 0, 142, 70, new IItemProvider() {
+        @Override
+        public @NotNull Item asItem() {
+            return LostdepthsModItems.MODULE_CREATOR.get();
         }
     });
 
