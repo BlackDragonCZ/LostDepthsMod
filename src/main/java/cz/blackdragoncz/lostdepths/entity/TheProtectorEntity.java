@@ -1,6 +1,19 @@
 
 package cz.blackdragoncz.lostdepths.entity;
 
+import com.mojang.logging.LogUtils;
+import cz.blackdragoncz.lostdepths.init.LostdepthsModGameRules;
+import cz.blackdragoncz.lostdepths.init.LostdepthsModItems;
+import cz.blackdragoncz.lostdepths.util.NothingNullByDefault;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.level.LevelReader;
 import software.bernie.geckolib.util.GeckoLibUtil;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.core.animation.RawAnimation;
@@ -29,15 +42,6 @@ import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.SpawnPlacements;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.MobType;
-import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.DifficultyInstance;
@@ -53,11 +57,10 @@ import net.minecraft.core.BlockPos;
 
 import javax.annotation.Nullable;
 
-import cz.blackdragoncz.lostdepths.procedures.TheProtectorOnInitialEntitySpawnProcedure;
-import cz.blackdragoncz.lostdepths.procedures.TheProtectorNaturalEntitySpawningConditionProcedure;
-import cz.blackdragoncz.lostdepths.procedures.TheProtectorEntityDiesProcedure;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModEntities;
 
+@NothingNullByDefault
+@SuppressWarnings("deprecation")
 public class TheProtectorEntity extends Monster implements GeoEntity {
 	public static final EntityDataAccessor<Boolean> SHOOT = SynchedEntityData.defineId(TheProtectorEntity.class, EntityDataSerializers.BOOLEAN);
 	public static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(TheProtectorEntity.class, EntityDataSerializers.STRING);
@@ -66,7 +69,7 @@ public class TheProtectorEntity extends Monster implements GeoEntity {
 	private boolean swinging;
 	private boolean lastloop;
 	private long lastSwing;
-	public String animationprocedure = "empty";
+	public String animationProcedure = "empty";
 
 	public TheProtectorEntity(PlayMessages.SpawnEntity packet, Level world) {
 		this(LostdepthsModEntities.THE_PROTECTOR.get(), world);
@@ -111,7 +114,17 @@ public class TheProtectorEntity extends Monster implements GeoEntity {
 		this.targetSelector.addGoal(2, new HurtByTargetGoal(this));
 		this.goalSelector.addGoal(3, new RandomStrollGoal(this, 0.8));
 		this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
-		this.targetSelector.addGoal(5, new NearestAttackableTargetGoal(this, Player.class, true, true));
+		this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, Player.class, true, true));
+	}
+
+	@Override
+	public float getWalkTargetValue(BlockPos pPos) {
+		return 0.0f;
+	}
+
+	@Override
+	public float getWalkTargetValue(BlockPos pPos, LevelReader pLevel) {
+		return 0.0f;
 	}
 
 	@Override
@@ -161,13 +174,29 @@ public class TheProtectorEntity extends Monster implements GeoEntity {
 	@Override
 	public void die(DamageSource source) {
 		super.die(source);
-		TheProtectorEntityDiesProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ(), source.getEntity());
+
+		Entity sourceEntity = source.getEntity();
+
+		if ((sourceEntity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).is(ItemTags.create(new ResourceLocation("lostdepths:tools")))) {
+			for (int index1 = 0; index1 < Mth.nextInt(RandomSource.create(), 0, 2); index1++) {
+				if (level() instanceof ServerLevel _level) {
+					ItemEntity entityToSpawn = new ItemEntity(_level, getX(), getY(), getZ(), new ItemStack(LostdepthsModItems.INFUSED_CRYSTAL.get()));
+					entityToSpawn.setPickUpDelay(10);
+					_level.addFreshEntity(entityToSpawn);
+				}
+			}
+		}
 	}
 
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor world, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData livingdata, @Nullable CompoundTag tag) {
 		SpawnGroupData retval = super.finalizeSpawn(world, difficulty, reason, livingdata, tag);
-		TheProtectorOnInitialEntitySpawnProcedure.execute(world, this);
+
+		if (!world.getLevelData().getGameRules().getBoolean(LostdepthsModGameRules.DOLOSTDEPTHSSPAWNING)) {
+			if (!level().isClientSide())
+				discard();
+		}
+
 		return retval;
 	}
 
@@ -197,11 +226,13 @@ public class TheProtectorEntity extends Monster implements GeoEntity {
 
 	public static void init() {
 		SpawnPlacements.register(LostdepthsModEntities.THE_PROTECTOR.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (entityType, world, reason, pos, random) -> {
-			int x = pos.getX();
-			int y = pos.getY();
-			int z = pos.getZ();
-			return TheProtectorNaturalEntitySpawningConditionProcedure.execute(world, x, y, z);
-		});
+			if (world.getRawBrightness(pos, 0) <= 8)
+				return false;
+
+            return world.getLevelData().getGameRules().getBoolean(LostdepthsModGameRules.DOLOSTDEPTHSSPAWNING) && ((world instanceof Level _lvl ? _lvl.dimension() : Level.OVERWORLD) == Level.NETHER
+                    || (world instanceof Level _lvl ? _lvl.dimension() : Level.OVERWORLD) == (ResourceKey.create(Registries.DIMENSION, new ResourceLocation("lostdepths:below_bedrock")))
+                    || (world instanceof Level _lvl ? _lvl.dimension() : Level.OVERWORLD) == Level.OVERWORLD);
+        });
 	}
 
 	public static AttributeSupplier.Builder createAttributes() {
@@ -216,29 +247,30 @@ public class TheProtectorEntity extends Monster implements GeoEntity {
 		return builder;
 	}
 
-	private PlayState movementPredicate(AnimationState event) {
-		if (this.animationprocedure.equals("empty")) {
-			if (this.isSprinting()) {
-				return event.setAndContinue(RawAnimation.begin().thenLoop("animation.the_protector.walk"));
-			}
-			if (this.isAggressive() && event.isMoving()) {
-				return event.setAndContinue(RawAnimation.begin().thenLoop("animation.the_protector.walk"));
-			}
-			return event.setAndContinue(RawAnimation.begin().thenLoop("animation.the_protector.move"));
-		}
-		return PlayState.STOP;
-	}
+	private PlayState movementPredicate(AnimationState<TheProtectorEntity> event) {
+		//animationprocedure = "empty";
 
-	private PlayState procedurePredicate(AnimationState event) {
-		if (!animationprocedure.equals("empty") && event.getController().getAnimationState() == AnimationController.State.STOPPED) {
-			event.getController().setAnimation(RawAnimation.begin().thenPlay(this.animationprocedure));
-			if (event.getController().getAnimationState() == AnimationController.State.STOPPED) {
-				this.animationprocedure = "empty";
-				event.getController().forceAnimationReset();
-			}
-		} else if (animationprocedure.equals("empty")) {
+		if (isSprinting()) {
+			animationProcedure = "animation.the_protector.move";
+			return event.setAndContinue(RawAnimation.begin().thenLoop(animationProcedure));
+		} else if (this.isAggressive() && event.isMoving()) {
+			animationProcedure = "animation.the_protector.attack";
+			return event.setAndContinue(RawAnimation.begin().thenLoop(animationProcedure));
+		} else if (event.isMoving()) {
+			animationProcedure = "animation.the_protector.walk";
+			return event.setAndContinue(RawAnimation.begin().thenLoop(animationProcedure));
+		} else {
+			animationProcedure = "empty";
+			event.resetCurrentAnimation();
 			return PlayState.STOP;
 		}
+	}
+
+	private PlayState procedurePredicate(AnimationState<TheProtectorEntity> event) {
+		if (animationProcedure.equals("empty")) {
+			return PlayState.STOP;
+		}
+
 		return PlayState.CONTINUE;
 	}
 
@@ -248,6 +280,7 @@ public class TheProtectorEntity extends Monster implements GeoEntity {
 		if (this.deathTime == 20) {
 			this.remove(TheProtectorEntity.RemovalReason.KILLED);
 			this.dropExperience();
+			LogUtils.getLogger().warn("PROTECTOR DEATH TICK DEATH");
 		}
 	}
 

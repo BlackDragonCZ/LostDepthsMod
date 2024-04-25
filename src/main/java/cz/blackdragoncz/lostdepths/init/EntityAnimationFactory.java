@@ -59,7 +59,7 @@ public class EntityAnimationFactory {
 				String animation = syncable.getSyncedAnimation();
 				if (!animation.equals("undefined")) {
 					syncable.setAnimation("undefined");
-					syncable.animationprocedure = animation;
+					syncable.animationProcedure = animation;
 				}
 			}
 			if (event.getEntity() instanceof NeuroblazeEntity syncable) {
