@@ -19,7 +19,7 @@ import java.util.function.Supplier;
 public class IronGolemLootModifier extends LootModifier {
 
     public static final Supplier<Codec<IronGolemLootModifier>> CODEC = Suppliers.memoize(() -> RecordCodecBuilder.create(inst -> codecStart(inst).apply(inst, IronGolemLootModifier::new)));
-    public static final ResourceLocation INJECTABLE_LOOT = new ResourceLocation(LostdepthsMod.MODID, "loot/iron_golem_loot_table");
+    public static final ResourceLocation INJECTABLE_LOOT = new ResourceLocation(LostdepthsMod.MODID, "inject/iron_golem_loot_table");
 
     public IronGolemLootModifier(final LootItemCondition[] conditions) {
         super(conditions);
