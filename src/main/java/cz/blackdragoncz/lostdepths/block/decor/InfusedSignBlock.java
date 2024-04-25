@@ -16,6 +16,7 @@ public class InfusedSignBlock extends StandingSignBlock {
 
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return LostdepthsModBlockEntities.INFUSED_SIGN.get().create(pos, state);
+      //  return LostdepthsModBlockEntities.INFUSED_SIGN.get().create(pos, state);
+        return null;
     }
 }

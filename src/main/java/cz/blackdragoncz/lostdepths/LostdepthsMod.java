@@ -41,6 +41,7 @@ public class LostdepthsMod {
 	public LostdepthsMod() {
 		MinecraftForge.EVENT_BUS.register(this);
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+
 		LostdepthsModSounds.REGISTRY.register(bus);
 		LostdepthsModBlocks.REGISTRY.register(bus);
 		LostdepthsModBlockEntities.REGISTRY.register(bus);
@@ -60,6 +61,7 @@ public class LostdepthsMod {
 		LostdepthsModMenus.REGISTRY.register(bus);
 		LostdepthsModFluids.REGISTRY.register(bus);
 		LostdepthsModFluidTypes.REGISTRY.register(bus);
+		LostdepthsModLoots.REGISTER.register(bus);
 
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> ClientSide.INSTANCE::setup);
 	}

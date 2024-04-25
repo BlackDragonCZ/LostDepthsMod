@@ -43,7 +43,7 @@ public class LostdepthsModBlockEntities {
 	public static final RegistryObject<BlockEntityType<ModulatorBlockEntity>> MODULATOR = register("modulator", LostdepthsModBlocks.MODULATOR, ModulatorBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<BlackHoleCompressorBlockEntity>> BLACK_HOLE_COMPRESSOR = register("black_hole_compressor", LostdepthsModBlocks.BLACK_HOLE_COMPRESSOR, BlackHoleCompressorBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<NurostarCableBlockEntity>> NUROSTAR_CABLE = register("nurostar_cable", LostdepthsModBlocks.NUROSTAR_CABLE, NurostarCableBlockEntity::new);
-	public static final RegistryObject<BlockEntityType<InfusedSignBlockEntity>> INFUSED_SIGN = register("infused_sign", () -> BlockEntityType.Builder.of(InfusedSignBlockEntity::new, LostdepthsModBlocks.INFUSED_SIGN.get(), LostdepthsModBlocks.INFUSED_WALL_SIGN.get()).build(null));
+	//public static final RegistryObject<BlockEntityType<InfusedSignBlockEntity>> INFUSED_SIGN = register("infused_sign", () -> BlockEntityType.Builder.of(InfusedSignBlockEntity::new, LostdepthsModBlocks.INFUSED_SIGN.get(), LostdepthsModBlocks.INFUSED_WALL_SIGN.get()).build(null));
 
 	private static <T extends BlockEntity> RegistryObject<BlockEntityType<T>> register(String registryname, RegistryObject<Block> block, BlockEntityType.BlockEntitySupplier<T> supplier) {
 		return REGISTRY.register(registryname, () -> BlockEntityType.Builder.of(supplier, block.get()).build(null));

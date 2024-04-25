@@ -14,6 +14,7 @@ public class InfusedSignBlockEntity extends SignBlockEntity {
 
     @Override
     public BlockEntityType<?> getType() {
-        return LostdepthsModBlockEntities.INFUSED_SIGN.get();
+        //return LostdepthsModBlockEntities.INFUSED_SIGN.get();
+        return null;
     }
 }
