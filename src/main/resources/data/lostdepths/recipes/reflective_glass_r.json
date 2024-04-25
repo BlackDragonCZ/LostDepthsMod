@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "key": {
+    "A": {
+      "item": "lostdepths:reflective_shard"
+    },
+    "B": {
+      "item": "lostdepths:glistening_crystals"
+    },
+    "C": {
+      "item": "lostdepths:hardened_glass_panel"
+    }
+  },
+  "result": {
+    "item": "lostdepths:reflective_plating",
+    "count": 1
+  }
+}

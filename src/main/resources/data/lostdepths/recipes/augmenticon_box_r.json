@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "E E",
+    "EDE",
+    "EPE"
+  ],
+  "key": {
+    "E": {
+      "item": "lostdepths:enraged_iron"
+    },
+    "D": {
+      "item": "lostdepths:empty_data_drive"
+    },
+    "P": {
+      "item": "lostdepths:digital_panel"
+    }
+  },
+  "result": {
+    "item": "lostdepths:augmenticon_box",
+    "count": 1
+  }
+}

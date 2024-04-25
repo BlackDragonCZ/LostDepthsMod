@@ -540,6 +540,15 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModItems.POTENT_POLARCRONITE.get());
 				tabData.accept(LostdepthsModItems.POWERFUL_POLARCRONITE.get());
 				tabData.accept(LostdepthsModItems.EMPTY_DATA_DRIVE.get());
+				tabData.accept(LostdepthsModItems.AUGMENT_DASH.get());
+				tabData.accept(LostdepthsModItems.AUGMENT_DAMAGE.get());
+				tabData.accept(LostdepthsModItems.AUGMENT_EXPLOSIVE.get());
+				tabData.accept(LostdepthsModItems.AUGMENT_NIGHTMARES.get());
+				tabData.accept(LostdepthsModItems.AUGMENT_REGENERATIVE.get());
+				tabData.accept(LostdepthsModItems.AUGMENT_SHATTER.get());
+				tabData.accept(LostdepthsModItems.AUGMENT_TELEPORT.get());
+				tabData.accept(LostdepthsModItems.AUGMENT_TETHER.get());
+				tabData.accept(LostdepthsModItems.REFLECTIVE_PLATING.get());
 			})
 
 					.build());

@@ -1,0 +1,42 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ABC",
+    "DEF",
+    "GHI"
+  ],
+  "key": {
+    "A": {
+      "item": "lostdepths:augment_dash"
+    },
+    "B": {
+      "item": "lostdepths:augment_tether"
+    },
+    "C": {
+      "item": "lostdepths:augment_damage"
+    },
+    "D": {
+      "item": "lostdepths:augment_teleport"
+    },
+    "E": {
+      "item": "lostdepths:augmenticon_box"
+    },
+    "F": {
+      "item": "lostdepths:augment_explosive"
+    },
+    "G": {
+      "item": "lostdepths:augment_regenerative"
+    },
+    "H": {
+      "item": "lostdepths:augment_nightmares"
+    },
+    "I": {
+      "item": "lostdepths:augment_shatter"
+    }
+  },
+  "result": {
+    "item": "lostdepths:augmenticon_box_charged",
+    "count": 1
+  }
+}

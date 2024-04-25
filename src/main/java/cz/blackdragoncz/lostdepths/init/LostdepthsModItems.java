@@ -597,7 +597,7 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> WEAK_POLARCRONITE = REGISTRY.register("weak_polarcronite", () -> new MasterPartRegistryItem(64));
 	public static final RegistryObject<Item> POTENT_POLARCRONITE = REGISTRY.register("potent_polarcronite", () -> new MasterPartRegistryItem(64));
 	public static final RegistryObject<Item> POWERFUL_POLARCRONITE = REGISTRY.register("powerful_polarcronite", () -> new MasterPartRegistryItem(64));
-	public static final RegistryObject<Item> EMPTY_DATA_DRIVE = REGISTRY.register("empty_data_drive", () -> new Item(new Item.Properties().stacksTo(64).fireResistant().rarity(Rarity.COMMON)));
+	public static final RegistryObject<Item> EMPTY_DATA_DRIVE = REGISTRY.register("empty_data_drive", () -> new MasterPartRegistryItem(64));
 	public static final RegistryObject<Item> MODULATOR = block(LostdepthsModBlocks.MODULATOR);
 	public static final RegistryObject<Item> PHANTOM_BLADE = REGISTRY.register("phantom_blade", () -> new PhantomBladeItem());
 	public static final RegistryObject<Item> BLACK_HOLE_COMPRESSOR = block(LostdepthsModBlocks.BLACK_HOLE_COMPRESSOR);
@@ -607,6 +607,15 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> NUROSTAR_CABLE = block(LostdepthsModBlocks.NUROSTAR_CABLE);
 	public static final RegistryObject<Item> INFUSED_CUTTERS = REGISTRY.register("infused_cutters", () -> new InfusedCuttersItem());
 	public static final RegistryObject<Item> INFUSED_SIGN = block(LostdepthsModBlocks.INFUSED_SIGN);
+	public static final RegistryObject<Item> AUGMENT_DASH = REGISTRY.register("augment_dash", () -> new MasterPartRegistryItem(8));
+	public static final RegistryObject<Item> AUGMENT_TETHER = REGISTRY.register("augment_tether", () -> new MasterPartRegistryItem(8));
+	public static final RegistryObject<Item> AUGMENT_TELEPORT = REGISTRY.register("augment_teleport", () -> new MasterPartRegistryItem(8));
+	public static final RegistryObject<Item> AUGMENT_EXPLOSIVE = REGISTRY.register("augment_explosive", () -> new MasterPartRegistryItem(8));
+	public static final RegistryObject<Item> AUGMENT_SHATTER = REGISTRY.register("augment_shatter", () -> new MasterPartRegistryItem(8));
+	public static final RegistryObject<Item> AUGMENT_REGENERATIVE = REGISTRY.register("augment_regenerative", () -> new MasterPartRegistryItem(8));
+	public static final RegistryObject<Item> AUGMENT_NIGHTMARES = REGISTRY.register("augment_nightmares", () -> new MasterPartRegistryItem(8));
+	public static final RegistryObject<Item> AUGMENT_DAMAGE = REGISTRY.register("augment_damage", () -> new MasterPartRegistryItem(8));
+	public static final RegistryObject<Item> REFLECTIVE_PLATING = REGISTRY.register("reflective_plating", () -> new MasterPartRegistryItem(64));
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));

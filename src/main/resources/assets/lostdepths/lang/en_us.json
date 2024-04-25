@@ -429,7 +429,7 @@
   "item.lostdepths.gaze_of_nightmares": "Gaze Of Nightmares",
   "block.lostdepths.draconic_chest_open": "Draconic Chest Open",
   "item.lostdepths.radiochronic_isotope": "Radiochronic Isotope",
-  "item.lostdepths.augmenticon_box": "Augmenticon Box",
+  "item.lostdepths.augmenticon_box": "§9Augmenticon Box",
   "block.lostdepths.o_factory_block": "Orange Factory Block",
   "block.lostdepths.quantum_transporter": "Quantum Transporter",
   "subtitles.venom_attack": "",
@@ -638,7 +638,7 @@
   "block.lostdepths.infusediron_pillar_cross": "Infused Iron Cross",
   "gui.lostdepths.portable_beacon_gui.label_portable_beacon": "Portable Beacon",
   "item.lostdepths.nightmare_powder": "Nightmare Powder",
-  "item.lostdepths.augmenticon_box_charged": "Augmenticon Box (Charged)",
+  "item.lostdepths.augmenticon_box_charged": "§9Augmenticon Box (§bCharged§9)",
   "item.lostdepths.titanium_metalloy": "Titanium Metalloy",
   "item.lostdepths.ethercut_metal": "§bEthercut Metal",
   "item.lostdepths.null_neckles": "§bNull Necklace",
@@ -774,5 +774,14 @@
   "item.lostdepths.infused_cutters": "Infused Wire Cutters",
   "config.jade.plugin_lostdepths.time": "Test",
   "lostdepths.time": "Time: %d s",
-  "block.lostdepths.infused_sign": "Infused Sign"
+  "block.lostdepths.infused_sign": "Infused Sign",
+  "item.lostdepths.augment_damage": "§bAugment Slide (§4Damage§b)",
+  "item.lostdepths.augment_dash": "§bAugment Slide (§3Dash§b)",
+  "item.lostdepths.augment_tether": "§bAugment Slide (§9Tether§b)",
+  "item.lostdepths.augment_teleport": "§bAugment Slide (§bTeleport§b)",
+  "item.lostdepths.augment_shatter": "§bAugment Slide (§aShatter§b)",
+  "item.lostdepths.augment_regenerative": "§bAugment Slide (§dRegenerative§b)",
+  "item.lostdepths.augment_nightmares": "§bAugment Slide (§7Nightmares§b)",
+  "item.lostdepths.augment_explosive": "§bAugment Slide (§6Explosive§b)",
+  "item.lostdepths.reflective_plating": "Reflective Plating"
 }

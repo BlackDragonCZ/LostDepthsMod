@@ -185,7 +185,7 @@ public class MetaMaterializerOnBlockRightClickedProcedure {
 			}
 		}
 		if (true) {
-			handItem = new ItemStack(LostdepthsModItems.POTENT_POLARCRONITE.get());
+			handItem = new ItemStack(LostdepthsModItems.WEAK_POLARCRONITE.get());
 			need1 = new ItemStack(LostdepthsModItems.HYPERIUM_INGOT.get());
 			need2 = new ItemStack(LostdepthsModItems.VOLATILE_BLOOD.get());
 			need3 = new ItemStack(LostdepthsModItems.PLUCKED_EYE.get());
