@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "weight": 100,
+          "weight": 20,
           "name": "lostdepths:iron_golem_essence"
         }
       ]

@@ -1,15 +1,17 @@
 package cz.blackdragoncz.lostdepths.block.decor;
 
 import cz.blackdragoncz.lostdepths.block.entity.InfusedSignBlockEntity;
+import cz.blackdragoncz.lostdepths.init.LostdepthsModWoodTypes;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.WallSignBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.WoodType;
 
 public class InfusedWallSignBlock extends WallSignBlock {
-    public InfusedWallSignBlock(Properties properties, WoodType woodType) {
-        super(properties, woodType);
+    public InfusedWallSignBlock() {
+        super(BlockBehaviour.Properties.of().sound(SoundType.METAL), LostdepthsModWoodTypes.INFUSED_IRON);
     }
 
     @Override
