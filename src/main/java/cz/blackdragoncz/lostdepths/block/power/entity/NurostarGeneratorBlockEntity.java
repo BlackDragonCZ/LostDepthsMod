@@ -1,4 +1,4 @@
-package cz.blackdragoncz.lostdepths.block.entity;
+package cz.blackdragoncz.lostdepths.block.power.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;

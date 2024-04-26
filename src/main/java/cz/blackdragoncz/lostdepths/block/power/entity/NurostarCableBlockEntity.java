@@ -1,4 +1,4 @@
-package cz.blackdragoncz.lostdepths.block.entity;
+package cz.blackdragoncz.lostdepths.block.power.entity;
 
 import cz.blackdragoncz.lostdepths.init.LostdepthsModBlockEntities;
 import net.minecraft.core.BlockPos;

@@ -1,6 +1,6 @@
 package cz.blackdragoncz.lostdepths.block.power;
 
-import cz.blackdragoncz.lostdepths.block.entity.NurostarCableBlockEntity;
+import cz.blackdragoncz.lostdepths.block.power.entity.NurostarCableBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;

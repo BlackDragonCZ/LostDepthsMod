@@ -5,6 +5,7 @@
 package cz.blackdragoncz.lostdepths.init;
 
 import cz.blackdragoncz.lostdepths.block.entity.*;
+import cz.blackdragoncz.lostdepths.block.power.entity.NurostarCableBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.registries.ForgeRegistries;
