@@ -617,6 +617,7 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> AUGMENT_NIGHTMARES = REGISTRY.register("augment_nightmares", () -> new MasterPartRegistryItem(8));
 	public static final RegistryObject<Item> AUGMENT_DAMAGE = REGISTRY.register("augment_damage", () -> new MasterPartRegistryItem(8));
 	public static final RegistryObject<Item> REFLECTIVE_PLATING = REGISTRY.register("reflective_plating", () -> new MasterPartRegistryItem(64));
+	public static final RegistryObject<Item> FUSION_TABLE = block(LostdepthsModBlocks.FUSION_TABLE);
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));

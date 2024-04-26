@@ -783,5 +783,6 @@
   "item.lostdepths.augment_regenerative": "§bAugment Slide (§dRegenerative§b)",
   "item.lostdepths.augment_nightmares": "§bAugment Slide (§7Nightmares§b)",
   "item.lostdepths.augment_explosive": "§bAugment Slide (§6Explosive§b)",
-  "item.lostdepths.reflective_plating": "Reflective Plating"
+  "item.lostdepths.reflective_plating": "Reflective Plating",
+  "block.lostdepths.fusion_table": "Fusion Table"
 }
