@@ -70,6 +70,10 @@
     "lostdepths:star_chest_open",
     "lostdepths:draconic_chest",
     "lostdepths:draconic_chest_open",
-    "lostdepths:draconic_flag"
+    "lostdepths:draconic_flag",
+    "lostdepths:infused_sign",
+    "lostdepths:infused_hanging_sign",
+    "lostdepths:infused_wall_hanging_sign",
+    "lostdepths:infused_wall_sign"
   ]
 }
