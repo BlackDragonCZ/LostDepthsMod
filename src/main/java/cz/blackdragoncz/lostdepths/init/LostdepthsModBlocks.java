@@ -286,5 +286,7 @@ public class LostdepthsModBlocks {
 	public static final RegistryObject<Block> NUROSTAR_CABLE = REGISTRY.register("nurostar_cable", () -> new NurostarCableBlock());
 	public static final RegistryObject<Block> INFUSED_SIGN = REGISTRY.register("infused_sign", InfusedSignBlock::new);
 	public static final RegistryObject<Block> INFUSED_WALL_SIGN = REGISTRY.register("infused_wall_sign", InfusedWallSignBlock::new);
+	public static final RegistryObject<Block> INFUSED_HANGING_SIGN = REGISTRY.register("infused_hanging_sign", InfusedHangingSignBlock::new);
+	public static final RegistryObject<Block> INFUSED_WALL_HANGING_SIGN = REGISTRY.register("infused_wall_hanging_sign", InfusedWallHangingSignBlock::new);
 	public static final RegistryObject<Block> FUSION_TABLE = REGISTRY.register("fusion_table", FusionTableBlock::new);
 }

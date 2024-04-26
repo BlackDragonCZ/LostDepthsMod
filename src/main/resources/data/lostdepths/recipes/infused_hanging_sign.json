@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "I I",
+    "AAA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "lostdepths:infused_iron"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "lostdepths:infused_hanging_sign",
+    "count": 6
+  }
+}

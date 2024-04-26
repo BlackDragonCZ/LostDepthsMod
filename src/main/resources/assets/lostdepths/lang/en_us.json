@@ -775,6 +775,7 @@
   "config.jade.plugin_lostdepths.time": "Test",
   "lostdepths.time": "Time: %d s",
   "block.lostdepths.infused_sign": "Infused Sign",
+  "block.lostdepths.infused_hanging_sign": "Infused Hanging Sign",
   "item.lostdepths.augment_damage": "§bAugment Slide (§4Damage§b)",
   "item.lostdepths.augment_dash": "§bAugment Slide (§3Dash§b)",
   "item.lostdepths.augment_tether": "§bAugment Slide (§9Tether§b)",
