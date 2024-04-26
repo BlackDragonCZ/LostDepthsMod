@@ -66,4 +66,10 @@ public class DraconicTridentItem extends AbstractCustomTrident {
 	protected EntityType<ThrownDraconicTrident> getThrowEntity() {
 		return LostdepthsModEntities.THROWN_DRACONIC_TRIDENT.get();
 	}
+
+	@Override
+	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(itemstack, world, list, flag);
+		list.add(Component.literal("§4Work in lava and water"));
+	}
 }

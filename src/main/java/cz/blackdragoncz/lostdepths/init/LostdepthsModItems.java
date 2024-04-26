@@ -8,15 +8,16 @@ import cz.blackdragoncz.lostdepths.item.ingot.*;
 import cz.blackdragoncz.lostdepths.item.part.*;
 import cz.blackdragoncz.lostdepths.item.tool.*;
 import cz.blackdragoncz.lostdepths.item.security.*;
-import net.minecraft.world.item.Rarity;
+import net.minecraft.server.commands.SpectateCommand;
+import net.minecraft.world.item.*;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.BlockItem;
 
 import cz.blackdragoncz.lostdepths.LostdepthsMod;
 
@@ -606,7 +607,7 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> NUROSTAR_GENERATOR = block(LostdepthsModBlocks.NUROSTAR_GENERATOR);
 	public static final RegistryObject<Item> NUROSTAR_CABLE = block(LostdepthsModBlocks.NUROSTAR_CABLE);
 	public static final RegistryObject<Item> INFUSED_CUTTERS = REGISTRY.register("infused_cutters", () -> new InfusedCuttersItem());
-	public static final RegistryObject<Item> INFUSED_SIGN = block(LostdepthsModBlocks.INFUSED_SIGN);
+	public static final RegistryObject<Item> INFUSED_SIGN = REGISTRY.register("infused_sign", () -> new SignItem((new Item.Properties()).stacksTo(16), LostdepthsModBlocks.INFUSED_SIGN.get(), LostdepthsModBlocks.INFUSED_WALL_SIGN.get()));
 	public static final RegistryObject<Item> AUGMENT_DASH = REGISTRY.register("augment_dash", () -> new MasterPartRegistryItem(8));
 	public static final RegistryObject<Item> AUGMENT_TETHER = REGISTRY.register("augment_tether", () -> new MasterPartRegistryItem(8));
 	public static final RegistryObject<Item> AUGMENT_TELEPORT = REGISTRY.register("augment_teleport", () -> new MasterPartRegistryItem(8));
