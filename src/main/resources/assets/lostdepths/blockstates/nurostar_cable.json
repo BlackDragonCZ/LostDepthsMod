@@ -10,7 +10,7 @@
         "north": "true"
       },
       "apply": {
-        "model": "lostdepths:block/nurostar_cable",
+        "model": "lostdepths:block/nurostar_cable_multipart",
         "uvlock": false
       }
     },
@@ -19,7 +19,7 @@
         "east": "true"
       },
       "apply": {
-        "model": "lostdepths:block/nurostar_cable",
+        "model": "lostdepths:block/nurostar_cable_multipart",
         "y": 90,
         "uvlock": false
       }
@@ -29,7 +29,7 @@
         "south": "true"
       },
       "apply": {
-        "model": "lostdepths:block/nurostar_cable",
+        "model": "lostdepths:block/nurostar_cable_multipart",
         "y": 180,
         "uvlock": false
       }
@@ -39,7 +39,7 @@
         "west": "true"
       },
       "apply": {
-        "model": "lostdepths:block/nurostar_cable",
+        "model": "lostdepths:block/nurostar_cable_multipart",
         "y": 270,
         "uvlock": false
       }
@@ -49,7 +49,18 @@
         "down": "true"
       },
       "apply": {
-        "model": "lostdepths:block/nurostar_cable",
+        "model": "lostdepths:block/nurostar_cable_multipart",
+        "x": 90,
+        "uvlock": false
+      }
+    },
+    {
+      "when": {
+        "up": "true"
+      },
+      "apply": {
+        "model": "lostdepths:block/nurostar_cable_multipart",
+        "x": -90,
         "uvlock": false
       }
     }
