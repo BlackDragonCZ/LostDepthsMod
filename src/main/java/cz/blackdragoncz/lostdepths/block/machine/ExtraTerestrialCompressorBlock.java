@@ -1,6 +1,7 @@
 
 package cz.blackdragoncz.lostdepths.block.machine;
 
+import cz.blackdragoncz.lostdepths.block.base.AbstractCompressorBlock;
 import cz.blackdragoncz.lostdepths.block.entity.ExtraTerestrialCompressorBlockEntity;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModBlockEntities;
 import net.minecraft.core.BlockPos;

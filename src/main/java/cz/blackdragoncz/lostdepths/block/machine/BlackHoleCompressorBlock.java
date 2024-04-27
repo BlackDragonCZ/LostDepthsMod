@@ -1,5 +1,6 @@
 package cz.blackdragoncz.lostdepths.block.machine;
 
+import cz.blackdragoncz.lostdepths.block.base.AbstractCompressorBlock;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModBlockEntities;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;

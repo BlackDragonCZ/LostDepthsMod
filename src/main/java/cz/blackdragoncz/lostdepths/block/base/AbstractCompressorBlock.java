@@ -1,4 +1,4 @@
-package cz.blackdragoncz.lostdepths.block.machine;
+package cz.blackdragoncz.lostdepths.block.base;
 
 import cz.blackdragoncz.lostdepths.block.entity.AbstractCompressorBlockEntity;
 import cz.blackdragoncz.lostdepths.world.inventory.CompressorGUIMenu;

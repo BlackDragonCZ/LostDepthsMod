@@ -282,8 +282,8 @@ public class LostdepthsModBlocks {
 	public static final RegistryObject<Block> CELESTIAL_LEAVES_RED = REGISTRY.register("celestial_leaves_red", () -> new CelestialLeavesRedBlock());
 	public static final RegistryObject<Block> MODULATOR = REGISTRY.register("modulator", () -> new ModulatorBlock());
 	public static final RegistryObject<Block> BLACK_HOLE_COMPRESSOR = REGISTRY.register("black_hole_compressor", () -> new BlackHoleCompressorBlock());
-	public static final RegistryObject<Block> NUROSTAR_GENERATOR = REGISTRY.register("nurostar_generator", () -> new NurostarGeneratorBlock());
-	public static final RegistryObject<Block> NUROSTAR_CABLE = REGISTRY.register("nurostar_cable", () -> new NurostarCableBlock());
+	public static final RegistryObject<Block> NUROSTAR_GENERATOR = REGISTRY.register("nurostar_generator", NurostarGeneratorBlock::new);
+	public static final RegistryObject<Block> NUROSTAR_CABLE = REGISTRY.register("nurostar_cable", NurostarCableBlock::new);
 	public static final RegistryObject<Block> INFUSED_SIGN = REGISTRY.register("infused_sign", InfusedSignBlock::new);
 	public static final RegistryObject<Block> INFUSED_WALL_SIGN = REGISTRY.register("infused_wall_sign", InfusedWallSignBlock::new);
 	public static final RegistryObject<Block> INFUSED_HANGING_SIGN = REGISTRY.register("infused_hanging_sign", InfusedHangingSignBlock::new);

@@ -1,7 +1,7 @@
 package cz.blackdragoncz.lostdepths.client.jade;
 
 import cz.blackdragoncz.lostdepths.block.entity.AbstractCompressorBlockEntity;
-import cz.blackdragoncz.lostdepths.block.machine.AbstractCompressorBlock;
+import cz.blackdragoncz.lostdepths.block.base.AbstractCompressorBlock;
 import snownee.jade.api.IWailaClientRegistration;
 import snownee.jade.api.IWailaCommonRegistration;
 import snownee.jade.api.IWailaPlugin;

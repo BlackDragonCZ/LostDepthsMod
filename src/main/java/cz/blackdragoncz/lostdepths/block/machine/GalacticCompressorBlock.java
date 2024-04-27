@@ -1,6 +1,7 @@
 
 package cz.blackdragoncz.lostdepths.block.machine;
 
+import cz.blackdragoncz.lostdepths.block.base.AbstractCompressorBlock;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModBlockEntities;
 import cz.blackdragoncz.lostdepths.util.NothingNullByDefault;
 import net.minecraft.network.chat.Component;
