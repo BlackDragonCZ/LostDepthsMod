@@ -194,6 +194,9 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModItems.CONDENSED_COGNITIUM.get());
 				tabData.accept(LostdepthsModItems.PHOTOTENZYTE_BAR.get());
 				tabData.accept(LostdepthsModItems.MULTIVERSITE_PLATES.get());
+				tabData.accept(LostdepthsModItems.PRISMOSIS.get());
+				tabData.accept(LostdepthsModItems.PRISMOSIS_BAR.get());
+				tabData.accept(LostdepthsModItems.CLOVINITE_BAR.get());
 			})
 
 					.build());
@@ -209,7 +212,7 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModItems.ROD_OF_TRANSFORMATION.get());
 				tabData.accept(LostdepthsModItems.VENOM_KNIFE.get());
 				tabData.accept(LostdepthsModItems.CRYSTALIZED_PICKAXE.get());
-				tabData.accept(LostdepthsModItems.SOUL_KEY.get());
+				tabData.accept(LostdepthsModItems.CELESTIAL_KEY.get());
 				tabData.accept(LostdepthsModItems.GALAXY_DRAGON_STAFF.get());
 				tabData.accept(LostdepthsModItems.CELESTIAL_PICKAXE.get());
 				tabData.accept(LostdepthsModItems.OMNI_PICKAXE.get());
@@ -551,6 +554,10 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModItems.AUGMENT_TELEPORT.get());
 				tabData.accept(LostdepthsModItems.AUGMENT_TETHER.get());
 				tabData.accept(LostdepthsModItems.REFLECTIVE_PLATING.get());
+				tabData.accept(LostdepthsModItems.PINK_WATCHFUL_EYE.get());
+				tabData.accept(LostdepthsModItems.PURPLE_WATCHFUL_EYE.get());
+				tabData.accept(LostdepthsModItems.BLUE_WATCHFUL_EYE.get());
+				tabData.accept(LostdepthsModItems.GEM_OF_ILLUSION.get());
 			})
 
 					.build());

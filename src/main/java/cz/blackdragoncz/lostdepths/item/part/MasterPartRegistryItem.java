@@ -23,6 +23,10 @@ public class MasterPartRegistryItem extends Item {
         super(new Item.Properties().stacksTo(itemMaxStacks).rarity(Rarity.COMMON));
     }
 
+    public MasterPartRegistryItem() {
+        this(64);
+    }
+
     @Override
     @Nullable
     public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {

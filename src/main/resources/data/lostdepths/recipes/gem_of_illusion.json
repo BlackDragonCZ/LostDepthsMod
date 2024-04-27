@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ABC",
+    "DEF",
+    "   "
+  ],
+  "key": {
+    "A": {
+      "item": "lostdepths:crystal_of_curses"
+    },
+    "B": {
+      "item": "lostdepths:prismosis_bar"
+    },
+    "C": {
+      "item": "lostdepths:pink_watchful_eye"
+    },
+    "D": {
+      "item": "lostdepths:blue_watchful_eye"
+    },
+    "E": {
+      "item": "lostdepths:purple_watchful_eye"
+    },
+    "F": {
+      "item": "lostdepths:haunted_ingot"
+    }
+  },
+  "result": {
+    "item": "lostdepths:gem_of_illusion",
+    "count": 1
+  }
+}

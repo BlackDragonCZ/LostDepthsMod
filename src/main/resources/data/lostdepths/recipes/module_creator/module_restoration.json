@@ -1,0 +1,10 @@
+{
+  "type": "lostdepths:module_creator",
+  "items": [
+    { "item": "lostdepths:corrupted_gemstone" },
+    { "item": "lostdepths:jar_of_syrup" },
+    { "item": "lostdepths:lifestrain_enigma" },
+    { "item": "lostdepths:empty_module_container" }
+  ],
+  "result": { "item": "lostdepths:module_restoration" }
+}

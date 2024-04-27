@@ -1,6 +1,9 @@
 
 package cz.blackdragoncz.lostdepths.block.machine;
 
+import cz.blackdragoncz.lostdepths.init.LostdepthsModBlocks;
+import cz.blackdragoncz.lostdepths.init.LostdepthsModItems;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -96,7 +99,7 @@ public class CelestialChestBlock extends Block {
 		double hitY = hit.getLocation().y;
 		double hitZ = hit.getLocation().z;
 		Direction direction = hit.getDirection();
-		CelestialChestOnBlockRightClickedProcedure.execute(world, x, y, z, entity);
+		CelestialChestOnBlockRightClickedProcedure.execute(world, x, y, z, entity, LostdepthsModItems.CELESTIAL_KEY.get(), new ResourceLocation("lostdepths:chests/celestial_chest"), LostdepthsModBlocks.CELESTIAL_CHEST_OPEN.get());
 		return InteractionResult.SUCCESS;
 	}
 }

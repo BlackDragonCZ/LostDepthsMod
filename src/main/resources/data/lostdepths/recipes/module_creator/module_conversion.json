@@ -1,0 +1,10 @@
+{
+  "type": "lostdepths:module_creator",
+  "items": [
+    { "item": "lostdepths:dual_power_assembly" },
+    { "item": "lostdepths:condensed_zerithium" },
+    { "item": "lostdepths:condensed_cryzulite" },
+    { "item": "lostdepths:empty_module_container" }
+  ],
+  "result": { "item": "lostdepths:module_conversion" }
+}

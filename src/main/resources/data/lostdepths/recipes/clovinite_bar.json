@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "BBB",
+    "BBB",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "lostdepths:clovinite"
+    }
+  },
+  "result": {
+    "item": "lostdepths:clovinite_bar",
+    "count": 1
+  }
+}

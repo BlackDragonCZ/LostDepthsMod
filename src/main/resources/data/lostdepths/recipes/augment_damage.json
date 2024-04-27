@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ABB",
+    "BCC",
+    "C  "
+  ],
+  "key": {
+    "A": {
+      "item": "lostdepths:blank_augment_slide"
+    },
+    "B": {
+      "item": "lostdepths:celestial_iron"
+    },
+    "C": {
+      "item": "lostdepths:everwatching_eye"
+    }
+  },
+  "result": {
+    "item": "lostdepths:augment_damage",
+    "count": 1
+  }
+}

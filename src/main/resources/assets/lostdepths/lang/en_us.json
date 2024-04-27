@@ -785,5 +785,12 @@
   "item.lostdepths.augment_nightmares": "§bAugment Slide (§7Nightmares§b)",
   "item.lostdepths.augment_explosive": "§bAugment Slide (§6Explosive§b)",
   "item.lostdepths.reflective_plating": "Reflective Plating",
-  "block.lostdepths.fusion_table": "Fusion Table"
+  "block.lostdepths.fusion_table": "Fusion Table",
+  "item.lostdepths.clovinite_bar": "Clovinite Bar",
+  "item.lostdepths.prismosis": "Prismosis",
+  "item.lostdepths.prismosis_bar": "Prismosis Bar",
+  "item.lostdepths.pink_watchful_eye": "Pink Watchful Eye",
+  "item.lostdepths.blue_watchful_eye": "Blue Watchful Eye",
+  "item.lostdepths.purple_watchful_eye": "Purple Watchful Eye",
+  "item.lostdepths.gem_of_illusion": "Gem of Thundering Illusions"
 }

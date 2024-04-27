@@ -1,0 +1,10 @@
+{
+  "type": "lostdepths:module_creator",
+  "items": [
+    { "item": "lostdepths:power_core" },
+    { "item": "lostdepths:over_charge_coil" },
+    { "item": "lostdepths:power_clamp" },
+    { "item": "lostdepths:empty_module_container" }
+  ],
+  "result": { "item": "lostdepths:module_power" }
+}
