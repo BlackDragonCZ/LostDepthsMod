@@ -52,6 +52,4 @@ public abstract class LDRecipe implements Recipe<CraftingContainer> {
     public ItemStack getResultItem(@NotNull RegistryAccess registryAccess) {
         return ItemStack.EMPTY;
     }
-
-
 }

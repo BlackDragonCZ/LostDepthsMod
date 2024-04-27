@@ -1,5 +1,7 @@
 package cz.blackdragoncz.lostdepths.block.entity;
 
+import net.minecraft.world.entity.player.StackedContents;
+import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.energy.EnergyStorage;
@@ -31,9 +33,11 @@ import io.netty.buffer.Unpooled;
 
 import cz.blackdragoncz.lostdepths.world.inventory.ModuleCreatorGUIMenu;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModBlockEntities;
+import org.jetbrains.annotations.NotNull;
 
-public class ModuleCreatorBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
-	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(5, ItemStack.EMPTY);
+public class ModuleCreatorBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer, CraftingContainer {
+
+	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(4, ItemStack.EMPTY);
 	private final LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.values());
 
 	public ModuleCreatorBlockEntity(BlockPos position, BlockState state) {
@@ -46,8 +50,6 @@ public class ModuleCreatorBlockEntity extends RandomizableContainerBlockEntity i
 		if (!this.tryLoadLootTable(compound))
 			this.stacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
 		ContainerHelper.loadAllItems(compound, this.stacks);
-		if (compound.get("energyStorage") instanceof IntTag intTag)
-			energyStorage.deserializeNBT(intTag);
 	}
 
 	@Override
@@ -56,7 +58,6 @@ public class ModuleCreatorBlockEntity extends RandomizableContainerBlockEntity i
 		if (!this.trySaveLootTable(compound)) {
 			ContainerHelper.saveAllItems(compound, this.stacks);
 		}
-		compound.put("energyStorage", energyStorage.serializeNBT());
 	}
 
 	@Override
@@ -103,7 +104,17 @@ public class ModuleCreatorBlockEntity extends RandomizableContainerBlockEntity i
 	}
 
 	@Override
-	protected NonNullList<ItemStack> getItems() {
+	public int getWidth() {
+		return 4;
+	}
+
+	@Override
+	public int getHeight() {
+		return 1;
+	}
+
+	@Override
+	public NonNullList<ItemStack> getItems() {
 		return this.stacks;
 	}
 
@@ -114,8 +125,6 @@ public class ModuleCreatorBlockEntity extends RandomizableContainerBlockEntity i
 
 	@Override
 	public boolean canPlaceItem(int index, ItemStack stack) {
-		if (index == 0)
-			return false;
 		return true;
 	}
 
@@ -131,45 +140,13 @@ public class ModuleCreatorBlockEntity extends RandomizableContainerBlockEntity i
 
 	@Override
 	public boolean canTakeItemThroughFace(int index, ItemStack stack, Direction direction) {
-		if (index == 1)
-			return false;
-		if (index == 2)
-			return false;
-		if (index == 3)
-			return false;
-		if (index == 4)
-			return false;
-		return true;
+		return false;
 	}
-
-	private final EnergyStorage energyStorage = new EnergyStorage(200000, 100000, 100000, 0) {
-		@Override
-		public int receiveEnergy(int maxReceive, boolean simulate) {
-			int retval = super.receiveEnergy(maxReceive, simulate);
-			if (!simulate) {
-				setChanged();
-				level.sendBlockUpdated(worldPosition, level.getBlockState(worldPosition), level.getBlockState(worldPosition), 2);
-			}
-			return retval;
-		}
-
-		@Override
-		public int extractEnergy(int maxExtract, boolean simulate) {
-			int retval = super.extractEnergy(maxExtract, simulate);
-			if (!simulate) {
-				setChanged();
-				level.sendBlockUpdated(worldPosition, level.getBlockState(worldPosition), level.getBlockState(worldPosition), 2);
-			}
-			return retval;
-		}
-	};
 
 	@Override
 	public <T> LazyOptional<T> getCapability(Capability<T> capability, @Nullable Direction facing) {
 		if (!this.remove && facing != null && capability == ForgeCapabilities.ITEM_HANDLER)
 			return handlers[facing.ordinal()].cast();
-		if (!this.remove && capability == ForgeCapabilities.ENERGY)
-			return LazyOptional.of(() -> energyStorage).cast();
 		return super.getCapability(capability, facing);
 	}
 
@@ -178,5 +155,10 @@ public class ModuleCreatorBlockEntity extends RandomizableContainerBlockEntity i
 		super.setRemoved();
 		for (LazyOptional<? extends IItemHandler> handler : handlers)
 			handler.invalidate();
+	}
+
+	@Override
+	public void fillStackedContents(@NotNull StackedContents stackedContents) {
+
 	}
 }

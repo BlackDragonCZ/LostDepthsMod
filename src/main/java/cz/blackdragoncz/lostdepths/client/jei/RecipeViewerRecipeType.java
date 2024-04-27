@@ -47,7 +47,7 @@ public class RecipeViewerRecipeType {
         }
     });
 
-    public static final RecipeTypeWrapper<ModuleRecipe> MODULE_CREATOR = new RecipeTypeWrapper<>(LostDepthsModRecipeType.MODULE_CREATOR.get(), ModuleRecipe.class, 0, 0, 142, 70, new IItemProvider() {
+    public static final RecipeTypeWrapper<ModuleRecipe> MODULE_CREATOR = new RecipeTypeWrapper<>(LostDepthsModRecipeType.MODULE_CREATOR.get(), ModuleRecipe.class, 0, 0, 140, 59, new IItemProvider() {
         @Override
         public @NotNull Item asItem() {
             return LostdepthsModItems.MODULE_CREATOR.get();

@@ -16,19 +16,9 @@ import cz.blackdragoncz.lostdepths.world.inventory.ModuleCreatorGUIMenu;
 import com.mojang.blaze3d.systems.RenderSystem;
 
 public class ModuleCreatorGUIScreen extends AbstractContainerScreen<ModuleCreatorGUIMenu> {
-	private final static HashMap<String, Object> guistate = ModuleCreatorGUIMenu.guistate;
-	private final Level world;
-	private final int x, y, z;
-	private final Player entity;
-	ImageButton imagebutton_recipebook_arrow;
 
 	public ModuleCreatorGUIScreen(ModuleCreatorGUIMenu container, Inventory inventory, Component text) {
 		super(container, inventory, text);
-		this.world = container.world;
-		this.x = container.x;
-		this.y = container.y;
-		this.z = container.z;
-		this.entity = container.entity;
 		this.imageWidth = 176;
 		this.imageHeight = 186;
 	}
@@ -47,7 +37,7 @@ public class ModuleCreatorGUIScreen extends AbstractContainerScreen<ModuleCreato
 		RenderSystem.setShaderColor(1, 1, 1, 1);
 		RenderSystem.enableBlend();
 		RenderSystem.defaultBlendFunc();
-		guiGraphics.blit(texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
+		guiGraphics.blit(texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, 256, 256);
 		RenderSystem.disableBlend();
 	}
 
@@ -67,7 +57,7 @@ public class ModuleCreatorGUIScreen extends AbstractContainerScreen<ModuleCreato
 
 	@Override
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-		guiGraphics.drawString(this.font, Component.translatable("gui.lostdepths.module_creator_gui.label_module_creatorssssss"), 51, 8, -12434878, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.lostdepths.module_creator_gui.label_module_creatorssssss"), 51, 6, -12434878, false);
 	}
 
 	@Override
@@ -78,9 +68,6 @@ public class ModuleCreatorGUIScreen extends AbstractContainerScreen<ModuleCreato
 	@Override
 	public void init() {
 		super.init();
-		imagebutton_recipebook_arrow = new ImageButton(this.leftPos + 96, this.topPos + 44, 24, 17, 0, 0, 17, new ResourceLocation("lostdepths:textures/screens/atlas/imagebutton_recipebook_arrow.png"), 24, 34, e -> {
-		});
-		guistate.put("button:imagebutton_recipebook_arrow", imagebutton_recipebook_arrow);
-		this.addRenderableWidget(imagebutton_recipebook_arrow);
+
 	}
 }
