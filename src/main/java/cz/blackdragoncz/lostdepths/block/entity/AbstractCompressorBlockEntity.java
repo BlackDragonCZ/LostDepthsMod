@@ -1,5 +1,6 @@
 package cz.blackdragoncz.lostdepths.block.entity;
 
+import cz.blackdragoncz.lostdepths.energy.SyncedEnergyStorage;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModSounds;
 import cz.blackdragoncz.lostdepths.recipe.CompressingRecipe;
 import cz.blackdragoncz.lostdepths.init.LostDepthsModRecipeType;
@@ -59,27 +60,7 @@ public abstract class AbstractCompressorBlockEntity extends RandomizableContaine
         this.energyCost = energyCost;
 
         if (energyStorageCapacity > 0 && energyCost > 0) {
-            this.energyStorage = new EnergyStorage(energyStorageCapacity, maxEnergyTransfer) {
-                @Override
-                public int receiveEnergy(int maxReceive, boolean simulate) {
-                    int retval = super.receiveEnergy(maxReceive, simulate);
-                    if (!simulate) {
-                        setChanged();
-                        level.sendBlockUpdated(worldPosition, level.getBlockState(worldPosition), level.getBlockState(worldPosition), 2);
-                    }
-                    return retval;
-                }
-
-                @Override
-                public int extractEnergy(int maxExtract, boolean simulate) {
-                    int retval = super.extractEnergy(maxExtract, simulate);
-                    if (!simulate) {
-                        setChanged();
-                        level.sendBlockUpdated(worldPosition, level.getBlockState(worldPosition), level.getBlockState(worldPosition), 2);
-                    }
-                    return retval;
-                }
-            };
+            this.energyStorage = new SyncedEnergyStorage(this, energyStorageCapacity, maxEnergyTransfer);
         }
     }
 

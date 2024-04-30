@@ -1,5 +1,6 @@
 package cz.blackdragoncz.lostdepths.block.entity;
 
+import cz.blackdragoncz.lostdepths.energy.SyncedEnergyStorage;
 import cz.blackdragoncz.lostdepths.util.IEnergyAccessor;
 import net.minecraft.world.entity.player.StackedContents;
 import net.minecraft.world.inventory.CraftingContainer;
@@ -145,27 +146,7 @@ public class AlloyWorkstationBlockEntity extends RandomizableContainerBlockEntit
 		return false;
 	}
 
-	private final EnergyStorage energyStorage = new EnergyStorage(25000, 1000, 5000, 0) {
-		@Override
-		public int receiveEnergy(int maxReceive, boolean simulate) {
-			int retval = super.receiveEnergy(maxReceive, simulate);
-			if (!simulate) {
-				setChanged();
-				level.sendBlockUpdated(worldPosition, level.getBlockState(worldPosition), level.getBlockState(worldPosition), 2);
-			}
-			return retval;
-		}
-
-		@Override
-		public int extractEnergy(int maxExtract, boolean simulate) {
-			int retval = super.extractEnergy(maxExtract, simulate);
-			if (!simulate) {
-				setChanged();
-				level.sendBlockUpdated(worldPosition, level.getBlockState(worldPosition), level.getBlockState(worldPosition), 2);
-			}
-			return retval;
-		}
-	};
+	private final EnergyStorage energyStorage = new SyncedEnergyStorage(this, 25000, 1000);
 
 	@Override
 	public <T> LazyOptional<T> getCapability(Capability<T> capability, @Nullable Direction facing) {
