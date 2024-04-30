@@ -12,6 +12,7 @@ import cz.blackdragoncz.lostdepths.block.security.*;
 import cz.blackdragoncz.lostdepths.block.structure.*;
 import cz.blackdragoncz.lostdepths.block.villager.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.DeferredRegister;
@@ -257,8 +258,13 @@ public class LostdepthsModBlocks {
 	public static final RegistryObject<Block> TERMINAL_CONSOLE_3 = REGISTRY.register("terminal_console_3", () -> new TerminalConsole3Block());
 	public static final RegistryObject<Block> STAR_CHEST = REGISTRY.register("star_chest", () -> new StarChestBlock());
 	public static final RegistryObject<Block> STAR_CHEST_OPEN = REGISTRY.register("star_chest_open", () -> new StarChestOpenBlock());
-	public static final RegistryObject<Block> DRACONIC_CHEST = REGISTRY.register("draconic_chest", () -> new AbstractChestBlock(LostdepthsModItems.DRACONIC_KEY.get(), new ResourceLocation("lostdepths:chests/celestial_chest"), LostdepthsModBlocks.DRACONIC_CHEST_OPEN.get()));
 	public static final RegistryObject<Block> DRACONIC_CHEST_OPEN = REGISTRY.register("draconic_chest_open", () -> new DraconicChestOpenBlock());
+	public static final RegistryObject<Block> DRACONIC_CHEST = REGISTRY.register("draconic_chest", () -> new AbstractLockedChestBlock(new ResourceLocation("lostdepths:chests/celestial_chest"), LostdepthsModBlocks.DRACONIC_CHEST_OPEN.get()) {
+		@Override
+		protected Item getKeyItem() {
+			return LostdepthsModItems.DRACONIC_KEY.get();
+		}
+	});
 	public static final RegistryObject<Block> DRACONIC_FLAG = REGISTRY.register("draconic_flag", () -> new DraconicFlagBlock());
 	public static final RegistryObject<Block> ULTRA_RESISTIVE_GLASS = REGISTRY.register("ultra_resistive_glass", () -> new UltraResistiveGlassBlock());
 	public static final RegistryObject<Block> MYRITE_ORE = REGISTRY.register("myrite_ore", () -> new MyriteOreBlock());

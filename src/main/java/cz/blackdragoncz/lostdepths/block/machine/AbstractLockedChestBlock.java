@@ -7,8 +7,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -40,21 +38,21 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-public class AbstractChestBlock extends Block implements SimpleWaterloggedBlock {
+public abstract class AbstractLockedChestBlock extends Block implements SimpleWaterloggedBlock {
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
-    private Item keyItem;
     private ResourceLocation lootableLocation;
     private Block openBlockState;
 
-    public AbstractChestBlock(Item keyItem, ResourceLocation lootableLocation, Block openBlockState) {
+    public AbstractLockedChestBlock(ResourceLocation lootableLocation, Block openBlockState) {
         super(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(3f, 6f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, false));
-        this.keyItem = keyItem;
         this.lootableLocation = lootableLocation;
         this.openBlockState = openBlockState;
     }
+
+    protected abstract Item getKeyItem();
 
     @Override
     public boolean shouldDisplayFluidOverlay(BlockState state, BlockAndTintGetter world, BlockPos pos, FluidState fluidstate) {
@@ -126,7 +124,7 @@ public class AbstractChestBlock extends Block implements SimpleWaterloggedBlock 
         double hitY = hit.getLocation().y;
         double hitZ = hit.getLocation().z;
         Direction direction = hit.getDirection();
-            if (entity.getMainHandItem().getItem() == keyItem) {
+            if (entity.getMainHandItem().getItem() == getKeyItem()) {
                 if (!world.isClientSide() && world.getServer() != null) {
                     for (int i = 0; i < 4; i++) {
                         for (ItemStack itemstackiterator : world.getServer().getLootData().getLootTable(lootableLocation)
@@ -154,12 +152,12 @@ public class AbstractChestBlock extends Block implements SimpleWaterloggedBlock 
                     world.setBlock(_bp, _bs, 3);
                 }
                 if (entity instanceof Player) {
-                    ItemStack _stktoremove = new ItemStack(keyItem);
+                    ItemStack _stktoremove = new ItemStack(getKeyItem());
                     entity.getInventory().clearOrCountMatchingItems(p -> _stktoremove.getItem() == p.getItem(), 1, entity.inventoryMenu.getCraftSlots());
                 }
-            } else if (!(entity.getMainHandItem().getItem() == keyItem)) {
+            } else if (!(entity.getMainHandItem().getItem() == getKeyItem())) {
                 if (entity instanceof Player && !entity.level().isClientSide())
-                    entity.displayClientMessage(Component.literal("You must hold " + keyItem.getDescription().getString() + " to unlock this chest."), false);
+                    entity.displayClientMessage(Component.literal("You must hold " + getKeyItem().getDescription().getString() + " to unlock this chest."), false);
             }
         //execute(world, x, y, z, entity, keyItem, lootableLocation, openBlockState);
         return InteractionResult.SUCCESS;
