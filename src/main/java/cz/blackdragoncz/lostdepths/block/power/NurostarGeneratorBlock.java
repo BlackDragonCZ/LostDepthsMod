@@ -1,17 +1,18 @@
 package cz.blackdragoncz.lostdepths.block.power;
 
-import cz.blackdragoncz.lostdepths.block.base.BaseFacingBlock;
-import cz.blackdragoncz.lostdepths.block.base.BaseFacingEntityBlock;
+import com.mojang.logging.LogUtils;
+import cz.blackdragoncz.lostdepths.block.base.BaseHorizontalFacingEntityBlock;
 import cz.blackdragoncz.lostdepths.block.power.entity.NurostarGeneratorBlockEntity;
 import cz.blackdragoncz.lostdepths.util.NothingNullByDefault;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -27,7 +28,7 @@ import java.util.Collections;
 import java.util.List;
 
 @NothingNullByDefault
-public class NurostarGeneratorBlock extends BaseFacingEntityBlock {
+public class NurostarGeneratorBlock extends BaseHorizontalFacingEntityBlock {
 
     public NurostarGeneratorBlock() {
         super(BlockBehaviour.Properties.of()
