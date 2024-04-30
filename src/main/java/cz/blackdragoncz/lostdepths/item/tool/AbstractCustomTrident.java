@@ -1,10 +1,8 @@
 package cz.blackdragoncz.lostdepths.item.tool;
 
-import cz.blackdragoncz.lostdepths.init.LostdepthsModEntities;
 import cz.blackdragoncz.lostdepths.procedures.CrystalizedPickaxeMakeItemGlowProcedure;
 import cz.blackdragoncz.lostdepths.world.entity.projectile.ThrownDraconicTrident;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -17,9 +15,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -63,12 +61,16 @@ public abstract class AbstractCustomTrident extends SwordItem implements Vanisha
                 return;
             }
 
+            int j = EnchantmentHelper.getRiptide(pStack);
+
+            boolean canUseRiptide = j > 0 && (player.isInLava() || player.isInWater());
+
             if (!pLevel.isClientSide) {
                 pStack.hurtAndBreak(1, player, (p_43388_) -> {
                     p_43388_.broadcastBreakEvent(pEntityLiving.getUsedItemHand());
                 });
 
-                if (!player.isInLava()) {
+                if (!canUseRiptide) {
                     ThrownDraconicTrident projectile = new ThrownDraconicTrident(getThrowEntity(), pLevel, pEntityLiving, pStack);
 
                     if (player.isOnFire()) {
@@ -88,9 +90,7 @@ public abstract class AbstractCustomTrident extends SwordItem implements Vanisha
                 }
             }
 
-            int j = 3;
-
-            if (player.isInLava()) {
+            if (canUseRiptide) {
                 float f7 = player.getYRot();
                 float f = player.getXRot();
                 float f1 = -Mth.sin(f7 * ((float)Math.PI / 180F)) * Mth.cos(f * ((float)Math.PI / 180F));
@@ -136,6 +136,6 @@ public abstract class AbstractCustomTrident extends SwordItem implements Vanisha
 
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-        return enchantment == Enchantments.LOYALTY;
+        return enchantment == Enchantments.LOYALTY || enchantment == Enchantments.RIPTIDE;
     }
 }

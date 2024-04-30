@@ -126,7 +126,7 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> TREASURESTAIRS = block(LostdepthsModBlocks.TREASURESTAIRS);
 	public static final RegistryObject<Item> TREASURESLABS = block(LostdepthsModBlocks.TREASURESLABS);
 	public static final RegistryObject<Item> TREASURECROSS = block(LostdepthsModBlocks.TREASURECROSS);
-	public static final RegistryObject<Item> DEVSTICK = REGISTRY.register("devstick", () -> new MasterPartRegistryItem(1));
+	public static final RegistryObject<Item> DEVSTICK = REGISTRY.register("devstick", DevstickItem::new);
 	public static final RegistryObject<Item> TREASURE_GLASS = block(LostdepthsModBlocks.TREASURE_GLASS);
 	public static final RegistryObject<Item> TREASURE_CROSS_GLOW = block(LostdepthsModBlocks.TREASURE_CROSS_GLOW);
 	public static final RegistryObject<Item> CELESTIAL_CHEST = block(LostdepthsModBlocks.CELESTIAL_CHEST);

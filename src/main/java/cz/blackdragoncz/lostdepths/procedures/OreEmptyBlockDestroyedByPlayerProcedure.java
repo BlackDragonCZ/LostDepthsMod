@@ -21,6 +21,7 @@ public class OreEmptyBlockDestroyedByPlayerProcedure {
 			return;
 		if (!((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == LostdepthsModItems.FORGEFIRE_PICKAXE.get()
 				|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == LostdepthsModItems.CRYSTALIZED_PICKAXE.get()
+				|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == LostdepthsModItems.NIGHTMARE_PICKAXE.get()
 				|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == LostdepthsModItems.CELESTIAL_PICKAXE.get())) {
 			{
 				BlockPos _bp = BlockPos.containing(x, y, z);

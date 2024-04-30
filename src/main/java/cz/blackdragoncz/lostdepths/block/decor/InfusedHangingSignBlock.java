@@ -16,7 +16,7 @@ import java.util.List;
 
 public class InfusedHangingSignBlock extends CeilingHangingSignBlock {
     public InfusedHangingSignBlock() {
-        super(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(2).explosionResistance(2), LostdepthsModWoodTypes.INFUSED_IRON);
+        super(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(2).noCollission().explosionResistance(2), LostdepthsModWoodTypes.INFUSED_IRON);
     }
 
     @Override

@@ -1,11 +1,9 @@
 package cz.blackdragoncz.lostdepths.block.decor;
 
 import cz.blackdragoncz.lostdepths.init.LostdepthsModBlockEntities;
-import cz.blackdragoncz.lostdepths.init.LostdepthsModBlocks;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModWoodTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.StandingSignBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -19,7 +17,7 @@ import java.util.List;
 public class InfusedSignBlock extends StandingSignBlock {
 
     public InfusedSignBlock() {
-        super(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(2).explosionResistance(2), LostdepthsModWoodTypes.INFUSED_IRON);
+        super(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(2).noCollission().explosionResistance(2), LostdepthsModWoodTypes.INFUSED_IRON);
     }
 
     @Override

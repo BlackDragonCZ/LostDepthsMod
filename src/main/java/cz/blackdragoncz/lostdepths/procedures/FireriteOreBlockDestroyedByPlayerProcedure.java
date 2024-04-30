@@ -90,6 +90,41 @@ public class FireriteOreBlockDestroyedByPlayerProcedure {
 				if (world instanceof Level _level)
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
+		} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == LostdepthsModItems.NIGHTMARE_PICKAXE.get()) {
+			if (entity instanceof Player _player) {
+				ItemStack _setstack = new ItemStack(LostdepthsModItems.RAW_FIRERITE.get());
+				_setstack.setCount(8);
+				ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+			}
+			{
+				BlockPos _bp = BlockPos.containing(x, y, z);
+				BlockState _bs = LostdepthsModBlocks.ORE_EMPTY.get().defaultBlockState();
+				BlockEntity _be = world.getBlockEntity(_bp);
+				CompoundTag _bnbt = null;
+				if (_be != null) {
+					_bnbt = _be.saveWithFullMetadata();
+					_be.setRemoved();
+				}
+				world.setBlock(_bp, _bs, 3);
+				if (_bnbt != null) {
+					_be = world.getBlockEntity(_bp);
+					if (_be != null) {
+						try {
+							_be.load(_bnbt);
+						} catch (Exception ignored) {
+						}
+					}
+				}
+			}
+			if (!world.isClientSide()) {
+				BlockPos _bp = BlockPos.containing(x, y, z);
+				BlockEntity _blockEntity = world.getBlockEntity(_bp);
+				BlockState _bs = world.getBlockState(_bp);
+				if (_blockEntity != null)
+					_blockEntity.getPersistentData().putString("oreType", "firerite");
+				if (world instanceof Level _level)
+					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
+			}
 		} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == LostdepthsModItems.CELESTIAL_PICKAXE.get()) {
 			if (entity instanceof Player _player) {
 				ItemStack _setstack = new ItemStack(LostdepthsModItems.RAW_FIRERITE.get());

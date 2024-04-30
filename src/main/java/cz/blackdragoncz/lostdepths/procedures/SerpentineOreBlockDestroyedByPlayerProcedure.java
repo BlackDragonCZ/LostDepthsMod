@@ -40,6 +40,17 @@ public class SerpentineOreBlockDestroyedByPlayerProcedure {
 			} else {
 				world.setBlock(BlockPos.containing(x, y, z), LostdepthsModBlocks.SERPENTINE_ORE.get().defaultBlockState(), 3);
 			}
+		} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == LostdepthsModItems.NIGHTMARE_PICKAXE.get()) {
+			if (entity instanceof Player _player) {
+				ItemStack _setstack = new ItemStack(LostdepthsModItems.SERPENTINE_CRYSTAL.get());
+				_setstack.setCount(5);
+				ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+			}
+			if (3 > Mth.nextInt(RandomSource.create(), 0, 10)) {
+				world.setBlock(BlockPos.containing(x, y, z), LostdepthsModBlocks.SERPENTINE_ORE_UNPOWERED.get().defaultBlockState(), 3);
+			} else {
+				world.setBlock(BlockPos.containing(x, y, z), LostdepthsModBlocks.SERPENTINE_ORE.get().defaultBlockState(), 3);
+			}
 		} else {
 			world.setBlock(BlockPos.containing(x, y, z), LostdepthsModBlocks.SERPENTINE_ORE.get().defaultBlockState(), 3);
 		}

@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "facing=north": {
       "model": "lostdepths:block/nurostar_generator"
+    },
+    "facing=east": {
+      "model": "lostdepths:block/nurostar_generator",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "lostdepths:block/nurostar_generator",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "lostdepths:block/nurostar_generator",
+      "y": 270
     }
   }
 }

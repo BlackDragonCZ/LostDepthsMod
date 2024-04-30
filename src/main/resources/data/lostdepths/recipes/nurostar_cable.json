@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "AAA",
+    "BCB",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "lostdepths:infused_iron"
+    },
+    "B": {
+      "item": "lostdepths:infused_crystal"
+    },
+    "C": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "item": "lostdepths:nurostar_cable",
+    "count": 6
+  }
+}

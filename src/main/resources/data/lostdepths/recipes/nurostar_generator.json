@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ADA",
+    "DBD",
+    "ACA"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:iron_ingot"
+    },
+    "B": {
+      "item": "minecraft:furnace"
+    },
+    "C": {
+      "item": "lostdepths:infused_crystal"
+    },
+    "D": {
+      "item": "lostdepths:infused_iron"
+    }
+  },
+  "result": {
+    "item": "lostdepths:nurostar_generator",
+    "count": 1
+  }
+}
