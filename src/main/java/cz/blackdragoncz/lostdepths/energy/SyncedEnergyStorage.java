@@ -35,7 +35,7 @@ public class SyncedEnergyStorage extends EnergyStorage {
     public int receiveEnergy(int maxReceive, boolean simulate) {
         int val = super.receiveEnergy(maxReceive, simulate);
 
-        if (!simulate)
+        if (!simulate && maxReceive != 0)
             updateClients();
 
         return val;
@@ -45,7 +45,7 @@ public class SyncedEnergyStorage extends EnergyStorage {
     public int extractEnergy(int maxExtract, boolean simulate) {
         int val = super.extractEnergy(maxExtract, simulate);
 
-        if (!simulate)
+        if (!simulate && maxExtract != 0)
             updateClients();
 
         return val;

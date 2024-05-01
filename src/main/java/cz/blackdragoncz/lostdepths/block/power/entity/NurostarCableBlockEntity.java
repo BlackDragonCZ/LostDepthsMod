@@ -35,14 +35,12 @@ public class NurostarCableBlockEntity extends BlockEntity implements ICableInter
     }
 
     public void updateEnergySides() {
-        LogUtils.getLogger().warn("CABLE onLoad");
 
         thisCable.clearForgeEnergies();
         thisCable.clearSideCables();
 
         for (Direction dir : Direction.values()) {
             BlockEntity sideEntity = level.getBlockEntity(worldPosition.relative(dir));
-            BlockState sideState = level.getBlockState(worldPosition.relative(dir));
 
             if (sideEntity == null)
                 continue;
@@ -62,8 +60,6 @@ public class NurostarCableBlockEntity extends BlockEntity implements ICableInter
             if (energyStorage.canReceive()) {
                 thisCable.addForgeEnergy(sideEntity);
             }
-
-            LogUtils.getLogger().warn("Found energy side: " + dir.getName() + " for " + getBlockPos());
         }
     }
 
@@ -88,7 +84,6 @@ public class NurostarCableBlockEntity extends BlockEntity implements ICableInter
     @Override
     public void onChunkUnloaded() {
         if (hasLevel() & !level.isClientSide()) {
-            LogUtils.getLogger().warn("CABLE onChunkUnloaded");
             PowerManager.INSTANCE.removeCable(this);
         }
 

@@ -20,6 +20,10 @@ public class PowerCable {
         return entity;
     }
 
+    public void removeCable(BlockEntity cableEntity) {
+        sideCables.entrySet().removeIf((entry) -> entry.getValue().getPowerCable() != null && entry.getValue().getPowerCable().getEntity() == cableEntity);
+    }
+
     public void clearForgeEnergies() {
         forgeEnergies.clear();
     }

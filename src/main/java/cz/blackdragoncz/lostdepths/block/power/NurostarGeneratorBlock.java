@@ -7,7 +7,12 @@ import cz.blackdragoncz.lostdepths.init.LostdepthsModBlockEntities;
 import cz.blackdragoncz.lostdepths.util.NothingNullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
@@ -20,6 +25,8 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -60,5 +67,16 @@ public class NurostarGeneratorBlock extends BaseHorizontalFacingEntityBlock {
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
         return new NurostarGeneratorBlockEntity(blockPos, blockState);
+    }
+
+    @Override
+    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player entity, InteractionHand pHand, BlockHitResult pHit) {
+        super.use(pState, pLevel, pPos, entity, pHand, pHit);
+        if (entity instanceof ServerPlayer player) {
+            NurostarGeneratorBlockEntity blockEntity = (NurostarGeneratorBlockEntity) pLevel.getBlockEntity(pPos);
+            NetworkHooks.openScreen(player, blockEntity, pPos);
+        }
+
+        return InteractionResult.SUCCESS;
     }
 }

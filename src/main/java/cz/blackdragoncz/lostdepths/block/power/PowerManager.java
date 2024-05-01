@@ -11,7 +11,7 @@ public class PowerManager {
 
     public static PowerManager INSTANCE = new PowerManager();
 
-    private List<PowerCable> cables = new ArrayList<>();
+    private final List<PowerCable> cables = new ArrayList<>();
 
     public PowerCable addCable(BlockEntity entity) {
         PowerCable cable = new PowerCable(entity);
@@ -19,7 +19,8 @@ public class PowerManager {
         return cable;
     }
 
-    public boolean removeCable(@NotNull BlockEntity entity) {
-        return cables.remove(entity);
+    public void removeCable(@NotNull BlockEntity entity) {
+        cables.remove(entity);
+        cables.forEach((cable -> cable.removeCable(entity)));
     }
 }

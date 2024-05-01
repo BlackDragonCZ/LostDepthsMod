@@ -4,21 +4,13 @@
  */
 package cz.blackdragoncz.lostdepths.init;
 
+import cz.blackdragoncz.lostdepths.client.gui.*;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.api.distmarker.Dist;
 
 import net.minecraft.client.gui.screens.MenuScreens;
-
-import cz.blackdragoncz.lostdepths.client.gui.AlloyWorkstationScreen;
-import cz.blackdragoncz.lostdepths.client.gui.GalacticWorkstationScreen;
-import cz.blackdragoncz.lostdepths.client.gui.PortableBeaconGUIScreen;
-import cz.blackdragoncz.lostdepths.client.gui.ModuleCreatorGUIScreen;
-import cz.blackdragoncz.lostdepths.client.gui.ModulatorGUIScreen;
-import cz.blackdragoncz.lostdepths.client.gui.MetaCollectorGUIScreen;
-import cz.blackdragoncz.lostdepths.client.gui.CrystalizerGUIScreen;
-import cz.blackdragoncz.lostdepths.client.gui.CompressorGUIScreen;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class LostdepthsModScreens {
@@ -33,6 +25,7 @@ public class LostdepthsModScreens {
 			MenuScreens.register(LostdepthsModMenus.META_COLLECTOR_GUI.get(), MetaCollectorGUIScreen::new);
 			MenuScreens.register(LostdepthsModMenus.PORTABLE_BEACON_GUI.get(), PortableBeaconGUIScreen::new);
 			MenuScreens.register(LostdepthsModMenus.MODULATOR_GUI.get(), ModulatorGUIScreen::new);
+			MenuScreens.register(LostdepthsModMenus.NUROSTAR_GENERATOR_MENU.get(), NurostarGeneratorScreen::new);
 		});
 	}
 }
