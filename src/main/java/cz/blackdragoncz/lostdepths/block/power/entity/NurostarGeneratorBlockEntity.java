@@ -1,6 +1,5 @@
 package cz.blackdragoncz.lostdepths.block.power.entity;
 
-import com.mojang.logging.LogUtils;
 import cz.blackdragoncz.lostdepths.block.entity.base.BaseEnergyContainerBlockEntity;
 import cz.blackdragoncz.lostdepths.energy.PowerCable;
 import cz.blackdragoncz.lostdepths.energy.SyncedEnergyStorage;
@@ -15,7 +14,6 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -35,7 +33,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 @NothingNullByDefault
 public class NurostarGeneratorBlockEntity extends BaseEnergyContainerBlockEntity {
@@ -43,15 +40,15 @@ public class NurostarGeneratorBlockEntity extends BaseEnergyContainerBlockEntity
     private NonNullList<ItemStack> items = NonNullList.withSize(getContainerSize(), ItemStack.EMPTY);
     private final LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.UP, Direction.DOWN);
 
-    private static final ItemStack FIRST_SLOT = new ItemStack(LostdepthsModItems.INFUSED_CRYSTAL.get());
-    private static final ItemStack SECOND_SLOT = new ItemStack(Items.REDSTONE);
+    public static final ItemStack FIRST_SLOT = new ItemStack(LostdepthsModItems.INFUSED_CRYSTAL.get());
+    public static final ItemStack SECOND_SLOT = new ItemStack(Items.REDSTONE);
     private static final ItemStack THIRD_WASTE_SLOT = new ItemStack(LostdepthsModItems.CELESTIAL_REDSTONE.get());
 
     private static final int MaxCapacity = 100000;
     private static final int MaxExtract = 200;
-    private static final int EnergyPerConsume = 63000;
+    private static final int EnergyPerConsume = 50000;
     private static final int ConsumeTickTime = 2;
-    private static final int EnergyPerWaste = 10000;
+    private static final int EnergyPerWaste = 80000;
 
     private int tickCounter = 0;
     private int usedEnergy = 0;

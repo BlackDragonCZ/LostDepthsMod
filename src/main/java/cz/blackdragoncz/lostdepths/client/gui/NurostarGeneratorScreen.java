@@ -3,6 +3,7 @@ package cz.blackdragoncz.lostdepths.client.gui;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import cz.blackdragoncz.lostdepths.LostdepthsMod;
+import cz.blackdragoncz.lostdepths.block.power.entity.NurostarGeneratorBlockEntity;
 import cz.blackdragoncz.lostdepths.world.inventory.NurostarGeneratorMenu;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -46,7 +47,7 @@ public class NurostarGeneratorScreen extends AbstractContainerScreen<NurostarGen
 
         g.blit(bg, leftPos, topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight + 20);
 
-        RenderSystem.disableBlend();
+
 
         int leftSideWidth = this.imageWidth / 2;
 
@@ -68,6 +69,14 @@ public class NurostarGeneratorScreen extends AbstractContainerScreen<NurostarGen
         drawSlot(g, leftSideWidth / 2 - twoSlotsWidth / 2, twoSlotsY);
         drawSlot(g, leftSideWidth / 2 - twoSlotsWidth / 2 + SLOT_SIZE + 5, twoSlotsY);
         drawSlot(g, leftSideWidth / 2 - SLOT_SIZE / 2, 20);
+
+        RenderSystem.setShaderColor(1, 1, 1, 0.25f);
+        g.renderFakeItem(NurostarGeneratorBlockEntity.FIRST_SLOT, leftPos + 1 + leftSideWidth / 2 - twoSlotsWidth / 2, topPos + 1 + twoSlotsY);
+        RenderSystem.setShaderColor(0.25f, 0.25f, 0.25f, 0.25f);
+        g.renderFakeItem(NurostarGeneratorBlockEntity.SECOND_SLOT, leftPos + 1 + leftSideWidth / 2 - twoSlotsWidth / 2 + SLOT_SIZE + 5, topPos + 1 + twoSlotsY);
+        RenderSystem.setShaderColor(1, 1, 1, 1);
+
+        RenderSystem.disableBlend();
 
         int powerBarWidth = 30;
         int powerBarHeight = Math.round((42.0f / 14.0f) * powerBarWidth);
