@@ -56,7 +56,7 @@ public class RecipeViewerRecipeType {
     public static final RecipeTypeWrapper<RecipeWrapper, ItemUseRecipe> ITEM_USE = new RecipeTypeWrapper<>(LostDepthsModRecipeType.ITEM_USE.get(), ItemUseRecipe.class, 0, 0, 177, 60, new IItemProvider() {
         @Override
         public @NotNull Item asItem() {
-            return LostdepthsModItems.QUESTION_ICON.get();
+            return LostdepthsModItems.USE_ICON.get();
         }
     });
 
