@@ -1,0 +1,17 @@
+{
+  "type": "lostdepths:alloy_workstation",
+  "pattern": [
+    "AAA",
+    " T ",
+    "GGG"
+  ],
+  "key": {
+    "A": { "item": "lostdepths:condensed_kyvorium" },
+    "T": { "item": "lostdepths:soul_key" },
+    "G": { "item": "lostdepths:celestial_redstone" }
+  },
+  "result": {
+    "item": "lostdepths:star_key",
+    "count": 1
+  }
+}

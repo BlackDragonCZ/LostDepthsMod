@@ -1,0 +1,18 @@
+{
+  "type": "lostdepths:alloy_workstation",
+  "pattern": [
+    "121",
+    " T ",
+    "GGG"
+  ],
+  "key": {
+    "1": { "item": "lostdepths:polarium_ingot" },
+    "2": { "item": "lostdepths:malicium_ingot" },
+    "T": { "item": "lostdepths:soul_key" },
+    "G": { "item": "lostdepths:ionite_bar" }
+  },
+  "result": {
+    "item": "lostdepths:soul_key",
+    "count": 2
+  }
+}

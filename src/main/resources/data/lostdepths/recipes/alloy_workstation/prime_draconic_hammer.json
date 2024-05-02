@@ -1,0 +1,17 @@
+{
+  "type": "lostdepths:alloy_workstation",
+  "pattern": [
+    "AAA",
+    " T ",
+    "GGG"
+  ],
+  "key": {
+    "A": { "item": "lostdepths:condensed_necrotonite" },
+    "T": { "item": "lostdepths:prime_draconic_pickaxe" },
+    "G": { "item": "lostdepths:multiversite_plates" }
+  },
+  "result": {
+    "item": "lostdepths:prime_draconic_hammer",
+    "count": 1
+  }
+}

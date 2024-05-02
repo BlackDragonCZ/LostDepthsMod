@@ -74,7 +74,8 @@ public class PrimeDraconicHammerItem extends PickaxeItem {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, world, list, flag);
-		list.add(Component.literal("\u00A76Right Click: Activate speed and regeneration"));
+		list.add(Component.literal("§6Right Click: Activate Speed and Regeneration."));
+		list.add(Component.literal("§5Can Mine area of 3x3."));
 	}
 
 	@Override

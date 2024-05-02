@@ -1,0 +1,17 @@
+{
+  "type": "lostdepths:alloy_workstation",
+  "pattern": [
+    "AAA",
+    " T ",
+    "GGG"
+  ],
+  "key": {
+    "A": { "item": "lostdepths:condensed_etherium" },
+    "T": { "item": "minecraft:netherite_axe" },
+    "G": { "item": "lostdepths:celestial_redstone" }
+  },
+  "result": {
+    "item": "lostdepths:prime_draconic_axe",
+    "count": 1
+  }
+}
