@@ -1,6 +1,6 @@
 package cz.blackdragoncz.lostdepths.world.inventory;
 
-import cz.blackdragoncz.lostdepths.recipe.LDRecipe;
+import cz.blackdragoncz.lostdepths.recipe.LDCraftingRecipe;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
@@ -10,7 +10,7 @@ import net.minecraft.world.inventory.ResultSlot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
 
-public class CustomResultSlot<RECIPE extends LDRecipe> extends ResultSlot {
+public class CustomResultSlot<RECIPE extends LDCraftingRecipe> extends ResultSlot {
 
     private final RecipeType<RECIPE> recipeType;
     private final AbstractContainerMenu containerMenu;

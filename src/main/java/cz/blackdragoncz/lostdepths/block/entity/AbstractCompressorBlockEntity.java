@@ -17,6 +17,7 @@ import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -40,7 +41,7 @@ public abstract class AbstractCompressorBlockEntity extends RandomizableContaine
     private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(2, ItemStack.EMPTY);
     private final LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.values());
 
-    private final List<LostDepthsModRecipeType<CompressingRecipe>> recipeTypes;
+    private final List<LostDepthsModRecipeType<CraftingContainer, CompressingRecipe>> recipeTypes;
     private final int craftTickTime;
     private final int requiredStackSize;
     private final int energyCost;
@@ -52,7 +53,7 @@ public abstract class AbstractCompressorBlockEntity extends RandomizableContaine
     public boolean tickRecipeCheck = true;
     private EnergyStorage energyStorage;
 
-    protected AbstractCompressorBlockEntity(List<LostDepthsModRecipeType<CompressingRecipe>> recipeTypes, int craftTickTime, int requiredStackSize, int energyStorageCapacity, int energyCost, int maxEnergyTransfer, BlockEntityType<?> blockEntityType, BlockPos blockPos, BlockState blockState) {
+    protected AbstractCompressorBlockEntity(List<LostDepthsModRecipeType<CraftingContainer, CompressingRecipe>> recipeTypes, int craftTickTime, int requiredStackSize, int energyStorageCapacity, int energyCost, int maxEnergyTransfer, BlockEntityType<?> blockEntityType, BlockPos blockPos, BlockState blockState) {
         super(blockEntityType, blockPos, blockState);
         this.recipeTypes = recipeTypes;
         this.requiredStackSize = requiredStackSize;
@@ -64,7 +65,7 @@ public abstract class AbstractCompressorBlockEntity extends RandomizableContaine
         }
     }
 
-    protected AbstractCompressorBlockEntity(List<LostDepthsModRecipeType<CompressingRecipe>> recipeTypes, int craftTickTime, int requiredStackSize, BlockEntityType<?> blockEntityType, BlockPos blockPos, BlockState blockState) {
+    protected AbstractCompressorBlockEntity(List<LostDepthsModRecipeType<CraftingContainer, CompressingRecipe>> recipeTypes, int craftTickTime, int requiredStackSize, BlockEntityType<?> blockEntityType, BlockPos blockPos, BlockState blockState) {
         this(recipeTypes, craftTickTime, requiredStackSize, 0, 0, 0, blockEntityType, blockPos, blockState);
     }
 
@@ -176,7 +177,7 @@ public abstract class AbstractCompressorBlockEntity extends RandomizableContaine
     }
 
     public CompressingRecipe findRecipe(ItemStack stack) {
-        for (LostDepthsModRecipeType<CompressingRecipe> recipeType : this.recipeTypes) {
+        for (LostDepthsModRecipeType<CraftingContainer, CompressingRecipe> recipeType : this.recipeTypes) {
             List<CompressingRecipe> recipes = this.level.getRecipeManager().getAllRecipesFor(recipeType);
 
             for (CompressingRecipe recipe : recipes) {

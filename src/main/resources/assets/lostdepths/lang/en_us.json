@@ -792,5 +792,6 @@
   "item.lostdepths.pink_watchful_eye": "Pink Watchful Eye",
   "item.lostdepths.blue_watchful_eye": "Blue Watchful Eye",
   "item.lostdepths.purple_watchful_eye": "Purple Watchful Eye",
-  "item.lostdepths.gem_of_illusion": "Gem of Thundering Illusions"
+  "item.lostdepths.gem_of_illusion": "Gem of Thundering Illusions",
+  "lostdepths.description.serpentine_ore_use": "Use Ender-Voltaic Solution on Serpentine ore for activation to be able to mine it."
 }

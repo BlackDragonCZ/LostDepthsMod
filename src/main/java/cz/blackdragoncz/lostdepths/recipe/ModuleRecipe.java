@@ -16,7 +16,7 @@ import net.minecraftforge.common.ForgeHooks;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public abstract class ModuleRecipe extends LDRecipe {
+public abstract class ModuleRecipe extends LDCraftingRecipe {
 
     private final NonNullList<Ingredient> recipeItems;
     private final ItemStack result;

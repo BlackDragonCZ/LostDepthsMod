@@ -63,6 +63,7 @@ public class LostDepthsJEI implements IModPlugin {
         registry.addRecipeCategories(new GalacticWorkstationRecipeCategory(guiHelper, RecipeViewerRecipeType.GALACTIC_WORKSTATION));
         registry.addRecipeCategories(new AlloyWorkstationRecipeCategory(guiHelper, RecipeViewerRecipeType.ALLOY_WORKSTATION));
         registry.addRecipeCategories(new ModuleCreatorRecipeCategory(guiHelper, RecipeViewerRecipeType.MODULE_CREATOR));
+        registry.addRecipeCategories(new ItemUseCategory(guiHelper, RecipeViewerRecipeType.ITEM_USE));
     }
 
 
@@ -80,6 +81,8 @@ public class LostDepthsJEI implements IModPlugin {
         registry.addRecipes(recipeType(RecipeViewerRecipeType.GALACTIC_WORKSTATION), LostDepthsModRecipeType.GALACTIC_WORKSTATION.get().getRecipeType().getRecipes(Minecraft.getInstance().level));
         registry.addRecipes(recipeType(RecipeViewerRecipeType.ALLOY_WORKSTATION), LostDepthsModRecipeType.ALLOY_WORKSTATION.get().getRecipeType().getRecipes(Minecraft.getInstance().level));
         registry.addRecipes(recipeType(RecipeViewerRecipeType.MODULE_CREATOR), LostDepthsModRecipeType.MODULE_CREATOR.get().getRecipeType().getRecipes(Minecraft.getInstance().level));
+
+        registry.addRecipes(recipeType(RecipeViewerRecipeType.ITEM_USE), LostDepthsModRecipeType.ITEM_USE.get().getRecipeType().getRecipes(Minecraft.getInstance().level));
     }
 
     @Override

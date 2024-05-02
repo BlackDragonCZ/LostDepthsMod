@@ -1,6 +1,8 @@
 package cz.blackdragoncz.lostdepths.client.jei;
 
 import com.mojang.blaze3d.platform.InputConstants;
+import com.mojang.blaze3d.vertex.PoseStack;
+import cz.blackdragoncz.lostdepths.client.gui.AllGuiTextures;
 import cz.blackdragoncz.lostdepths.client.gui.element.GuiElement;
 import cz.blackdragoncz.lostdepths.client.gui.IGuiWrapper;
 import cz.blackdragoncz.lostdepths.client.gui.element.IProgressInfoHandler;
@@ -13,6 +15,7 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.SharedConstants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.events.AbstractContainerEventHandler;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.network.chat.Component;
@@ -24,6 +27,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class BaseRecipeCategory<RECIPE> extends AbstractContainerEventHandler implements IRecipeCategory<RECIPE>, IGuiWrapper {
+
+    private static final IDrawable BASIC_SLOT = asDrawable(AllGuiTextures.JEI_SLOT);
+    private static final IDrawable CHANCE_SLOT = asDrawable(AllGuiTextures.JEI_CHANCE_SLOT);
 
     protected static IDrawable createIcon(IGuiHelper helper, IRecipeViewerRecipeType<?> recipeType) {
         ItemStack stack = recipeType.iconStack();
@@ -127,5 +133,35 @@ public abstract class BaseRecipeCategory<RECIPE> extends AbstractContainerEventH
             timer = guiHelper.createTickTimer(SharedConstants.TICKS_PER_SECOND, 20, false);
         }
         return () -> timer.getValue() / 20D;
+    }
+
+    public static IDrawable getRenderedSlot() {
+        return BASIC_SLOT;
+    }
+
+    public static IDrawable getRenderedSlot(float chance) {
+        if (chance == 1)
+            return BASIC_SLOT;
+
+        return CHANCE_SLOT;
+    }
+
+    protected static IDrawable asDrawable(AllGuiTextures texture) {
+        return new IDrawable() {
+            @Override
+            public int getWidth() {
+                return texture.width;
+            }
+
+            @Override
+            public int getHeight() {
+                return texture.height;
+            }
+
+            @Override
+            public void draw(GuiGraphics graphics, int xOffset, int yOffset) {
+                texture.render(graphics, xOffset, yOffset);
+            }
+        };
     }
 }

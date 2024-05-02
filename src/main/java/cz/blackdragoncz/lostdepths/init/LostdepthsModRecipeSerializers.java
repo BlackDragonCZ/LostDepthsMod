@@ -88,4 +88,6 @@ public class LostdepthsModRecipeSerializers {
             return LostdepthsModRecipeSerializers.MODULE_CREATOR.get();
         }
     }));
+
+    public static final RegistryObject<ItemUseRecipe.Serializer> ITEM_USE = REGISTRY_SERIALIZER.register("item_use", ItemUseRecipe.Serializer::new);
 }

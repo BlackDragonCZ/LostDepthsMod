@@ -5,7 +5,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-public abstract class CompressingRecipe extends LDRecipe {
+public abstract class CompressingRecipe extends LDCraftingRecipe {
 
     private final ItemStack input;
     private final ItemStack output;
