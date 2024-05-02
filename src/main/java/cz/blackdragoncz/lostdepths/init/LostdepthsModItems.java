@@ -623,6 +623,7 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> PURPLE_WATCHFUL_EYE = REGISTRY.register("purple_watchful_eye", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> BLUE_WATCHFUL_EYE = REGISTRY.register("blue_watchful_eye", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> GEM_OF_ILLUSION = REGISTRY.register("gem_of_illusion", MasterPartRegistryItem::new);
+	public static final RegistryObject<Item> USE_ICON = REGISTRY.register("usemark_icon", () -> new MasterPartRegistryItem(1));
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));
