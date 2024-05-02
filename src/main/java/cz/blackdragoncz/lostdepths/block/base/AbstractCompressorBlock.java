@@ -41,7 +41,7 @@ public abstract class AbstractCompressorBlock extends BaseEntityBlock {
     protected AbstractCompressorBlock() {
         super(BlockBehaviour.Properties.of()
                 .sound(SoundType.METAL)
-                .strength(6f, 16f)
+                .strength(4f, 16f)
                 .pushReaction(PushReaction.BLOCK)
         );
     }

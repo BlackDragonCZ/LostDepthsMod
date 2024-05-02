@@ -74,6 +74,9 @@
     "lostdepths:infused_sign",
     "lostdepths:infused_hanging_sign",
     "lostdepths:infused_wall_hanging_sign",
-    "lostdepths:infused_wall_sign"
+    "lostdepths:infused_wall_sign",
+    "lostdepths:nurostar_generator",
+    "lostdepths:nurostar_cable",
+    "lostdepths:black_hole_compressor"
   ]
 }

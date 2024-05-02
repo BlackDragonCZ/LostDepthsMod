@@ -102,6 +102,6 @@ public class LostdepthsMod {
 	@SubscribeEvent
 	public void onServerStarting(ServerStartingEvent event)
 	{
-		LOGGER.info("Mlem all other mods.");
+		LOGGER.info("Mlem all other mods :3");
 	}
 }
