@@ -1,0 +1,15 @@
+{
+  "conditions": [
+    {
+      "condition": "minecraft:any_of",
+      "terms": [
+        {
+          "condition": "forge:loot_table_id",
+          "loot_table_id": "minecraft:entities/spider"
+        }
+      ],
+      "conditions": []
+    }
+  ],
+  "type": "lostdepths:spider_lootinject_entity"
+}

@@ -20,9 +20,9 @@ import javax.annotation.Nullable;
 
 import cz.blackdragoncz.lostdepths.init.LostdepthsModItems;
 
-@Mod.EventBusSubscriber
+//@Mod.EventBusSubscriber
 public class OnEntityDiesProcedure {
-	@SubscribeEvent
+	/*@SubscribeEvent
 	public static void onEntityDeath(LivingDeathEvent event) {
 		if (event != null && event.getEntity() != null) {
 			execute(event, event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), event.getEntity());
@@ -54,5 +54,5 @@ public class OnEntityDiesProcedure {
 				}
 			}
 		}
-	}
+	}*/
 }

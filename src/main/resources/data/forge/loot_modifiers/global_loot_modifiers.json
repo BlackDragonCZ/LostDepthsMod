@@ -1,6 +1,8 @@
 {
   "replace": false,
   "entries": [
-    "lostdepths:iron_lootinject_entity"
+    "lostdepths:iron_lootinject_entity",
+    "lostdepths:cave_spider_lootinject_entity",
+    "lostdepths:spider_lootinject_entity"
   ]
 }
