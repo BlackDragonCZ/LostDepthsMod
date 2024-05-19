@@ -280,7 +280,7 @@ public class TheProtectorEntity extends Monster implements GeoEntity {
 		if (this.deathTime == 20) {
 			this.remove(TheProtectorEntity.RemovalReason.KILLED);
 			this.dropExperience();
-			LogUtils.getLogger().warn("PROTECTOR DEATH TICK DEATH");
+			// LogUtils.getLogger().warn("PROTECTOR DEATH TICK DEATH");
 		}
 	}
 
