@@ -13,7 +13,10 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageSources;
 import net.minecraft.world.damagesource.DamageType;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -42,6 +45,16 @@ public class ForgefirePickaxeProcedure {
     public static void onPlayerDamage(LivingAttackEvent event) {
         if (event.getEntity() instanceof Player player) {
             if (event.getSource().getEntity() != null) {
+                return;
+            }
+
+            if (!(event.getSource().is(DamageTypes.IN_FIRE)
+                    || event.getSource().is(DamageTypes.ON_FIRE)
+                    || event.getSource().is(DamageTypes.HOT_FLOOR)
+                    || event.getSource().is(DamageTypes.FIREBALL)
+                    || event.getSource().is(DamageTypes.FIREWORKS)
+                    || event.getSource().is(DamageTypes.UNATTRIBUTED_FIREBALL)
+            )) {
                 return;
             }
 
