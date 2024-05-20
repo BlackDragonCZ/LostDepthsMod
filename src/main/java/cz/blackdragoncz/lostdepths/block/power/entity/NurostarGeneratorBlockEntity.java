@@ -45,7 +45,7 @@ public class NurostarGeneratorBlockEntity extends BaseEnergyContainerBlockEntity
     private static final ItemStack THIRD_WASTE_SLOT = new ItemStack(LostdepthsModItems.CELESTIAL_REDSTONE.get());
 
     private static final int MaxCapacity = 100000;
-    private static final int MaxExtract = 200;
+    private static final int MaxExtract = 800;
     private static final int EnergyPerConsume = 50000;
     private static final int ConsumeTickTime = 2;
     private static final int EnergyPerWaste = 80000;
