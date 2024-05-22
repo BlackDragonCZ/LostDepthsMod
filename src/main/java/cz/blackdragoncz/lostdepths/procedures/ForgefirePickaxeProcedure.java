@@ -54,6 +54,7 @@ public class ForgefirePickaxeProcedure {
                     || event.getSource().is(DamageTypes.FIREBALL)
                     || event.getSource().is(DamageTypes.FIREWORKS)
                     || event.getSource().is(DamageTypes.UNATTRIBUTED_FIREBALL)
+                    || event.getSource().is(DamageTypes.LAVA)
             )) {
                 return;
             }
