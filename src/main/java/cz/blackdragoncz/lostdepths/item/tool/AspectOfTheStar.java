@@ -1,21 +1,20 @@
 package cz.blackdragoncz.lostdepths.item.tool;
 
+import cz.blackdragoncz.lostdepths.LostdepthsMod;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageSources;
 import net.minecraft.world.damagesource.DamageTypes;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -23,6 +22,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class AspectOfTheStar extends SwordItem {
 
@@ -90,7 +90,31 @@ public class AspectOfTheStar extends SwordItem {
         Vec3 startPos = player.getEyePosition();
         Vec3 finalPos = player.getEyePosition().add(player.getForward().multiply(LOOKUP_DISTANCE, LOOKUP_DISTANCE, LOOKUP_DISTANCE));
 
-        BlockPos pos = BlockGetter.traverseBlocks(finalPos, startPos, level, (Level lvl, BlockPos blockPos) -> {
+        AtomicReference<BlockPos> lastCheckedPos = new AtomicReference<>();
+        BlockPos checkedPos = BlockGetter.traverseBlocks(startPos, finalPos, level, (lvl, blockPos) -> {
+            if (lvl.getBlockState(blockPos).is(BlockTags.create(LostdepthsMod.rl("unbreakable"))) ||
+                    lvl.getBlockState(blockPos.below()).is(BlockTags.create(LostdepthsMod.rl("unbreakable"))))
+            {
+                return blockPos;
+            }
+
+            lastCheckedPos.set(blockPos);
+
+            return null;
+        }, (obj) -> null);
+
+        if (checkedPos != null) {
+            checkedPos = lastCheckedPos.get();
+        }
+
+        BlockPos pos = BlockGetter.traverseBlocks(checkedPos != null ? checkedPos.getCenter() : finalPos, startPos, level, (Level lvl, BlockPos blockPos) -> {
+            AABB aabb = new AABB(blockPos.getX() - 1, blockPos.getY() - 1, blockPos.getZ() - 1, blockPos.getX() + 1, blockPos.getY() + 1, blockPos.getZ() + 1);
+
+            if (!lvl.getNearbyEntities(LivingEntity.class, TargetingConditions.forNonCombat().ignoreLineOfSight().ignoreInvisibilityTesting(), player, aabb).isEmpty())
+            {
+                System.out.println("Found entity in path");
+                return blockPos;
+            }
             if (!lvl.getBlockState(blockPos).isSolidRender(lvl, blockPos) && !lvl.getBlockState(blockPos.below()).isSolidRender(lvl, blockPos)) {
                 return blockPos;
             }
