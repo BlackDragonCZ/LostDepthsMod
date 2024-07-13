@@ -125,8 +125,6 @@ public class AspectOfTheStar extends SwordItem {
             for (LivingEntity entity : entities) {
                 entity.hurt(new DamageSource(level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.INDIRECT_MAGIC)), entity.getMaxHealth() * 0.02f);
             }
-
-            System.out.println("Found " + entities.size() + " entities");
         }
 
         return ar;
