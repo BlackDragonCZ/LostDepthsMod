@@ -54,7 +54,7 @@ public class BladeOfForgottenItem extends SwordItem {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, world, list, flag);
-		list.add(Component.literal("\u00A76Deals 30% Health True Damage if you currently have,\u00A76above 50% Max Health"));
-		list.add(Component.literal("\u00A74Otherwise deals 60% Max Health"));
+		list.add(Component.literal("§6Deals 30% Health True Damage if you currently have, above 50% Max Health"));
+		list.add(Component.literal("§4Otherwise deals 60% Max Health"));
 	}
 }

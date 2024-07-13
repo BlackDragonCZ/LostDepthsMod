@@ -21,7 +21,7 @@
         {
           "type": "minecraft:item",
           "name": "lostdepths:infused_crystal",
-          "weight": 12,
+          "weight": 25,
           "functions": [
             {
               "function": "set_count",

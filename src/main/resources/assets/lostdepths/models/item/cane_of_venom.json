@@ -6,7 +6,7 @@
 	"overrides": [
     {
       "predicate": {
-        "lostinfinity:bane_mode": 1
+        "lostdepths:bane_mode": 1
       },
       "model": "lostdepths:item/cane_of_venom"
     }],

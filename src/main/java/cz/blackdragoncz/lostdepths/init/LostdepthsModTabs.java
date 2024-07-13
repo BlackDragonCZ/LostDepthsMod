@@ -247,6 +247,7 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModItems.PRIME_DRACONIC_WINGS.get());
 				tabData.accept(LostdepthsModItems.PHANTOM_BLADE.get());
 				tabData.accept(LostdepthsModItems.INFUSED_CUTTERS.get());
+				tabData.accept(LostdepthsModItems.ASPECT_OF_THE_STAR.get());
 			})
 
 					.build());
