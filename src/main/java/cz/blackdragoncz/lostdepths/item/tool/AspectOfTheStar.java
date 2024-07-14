@@ -29,7 +29,7 @@ import java.util.concurrent.atomic.AtomicReference;
 public class AspectOfTheStar extends SwordItem {
 
     public boolean toggleDamage = false;
-    public String keybindToggle = LostdepthsModKeyMappings.ACTION_BUTTON.getKey().getType().toString();
+    public String keybindToggle = LostdepthsModKeyMappings.ACTION_BUTTON.getKey().getName();
 
 
 
@@ -147,7 +147,7 @@ public class AspectOfTheStar extends SwordItem {
         list.add(Component.literal("§5deals 8% Max Health of target as damage"));
         list.add(Component.literal("§dDeals 2% True Damage to entities near the trail"));
 
-        list.add(Component.literal("§6Toggle damage by teleport ability with §2" + keybindToggle + "."));
+        list.add(Component.literal("§6Toggle damage by teleport ability with §2").append(Component.keybind(keybindToggle)).append("."));
         list.add(Component.literal("§6Damage: §4" + toggleDamage));
     }
 }
