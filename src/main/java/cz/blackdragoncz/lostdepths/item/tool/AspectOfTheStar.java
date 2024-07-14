@@ -3,11 +3,13 @@ package cz.blackdragoncz.lostdepths.item.tool;
 import cz.blackdragoncz.lostdepths.LostdepthsMod;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModItems;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModKeyMappings;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
@@ -15,6 +17,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -27,11 +30,6 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class AspectOfTheStar extends SwordItem {
-
-    public boolean toggleDamage = false;
-    public String keybindToggle = LostdepthsModKeyMappings.ACTION_BUTTON.getKey().getName();
-
-
 
     public AspectOfTheStar() {
         super(new Tier() {
@@ -64,14 +62,9 @@ public class AspectOfTheStar extends SwordItem {
     private static float LOOKUP_DISTANCE = 8.0f;
     private static float TRACE_ENTITY_DISTANCE = 2.0f;
 
-    @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-        InteractionResultHolder<ItemStack> ar = InteractionResultHolder.success(player.getItemInHand(hand));
-        player.startUsingItem(hand);
-        player.getCooldowns().addCooldown(ar.getObject().getItem(), 35);
-
-        if (level.isClientSide())
-            return ar;
+    private void use(Level level, Player player, ItemStack stack)
+    {
+        boolean hasDamage = stack.getOrCreateTagElement("LostDepths").getBoolean("UseDamage");
 
         Vec3 startPos = player.getEyePosition();
         Vec3 finalPos = player.getEyePosition().add(player.getForward().multiply(LOOKUP_DISTANCE, LOOKUP_DISTANCE, LOOKUP_DISTANCE));
@@ -98,7 +91,6 @@ public class AspectOfTheStar extends SwordItem {
 
             if (!lvl.getNearbyEntities(LivingEntity.class, TargetingConditions.forNonCombat().ignoreLineOfSight().ignoreInvisibilityTesting(), player, aabb).isEmpty())
             {
-                //System.out.println("Found entity in path");
                 return blockPos;
             }
             if (lvl.getBlockState(blockPos).isAir() && lvl.getBlockState(blockPos.below()).isAir()) {
@@ -112,6 +104,9 @@ public class AspectOfTheStar extends SwordItem {
         if (pos != null) {
             pos = pos.below();
             player.teleportTo(pos.getX() + 0.5f, pos.getY(), pos.getZ() + 0.5f);
+
+            if (!hasDamage)
+                return;
 
             // Find entities on found path
             List<LivingEntity> pathEntities = new ArrayList<>();
@@ -136,18 +131,34 @@ public class AspectOfTheStar extends SwordItem {
                 entity.hurt(new DamageSource(level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.INDIRECT_MAGIC)), entity.getMaxHealth() * 0.02f);
             }
         }
+    }
+
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        InteractionResultHolder<ItemStack> ar = InteractionResultHolder.success(player.getItemInHand(hand));
+        player.startUsingItem(hand);
+
+        boolean hasDamage = ar.getObject().getOrCreateTagElement("LostDepths").getBoolean("UseDamage");
+        player.getCooldowns().addCooldown(ar.getObject().getItem(), hasDamage ? 35 : 20);
+
+        if (level.isClientSide())
+            return ar;
+
+        use(level, player, ar.getObject());
 
         return ar;
     }
 
     @Override
-    public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
-        super.appendHoverText(itemstack, world, list, flag);
+    public void appendHoverText(ItemStack stack, Level world, List<Component> list, TooltipFlag flag) {
+        super.appendHoverText(stack, world, list, flag);
         list.add(Component.literal("§5Right Click: Teleport up to 8 blocks ahead of you,"));
         list.add(Component.literal("§5deals 8% Max Health of target as damage"));
         list.add(Component.literal("§dDeals 2% True Damage to entities near the trail"));
 
-        list.add(Component.literal("§6Toggle damage by teleport ability with §2").append(Component.keybind(keybindToggle)).append("."));
-        list.add(Component.literal("§6Damage: §4" + toggleDamage));
+        list.add(Component.literal("§6Toggle damage by teleport ability with ").append(LostdepthsModKeyMappings.ACTION_BUTTON.getTranslatedKeyMessage()).withStyle(ChatFormatting.GREEN));
+
+        boolean hasDamage = stack.getOrCreateTagElement("LostDepths").getBoolean("UseDamage");
+        list.add(Component.literal("§6Damage: " + (hasDamage ? "§2On" : "§4Off")));
     }
 }
