@@ -70,6 +70,9 @@ public class AspectOfTheStar extends SwordItem {
         player.startUsingItem(hand);
         player.getCooldowns().addCooldown(ar.getObject().getItem(), 35);
 
+        if (level.isClientSide())
+            return ar;
+
         Vec3 startPos = player.getEyePosition();
         Vec3 finalPos = player.getEyePosition().add(player.getForward().multiply(LOOKUP_DISTANCE, LOOKUP_DISTANCE, LOOKUP_DISTANCE));
 
@@ -95,10 +98,10 @@ public class AspectOfTheStar extends SwordItem {
 
             if (!lvl.getNearbyEntities(LivingEntity.class, TargetingConditions.forNonCombat().ignoreLineOfSight().ignoreInvisibilityTesting(), player, aabb).isEmpty())
             {
-                System.out.println("Found entity in path");
+                //System.out.println("Found entity in path");
                 return blockPos;
             }
-            if (!lvl.getBlockState(blockPos).isSolidRender(lvl, blockPos) && !lvl.getBlockState(blockPos.below()).isSolidRender(lvl, blockPos)) {
+            if (lvl.getBlockState(blockPos).isAir() && lvl.getBlockState(blockPos.below()).isAir()) {
                 return blockPos;
             }
             return null;
