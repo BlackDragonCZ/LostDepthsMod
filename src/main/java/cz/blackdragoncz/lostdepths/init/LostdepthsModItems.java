@@ -625,6 +625,7 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> GEM_OF_ILLUSION = REGISTRY.register("gem_of_illusion", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> USE_ICON = REGISTRY.register("usemark_icon", () -> new MasterPartRegistryItem(1));
 	public static final RegistryObject<Item> ASPECT_OF_THE_STAR = REGISTRY.register("aspect_of_the_star", AspectOfTheStar::new);
+	public static final RegistryObject<Item> INFUSED_DISPLAY_PLATE = block(LostdepthsModBlocks.INFUSED_DISPLAY_PLATE);
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));

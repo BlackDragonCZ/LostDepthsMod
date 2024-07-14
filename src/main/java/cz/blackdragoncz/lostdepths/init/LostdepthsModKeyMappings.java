@@ -22,7 +22,7 @@ import cz.blackdragoncz.lostdepths.LostdepthsMod;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = {Dist.CLIENT})
 public class LostdepthsModKeyMappings {
-	public static final KeyMapping ACTION_BUTTON = new KeyMapping("key.lostdepths.action_button", GLFW.GLFW_KEY_KP_DECIMAL, "key.categories.gameplay") {
+	public static final KeyMapping ACTION_BUTTON = new KeyMapping("key.lostdepths.action_button", GLFW.GLFW_KEY_KP_DECIMAL, "key.categories.lostdepths") {
 		private boolean isDownOld = false;
 
 		@Override
@@ -35,7 +35,7 @@ public class LostdepthsModKeyMappings {
 			isDownOld = isDown;
 		}
 	};
-	public static final KeyMapping DRAGON_DOWN = new KeyMapping("key.lostdepths.dragon_down", GLFW.GLFW_KEY_LEFT_CONTROL, "key.categories.movement") {
+	public static final KeyMapping DRAGON_DOWN = new KeyMapping("key.lostdepths.dragon_down", GLFW.GLFW_KEY_LEFT_CONTROL, "key.categories.lostdepths") {
 		private boolean isDownOld = false;
 
 		@Override
@@ -53,7 +53,7 @@ public class LostdepthsModKeyMappings {
 			isDownOld = isDown;
 		}
 	};
-	public static final KeyMapping DRAGON_UP = new KeyMapping("key.lostdepths.dragon_up", GLFW.GLFW_KEY_Y, "key.categories.movement") {
+	public static final KeyMapping DRAGON_UP = new KeyMapping("key.lostdepths.dragon_up", GLFW.GLFW_KEY_Y, "key.categories.lostdepths") {
 		private boolean isDownOld = false;
 
 		@Override

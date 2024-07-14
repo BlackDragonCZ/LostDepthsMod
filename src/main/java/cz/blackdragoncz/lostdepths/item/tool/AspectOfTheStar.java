@@ -1,6 +1,8 @@
 package cz.blackdragoncz.lostdepths.item.tool;
 
 import cz.blackdragoncz.lostdepths.LostdepthsMod;
+import cz.blackdragoncz.lostdepths.init.LostdepthsModItems;
+import cz.blackdragoncz.lostdepths.init.LostdepthsModKeyMappings;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -27,7 +29,8 @@ import java.util.concurrent.atomic.AtomicReference;
 public class AspectOfTheStar extends SwordItem {
 
     public boolean toggleDamage = false;
-    public String keybindToggle = "Not Bind";
+    public String keybindToggle = LostdepthsModKeyMappings.ACTION_BUTTON.getKey().getType().toString();
+
 
 
     public AspectOfTheStar() {
@@ -53,29 +56,9 @@ public class AspectOfTheStar extends SwordItem {
             }
 
             public @NotNull Ingredient getRepairIngredient() {
-                return Ingredient.of();
+                return Ingredient.of(LostdepthsModItems.INFUSED_IRON.get());
             }
-        }, 18, -2f, new Item.Properties().fireResistant());
-    }
-/*
-    @Override
-    public boolean hurtEnemy(ItemStack itemstack, LivingEntity entity, LivingEntity sourceentity) {
-       boolean retval = super.hurtEnemy(itemstack, entity, sourceentity);
-        BaneOfVenomsLivingEntityIsHitWithToolProcedure.execute(entity);
-        return retval;
-    }*/
-
-    public static double onRightClick(LivingEntity entity, boolean toggleDamage) {
-        double enemyHealth = 0;
-        double trueDamageValue;
-
-        if (entity instanceof LivingEntity) {
-            enemyHealth = (entity.getMaxHealth() + entity.getArmorValue()) * 0.08;
-            trueDamageValue = entity.getMaxHealth() * 0.02;
-
-        }
-
-        return enemyHealth;
+        }, 18, -1.5f, new Item.Properties().fireResistant());
     }
 
     private static float LOOKUP_DISTANCE = 8.0f;
