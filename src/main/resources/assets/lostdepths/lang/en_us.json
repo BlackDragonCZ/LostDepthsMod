@@ -311,7 +311,7 @@
   "block.lostdepths.black_market": "Black Market",
   "item.lostdepths.everwatching_eye": "Everwatching Eye",
   "item.lostdepths.blank_augment_slide": "Blank Augment Slide",
-  "item.lostdepths.phantom_blade": "Phantom Blade",
+  "item.lostdepths.phantom_blade": "§3Phantom Blade",
   "item.lostdepths.draconic_key": "Draconic Key",
   "block.lostdepths.security_clearance_6": "Security Clearance Gate (Level 6)",
   "block.lostdepths.security_clearance_5": "Security Clearance Gate (Level 5)",
@@ -386,7 +386,7 @@
   "item.lostdepths.serpentine_crystal": "Serpentine Crystal",
   "item.lostdepths.pure_lucient": "Pure Lucient",
   "advancements.controlled_gravity_adv.title": "Controlled Gravity",
-  "item.lostdepths.flux_lantern": "Flux Lantern",
+  "item.lostdepths.flux_lantern": "§3Flux Lantern",
   "item.lostdepths.prime_draconic_shovel": "§4Prime Draconic Shovel",
   "itemGroup.tabld_ingots": "LD: Ingots",
   "advancements.druids_adv.descr": "Collect druid flower",
@@ -797,5 +797,7 @@
   "item.lostdepths.usemark_icon": "Interaction with block",
   "item.lostdepths.aspect_of_the_star": "§6Aspect of the Star",
   "key.categories.lostdepths": "LostDepths",
-  "block.lostdepths.infused_display_plate": "Infused Display Plate"
+  "block.lostdepths.infused_display_plate": "Infused Display Plate",
+  "item.lostdepths.ghost_hunter": "§3Ghost Hunter",
+  "item.lostdepths.blade_of_the_dead": "§3Blade of the Dead"
 }

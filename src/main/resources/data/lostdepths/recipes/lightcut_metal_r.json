@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "BA ",
+    "C  ",
+    "   "
+  ],
+  "key": {
+    "A": {
+      "item": "lostdepths:conductive_bar"
+    },
+    "B": {
+      "item": "lostdepths:cognitium_ingot"
+    },
+    "C": {
+      "item": "lostdepths:razor_fang"
+    }
+  },
+  "result": {
+    "item": "lostdepths:lightcut_metal",
+    "count": 1
+  }
+}

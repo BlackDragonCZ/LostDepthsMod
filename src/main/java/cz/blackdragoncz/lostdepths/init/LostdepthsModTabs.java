@@ -249,6 +249,8 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModItems.PHANTOM_BLADE.get());
 				tabData.accept(LostdepthsModItems.INFUSED_CUTTERS.get());
 				tabData.accept(LostdepthsModItems.ASPECT_OF_THE_STAR.get());
+				tabData.accept(LostdepthsModItems.BLADE_OF_THE_DEAD.get());
+				tabData.accept(LostdepthsModItems.GHOST_HUNTER.get());
 			})
 
 					.build());

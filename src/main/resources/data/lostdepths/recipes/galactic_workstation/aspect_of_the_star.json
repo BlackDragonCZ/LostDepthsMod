@@ -1,0 +1,23 @@
+{
+  "type": "lostdepths:galactic_workstation",
+  "pattern": [
+    "II ",
+    "R R",
+    " S "
+  ],
+  "key": {
+    "I": {
+      "item": "lostdepths:psycherium_ingot"
+    },
+    "R": {
+      "item": "lostdepths:ethercut_metal"
+    },
+    "S": {
+      "item": "minecraft:netherite_sword"
+    }
+  },
+  "result": {
+    "item": "lostdepths:aspect_of_the_star",
+    "count": 1
+  }
+}

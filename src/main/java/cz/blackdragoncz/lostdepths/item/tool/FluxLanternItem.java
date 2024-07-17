@@ -36,12 +36,6 @@ public class FluxLanternItem extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(itemstack, world, list, flag);
-		list.add(Component.literal("[WIP]"));
-	}
-
-	@Override
 	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
 		InteractionResultHolder<ItemStack> ar = InteractionResultHolder.success(entity.getItemInHand(hand));
 		entity.startUsingItem(hand);
@@ -82,5 +76,25 @@ public class FluxLanternItem extends Item {
 				}
 			}
 		}
+	}
+
+	@Override
+	public void appendHoverText(ItemStack stack, Level world, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(stack, world, list, flag);
+		list.add(Component.literal("§6Shift+Right Click: Mark a location and dimension for fluxation."));
+		list.add(Component.literal("§5Shoot a projectile that fluxes players."));
+		list.add(Component.literal("§5Fluxes hit players on melee hit"));
+
+		boolean hasDamage = stack.getOrCreateTagElement("LostDepths").getBoolean("UseDamage");
+		list.add(Component.literal("§6Damage: " + (hasDamage ? "§2On" : "§4Off")));
+
+		//example of dimension position:
+		/*
+		Flux Marked:
+		Dim: 0
+		X: 1
+		Y: 2
+		Z: 3
+		 */
 	}
 }
