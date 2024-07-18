@@ -1,6 +1,7 @@
 
 package cz.blackdragoncz.lostdepths.item.tool;
 
+import cz.blackdragoncz.lostdepths.util.ICustomHoldPose;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.TooltipFlag;
@@ -20,7 +21,7 @@ import java.util.List;
 
 import cz.blackdragoncz.lostdepths.entity.FluxLanternProjectileEntity;
 
-public class FluxLanternItem extends Item {
+public class FluxLanternItem extends Item implements ICustomHoldPose {
 	public FluxLanternItem() {
 		super(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON));
 	}
@@ -86,8 +87,25 @@ public class FluxLanternItem extends Item {
 		list.add(Component.literal("§5Fluxes hit players on melee hit"));
 
 		boolean hasDamage = stack.getOrCreateTagElement("LostDepths").getBoolean("UseDamage");
-		list.add(Component.literal("§6Damage: " + (hasDamage ? "§2On" : "§4Off")));
+		double hasDimension = 0.0f;
+		double hasX = 0.0f;
+		double hasY = 0.0f;
+		double hasZ = 0.0f;
 
+		boolean marked = false;
+		if (stack.getOrCreateTagElement("LostDepths").getBoolean("Marked")){
+			marked = true;
+		}
+
+		if (marked) {
+			list.add(Component.literal("§2Flux Marked:"));
+			list.add(Component.literal("§2Dimension: " + hasDimension));
+			list.add(Component.literal("§2X: " + hasX));
+			list.add(Component.literal("§2Y: " + hasY));
+			list.add(Component.literal("§2Z: " + hasZ));
+		}else {
+			list.add(Component.literal("§cNO FLUX LOCATION SET"));
+		}
 		//example of dimension position:
 		/*
 		Flux Marked:
