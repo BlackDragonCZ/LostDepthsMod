@@ -3,6 +3,7 @@ package cz.blackdragoncz.lostdepths.client;
 import cz.blackdragoncz.lostdepths.client.renderer.block.AlloyWorkstationRenderer;
 import cz.blackdragoncz.lostdepths.client.renderer.block.GalacticWorkstationRenderer;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModBlockEntities;
+import cz.blackdragoncz.lostdepths.util.ICustomHoldPose;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
