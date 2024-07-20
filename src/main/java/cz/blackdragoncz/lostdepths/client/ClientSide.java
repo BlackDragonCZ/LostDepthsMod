@@ -31,12 +31,12 @@ public class ClientSide {
     {
         if (isCustomHoldPose(event.getEntity(), InteractionHand.MAIN_HAND))
         {
-            event.getRenderer().getModel().rightArmPose = HumanoidModel.ArmPose.BOW_AND_ARROW;
+            event.getRenderer().getModel().rightArmPose = HumanoidModel.ArmPose.SPYGLASS;
         }
 
         if (isCustomHoldPose(event.getEntity(), InteractionHand.OFF_HAND))
         {
-            event.getRenderer().getModel().leftArmPose = HumanoidModel.ArmPose.BOW_AND_ARROW;
+            event.getRenderer().getModel().leftArmPose = HumanoidModel.ArmPose.SPYGLASS;
         }
     }
 

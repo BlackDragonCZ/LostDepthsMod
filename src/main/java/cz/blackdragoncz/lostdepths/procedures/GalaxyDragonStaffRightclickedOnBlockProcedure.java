@@ -6,7 +6,7 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.Entity;
 
 import cz.blackdragoncz.lostdepths.init.LostdepthsModEntities;
-import cz.blackdragoncz.lostdepths.entity.ShooterHProjectileEntity;
+import cz.blackdragoncz.lostdepths.entity.projectile.ShooterHProjectileEntity;
 
 public class GalaxyDragonStaffRightclickedOnBlockProcedure {
 	public static void execute(Entity entity) {

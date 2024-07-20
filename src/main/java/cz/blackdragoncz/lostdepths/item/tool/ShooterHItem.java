@@ -18,7 +18,7 @@ import net.minecraft.network.chat.Component;
 
 import java.util.List;
 
-import cz.blackdragoncz.lostdepths.entity.ShooterHProjectileEntity;
+import cz.blackdragoncz.lostdepths.entity.projectile.ShooterHProjectileEntity;
 
 public class ShooterHItem extends Item {
 	public ShooterHItem() {

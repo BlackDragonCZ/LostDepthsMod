@@ -1,5 +1,5 @@
 
-package cz.blackdragoncz.lostdepths.entity;
+package cz.blackdragoncz.lostdepths.entity.projectile;
 
 import net.minecraftforge.network.PlayMessages;
 import net.minecraftforge.network.NetworkHooks;

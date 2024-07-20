@@ -1,7 +1,5 @@
-
 package cz.blackdragoncz.lostdepths.entity;
 
-import com.mojang.logging.LogUtils;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModGameRules;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModItems;
 import cz.blackdragoncz.lostdepths.util.NothingNullByDefault;
