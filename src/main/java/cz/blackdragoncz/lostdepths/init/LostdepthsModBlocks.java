@@ -297,4 +297,6 @@ public class LostdepthsModBlocks {
 	public static final RegistryObject<Block> INFUSED_WALL_HANGING_SIGN = REGISTRY.register("infused_wall_hanging_sign", InfusedWallHangingSignBlock::new);
 	public static final RegistryObject<Block> FUSION_TABLE = REGISTRY.register("fusion_table", FusionTableBlock::new);
 	public static final RegistryObject<Block> INFUSED_DISPLAY_PLATE = REGISTRY.register("infused_display_plate", InfusedDisplayPlateBlock::new);
+	public static final RegistryObject<Block> POSITIVE_SAPLING = REGISTRY.register("positive_sapling", PlantsBase::new);
+	public static final RegistryObject<Block> NEGATIVE_SAPLING = REGISTRY.register("negative_sapling", PlantsBase::new);
 }

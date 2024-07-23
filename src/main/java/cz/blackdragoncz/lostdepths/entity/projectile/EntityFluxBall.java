@@ -1,7 +1,9 @@
 package cz.blackdragoncz.lostdepths.entity.projectile;
 
+import cz.blackdragoncz.lostdepths.util.BasicTeleporter;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.commands.TeleportCommand;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -9,13 +11,12 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.util.ITeleporter;
 
 public abstract class EntityFluxBall extends ThrowableProjectile {
-    private int dim;
+    private ResourceKey<DimensionType> dim;
     private double teleportx;
     private double teleporty;
     private double teleportz;
@@ -32,7 +33,7 @@ public abstract class EntityFluxBall extends ThrowableProjectile {
         super(EntityType.SNOWBALL, x, y, z, world);
     }
 
-    public void setFlux(int d, double x, double y, double z){
+    public void setFlux(ResourceKey<DimensionType> d, double x, double y, double z){
         this.dim = d;
         this.teleportx = x;
         this.teleporty = y;
@@ -40,13 +41,13 @@ public abstract class EntityFluxBall extends ThrowableProjectile {
     }
 
     @Override
-    protected void onHit(HitResult result){
+    protected void onHitEntity(EntityHitResult result){
         if (!this.level().isClientSide){
-            if (result.getType() != null && getOwner() != null && result.getType() != getOwner() && result.getType() instanceof Player){
-                Player player = (Player) result.getType();
-                if (player.level().dimension() != DimensionType.byId(this.dim)){
-                    TeleportCommand basicTeleporter = new TeleportCommand(player.getServer().getLevel(DimensionType.byId(this.dim)), this.teleportx, this.teleporty, this.teleportz);
-                    player.changeDimension(player.getServer().getLevel(DimensionType.byId(this.dim)), (ITeleporter) basicTeleporter);
+            if (result.getEntity() != null && getOwner() != null && result.getEntity() != getOwner() && result.getEntity() instanceof Player){
+                Player player = (Player) result.getEntity();
+                if (!player.level().dimension().equals(this.dim)){
+                     BasicTeleporter basicTeleporter = new BasicTeleporter(player.getServer().getLevel(this.dim), this.teleportx, this.teleporty, this.teleportz);
+                    player.changeDimension(player.getServer().getLevel(this.dim), basicTeleporter);
                 } else {
                     player.teleportTo(this.teleportx, this.teleporty, this.teleportz);
                 }
@@ -54,7 +55,7 @@ public abstract class EntityFluxBall extends ThrowableProjectile {
 
             this.remove(RemovalReason.KILLED);
         }
-        if (result.getType() != null && result.getType() instanceof Player){
+        if (result.getEntity() != null && result.getEntity() instanceof Player){
             this.playSound(SoundEvents.WITCH_THROW, 3.0f, 1.0f);
         }
     }

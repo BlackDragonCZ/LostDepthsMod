@@ -111,6 +111,8 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModBlocks.INFUSED_HANGING_SIGN.get().asItem());
 				tabData.accept(LostdepthsModBlocks.FUSION_TABLE.get().asItem());
 				tabData.accept(LostdepthsModBlocks.INFUSED_DISPLAY_PLATE.get().asItem());
+				tabData.accept(LostdepthsModBlocks.POSITIVE_SAPLING.get().asItem());
+				tabData.accept(LostdepthsModBlocks.NEGATIVE_SAPLING.get().asItem());
 			})
 
 					.build());
@@ -251,6 +253,7 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModItems.ASPECT_OF_THE_STAR.get());
 				tabData.accept(LostdepthsModItems.BLADE_OF_THE_DEAD.get());
 				tabData.accept(LostdepthsModItems.GHOST_HUNTER.get());
+				tabData.accept(LostdepthsModItems.FLUXOCRON.get());
 			})
 
 					.build());

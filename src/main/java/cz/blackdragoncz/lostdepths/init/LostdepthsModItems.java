@@ -628,6 +628,9 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> INFUSED_DISPLAY_PLATE = block(LostdepthsModBlocks.INFUSED_DISPLAY_PLATE);
 	public static final RegistryObject<Item> GHOST_HUNTER = REGISTRY.register("ghost_hunter", GhostHunterItem::new);
 	public static final RegistryObject<Item> BLADE_OF_THE_DEAD = REGISTRY.register("blade_of_the_dead", BladeOfTheDeadItem::new);
+	public static final RegistryObject<Item> FLUXOCRON = REGISTRY.register("fluxocron", Fluxocron::new);
+	public static final RegistryObject<Item> POSITIVE_SAPLING = block(LostdepthsModBlocks.POSITIVE_SAPLING);
+	public static final RegistryObject<Item> NEGATIVE_SAPLING = block(LostdepthsModBlocks.NEGATIVE_SAPLING);
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));

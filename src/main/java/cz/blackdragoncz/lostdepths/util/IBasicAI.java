@@ -16,12 +16,3 @@ public interface IBasicAI {
         entityIn.goalSelector.addGoal(5, new NearestAttackableTargetGoal<>(entityIn, Player.class, true));
     }
 }
-
-
-/*
-this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.2, false) {
-		this.targetSelector.addGoal(2, new HurtByTargetGoal(this));
-		this.goalSelector.addGoal(3, new RandomStrollGoal(this, 0.8));
-		this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
-		this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, Player.class, true, true));
- */
