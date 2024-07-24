@@ -191,5 +191,13 @@
         "stream": false
       }
     ]
+  },
+  "flux_mark": {
+    "sounds": [
+      {
+        "name": "lostdepths:flux_mark",
+        "stream": false
+      }
+    ]
   }
 }
