@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "A A",
+    "ADA",
+    "FCF"
+  ],
+  "key": {
+    "A": {
+      "item": "lostdepths:laser_blade"
+    },
+    "F": {
+      "item": "lostdepths:energyzed_alloy"
+    },
+    "C": {
+      "item": "lostdepths:gem_of_illusion"
+    },
+    "D": {
+      "item": "lostdepths:blade_of_the_dead"
+    }
+  },
+  "result": {
+    "item": "lostdepths:phantom_blade",
+    "count": 1
+  }
+}

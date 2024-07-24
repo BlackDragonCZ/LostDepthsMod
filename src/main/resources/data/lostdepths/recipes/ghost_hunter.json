@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " FA",
+    "CDF",
+    "DC "
+  ],
+  "key": {
+    "A": {
+      "item": "lostdepths:clovinite_power_hub"
+    },
+    "F": {
+      "item": "lostdepths:razor_fang"
+    },
+    "C": {
+      "item": "lostdepths:corrosive_tear"
+    },
+    "D": {
+      "item": "lostdepths:celestial_diamond"
+    }
+  },
+  "result": {
+    "item": "lostdepths:ghost_hunter",
+    "count": 1
+  }
+}

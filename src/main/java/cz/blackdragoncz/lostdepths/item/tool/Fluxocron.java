@@ -122,6 +122,7 @@ public class Fluxocron extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        InteractionResultHolder<ItemStack> ar = InteractionResultHolder.success(player.getItemInHand(hand));
         ItemStack stack = player.getItemInHand(hand);
 
         if (!stack.hasTag()) {
@@ -161,6 +162,7 @@ public class Fluxocron extends Item {
                     if (!level.isClientSide) {
                        teleport(stack, player, level, player.getX(), player.getY(), player.getZ());
                     }
+                    player.getCooldowns().addCooldown(ar.getObject().getItem(), 10);
                     break;
 
                 case TeleportToMarkedLocation:
@@ -175,6 +177,7 @@ public class Fluxocron extends Item {
                             player.displayClientMessage(Component.literal("§4Position not set!"), true);
                         }
                     }
+                    player.getCooldowns().addCooldown(ar.getObject().getItem(), 10);
                     break;
                 case Clear:
                     stack.removeTagKey("EntityList");
@@ -254,7 +257,7 @@ public class Fluxocron extends Item {
                 list.add(Component.literal("§2Flux Marked:"));
                 ResourceKey<Level> dim = ResourceKey.create(Registries.DIMENSION, new ResourceLocation(stack.getTag().getString("flux_dimension")));
 
-                list.add(Component.literal("§2Dimension: ").append(Component.translatable(dim.location().toLanguageKey())));
+                list.add(Component.literal("§2Dimension: ").append(Component.translatable("§2" + dim.location().toLanguageKey())));
                 list.add(Component.literal("§2X: " + stack.getTag().getInt("flux_pos_x")));
                 list.add(Component.literal("§2Y: " + stack.getTag().getInt("flux_pos_y")));
                 list.add(Component.literal("§2Z: " + stack.getTag().getInt("flux_pos_z")));

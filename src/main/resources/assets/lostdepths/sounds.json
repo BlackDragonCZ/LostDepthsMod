@@ -223,5 +223,13 @@
         "stream": false
       }
     ]
+  },
+  "conversion": {
+    "sounds": [
+      {
+        "name": "lostdepths:conversion",
+        "stream": false
+      }
+    ]
   }
 }

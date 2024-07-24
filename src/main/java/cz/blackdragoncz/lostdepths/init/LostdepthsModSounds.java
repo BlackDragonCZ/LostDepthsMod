@@ -42,4 +42,5 @@ public class LostdepthsModSounds {
 	public static final RegistryObject<SoundEvent> CAVE_TERROR_AMBIENT = REGISTRY.register("cave_terror_ambient", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("lostdepths", "cave_terror_ambient")));
 	public static final RegistryObject<SoundEvent> CAVE_TERROR_DEATH = REGISTRY.register("cave_terror_death", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("lostdepths", "cave_terror_death")));
 	public static final RegistryObject<SoundEvent> CAVE_TERROR_HURT = REGISTRY.register("cave_terror_hurt", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("lostdepths", "cave_terror_hurt")));
+	public static final RegistryObject<SoundEvent> CONVERSION = REGISTRY.register("conversion", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("lostdepths", "conversion")));
 }

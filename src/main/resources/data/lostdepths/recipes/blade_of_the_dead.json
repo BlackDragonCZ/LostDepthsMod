@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " FA",
+    "CBF",
+    "DC "
+  ],
+  "key": {
+    "A": {
+      "item": "lostdepths:gem_dread"
+    },
+    "F": {
+      "item": "lostdepths:plucked_eye"
+    },
+    "C": {
+      "item": "lostdepths:metal_bone"
+    },
+    "D": {
+      "item": "lostdepths:enraged_iron"
+    },
+    "B": {
+      "item": "lostdepths:ghost_hunter"
+    }
+  },
+  "result": {
+    "item": "lostdepths:blade_of_the_dead",
+    "count": 1
+  }
+}

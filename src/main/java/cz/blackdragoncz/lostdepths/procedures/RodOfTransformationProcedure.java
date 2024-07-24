@@ -1,5 +1,7 @@
 package cz.blackdragoncz.lostdepths.procedures;
 
+import cz.blackdragoncz.lostdepths.init.LostdepthsModSounds;
+import net.minecraft.sounds.SoundSource;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -24,7 +26,7 @@ import cz.blackdragoncz.lostdepths.init.LostdepthsModItems;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModEntities;
 
 @Mod.EventBusSubscriber
-public class RodOfTransformationLivingEntityIsHitWithItemProcedure {
+public class RodOfTransformationProcedure {
 	@SubscribeEvent
 	public static void onRightClickEntity(PlayerInteractEvent.EntityInteract event) {
 		if (event.getHand() != event.getEntity().getUsedItemHand())
@@ -47,8 +49,10 @@ public class RodOfTransformationLivingEntityIsHitWithItemProcedure {
 				x = entity.getX();
 				y = entity.getY();
 				z = entity.getZ();
-				if (!entity.level().isClientSide())
+				if (!entity.level().isClientSide()) {
 					entity.discard();
+					sourceentity.level().playSound(null, sourceentity.blockPosition(), LostdepthsModSounds.CONVERSION.get(), SoundSource.HOSTILE, 2.0F, 1.0F);
+				}
 				if (world instanceof ServerLevel _level) {
 					Entity entityToSpawn = LostdepthsModEntities.THE_PROTECTOR.get().spawn(_level, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
 					if (entityToSpawn != null) {
@@ -60,8 +64,10 @@ public class RodOfTransformationLivingEntityIsHitWithItemProcedure {
 				x = entity.getX();
 				y = entity.getY();
 				z = entity.getZ();
-				if (!entity.level().isClientSide())
+				if (!entity.level().isClientSide()) {
 					entity.discard();
+					sourceentity.level().playSound(null, sourceentity.blockPosition(), LostdepthsModSounds.CONVERSION.get(), SoundSource.HOSTILE, 2.0F, 1.0F);
+				}
 				if (world instanceof ServerLevel _level) {
 					Entity entityToSpawn = LostdepthsModEntities.MAELSTROM.get().spawn(_level, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
 					if (entityToSpawn != null) {
@@ -73,8 +79,10 @@ public class RodOfTransformationLivingEntityIsHitWithItemProcedure {
 				x = entity.getX();
 				y = entity.getY();
 				z = entity.getZ();
-				if (!entity.level().isClientSide())
+				if (!entity.level().isClientSide()) {
 					entity.discard();
+					sourceentity.level().playSound(null, sourceentity.blockPosition(), LostdepthsModSounds.CONVERSION.get(), SoundSource.HOSTILE, 2.0F, 1.0F);
+				}
 				if (world instanceof ServerLevel _level) {
 					Entity entityToSpawn = LostdepthsModEntities.LOST_DARK.get().spawn(_level, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
 					if (entityToSpawn != null) {
@@ -86,8 +94,10 @@ public class RodOfTransformationLivingEntityIsHitWithItemProcedure {
 				x = entity.getX();
 				y = entity.getY();
 				z = entity.getZ();
-				if (!entity.level().isClientSide())
+				if (!entity.level().isClientSide()) {
 					entity.discard();
+					sourceentity.level().playSound(null, sourceentity.blockPosition(), LostdepthsModSounds.CONVERSION.get(), SoundSource.HOSTILE, 2.0F, 1.0F);
+				}
 				if (world instanceof ServerLevel _level) {
 					Entity entityToSpawn = LostdepthsModEntities.GUOON.get().spawn(_level, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
 					if (entityToSpawn != null) {
@@ -99,8 +109,10 @@ public class RodOfTransformationLivingEntityIsHitWithItemProcedure {
 				x = entity.getX();
 				y = entity.getY();
 				z = entity.getZ();
-				if (!entity.level().isClientSide())
+				if (!entity.level().isClientSide()) {
 					entity.discard();
+					sourceentity.level().playSound(null, sourceentity.blockPosition(), LostdepthsModSounds.CONVERSION.get(), SoundSource.HOSTILE, 2.0F, 1.0F);
+				}
 				if (world instanceof ServerLevel _level) {
 					Entity entityToSpawn = LostdepthsModEntities.NEUROBLAZE.get().spawn(_level, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
 					if (entityToSpawn != null) {
@@ -112,8 +124,10 @@ public class RodOfTransformationLivingEntityIsHitWithItemProcedure {
 				x = entity.getX();
 				y = entity.getY();
 				z = entity.getZ();
-				if (!entity.level().isClientSide())
+				if (!entity.level().isClientSide()) {
 					entity.discard();
+					sourceentity.level().playSound(null, sourceentity.blockPosition(), LostdepthsModSounds.CONVERSION.get(), SoundSource.HOSTILE, 2.0F, 1.0F);
+				}
 				if (world instanceof ServerLevel _level) {
 					Entity entityToSpawn = LostdepthsModEntities.ARACHNOTA.get().spawn(_level, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
 					if (entityToSpawn != null) {
@@ -125,8 +139,10 @@ public class RodOfTransformationLivingEntityIsHitWithItemProcedure {
 				x = entity.getX();
 				y = entity.getY();
 				z = entity.getZ();
-				if (!entity.level().isClientSide())
+				if (!entity.level().isClientSide()) {
 					entity.discard();
+					sourceentity.level().playSound(null, sourceentity.blockPosition(), LostdepthsModSounds.CONVERSION.get(), SoundSource.HOSTILE, 2.0F, 1.0F);
+				}
 				if (world instanceof ServerLevel _level) {
 					Entity entityToSpawn = LostdepthsModEntities.ASTRALCLAW.get().spawn(_level, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
 					if (entityToSpawn != null) {
@@ -163,8 +179,10 @@ public class RodOfTransformationLivingEntityIsHitWithItemProcedure {
 				x = entity.getX();
 				y = entity.getY();
 				z = entity.getZ();
-				if (!entity.level().isClientSide())
+				if (!entity.level().isClientSide()) {
 					entity.discard();
+					sourceentity.level().playSound(null, sourceentity.blockPosition(), LostdepthsModSounds.CONVERSION.get(), SoundSource.HOSTILE, 2.0F, 1.0F);
+				}
 				if (world instanceof ServerLevel _level) {
 					Entity entityToSpawn = LostdepthsModEntities.THE_PROTECTOR.get().spawn(_level, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
 					if (entityToSpawn != null) {

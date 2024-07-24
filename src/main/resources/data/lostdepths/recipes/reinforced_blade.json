@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "   ",
+    "AA ",
+    "BC "
+  ],
+  "key": {
+    "A": {
+      "item": "lostdepths:metal_bone"
+    },
+    "B": {
+      "item": "lostdepths:metal_branch"
+    },
+    "C": {
+      "item": "lostdepths:razor_fang"
+    }
+  },
+  "result": {
+    "item": "lostdepths:reinforced_blade",
+    "count": 1
+  }
+}

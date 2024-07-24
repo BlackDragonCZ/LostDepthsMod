@@ -116,7 +116,7 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> BLADE_OF_FORGOTTEN = REGISTRY.register("blade_of_forgotten", () -> new BladeOfForgottenItem());
 	public static final RegistryObject<Item> FORGEFIRE_PICKAXE = REGISTRY.register("forgefire_pickaxe", () -> new ForgefirePickaxeItem());
 	public static final RegistryObject<Item> FORGEFIRE_AXE = REGISTRY.register("forgefire_axe", () -> new ForgefireAxeItem());
-	public static final RegistryObject<Item> ROD_OF_TRANSFORMATION = REGISTRY.register("rod_of_transformation", () -> new RotOfTransformation());
+	public static final RegistryObject<Item> ROD_OF_TRANSFORMATION = REGISTRY.register("rod_of_transformation", () -> new RodOfTransformation());
 	public static final RegistryObject<Item> VENOM_KNIFE = REGISTRY.register("venom_knife", () -> new VenomKnifeItem());
 	public static final RegistryObject<Item> CRYSTALIZED_PICKAXE = REGISTRY.register("crystalized_pickaxe", () -> new CrystalizedPickaxeItem());
 	public static final RegistryObject<Item> CELESTIAL_KEY = REGISTRY.register("soul_key", () -> new MasterPartRegistryItem(16));
@@ -631,6 +631,10 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> FLUXOCRON = REGISTRY.register("fluxocron", Fluxocron::new);
 	public static final RegistryObject<Item> POSITIVE_SAPLING = block(LostdepthsModBlocks.POSITIVE_SAPLING);
 	public static final RegistryObject<Item> NEGATIVE_SAPLING = block(LostdepthsModBlocks.NEGATIVE_SAPLING);
+	public static final RegistryObject<Item> LASER_BLADE = REGISTRY.register("laser_blade", MasterPartRegistryItem::new);
+	public static final RegistryObject<Item> REINFORCED_BLADE = REGISTRY.register("reinforced_blade", MasterPartRegistryItem::new);
+	public static final RegistryObject<Item> GEM_DREAD = REGISTRY.register("gem_dread", MasterPartRegistryItem::new);
+	public static final RegistryObject<Item> CELESTIAL_GOLD = REGISTRY.register("celestial_gold", MasterPartRegistryItem::new);
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));

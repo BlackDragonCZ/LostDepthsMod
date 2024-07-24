@@ -200,6 +200,7 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModItems.PRISMOSIS.get());
 				tabData.accept(LostdepthsModItems.PRISMOSIS_BAR.get());
 				tabData.accept(LostdepthsModItems.CLOVINITE_BAR.get());
+				tabData.accept(LostdepthsModItems.CELESTIAL_GOLD.get());
 			})
 
 					.build());
@@ -565,6 +566,8 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModItems.PURPLE_WATCHFUL_EYE.get());
 				tabData.accept(LostdepthsModItems.BLUE_WATCHFUL_EYE.get());
 				tabData.accept(LostdepthsModItems.GEM_OF_ILLUSION.get());
+				tabData.accept(LostdepthsModItems.REINFORCED_BLADE.get());
+				tabData.accept(LostdepthsModItems.LASER_BLADE.get());
 			})
 
 					.build());
@@ -599,6 +602,7 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModItems.GEM_IMPOSITION.get());
 				tabData.accept(LostdepthsModItems.GEM_RESOLVE.get());
 				tabData.accept(LostdepthsModItems.GEM_INGENUITY.get());
+				tabData.accept(LostdepthsModItems.GEM_DREAD.get());
 			})
 
 					.build());

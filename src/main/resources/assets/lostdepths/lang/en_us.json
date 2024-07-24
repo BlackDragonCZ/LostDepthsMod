@@ -802,5 +802,9 @@
   "item.lostdepths.blade_of_the_dead": "§3Blade of the Dead",
   "item.lostdepths.fluxocron": "§5Fluxocron",
   "block.lostdepths.negative_sapling": "Negative Sapling",
-  "block.lostdepths.positive_sapling": "positive Sapling"
+  "block.lostdepths.positive_sapling": "positive Sapling",
+  "item.lostdepths.laser_blade": "Laser Blade",
+  "item.lostdepths.reinforced_blade": "Reinforced Blade",
+  "item.lostdepths.gem_dread": "Gem of Dread",
+  "item.lostdepths.celestial_gold": "§3Celestial Gold"
 }

@@ -12,8 +12,8 @@ import net.minecraft.network.chat.Component;
 
 import java.util.List;
 
-public class RotOfTransformation extends SwordItem {
-	public RotOfTransformation() {
+public class RodOfTransformation extends SwordItem {
+	public RodOfTransformation() {
 		super(new Tier() {
 			public int getUses() {
 				return 0;
@@ -32,7 +32,7 @@ public class RotOfTransformation extends SwordItem {
 			}
 
 			public int getEnchantmentValue() {
-				return 2;
+				return 0;
 			}
 
 			public Ingredient getRepairIngredient() {

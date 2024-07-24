@@ -47,6 +47,7 @@ public class FluxLanternItem extends Item implements ICustomHoldPose {
 
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn){
+		InteractionResultHolder<ItemStack> ar = InteractionResultHolder.success(playerIn.getItemInHand(handIn));
 		ItemStack stack = playerIn.getItemInHand(handIn);
 		if (playerIn.isCrouching()){
 			if (!stack.hasTag()){
@@ -63,6 +64,7 @@ public class FluxLanternItem extends Item implements ICustomHoldPose {
 				playerIn.displayClientMessage(Component.literal("§5Coordinates marked for fluxation."), true);
 			}
 		} else if (stack.hasTag() && stack.getTag().contains("flux_dimension")) {
+			playerIn.getCooldowns().addCooldown(ar.getObject().getItem(), 10);
 			if (!worldIn.isClientSide){
 				ResourceKey<Level> dim = ResourceKey.create(Registries.DIMENSION, new ResourceLocation(stack.getTag().getString("flux_dimension")));
 				double goX = stack.getTag().getDouble("flux_pos_x");
@@ -134,7 +136,7 @@ public class FluxLanternItem extends Item implements ICustomHoldPose {
 			list.add(Component.literal("§2Flux Marked:"));
 			ResourceKey<Level> dim = ResourceKey.create(Registries.DIMENSION, new ResourceLocation(stack.getTag().getString("flux_dimension")));
 
-			list.add(Component.literal("§2Dimension: ").append(Component.translatable(dim.location().toLanguageKey())));
+			list.add(Component.literal("§2Dimension: ").append(Component.translatable("§2" + dim.location().toLanguageKey())));
 			list.add(Component.literal("§2X: " + stack.getTag().getInt("flux_pos_x")));
 			list.add(Component.literal("§2Y: " + stack.getTag().getInt("flux_pos_y")));
 			list.add(Component.literal("§2Z: " + stack.getTag().getInt("flux_pos_z")));
