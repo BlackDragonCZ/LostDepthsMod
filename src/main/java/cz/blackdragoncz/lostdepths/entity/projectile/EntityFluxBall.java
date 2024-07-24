@@ -3,23 +3,23 @@ package cz.blackdragoncz.lostdepths.entity.projectile;
 import cz.blackdragoncz.lostdepths.util.BasicTeleporter;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 public abstract class EntityFluxBall extends ThrowableProjectile {
-    private ResourceKey<DimensionType> dim;
-    private double teleportx;
-    private double teleporty;
-    private double teleportz;
+    private ResourceKey<Level> dim;
+    private double teleportX;
+    private double teleportY;
+    private double teleportZ;
 
     public EntityFluxBall(EntityType<? extends EntityFluxBall> type, Level world){
         super(type, world);
@@ -33,30 +33,36 @@ public abstract class EntityFluxBall extends ThrowableProjectile {
         super(EntityType.SNOWBALL, x, y, z, world);
     }
 
-    public void setFlux(ResourceKey<DimensionType> d, double x, double y, double z){
-        this.dim = d;
-        this.teleportx = x;
-        this.teleporty = y;
-        this.teleportz = z;
+    public void setFlux(ResourceKey<Level> dim, double x, double y, double z){
+        this.dim = dim;
+        this.teleportX = x;
+        this.teleportY = y;
+        this.teleportZ = z;
     }
 
     @Override
     protected void onHitEntity(EntityHitResult result){
         if (!this.level().isClientSide){
-            if (result.getEntity() != null && getOwner() != null && result.getEntity() != getOwner() && result.getEntity() instanceof Player){
-                Player player = (Player) result.getEntity();
-                if (!player.level().dimension().equals(this.dim)){
-                     BasicTeleporter basicTeleporter = new BasicTeleporter(player.getServer().getLevel(this.dim), this.teleportx, this.teleporty, this.teleportz);
-                    player.changeDimension(player.getServer().getLevel(this.dim), basicTeleporter);
+            if (getOwner() != null && result.getEntity() != getOwner()/* && result.getEntity() instanceof Player*/) {
+                Entity hitEntity = result.getEntity();
+                if (hitEntity.level().dimension() != this.dim){
+                    ServerLevel level = hitEntity.getServer().getLevel(this.dim);
+
+                    if (level == null) {
+                        this.remove(RemovalReason.KILLED);
+                        return;
+                    }
+
+                    BasicTeleporter basicTeleporter = new BasicTeleporter(level, this.teleportX, this.teleportY, this.teleportZ);
+                    hitEntity.changeDimension(level, basicTeleporter);
                 } else {
-                    player.teleportTo(this.teleportx, this.teleporty, this.teleportz);
+                    hitEntity.teleportTo(this.teleportX, this.teleportY, this.teleportZ);
                 }
+
+                this.playSound(SoundEvents.WITCH_THROW, 3.0f, 1.0f);
             }
 
             this.remove(RemovalReason.KILLED);
-        }
-        if (result.getEntity() != null && result.getEntity() instanceof Player){
-            this.playSound(SoundEvents.WITCH_THROW, 3.0f, 1.0f);
         }
     }
 

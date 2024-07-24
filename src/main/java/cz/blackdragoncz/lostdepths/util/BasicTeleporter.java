@@ -1,6 +1,5 @@
 package cz.blackdragoncz.lostdepths.util;
 
-import it.unimi.dsi.fastutil.Function;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectIterator;
@@ -13,8 +12,10 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.portal.PortalInfo;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.util.ITeleporter;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
+import java.util.function.Function;
 
 public class BasicTeleporter implements ITeleporter {
 
@@ -47,17 +48,14 @@ public class BasicTeleporter implements ITeleporter {
         }
     }
 
-    @Override
-    public Entity placeEntity(Entity entity, ServerLevel currentWorld, ServerLevel destWorld, float yaw, Function<Boolean, Entity> repositionEntity) {
-        return repositionEntity.apply(false);
-    }
 
     @Override
-    public Optional<PortalInfo> getPortalInfo(Entity entity, ServerLevel destWorld, Function<ServerLevel, PortalInfo> defaultPortalInfo) {
-        if (destWorld.dimension() == Level.OVERWORLD) {
-            return Optional.of(new PortalInfo(new Vec3(goToX, goToY, goToZ), Vec3.ZERO, entity.getYRot(), entity.getXRot()));
+    public @Nullable PortalInfo getPortalInfo(Entity entity, ServerLevel destWorld, Function<ServerLevel, PortalInfo> defaultPortalInfo) {
+        return new PortalInfo(new Vec3(goToX, goToY, goToZ), Vec3.ZERO, entity.getYRot(), entity.getXRot());
+        /*if (destWorld.dimension() == Level.OVERWORLD) {
+            return new PortalInfo(new Vec3(goToX, goToY, goToZ), Vec3.ZERO, entity.getYRot(), entity.getXRot());
         } else if (this.strict) {
-            return Optional.of(new PortalInfo(new Vec3(goToX, goToY, goToZ), Vec3.ZERO, entity.getYRot(), entity.getXRot()));
+            return new PortalInfo(new Vec3(goToX, goToY, goToZ), Vec3.ZERO, entity.getYRot(), entity.getXRot());
         } else {
             if (entity instanceof ServerPlayer) {
                 ServerPlayer player = (ServerPlayer) entity;
@@ -66,10 +64,10 @@ public class BasicTeleporter implements ITeleporter {
                     bed = destWorld.getSharedSpawnPos();
                 }
                 int y = destWorld.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, bed.getX(), bed.getZ());
-                return Optional.of(new PortalInfo(new Vec3(bed.getX(), y, bed.getZ()), Vec3.ZERO, player.getYRot(), player.getXRot()));
+                return new PortalInfo(new Vec3(bed.getX(), y, bed.getZ()), Vec3.ZERO, player.getYRot(), player.getXRot());
             }
-            return Optional.empty();
-        }
+            return null;
+        }*/
     }
 
     @Override

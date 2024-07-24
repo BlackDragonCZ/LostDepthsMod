@@ -7,6 +7,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.AABB;
@@ -85,9 +86,11 @@ public interface ICustomRaytrace {
                 }
             }
 
-            BlockState stateResult = world.getBlockState(new BlockPos(nextPos));
-            FluidState fluidStateResult = world.getFluidState(new BlockPos(nextPos));
-            if (stopBlock > 0 && !world.isEmptyBlock(new BlockPos(nextPos)) && (stateResult.getMaterial().isSolid() || fluidStateResult.isSource() || stopBlock == 2)) {
+            BlockPos nextBlockPos = new BlockPos(new BlockPos((int) Math.floor(nextPos.x), (int) Math.floor(nextPos.y), (int) Math.floor(nextPos.z)));
+
+            BlockState stateResult = world.getBlockState(nextBlockPos);
+            FluidState fluidStateResult = world.getFluidState(nextBlockPos);
+            if (stopBlock > 0 && !world.isEmptyBlock(nextBlockPos) && (stateResult.isSolid() || fluidStateResult.isSource() || stopBlock == 2)) {
                 Vec3 referencePos = modifiedLookPosition.add(vec.x * (i - 1), vec.y * (i - 1), vec.z * (i - 1));
                 result.setResultPos(referencePos);
                 result.setGrabbedVector(nextPos);

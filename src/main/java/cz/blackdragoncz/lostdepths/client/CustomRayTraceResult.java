@@ -35,7 +35,7 @@ public class CustomRayTraceResult {
     }
 
     public BlockPos getResultPos() {
-        return new BlockPos(this.blockResultPosition);
+        return new BlockPos((int) Math.floor(this.blockResultPosition.x), (int) Math.floor(this.blockResultPosition.y), (int) Math.floor(this.blockResultPosition.z));
     }
 
     public Vec3 getResultVector() {

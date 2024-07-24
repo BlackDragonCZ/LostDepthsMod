@@ -3,7 +3,10 @@ package cz.blackdragoncz.lostdepths.item.tool;
 
 import cz.blackdragoncz.lostdepths.entity.projectile.EntityFluxBall;
 import cz.blackdragoncz.lostdepths.util.ICustomHoldPose;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.block.state.BlockState;
@@ -50,7 +53,7 @@ public class FluxLanternItem extends Item implements ICustomHoldPose {
 				stack.setTag(new CompoundTag());
 			}
 
-			stack.getTag().putInt("flux_dimension_id", worldIn.dimension().hashCode());
+			stack.getTag().putString("flux_dimension", worldIn.dimension().location().toString());
 			stack.getTag().putDouble("flux_pos_x", playerIn.getX());
 			stack.getTag().putDouble("flux_pos_y", playerIn.getY());
 			stack.getTag().putDouble("flux_pos_z", playerIn.getZ());
@@ -59,9 +62,9 @@ public class FluxLanternItem extends Item implements ICustomHoldPose {
 			if (worldIn.isClientSide){
 				playerIn.displayClientMessage(Component.literal("§5Coordinates marked for fluxation."), true);
 			}
-		} else if (stack.hasTag() && stack.getTag().contains("flux_dimension_id")) {
+		} else if (stack.hasTag() && stack.getTag().contains("flux_dimension")) {
 			if (!worldIn.isClientSide){
-				int dimId = stack.getTag().getInt("flux_dimension_id");
+				ResourceKey<Level> dim = ResourceKey.create(Registries.DIMENSION, new ResourceLocation(stack.getTag().getString("flux_dimension")));
 				double goX = stack.getTag().getDouble("flux_pos_x");
 				double goY = stack.getTag().getDouble("flux_pos_y");
 				double goZ = stack.getTag().getDouble("flux_pos_z");
@@ -72,7 +75,7 @@ public class FluxLanternItem extends Item implements ICustomHoldPose {
 
 					}
 				};
-				shot.setFlux(dimId, goX, goY, goZ);
+				shot.setFlux(dim, goX, goY, goZ);
 				shot.shootFromRotation(playerIn, playerIn.getXRot(), playerIn.getYRot(), 0.0f, 1.5f, 1.0f);
 				worldIn.addFreshEntity(shot);
 			}
@@ -127,13 +130,15 @@ public class FluxLanternItem extends Item implements ICustomHoldPose {
 		list.add(Component.literal("§5Fluxes hit players on melee hit"));
 
 
-		if (stack.hasTag() && stack.getTag().contains("flux_dimension_id")) {
+		if (stack.hasTag() && stack.getTag().contains("flux_dimension")) {
 			list.add(Component.literal("§2Flux Marked:"));
-			list.add(Component.literal("§2Dimension: " + stack.getTag().getInt("flux_dimension_id")));
+			ResourceKey<Level> dim = ResourceKey.create(Registries.DIMENSION, new ResourceLocation(stack.getTag().getString("flux_dimension")));
+
+			list.add(Component.literal("§2Dimension: ").append(Component.translatable(dim.location().toLanguageKey())));
 			list.add(Component.literal("§2X: " + stack.getTag().getInt("flux_pos_x")));
 			list.add(Component.literal("§2Y: " + stack.getTag().getInt("flux_pos_y")));
 			list.add(Component.literal("§2Z: " + stack.getTag().getInt("flux_pos_z")));
-		}else {
+		} else {
 			list.add(Component.literal("§cNO FLUX LOCATION SET"));
 		}
 	}
