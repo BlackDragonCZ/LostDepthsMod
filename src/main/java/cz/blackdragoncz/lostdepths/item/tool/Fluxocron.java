@@ -75,7 +75,7 @@ public class Fluxocron extends Item {
             ListTag listTag = (ListTag) entityList.get("MobList");
 
             for (int i = 0; i < listTag.size(); ++i) {
-                UUID entityUUID = NbtUtils.loadUUID(listTag.get(0));
+                UUID entityUUID = NbtUtils.loadUUID(listTag.get(i));
 
                 Entity entity = null;
 
@@ -102,7 +102,7 @@ public class Fluxocron extends Item {
         {
             ListTag listTag = (ListTag) entityList.get("PlayerList");
             for (int i = 0; i < listTag.size(); ++i) {
-                UUID playerUUID = NbtUtils.loadUUID(listTag.get(0));
+                UUID playerUUID = NbtUtils.loadUUID(listTag.get(i));
                 Player playerToPort = player.getServer().getPlayerList().getPlayer(playerUUID);
 
                 if (playerToPort == null)
