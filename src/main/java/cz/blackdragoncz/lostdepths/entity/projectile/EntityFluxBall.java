@@ -43,7 +43,7 @@ public abstract class EntityFluxBall extends ThrowableProjectile {
     @Override
     protected void onHitEntity(EntityHitResult result){
         if (!this.level().isClientSide){
-            if (getOwner() != null && result.getEntity() != getOwner()/* && result.getEntity() instanceof Player*/) {
+            if (getOwner() != null && result.getEntity() != getOwner() && result.getEntity() instanceof Player) {
                 Entity hitEntity = result.getEntity();
                 if (hitEntity.level().dimension() != this.dim){
                     ServerLevel level = hitEntity.getServer().getLevel(this.dim);

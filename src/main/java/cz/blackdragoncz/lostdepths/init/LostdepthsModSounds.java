@@ -39,4 +39,7 @@ public class LostdepthsModSounds {
 	public static final RegistryObject<SoundEvent> REACTOR_ALARM = REGISTRY.register("reactor_alarm", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("lostdepths", "reactor_alarm")));
 	public static final RegistryObject<SoundEvent> MANUFACTURE_MACHINE = REGISTRY.register("manufacture_machine", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("lostdepths", "manufacture_machine")));
 	public static final RegistryObject<SoundEvent> FLUX_MARK = REGISTRY.register("flux_mark", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("lostdepths", "flux_mark")));
+	public static final RegistryObject<SoundEvent> CAVE_TERROR_AMBIENT = REGISTRY.register("cave_terror_ambient", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("lostdepths", "cave_terror_ambient")));
+	public static final RegistryObject<SoundEvent> CAVE_TERROR_DEATH = REGISTRY.register("cave_terror_death", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("lostdepths", "cave_terror_death")));
+	public static final RegistryObject<SoundEvent> CAVE_TERROR_HURT = REGISTRY.register("cave_terror_hurt", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("lostdepths", "cave_terror_hurt")));
 }

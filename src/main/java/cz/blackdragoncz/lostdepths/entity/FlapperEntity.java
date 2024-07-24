@@ -137,17 +137,17 @@ public class FlapperEntity extends Monster implements GeoEntity {
 
 	@Override
 	public SoundEvent getAmbientSound() {
-		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("lostdepths:flapper_ambient"));
+		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("lostdepths:cave_terror_ambient"));
 	}
 
 	@Override
 	public SoundEvent getHurtSound(DamageSource ds) {
-		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("lostdepths:flapper_hit"));
+		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("lostdepths:cave_terror_hurt"));
 	}
 
 	@Override
 	public SoundEvent getDeathSound() {
-		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("lostdepths:flapper_death"));
+		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("lostdepths:cave_terror_death"));
 	}
 
 	@Override

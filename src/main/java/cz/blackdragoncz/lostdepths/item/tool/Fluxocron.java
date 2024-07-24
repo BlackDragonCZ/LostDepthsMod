@@ -150,7 +150,7 @@ public class Fluxocron extends Item {
 
                     if (!level.isClientSide) {
                         player.displayClientMessage(Component.literal("§5Coordinate marked for fluxation."), true);
-                        level.playSound(null, player.blockPosition(), LostdepthsModSounds.METAL1.get(), SoundSource.MASTER, 2.0F, 1.0F);
+                        level.playSound(null, player.blockPosition(), LostdepthsModSounds.FLUX_MARK.get(), SoundSource.MASTER, 2.0F, 1.0F);
                     }
                     break;
 
@@ -237,9 +237,9 @@ public class Fluxocron extends Item {
 
         player.setItemInHand(hand, stack);
 
-        player.level().playSound(null, player.blockPosition(), LostdepthsModSounds.METAL1.get(), SoundSource.MASTER, 2.0F, 1.0F);
+        player.level().playSound(null, player.blockPosition(), LostdepthsModSounds.FLUX_MARK.get(), SoundSource.MASTER, 2.0F, 1.0F);
 
-        return InteractionResult.SUCCESS;
+        return InteractionResult.PASS;
     }
 
     @Override

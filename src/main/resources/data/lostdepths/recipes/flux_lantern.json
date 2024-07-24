@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " A ",
+    " A ",
+    "IGI"
+  ],
+  "key": {
+    "A": {
+      "item": "lostdepths:unbreakable_chain"
+    },
+    "G": {
+      "item": "lostdepths:gem_ingenuity"
+    },
+    "I": {
+      "item": "lostdepths:enraged_iron"
+    }
+  },
+  "result": {
+    "item": "lostdepths:flux_lantern",
+    "count": 1
+  }
+}

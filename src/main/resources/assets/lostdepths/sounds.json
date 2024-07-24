@@ -199,5 +199,29 @@
         "stream": false
       }
     ]
+  },
+  "cave_terror_ambient": {
+    "sounds": [
+      {
+        "name": "lostdepths:cave_terror_ambient",
+        "stream": false
+      }
+    ]
+  },
+  "cave_terror_death": {
+    "sounds": [
+      {
+        "name": "lostdepths:cave_terror_death",
+        "stream": false
+      }
+    ]
+  },
+  "cave_terror_hurt": {
+    "sounds": [
+      {
+        "name": "lostdepths:cave_terror_hurt",
+        "stream": false
+      }
+    ]
   }
 }
