@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ABA",
+    "CDC",
+    "CEC"
+  ],
+  "key": {
+    "A": {
+      "item": "lostdepths:power_funnel"
+    },
+    "B": {
+      "item": "lostdepths:power_charge_solutions"
+    },
+    "C": {
+      "item": "lostdepths:enraged_iron"
+    },
+    "D": {
+      "item": "lostdepths:volatile_gloop"
+    },
+    "E": {
+      "item": "lostdepths:power_charge"
+    }
+  },
+  "result": {
+    "item": "lostdepths:combustion_chamber",
+    "count": 1
+  }
+}

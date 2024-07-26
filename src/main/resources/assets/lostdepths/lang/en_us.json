@@ -200,7 +200,7 @@
   "block.lostdepths.labyrinth_lamp_b": "Labyrinth Lamp",
   "item.lostdepths.raw_cryzulite": "Raw Cryzulite",
   "item.lostdepths.celestial_armor_leggings": "Celestial Leggings",
-  "item.lostdepths.mysterios_gloop": "§9Mysterios Gloop",
+  "item.lostdepths.mysterios_gloop": "§9Mysterious Gloop",
   "block.lostdepths.labyrinth_lamp_c": "Labyrinth lamp",
   "item.lostdepths.thermosaw": "Thermosaw",
   "subtitles.gate_error": "",
@@ -802,9 +802,14 @@
   "item.lostdepths.blade_of_the_dead": "§3Blade of the Dead",
   "item.lostdepths.fluxocron": "§5Fluxocron",
   "block.lostdepths.negative_sapling": "Negative Sapling",
-  "block.lostdepths.positive_sapling": "positive Sapling",
+  "block.lostdepths.positive_sapling": "Positive Sapling",
   "item.lostdepths.laser_blade": "Laser Blade",
   "item.lostdepths.reinforced_blade": "Reinforced Blade",
   "item.lostdepths.gem_dread": "Gem of Dread",
-  "item.lostdepths.celestial_gold": "§3Celestial Gold"
+  "item.lostdepths.celestial_gold": "§3Celestial Gold",
+  "item.lostdepths.mirror_shield": "Mirror Shield",
+  "item.lostdepths.crimson_transducer": "Crimson Transducer",
+  "item_group.lostdepths.ld_protective": "LD: Protective",
+  "item.lostdepths.combustion_chamber": "Combustion Chamber",
+  "item.lostdepths.volatile_gloop": "Volatile Gloop"
 }

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " A ",
+    "B B",
+    " C "
+  ],
+  "key": {
+    "A": {
+      "item": "lostdepths:volatility_solution"
+    },
+    "B": {
+      "item": "lostdepths:mysterios_gloop"
+    },
+    "C": {
+      "item": "lostdepths:corrosive_mix"
+    }
+  },
+  "result": {
+    "item": "lostdepths:volatile_gloop",
+    "count": 1
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "lostdepths:alloy_workstation",
+  "pattern": [
+    "AAA",
+    " N ",
+    "BBB"
+  ],
+  "key": {
+    "A": { "item": "lostdepths:power_funnel" },
+    "B": { "item": "lostdepths:starcut_metal" },
+    "N": { "item": "lostdepths:combustion_chamber" }
+  },
+  "result": {
+    "item": "lostdepths:crimson_transducer",
+    "count": 1
+  }
+}

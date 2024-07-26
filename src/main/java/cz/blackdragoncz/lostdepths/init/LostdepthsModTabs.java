@@ -428,7 +428,11 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModItems.MODULE_CONVERSION.get());
 				tabData.accept(LostdepthsModItems.MODULE_WEIGHT.get());
 			})
-
+					.build());
+	public static final RegistryObject<CreativeModeTab> LD_PROTECTIVE = REGISTRY.register("ld_protective",
+					() -> CreativeModeTab.builder().title(Component.translatable("item_group.lostdepths.ld_protective")).icon(() -> new ItemStack(LostdepthsModItems.MIRROR_SHIELD.get())).displayItems((parameters, tabData) -> {
+						tabData.accept(LostdepthsModItems.MIRROR_SHIELD.get());
+					})
 					.build());
 	public static final RegistryObject<CreativeModeTab> LD_ITEMS = REGISTRY.register("ld_items",
 			() -> CreativeModeTab.builder().title(Component.translatable("item_group.lostdepths.ld_items")).icon(() -> new ItemStack(LostdepthsModItems.INFUSED_IRON.get())).displayItems((parameters, tabData) -> {
@@ -568,6 +572,9 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModItems.GEM_OF_ILLUSION.get());
 				tabData.accept(LostdepthsModItems.REINFORCED_BLADE.get());
 				tabData.accept(LostdepthsModItems.LASER_BLADE.get());
+				tabData.accept(LostdepthsModItems.CRIMSON_TRANSDUCER.get());
+				tabData.accept(LostdepthsModItems.COMBUSTION_CHAMBER.get());
+				tabData.accept(LostdepthsModItems.VOLATILE_GLOOP.get());
 			})
 
 					.build());

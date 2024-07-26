@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ADA"
+  ],
+  "key": {
+    "A": {
+      "item": "lostdepths:crystalized_alloy"
+    },
+    "B": {
+      "item": "lostdepths:reflective_plating"
+    },
+    "C": {
+      "item": "minecraft:shield"
+    },
+    "D": {
+      "item": "lostdepths:crimson_transducer"
+    }
+  },
+  "result": {
+    "item": "lostdepths:mirror_shield",
+    "count": 1
+  }
+}
