@@ -18,5 +18,6 @@ public class MirrorShield extends Item {
     public void appendHoverText(@NotNull ItemStack stack, Level world, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, world, list, flag);
         list.add(Component.literal("§bWhen held in the offhand, reflect 100% of max health damage taken."));
+        list.add(Component.literal("§6WIP not work right now"));
     }
 }

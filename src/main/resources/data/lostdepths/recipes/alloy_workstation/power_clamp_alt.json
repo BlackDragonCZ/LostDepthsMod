@@ -1,0 +1,18 @@
+{
+  "type": "lostdepths:alloy_workstation",
+  "pattern": [
+    "111",
+    " T ",
+    "GEG"
+  ],
+  "key": {
+    "1": { "item": "lostdepths:power_coil" },
+    "T": { "item": "lostdepths:titanium_metalloy" },
+    "G": { "item": "lostdepths:over_charge_coil" },
+    "E": { "item": "lostdepths:condensed_cryzulite"}
+  },
+  "result": {
+    "item": "lostdepths:power_clamp",
+    "count": 2
+  }
+}
