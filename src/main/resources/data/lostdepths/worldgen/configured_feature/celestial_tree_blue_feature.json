@@ -12,7 +12,10 @@
       "state": {
         "Name": "lostdepths:celestial_leaves_blue",
         "Properties": {
-          "axis": "y"
+          "axis": "y",
+          "distance": "7",
+          "persistent": "false",
+          "waterlogged": "false"
         }
       }
     },

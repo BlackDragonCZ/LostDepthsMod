@@ -1,6 +1,7 @@
 
 package cz.blackdragoncz.lostdepths.block.plant;
 
+import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
@@ -22,17 +23,18 @@ import net.minecraft.core.BlockPos;
 
 import java.util.List;
 
-public class CelestialLeavesBlueBlock extends Block {
+public class CelestialLeavesBlueBlock extends LeavesBlock {
 	public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.AXIS;
 
 	public CelestialLeavesBlueBlock() {
-		super(BlockBehaviour.Properties.of().ignitedByLava().sound(SoundType.GRASS).strength(2f, 10f).pushReaction(PushReaction.BLOCK).noLootTable());
-		this.registerDefaultState(this.stateDefinition.any().setValue(AXIS, Direction.Axis.Y));
-	}
-
-	@Override
-	public void appendHoverText(ItemStack itemstack, BlockGetter world, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(itemstack, world, list, flag);
+		super(BlockBehaviour.Properties.of()
+				.ignitedByLava()
+				.sound(SoundType.GRASS)
+				.strength(2f, 10f)
+				.pushReaction(PushReaction.BLOCK)
+				.randomTicks()
+		);
+		this.registerDefaultState(this.defaultBlockState().setValue(AXIS, Direction.Axis.Y));
 	}
 
 	@Override
@@ -42,12 +44,13 @@ public class CelestialLeavesBlueBlock extends Block {
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+		super.createBlockStateDefinition(builder);
 		builder.add(AXIS);
 	}
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return this.defaultBlockState().setValue(AXIS, context.getClickedFace().getAxis());
+		return super.getStateForPlacement(context).setValue(AXIS, context.getClickedFace().getAxis());
 	}
 
 	@Override
