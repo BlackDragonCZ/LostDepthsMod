@@ -1,6 +1,7 @@
 
 package cz.blackdragoncz.lostdepths.item.tool;
 
+import cz.blackdragoncz.lostdepths.init.LostdepthsModBlockTags;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModBlocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -76,6 +77,6 @@ public class ForgefireAxeItem extends AxeItem {
 
 	@Override
 	public boolean isCorrectToolForDrops(BlockState pBlock) {
-		return pBlock.is(LostdepthsModBlocks.CELESTIAL_LOGS_BLUE.get()) || pBlock.is(LostdepthsModBlocks.CELESTIAL_LOGS_RED.get());
+		return pBlock.is(LostdepthsModBlockTags.NEEDS_FORGEFIRE_AXE_TOOL);
 	}
 }
