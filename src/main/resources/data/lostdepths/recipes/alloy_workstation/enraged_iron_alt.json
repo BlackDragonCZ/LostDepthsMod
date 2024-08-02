@@ -1,0 +1,17 @@
+{
+  "type": "lostdepths:alloy_workstation",
+  "pattern": [
+    "111",
+    " T ",
+    "GGG"
+  ],
+  "key": {
+    "1": { "item": "minecraft:netherite_scrap" },
+    "T": { "item": "lostdepths:titanium_metalloy" },
+    "G": { "item": "lostdepths:infused_iron" }
+  },
+  "result": {
+    "item": "lostdepths:enraged_iron",
+    "count": 9
+  }
+}

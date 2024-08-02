@@ -4,10 +4,10 @@
     "item": "lostdepths:ancient_template"
   },
   "base": {
-    "item": "lostdepths:condensed_cosmerite"
+    "item": "lostdepths:condensed_melworite"
   },
   "addition": {
-    "item": "lostdepths:madrigen_solution"
+    "item": "lostdepths:condensed_firerite"
   },
   "result": {
     "item": "lostdepths:geo_magnetic_glue"
