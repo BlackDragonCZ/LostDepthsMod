@@ -20,9 +20,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 
 public class CelestialLogsBlueBlock extends Block {
 	public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.AXIS;
@@ -37,11 +39,6 @@ public class CelestialLogsBlueBlock extends Block {
 				.requiresCorrectToolForDrops()
 		);
 		this.registerDefaultState(this.stateDefinition.any().setValue(AXIS, Direction.Axis.Y));
-	}
-
-	@Override
-	public void appendHoverText(ItemStack itemstack, BlockGetter world, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(itemstack, world, list, flag);
 	}
 
 	@Override
@@ -78,6 +75,12 @@ public class CelestialLogsBlueBlock extends Block {
 
 	@Override
 	public List<ItemStack> getDrops(BlockState state, LootParams.Builder params) {
-		return List.of(new ItemStack(LostdepthsModItems.NEGATIVE_MAGNECRONITE.get()));
+		ItemStack tool = params.getParameter(LootContextParams.TOOL);
+		if (!tool.is(LostdepthsModItems.FORGEFIRE_AXE.get()))
+		{
+			return new ArrayList<>();
+		}
+
+		return List.of(new ItemStack(LostdepthsModItems.POSITIVE_MAGNECRONITE.get()));
 	}
 }
