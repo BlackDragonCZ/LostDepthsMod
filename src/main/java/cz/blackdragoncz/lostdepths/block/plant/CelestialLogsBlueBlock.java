@@ -78,6 +78,6 @@ public class CelestialLogsBlueBlock extends Block {
 
 	@Override
 	public List<ItemStack> getDrops(BlockState state, LootParams.Builder params) {
-		return List.of(new ItemStack(LostdepthsModItems.POSITIVE_MAGNECRONITE.get()));
+		return List.of(new ItemStack(LostdepthsModItems.NEGATIVE_MAGNECRONITE.get()));
 	}
 }
