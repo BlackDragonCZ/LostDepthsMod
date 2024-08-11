@@ -1,3 +1,13 @@
 {
-  "type": "lostdepths:item_use"
+  "type": "lostdepths:item_use",
+  "use_item": {
+    "item": "lostdepths:ender_voltaic_solution"
+  },
+  "use_on": {
+    "item": "lostdepths:serpentine_ore_unpowered"
+  },
+  "result": {
+    "item": "lostdepths:serpentine_ore"
+  },
+  "use_description": "lostdepths.description.serpentine_ore_use"
 }

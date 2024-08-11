@@ -14,6 +14,8 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
@@ -32,9 +34,6 @@ public class ItemUseCategory extends BaseRecipeCategory<ItemUseRecipe> {
         AllGuiTextures.JEI_SHADOW.render(graphics, 62, 47);
         AllGuiTextures.JEI_DOWN_ARROW.render(graphics, 74, 10);
 
-        BlockState state = LostdepthsModBlocks.SERPENTINE_ORE_UNPOWERED.get()
-                .defaultBlockState();
-
         PoseStack matrixStack = graphics.pose();
         matrixStack.pushPose();
         matrixStack.translate(74, 51, 100);
@@ -42,9 +41,17 @@ public class ItemUseCategory extends BaseRecipeCategory<ItemUseRecipe> {
         matrixStack.mulPose(Axis.YP.rotationDegrees(22.5f));
         int scale = 20;
 
-        GuiGameElement.of(state)
-                .scale(scale)
-                .render(graphics);
+        Item useOnItem = recipe.getUseOnItem().getItem();
+
+        if (useOnItem instanceof BlockItem blockItem) {
+            GuiGameElement.of(blockItem.getBlock().defaultBlockState())
+                    .scale(scale)
+                    .render(graphics);
+        } else {
+            GuiGameElement.of(recipe.getUseOnItem())
+                    .scale(scale)
+                    .render(graphics);
+        }
 
         matrixStack.popPose();
     }
@@ -54,17 +61,17 @@ public class ItemUseCategory extends BaseRecipeCategory<ItemUseRecipe> {
 
         builder.addSlot(RecipeIngredientRole.INPUT, 27, 38)
                 .setBackground(getRenderedSlot(), -1, -1)
-                .addIngredients(Ingredient.of(new ItemStack(LostdepthsModItems.SERPENTINE_ORE_UNPOWERED.get())));
+                .addIngredients(Ingredient.of(recipe.getUseOnItem()));
 
         builder.addSlot(RecipeIngredientRole.INPUT, 51, 5)
                 .setBackground(getRenderedSlot(), -1, -1)
-                .addIngredients(Ingredient.of(new ItemStack(LostdepthsModItems.ENDER_VOLTAIC_SOLUTION.get())))
+                .addIngredients(Ingredient.of(recipe.getUseItem()))
                 .addTooltipCallback(
-                        (view, tooltip) -> tooltip.add(1, Component.translatable("lostdepths.description.serpentine_ore_use"))
+                        (view, tooltip) -> tooltip.add(1, Component.translatable(recipe.getUseDescription()))
                 );
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 132, 38)
                 .setBackground(getRenderedSlot(), -1, -1)
-                .addItemStack(new ItemStack(LostdepthsModItems.SERPENTINE_ORE.get()));
+                .addItemStack(recipe.getResult());
     }
 }
