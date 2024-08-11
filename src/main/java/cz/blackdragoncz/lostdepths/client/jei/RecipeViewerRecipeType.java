@@ -60,4 +60,11 @@ public class RecipeViewerRecipeType {
         }
     });
 
+    public static final RecipeTypeWrapper<RecipeWrapper, MetaMaterializerRecipe> META_MATERIALIZER = new RecipeTypeWrapper<>(LostDepthsModRecipeType.META_MATERIALIZER.get(), MetaMaterializerRecipe.class, 0, 0, 177, 80, new IItemProvider() {
+        @Override
+        public @NotNull Item asItem() {
+            return LostdepthsModItems.META_MATERIALIZER.get();
+        }
+    });
+
 }

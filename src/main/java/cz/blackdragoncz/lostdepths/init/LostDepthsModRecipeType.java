@@ -26,6 +26,7 @@ public class LostDepthsModRecipeType<C extends Container, RECIPE extends LDRecip
     public static final RegistryObject<LostDepthsModRecipeType<CraftingContainer, LDShapedRecipe>> ALLOY_WORKSTATION = REGISTRY.register("alloy_workstation", () -> new LostDepthsModRecipeType<>("alloy_workstation"));
     public static final RegistryObject<LostDepthsModRecipeType<CraftingContainer, ModuleRecipe>> MODULE_CREATOR = REGISTRY.register("module_creator", () -> new LostDepthsModRecipeType<>("module_creator"));
     public static final RegistryObject<LostDepthsModRecipeType<RecipeWrapper, ItemUseRecipe>> ITEM_USE = REGISTRY.register("item_use", () -> new LostDepthsModRecipeType<>("item_use"));
+    public static final RegistryObject<LostDepthsModRecipeType<RecipeWrapper, MetaMaterializerRecipe>> META_MATERIALIZER = REGISTRY.register("meta_materializer", () -> new LostDepthsModRecipeType<>("meta_materializer"));
 
     private final ResourceLocation registryName;
 

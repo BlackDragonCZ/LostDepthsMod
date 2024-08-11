@@ -1,0 +1,15 @@
+{
+  "type": "lostdepths:meta_materializer",
+  "items": [
+    {"item": "lostdepths:melworite_ingot"},
+    {"item": "lostdepths:morfarite_ingot"},
+    {"item": "lostdepths:firerite_ingot"}
+  ],
+  "held_item": {
+    "item": "lostdepths:magma_solution"
+  },
+  "result": {
+    "item": "lostdepths:malicium_ingot",
+    "count": 3
+  }
+}

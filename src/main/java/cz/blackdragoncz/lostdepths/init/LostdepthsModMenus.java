@@ -22,7 +22,6 @@ public class LostdepthsModMenus {
 	public static final RegistryObject<MenuType<CompressorGUIMenu>> COMPRESSOR_GUI = REGISTRY.register("compressor_gui", () -> IForgeMenuType.create(CompressorGUIMenu::new));
 	public static final RegistryObject<MenuType<AlloyWorkstationMenu>> ALLOY_WORKSTATION_MENU = REGISTRY.register("wsgui_2", () -> IForgeMenuType.create(AlloyWorkstationMenu::new));
 	public static final RegistryObject<MenuType<ModuleCreatorGUIMenu>> MODULE_CREATOR_GUI = REGISTRY.register("module_creator_gui", () -> IForgeMenuType.create(ModuleCreatorGUIMenu::new));
-	public static final RegistryObject<MenuType<MetaCollectorGUIMenu>> META_COLLECTOR_GUI = REGISTRY.register("meta_collector_gui", () -> IForgeMenuType.create(MetaCollectorGUIMenu::new));
 	public static final RegistryObject<MenuType<PortableBeaconGUIMenu>> PORTABLE_BEACON_GUI = REGISTRY.register("portable_beacon_gui", () -> IForgeMenuType.create(PortableBeaconGUIMenu::new));
 	public static final RegistryObject<MenuType<ModulatorGUIMenu>> MODULATOR_GUI = REGISTRY.register("modulator_gui", () -> IForgeMenuType.create(ModulatorGUIMenu::new));
 	public static final RegistryObject<MenuType<NurostarGeneratorMenu>> NUROSTAR_GENERATOR_MENU = REGISTRY.register("nurostar_generator_menu", () -> IForgeMenuType.create(NurostarGeneratorMenu::new));

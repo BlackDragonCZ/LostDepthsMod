@@ -22,7 +22,6 @@ public class LostdepthsModScreens {
 			MenuScreens.register(LostdepthsModMenus.COMPRESSOR_GUI.get(), CompressorGUIScreen::new);
 			MenuScreens.register(LostdepthsModMenus.ALLOY_WORKSTATION_MENU.get(), AlloyWorkstationScreen::new);
 			MenuScreens.register(LostdepthsModMenus.MODULE_CREATOR_GUI.get(), ModuleCreatorGUIScreen::new);
-			MenuScreens.register(LostdepthsModMenus.META_COLLECTOR_GUI.get(), MetaCollectorGUIScreen::new);
 			MenuScreens.register(LostdepthsModMenus.PORTABLE_BEACON_GUI.get(), PortableBeaconGUIScreen::new);
 			MenuScreens.register(LostdepthsModMenus.MODULATOR_GUI.get(), ModulatorGUIScreen::new);
 			MenuScreens.register(LostdepthsModMenus.NUROSTAR_GENERATOR_MENU.get(), NurostarGeneratorScreen::new);

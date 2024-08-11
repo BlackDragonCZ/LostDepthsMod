@@ -1,6 +1,15 @@
 
 package cz.blackdragoncz.lostdepths.block.machine;
 
+import cz.blackdragoncz.lostdepths.block.entity.MetaCollectorBlockEntity;
+import cz.blackdragoncz.lostdepths.init.LostDepthsModRecipeType;
+import cz.blackdragoncz.lostdepths.init.LostdepthsModBlocks;
+import cz.blackdragoncz.lostdepths.init.LostdepthsModSounds;
+import cz.blackdragoncz.lostdepths.recipe.MetaMaterializerRecipe;
+import net.minecraft.client.Minecraft;
+import net.minecraft.core.Vec3i;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
@@ -24,6 +33,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
 
@@ -58,24 +68,96 @@ public class MetaMaterializerBlock extends Block implements EntityBlock {
 		return Collections.singletonList(new ItemStack(this, 1));
 	}
 
-	@Override
-	public InteractionResult use(BlockState blockstate, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
-		super.use(blockstate, world, pos, entity, hand, hit);
-		int x = pos.getX();
-		int y = pos.getY();
-		int z = pos.getZ();
-		double hitX = hit.getLocation().x;
-		double hitY = hit.getLocation().y;
-		double hitZ = hit.getLocation().z;
-		Direction direction = hit.getDirection();
-		MetaMaterializerOnBlockRightClickedProcedure.execute(world, x, y, z, entity);
-		return InteractionResult.SUCCESS;
-	}
+	private Direction[] scanDirections = {
+			Direction.EAST,
+			Direction.WEST,
+			Direction.NORTH,
+			Direction.SOUTH
+	};
 
 	@Override
-	public MenuProvider getMenuProvider(BlockState state, Level worldIn, BlockPos pos) {
-		BlockEntity tileEntity = worldIn.getBlockEntity(pos);
-		return tileEntity instanceof MenuProvider menuProvider ? menuProvider : null;
+	public InteractionResult use(BlockState blockState, Level level, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
+		ItemStack heldItem = entity.getItemInHand(hand);
+		int scanLength = 30;
+
+		BlockPos scanRootPos = pos.below(2);
+		List<ItemStack> itemsInCollectors = new ArrayList<>();
+		List<MetaCollectorBlockEntity> collectors = new ArrayList<MetaCollectorBlockEntity>();
+
+		for (Direction dir : scanDirections) {
+			BlockPos scanPos = new BlockPos(scanRootPos);
+			boolean foundCollectors = false;
+			for (int i = 0; i < scanLength; i++) {
+				BlockState scannedState = level.getBlockState(scanPos);
+
+				if (scannedState.is(LostdepthsModBlocks.META_COLLECTOR.get()))
+				{
+					foundCollectors = true;
+					MetaCollectorBlockEntity metaCollector = (MetaCollectorBlockEntity) level.getBlockEntity(scanPos);
+					itemsInCollectors.add(metaCollector.getItem(0));
+					collectors.add(metaCollector);
+				}
+
+				scanPos = scanPos.relative(dir);
+			}
+
+			if (foundCollectors)
+				break;
+		}
+
+		List<MetaMaterializerRecipe> recipes = LostDepthsModRecipeType.META_MATERIALIZER.get().getRecipeType().getRecipes(level);
+
+		MetaMaterializerRecipe foundRecipe = null;
+		for (MetaMaterializerRecipe recipe : recipes) {
+			boolean itemsInCollectorsMatch = true;
+
+			for (int i = 0; i < 3; i++) {
+				ItemStack recipeItem = recipe.getItems().get(i);
+				ItemStack checkItem = itemsInCollectors.get(3 - i - 1);
+
+				if (!(recipeItem.is(checkItem.getItem()) && checkItem.getCount() >= recipeItem.getCount()))
+				{
+					itemsInCollectorsMatch = false;
+				}
+			}
+
+			if (itemsInCollectorsMatch)
+			{
+				if (recipe.getHeldItem().is(heldItem.getItem()) && heldItem.getCount() >= recipe.getHeldItem().getCount())
+				{
+					foundRecipe = recipe;
+					break;
+				} else {
+
+					if (level.isClientSide())
+						entity.displayClientMessage(Component.literal("You need to hold ").append(Component.translatable(recipe.getHeldItem().getDescriptionId())).append(" when interacting!"), false);
+				}
+			}
+		}
+
+		if (foundRecipe != null)
+		{
+			for (int i = 0; i < 3; i++) {
+				ItemStack recipeItem = foundRecipe.getItems().get(i);
+				ItemStack checkItem = itemsInCollectors.get(3 - i - 1);
+				collectors.get(3 - i - 1).setItem(0, new ItemStack(recipeItem.getItem(), checkItem.getCount() - recipeItem.getCount()));
+			}
+
+			heldItem.shrink(foundRecipe.getHeldItem().getCount());
+			entity.setItemInHand(hand, heldItem);
+
+			Vec3i normal = hit.getDirection().getOpposite().getNormal();
+			ItemEntity itemEntity = new ItemEntity(level, pos.getX() + 0.5f, pos.getY() + 0.5f, pos.getZ() + 0.5f, foundRecipe.getResult(), normal.getX(), normal.getY(), normal.getZ());
+			itemEntity.setPickUpDelay(1);
+			itemEntity.setUnlimitedLifetime();
+			itemEntity.setGlowingTag(true);
+			level.addFreshEntity(itemEntity);
+
+			if (!level.isClientSide())
+				level.playSound(null, pos, LostdepthsModSounds.MACHINE_CRAFT.get(), SoundSource.BLOCKS, 1, 1);
+		}
+
+		return InteractionResult.SUCCESS;
 	}
 
 	@Override

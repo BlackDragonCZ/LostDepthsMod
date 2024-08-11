@@ -27,7 +27,6 @@ import java.util.stream.IntStream;
 
 import io.netty.buffer.Unpooled;
 
-import cz.blackdragoncz.lostdepths.world.inventory.MetaCollectorGUIMenu;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModBlockEntities;
 
 public class MetaCollectorBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
@@ -89,7 +88,7 @@ public class MetaCollectorBlockEntity extends RandomizableContainerBlockEntity i
 
 	@Override
 	public AbstractContainerMenu createMenu(int id, Inventory inventory) {
-		return new MetaCollectorGUIMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(this.worldPosition));
+		return null;
 	}
 
 	@Override

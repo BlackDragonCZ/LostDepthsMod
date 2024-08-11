@@ -90,4 +90,5 @@ public class LostdepthsModRecipeSerializers {
     }));
 
     public static final RegistryObject<ItemUseRecipe.Serializer> ITEM_USE = REGISTRY_SERIALIZER.register("item_use", ItemUseRecipe.Serializer::new);
+    public static final RegistryObject<MetaMaterializerRecipe.Serializer> META_MATERIALIZER = REGISTRY_SERIALIZER.register("meta_materializer", MetaMaterializerRecipe.Serializer::new);
 }

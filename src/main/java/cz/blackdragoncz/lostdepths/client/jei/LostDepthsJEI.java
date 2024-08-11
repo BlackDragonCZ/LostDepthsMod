@@ -51,6 +51,7 @@ public class LostDepthsJEI implements IModPlugin {
         registry.addRecipeCatalyst(new ItemStack(LostdepthsModItems.GALACTIC_WORKSTATION.get(), 1), recipeType(RecipeViewerRecipeType.GALACTIC_WORKSTATION));
         registry.addRecipeCatalyst(new ItemStack(LostdepthsModItems.ALLOY_WORKSTATION.get(), 1), recipeType(RecipeViewerRecipeType.ALLOY_WORKSTATION));
         registry.addRecipeCatalyst(new ItemStack(LostdepthsModItems.MODULE_CREATOR.get(), 1), recipeType(RecipeViewerRecipeType.MODULE_CREATOR));
+        registry.addRecipeCatalyst(new ItemStack(LostdepthsModItems.META_MATERIALIZER.get(), 1), recipeType(RecipeViewerRecipeType.META_MATERIALIZER));
     }
 
     @Override
@@ -64,6 +65,7 @@ public class LostDepthsJEI implements IModPlugin {
         registry.addRecipeCategories(new AlloyWorkstationRecipeCategory(guiHelper, RecipeViewerRecipeType.ALLOY_WORKSTATION));
         registry.addRecipeCategories(new ModuleCreatorRecipeCategory(guiHelper, RecipeViewerRecipeType.MODULE_CREATOR));
         registry.addRecipeCategories(new ItemUseCategory(guiHelper, RecipeViewerRecipeType.ITEM_USE));
+        registry.addRecipeCategories(new MetaMaterializerCategory(guiHelper, RecipeViewerRecipeType.META_MATERIALIZER));
     }
 
 
@@ -83,6 +85,7 @@ public class LostDepthsJEI implements IModPlugin {
         registry.addRecipes(recipeType(RecipeViewerRecipeType.MODULE_CREATOR), LostDepthsModRecipeType.MODULE_CREATOR.get().getRecipeType().getRecipes(Minecraft.getInstance().level));
 
         registry.addRecipes(recipeType(RecipeViewerRecipeType.ITEM_USE), LostDepthsModRecipeType.ITEM_USE.get().getRecipeType().getRecipes(Minecraft.getInstance().level));
+        registry.addRecipes(recipeType(RecipeViewerRecipeType.META_MATERIALIZER), LostDepthsModRecipeType.META_MATERIALIZER.get().getRecipeType().getRecipes(Minecraft.getInstance().level));
     }
 
     @Override
