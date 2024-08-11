@@ -632,7 +632,7 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> FLUXOCRON = REGISTRY.register("fluxocron", Fluxocron::new);
 	public static final RegistryObject<Item> POSITIVE_SAPLING = block(LostdepthsModBlocks.POSITIVE_SAPLING);
 	public static final RegistryObject<Item> NEGATIVE_SAPLING = block(LostdepthsModBlocks.NEGATIVE_SAPLING);
-	public static final RegistryObject<Item> LASER_BLADE = REGISTRY.register("laser_blade", MasterPartRegistryItem::new);
+	public static final RegistryObject<Item> LASER_BLADE = REGISTRY.register("laser_blade", () -> new MasterPartRegistryItem(64, "§8Use Reinforced Blade on The Protector"));
 	public static final RegistryObject<Item> REINFORCED_BLADE = REGISTRY.register("reinforced_blade", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> GEM_DREAD = REGISTRY.register("gem_dread", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> CELESTIAL_GOLD = REGISTRY.register("celestial_gold", MasterPartRegistryItem::new);

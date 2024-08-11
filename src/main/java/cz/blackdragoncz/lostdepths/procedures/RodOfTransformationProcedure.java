@@ -162,6 +162,18 @@ public class RodOfTransformationProcedure {
 					ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
 				}
 			}
+		} else if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == LostdepthsModItems.REINFORCED_BLADE.get()) {
+			if (entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("lostdepths:the_protector_entity")))) {
+				if (sourceentity instanceof Player _player) {
+					ItemStack _stktoremove = new ItemStack(LostdepthsModItems.REINFORCED_BLADE.get());
+					_player.getInventory().clearOrCountMatchingItems(p -> _stktoremove.getItem() == p.getItem(), 1, _player.inventoryMenu.getCraftSlots());
+				}
+				if (sourceentity instanceof Player _player) {
+					ItemStack _setstack = new ItemStack(LostdepthsModItems.LASER_BLADE.get());
+					_setstack.setCount(1);
+					ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+				}
+			}
 		} else if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == LostdepthsModItems.SLIPPERY_INGOT.get()) {
 			if (entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("lostdepths:blaze")))) {
 				if (sourceentity instanceof Player _player) {

@@ -231,5 +231,13 @@
         "stream": false
       }
     ]
+  },
+  "machine_craft": {
+    "sounds": [
+      {
+        "name": "lostdepths:machine_craft",
+        "stream": false
+      }
+    ]
   }
 }
