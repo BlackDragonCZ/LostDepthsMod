@@ -1,0 +1,13 @@
+{
+  "type": "lostdepths:item_use",
+  "use_item": {
+    "item": "lostdepths:forgefire_pickaxe"
+  },
+  "use_on": {
+    "item": "lostdepths:serpentine_ore"
+  },
+  "result": {
+    "item": "lostdepths:serpentine_crystal"
+  },
+  "use_description": "lostdepths.description.serpentine_ore_mine"
+}

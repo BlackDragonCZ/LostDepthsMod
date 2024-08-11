@@ -794,6 +794,7 @@
   "item.lostdepths.purple_watchful_eye": "Purple Watchful Eye",
   "item.lostdepths.gem_of_illusion": "Gem of Thundering Illusions",
   "lostdepths.description.serpentine_ore_use": "Use Ender-Voltaic Solution on Serpentine ore for activation to be able to mine it.",
+  "lostdepths.description.serpentine_ore_mine": "Mine activated Serpentine ore for Serpentine Bar",
   "item.lostdepths.usemark_icon": "Interaction with block",
   "item.lostdepths.aspect_of_the_star": "§6Aspect of the Star",
   "key.categories.lostdepths": "LostDepths",
