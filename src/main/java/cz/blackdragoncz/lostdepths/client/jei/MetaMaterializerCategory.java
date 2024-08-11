@@ -27,11 +27,20 @@ public class MetaMaterializerCategory extends BaseRecipeCategory<MetaMaterialize
     public void draw(MetaMaterializerRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics graphics, double mouseX, double mouseY) {
         super.draw(recipe, recipeSlotsView, graphics, mouseX, mouseY);
 
+
+        PoseStack matrixStack = graphics.pose();
+        matrixStack.pushPose();
+        matrixStack.translate(0, 66, 0);
+        matrixStack.scale(2.0f, 1.0f, 0.75f);
+        AllGuiTextures.JEI_SHADOW.render(graphics, 0, 0);
+        matrixStack.popPose();
+
+        AllGuiTextures.JEI_SHADOW.render(graphics, 118, 47);
+
         for (int i = 0; i < 3; i++) {
 
             AllGuiTextures.JEI_DOWN_ARROW.render(graphics, 10 + i * 30, 30);
 
-            PoseStack matrixStack = graphics.pose();
             matrixStack.pushPose();
             matrixStack.translate(10 + i * 30, 70, 100);
             matrixStack.mulPose(Axis.XP.rotationDegrees(-15.5f));
@@ -43,7 +52,6 @@ public class MetaMaterializerCategory extends BaseRecipeCategory<MetaMaterialize
             matrixStack.popPose();
         }
 
-        PoseStack matrixStack = graphics.pose();
         matrixStack.pushPose();
         matrixStack.translate(130, 50, 100);
         matrixStack.mulPose(Axis.XP.rotationDegrees(-15.5f));
