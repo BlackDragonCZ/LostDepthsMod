@@ -1,0 +1,15 @@
+{
+  "type": "lostdepths:meta_materializer",
+  "items": [
+    {"item": "lostdepths:hyperium_ingot"},
+    {"item": "lostdepths:volatile_blood"},
+    {"item": "lostdepths:plucked_eye"}
+  ],
+  "held_item": {
+    "item": "lostdepths:weak_polarcronite"
+  },
+  "result": {
+    "item": "lostdepths:polarium_ingot",
+    "count": 3
+  }
+}

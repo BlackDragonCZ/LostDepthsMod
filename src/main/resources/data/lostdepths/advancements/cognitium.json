@@ -1,13 +1,13 @@
 {
   "display": {
     "icon": {
-      "item": "lostdepths:condensed_firerite"
+      "item": "lostdepths:condensed_cognitium"
     },
     "title": {
-      "translate": "advancements.firerite_adv.title"
+      "translate": "advancements.cognitium.title"
     },
     "description": {
-      "translate": "advancements.firerite_adv.descr"
+      "translate": "advancements.cognitium.descr"
     },
     "frame": "task",
     "show_toast": true,
@@ -15,13 +15,13 @@
     "hidden": false
   },
   "criteria": {
-    "firerite_adv": {
+    "cognitium": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "lostdepths:condensed_firerite"
+              "lostdepths:condensed_cognitium"
             ],
             "count": {
               "min": 1,
@@ -32,5 +32,5 @@
       }
     }
   },
-  "parent": "lostdepths:galactic_compressor_adv"
+  "parent": "lostdepths:terrestrial"
 }

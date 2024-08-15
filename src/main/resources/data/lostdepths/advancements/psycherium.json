@@ -1,27 +1,27 @@
 {
   "display": {
     "icon": {
-      "item": "lostdepths:condensed_firerite"
+      "item": "lostdepths:condensed_psycherium"
     },
     "title": {
-      "translate": "advancements.firerite_adv.title"
+      "translate": "advancements.psycherium.title"
     },
     "description": {
-      "translate": "advancements.firerite_adv.descr"
+      "translate": "advancements.psycherium.descr"
     },
-    "frame": "task",
+    "frame": "goal",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false
   },
   "criteria": {
-    "firerite_adv": {
+    "psycherium": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "lostdepths:condensed_firerite"
+              "lostdepths:condensed_psycherium"
             ],
             "count": {
               "min": 1,
@@ -32,5 +32,5 @@
       }
     }
   },
-  "parent": "lostdepths:galactic_compressor_adv"
+  "parent": "lostdepths:terrestrial"
 }

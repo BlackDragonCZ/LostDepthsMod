@@ -15,7 +15,7 @@
     "hidden": true
   },
   "criteria": {
-    "galactic_compresser_adv": {
+    "galactic_compressor_adv": {
       "trigger": "minecraft:placed_block",
       "conditions": {
         "location": [

@@ -1,0 +1,15 @@
+{
+  "type": "lostdepths:meta_materializer",
+  "items": [
+    {"item": "lostdepths:cognitium_ingot"},
+    {"item": "lostdepths:giant_dusker_eggs"},
+    {"item": "lostdepths:crystal_diode"}
+  ],
+  "held_item": {
+    "item": "lostdepths:clovinite_power_bank"
+  },
+  "result": {
+    "item": "lostdepths:kyvorium_ingot",
+    "count": 3
+  }
+}

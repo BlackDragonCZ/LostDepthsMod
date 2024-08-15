@@ -1,0 +1,15 @@
+{
+  "type": "lostdepths:meta_materializer",
+  "items": [
+    {"item": "lostdepths:necrotonite_ingot"},
+    {"item": "lostdepths:razor_fang"},
+    {"item": "lostdepths:infused_golem_essence"}
+  ],
+  "held_item": {
+    "item": "lostdepths:power_core"
+  },
+  "result": {
+    "item": "lostdepths:etherium_ingot",
+    "count": 3
+  }
+}

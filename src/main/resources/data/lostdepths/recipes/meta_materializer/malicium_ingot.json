@@ -3,7 +3,7 @@
   "items": [
     {"item": "lostdepths:melworite_ingot"},
     {"item": "lostdepths:morfarite_ingot"},
-    {"item": "lostdepths:firerite_ingot"}
+    {"item": "lostdepths:ionite_crystal"}
   ],
   "held_item": {
     "item": "lostdepths:magma_solution"

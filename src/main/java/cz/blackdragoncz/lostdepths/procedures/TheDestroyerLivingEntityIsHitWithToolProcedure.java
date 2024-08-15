@@ -11,7 +11,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.core.registries.Registries;
 
 import cz.blackdragoncz.lostdepths.init.LostdepthsModItems;
-
+//TODO: rework this procedure or optimize
 public class TheDestroyerLivingEntityIsHitWithToolProcedure {
 	public static void execute(Entity entity, Entity sourceentity) {
 		if (entity == null || sourceentity == null)
