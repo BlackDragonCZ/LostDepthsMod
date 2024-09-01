@@ -1,0 +1,13 @@
+{
+  "type": "lostdepths:item_use",
+  "use_item": {
+    "item": "lostdepths:nightmare_pickaxe"
+  },
+  "use_on": {
+    "item": "lostdepths:myrite_ore_active"
+  },
+  "result": {
+    "item": "lostdepths:myrite_crystal"
+  },
+  "use_description": "lostdepths.description.myrite_ore_mine"
+}

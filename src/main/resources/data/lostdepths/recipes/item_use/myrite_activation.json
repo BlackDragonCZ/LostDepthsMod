@@ -1,0 +1,13 @@
+{
+  "type": "lostdepths:item_use",
+  "use_item": {
+    "item": "lostdepths:ultraviolet_solution"
+  },
+  "use_on": {
+    "item": "lostdepths:myrite_ore"
+  },
+  "result": {
+    "item": "lostdepths:myrite_ore_active"
+  },
+  "use_description": "lostdepths.description.myrite_ore_use"
+}

@@ -1,0 +1,13 @@
+{
+  "type": "lostdepths:item_use",
+  "use_item": {
+    "item": "lostdepths:nightmare_pickaxe"
+  },
+  "use_on": {
+    "item": "lostdepths:multiversite_ore"
+  },
+  "result": {
+    "item": "lostdepths:fractured_multiversite"
+  },
+  "use_description": "lostdepths.description.multiversite_ore_mine"
+}

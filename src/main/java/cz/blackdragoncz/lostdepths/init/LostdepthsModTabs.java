@@ -49,7 +49,6 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModBlocks.INFUSED_IRON_BRICKS_A.get().asItem());
 				tabData.accept(LostdepthsModBlocks.NEOSTEEL_POWER_BEAM.get().asItem());
 				tabData.accept(LostdepthsModBlocks.FACTORY_PILLAR.get().asItem());
-				tabData.accept(LostdepthsModBlocks.SERPENTINE_ORE_UNPOWERED.get().asItem());
 				tabData.accept(LostdepthsModBlocks.EXTRA_TERESTRIAL_COMPRESSOR.get().asItem());
 				tabData.accept(LostdepthsModBlocks.CELESTIAL_CHEST.get().asItem());
 				tabData.accept(LostdepthsModBlocks.NEOSTEEL_LANTERN_2.get().asItem());

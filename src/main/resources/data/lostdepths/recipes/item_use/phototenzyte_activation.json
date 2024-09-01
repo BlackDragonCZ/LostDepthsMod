@@ -1,0 +1,13 @@
+{
+  "type": "lostdepths:item_use",
+  "use_item": {
+    "item": "lostdepths:poly_amplification_solution"
+  },
+  "use_on": {
+    "item": "lostdepths:phototenzyte_ore"
+  },
+  "result": {
+    "item": "lostdepths:phototenzyte_ore_active"
+  },
+  "use_description": "lostdepths.description.phototenzyte_ore_use"
+}

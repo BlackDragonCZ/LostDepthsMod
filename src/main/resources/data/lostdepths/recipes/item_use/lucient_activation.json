@@ -1,0 +1,13 @@
+{
+  "type": "lostdepths:item_use",
+  "use_item": {
+    "item": "lostdepths:corrupted_solution"
+  },
+  "use_on": {
+    "item": "lostdepths:lucient_ore"
+  },
+  "result": {
+    "item": "lostdepths:lucient_ore_active"
+  },
+  "use_description": "lostdepths.description.lucient_ore_use"
+}

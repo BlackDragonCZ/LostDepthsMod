@@ -1,0 +1,13 @@
+{
+  "type": "lostdepths:item_use",
+  "use_item": {
+    "item": "lostdepths:nightmare_pickaxe"
+  },
+  "use_on": {
+    "item": "lostdepths:lucient_ore_active"
+  },
+  "result": {
+    "item": "lostdepths:pure_lucient"
+  },
+  "use_description": "lostdepths.description.lucient_ore_mine"
+}

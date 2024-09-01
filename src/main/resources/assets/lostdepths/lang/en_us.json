@@ -793,8 +793,8 @@
   "item.lostdepths.blue_watchful_eye": "Blue Watchful Eye",
   "item.lostdepths.purple_watchful_eye": "Purple Watchful Eye",
   "item.lostdepths.gem_of_illusion": "Gem of Thundering Illusions",
-  "lostdepths.description.serpentine_ore_use": "Use Ender-Voltaic Solution on Serpentine ore for activation to be able to mine it.",
-  "lostdepths.description.serpentine_ore_mine": "Mine activated Serpentine ore for Serpentine Crystal",
+  "lostdepths.description.serpentine_ore_use": "§7Use §3Ender-Voltaic Solution §7on §3Serpentine ore §7for activation to be able to mine it.",
+  "lostdepths.description.serpentine_ore_mine": "§7Mine activated §3Serpentine ore §7for §3Serpentine Crystal",
   "item.lostdepths.usemark_icon": "Interaction with block",
   "item.lostdepths.aspect_of_the_star": "§6Aspect of the Star",
   "key.categories.lostdepths": "LostDepths",
@@ -830,5 +830,12 @@
   "advancements.cognitium.descr": "Craft Condensed cognitium",
   "advancements.cognitium.title": "Cognitive crystal",
   "advancements.biolliterite.descr": "Craft Condensed biolliterite",
-  "advancements.biolliterite.title": "Biological purple"
+  "advancements.biolliterite.title": "Biological purple",
+  "lostdepths.description.myrite_ore_use": "§7Use §3Ultraviolet Solution §7on §3Myrite ore §7for activation to be able to mine it.",
+  "lostdepths.description.myrite_ore_mine": "§7Mine activated §3Myrite ore §7for §3Myrite Crystal",
+  "lostdepths.description.lucient_ore_use": "§7Use §3Corrupted Solution §7on §3Lucient ore §7for activation to be able to mine it.",
+  "lostdepths.description.lucient_ore_mine": "§7Mine activated §3Lucient ore §7for §3Pure Lucient",
+  "lostdepths.description.phototenzyte_ore_use": "§7Use §3Poly-Amplification Solution §7on §3Phototenzyte ore §7for activation to be able to mine it.",
+  "lostdepths.description.phototenzyte_ore_mine": "§7Mine activated §3Phototenzyte ore §7for §3Phototenzyte",
+  "lostdepths.description.multiversite_ore_mine": "§7Mine §3Multiversite ore §7for §3Fractured Multiversite"
 }

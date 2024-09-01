@@ -1,0 +1,13 @@
+{
+  "type": "lostdepths:item_use",
+  "use_item": {
+    "item": "lostdepths:celestial_pickaxe"
+  },
+  "use_on": {
+    "item": "lostdepths:phototenzyte_ore_active"
+  },
+  "result": {
+    "item": "lostdepths:phototenzyte"
+  },
+  "use_description": "lostdepths.description.phototenzyte_ore_mine"
+}
