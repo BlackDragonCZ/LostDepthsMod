@@ -837,5 +837,12 @@
   "lostdepths.description.lucient_ore_mine": "§7Mine activated §3Lucient ore §7for §3Pure Lucient",
   "lostdepths.description.phototenzyte_ore_use": "§7Use §3Poly-Amplification Solution §7on §3Phototenzyte ore §7for activation to be able to mine it.",
   "lostdepths.description.phototenzyte_ore_mine": "§7Mine activated §3Phototenzyte ore §7for §3Phototenzyte",
-  "lostdepths.description.multiversite_ore_mine": "§7Mine §3Multiversite ore §7for §3Fractured Multiversite"
+  "lostdepths.description.multiversite_ore_mine": "§7Mine §3Multiversite ore §7for §3Fractured Multiversite",
+  "item.lostdepths.electrolysis_solution": "§3Electrolysis Solution",
+  "lostdepths.description.clovinite_mine": "§7Mine §3Clovinite ore §7for §3Clovinite",
+  "lostdepths.description.burning_sap_mine": "§7Mine §3Sunder Sap Deposit §7for §3Burning Sap",
+  "lostdepths.description.sunder_wood_mine": "§7Mine §3Sunder wood §7for §3Sunder log",
+  "lostdepths.description.metal_branch_mine": "§7Mine §3Ferro Log §7for §3Metal Branch",
+  "lostdepths.description.positive_mag": "§7Mine corresponding §3Celestial logs §7for §3Positive Magnecronite",
+  "lostdepths.description.negative_mag": "§7Mine corresponding §3Celestial logs §7for §3Negative Magnecronite"
 }

@@ -1,0 +1,13 @@
+{
+  "type": "lostdepths:item_use",
+  "use_item": {
+    "item": "lostdepths:forgefire_axe"
+  },
+  "use_on": {
+    "item": "lostdepths:ferro_log"
+  },
+  "result": {
+    "item": "lostdepths:metal_branch"
+  },
+  "use_description": "lostdepths.description.metal_branch_mine"
+}

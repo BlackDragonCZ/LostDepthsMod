@@ -640,6 +640,7 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> CRIMSON_TRANSDUCER = REGISTRY.register("crimson_transducer", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> COMBUSTION_CHAMBER = REGISTRY.register("combustion_chamber", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> VOLATILE_GLOOP = REGISTRY.register("volatile_gloop", MasterPartRegistryItem::new);
+	public static final RegistryObject<Item> ELECTROLYSIS_SOLUTION = REGISTRY.register("electrolysis_solution", MasterPartRegistryItem::new);
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));

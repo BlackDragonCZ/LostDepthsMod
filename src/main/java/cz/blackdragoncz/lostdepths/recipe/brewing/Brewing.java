@@ -99,6 +99,13 @@ public class Brewing {
 					PotionUtils.setPotion(new ItemStack(Items.POTION), LostdepthsModPotions.ULTRA_HEAL_POTION.get())
 			));
 
+			BrewingRecipeRegistry.addRecipe(new BrewingRecipe(
+					Ingredient.of(new ItemStack(LostdepthsModItems.POLYCHARGE_SOLUTION.get())),
+					Ingredient.of(new ItemStack(LostdepthsModItems.POTENT_POLARCRONITE.get())),
+					new ItemStack(LostdepthsModItems.ELECTROLYSIS_SOLUTION.get())
+			));
+
+
 
 		});
 	}

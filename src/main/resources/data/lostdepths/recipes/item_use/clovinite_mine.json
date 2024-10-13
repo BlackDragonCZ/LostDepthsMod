@@ -1,0 +1,13 @@
+{
+  "type": "lostdepths:item_use",
+  "use_item": {
+    "item": "lostdepths:forgefire_axe"
+  },
+  "use_on": {
+    "item": "lostdepths:clovinite_ore"
+  },
+  "result": {
+    "item": "lostdepths:clovinite"
+  },
+  "use_description": "lostdepths.description.clovinite_mine"
+}

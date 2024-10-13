@@ -1,0 +1,13 @@
+{
+  "type": "lostdepths:item_use",
+  "use_item": {
+    "item": "lostdepths:forgefire_axe"
+  },
+  "use_on": {
+    "item": "lostdepths:celestial_logs_blue"
+  },
+  "result": {
+    "item": "lostdepths:positive_magnecronite"
+  },
+  "use_description": "lostdepths.description.positive_mag"
+}

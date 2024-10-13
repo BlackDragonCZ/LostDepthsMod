@@ -1,0 +1,13 @@
+{
+  "type": "lostdepths:item_use",
+  "use_item": {
+    "item": "lostdepths:forgefire_axe"
+  },
+  "use_on": {
+    "item": "lostdepths:sunder_wood_sap"
+  },
+  "result": {
+    "item": "lostdepths:burning_sap"
+  },
+  "use_description": "lostdepths.description.burning_sap_mine"
+}

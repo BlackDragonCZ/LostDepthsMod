@@ -1,0 +1,13 @@
+{
+  "type": "lostdepths:item_use",
+  "use_item": {
+    "item": "lostdepths:forgefire_axe"
+  },
+  "use_on": {
+    "item": "lostdepths:sunder_wood"
+  },
+  "result": {
+    "item": "lostdepths:sunder_log"
+  },
+  "use_description": "lostdepths.description.sunder_wood_mine"
+}

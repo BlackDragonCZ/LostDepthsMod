@@ -574,6 +574,7 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModItems.CRIMSON_TRANSDUCER.get());
 				tabData.accept(LostdepthsModItems.COMBUSTION_CHAMBER.get());
 				tabData.accept(LostdepthsModItems.VOLATILE_GLOOP.get());
+				tabData.accept(LostdepthsModItems.ELECTROLYSIS_SOLUTION.get());
 			})
 
 					.build());
