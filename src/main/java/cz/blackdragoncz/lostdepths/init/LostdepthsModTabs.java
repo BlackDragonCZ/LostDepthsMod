@@ -112,6 +112,8 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModBlocks.INFUSED_DISPLAY_PLATE.get().asItem());
 				tabData.accept(LostdepthsModBlocks.POSITIVE_SAPLING.get().asItem());
 				tabData.accept(LostdepthsModBlocks.NEGATIVE_SAPLING.get().asItem());
+				tabData.accept(LostdepthsModBlocks.NUROSTAR_BATTERY.get().asItem());
+				tabData.accept(LostdepthsModBlocks.NUROSTAR_LARGE_BATTERY.get().asItem());
 			})
 
 					.build());

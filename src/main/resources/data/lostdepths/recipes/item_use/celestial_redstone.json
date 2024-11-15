@@ -1,0 +1,13 @@
+{
+  "type": "lostdepths:item_use",
+  "use_item": {
+    "item": "lostdepths:omni_pickaxe"
+  },
+  "use_on": {
+    "item": "minecraft:redstone_ore"
+  },
+  "result": {
+    "item": "lostdepths:celestial_redstone"
+  },
+  "use_description": "lostdepths.description.celestial_redstone_ore_mine"
+}

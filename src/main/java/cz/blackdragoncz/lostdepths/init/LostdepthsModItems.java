@@ -315,7 +315,7 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> IRONHEART_ELIXIR = REGISTRY.register("ironheart_elixir", () -> new IronheartElixirItem());
 	public static final RegistryObject<Item> BLACK_MARKET = block(LostdepthsModBlocks.BLACK_MARKET);
 	public static final RegistryObject<Item> GEM_RESOLVE = REGISTRY.register("gem_resolve", () -> new MasterPartRegistryItem(1));
-	public static final RegistryObject<Item> CONCENTRATED_VENOM = REGISTRY.register("concentrated_venom", MasterPartRegistryItem::new);
+	public static final RegistryObject<Item> CONCENTRATED_VENOM = REGISTRY.register("concentrated_venom", () -> new MasterPartRegistryItem(64, "§7Obtained by right click on §5cave spider§7."));
 	public static final RegistryObject<Item> FIREBLOOD_SOLUTION = REGISTRY.register("fireblood_solution", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> BIOCORRUPTION_POWDER = REGISTRY.register("biocorruption_powder", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> CARBONIC_ACID = REGISTRY.register("carbonic_acid", MasterPartRegistryItem::new);
@@ -641,6 +641,8 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> COMBUSTION_CHAMBER = REGISTRY.register("combustion_chamber", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> VOLATILE_GLOOP = REGISTRY.register("volatile_gloop", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> ELECTROLYSIS_SOLUTION = REGISTRY.register("electrolysis_solution", MasterPartRegistryItem::new);
+	public static final RegistryObject<Item> NUROSTAR_BATTERY = block(LostdepthsModBlocks.NUROSTAR_BATTERY);
+	public static final RegistryObject<Item> NUROSTAR_LARGE_BATTERY = block(LostdepthsModBlocks.NUROSTAR_LARGE_BATTERY);
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));

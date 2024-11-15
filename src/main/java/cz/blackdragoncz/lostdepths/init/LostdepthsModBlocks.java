@@ -305,4 +305,6 @@ public class LostdepthsModBlocks {
 	public static final RegistryObject<Block> INFUSED_DISPLAY_PLATE = REGISTRY.register("infused_display_plate", InfusedDisplayPlateBlock::new);
 	public static final RegistryObject<Block> POSITIVE_SAPLING = REGISTRY.register("positive_sapling", () -> new SaplingBlock(new BasicTreeGrower(LostDepthsTreeFeatures.CELESTIAL_TREE_BLUE), BlockBehaviour.Properties.of().noCollission().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)));
 	public static final RegistryObject<Block> NEGATIVE_SAPLING = REGISTRY.register("negative_sapling", () -> new SaplingBlock(new BasicTreeGrower(LostDepthsTreeFeatures.CELESTIAL_TREE_RED), BlockBehaviour.Properties.of().noCollission().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)));
+	public static final RegistryObject<Block> NUROSTAR_BATTERY = REGISTRY.register("nurostar_battery", NurostarBatteryBlock::new);
+	public static final RegistryObject<Block> NUROSTAR_LARGE_BATTERY = REGISTRY.register("nurostar_large_battery", NurostarLargeBatteryBlock::new);
 }
