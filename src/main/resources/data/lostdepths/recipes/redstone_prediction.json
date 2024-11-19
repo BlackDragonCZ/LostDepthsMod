@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "   ",
+    " AI",
+    "   "
+  ],
+  "key": {
+    "A": {
+      "item": "lostdepths:lostdepths_prediction"
+    },
+    "I": {
+      "item": "minecraft:gunpowder"
+    }
+  },
+  "result": {
+    "item": "minecraft:redstone",
+    "count": 8
+  }
+}

@@ -13,7 +13,7 @@
         "count": 1
     },
     "base_drop": {
-        "item": "minecraft:slime_ball",
+        "item": "lostdepths:lostdepths_prediction",
         "count": 1
     },
     "trivia": "hostilenetworks.trivia.guoon",

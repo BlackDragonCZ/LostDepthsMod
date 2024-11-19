@@ -850,5 +850,6 @@
   "lostdepths.description.celestial_diamond_ore_mine": "§7Mine vanilla ores for §3Celestial Diamond",
   "lostdepths.description.celestial_redstone_ore_mine": "§7Mine vanilla ores for §3Celestial Redstone",
   "block.lostdepths.nurostar_large_battery": "§8Nurostar Battery (§5Large§8)",
-  "block.lostdepths.nurostar_battery": "§8Nurostar Battery"
+  "block.lostdepths.nurostar_battery": "§8Nurostar Battery",
+  "item.lostdepths.lostdepths_prediction": "Generalized LostDepths Prediction"
 }

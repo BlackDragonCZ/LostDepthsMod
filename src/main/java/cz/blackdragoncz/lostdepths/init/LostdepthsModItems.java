@@ -643,6 +643,7 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> ELECTROLYSIS_SOLUTION = REGISTRY.register("electrolysis_solution", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> NUROSTAR_BATTERY = block(LostdepthsModBlocks.NUROSTAR_BATTERY);
 	public static final RegistryObject<Item> NUROSTAR_LARGE_BATTERY = block(LostdepthsModBlocks.NUROSTAR_LARGE_BATTERY);
+	public static final RegistryObject<Item> LOSTDEPTHS_PREDICTION = REGISTRY.register("lostdepths_prediction", MasterPartRegistryItem::new);
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));

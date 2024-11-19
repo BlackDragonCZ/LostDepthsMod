@@ -47,8 +47,8 @@ public class PortableBeaconItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, world, list, flag);
-		list.add(Component.literal("\u00A75When in off-hand, apply potion effect on every entity in small radius"));
-		list.add(Component.literal("\u00A76Effect Capacity 10"));
+		list.add(Component.literal("§5When in off-hand, apply potion effect on every entity in small radius"));
+		list.add(Component.literal("§6Effect Capacity 10"));
 	}
 
 	@Override

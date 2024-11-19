@@ -1,0 +1,50 @@
+{
+  "entity": "lostdepths:arachnota",
+  "variants": [],
+  "name": "entity.lostdepths.arachnota",
+  "name_color": "#441b8d",
+  "gui_scale": 1.0,
+  "gui_x_offset": 0.0,
+  "gui_y_offset": 0.0,
+  "gui_z_offset": 0.0,
+  "sim_cost": 256,
+  "input": {
+    "item": "hostilenetworks:prediction_matrix",
+    "count": 1
+  },
+  "base_drop": {
+    "item": "lostdepths:lostdepths_prediction",
+    "count": 1
+  },
+  "trivia": "hostilenetworks.trivia.arachnota",
+  "fabricator_drops": [
+    {
+      "item": "lostdepths:everwatching_eye",
+      "count": 12
+    },
+    {
+      "item": "lostdepths:infused_crystal",
+      "count": 6
+    },
+    {
+      "item": "lostdepths:neosteel_nuggets",
+      "count": 3
+    },
+    {
+      "item": "lostdepths:volatile_blood",
+      "count": 2
+    }
+  ],
+  "tier_data": [
+    6,
+    54,
+    354,
+    1254
+  ],
+  "data_per_kill": [
+    1,
+    4,
+    10,
+    18
+  ]
+}

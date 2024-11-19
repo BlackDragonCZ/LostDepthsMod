@@ -47,6 +47,7 @@ public class UpdateConfigProcedure {
 			} catch (IOException exception) {
 				exception.printStackTrace();
 			}
+			//TODO: fix command last-seen
 			jObject.addProperty("last-seen", new java.text.SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime()));
 			{
 				Gson mainGSONBuilderVariable = new GsonBuilder().setPrettyPrinting().create();

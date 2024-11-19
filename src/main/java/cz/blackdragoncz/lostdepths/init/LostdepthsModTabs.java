@@ -413,6 +413,7 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModBlocks.ITEM_CRATE.get().asItem());
 				tabData.accept(LostdepthsModBlocks.SHIPMENT_FILLER_BLOCK.get().asItem());
 				tabData.accept(LostdepthsModBlocks.MYRITE_ORE.get().asItem());
+				tabData.accept(LostdepthsModItems.LOSTDEPTHS_PREDICTION.get().asItem());
 			})
 
 					.build());
