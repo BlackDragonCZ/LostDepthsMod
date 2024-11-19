@@ -1,11 +1,14 @@
 package cz.blackdragoncz.lostdepths;
 
 import cz.blackdragoncz.lostdepths.client.ClientSide;
+import cz.blackdragoncz.lostdepths.config.LostDepthsConfig;
 import cz.blackdragoncz.lostdepths.init.*;
 import cz.blackdragoncz.lostdepths.init.LostDepthsModRecipeType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.config.ModConfig;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
@@ -22,14 +25,11 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.FriendlyByteBuf;
 
+import java.util.*;
 import java.util.function.Supplier;
 import java.util.function.Function;
 import java.util.function.BiConsumer;
 import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.List;
-import java.util.Collection;
-import java.util.ArrayList;
-import java.util.AbstractMap;
 
 import cz.blackdragoncz.lostdepths.world.features.StructureFeature;
 
@@ -41,6 +41,8 @@ public class LostdepthsMod {
 	public LostdepthsMod() {
 		MinecraftForge.EVENT_BUS.register(this);
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+
+		ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, LostDepthsConfig.SPEC);
 
 		LostdepthsModSounds.REGISTRY.register(bus);
 		LostdepthsModBlocks.REGISTRY.register(bus);
@@ -62,6 +64,7 @@ public class LostdepthsMod {
 		LostdepthsModFluids.REGISTRY.register(bus);
 		LostdepthsModFluidTypes.REGISTRY.register(bus);
 		LostdepthsModLoots.REGISTER.register(bus);
+		LostDepthsBiomeModifiers.REGISTRY.register(bus);
 
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> ClientSide.INSTANCE::setup);
 	}
