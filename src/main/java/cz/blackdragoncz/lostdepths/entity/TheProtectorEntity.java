@@ -9,6 +9,8 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.util.TimeUtil;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.level.LevelReader;
@@ -57,9 +59,13 @@ import javax.annotation.Nullable;
 
 import cz.blackdragoncz.lostdepths.init.LostdepthsModEntities;
 
+import java.util.ArrayList;
+import java.util.Optional;
+import java.util.UUID;
+
 @NothingNullByDefault
 @SuppressWarnings("deprecation")
-public class TheProtectorEntity extends Monster implements GeoEntity {
+public class TheProtectorEntity extends PathfinderMob implements GeoEntity, NeutralMob {
 	public static final EntityDataAccessor<Boolean> SHOOT = SynchedEntityData.defineId(TheProtectorEntity.class, EntityDataSerializers.BOOLEAN);
 	public static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(TheProtectorEntity.class, EntityDataSerializers.STRING);
 	public static final EntityDataAccessor<String> TEXTURE = SynchedEntityData.defineId(TheProtectorEntity.class, EntityDataSerializers.STRING);
@@ -68,6 +74,11 @@ public class TheProtectorEntity extends Monster implements GeoEntity {
 	private boolean lastloop;
 	private long lastSwing;
 	public String animationProcedure = "empty";
+
+	private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);
+	private int remainingPersistentAngerTime;
+	@Nullable
+	private UUID persistentAngerTarget;
 
 	public TheProtectorEntity(PlayMessages.SpawnEntity packet, Level world) {
 		this(LostdepthsModEntities.THE_PROTECTOR.get(), world);
@@ -109,10 +120,11 @@ public class TheProtectorEntity extends Monster implements GeoEntity {
 				return this.mob.getBbWidth() * this.mob.getBbWidth() + entity.getBbWidth();
 			}
 		});
-		this.targetSelector.addGoal(2, new HurtByTargetGoal(this));
-		this.goalSelector.addGoal(3, new RandomStrollGoal(this, 0.8));
-		this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
-		this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, Player.class, true, true));
+		this.goalSelector.addGoal(2, new RandomStrollGoal(this, 0.8));
+		this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
+
+		this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
+		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, 5, true, true, this::isAngryAt));
 	}
 
 	@Override
@@ -202,6 +214,7 @@ public class TheProtectorEntity extends Monster implements GeoEntity {
 	public void addAdditionalSaveData(CompoundTag compound) {
 		super.addAdditionalSaveData(compound);
 		compound.putString("Texture", this.getTexture());
+		addPersistentAngerSaveData(compound);
 	}
 
 	@Override
@@ -209,6 +222,7 @@ public class TheProtectorEntity extends Monster implements GeoEntity {
 		super.readAdditionalSaveData(compound);
 		if (compound.contains("Texture"))
 			this.setTexture(compound.getString("Texture"));
+		this.readPersistentAngerSaveData(this.level(), compound);
 	}
 
 	@Override
@@ -300,4 +314,31 @@ public class TheProtectorEntity extends Monster implements GeoEntity {
 	public AnimatableInstanceCache getAnimatableInstanceCache() {
 		return this.cache;
 	}
+
+	@Override
+	public int getRemainingPersistentAngerTime() {
+		return this.remainingPersistentAngerTime;
+	}
+
+	@Override
+	public void setRemainingPersistentAngerTime(int pTime) {
+		this.remainingPersistentAngerTime = pTime;
+	}
+
+	@Override
+	public @Nullable UUID getPersistentAngerTarget() {
+		return this.persistentAngerTarget;
+	}
+
+	@Override
+	public void setPersistentAngerTarget(@Nullable UUID pTarget) {
+		this.persistentAngerTarget = pTarget;
+	}
+
+	@Override
+	public void startPersistentAngerTimer() {
+		this.setRemainingPersistentAngerTime(PERSISTENT_ANGER_TIME.sample(this.random));
+	}
+
+
 }

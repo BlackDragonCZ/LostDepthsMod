@@ -50,7 +50,7 @@ public class LostdepthsModEntities {
 					.sized(1.2f, 1.2f));
 	public static final RegistryObject<EntityType<FlapperEntity>> FLAPPER = register("flapper",
 			EntityType.Builder.<FlapperEntity>of(FlapperEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(FlapperEntity::new).fireImmune().sized(1.5f, 1.5f));
-	public static final RegistryObject<EntityType<TheProtectorEntity>> THE_PROTECTOR = register("the_protector", EntityType.Builder.<TheProtectorEntity>of(TheProtectorEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true)
+	public static final RegistryObject<EntityType<TheProtectorEntity>> THE_PROTECTOR = register("the_protector", EntityType.Builder.<TheProtectorEntity>of(TheProtectorEntity::new, MobCategory.CREATURE).setShouldReceiveVelocityUpdates(true)
 			.setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(TheProtectorEntity::new).fireImmune().sized(0.8f, 3f));
 	public static final RegistryObject<EntityType<CaneOfVenomProjectileEntity>> CANE_OF_VENOM_PROJECTILE = register("projectile_cane_of_venom_projectile",
 			EntityType.Builder.<CaneOfVenomProjectileEntity>of(CaneOfVenomProjectileEntity::new, MobCategory.MISC).setCustomClientFactory(CaneOfVenomProjectileEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64)
