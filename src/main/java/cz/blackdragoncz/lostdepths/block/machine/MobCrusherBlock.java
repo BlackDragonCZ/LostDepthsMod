@@ -1,4 +1,5 @@
 package cz.blackdragoncz.lostdepths.block.machine;
+//TODO: get it work
 /*
 import cz.blackdragoncz.lostdepths.block.base.AbstractElectricBlock;
 import cz.blackdragoncz.lostdepths.block.entity.GalacticCompressorBlockEntity;

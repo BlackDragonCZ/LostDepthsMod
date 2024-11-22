@@ -24,7 +24,7 @@ public class WormholeDisruptorBlock extends BaseFacingBlock {
                 .sound(SoundType.METAL)
                 .strength(4f, 16f)
                 .pushReaction(PushReaction.BLOCK)
-        );
+        );//TODO: get it work
     }
 
     //@OnlyIn(Dist.DEDICATED_SERVER)
