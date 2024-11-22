@@ -1,12 +1,6 @@
 {
-  "type": "forge:add_spawns",
+  "type": "lostdepths:the_protector",
   "biomes": {
     "type": "forge:any"
-  },
-  "spawners": {
-    "type": "lostdepths:the_protector",
-    "weight": 3,
-    "minCount": 1,
-    "maxCount": 1
   }
 }
