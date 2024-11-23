@@ -3,10 +3,10 @@
   "textures": {
     "down": "lostdepths:block/voidcut_block_top",
     "up": "lostdepths:block/voidcut_block_top",
-    "north": "lostdepths:block/secgate3_anim",
-    "east": "lostdepths:block/secgate3_anim",
-    "south": "lostdepths:block/secgate3_anim",
-    "west": "lostdepths:block/secgate3_anim",
+    "north": "lostdepths:block/security_gate_3",
+    "east": "lostdepths:block/security_gate_3",
+    "south": "lostdepths:block/security_gate_3",
+    "west": "lostdepths:block/security_gate_3",
     "particle": "lostdepths:block/voidcut_block_top"
   },
   "render_type": "solid"

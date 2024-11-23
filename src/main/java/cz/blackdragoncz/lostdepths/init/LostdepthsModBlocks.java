@@ -77,8 +77,8 @@ public class LostdepthsModBlocks {
 	public static final RegistryObject<Block> FACTORY_FLOOR = REGISTRY.register("factory_floor", () -> new FactoryFloorBlock());
 	public static final RegistryObject<Block> TREASURE_DARK_BRICKS = REGISTRY.register("treasure_dark_bricks", () -> new TreasureDarkBricksBlock());
 	public static final RegistryObject<Block> TREASURE_DARK_TILES = REGISTRY.register("treasure_dark_tiles", () -> new TreasureDarkTilesBlock());
-	public static final RegistryObject<Block> SECURITY_CLEARANCE_GATE_1 = REGISTRY.register("security_clearance_gate_1", () -> new SecurityClearanceGate1Block());
-	public static final RegistryObject<Block> SECURITYCLEARANCEGATE_2 = REGISTRY.register("securityclearancegate_2", () -> new Securityclearancegate2Block());
+	public static final RegistryObject<Block> SECURITY_CLEARANCE_GATE_1 = REGISTRY.register("security_clearance_1", () -> new SecurityClearanceGate1Block());
+	public static final RegistryObject<Block> SECURITYCLEARANCEGATE_2 = REGISTRY.register("security_clearance_2", () -> new Securityclearancegate2Block());
 	public static final RegistryObject<Block> SECURITY_CLEARANCE_3 = REGISTRY.register("security_clearance_3", () -> new SecurityClearance3Block());
 	public static final RegistryObject<Block> TREASURE_GLOWSTEEL = REGISTRY.register("treasure_glowsteel", () -> new TreasureGlowsteelBlock());
 	public static final RegistryObject<Block> MODULE_CREATOR = REGISTRY.register("module_creator", () -> new ModuleCreatorBlock());

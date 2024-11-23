@@ -1,5 +1,5 @@
 {
-  "parent": "lostdepths:block/security_clearance_gate_1",
+  "parent": "lostdepths:block/security_clearance_2",
   "display": {
     "thirdperson": {
       "rotation": [

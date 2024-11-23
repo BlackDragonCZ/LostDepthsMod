@@ -12,7 +12,7 @@
 		},
 		{
 			"type": "spotlight",
-			"item": "lostdepths:security_clearance_gate_1",
+			"item": "lostdepths:security_clearance_1",
 			"advancement": "lostdepths:ruins_adv",
 			"title": "Security Gates",
 			"text": "Protection for caches with rare resources and research materials.$(br)$(9)Access Pass$() needed."
