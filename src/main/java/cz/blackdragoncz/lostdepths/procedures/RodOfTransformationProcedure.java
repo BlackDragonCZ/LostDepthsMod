@@ -105,6 +105,21 @@ public class RodOfTransformationProcedure {
 					}
 				}
 			}
+			if (entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("lostdepths:bee")))) {
+				x = entity.getX();
+				y = entity.getY();
+				z = entity.getZ();
+				if (!entity.level().isClientSide()) {
+					entity.discard();
+					sourceentity.level().playSound(null, sourceentity.blockPosition(), LostdepthsModSounds.CONVERSION.get(), SoundSource.HOSTILE, 2.0F, 1.0F);
+				}
+				if (world instanceof ServerLevel _level) {
+					Entity entityToSpawn = LostdepthsModEntities.FLAPPER.get().spawn(_level, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
+					if (entityToSpawn != null) {
+						entityToSpawn.setDeltaMovement(0, 0, 0);
+					}
+				}
+			}
 			if (entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("lostdepths:blaze")))) {
 				x = entity.getX();
 				y = entity.getY();
