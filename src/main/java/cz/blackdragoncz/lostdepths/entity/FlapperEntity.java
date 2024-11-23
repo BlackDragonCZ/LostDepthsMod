@@ -204,7 +204,7 @@ public class FlapperEntity extends Monster implements GeoEntity {
 
 	public static void init() {
 		SpawnPlacements.register(LostdepthsModEntities.FLAPPER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-				(entityType, world, reason, pos, random) -> (world.getDifficulty() != Difficulty.PEACEFUL && Monster.isDarkEnoughToSpawn(world, pos, random) && Mob.checkMobSpawnRules(entityType, world, reason, pos, random)));
+                Mob::checkMobSpawnRules);
 	}
 
 	public static AttributeSupplier.Builder createAttributes() {

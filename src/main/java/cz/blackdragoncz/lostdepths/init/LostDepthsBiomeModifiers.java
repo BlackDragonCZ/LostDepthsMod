@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import cz.blackdragoncz.lostdepths.LostdepthsMod;
 import cz.blackdragoncz.lostdepths.world.biome.modifier.TheProtectorBiomeModifier;
+import cz.blackdragoncz.lostdepths.world.biome.modifier.FlapperBiomeModifier;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.common.world.BiomeModifier;
@@ -19,5 +20,10 @@ public class LostDepthsBiomeModifiers {
             RecordCodecBuilder.create(builder -> builder.group(
                     Biome.LIST_CODEC.fieldOf("biomes").forGetter(TheProtectorBiomeModifier::biomes)
             ).apply(builder, TheProtectorBiomeModifier::new)));
+
+    public static RegistryObject<Codec<FlapperBiomeModifier>> FLAPPER = REGISTRY.register("flapper", () ->
+            RecordCodecBuilder.create(builder -> builder.group(
+                    Biome.LIST_CODEC.fieldOf("biomes").forGetter(FlapperBiomeModifier::biomes)
+            ).apply(builder, FlapperBiomeModifier::new)));
 
 }

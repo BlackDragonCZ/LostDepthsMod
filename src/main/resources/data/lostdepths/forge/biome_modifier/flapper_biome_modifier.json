@@ -1,14 +1,9 @@
 {
-  "type": "forge:add_spawns",
+  "type": "lostdepths:flapper",
   "biomes": [
     "lostdepths:sun_forest",
     "lostdepths:sun_forest_2",
-    "lostdepths:sun_forest_3"
-  ],
-  "spawners": {
-    "type": "lostdepths:flapper",
-    "weight": 12,
-    "minCount": 1,
-    "maxCount": 1
-  }
+    "lostdepths:sun_forest_3",
+    "lostdepths:lost_souls"
+  ]
 }
