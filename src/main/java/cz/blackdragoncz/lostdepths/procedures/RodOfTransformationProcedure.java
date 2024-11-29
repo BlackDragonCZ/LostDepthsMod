@@ -216,7 +216,7 @@ public class RodOfTransformationProcedure {
 						entityToSpawn.setDeltaMovement(0, 0, 0);
 					}
 				}
-				if (entity instanceof Player _player) {
+				if (sourceentity instanceof Player _player) {
 					ItemStack _stktoremove = new ItemStack(LostdepthsModItems.INFUSED_GOLEM_ESSENCE.get());
 					_player.getInventory().clearOrCountMatchingItems(p -> _stktoremove.getItem() == p.getItem(), 1, _player.inventoryMenu.getCraftSlots());
 				}
