@@ -66,6 +66,8 @@ import java.util.UUID;
 @NothingNullByDefault
 @SuppressWarnings("deprecation")
 public class TheProtectorEntity extends PathfinderMob implements GeoEntity, NeutralMob {
+	protected static final EntityDataAccessor<Byte> DATA_FLAGS_ID = SynchedEntityData.defineId(TheProtectorEntity.class, EntityDataSerializers.BYTE);
+
 	public static final EntityDataAccessor<Boolean> SHOOT = SynchedEntityData.defineId(TheProtectorEntity.class, EntityDataSerializers.BOOLEAN);
 	public static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(TheProtectorEntity.class, EntityDataSerializers.STRING);
 	public static final EntityDataAccessor<String> TEXTURE = SynchedEntityData.defineId(TheProtectorEntity.class, EntityDataSerializers.STRING);
@@ -90,12 +92,27 @@ public class TheProtectorEntity extends PathfinderMob implements GeoEntity, Neut
 		setNoAi(false);
 	}
 
+	public boolean isPlayerCreated() {
+		return (this.entityData.get(DATA_FLAGS_ID) & 1) != 0;
+	}
+
+	public void setPlayerCreated(boolean pPlayerCreated) {
+		byte b0 = this.entityData.get(DATA_FLAGS_ID);
+		if (pPlayerCreated) {
+			this.entityData.set(DATA_FLAGS_ID, (byte)(b0 | 1));
+		} else {
+			this.entityData.set(DATA_FLAGS_ID, (byte)(b0 & -2));
+		}
+
+	}
+
 	@Override
 	protected void defineSynchedData() {
 		super.defineSynchedData();
 		this.entityData.define(SHOOT, false);
 		this.entityData.define(ANIMATION, "undefined");
 		this.entityData.define(TEXTURE, "the_protector");
+		this.entityData.define(DATA_FLAGS_ID, (byte)0);
 	}
 
 	public void setTexture(String texture) {
@@ -288,8 +305,11 @@ public class TheProtectorEntity extends PathfinderMob implements GeoEntity, Neut
 
 	@Override
 	protected void tickDeath() {
+		if (isPlayerCreated())
+			return;
+
 		++this.deathTime;
-		if (this.deathTime == 20) {
+		if (this.deathTime == 20 * 60 * 10) {
 			this.remove(TheProtectorEntity.RemovalReason.KILLED);
 			this.dropExperience();
 			// LogUtils.getLogger().warn("PROTECTOR DEATH TICK DEATH");

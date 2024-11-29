@@ -1,6 +1,9 @@
 package cz.blackdragoncz.lostdepths.procedures;
 
+import cz.blackdragoncz.lostdepths.entity.TheProtectorEntity;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModSounds;
+import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.fml.common.Mod;
@@ -206,14 +209,21 @@ public class RodOfTransformationProcedure {
 				x = entity.getX();
 				y = entity.getY();
 				z = entity.getZ();
+				float yaw = entity.getYRot();
+				float pitch = entity.getXRot();
 				if (!entity.level().isClientSide()) {
 					entity.discard();
 					sourceentity.level().playSound(null, sourceentity.blockPosition(), LostdepthsModSounds.CONVERSION.get(), SoundSource.HOSTILE, 2.0F, 1.0F);
 				}
 				if (world instanceof ServerLevel _level) {
-					Entity entityToSpawn = LostdepthsModEntities.THE_PROTECTOR.get().spawn(_level, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
-					if (entityToSpawn != null) {
-						entityToSpawn.setDeltaMovement(0, 0, 0);
+					TheProtectorEntity protectorEntity = LostdepthsModEntities.THE_PROTECTOR.get().create(_level);
+					protectorEntity.setPlayerCreated(true);
+					protectorEntity.setPersistenceRequired();
+					protectorEntity.moveTo(BlockPos.containing(x, y, z), yaw, pitch);
+					_level.addFreshEntity(protectorEntity);
+
+					for(ServerPlayer serverplayer : _level.getEntitiesOfClass(ServerPlayer.class, protectorEntity.getBoundingBox().inflate(5.0D))) {
+						CriteriaTriggers.SUMMONED_ENTITY.trigger(serverplayer, protectorEntity);
 					}
 				}
 				if (sourceentity instanceof Player _player) {
