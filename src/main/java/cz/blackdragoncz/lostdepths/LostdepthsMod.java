@@ -4,6 +4,7 @@ import cz.blackdragoncz.lostdepths.client.ClientSide;
 import cz.blackdragoncz.lostdepths.config.LostDepthsConfig;
 import cz.blackdragoncz.lostdepths.init.*;
 import cz.blackdragoncz.lostdepths.init.LostDepthsModRecipeType;
+import cz.blackdragoncz.lostdepths.util.SecurityClearanceSystem;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.DistExecutor;
@@ -91,6 +92,7 @@ public class LostdepthsMod {
 	@SubscribeEvent
 	public void tick(TickEvent.ServerTickEvent event) {
 		if (event.phase == TickEvent.Phase.END) {
+			SecurityClearanceSystem.update();
 			List<AbstractMap.SimpleEntry<Runnable, Integer>> actions = new ArrayList<>();
 			workQueue.forEach(work -> {
 				work.setValue(work.getValue() - 1);
