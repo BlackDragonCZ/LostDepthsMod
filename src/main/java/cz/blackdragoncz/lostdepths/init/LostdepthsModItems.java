@@ -645,7 +645,7 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> NUROSTAR_LARGE_BATTERY = block(LostdepthsModBlocks.NUROSTAR_LARGE_BATTERY);
 	public static final RegistryObject<Item> LOSTDEPTHS_PREDICTION = REGISTRY.register("lostdepths_prediction", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> SECURITY_PASS_A = REGISTRY.register("security_pass_a", () -> new MasterPartRegistryItem(1));
-	public static final RegistryObject<Item> SECURITY_CLEARANCE_A = block(LostdepthsModBlocks.SECURITY_CLEARANCE_A);
+	public static final RegistryObject<Item> SECURITY_CLEARANCE_A = REGISTRY.register("security_pass_a1", () -> new SecurityPassItem(7));
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));
