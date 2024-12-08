@@ -114,6 +114,7 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModBlocks.NEGATIVE_SAPLING.get().asItem());
 				tabData.accept(LostdepthsModBlocks.NUROSTAR_BATTERY.get().asItem());
 				tabData.accept(LostdepthsModBlocks.NUROSTAR_LARGE_BATTERY.get().asItem());
+				tabData.accept(LostdepthsModItems.SECURITY_PASS_A.get().asItem());
 			})
 
 					.build());
@@ -414,6 +415,7 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModBlocks.SHIPMENT_FILLER_BLOCK.get().asItem());
 				tabData.accept(LostdepthsModBlocks.MYRITE_ORE.get().asItem());
 				tabData.accept(LostdepthsModItems.LOSTDEPTHS_PREDICTION.get().asItem());
+				tabData.accept(LostdepthsModBlocks.SECURITY_CLEARANCE_A.get().asItem());
 			})
 
 					.build());

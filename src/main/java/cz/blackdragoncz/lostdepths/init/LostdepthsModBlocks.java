@@ -308,4 +308,5 @@ public class LostdepthsModBlocks {
 	public static final RegistryObject<Block> NUROSTAR_BATTERY = REGISTRY.register("nurostar_battery", NurostarBatteryBlock::new);
 	public static final RegistryObject<Block> NUROSTAR_LARGE_BATTERY = REGISTRY.register("nurostar_large_battery", NurostarLargeBatteryBlock::new);
 	public static final RegistryObject<Block> WORMHOLE_DISRUPTOR = REGISTRY.register("wormhole_disruptor", WormholeDisruptorBlock::new);
+	public static final RegistryObject<Block> SECURITY_CLEARANCE_A = REGISTRY.register("security_clearance_a", CreativeStaticBlock::new);
 }

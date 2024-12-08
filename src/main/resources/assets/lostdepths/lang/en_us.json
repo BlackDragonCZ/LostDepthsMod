@@ -851,5 +851,7 @@
   "lostdepths.description.celestial_redstone_ore_mine": "§7Mine vanilla ores for §3Celestial Redstone",
   "block.lostdepths.nurostar_large_battery": "§8Nurostar Battery (§5Large§8)",
   "block.lostdepths.nurostar_battery": "§8Nurostar Battery",
-  "item.lostdepths.lostdepths_prediction": "Generalized LostDepths Prediction"
+  "item.lostdepths.lostdepths_prediction": "Generalized LostDepths Prediction",
+  "block.lostdepths.security_clearance_a": "Security Clearance Gate (Level Prime-A1)",
+  "item.lostdepths.security_pass_a": "Security Pass (Level Prime-A1)"
 }
