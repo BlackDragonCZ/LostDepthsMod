@@ -1,5 +1,6 @@
 package cz.blackdragoncz.lostdepths.block.security;
 
+import cz.blackdragoncz.lostdepths.client.ClientSide;
 import cz.blackdragoncz.lostdepths.item.security.SecurityPassItem;
 import cz.blackdragoncz.lostdepths.util.SecurityClearanceSystem;
 import net.minecraft.core.BlockPos;
@@ -22,6 +23,8 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
@@ -77,7 +80,11 @@ public class SecurityClearanceBlock extends Block {
                 }
 
                 if (player instanceof ServerPlayer serverPlayer) {
-                    SecurityClearanceSystem.giveClearance(serverPlayer, securityPass.getClearance());
+                    SecurityClearanceSystem.giveClearance(serverPlayer, this.requiredClearance);
+                }
+                else
+                {
+                    ClientSide.setSecurityClearance(this.requiredClearance);
                 }
             } else {
                 if (!world.isClientSide()) {
