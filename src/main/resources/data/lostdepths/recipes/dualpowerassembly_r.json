@@ -11,7 +11,7 @@
       "item": "lostdepths:infused_redstone"
     },
     "b": {
-      "item": "lostdepths:condensed_morfarite"
+      "tag": "lostdepths:condensed_basic"
     },
     "c": {
       "item": "lostdepths:infused_iron"

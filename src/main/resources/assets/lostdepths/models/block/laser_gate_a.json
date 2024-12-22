@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "lostdepths:block/blank",
+    "up": "lostdepths:block/blank",
+    "north": "lostdepths:block/laser_gate3",
+    "east": "lostdepths:block/laser_gate3",
+    "south": "lostdepths:block/laser_gate3",
+    "west": "lostdepths:block/laser_gate3",
+    "particle": "lostdepths:block/blank"
+  },
+  "render_type": "cutout_mipped"
+}

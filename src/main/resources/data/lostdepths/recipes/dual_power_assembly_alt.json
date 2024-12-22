@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab ",
+    "cd ",
+    "   "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:organic_power_cell"
+    },
+    "b": {
+      "item": "lostdepths:super_charged_coil"
+    },
+    "c": {
+      "item": "lostdepths:crystalized_snowball"
+    },
+    "d": {
+      "item": "lostdepths:hard_crystals"
+    }
+  },
+  "result": {
+    "item": "lostdepths:dual_power_assembly",
+    "count": 2
+  }
+}

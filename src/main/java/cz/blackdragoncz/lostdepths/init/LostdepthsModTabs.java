@@ -580,6 +580,11 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModItems.COMBUSTION_CHAMBER.get());
 				tabData.accept(LostdepthsModItems.VOLATILE_GLOOP.get());
 				tabData.accept(LostdepthsModItems.ELECTROLYSIS_SOLUTION.get());
+				tabData.accept(LostdepthsModItems.INFUSED_WING.get());
+				tabData.accept(LostdepthsModItems.INFUSED_MUSHROOM.get());
+				tabData.accept(LostdepthsModItems.ULTRAFLIGHT_WING.get());
+				tabData.accept(LostdepthsModItems.SYNTHETIC_FLIGHT_APPARATUS.get());
+				tabData.accept(LostdepthsModItems.ORGANIC_POWER_CELL.get());
 			})
 
 					.build());

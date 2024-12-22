@@ -1,0 +1,29 @@
+{
+  "type": "lostdepths:galactic_workstation",
+  "pattern": [
+    "B C",
+    "E D",
+    " A "
+  ],
+  "key": {
+    "A": {
+      "item": "lostdepths:security_pass_2"
+    },
+    "B": {
+      "item": "lostdepths:basic_storage_chip"
+    },
+    "C": {
+      "item": "lostdepths:luminescent_cubes"
+    },
+    "D": {
+      "item": "lostdepths:corrosive_mix"
+    },
+    "E": {
+      "item": "lostdepths:biocut_metal"
+    }
+  },
+  "result": {
+    "item": "lostdepths:security_pass_a",
+    "count": 1
+  }
+}

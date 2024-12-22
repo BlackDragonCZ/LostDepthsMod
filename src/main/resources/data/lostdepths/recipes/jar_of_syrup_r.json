@@ -2,7 +2,7 @@
   "type": "minecraft:smelting",
   "category": "misc",
   "experience": 1,
-  "cookingtime": 1200,
+  "cookingtime": 400,
   "ingredient": {
     "item": "lostdepths:jar_of_sap"
   },

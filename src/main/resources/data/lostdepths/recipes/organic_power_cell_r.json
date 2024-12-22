@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "aba",
+    "aba"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:celestial_iron"
+    },
+    "b": {
+      "item": "lostdepths:infused_mushroom"
+    }
+  },
+  "result": {
+    "item": "lostdepths:organic_power_cell",
+    "count": 1
+  }
+}

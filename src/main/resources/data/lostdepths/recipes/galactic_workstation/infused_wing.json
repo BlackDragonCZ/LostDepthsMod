@@ -1,0 +1,23 @@
+{
+  "type": "lostdepths:galactic_workstation",
+  "pattern": [
+    "III",
+    "R R",
+    " S "
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:feather"
+    },
+    "R": {
+      "item": "lostdepths:celestial_iron"
+    },
+    "S": {
+      "item": "lostdepths:magma_solution"
+    }
+  },
+  "result": {
+    "item": "lostdepths:infused_wing",
+    "count": 1
+  }
+}

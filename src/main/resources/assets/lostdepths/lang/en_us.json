@@ -853,5 +853,11 @@
   "block.lostdepths.nurostar_battery": "§8Nurostar Battery",
   "item.lostdepths.lostdepths_prediction": "Generalized LostDepths Prediction",
   "block.lostdepths.security_clearance_a": "Security Clearance Gate (Level Prime-A1)",
-  "item.lostdepths.security_pass_a": "Security Pass (Level Prime-A1)"
+  "item.lostdepths.security_pass_a": "Security Pass (Level Prime-A1)",
+  "block.lostdepths.laser_gate_a": "Neo-Laser-Field (Level Prime-A1)",
+  "item.lostdepths.infused_wing": "§9Infused Wing",
+  "item.lostdepths.infused_mushroom": "§9Infused Mushroom",
+  "item.lostdepths.ultraflight_wing": "§3Ultraflight Wing",
+  "item.lostdepths.synthetic_flight_apparatus": "§7Synthetic Flight Apparatus",
+  "item.lostdepths.organic_power_cell": "§2Organic Power Cell"
 }

@@ -1,0 +1,23 @@
+{
+  "type": "lostdepths:galactic_workstation",
+  "pattern": [
+    "III",
+    "R R",
+    " S "
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:red_mushroom"
+    },
+    "R": {
+      "item": "lostdepths:celestial_redstone"
+    },
+    "S": {
+      "item": "minecraft:brown_mushroom"
+    }
+  },
+  "result": {
+    "item": "lostdepths:infused_mushroom",
+    "count": 3
+  }
+}

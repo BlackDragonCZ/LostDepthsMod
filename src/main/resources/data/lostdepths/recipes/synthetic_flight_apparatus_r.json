@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "dcd",
+    " e "
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:ultraflight_wing"
+    },
+    "b": {
+      "item": "lostdepths:advanced_power_core"
+    },
+    "c": {
+      "item": "lostdepths:crystal_diode"
+    },
+    "d": {
+      "item": "lostdepths:neosteel_ingot"
+    },
+    "e": {
+      "item": "lostdepths:celestial_gold"
+    }
+  },
+  "result": {
+    "item": "lostdepths:synthetic_flight_apparatus",
+    "count": 1
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "aba",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:ultralight_dust"
+    },
+    "b": {
+      "item": "lostdepths:infused_wing"
+    }
+  },
+  "result": {
+    "item": "lostdepths:ultraflight_wing",
+    "count": 1
+  }
+}
