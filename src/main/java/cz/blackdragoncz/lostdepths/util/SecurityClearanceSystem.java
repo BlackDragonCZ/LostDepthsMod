@@ -40,7 +40,7 @@ public class SecurityClearanceSystem {
 
         PlayerClearanceData data = playerClearanceData.get(player);
 
-        return data.Clearance <= clearance && data.Duration > 0;
+        return clearance <= data.Clearance && data.Duration > 0;
     }
 
     public static void update()
