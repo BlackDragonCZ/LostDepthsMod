@@ -33,6 +33,7 @@ public class ClientSide {
     private static int elapsedTicks = 0;
 
     private static int securityClearance = 0;
+    private static char groupClearance = '0';
     private static int clearanceTime = 600;
 
     private static ResourceLocation JEI = LostdepthsMod.rl("textures/gui/jei_handler.png");
@@ -63,8 +64,10 @@ public class ClientSide {
         }
     }
 
-    public static void setSecurityClearance(int clearance) {
+    public static void setSecurityClearance(int clearance, char groupclearance) {
         securityClearance = clearance;
+        groupClearance = groupclearance;
+
         clearanceTime = 600;
     }
 

@@ -38,12 +38,15 @@ import net.minecraft.core.BlockPos;
 
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.Objects;
+
 public class LaserGateBlock extends Block implements SimpleWaterloggedBlock {
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
 	private int requiredClearance;
+	private char groupClearance;
 
-	public LaserGateBlock(int requiredClearance) {
+	public LaserGateBlock(int requiredClearance, char groupClearance) {
 		super(BlockBehaviour.Properties.of()
 				.sound(SoundType.WOOL)
 				.strength(-1, 3600000)
@@ -56,6 +59,7 @@ public class LaserGateBlock extends Block implements SimpleWaterloggedBlock {
 		this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, false));
 
 		this.requiredClearance = requiredClearance;
+		this.groupClearance = groupClearance;
 	}
 
 	@Override
@@ -121,7 +125,7 @@ public class LaserGateBlock extends Block implements SimpleWaterloggedBlock {
 			return;
 		}
 
-		if (SecurityClearanceSystem.haveClearance(serverPlayer, this.requiredClearance))
+		if (SecurityClearanceSystem.haveClearance(serverPlayer, this.requiredClearance, this.groupClearance))
 		{
 			return;
 		}
@@ -129,7 +133,7 @@ public class LaserGateBlock extends Block implements SimpleWaterloggedBlock {
 		if (!serverPlayer.isAlive())
 			return;
 
-		world.playSound(null, pos, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("lostdepths:security_gate_sound_zap")), SoundSource.MASTER, 1, 1);
+		world.playSound(null, pos, Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("lostdepths:security_gate_sound_zap"))), SoundSource.MASTER, 1, 1);
 
 		serverPlayer.setHealth(0);
 		serverPlayer.die(new DamageSource(serverPlayer.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.GENERIC)) {

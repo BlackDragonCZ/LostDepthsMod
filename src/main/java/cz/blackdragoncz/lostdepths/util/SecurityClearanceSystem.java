@@ -16,31 +16,34 @@ public class SecurityClearanceSystem {
     public static class PlayerClearanceData {
         public int Clearance;
         public int Duration;
+        public char Group;
     }
 
     private static Map<ServerPlayer, PlayerClearanceData> playerClearanceData = new HashMap<>();
 
-    public static void giveClearance(ServerPlayer player, int clearance) {
+    public static void giveClearance(ServerPlayer player, int clearance, char group) {
         if (playerClearanceData.containsKey(player)) {
             PlayerClearanceData data = playerClearanceData.get(player);
             data.Clearance = clearance;
             data.Duration = CLEARANCE_DURATION;
+            data.Group = group;
         } else {
             PlayerClearanceData data = new PlayerClearanceData();
             data.Clearance = clearance;
             data.Duration = CLEARANCE_DURATION;
             playerClearanceData.put(player, data);
+            data.Group = group;
         }
     }
 
-    public static boolean haveClearance(ServerPlayer player, int clearance) {
+    public static boolean haveClearance(ServerPlayer player, int clearance, char group) {
         if (!playerClearanceData.containsKey(player)) {
             return false;
         }
 
         PlayerClearanceData data = playerClearanceData.get(player);
 
-        return clearance <= data.Clearance && data.Duration > 0;
+        return clearance <= data.Clearance && data.Duration > 0 && data.Group == group;
     }
 
     public static void update()

@@ -48,6 +48,7 @@ public class LostdepthsModBlockEntities {
 	public static final RegistryObject<BlockEntityType<NurostarGeneratorBlockEntity>> NUROSTAR_GENRATOR = register("nurostar_generator", LostdepthsModBlocks.NUROSTAR_GENERATOR, NurostarGeneratorBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<InfusedSignBlockEntity>> INFUSED_SIGN = REGISTRY.register("infused_sign", () -> BlockEntityType.Builder.of(InfusedSignBlockEntity::new, LostdepthsModBlocks.INFUSED_SIGN.get(), LostdepthsModBlocks.INFUSED_WALL_SIGN.get()).build(null));
 	public static final RegistryObject<BlockEntityType<InfusedHangingSignBlockEntity>> INFUSED_HANGING_SIGN = REGISTRY.register("infused_hanging_sign", () -> BlockEntityType.Builder.of(InfusedHangingSignBlockEntity::new, LostdepthsModBlocks.INFUSED_HANGING_SIGN.get(), LostdepthsModBlocks.INFUSED_WALL_HANGING_SIGN.get()).build(null));
+	//public static final RegistryObject<BlockEntityType<ResourceExtractorBlockEntity>> RESOURCE_EXTRACTOR = REGISTRY.register("resource_extractor", LostdepthsModBlocks.RESOURCE_EXTRACTOR, ResourceExtractorBlockEntity::new);
 
 	private static <T extends BlockEntity> RegistryObject<BlockEntityType<T>> register(String registryname, RegistryObject<Block> block, BlockEntityType.BlockEntitySupplier<T> supplier) {
 		return REGISTRY.register(registryname, () -> BlockEntityType.Builder.of(supplier, block.get()).build(null));

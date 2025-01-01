@@ -644,7 +644,7 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> NUROSTAR_BATTERY = block(LostdepthsModBlocks.NUROSTAR_BATTERY);
 	public static final RegistryObject<Item> NUROSTAR_LARGE_BATTERY = block(LostdepthsModBlocks.NUROSTAR_LARGE_BATTERY);
 	public static final RegistryObject<Item> LOSTDEPTHS_PREDICTION = REGISTRY.register("lostdepths_prediction", MasterPartRegistryItem::new);
-	public static final RegistryObject<Item> SECURITY_PASS_A = REGISTRY.register("security_pass_a", () -> new SecurityPassItem(7));
+	public static final RegistryObject<Item> SECURITY_PASS_A = REGISTRY.register("security_pass_a", () -> new SecurityPassItem(1, 'b'));
 	public static final RegistryObject<Item> SECURITY_CLEARANCE_A = block(LostdepthsModBlocks.SECURITY_CLEARANCE_A);
 	public static final RegistryObject<Item> INFUSED_WING = REGISTRY.register("infused_wing", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> INFUSED_MUSHROOM = REGISTRY.register("infused_mushroom", MasterPartRegistryItem::new);
@@ -652,6 +652,7 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> SYNTHETIC_FLIGHT_APPARATUS = REGISTRY.register("synthetic_flight_apparatus", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> ORGANIC_POWER_CELL = REGISTRY.register("organic_power_cell", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> LASER_GATE_A = block(LostdepthsModBlocks.LASER_GATE_A);
+	//public static final RegistryObject<Item> RESOURCE_EXTRACTOR = block(LostdepthsModBlocks.RESOURCE_EXTRACTOR);
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));

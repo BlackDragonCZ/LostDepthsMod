@@ -34,8 +34,9 @@ import java.util.List;
 public class SecurityClearanceBlock extends Block {
 
     private int requiredClearance;
+    private char groupClearance;
 
-    public SecurityClearanceBlock(int requiredClearance) {
+    public SecurityClearanceBlock(int requiredClearance, char groupClearance) {
         super(BlockBehaviour.Properties.of()
                 .sound(SoundType.METAL)
                 .strength(-1, 3600000)
@@ -43,6 +44,7 @@ public class SecurityClearanceBlock extends Block {
         );
 
         this.requiredClearance = requiredClearance;
+        this.groupClearance = groupClearance;
     }
 
     @Override
@@ -71,7 +73,7 @@ public class SecurityClearanceBlock extends Block {
 
         if (player.getItemInHand(InteractionHand.MAIN_HAND).getItem() instanceof SecurityPassItem securityPass)
         {
-            if (this.requiredClearance <= securityPass.getClearance())
+            if (this.requiredClearance <= securityPass.getClearance() && this.groupClearance == securityPass.getGroupClearance())
             {
                 if (!world.isClientSide()) {
                     world.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("lostdepths:security_gate_clear")), SoundSource.MASTER, 1, 1);
@@ -80,11 +82,11 @@ public class SecurityClearanceBlock extends Block {
                 }
 
                 if (player instanceof ServerPlayer serverPlayer) {
-                    SecurityClearanceSystem.giveClearance(serverPlayer, this.requiredClearance);
+                    SecurityClearanceSystem.giveClearance(serverPlayer, this.requiredClearance, this.groupClearance);
                 }
                 else
                 {
-                    ClientSide.setSecurityClearance(this.requiredClearance);
+                    ClientSide.setSecurityClearance(this.requiredClearance) && ClientSide.setSecurityClearance(this.groupClearance);
                 }
             } else {
                 if (!world.isClientSide()) {

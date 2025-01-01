@@ -12,10 +12,12 @@ import java.util.List;
 public class SecurityPassItem extends Item {
 
     private int clearance;
+    private int groupClearance;
 
-    public SecurityPassItem(int clearanceNumber) {
+    public SecurityPassItem(int clearanceNumber, char groupSignature) {
         super(new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.COMMON));
         this.clearance = clearanceNumber;
+        this.groupClearance = groupSignature;
     }
 
     @Override
@@ -26,5 +28,8 @@ public class SecurityPassItem extends Item {
 
     public int getClearance() {
         return clearance;
+    }
+    public char getGroupClearance() {
+        return groupClearance;
     }
 }

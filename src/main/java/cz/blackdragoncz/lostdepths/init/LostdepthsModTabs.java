@@ -115,6 +115,7 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModBlocks.NUROSTAR_BATTERY.get().asItem());
 				tabData.accept(LostdepthsModBlocks.NUROSTAR_LARGE_BATTERY.get().asItem());
 				tabData.accept(LostdepthsModItems.SECURITY_PASS_A.get().asItem());
+				//tabData.accept(LostdepthsModBlocks.RESOURCE_EXTRACTOR.get().asItem());
 			})
 
 					.build());
