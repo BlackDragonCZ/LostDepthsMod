@@ -1,0 +1,42 @@
+{
+  "entity": "lostdepths:flapper",
+  "variants": [],
+  "name": "entity.lostdepths.flapper",
+  "name_color": "#1b1a1c",
+  "gui_scale": 1.0,
+  "gui_x_offset": 0.0,
+  "gui_y_offset": 0.0,
+  "gui_z_offset": 0.0,
+  "sim_cost": 256,
+  "input": {
+    "item": "hostilenetworks:prediction_matrix",
+    "count": 1
+  },
+  "base_drop": {
+    "item": "lostdepths:lostdepths_prediction",
+    "count": 1
+  },
+  "trivia": "hostilenetworks.trivia.flapper",
+  "fabricator_drops": [
+    {
+      "item": "lostdepths:magic_stone",
+      "count": 24
+    },
+    {
+      "item": "lostdepths:nightmare_powder",
+      "count": 12
+    }
+  ],
+  "tier_data": [
+    6,
+    54,
+    354,
+    1254
+  ],
+  "data_per_kill": [
+    1,
+    4,
+    10,
+    18
+  ]
+}
