@@ -1,7 +1,7 @@
 {
   "type": "lostdepths:item_use",
   "use_item": {
-    "item": "lostdepths:forgefire_pickaxe"
+    "item": "lostdepths:crystalized_pickaxe"
   },
   "use_on": {
     "item": "lostdepths:serpentine_ore"
