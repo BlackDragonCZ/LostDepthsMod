@@ -39,9 +39,9 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> GALACTIC_COMPRESSOR = block(LostdepthsModBlocks.GALACTIC_COMPRESSOR);
 	public static final RegistryObject<Item> DRUIDS_FLOWER = block(LostdepthsModBlocks.DRUIDS_FLOWER);
 	public static final RegistryObject<Item> QUANTUM_TRANSPORTER = block(LostdepthsModBlocks.QUANTUM_TRANSPORTER);
-	public static final RegistryObject<Item> SECURITY_PASS_1 = REGISTRY.register("security_pass_1", () -> new SecurityPassItem(1));
-	public static final RegistryObject<Item> SECURITY_PASS_2 = REGISTRY.register("security_pass_2", () -> new SecurityPassItem(2));
-	public static final RegistryObject<Item> SECURITY_PASS_3 = REGISTRY.register("security_pass_3", () -> new SecurityPassItem(3));
+	public static final RegistryObject<Item> SECURITY_PASS_1 = REGISTRY.register("security_pass_1", () -> new SecurityPassItem(1, 'a'));
+	public static final RegistryObject<Item> SECURITY_PASS_2 = REGISTRY.register("security_pass_2", () -> new SecurityPassItem(2, 'a'));
+	public static final RegistryObject<Item> SECURITY_PASS_3 = REGISTRY.register("security_pass_3", () -> new SecurityPassItem(3, 'a'));
 	public static final RegistryObject<Item> INFUSEDIRON_PILLAR_CROSS = block(LostdepthsModBlocks.INFUSEDIRON_PILLAR_CROSS);
 	public static final RegistryObject<Item> INFUSED_IRON_CROSS_GLOW = block(LostdepthsModBlocks.INFUSED_IRON_CROSS_GLOW);
 	public static final RegistryObject<Item> NEO_GLASS = block(LostdepthsModBlocks.NEO_GLASS);
@@ -216,9 +216,9 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> REINFORCED_PLATE = REGISTRY.register("reinforced_plate", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> HARDENED_GLASS_PANEL = REGISTRY.register("hardened_glass_panel", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> HEAT_RESISTANCE_GLASS = REGISTRY.register("heat_resistance_glass", MasterPartRegistryItem::new);
-	public static final RegistryObject<Item> SECURITY_PASS_4 = REGISTRY.register("security_pass_4", () -> new SecurityPassItem(4));
-	public static final RegistryObject<Item> SECURITY_PASS_5 = REGISTRY.register("security_pass_5", () -> new SecurityPassItem(5));
-	public static final RegistryObject<Item> SECURITY_PASS_6 = REGISTRY.register("security_pass_6", () -> new SecurityPassItem(6));
+	public static final RegistryObject<Item> SECURITY_PASS_4 = REGISTRY.register("security_pass_4", () -> new SecurityPassItem(4, 'a'));
+	public static final RegistryObject<Item> SECURITY_PASS_5 = REGISTRY.register("security_pass_5", () -> new SecurityPassItem(5, 'a'));
+	public static final RegistryObject<Item> SECURITY_PASS_6 = REGISTRY.register("security_pass_6", () -> new SecurityPassItem(6, 'a'));
 	public static final RegistryObject<Item> GALAXY_DRAGON_SPAWN_EGG = REGISTRY.register("galaxy_dragon_spawn_egg", () -> new ForgeSpawnEggItem(LostdepthsModEntities.GALAXY_DRAGON, -16777216, -16764007, new Item.Properties()));
 	public static final RegistryObject<Item> OMNI_PICKAXE = REGISTRY.register("omni_pickaxe", () -> new OmniPickaxeItem());
 	public static final RegistryObject<Item> CELESTIAL_IRON = REGISTRY.register("celestial_iron", () -> new CelestialIronItem());

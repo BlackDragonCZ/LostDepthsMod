@@ -309,7 +309,7 @@ public class TheProtectorEntity extends PathfinderMob implements GeoEntity, Neut
 			return;
 
 		++this.deathTime;
-		if (this.deathTime == 20 * 60 * 10) {
+		if (this.deathTime == 20) {
 			this.remove(TheProtectorEntity.RemovalReason.KILLED);
 			this.dropExperience();
 			// LogUtils.getLogger().warn("PROTECTOR DEATH TICK DEATH");

@@ -73,7 +73,7 @@ public class SecurityClearanceBlock extends Block {
 
         if (player.getItemInHand(InteractionHand.MAIN_HAND).getItem() instanceof SecurityPassItem securityPass)
         {
-            if (this.requiredClearance <= securityPass.getClearance() && this.groupClearance == securityPass.getGroupClearance())
+            if (this.requiredClearance <= securityPass.getClearance()/* && this.groupClearance == securityPass.getGroupClearance()*/)
             {
                 if (!world.isClientSide()) {
                     world.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("lostdepths:security_gate_clear")), SoundSource.MASTER, 1, 1);
