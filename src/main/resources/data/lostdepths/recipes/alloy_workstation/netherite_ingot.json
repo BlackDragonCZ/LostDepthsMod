@@ -1,0 +1,17 @@
+{
+  "type": "lostdepths:alloy_workstation",
+  "pattern": [
+    "111",
+    " 2 ",
+    "333"
+  ],
+  "key": {
+    "1": { "item": "lostdepths:netherite_dust" },
+    "2": { "item": "lostdepths:lava_string" },
+    "3": { "item": "lostdepths:celestial_gold" }
+  },
+  "result": {
+    "item": "minecraft:netherite_ingot",
+    "count": 2
+  }
+}

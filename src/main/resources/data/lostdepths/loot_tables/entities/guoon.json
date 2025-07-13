@@ -18,7 +18,7 @@
             },
             {
               "function": "minecraft:apply_bonus",
-              "enchantment": "minecraft:fortune",
+              "enchantment": "minecraft:looting",
               "formula": "minecraft:ore_drops"
             }
           ]
@@ -42,7 +42,7 @@
             },
             {
               "function": "minecraft:apply_bonus",
-              "enchantment": "minecraft:fortune",
+              "enchantment": "minecraft:looting",
               "formula": "minecraft:ore_drops"
             }
           ]

@@ -586,6 +586,7 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModItems.ULTRAFLIGHT_WING.get());
 				tabData.accept(LostdepthsModItems.SYNTHETIC_FLIGHT_APPARATUS.get());
 				tabData.accept(LostdepthsModItems.ORGANIC_POWER_CELL.get());
+				tabData.accept(LostdepthsModItems.NETHERITE_DUST.get());
 			})
 
 					.build());

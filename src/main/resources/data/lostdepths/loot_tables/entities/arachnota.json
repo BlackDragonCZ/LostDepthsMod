@@ -18,7 +18,7 @@
             },
             {
               "function": "minecraft:apply_bonus",
-              "enchantment": "minecraft:fortune",
+              "enchantment": "minecraft:looting",
               "formula": "minecraft:ore_drops"
             }
           ]
@@ -37,7 +37,26 @@
             },
             {
               "function": "minecraft:apply_bonus",
-              "enchantment": "minecraft:fortune",
+              "enchantment": "minecraft:looting",
+              "formula": "minecraft:ore_drops"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "lostdepths:netherite_dust",
+          "weight": 25,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 4
+              }
+            },
+            {
+              "function": "minecraft:apply_bonus",
+              "enchantment": "minecraft:looting",
               "formula": "minecraft:ore_drops"
             }
           ]
@@ -56,7 +75,7 @@
             },
             {
               "function": "minecraft:apply_bonus",
-              "enchantment": "minecraft:fortune",
+              "enchantment": "minecraft:looting",
               "formula": "minecraft:ore_drops"
             }
           ]

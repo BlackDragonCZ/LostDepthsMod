@@ -652,6 +652,7 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> SYNTHETIC_FLIGHT_APPARATUS = REGISTRY.register("synthetic_flight_apparatus", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> ORGANIC_POWER_CELL = REGISTRY.register("organic_power_cell", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> LASER_GATE_A = block(LostdepthsModBlocks.LASER_GATE_A);
+	public static final RegistryObject<Item> NETHERITE_DUST = REGISTRY.register("netherite_dust", MasterPartRegistryItem::new);
 	//public static final RegistryObject<Item> RESOURCE_EXTRACTOR = block(LostdepthsModBlocks.RESOURCE_EXTRACTOR);
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block) {
