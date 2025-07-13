@@ -86,7 +86,7 @@ public class ClientSide {
             case 'b' ->
                 switch (clearance) {
                     case 1 -> LostdepthsModItems.SECURITY_PASS_A.get();
-                    case 2 -> LostdepthsModItems.SECURITY_PASS_A.get();
+                    case 2 -> LostdepthsModItems.SECURITY_PASS_A.get(); //TODO: replace dynamic case system
                     default -> null;
                 };
             default -> null;
