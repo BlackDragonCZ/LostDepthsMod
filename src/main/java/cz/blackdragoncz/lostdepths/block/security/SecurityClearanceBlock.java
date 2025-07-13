@@ -4,7 +4,6 @@ import cz.blackdragoncz.lostdepths.client.ClientSide;
 import cz.blackdragoncz.lostdepths.item.security.SecurityPassItem;
 import cz.blackdragoncz.lostdepths.util.SecurityClearanceSystem;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
@@ -23,18 +22,17 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class SecurityClearanceBlock extends Block {
 
-    private int requiredClearance;
-    private char groupClearance;
+    private final int requiredClearance;
+    private final char groupClearance;
 
     public SecurityClearanceBlock(int requiredClearance, char groupClearance) {
         super(BlockBehaviour.Properties.of()
@@ -73,12 +71,12 @@ public class SecurityClearanceBlock extends Block {
 
         if (player.getItemInHand(InteractionHand.MAIN_HAND).getItem() instanceof SecurityPassItem securityPass)
         {
-            if (this.requiredClearance <= securityPass.getClearance()/* && this.groupClearance == securityPass.getGroupClearance()*/)
+            if (this.requiredClearance <= securityPass.getClearance() && this.groupClearance == securityPass.getGroupClearance())
             {
                 if (!world.isClientSide()) {
-                    world.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("lostdepths:security_gate_clear")), SoundSource.MASTER, 1, 1);
+                    world.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("lostdepths:security_gate_clear"))), SoundSource.MASTER, 1, 1);
                 } else {
-                    world.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("lostdepths:security_gate_clear")), SoundSource.MASTER, 1, 1, false);
+                    world.playLocalSound(x, y, z, Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("lostdepths:security_gate_clear"))), SoundSource.MASTER, 1, 1, false);
                 }
 
                 if (player instanceof ServerPlayer serverPlayer) {
@@ -86,13 +84,13 @@ public class SecurityClearanceBlock extends Block {
                 }
                 else
                 {
-                    ClientSide.setSecurityClearance(this.requiredClearance) && ClientSide.setSecurityClearance(this.groupClearance);
+                    ClientSide.setSecurityClearance(this.requiredClearance, this.groupClearance);
                 }
             } else {
                 if (!world.isClientSide()) {
-                    world.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("lostdepths:gate_error")), SoundSource.MASTER, 1, 1);
+                    world.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("lostdepths:gate_error"))), SoundSource.MASTER, 1, 1);
                 } else {
-                    world.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("lostdepths:gate_error")), SoundSource.MASTER, 1, 1, false);
+                    world.playLocalSound(x, y, z, Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("lostdepths:gate_error"))), SoundSource.MASTER, 1, 1, false);
                 }
             }
 

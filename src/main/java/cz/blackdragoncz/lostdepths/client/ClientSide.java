@@ -71,15 +71,24 @@ public class ClientSide {
         clearanceTime = 600;
     }
 
-    private Item getSecurityClearance(int clearance) {
-        return switch (clearance) {
-            case 1 -> LostdepthsModItems.SECURITY_PASS_1.get();
-            case 2 -> LostdepthsModItems.SECURITY_PASS_2.get();
-            case 3 -> LostdepthsModItems.SECURITY_PASS_3.get();
-            case 4 -> LostdepthsModItems.SECURITY_PASS_4.get();
-            case 5 -> LostdepthsModItems.SECURITY_PASS_5.get();
-            case 6 -> LostdepthsModItems.SECURITY_PASS_6.get();
-            case 7 -> LostdepthsModItems.SECURITY_PASS_A.get();
+    private Item getSecurityClearance(int clearance, char groupClearance) {
+        return switch (groupClearance) {
+            case 'a' ->
+            switch (clearance) {
+                case 1 -> LostdepthsModItems.SECURITY_PASS_1.get();
+                case 2 -> LostdepthsModItems.SECURITY_PASS_2.get();
+                case 3 -> LostdepthsModItems.SECURITY_PASS_3.get();
+                case 4 -> LostdepthsModItems.SECURITY_PASS_4.get();
+                case 5 -> LostdepthsModItems.SECURITY_PASS_5.get();
+                case 6 -> LostdepthsModItems.SECURITY_PASS_6.get();
+                default -> null;
+            };
+            case 'b' ->
+                switch (clearance) {
+                    case 1 -> LostdepthsModItems.SECURITY_PASS_A.get();
+                    case 2 -> LostdepthsModItems.SECURITY_PASS_A.get();
+                    default -> null;
+                };
             default -> null;
         };
     }
@@ -91,7 +100,7 @@ public class ClientSide {
         if (securityClearance == 0)
             return;
 
-        Item clearanceItem = getSecurityClearance(securityClearance);
+        Item clearanceItem = getSecurityClearance(securityClearance, groupClearance);
 
         if (clearanceItem == null)
             return;
