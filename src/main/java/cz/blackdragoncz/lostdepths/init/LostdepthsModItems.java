@@ -74,7 +74,7 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> CORRUPTED_GEMSTONE = REGISTRY.register("corrupted_gemstone", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> POWER_CHARGE = REGISTRY.register("power_charge", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> LAVA_STRING = REGISTRY.register("lava_string", MasterPartRegistryItem::new);
-	public static final RegistryObject<Item> IRON_GOLEM_ESSENCE = REGISTRY.register("iron_golem_essence", () -> new MasterPartRegistryItem(32, "\u00A77Obtained by killing Iron golem (small chance)"));
+	public static final RegistryObject<Item> IRON_GOLEM_ESSENCE = REGISTRY.register("iron_golem_essence", () -> new MasterPartRegistryItem(32, "\u00A77Obtained by killing Iron golem"));
 	public static final RegistryObject<Item> ION_CRYSTAL = REGISTRY.register("ion_crystal", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> POWER_CORE = REGISTRY.register("power_core", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> UNBREAKABLE_CHAIN = REGISTRY.register("unbreakable_chain", MasterPartRegistryItem::new);

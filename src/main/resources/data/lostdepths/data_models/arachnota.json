@@ -7,7 +7,7 @@
   "gui_x_offset": 0.0,
   "gui_y_offset": 0.0,
   "gui_z_offset": 0.0,
-  "sim_cost": 256,
+  "sim_cost": 512,
   "input": {
     "item": "hostilenetworks:prediction_matrix",
     "count": 1
@@ -29,6 +29,10 @@
     {
       "item": "lostdepths:neosteel_nuggets",
       "count": 3
+    },
+    {
+      "item": "lostdepths:netherite_dust",
+      "count": 4
     },
     {
       "item": "lostdepths:volatile_blood",

@@ -2,12 +2,12 @@
   "type": "minecraft:entity",
   "pools": [
     {
-      "rolls": 1,
+      "rolls": 2,
       "entries": [
         {
           "type": "minecraft:item",
           "name": "lostdepths:infused_iron",
-          "weight": 100,
+          "weight": 74,
           "functions": [
             {
               "function": "set_count",
@@ -53,6 +53,32 @@
               "function": "minecraft:apply_bonus",
               "enchantment": "minecraft:looting",
               "formula": "minecraft:ore_drops"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "conditions": [
+        {
+          "condition": "minecraft:killed_by_player"
+        },
+        {
+          "condition": "minecraft:match_tool",
+          "predicate": {
+            "tag": "lostdepths:tools"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "lostdepths:infused_crystal",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": 3
             }
           ]
         }

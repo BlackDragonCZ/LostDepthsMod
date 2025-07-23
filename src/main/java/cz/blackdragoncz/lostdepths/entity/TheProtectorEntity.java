@@ -197,7 +197,7 @@ public class TheProtectorEntity extends PathfinderMob implements GeoEntity, Neut
 			return false;
 		return super.hurt(source, amount);
 	}
-
+/*
 	@Override
 	public void die(DamageSource source) {
 		super.die(source);
@@ -213,7 +213,7 @@ public class TheProtectorEntity extends PathfinderMob implements GeoEntity, Neut
 				}
 			}
 		}
-	}
+	}*/
 
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor world, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData livingdata, @Nullable CompoundTag tag) {
