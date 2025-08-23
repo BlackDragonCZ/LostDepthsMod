@@ -57,8 +57,8 @@ public class TheDestroyerItem extends SwordItem {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, world, list, flag);
-		list.add(Component.literal("\u00A72Deal 60% max health damage to players."));
-		list.add(Component.literal("\u00A74Deal 20% more damage to transformed entities"));
+		list.add(Component.literal("§2Deal 60% max health damage to players."));
+		list.add(Component.literal("§4Deal 20% more damage to transformed entities"));
 	}
 
 	@Override
