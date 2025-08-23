@@ -2,6 +2,7 @@
 package cz.blackdragoncz.lostdepths.entity;
 
 import cz.blackdragoncz.lostdepths.entity.projectile.LostDarkEntityProjectile;
+import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.util.GeckoLibUtil;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.core.animation.RawAnimation;
@@ -61,12 +62,13 @@ import net.minecraft.core.BlockPos;
 import javax.annotation.Nullable;
 
 import java.util.EnumSet;
+import java.util.Objects;
 
 import cz.blackdragoncz.lostdepths.procedures.CryingGhastOnInitialEntitySpawnProcedure;
 import cz.blackdragoncz.lostdepths.procedures.CryingGhastEntityDiesProcedure;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModItems;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModEntities;
-
+//TODO: Rewrite execute class to this class and fix death event after Destroyer tool used
 public class LostDarkEntity extends Monster implements RangedAttackMob, GeoEntity {
 	public static final EntityDataAccessor<Boolean> SHOOT = SynchedEntityData.defineId(LostDarkEntity.class, EntityDataSerializers.BOOLEAN);
 	public static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(LostDarkEntity.class, EntityDataSerializers.STRING);
@@ -286,14 +288,16 @@ public class LostDarkEntity extends Monster implements RangedAttackMob, GeoEntit
 		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.ghast.ambient"));
 	}
 
+	@NotNull
 	@Override
 	public SoundEvent getHurtSound(DamageSource ds) {
-		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.generic.hurt"));
+		return Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.generic.hurt")));
 	}
 
+	@NotNull
 	@Override
 	public SoundEvent getDeathSound() {
-		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.ghast.death"));
+		return Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.ghast.death")));
 	}
 
 	@Override

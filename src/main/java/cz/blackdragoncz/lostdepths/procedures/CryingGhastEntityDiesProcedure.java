@@ -15,7 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.BlockPos;
 
 import javax.annotation.Nullable;
-
+//TODO: Rewrite this class to main class
 @Mod.EventBusSubscriber
 public class CryingGhastEntityDiesProcedure {
 	@SubscribeEvent
