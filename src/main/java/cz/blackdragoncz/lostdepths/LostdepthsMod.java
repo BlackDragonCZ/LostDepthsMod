@@ -54,6 +54,7 @@ public class LostdepthsMod {
 		LostDepthsModRecipeType.REGISTRY.register(bus);
 
 		LostdepthsModTabs.REGISTRY.register(bus);
+        LostdepthsModEnchantments.REGISTRY.register(bus);
 
 		StructureFeature.REGISTRY.register(bus);
 		LostdepthsModMobEffects.REGISTRY.register(bus);
