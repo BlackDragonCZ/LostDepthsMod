@@ -5,7 +5,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.ShearsItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.entity.player.Player;
@@ -18,7 +17,7 @@ import java.util.List;
 
 import cz.blackdragoncz.lostdepths.procedures.IronheartElixirRightclickedOnBlockProcedure;
 
-public class IronheartElixirItem extends ShearsItem {
+public class IronheartElixirItem extends Item {
 	public IronheartElixirItem() {
 		super(new Item.Properties().durability(0).fireResistant());
 	}
@@ -43,8 +42,8 @@ public class IronheartElixirItem extends ShearsItem {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, world, list, flag);
-		list.add(Component.literal("\u00A76When drunk, grants the Ironheart buff"));
-		list.add(Component.literal("\u00A74Ironheart grants immunity to max health damage."));
+		list.add(Component.literal("§6When drunk, grants the Ironheart buff"));
+		list.add(Component.literal("§4Ironheart grants immunity to max health damage."));
 	}
 
 	@Override
