@@ -79,6 +79,6 @@ public abstract class AdvancedEnchantments extends Enchantment {
     }
 
     public boolean canApplyAtEnchantmentTable(ItemStack stack) {
-        return enable && super.canApplyAtEnchantingTable(stack);
+        return allowEnchanting && super.canApplyAtEnchantingTable(stack);
     }
 }

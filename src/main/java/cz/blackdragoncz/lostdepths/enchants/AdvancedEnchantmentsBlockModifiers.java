@@ -22,13 +22,13 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nonnull;
 import java.util.Map;
 
-public class AdvancedEnchantmentsLootModifiers extends LootModifier {
+public class AdvancedEnchantmentsBlockModifiers extends LootModifier {
 
-    public static final Codec<AdvancedEnchantmentsLootModifiers> CODEC = RecordCodecBuilder.create(inst ->
-            codecStart(inst).apply(inst, AdvancedEnchantmentsLootModifiers::new)
+    public static final Codec<AdvancedEnchantmentsBlockModifiers> CODEC = RecordCodecBuilder.create(inst ->
+            codecStart(inst).apply(inst, AdvancedEnchantmentsBlockModifiers::new)
     );
 
-    protected AdvancedEnchantmentsLootModifiers(LootItemCondition[] conditions) {
+    protected AdvancedEnchantmentsBlockModifiers(LootItemCondition[] conditions) {
         super(conditions);
     }
 
@@ -48,15 +48,15 @@ public class AdvancedEnchantmentsLootModifiers extends LootModifier {
         if (tool.isEmpty()) return generatedLoot;
 
         @SuppressWarnings("deprecation")
-        int afLevel = EnchantmentHelper.getItemEnchantmentLevel(LostdepthsModEnchantments.ADVANCED_LOOTING.get(), tool);
+        int afLevel = EnchantmentHelper.getItemEnchantmentLevel(LostdepthsModEnchantments.ADVANCED_FORTUNE.get(), tool);
         if (afLevel <= 0) return generatedLoot;
 
         ItemStack fakeTool = tool.copy();
 
         Map<Enchantment, Integer> enchantments = EnchantmentHelper.getEnchantments(fakeTool);
-        enchantments.remove(LostdepthsModEnchantments.ADVANCED_LOOTING.get());
+        enchantments.remove(LostdepthsModEnchantments.ADVANCED_FORTUNE.get());
         int newFortune = afLevel + 3;
-        enchantments.put(Enchantments.MOB_LOOTING, newFortune);
+        enchantments.put(Enchantments.BLOCK_FORTUNE, newFortune);
         EnchantmentHelper.setEnchantments(enchantments, fakeTool);
 
         ResourceLocation queriedId = context.getQueriedLootTableId();

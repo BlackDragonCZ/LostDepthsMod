@@ -25,9 +25,10 @@ public class AdvancedFortune extends AdvancedEnchantments{
         maxLevel = 3;
     }
 
+    @Override
     public boolean canApplyAtEnchantmentTable(ItemStack stack) {
         Item item = stack.getItem();
-        return enable && stack.getItem() instanceof PickaxeItem || VALID_ITEMS.contains(item);
+        return false; //enable && stack.getItem() instanceof PickaxeItem || VALID_ITEMS.contains(item);
     }
 
     @Override

@@ -4,6 +4,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -25,10 +26,10 @@ public class AdvancedLooting extends AdvancedEnchantments{
         maxLevel = 3;
     }
 
-    public boolean canApplyAtEnchantmentTable(ItemStack stack) {
+    /*public boolean canApplyAtEnchantmentTable(ItemStack stack) {
         Item item = stack.getItem();
-        return enable && stack.getItem() instanceof AxeItem || VALID_ITEMS.contains(item);
-    }
+        return enable && stack.getItem() instanceof SwordItem || VALID_ITEMS.contains(item);
+    }*/
 
     @Override
     public int getMinCost(int level) {
