@@ -42,6 +42,6 @@ public class AdvancedFortune extends AdvancedEnchantments{
 
     @Override
     public boolean checkCompatibility(@NotNull Enchantment validity) {
-        return super.checkCompatibility(validity) && validity != Enchantments.SILK_TOUCH || validity != Enchantments.BLOCK_FORTUNE;
+        return super.checkCompatibility(validity) && validity != Enchantments.BLOCK_FORTUNE;
     }
 }
