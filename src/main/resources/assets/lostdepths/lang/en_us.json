@@ -861,5 +861,6 @@
   "item.lostdepths.synthetic_flight_apparatus": "§7Synthetic Flight Apparatus",
   "item.lostdepths.organic_power_cell": "§2Organic Power Cell",
   "item.lostdepths.netherite_dust": "§7Netherite Dust",
-  "enchantment.lostdepths.advanced_fortune": "§3Advanced Fortune"
+  "enchantment.lostdepths.advanced_fortune": "§3Advanced Fortune",
+  "enchantment.lostdepths.advanced_looting": "§3Advanced Looting"
 }
