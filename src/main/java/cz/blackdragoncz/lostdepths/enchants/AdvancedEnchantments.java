@@ -46,18 +46,23 @@ public abstract class AdvancedEnchantments extends Enchantment {
         return this;
     }
     //gets
-    public boolean getEnchantableInEnchanting() { return allowEnchanting; }
+
+    public boolean allowEnchantingTable() { return allowEnchanting; }
     public boolean IsEnable() {
         return enable;
     }
-
-    public boolean getAllowTreasureOnly() {
+    @Override
+    public boolean isTreasureOnly() {
         return allowTreasure;
     }
-    public boolean getAllowTrades() {
+
+    @Override
+    public boolean isTradeable() {
         return enable && allowTrades;
     }
-    public boolean getAllowBooks() {
+
+    @Override
+    public boolean isAllowedOnBooks() {
         return enable && allowBooks;
     }
     public boolean getAllowGenLoot() {
@@ -78,7 +83,8 @@ public abstract class AdvancedEnchantments extends Enchantment {
         return getMinCost(level) + 5;
     }
 
-    public boolean canApplyAtEnchantmentTable(ItemStack stack) {
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack) {
         return allowEnchanting && super.canApplyAtEnchantingTable(stack);
     }
 }

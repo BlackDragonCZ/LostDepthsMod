@@ -26,7 +26,7 @@ public class AdvancedFortune extends AdvancedEnchantments{
     }
 
     @Override
-    public boolean canApplyAtEnchantmentTable(ItemStack stack) {
+    public boolean canEnchant(ItemStack stack) {
         Item item = stack.getItem();
         return false; //enable && stack.getItem() instanceof PickaxeItem || VALID_ITEMS.contains(item);
     }

@@ -26,10 +26,11 @@ public class AdvancedLooting extends AdvancedEnchantments{
         maxLevel = 3;
     }
 
-    /*public boolean canApplyAtEnchantmentTable(ItemStack stack) {
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack) {
         Item item = stack.getItem();
         return enable && stack.getItem() instanceof SwordItem || VALID_ITEMS.contains(item);
-    }*/
+    }
 
     @Override
     public int getMinCost(int level) {

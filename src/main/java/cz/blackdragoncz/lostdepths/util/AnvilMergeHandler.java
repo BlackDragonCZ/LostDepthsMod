@@ -18,72 +18,75 @@ public class AnvilMergeHandler {
 
     @SubscribeEvent
     public static void onAnvilUpdate(AnvilUpdateEvent event) {
-        ItemStack left = event.getLeft();
+        ItemStack left  = event.getLeft();
         ItemStack right = event.getRight();
         if (left.isEmpty() || right.isEmpty()) return;
 
-        Enchantment AF      = LostdepthsModEnchantments.ADVANCED_FORTUNE.get();
-        Enchantment FORTUNE = Enchantments.BLOCK_FORTUNE;
-        Enchantment SILK_TOUCH = Enchantments.SILK_TOUCH;
-
-        Map<Enchantment, Integer> leftMap  = EnchantmentHelper.getEnchantments(left);
         Map<Enchantment, Integer> rightMap = EnchantmentHelper.getEnchantments(right);
+        boolean rightIsBook = right.is(Items.ENCHANTED_BOOK);
 
-        int afRight = rightMap.getOrDefault(AF, 0);
-        if (afRight <= 0) return;
+        Enchantment ADVANCED_FORTUNE = LostdepthsModEnchantments.ADVANCED_FORTUNE.get();
+        Enchantment ADVANCED_LOOTING = LostdepthsModEnchantments.ADVANCED_LOOTING.get();
+
+        Enchantment VANILLA_FORTUNE = Enchantments.BLOCK_FORTUNE;
+        Enchantment VANILLA_LOOTING = Enchantments.MOB_LOOTING;
+
+        int afRight = rightMap.getOrDefault(ADVANCED_FORTUNE, 0);
+        int alRight = rightMap.getOrDefault(ADVANCED_LOOTING, 0);
 
         if (left.is(Items.ENCHANTED_BOOK)) return;
-        if (!left.isEnchantable() && leftMap.isEmpty()) return;
-        if (!AF.canEnchant(left)) return;
+
+        if (afRight <= 0 && alRight <= 0) return;
 
         ItemStack out = left.copy();
+        Map<Enchantment, Integer> result = new HashMap<>(EnchantmentHelper.getEnchantments(out));
 
-        Map<Enchantment, Integer> result = new HashMap<>(leftMap);
+        boolean changed = false;
 
-        boolean rightIsBook = right.is(Items.ENCHANTED_BOOK);
-        for (Map.Entry<Enchantment, Integer> en : rightMap.entrySet()) {
-            Enchantment ench = en.getKey();
-            if (ench == AF) continue;
+        java.util.function.Function<MergeSpec, Boolean> mergeOne = specification -> {
+            int rightLvl = rightMap.getOrDefault(specification.advanced, 0);
+            if (rightLvl <= 0) return false;
 
-            int rLvl = en.getValue();
-            int lLvl = result.getOrDefault(ench, 0);
+            if (!specification.advanced.canEnchant(out)) return false;
+
+            int leftLvl = result.getOrDefault(specification.advanced, 0);
             int merged;
-
-            if (rightIsBook && lLvl == rLvl && rLvl > 0) {
-                merged = Math.min(ench.getMaxLevel(), rLvl + 1);
+            if (leftLvl > 0) {
+                merged = (rightIsBook && leftLvl == rightLvl)
+                        ? Math.min(specification.advanced.getMaxLevel(), leftLvl + 1)
+                        : Math.max(leftLvl, rightLvl);
             } else {
-                merged = Math.max(lLvl, rLvl);
+                merged = rightLvl;
             }
 
-            if (merged > 0) result.put(ench, merged); else result.remove(ench);
-        }
+            result.put(specification.advanced, merged);
+            result.remove(specification.vanilla);
+            return true;
+        };
 
-        int afLeft  = result.getOrDefault(AF, 0);
-        int mergedAF;
-        if (afLeft > 0) {
-            if (rightIsBook && afLeft == afRight) {
-                mergedAF = Math.min(AF.getMaxLevel(), afLeft + 1);
-            } else {
-                mergedAF = Math.max(afLeft, afRight);
-            }
-        } else {
-            mergedAF = afRight;
-        }
+        boolean appliedAF = mergeOne.apply(new MergeSpec(ADVANCED_FORTUNE, VANILLA_FORTUNE));
+        boolean appliedAL = mergeOne.apply(new MergeSpec(ADVANCED_LOOTING, VANILLA_LOOTING));
 
-        if (mergedAF > 0) result.put(AF, mergedAF); else result.remove(AF);
-        result.remove(FORTUNE);
+        changed = appliedAF || appliedAL;
+
+        if (!changed) return;
 
         EnchantmentHelper.setEnchantments(result, out);
 
-        if (!AF.canEnchant(out)) return;
+        if ((appliedAF && !ADVANCED_FORTUNE.canEnchant(out)) || (appliedAL && !ADVANCED_LOOTING.canEnchant(out))) return;
 
         int prior = left.getBaseRepairCost() + right.getBaseRepairCost();
-        boolean fortuneWasPresent = leftMap.containsKey(FORTUNE) || leftMap.containsKey(SILK_TOUCH);
-        int cost = 4 + (mergedAF * 2) + (fortuneWasPresent ? 2 : 0) + prior;
+        int afLvl = result.getOrDefault(ADVANCED_FORTUNE, 0);
+        int alLvl = result.getOrDefault(ADVANCED_LOOTING, 0);
+        int cost = 4 + (afLvl * 2) + (alLvl * 2) + prior;
         if (cost < 1) cost = 1;
+
+        out.setRepairCost(Math.max(left.getBaseRepairCost(), 0) + 1);
 
         event.setOutput(out);
         event.setCost(cost);
         event.setMaterialCost(1);
     }
+
+    private record MergeSpec(Enchantment advanced, Enchantment vanilla) {}
 }
