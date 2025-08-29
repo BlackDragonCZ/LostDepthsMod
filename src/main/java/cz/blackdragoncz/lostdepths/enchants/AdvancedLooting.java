@@ -1,7 +1,6 @@
 package cz.blackdragoncz.lostdepths.enchants;
 
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;

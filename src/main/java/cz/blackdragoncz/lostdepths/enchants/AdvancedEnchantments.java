@@ -7,6 +7,8 @@ import net.minecraft.world.item.enchantment.EnchantmentCategory;
 
 public abstract class AdvancedEnchantments extends Enchantment {
 
+    // private final AdvancedEnchantments.RarityLvl rarityLvl;
+
     protected boolean enable = true;
 
     protected boolean allowGenLoot = false;
@@ -82,6 +84,28 @@ public abstract class AdvancedEnchantments extends Enchantment {
     protected int maxDelegate(int level) {
         return getMinCost(level) + 5;
     }
+    /*
+    public AdvancedEnchantments.RarityLvl getRarity() {
+        return this.rarityLvl;
+    }
+
+    public static enum RarityLvl {
+        COMMON(10),
+        UNCOMMON(5),
+        RARE(2),
+        VERY_RARE(1),
+        COSMIC(1);
+
+        private final int weight;
+
+        private RarityLvl(int pWeight) {
+            this.weight = pWeight;
+        }
+         // Retrieves the weight of Rarity.
+        public int getWeight() {
+            return this.weight;
+        }
+    }*/
 
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack) {
