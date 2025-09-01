@@ -1,6 +1,7 @@
 
 package cz.blackdragoncz.lostdepths.item.tool;
 
+import cz.blackdragoncz.lostdepths.procedures.item.TheDestroyerSwordFunctionality;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.TooltipFlag;
@@ -50,7 +51,7 @@ public class TheDestroyerItem extends SwordItem {
 	@Override
 	public boolean hurtEnemy(ItemStack itemstack, LivingEntity entity, LivingEntity sourceentity) {
 		boolean retval = super.hurtEnemy(itemstack, entity, sourceentity);
-		TheDestroyerLivingEntityIsHitWithToolProcedure.execute(entity, sourceentity);
+		TheDestroyerSwordFunctionality.execute(entity, sourceentity);
 		return retval;
 	}
 
