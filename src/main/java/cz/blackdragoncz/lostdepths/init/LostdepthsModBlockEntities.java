@@ -34,7 +34,6 @@ public class LostdepthsModBlockEntities {
 	public static final RegistryObject<BlockEntityType<MetaCollectorBlockEntity>> META_COLLECTOR = register("meta_collector", LostdepthsModBlocks.META_COLLECTOR, MetaCollectorBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<LightPuzzleABlockEntity>> LIGHT_PUZZLE_A = register("light_puzzle_a", LostdepthsModBlocks.LIGHT_PUZZLE_A, LightPuzzleABlockEntity::new);
 	public static final RegistryObject<BlockEntityType<LightPuzzleControllerBlockEntity>> LIGHT_PUZZLE_CONTROLLER = register("light_puzzle_controller", LostdepthsModBlocks.LIGHT_PUZZLE_CONTROLLER, LightPuzzleControllerBlockEntity::new);
-	public static final RegistryObject<BlockEntityType<CrystalizerBlockEntity>> CRYSTALIZER = register("crystalizer", LostdepthsModBlocks.CRYSTALIZER, CrystalizerBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<OreEmptyBlockEntity>> ORE_EMPTY = register("ore_empty", LostdepthsModBlocks.ORE_EMPTY, OreEmptyBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<LightPuzzleBBlockEntity>> LIGHT_PUZZLE_B = register("light_puzzle_b", LostdepthsModBlocks.LIGHT_PUZZLE_B, LightPuzzleBBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<SunderWoodSapBlockEntity>> SUNDER_WOOD_SAP = register("sunder_wood_sap", LostdepthsModBlocks.SUNDER_WOOD_SAP, SunderWoodSapBlockEntity::new);

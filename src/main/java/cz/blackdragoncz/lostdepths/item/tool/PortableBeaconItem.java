@@ -1,6 +1,8 @@
 
 package cz.blackdragoncz.lostdepths.item.tool;
 
+import cz.blackdragoncz.lostdepths.procedures.item.PortableBeaconFunctionality;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
@@ -79,9 +81,14 @@ public class PortableBeaconItem extends Item {
 	@Override
 	public void inventoryTick(ItemStack itemstack, Level world, Entity entity, int slot, boolean selected) {
 		super.inventoryTick(itemstack, world, entity, slot, selected);
-		if (selected)
+
+        if (entity instanceof LivingEntity living && living.getOffhandItem() == itemstack) {
+            PortableBeaconFunctionality.execute(entity, itemstack);
+        }
+
+		/*if (selected)
 			PortableBeaconToolInHandTickProcedure.execute(entity, itemstack);
-		PortableBeaconToolInHandTickProcedure.execute(entity, itemstack);
+		PortableBeaconToolInHandTickProcedure.execute(entity, itemstack);*/
 	}
 
 	@Override

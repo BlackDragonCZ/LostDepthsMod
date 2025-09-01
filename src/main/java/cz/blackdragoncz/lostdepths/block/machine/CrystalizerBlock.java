@@ -49,8 +49,7 @@ import io.netty.buffer.Unpooled;
 
 import cz.blackdragoncz.lostdepths.world.inventory.CrystalizerGUIMenu;
 import cz.blackdragoncz.lostdepths.procedures.CrystalizerUpdateTickProcedure;
-import cz.blackdragoncz.lostdepths.block.entity.CrystalizerBlockEntity;
-
+/*
 public class CrystalizerBlock extends Block implements EntityBlock {
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
@@ -185,3 +184,4 @@ public class CrystalizerBlock extends Block implements EntityBlock {
 		}
 	}
 }
+*/

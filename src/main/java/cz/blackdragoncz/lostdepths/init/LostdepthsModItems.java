@@ -153,7 +153,6 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> EMPTY_MODULE_CONTAINER = REGISTRY.register("empty_module_container", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> MODULE_ACCELERATION = REGISTRY.register("module_acceleration", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> ADVICON = REGISTRY.register("advicon", () -> new MasterPartRegistryItem(1));
-	public static final RegistryObject<Item> CRYSTALIZER = block(LostdepthsModBlocks.CRYSTALIZER);
 	public static final RegistryObject<Item> ANCIENT_KEY_OF_FORGOTTEN = REGISTRY.register("ancient_key_of_forgotten", () -> new MasterPartRegistryItem(1));
 	public static final RegistryObject<Item> LOSTDEPTHSMANUAL = REGISTRY.register("lostdepthsmanual", () -> new MasterPartRegistryItem(1));
 	public static final RegistryObject<Item> ORE_EMPTY = block(LostdepthsModBlocks.ORE_EMPTY);

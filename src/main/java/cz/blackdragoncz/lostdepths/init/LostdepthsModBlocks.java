@@ -85,7 +85,6 @@ public class LostdepthsModBlocks {
 	public static final RegistryObject<Block> META_COLLECTOR = REGISTRY.register("meta_collector", () -> new MetaCollectorBlock());
 	public static final RegistryObject<Block> LIGHT_PUZZLE_A = REGISTRY.register("light_puzzle_a", () -> new LightPuzzleABlock());
 	public static final RegistryObject<Block> LIGHT_PUZZLE_CONTROLLER = REGISTRY.register("light_puzzle_controller", () -> new LightPuzzleControllerBlock());
-	public static final RegistryObject<Block> CRYSTALIZER = REGISTRY.register("crystalizer", () -> new CrystalizerBlock());
 	public static final RegistryObject<Block> ORE_EMPTY = REGISTRY.register("ore_empty", () -> new OreEmptyBlock());
 	public static final RegistryObject<Block> LASER_GATE = REGISTRY.register("laser_gate", () -> new LaserGateBlock(1, 'a'));
 	public static final RegistryObject<Block> LASER_GATE_VERTICAL = REGISTRY.register("laser_gate_vertical", () -> new LaserGateBlock(1, 'a'));
