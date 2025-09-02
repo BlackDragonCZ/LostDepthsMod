@@ -53,7 +53,7 @@ public class PortableBeaconItem extends Item {
             new EffectEntry("minecraft:strength",        MobEffects.DAMAGE_BOOST, 1),
             new EffectEntry("minecraft:water_breathing", MobEffects.WATER_BREATHING, 1),
             new EffectEntry("minecraft:instant_health",  MobEffects.HEAL, 0),
-            new EffectEntry("minecraft:glowing",         MobEffects.GLOWING, 1) // include if you allow it
+            new EffectEntry("minecraft:glowing",         MobEffects.GLOWING, 1)
     };
 
     private static String toRoman(int number) {
@@ -135,10 +135,6 @@ public class PortableBeaconItem extends Item {
         if (entity instanceof LivingEntity living && living.getOffhandItem() == itemstack) {
             PortableBeaconFunctionality.execute(entity, itemstack);
         }
-
-		/*if (selected)
-			PortableBeaconToolInHandTickProcedure.execute(entity, itemstack);
-		PortableBeaconToolInHandTickProcedure.execute(entity, itemstack);*/
 	}
 
 	@Override
