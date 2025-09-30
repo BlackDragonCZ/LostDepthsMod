@@ -17,17 +17,19 @@ import java.util.concurrent.CompletableFuture;
 
 public class LostdepthsDatapackProvider extends DatapackBuiltinEntriesProvider {
 
-    private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
-            .add(Registries.DAMAGE_TYPE, context -> {
-                context.register(LostdepthsModDamageTypes.TRUE_DAMAGE, new DamageType(
+    public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
+            .add(Registries.DAMAGE_TYPE, ctx -> {
+                ctx.register(LostdepthsModDamageTypes.TRUE_DAMAGE, new DamageType(
                         LostdepthsMod.MODID + ".true_damage",
                         DamageScaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER,
-                        0.1f,
+                        0.1F,
                         DamageEffects.HURT,
                         DeathMessageType.DEFAULT
                 ));
             });
-    public LostdepthsDatapackProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookup) {
-        super(output, lookup, BUILDER, Set.of(LostdepthsMod.MODID));
+
+    public LostdepthsDatapackProvider(PackOutput output,
+                                      CompletableFuture<HolderLookup.Provider> baseLookup) {
+        super(output, baseLookup, BUILDER, Set.of(LostdepthsMod.MODID));
     }
 }

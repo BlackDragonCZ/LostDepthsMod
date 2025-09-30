@@ -44,7 +44,7 @@ public class LostdepthsMod {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
 		ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, LostDepthsConfig.SPEC);
-
+        //CORE
 		LostdepthsModSounds.REGISTRY.register(bus);
 		LostdepthsModBlocks.REGISTRY.register(bus);
 		LostdepthsModBlockEntities.REGISTRY.register(bus);
@@ -52,15 +52,16 @@ public class LostdepthsMod {
 		LostdepthsModEntities.REGISTRY.register(bus);
 		LostdepthsModRecipeSerializers.REGISTRY_SERIALIZER.register(bus);
 		LostDepthsModRecipeType.REGISTRY.register(bus);
-
+        //MODIFIERS
 		LostdepthsModTabs.REGISTRY.register(bus);
         LostdepthsModEnchantments.REGISTRY.register(bus);
         LostdepthsModModifiers.REGISTRY.register(bus);
-
+        LostdepthsModAttributes.REGISTRY.register(bus);
+        //WORLD
 		StructureFeature.REGISTRY.register(bus);
 		LostdepthsModMobEffects.REGISTRY.register(bus);
 		LostdepthsModPotions.REGISTRY.register(bus);
-
+        //MISC
 		LostdepthsModParticleTypes.REGISTRY.register(bus);
 		LostdepthsModVillagerProfessions.PROFESSIONS.register(bus);
 		LostdepthsModMenus.REGISTRY.register(bus);

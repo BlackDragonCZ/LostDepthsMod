@@ -1,0 +1,5 @@
+// 1.20.1	2025-09-30T14:02:29.9471165	Tags for minecraft:damage_type mod id lostdepths
+fcfa2d7f87872b4efe752e1ba2100b89c18c0b27 data/minecraft/tags/damage_type/bypasses_armor.json
+fcfa2d7f87872b4efe752e1ba2100b89c18c0b27 data/minecraft/tags/damage_type/bypasses_enchantments.json
+fcfa2d7f87872b4efe752e1ba2100b89c18c0b27 data/minecraft/tags/damage_type/bypasses_resistance.json
+fcfa2d7f87872b4efe752e1ba2100b89c18c0b27 data/minecraft/tags/damage_type/bypasses_shield.json

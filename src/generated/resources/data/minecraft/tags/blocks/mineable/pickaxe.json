@@ -1,5 +1,4 @@
 {
-  "replace": false,
   "values": [
     "lostdepths:myrite_ore",
     "lostdepths:myrite_ore_active",
@@ -28,7 +27,6 @@
     "lostdepths:infused_iron_pillar",
     "lostdepths:infused_iron_brick_stairs",
     "lostdepths:infused_iron_brick_slab",
-    "lostdepths:crystalizer",
     "lostdepths:workstation_1",
     "lostdepths:factory_block",
     "lostdepths:o_factory_block",

@@ -15,12 +15,18 @@ public final class LostdepthsModDataGenEntryPoint {
     public static void onGatherData(GatherDataEvent event) {
         var gen = event.getGenerator();
         var out = gen.getPackOutput();
-        CompletableFuture< HolderLookup.Provider> lookup = event.getLookupProvider();
         ExistingFileHelper efh = event.getExistingFileHelper();
 
         if (event.includeServer()) {
-            gen.addProvider(true, new LostdepthsDatapackProvider(out, lookup));
-            gen.addProvider(true, new LostdepthsModTypeTags(out, lookup, efh));
+            var datapack = new LostdepthsDatapackProvider(out, event.getLookupProvider());
+            gen.addProvider(true, datapack);
+
+            CompletableFuture<HolderLookup.Provider> patchedLookup = datapack.getRegistryProvider();
+
+            gen.addProvider(true, new LostdepthsModTypeTags(out, patchedLookup, efh));
+
+            var blockTags = new LostdepthsModBlockTags(out, patchedLookup, efh);
+            gen.addProvider(true, blockTags);
         }
     }
 
