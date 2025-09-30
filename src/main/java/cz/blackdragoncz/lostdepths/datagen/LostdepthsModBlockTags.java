@@ -18,6 +18,27 @@ public class LostdepthsModBlockTags extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
+        tag(BlockTags.MINEABLE_WITH_AXE).add(
+                LostdepthsModBlocks.CLOVINITE_ORE.get(),
+                LostdepthsModBlocks.SUNDER_WOOD.get(),
+                LostdepthsModBlocks.SUNDER_WOOD_SAP.get(),
+                LostdepthsModBlocks.CELESTIAL_LOGS_BLUE.get(),
+                LostdepthsModBlocks.CELESTIAL_LOGS_RED.get(),
+                LostdepthsModBlocks.CELESTIAL_LEAVES_BLUE.get(),
+                LostdepthsModBlocks.CELESTIAL_LEAVES_RED.get(),
+                LostdepthsModBlocks.SUNDER_LEAVES.get(),
+                LostdepthsModBlocks.SUNDER_PLANKS.get(),
+                LostdepthsModBlocks.SUNDER_FENCE.get(),
+                LostdepthsModBlocks.SUNDER_SLAB.get(),
+                LostdepthsModBlocks.SUNDER_STAIRS.get(),
+                LostdepthsModBlocks.FERRO_LOG.get(),
+                LostdepthsModBlocks.FERRO_LEAVES.get(),
+                LostdepthsModBlocks.INFUSED_SIGN.get(),
+                LostdepthsModBlocks.INFUSED_HANGING_SIGN.get(),
+                LostdepthsModBlocks.INFUSED_WALL_HANGING_SIGN.get(),
+                LostdepthsModBlocks.INFUSED_WALL_SIGN.get()
+        );
+
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
                 LostdepthsModBlocks.MYRITE_ORE.get(),
                 LostdepthsModBlocks.MYRITE_ORE_ACTIVE.get(),
