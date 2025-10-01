@@ -1,7 +1,5 @@
 {
-  "replace": false,
   "values": [
-    "lostdepths:treasurebricks",
     "lostdepths:treasurepillar",
     "lostdepths:treasurestairs",
     "lostdepths:treasureslabs",

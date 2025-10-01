@@ -5,6 +5,7 @@ import cz.blackdragoncz.lostdepths.init.LostdepthsModBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -116,6 +117,55 @@ public class LostdepthsModBlockTags extends BlockTagsProvider {
                 LostdepthsModBlocks.NUROSTAR_GENERATOR.get(),
                 LostdepthsModBlocks.NUROSTAR_CABLE.get(),
                 LostdepthsModBlocks.BLACK_HOLE_COMPRESSOR.get()
+        );
+        tag(BlockTags.DIRT).add(LostdepthsModBlocks.SPACE_ROCK_DIRT.get());
+        tag(BlockTags.DRAGON_IMMUNE).add(
+                LostdepthsModBlocks.TREASUREPILLAR.get(),
+                LostdepthsModBlocks.TREASURESTAIRS.get(),
+                LostdepthsModBlocks.TREASURESLABS.get(),
+                LostdepthsModBlocks.TREASURECROSS.get(),
+                LostdepthsModBlocks.TREASURE_GLASS.get(),
+                LostdepthsModBlocks.TREASURE_CROSS_GLOW.get(),
+                LostdepthsModBlocks.TREASURE_POWER_BEAM.get(),
+                LostdepthsModBlocks.TREASURE_NEO_SLAB.get(),
+                LostdepthsModBlocks.TREASURE_FACTORY_PILLAR.get(),
+                LostdepthsModBlocks.TREASURE_DARK_BRICKS.get(),
+                LostdepthsModBlocks.TREASURE_DARK_TILES.get(),
+                LostdepthsModBlocks.TREASURE_GLOWSTEEL.get(),
+                LostdepthsModBlocks.TREASURE_NEO_SLAB_BLOCK.get(),
+                LostdepthsModBlocks.ULTRA_RESISTIVE_GLASS.get()
+        );
+        tag(BlockTags.WITHER_IMMUNE).add(
+                LostdepthsModBlocks.TREASUREPILLAR.get(),
+                LostdepthsModBlocks.TREASURESTAIRS.get(),
+                LostdepthsModBlocks.TREASURESLABS.get(),
+                LostdepthsModBlocks.TREASURECROSS.get(),
+                LostdepthsModBlocks.TREASURE_GLASS.get(),
+                LostdepthsModBlocks.TREASURE_CROSS_GLOW.get(),
+                LostdepthsModBlocks.TREASURE_POWER_BEAM.get(),
+                LostdepthsModBlocks.TREASURE_NEO_SLAB.get(),
+                LostdepthsModBlocks.TREASURE_FACTORY_PILLAR.get(),
+                LostdepthsModBlocks.TREASURE_DARK_BRICKS.get(),
+                LostdepthsModBlocks.TREASURE_DARK_TILES.get(),
+                LostdepthsModBlocks.TREASURE_GLOWSTEEL.get(),
+                LostdepthsModBlocks.TREASURE_NEO_SLAB_BLOCK.get(),
+                LostdepthsModBlocks.ULTRA_RESISTIVE_GLASS.get()
+        );
+        tag(BlockTags.FENCES).add(LostdepthsModBlocks.SUNDER_FENCE.get());
+        tag(BlockTags.LEAVES).add(LostdepthsModBlocks.CELESTIAL_LEAVES_BLUE.get(), LostdepthsModBlocks.CELESTIAL_LEAVES_RED.get());
+        tag(BlockTags.LOGS).add(LostdepthsModBlocks.CELESTIAL_LOGS_BLUE.get(), LostdepthsModBlocks.CELESTIAL_LOGS_RED.get());
+        tag(BlockTags.PLANKS).add(LostdepthsModBlocks.SUNDER_PLANKS.get());
+        tag(BlockTags.STAIRS).add(LostdepthsModBlocks.INFUSED_IRON_BRICK_STAIRS.get(), LostdepthsModBlocks.TREASURESTAIRS.get());
+        tag(BlockTags.WALLS).add(LostdepthsModBlocks.INFUSED_IRON_BRICKS_WALL.get(), LostdepthsModBlocks.INFUSED_IRON_BRICK_WALLS.get());
+        tag(BlockTags.WOODEN_FENCES).add(LostdepthsModBlocks.SUNDER_FENCE.get());
+        tag(BlockTags.WALL_HANGING_SIGNS).add(LostdepthsModBlocks.INFUSED_WALL_HANGING_SIGN.get());
+
+        tag(BlockTags.OVERWORLD_CARVER_REPLACEABLES).add(
+                Blocks.DEEPSLATE,
+                LostdepthsModBlocks.SPACE_ROCK_DIRT.get(),
+                LostdepthsModBlocks.SPACE_ROCK.get(),
+                LostdepthsModBlocks.DEEP_SPACE_ROCK.get(),
+                LostdepthsModBlocks.FUNGAL_SPACE_ROCK.get()
         );
     }
 }

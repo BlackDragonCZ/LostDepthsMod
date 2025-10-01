@@ -1,3 +1,15 @@
-// 1.20.1	2025-09-30T21:09:12.9419146	Tags for minecraft:block mod id lostdepths
+// 1.20.1	2025-10-01T11:25:15.748711	Tags for minecraft:block mod id lostdepths
+fef52719b0083cec2a456b8ac677cb7edcbdef0d data/minecraft/tags/blocks/dirt.json
+3f1d153faceef8d21398278bfe4d305293d64314 data/minecraft/tags/blocks/dragon_immune.json
+eae19c33f3684507cc2bf222a561f4247a7c00bd data/minecraft/tags/blocks/fences.json
+04e92347dcdaff08abc463ba93934c434b0ad11d data/minecraft/tags/blocks/leaves.json
+0da26d1e513e3e3e71363aa590f61ba61d46381f data/minecraft/tags/blocks/logs.json
 886ad30225d4819d78764eddbfd78f813b3593cf data/minecraft/tags/blocks/mineable/axe.json
 9730216ea00bb99472c2fdb14cfe76e7408e0afb data/minecraft/tags/blocks/mineable/pickaxe.json
+7ac0b0ef5dc93bd248822267d1ea549530069a7d data/minecraft/tags/blocks/overworld_carver_replaceables.json
+950db306dd8f51259dcfab50bd03527101a8fde4 data/minecraft/tags/blocks/planks.json
+df15bb7490be1aad8a5b0d353826b427fe1d2e30 data/minecraft/tags/blocks/stairs.json
+1404d915796f11e1643430cb24b45c2de0f46886 data/minecraft/tags/blocks/walls.json
+9ddefe1241b44dee6a81574a9e283bf00f88f7c8 data/minecraft/tags/blocks/wall_hanging_signs.json
+3f1d153faceef8d21398278bfe4d305293d64314 data/minecraft/tags/blocks/wither_immune.json
+eae19c33f3684507cc2bf222a561f4247a7c00bd data/minecraft/tags/blocks/wooden_fences.json
