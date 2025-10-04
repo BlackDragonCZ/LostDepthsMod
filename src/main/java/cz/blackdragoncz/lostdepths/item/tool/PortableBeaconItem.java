@@ -102,7 +102,7 @@ public class PortableBeaconItem extends Item {
             list.addAll(enabled);
         }
 	}
-
+    //TODO: open inventory should be only mainhand slot
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);

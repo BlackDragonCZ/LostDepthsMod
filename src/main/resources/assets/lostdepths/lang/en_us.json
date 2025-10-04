@@ -863,5 +863,7 @@
   "item.lostdepths.netherite_dust": "§7Netherite Dust",
   "enchantment.lostdepths.advanced_fortune": "§3Advanced Fortune",
   "enchantment.lostdepths.advanced_looting": "§3Advanced Looting",
-  "attribute.name.lostdepths.mining_speed": "Mining Speed"
+  "attribute.name.lostdepths.mining_speed": "Mining Speed",
+  "entity.lostdepths.projectile_prime_draconic_trident": "Prime Draconic Trident",
+  "entity.lostdepths.projectile_draconic_trident": "Draconic Trident"
 }
