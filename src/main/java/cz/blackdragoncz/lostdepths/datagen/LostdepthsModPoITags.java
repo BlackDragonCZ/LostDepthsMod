@@ -1,12 +1,10 @@
 package cz.blackdragoncz.lostdepths.datagen;
-/*
+
 import cz.blackdragoncz.lostdepths.LostdepthsMod;
-import cz.blackdragoncz.lostdepths.init.LostdepthsModDamageTypes;
-import cz.blackdragoncz.lostdepths.init.LostdepthsModVillagerProfessions;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.PoiTypeTagsProvider;
-import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.PoiTypeTags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -20,7 +18,11 @@ public class LostdepthsModPoITags extends PoiTypeTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        tag(PoiTypeTags.ACQUIRABLE_JOB_SITE).add(LostdepthsModVillagerProfessions.COSMIC_SCIENTIST);
+        var acquirable = tag(PoiTypeTags.ACQUIRABLE_JOB_SITE);
+
+        acquirable.addOptional(new ResourceLocation("lostdepths", "cosmic_scientist"));
+        acquirable.addOptional(new ResourceLocation("lostdepths", "atmospheric_scientist"));
+        acquirable.addOptional(new ResourceLocation("lostdepths", "black_market_seller"));
+        acquirable.addOptional(new ResourceLocation("lostdepths", "chemistry_operator"));
     }
-}*/
-//TODO: finish later
+}

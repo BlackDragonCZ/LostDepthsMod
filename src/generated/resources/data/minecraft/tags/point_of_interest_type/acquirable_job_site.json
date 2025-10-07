@@ -1,0 +1,20 @@
+{
+  "values": [
+    {
+      "id": "lostdepths:cosmic_scientist",
+      "required": false
+    },
+    {
+      "id": "lostdepths:atmospheric_scientist",
+      "required": false
+    },
+    {
+      "id": "lostdepths:black_market_seller",
+      "required": false
+    },
+    {
+      "id": "lostdepths:chemistry_operator",
+      "required": false
+    }
+  ]
+}

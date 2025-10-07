@@ -27,9 +27,9 @@ public final class LostdepthsModDataGenEntryPoint {
 
             var blockTags = new LostdepthsModBlockTags(out, patchedLookup, efh);
             gen.addProvider(true, blockTags);
-/*
+
             var poiTags = new LostdepthsModPoITags(out, patchedLookup, efh);
-            gen.addProvider(true, poiTags);*/
+            gen.addProvider(true, poiTags);
         }
     }
 
