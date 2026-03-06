@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lost Depths - Book Editor</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Noto Sans', 'Segoe UI', sans-serif; background: #1a1a2e; color: #e0e0e0; display: flex; height: 100vh; overflow: hidden; }
+
+.sidebar {
+    width: 320px; background: #16213e; border-right: 1px solid #0f3460;
+    display: flex; flex-direction: column; overflow-y: auto;
+}
+.sidebar h2 { padding: 12px 16px; background: #0f3460; font-size: 14px; letter-spacing: 1px; }
+.sidebar section { padding: 12px 16px; border-bottom: 1px solid #0f3460; }
+.sidebar section h3 { font-size: 11px; color: #8899aa; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+.field { margin-bottom: 10px; }
+.field label { display: block; font-size: 11px; color: #8899aa; margin-bottom: 3px; }
+.field input, .field select, .field textarea {
+    width: 100%; background: #1a1a3e; border: 1px solid #334; color: #e0e0e0;
+    padding: 6px 8px; border-radius: 4px; font-size: 13px; font-family: inherit;
+}
+.field textarea { resize: vertical; min-height: 120px; line-height: 1.5; }
+.field input:focus, .field textarea:focus { border-color: #55c; outline: none; }
+.field .hint { font-size: 10px; color: #556; margin-top: 2px; }
+
+.checkbox-field { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.checkbox-field input[type="checkbox"] { width: 16px; height: 16px; accent-color: #55c; }
+.checkbox-field label { font-size: 12px; color: #aab; cursor: pointer; }
+
+.page-list { max-height: 200px; overflow-y: auto; margin-bottom: 8px; }
+.page-item {
+    display: flex; align-items: center; padding: 5px 8px; margin: 2px 0;
+    background: #1a1a3e; border: 1px solid #334; border-radius: 4px; cursor: pointer; font-size: 12px;
+}
+.page-item.active { border-color: #55c; background: #22225e; }
+.page-item .page-num { width: 24px; color: #8899aa; }
+.page-item .page-preview { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #aab; }
+.page-item .page-del { color: #a44; cursor: pointer; padding: 0 4px; font-size: 14px; }
+.page-item .page-del:hover { color: #f66; }
+
+.btn {
+    display: inline-block; padding: 6px 14px; background: #1a1a3e; border: 1px solid #334;
+    color: #e0e0e0; border-radius: 4px; cursor: pointer; font-size: 12px; font-family: inherit;
+}
+.btn:hover { background: #2a2a5e; }
+.btn-sm { padding: 4px 10px; font-size: 11px; }
+.btn-primary { border-color: #55c; }
+.btn-primary:hover { background: #33339e; }
+.btn-danger { border-color: #a44; }
+.btn-danger:hover { background: #4a2020; }
+.btn-row { display: flex; gap: 6px; flex-wrap: wrap; }
+
+/* Main area */
+.main-area { flex: 1; display: flex; flex-direction: column; }
+.toolbar {
+    height: 44px; background: #16213e; border-bottom: 1px solid #0f3460;
+    display: flex; align-items: center; padding: 0 16px; gap: 10px;
+}
+.toolbar .info { font-size: 11px; color: #6688aa; margin-left: auto; }
+
+.preview-area {
+    flex: 1; display: flex; align-items: center; justify-content: center;
+    background: #111122; overflow: auto;
+}
+
+/* Book preview */
+.book-preview {
+    position: relative; width: 440px; height: 360px;
+    background: #c6c6c6; border-radius: 4px; box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    display: flex; user-select: none;
+}
+.book-page {
+    flex: 1; padding: 24px 20px 16px 28px; display: flex; flex-direction: column;
+    position: relative; min-width: 0;
+}
+.book-page.right { padding: 24px 28px 16px 20px; }
+.book-spine { width: 4px; background: linear-gradient(to right, #999, #aaa, #999); flex-shrink: 0; }
+.book-page-content {
+    flex: 1; font-family: 'Noto Sans', sans-serif; font-size: 11px; line-height: 1.55;
+    color: #1a1a1a; white-space: pre-wrap; word-wrap: break-word; overflow: hidden;
+}
+.book-page-num {
+    text-align: center; font-size: 10px; color: #666; margin-top: 4px;
+}
+.book-nav {
+    position: absolute; bottom: 8px; cursor: pointer; font-size: 18px; color: #555;
+    padding: 4px 8px; user-select: none;
+}
+.book-nav:hover { color: #222; }
+.book-nav.left-arrow { right: 8px; }
+.book-nav.right-arrow { left: 8px; }
+.book-title-display {
+    text-align: center; font-weight: bold; font-size: 13px; color: #333;
+    margin-bottom: 8px; padding-bottom: 4px; border-bottom: 1px solid #aaa;
+}
+.book-author-display {
+    text-align: center; font-size: 10px; color: #666; margin-bottom: 12px;
+}
+
+/* Formatting bar */
+.format-bar { display: flex; gap: 4px; margin-bottom: 6px; flex-wrap: wrap; }
+.fmt-btn {
+    padding: 3px 8px; background: #1a1a3e; border: 1px solid #334; border-radius: 3px;
+    cursor: pointer; font-size: 11px; color: #ccc;
+}
+.fmt-btn:hover { background: #2a2a5e; border-color: #55c; }
+.fmt-btn .preview-fmt { font-size: 12px; }
+
+/* Command output */
+.cmd-panel {
+    position: fixed; bottom: 0; left: 0; right: 0; background: #0d0d1a;
+    border-top: 2px solid #0f3460; display: none; z-index: 100;
+    max-height: 40vh; flex-direction: column;
+}
+.cmd-panel.open { display: flex; }
+.cmd-header {
+    padding: 8px 16px; background: #16213e; display: flex; align-items: center;
+    justify-content: space-between; flex-shrink: 0;
+}
+.cmd-output {
+    flex: 1; overflow: auto; padding: 12px 16px;
+    font-family: 'Consolas', 'Courier New', monospace; font-size: 12px;
+    line-height: 1.5; white-space: pre-wrap; word-break: break-all; color: #8fbc8f;
+}
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>BOOK EDITOR</h2>
+    <section>
+        <h3>Book Properties</h3>
+        <div class="field">
+            <label>Title (max 32 chars)</label>
+            <input type="text" id="bookTitle" maxlength="32" placeholder="My Book" value="Untitled">
+        </div>
+        <div class="field">
+            <label>Author</label>
+            <input type="text" id="bookAuthor" placeholder="Player Name" value="Unknown">
+        </div>
+        <div class="field">
+            <label>Generation</label>
+            <select id="bookGeneration">
+                <option value="0">Original</option>
+                <option value="1">Copy of Original</option>
+                <option value="2">Copy of Copy</option>
+                <option value="3">Tattered</option>
+            </select>
+        </div>
+        <div class="checkbox-field">
+            <input type="checkbox" id="contractAllowed">
+            <label for="contractAllowed">Contract (allows signing)</label>
+        </div>
+    </section>
+    <section>
+        <h3>Pages</h3>
+        <div class="page-list" id="pageList"></div>
+        <div class="btn-row">
+            <button class="btn btn-sm btn-primary" onclick="addPage()">+ Add Page</button>
+            <button class="btn btn-sm" onclick="insertPage()">Insert After</button>
+            <button class="btn btn-sm btn-danger" onclick="deleteCurrentPage()">Delete Page</button>
+        </div>
+    </section>
+    <section>
+        <h3>Page Content</h3>
+        <div class="format-bar">
+            <button class="fmt-btn" onclick="insertFormat('0')" title="Black">&#167;0 <span class="preview-fmt" style="color:#000">A</span></button>
+            <button class="fmt-btn" onclick="insertFormat('1')" title="Dark Blue">&#167;1 <span class="preview-fmt" style="color:#0000AA">A</span></button>
+            <button class="fmt-btn" onclick="insertFormat('2')" title="Dark Green">&#167;2 <span class="preview-fmt" style="color:#00AA00">A</span></button>
+            <button class="fmt-btn" onclick="insertFormat('3')" title="Dark Aqua">&#167;3 <span class="preview-fmt" style="color:#00AAAA">A</span></button>
+            <button class="fmt-btn" onclick="insertFormat('4')" title="Dark Red">&#167;4 <span class="preview-fmt" style="color:#AA0000">A</span></button>
+            <button class="fmt-btn" onclick="insertFormat('5')" title="Dark Purple">&#167;5 <span class="preview-fmt" style="color:#AA00AA">A</span></button>
+            <button class="fmt-btn" onclick="insertFormat('6')" title="Gold">&#167;6 <span class="preview-fmt" style="color:#FFAA00">A</span></button>
+            <button class="fmt-btn" onclick="insertFormat('7')" title="Gray">&#167;7 <span class="preview-fmt" style="color:#AAAAAA">A</span></button>
+            <button class="fmt-btn" onclick="insertFormat('8')" title="Dark Gray">&#167;8 <span class="preview-fmt" style="color:#555555">A</span></button>
+            <button class="fmt-btn" onclick="insertFormat('9')" title="Blue">&#167;9 <span class="preview-fmt" style="color:#5555FF">A</span></button>
+            <button class="fmt-btn" onclick="insertFormat('a')" title="Green">&#167;a <span class="preview-fmt" style="color:#55FF55">A</span></button>
+            <button class="fmt-btn" onclick="insertFormat('b')" title="Aqua">&#167;b <span class="preview-fmt" style="color:#55FFFF">A</span></button>
+            <button class="fmt-btn" onclick="insertFormat('c')" title="Red">&#167;c <span class="preview-fmt" style="color:#FF5555">A</span></button>
+            <button class="fmt-btn" onclick="insertFormat('d')" title="Light Purple">&#167;d <span class="preview-fmt" style="color:#FF55FF">A</span></button>
+            <button class="fmt-btn" onclick="insertFormat('e')" title="Yellow">&#167;e <span class="preview-fmt" style="color:#FFFF55">A</span></button>
+            <button class="fmt-btn" onclick="insertFormat('f')" title="White">&#167;f <span class="preview-fmt" style="color:#FFF">A</span></button>
+            <button class="fmt-btn" onclick="insertFormat('l')" title="Bold"><b>B</b></button>
+            <button class="fmt-btn" onclick="insertFormat('o')" title="Italic"><i>I</i></button>
+            <button class="fmt-btn" onclick="insertFormat('n')" title="Underline"><u>U</u></button>
+            <button class="fmt-btn" onclick="insertFormat('m')" title="Strikethrough"><s>S</s></button>
+            <button class="fmt-btn" onclick="insertFormat('r')" title="Reset">R</button>
+        </div>
+        <div class="field">
+            <textarea id="pageContent" placeholder="Write page content here...&#10;&#10;Use formatting buttons above for colors.&#10;Max ~256 chars per page for readability."></textarea>
+            <div class="hint" id="charCount">0 / 1024 chars</div>
+        </div>
+    </section>
+    <section>
+        <h3>Actions</h3>
+        <div class="btn-row">
+            <button class="btn btn-primary" onclick="generateCommand()">Generate Command</button>
+            <button class="btn" onclick="saveBookJson()">Save JSON</button>
+            <button class="btn" onclick="loadBookJson()">Load JSON</button>
+        </div>
+    </section>
+</div>
+
+<div class="main-area">
+    <div class="toolbar">
+        <button class="btn" onclick="previewPage = Math.max(0, previewPage - 2); renderPreview()">&#9664; Prev</button>
+        <span id="previewPageInfo">Page 1</span>
+        <button class="btn" onclick="previewPage = Math.min(pages.length - 1, previewPage + 2); renderPreview()">Next &#9654;</button>
+        <div class="info" id="bookInfo">1 page</div>
+    </div>
+    <div class="preview-area">
+        <div class="book-preview" id="bookPreview"></div>
+    </div>
+</div>
+
+<div class="cmd-panel" id="cmdPanel">
+    <div class="cmd-header">
+        <span style="font-size:12px;">Generated Command</span>
+        <div>
+            <button class="btn btn-sm" onclick="copyCommand()">Copy</button>
+            <button class="btn btn-sm" onclick="document.getElementById('cmdPanel').classList.remove('open')">Close</button>
+        </div>
+    </div>
+    <div class="cmd-output" id="cmdOutput"></div>
+</div>
+
+<script>
+// MC formatting code colors
+const MC_COLORS = {
+    '0': '#000000', '1': '#0000AA', '2': '#00AA00', '3': '#00AAAA',
+    '4': '#AA0000', '5': '#AA00AA', '6': '#FFAA00', '7': '#AAAAAA',
+    '8': '#555555', '9': '#5555FF', 'a': '#55FF55', 'b': '#55FFFF',
+    'c': '#FF5555', 'd': '#FF55FF', 'e': '#FFFF55', 'f': '#FFFFFF'
+};
+
+let pages = [''];
+let currentPage = 0;
+let previewPage = 0;
+
+// --- Page Management ---
+function addPage() {
+    pages.push('');
+    currentPage = pages.length - 1;
+    refreshAll();
+}
+
+function insertPage() {
+    pages.splice(currentPage + 1, 0, '');
+    currentPage = currentPage + 1;
+    refreshAll();
+}
+
+function deleteCurrentPage() {
+    if (pages.length <= 1) {
+        pages = [''];
+        currentPage = 0;
+    } else {
+        pages.splice(currentPage, 1);
+        if (currentPage >= pages.length) currentPage = pages.length - 1;
+    }
+    refreshAll();
+}
+
+function selectPage(idx) {
+    saveCurrent();
+    currentPage = idx;
+    previewPage = idx % 2 === 0 ? idx : idx - 1;
+    loadCurrent();
+    renderPageList();
+    renderPreview();
+}
+
+function saveCurrent() {
+    pages[currentPage] = document.getElementById('pageContent').value;
+}
+
+function loadCurrent() {
+    document.getElementById('pageContent').value = pages[currentPage] || '';
+    updateCharCount();
+}
+
+function refreshAll() {
+    loadCurrent();
+    renderPageList();
+    renderPreview();
+    updateBookInfo();
+}
+
+// --- Page List ---
+function renderPageList() {
+    const list = document.getElementById('pageList');
+    list.innerHTML = '';
+    pages.forEach((page, idx) => {
+        const item = document.createElement('div');
+        item.className = 'page-item' + (idx === currentPage ? ' active' : '');
+        const preview = page.replace(/\u00A7./g, '').substring(0, 30) || '(empty)';
+        item.innerHTML = `<span class="page-num">${idx + 1}</span>
+            <span class="page-preview">${escHtml(preview)}</span>
+            <span class="page-del" onclick="event.stopPropagation(); deletePage(${idx})">&#10005;</span>`;
+        item.onclick = () => selectPage(idx);
+        list.appendChild(item);
+    });
+}
+
+function deletePage(idx) {
+    if (pages.length <= 1) { pages = ['']; currentPage = 0; }
+    else {
+        pages.splice(idx, 1);
+        if (currentPage >= pages.length) currentPage = pages.length - 1;
+    }
+    refreshAll();
+}
+
+// --- Editor ---
+document.getElementById('pageContent').addEventListener('input', () => {
+    saveCurrent();
+    updateCharCount();
+    renderPreview();
+    renderPageList();
+});
+
+function updateCharCount() {
+    const len = (pages[currentPage] || '').length;
+    document.getElementById('charCount').textContent = `${len} / 1024 chars`;
+}
+
+function insertFormat(code) {
+    const ta = document.getElementById('pageContent');
+    const start = ta.selectionStart;
+    const end = ta.selectionEnd;
+    const text = ta.value;
+    const insert = '\u00A7' + code;
+    ta.value = text.substring(0, start) + insert + text.substring(end);
+    ta.selectionStart = ta.selectionEnd = start + insert.length;
+    ta.focus();
+    saveCurrent();
+    updateCharCount();
+    renderPreview();
+}
+
+// --- Preview ---
+function renderPreview() {
+    saveCurrent();
+    const container = document.getElementById('bookPreview');
+    const title = document.getElementById('bookTitle').value || 'Untitled';
+    const author = document.getElementById('bookAuthor').value || 'Unknown';
+
+    // Show two pages (spread)
+    const leftIdx = previewPage % 2 === 0 ? previewPage : previewPage - 1;
+    const rightIdx = leftIdx + 1;
+
+    let html = '';
+
+    // Left page
+    html += '<div class="book-page">';
+    if (leftIdx === 0) {
+        // Title page
+        html += `<div class="book-title-display">${escHtml(title)}</div>`;
+        html += `<div class="book-author-display">by ${escHtml(author)}</div>`;
+        html += `<div class="book-page-content">${formatMcText(pages[0] || '')}</div>`;
+    } else if (leftIdx < pages.length) {
+        html += `<div class="book-page-content">${formatMcText(pages[leftIdx] || '')}</div>`;
+    }
+    html += `<div class="book-page-num">${leftIdx < pages.length ? leftIdx + 1 : ''}</div>`;
+    if (leftIdx > 0) {
+        html += `<div class="book-nav left-arrow" onclick="previewPage = Math.max(0, previewPage - 2); renderPreview()">&#9664;</div>`;
+    }
+    html += '</div>';
+
+    // Spine
+    html += '<div class="book-spine"></div>';
+
+    // Right page
+    html += '<div class="book-page right">';
+    if (rightIdx < pages.length) {
+        html += `<div class="book-page-content">${formatMcText(pages[rightIdx] || '')}</div>`;
+        html += `<div class="book-page-num">${rightIdx + 1}</div>`;
+    }
+    if (rightIdx < pages.length - 1) {
+        html += `<div class="book-nav right-arrow" onclick="previewPage = Math.min(pages.length - 1, previewPage + 2); renderPreview()">&#9654;</div>`;
+    }
+    html += '</div>';
+
+    container.innerHTML = html;
+
+    // Highlight active page
+    const pageEls = container.querySelectorAll('.book-page');
+    if (leftIdx === currentPage && pageEls[0]) pageEls[0].style.background = '#d6d6c6';
+    if (rightIdx === currentPage && pageEls[1]) pageEls[1].style.background = '#d6d6c6';
+
+    // Click to select page
+    if (pageEls[0] && leftIdx < pages.length) pageEls[0].onclick = () => selectPage(leftIdx);
+    if (pageEls[1] && rightIdx < pages.length) pageEls[1].onclick = () => selectPage(rightIdx);
+
+    document.getElementById('previewPageInfo').textContent = `Page ${leftIdx + 1}` + (rightIdx < pages.length ? ` - ${rightIdx + 1}` : '') + ` of ${pages.length}`;
+}
+
+function formatMcText(text) {
+    // Convert MC formatting codes to HTML spans
+    let html = '';
+    let color = null;
+    let bold = false, italic = false, underline = false, strike = false;
+    let i = 0;
+    while (i < text.length) {
+        if (text[i] === '\u00A7' && i + 1 < text.length) {
+            const code = text[i + 1].toLowerCase();
+            if (MC_COLORS[code]) {
+                color = MC_COLORS[code];
+                bold = false; italic = false; underline = false; strike = false;
+            } else if (code === 'l') bold = true;
+            else if (code === 'o') italic = true;
+            else if (code === 'n') underline = true;
+            else if (code === 'm') strike = true;
+            else if (code === 'r') {
+                color = null; bold = false; italic = false; underline = false; strike = false;
+            }
+            i += 2;
+            continue;
+        }
+
+        if (text[i] === '\n') {
+            html += '<br>';
+            i++;
+            continue;
+        }
+
+        let style = '';
+        if (color) style += `color:${color};`;
+        if (bold) style += 'font-weight:bold;';
+        if (italic) style += 'font-style:italic;';
+        let decoration = '';
+        if (underline) decoration += 'underline ';
+        if (strike) decoration += 'line-through ';
+        if (decoration) style += `text-decoration:${decoration.trim()};`;
+
+        if (style) {
+            html += `<span style="${style}">${escHtml(text[i])}</span>`;
+        } else {
+            html += escHtml(text[i]);
+        }
+        i++;
+    }
+    return html;
+}
+
+function updateBookInfo() {
+    document.getElementById('bookInfo').textContent = `${pages.length} page${pages.length !== 1 ? 's' : ''}`;
+}
+
+// --- Command Generation ---
+function generateCommand() {
+    saveCurrent();
+    const title = document.getElementById('bookTitle').value || 'Untitled';
+    const author = document.getElementById('bookAuthor').value || 'Unknown';
+    const generation = document.getElementById('bookGeneration').value;
+    const contractAllowed = document.getElementById('contractAllowed').checked;
+
+    // Build NBT pages list
+    const pagesNbt = pages.map(p => {
+        // Escape for SNBT string
+        const escaped = p.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+        return `'${escSnbtString(p)}'`;
+    });
+
+    let nbt = `{`;
+    nbt += `pages:[${pagesNbt.join(',')}]`;
+    nbt += `,title:"${escSnbtQuoted(title)}"`;
+    nbt += `,author:"${escSnbtQuoted(author)}"`;
+    nbt += `,generation:${generation}`;
+    if (contractAllowed) {
+        nbt += `,contract_allowed:1b`;
+    }
+    nbt += `}`;
+
+    const command = `/give @s lostdepths:infused_written_book${nbt}`;
+
+    document.getElementById('cmdOutput').textContent = command;
+    document.getElementById('cmdPanel').classList.add('open');
+}
+
+function escSnbtString(s) {
+    return s.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+}
+
+function escSnbtQuoted(s) {
+    return s.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+}
+
+function copyCommand() {
+    const text = document.getElementById('cmdOutput').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+        document.getElementById('bookInfo').textContent = 'Copied!';
+        setTimeout(updateBookInfo, 2000);
+    });
+}
+
+// --- Save/Load ---
+function saveBookJson() {
+    saveCurrent();
+    const data = {
+        title: document.getElementById('bookTitle').value,
+        author: document.getElementById('bookAuthor').value,
+        generation: parseInt(document.getElementById('bookGeneration').value),
+        contractAllowed: document.getElementById('contractAllowed').checked,
+        pages: pages
+    };
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = (data.title || 'book').replace(/[^a-zA-Z0-9_-]/g, '_') + '.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+}
+
+function loadBookJson() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.json';
+    input.onchange = e => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = ev => {
+            try {
+                const data = JSON.parse(ev.target.result);
+                document.getElementById('bookTitle').value = data.title || '';
+                document.getElementById('bookAuthor').value = data.author || '';
+                document.getElementById('bookGeneration').value = data.generation || 0;
+                document.getElementById('contractAllowed').checked = !!data.contractAllowed;
+                pages = data.pages && data.pages.length > 0 ? data.pages : [''];
+                currentPage = 0;
+                previewPage = 0;
+                refreshAll();
+            } catch (err) {
+                alert('Invalid file: ' + err.message);
+            }
+        };
+        reader.readAsText(file);
+    };
+    input.click();
+}
+
+// --- Utilities ---
+function escHtml(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+// --- Event listeners for live preview updates ---
+['bookTitle', 'bookAuthor'].forEach(id => {
+    document.getElementById(id).addEventListener('input', renderPreview);
+});
+
+// --- Init ---
+refreshAll();
+</script>
+</body>
+</html>

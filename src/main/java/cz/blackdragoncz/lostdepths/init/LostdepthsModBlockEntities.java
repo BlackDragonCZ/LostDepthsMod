@@ -6,6 +6,7 @@ package cz.blackdragoncz.lostdepths.init;
 
 import cz.blackdragoncz.lostdepths.block.entity.*;
 import cz.blackdragoncz.lostdepths.block.multiblock.MultiblockDummyBlockEntity;
+import cz.blackdragoncz.lostdepths.block.power.entity.NurostarBatteryBlockEntity;
 import cz.blackdragoncz.lostdepths.block.power.entity.NurostarCableBlockEntity;
 import cz.blackdragoncz.lostdepths.block.power.entity.NurostarGeneratorBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -46,6 +47,8 @@ public class LostdepthsModBlockEntities {
 	public static final RegistryObject<BlockEntityType<BlackHoleCompressorBlockEntity>> BLACK_HOLE_COMPRESSOR = register("black_hole_compressor", LostdepthsModBlocks.BLACK_HOLE_COMPRESSOR, BlackHoleCompressorBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<NurostarCableBlockEntity>> NUROSTAR_CABLE = register("nurostar_cable", LostdepthsModBlocks.NUROSTAR_CABLE, NurostarCableBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<NurostarGeneratorBlockEntity>> NUROSTAR_GENRATOR = register("nurostar_generator", LostdepthsModBlocks.NUROSTAR_GENERATOR, NurostarGeneratorBlockEntity::new);
+	public static final RegistryObject<BlockEntityType<NurostarBatteryBlockEntity>> NUROSTAR_BATTERY = register("nurostar_battery", LostdepthsModBlocks.NUROSTAR_BATTERY, NurostarBatteryBlockEntity::new);
+	public static final RegistryObject<BlockEntityType<NurostarBatteryBlockEntity>> NUROSTAR_LARGE_BATTERY = REGISTRY.register("nurostar_large_battery", () -> BlockEntityType.Builder.of(NurostarBatteryBlockEntity::createLarge, LostdepthsModBlocks.NUROSTAR_LARGE_BATTERY.get()).build(null));
 	public static final RegistryObject<BlockEntityType<InfusedSignBlockEntity>> INFUSED_SIGN = REGISTRY.register("infused_sign", () -> BlockEntityType.Builder.of(InfusedSignBlockEntity::new, LostdepthsModBlocks.INFUSED_SIGN.get(), LostdepthsModBlocks.INFUSED_WALL_SIGN.get()).build(null));
 	public static final RegistryObject<BlockEntityType<InfusedHangingSignBlockEntity>> INFUSED_HANGING_SIGN = REGISTRY.register("infused_hanging_sign", () -> BlockEntityType.Builder.of(InfusedHangingSignBlockEntity::new, LostdepthsModBlocks.INFUSED_HANGING_SIGN.get(), LostdepthsModBlocks.INFUSED_WALL_HANGING_SIGN.get()).build(null));
 	public static final RegistryObject<BlockEntityType<InfusedDisplayPlateBlockEntity>> INFUSED_DISPLAY_PLATE = register("infused_display_plate", LostdepthsModBlocks.INFUSED_DISPLAY_PLATE, InfusedDisplayPlateBlockEntity::new);

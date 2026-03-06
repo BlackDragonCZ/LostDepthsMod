@@ -25,6 +25,7 @@ public class LostdepthsModScreens {
 			MenuScreens.register(LostdepthsModMenus.PORTABLE_BEACON_GUI.get(), PortableBeaconGUIScreen::new);
 			MenuScreens.register(LostdepthsModMenus.MODULATOR_GUI.get(), ModulatorGUIScreen::new);
 			MenuScreens.register(LostdepthsModMenus.NUROSTAR_GENERATOR_MENU.get(), NurostarGeneratorScreen::new);
+			MenuScreens.register(LostdepthsModMenus.NUROSTAR_BATTERY_MENU.get(), NurostarBatteryScreen::new);
 		});
 	}
 }
