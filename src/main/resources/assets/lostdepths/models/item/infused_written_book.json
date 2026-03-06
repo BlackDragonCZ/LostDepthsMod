@@ -1,0 +1,12 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "lostdepths:item/book_icon"
+  },
+  "overrides": [
+    {
+      "predicate": { "lostdepths:contract_signed": 1 },
+      "model": "lostdepths:item/infused_written_book_signed"
+    }
+  ]
+}

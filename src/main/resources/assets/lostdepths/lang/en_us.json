@@ -865,5 +865,7 @@
   "enchantment.lostdepths.advanced_looting": "§3Advanced Looting",
   "attribute.name.lostdepths.mining_speed": "Mining Speed",
   "entity.lostdepths.projectile_prime_draconic_trident": "Prime Draconic Trident",
-  "entity.lostdepths.projectile_draconic_trident": "Draconic Trident"
+  "entity.lostdepths.projectile_draconic_trident": "Draconic Trident",
+  "item.lostdepths.infused_writable_book": "Infused Writing Book",
+  "item.lostdepths.infused_written_book": "Infused Written Book"
 }

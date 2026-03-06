@@ -1,6 +1,7 @@
 package cz.blackdragoncz.lostdepths.init;
 
 import cz.blackdragoncz.lostdepths.item.armor.*;
+import cz.blackdragoncz.lostdepths.item.book.*;
 import cz.blackdragoncz.lostdepths.item.chemistry.*;
 import cz.blackdragoncz.lostdepths.item.food.*;
 import cz.blackdragoncz.lostdepths.item.icon.*;
@@ -652,6 +653,8 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> ORGANIC_POWER_CELL = REGISTRY.register("organic_power_cell", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> LASER_GATE_A = block(LostdepthsModBlocks.LASER_GATE_A);
 	public static final RegistryObject<Item> NETHERITE_DUST = REGISTRY.register("netherite_dust", MasterPartRegistryItem::new);
+	public static final RegistryObject<Item> INFUSED_WRITABLE_BOOK = REGISTRY.register("infused_writable_book", InfusedWritableBookItem::new);
+	public static final RegistryObject<Item> INFUSED_WRITTEN_BOOK = REGISTRY.register("infused_written_book", InfusedWrittenBookItem::new);
 
     //TODO: finish resource extractor
 	//public static final RegistryObject<Item> RESOURCE_EXTRACTOR = block(LostdepthsModBlocks.RESOURCE_EXTRACTOR);

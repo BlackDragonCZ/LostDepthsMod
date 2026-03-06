@@ -18,6 +18,8 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RenderGuiEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
@@ -25,6 +27,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.LogicalSide;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 public class ClientSide {
@@ -42,11 +45,23 @@ public class ClientSide {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         modEventBus.addListener(this::registerEntityRenderers);
+        modEventBus.addListener(this::onClientSetup);
         MinecraftForge.EVENT_BUS.addListener(this::renderPlayer);
         MinecraftForge.EVENT_BUS.addListener(this::renderOverlay);
 
         final var forgeBus = MinecraftForge.EVENT_BUS;
         forgeBus.addListener(this::onClientTick);
+    }
+
+    public void onClientSetup(final FMLClientSetupEvent event) {
+        event.enqueueWork(() -> {
+            ItemProperties.register(LostdepthsModItems.INFUSED_WRITTEN_BOOK.get(),
+                    LostdepthsMod.rl("contract_signed"),
+                    (stack, level, entity, seed) -> {
+                        CompoundTag tag = stack.getTag();
+                        return tag != null && tag.contains("contract_signer") ? 1.0F : 0.0F;
+                    });
+        });
     }
 
     public void onClientTick(final TickEvent.ClientTickEvent event) {

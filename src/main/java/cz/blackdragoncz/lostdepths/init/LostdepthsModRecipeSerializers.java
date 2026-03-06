@@ -2,6 +2,7 @@ package cz.blackdragoncz.lostdepths.init;
 
 import cz.blackdragoncz.lostdepths.LostdepthsMod;
 import cz.blackdragoncz.lostdepths.recipe.*;
+import net.minecraft.world.item.crafting.SimpleCraftingRecipeSerializer;
 import net.minecraft.core.NonNullList;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -91,4 +92,5 @@ public class LostdepthsModRecipeSerializers {
 
     public static final RegistryObject<ItemUseRecipe.Serializer> ITEM_USE = REGISTRY_SERIALIZER.register("item_use", ItemUseRecipe.Serializer::new);
     public static final RegistryObject<MetaMaterializerRecipe.Serializer> META_MATERIALIZER = REGISTRY_SERIALIZER.register("meta_materializer", MetaMaterializerRecipe.Serializer::new);
+    public static final RegistryObject<SimpleCraftingRecipeSerializer<InfusedBookCloningRecipe>> INFUSED_BOOK_CLONING = REGISTRY_SERIALIZER.register("infused_book_cloning", () -> new SimpleCraftingRecipeSerializer<>(InfusedBookCloningRecipe::new));
 }
