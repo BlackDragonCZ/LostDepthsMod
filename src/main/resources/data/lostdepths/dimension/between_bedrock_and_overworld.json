@@ -30,7 +30,10 @@
         "Name": "lostdepths:space_rock"
       },
       "default_fluid": {
-        "Name": "lostdepths:space_rock"
+        "Name": "minecraft:water",
+        "Properties": {
+          "level": "0"
+        }
       },
       "spawn_target": [],
       "noise": {

@@ -8,6 +8,7 @@ import cz.blackdragoncz.lostdepths.block.ore.*;
 import cz.blackdragoncz.lostdepths.block.plant.*;
 import cz.blackdragoncz.lostdepths.block.power.*;
 import cz.blackdragoncz.lostdepths.block.machine.*;
+import cz.blackdragoncz.lostdepths.block.multiblock.*;
 import cz.blackdragoncz.lostdepths.block.puzzle.*;
 import cz.blackdragoncz.lostdepths.block.security.*;
 import cz.blackdragoncz.lostdepths.block.structure.*;
@@ -306,6 +307,8 @@ public class LostdepthsModBlocks {
 	public static final RegistryObject<Block> WORMHOLE_DISRUPTOR = REGISTRY.register("wormhole_disruptor", WormholeDisruptorBlock::new); //TODO: add functionality
 	public static final RegistryObject<Block> SECURITY_CLEARANCE_A = REGISTRY.register("security_clearance_a", () -> new SecurityClearanceBlock(1, 'b'));
 	public static final RegistryObject<Block> LASER_GATE_A = REGISTRY.register("laser_gate_a", () -> new LaserGateBlock(1, 'b'));
+
+	public static final RegistryObject<Block> MULTIBLOCK_DUMMY = REGISTRY.register("multiblock_dummy", MultiblockDummyBlock::new);
 
     //TODO: finish resource extractor aka drill machine
 	//public static final RegistryObject<Block> RESOURCE_EXTRACTOR = REGISTRY.register("resource_extractor", ResourceExtractor::new);

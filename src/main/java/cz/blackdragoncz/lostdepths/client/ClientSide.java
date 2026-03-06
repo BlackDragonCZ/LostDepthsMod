@@ -3,6 +3,7 @@ package cz.blackdragoncz.lostdepths.client;
 import cz.blackdragoncz.lostdepths.LostdepthsMod;
 import cz.blackdragoncz.lostdepths.client.renderer.block.AlloyWorkstationRenderer;
 import cz.blackdragoncz.lostdepths.client.renderer.block.GalacticWorkstationRenderer;
+import cz.blackdragoncz.lostdepths.client.renderer.block.InfusedDisplayPlateRenderer;
 import cz.blackdragoncz.lostdepths.client.renderer.block.MetaCollectorBlockEntityRenderer;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModBlockEntities;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModItems;
@@ -168,6 +169,7 @@ public class ClientSide {
         BlockEntityRenderers.register(LostdepthsModBlockEntities.INFUSED_SIGN.get(), SignRenderer::new);
         BlockEntityRenderers.register(LostdepthsModBlockEntities.INFUSED_HANGING_SIGN.get(), HangingSignRenderer::new);
         BlockEntityRenderers.register(LostdepthsModBlockEntities.META_COLLECTOR.get(), MetaCollectorBlockEntityRenderer::new);
+        BlockEntityRenderers.register(LostdepthsModBlockEntities.INFUSED_DISPLAY_PLATE.get(), InfusedDisplayPlateRenderer::new);
     }
 
 }

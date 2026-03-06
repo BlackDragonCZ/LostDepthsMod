@@ -1,4 +1,5 @@
 {
+  "message.lostdepths.not_enough_space": "Not enough space",
   "item.lostdepths.titanium_metalloy_scrap": "Titanium-Metalloy Scrap",
   "block.lostdepths.celestial_logs_red": "Celestial Log",
   "item.lostdepths.security_pass_6": "Security Pass (Level Six)",
@@ -215,9 +216,7 @@
   "advancements.w_2_adv.title": "Cosmic Technology",
   "subtitles.flapper_ambient": "",
   "advancements.crystalized_pickaxe_adv.descr": "Craft Crystalized Pickaxe",
-  "biome.lostdepths.sun_forest_2": "Forbidden Lands",
   "item.lostdepths.over_charge_coil": "Over-Charge Coil",
-  "biome.lostdepths.sun_forest_3": "Corrupted Meadows",
   "advancements.cosmerite_adv.descr": "Create Condensed Cosmerite for elite tools",
   "item.lostdepths.negametric_isotope": "Negametric Isotope",
   "block.lostdepths.meta_materializer": "Meta Materializer",

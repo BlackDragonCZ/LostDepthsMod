@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "pattern": [
-    " IG",
+    " I ",
     "IAI",
     " I "
   ],
@@ -12,9 +12,6 @@
     },
     "I": {
       "item": "lostdepths:infused_iron"
-    },
-    "G": {
-      "item": "minecraft:bedrock"
     }
   },
   "result": {

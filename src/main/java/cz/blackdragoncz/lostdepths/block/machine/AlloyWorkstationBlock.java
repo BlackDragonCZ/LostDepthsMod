@@ -1,6 +1,9 @@
 
 package cz.blackdragoncz.lostdepths.block.machine;
 
+import cz.blackdragoncz.lostdepths.block.multiblock.MultiblockDummyBlock;
+import cz.blackdragoncz.lostdepths.block.multiblock.MultiblockHelper;
+import cz.blackdragoncz.lostdepths.init.LostdepthsModBlocks;
 import cz.blackdragoncz.lostdepths.util.NothingNullByDefault;
 import net.minecraftforge.network.NetworkHooks;
 
@@ -29,6 +32,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.InteractionResult;
@@ -54,6 +58,12 @@ import org.jetbrains.annotations.Nullable;
 public class AlloyWorkstationBlock extends Block implements EntityBlock {
 
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
+
+	// 3 wide: controller at center, one block left and one block right (defined for NORTH facing)
+	private static final List<BlockPos> PART_OFFSETS = List.of(
+			new BlockPos(-1, 0, 0),
+			new BlockPos(1, 0, 0)
+	);
 
 	public AlloyWorkstationBlock() {
 		super(BlockBehaviour.Properties.of()
@@ -97,6 +107,17 @@ public class AlloyWorkstationBlock extends Block implements EntityBlock {
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
 		return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
+	}
+
+	@Override
+	public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
+		super.setPlacedBy(level, pos, state, placer, stack);
+		if (!level.isClientSide && placer instanceof Player player) {
+			Direction facing = state.getValue(FACING);
+			if (!MultiblockHelper.tryPlace(level, pos, facing, PART_OFFSETS, player, LostdepthsModBlocks.MULTIBLOCK_DUMMY.get())) {
+				level.destroyBlock(pos, true);
+			}
+		}
 	}
 
 	@Override
@@ -166,6 +187,10 @@ public class AlloyWorkstationBlock extends Block implements EntityBlock {
 			if (blockEntity instanceof AlloyWorkstationBlockEntity be) {
 				Containers.dropContents(world, pos, be);
 				world.updateNeighbourForOutputSignal(pos, this);
+			}
+			// Remove dummy parts
+			if (!world.isClientSide) {
+				MultiblockHelper.removeParts(world, pos, state.getValue(FACING), PART_OFFSETS);
 			}
 			super.onRemove(state, world, pos, newState, isMoving);
 		}

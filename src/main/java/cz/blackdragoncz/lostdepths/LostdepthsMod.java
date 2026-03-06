@@ -24,7 +24,9 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.common.MinecraftForge;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.core.registries.Registries;
 
 import java.util.*;
 import java.util.function.Supplier;
@@ -58,6 +60,9 @@ public class LostdepthsMod {
         LostdepthsModModifiers.REGISTRY.register(bus);
         LostdepthsModAttributes.REGISTRY.register(bus);
         //WORLD
+        // TODO: verify intrusion mods populators - other mods may add structures to lostdepths dimensions
+        //  Check which mods generate foreign structures in below_bedrock/between_bedrock_and_overworld/lost_dungeons
+        //  and add Forge event filtering or biome tag exclusions to prevent it
 		StructureFeature.REGISTRY.register(bus);
 		LostdepthsModMobEffects.REGISTRY.register(bus);
 		LostdepthsModPotions.REGISTRY.register(bus);
@@ -111,5 +116,24 @@ public class LostdepthsMod {
 	public void onServerStarting(ServerStartingEvent event)
 	{
 		LOGGER.info("Mlem all other mods :3");
+	}
+
+	@SubscribeEvent
+	public void onMobSpawn(net.minecraftforge.event.entity.living.MobSpawnEvent.FinalizeSpawn event) {
+		if (!(event.getEntity() instanceof cz.blackdragoncz.lostdepths.entity.TheProtectorEntity)) return;
+
+		String dimensionId = event.getLevel().getLevel().dimension().location().toString();
+		if (!LostDepthsConfig.isAllowed(dimensionId, LostDepthsConfig.THE_PROTECTOR_DIMENSIONS)) {
+			event.setSpawnCancelled(true);
+			return;
+		}
+
+		var biomeHolder = event.getLevel().getBiome(event.getEntity().blockPosition());
+		biomeHolder.unwrapKey().ifPresent(biomeKey -> {
+			String biomeId = biomeKey.location().toString();
+			if (!LostDepthsConfig.isAllowed(biomeId, LostDepthsConfig.THE_PROTECTOR_BIOMES)) {
+				event.setSpawnCancelled(true);
+			}
+		});
 	}
 }

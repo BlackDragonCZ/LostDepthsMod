@@ -12,7 +12,6 @@
       "state": {
         "Name": "lostdepths:celestial_leaves_red",
         "Properties": {
-          "axis": "y",
           "distance": "7",
           "persistent": "false",
           "waterlogged": "false"
@@ -47,7 +46,6 @@
       "limit": 1,
       "lower_size": 0,
       "upper_size": 1
-    },
-    "decorators": []
+    }
   }
 }

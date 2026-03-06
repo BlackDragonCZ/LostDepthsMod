@@ -2,9 +2,7 @@
   "type": "forge:add_features",
   "biomes": [
     "lostdepths:lost_souls",
-    "lostdepths:sun_forest",
-    "lostdepths:sun_forest_2",
-    "lostdepths:sun_forest_3"
+    "lostdepths:sun_forest"
   ],
   "features": "lostdepths:fungal_space_rock",
   "step": "underground_ores"

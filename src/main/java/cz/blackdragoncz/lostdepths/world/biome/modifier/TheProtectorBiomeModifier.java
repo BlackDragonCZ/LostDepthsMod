@@ -16,8 +16,10 @@ import org.jetbrains.annotations.NotNull;
 public record TheProtectorBiomeModifier(HolderSet<Biome> biomes) implements BiomeModifier {
 
     @Override
-    public void modify(Holder<Biome> biome, Phase phase, ModifiableBiomeInfo.BiomeInfo.@NotNull Builder builder)
-    {
+    public void modify(Holder<Biome> biome, Phase phase, ModifiableBiomeInfo.BiomeInfo.@NotNull Builder builder) {
+        if (phase != Phase.ADD) return;
+        if (!this.biomes.contains(biome)) return;
+
         builder.getMobSpawnSettings().addSpawn(
                 MobCategory.CREATURE,
                 new MobSpawnSettings.SpawnerData(LostdepthsModEntities.THE_PROTECTOR.get(), LostDepthsConfig.THE_PROTECTOR_SPAWN_WEIGHT, 1, 1));

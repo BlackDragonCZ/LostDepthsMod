@@ -22,7 +22,7 @@
     "settings": {
       "name": "lostdepths:below_bedrock",
       "sea_level": 32,
-      "legacy_random_source": true,
+      "legacy_random_source": false,
       "disable_mob_generation": false,
       "aquifers_enabled": false,
       "ore_veins_enabled": false,
@@ -50,24 +50,8 @@
         "fluid_level_floodedness": 0,
         "fluid_level_spread": 0,
         "lava": 0,
-        "temperature": {
-          "type": "minecraft:shifted_noise",
-          "noise": "minecraft:temperature",
-          "xz_scale": 0.25,
-          "y_scale": 0,
-          "shift_x": "minecraft:shift_x",
-          "shift_y": 0,
-          "shift_z": "minecraft:shift_z"
-        },
-        "vegetation": {
-          "type": "minecraft:shifted_noise",
-          "noise": "minecraft:vegetation",
-          "xz_scale": 0.25,
-          "y_scale": 0,
-          "shift_x": "minecraft:shift_x",
-          "shift_y": 0,
-          "shift_z": "minecraft:shift_z"
-        },
+        "temperature": 0,
+        "vegetation": 0,
         "continents": 0,
         "erosion": 0,
         "depth": 0,

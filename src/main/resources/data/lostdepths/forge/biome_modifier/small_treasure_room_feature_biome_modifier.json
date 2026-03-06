@@ -1,8 +1,9 @@
 {
   "type": "forge:add_features",
   "biomes": [
+    "lostdepths:lost_souls",
     "lostdepths:sun_forest"
   ],
-  "features": "lostdepths:sunder_tree_feature",
+  "features": "lostdepths:small_treasure_room_feature",
   "step": "surface_structures"
 }
