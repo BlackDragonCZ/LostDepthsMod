@@ -77,6 +77,7 @@ public abstract class AbstractCompressorBlock extends BaseEntityBlock {
     @Override
     public InteractionResult use(@NotNull BlockState blockstate, @NotNull Level world, @NotNull BlockPos pos, @NotNull Player entity, @NotNull InteractionHand hand, @NotNull BlockHitResult hit) {
         super.use(blockstate, world, pos, entity, hand, hit);
+        if (entity.isSpectator()) return InteractionResult.PASS;
         if (entity instanceof ServerPlayer player) {
             NetworkHooks.openScreen(player, new MenuProvider() {
                 @Override
