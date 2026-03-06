@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lost Depths - GUI Editor</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #e0e0e0; display: flex; height: 100vh; overflow: hidden; }
+
+/* Sidebar */
+.sidebar { width: 260px; background: #16213e; border-right: 1px solid #0f3460; display: flex; flex-direction: column; }
+.sidebar h2 { padding: 12px 16px; background: #0f3460; font-size: 14px; letter-spacing: 1px; }
+.sidebar section { padding: 10px 16px; border-bottom: 1px solid #0f3460; }
+.sidebar section h3 { font-size: 12px; color: #8899aa; margin-bottom: 8px; text-transform: uppercase; }
+
+.palette-item {
+    display: inline-block; padding: 6px 10px; margin: 2px; background: #1a1a3e;
+    border: 1px solid #334; border-radius: 4px; cursor: grab; font-size: 12px; user-select: none;
+}
+.palette-item:hover { background: #2a2a5e; border-color: #55c; }
+.palette-item.slot-in { border-color: #4a4; }
+.palette-item.slot-out { border-color: #a44; }
+.palette-item.slot-fuel { border-color: #a84; }
+.palette-item.progress { border-color: #48a; }
+.palette-item.energy { border-color: #a4a; }
+.palette-item.label { border-color: #888; }
+.palette-item.player-inv { border-color: #666; }
+.palette-item.button-el { border-color: #aa6; }
+.palette-item.slot-grid { border-color: #6a8; }
+
+/* Properties */
+#properties { flex: 1; overflow-y: auto; }
+#properties .prop-row { display: flex; align-items: center; margin: 4px 0; }
+#properties .prop-row label { width: 70px; font-size: 11px; color: #8899aa; }
+#properties .prop-row input, #properties .prop-row select {
+    flex: 1; background: #1a1a3e; border: 1px solid #334; color: #e0e0e0;
+    padding: 4px 6px; border-radius: 3px; font-size: 12px;
+}
+
+/* Canvas area */
+.canvas-area { flex: 1; display: flex; flex-direction: column; }
+.toolbar {
+    height: 40px; background: #16213e; border-bottom: 1px solid #0f3460;
+    display: flex; align-items: center; padding: 0 16px; gap: 8px;
+}
+.toolbar button {
+    background: #1a1a3e; border: 1px solid #334; color: #e0e0e0;
+    padding: 5px 12px; border-radius: 4px; cursor: pointer; font-size: 12px;
+}
+.toolbar button:hover { background: #2a2a5e; }
+.toolbar button.danger { border-color: #a44; }
+.toolbar button.danger:hover { background: #4a2020; }
+.toolbar .sep { width: 1px; height: 20px; background: #334; }
+.toolbar label { font-size: 12px; }
+.toolbar input { width: 50px; background: #1a1a3e; border: 1px solid #334; color: #e0e0e0; padding: 3px 6px; border-radius: 3px; font-size: 12px; }
+.toolbar .info { font-size: 11px; color: #6688aa; margin-left: auto; }
+
+.canvas-wrap { flex: 1; overflow: auto; display: flex; align-items: center; justify-content: center; background: #111122; }
+canvas { image-rendering: pixelated; cursor: crosshair; }
+
+/* Code panel */
+.code-panel {
+    position: fixed; top: 0; right: 0; width: 50%; height: 100%; background: #0d0d1a;
+    border-left: 2px solid #0f3460; z-index: 100; display: none; flex-direction: column;
+}
+.code-panel.open { display: flex; }
+.code-panel .code-header {
+    padding: 10px 16px; background: #16213e; display: flex; align-items: center; justify-content: space-between;
+}
+.code-panel .code-header button { background: #1a1a3e; border: 1px solid #334; color: #e0e0e0; padding: 5px 12px; border-radius: 4px; cursor: pointer; }
+.code-panel pre {
+    flex: 1; overflow: auto; padding: 16px; font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 13px; line-height: 1.5; white-space: pre; tab-size: 4; color: #c0d0e0;
+}
+.code-tabs { display: flex; gap: 0; }
+.code-tab {
+    padding: 6px 16px; cursor: pointer; background: #1a1a3e; border: 1px solid #334;
+    border-bottom: none; font-size: 12px; color: #8899aa;
+}
+.code-tab.active { background: #0d0d1a; color: #e0e0e0; border-bottom: 1px solid #0d0d1a; }
+
+/* Context menu */
+.context-menu {
+    position: fixed; background: #16213e; border: 1px solid #0f3460; border-radius: 4px;
+    padding: 4px 0; z-index: 200; display: none; min-width: 120px;
+}
+.context-menu div {
+    padding: 6px 16px; cursor: pointer; font-size: 12px;
+}
+.context-menu div:hover { background: #0f3460; }
+.context-menu div.danger { color: #f66; }
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>GUI EDITOR</h2>
+    <section>
+        <h3>Background</h3>
+        <div class="prop-row">
+            <label>Width:</label>
+            <input type="number" id="bgWidth" value="176" min="16" max="512" step="1">
+        </div>
+        <div class="prop-row">
+            <label>Height:</label>
+            <input type="number" id="bgHeight" value="166" min="16" max="512" step="1">
+        </div>
+        <div class="prop-row">
+            <label>Texture:</label>
+            <input type="text" id="bgTexture" value="gui_texture" style="width:100%">
+        </div>
+    </section>
+    <section>
+        <h3>Elements</h3>
+        <div class="palette-item slot-in" draggable="true" data-type="slot_input">Input Slot</div>
+        <div class="palette-item slot-out" draggable="true" data-type="slot_output">Output Slot</div>
+        <div class="palette-item slot-fuel" draggable="true" data-type="slot_fuel">Fuel Slot</div>
+        <div class="palette-item progress" draggable="true" data-type="progress_arrow">Progress Arrow</div>
+        <div class="palette-item energy" draggable="true" data-type="energy_bar">Energy Bar</div>
+        <div class="palette-item label" draggable="true" data-type="label">Text Label</div>
+        <div class="palette-item player-inv" draggable="true" data-type="player_inventory">Player Inventory</div>
+        <div class="palette-item slot-grid" draggable="true" data-type="slot_grid">Slot Grid</div>
+        <div class="palette-item button-el" draggable="true" data-type="button">Button</div>
+    </section>
+    <section>
+        <h3>Function</h3>
+        <div class="prop-row">
+            <label>Name:</label>
+            <input type="text" id="funcName" value="MyMachineScreen">
+        </div>
+        <div class="prop-row">
+            <label>Menu:</label>
+            <input type="text" id="menuName" value="MyMachineMenu">
+        </div>
+    </section>
+    <section id="properties">
+        <h3>Properties</h3>
+        <div id="propContent" style="color:#667;font-size:12px;">Select an element</div>
+    </section>
+</div>
+
+<div class="canvas-area">
+    <div class="toolbar">
+        <button onclick="exportCode()">Export Code</button>
+        <div class="sep"></div>
+        <button onclick="saveProject()">Save</button>
+        <button onclick="loadProject()">Load</button>
+        <div class="sep"></div>
+        <label>Zoom:</label>
+        <input type="range" id="zoomSlider" min="1" max="6" value="3" step="1" style="width:80px" oninput="setZoom(this.value)">
+        <div class="sep"></div>
+        <button class="danger" onclick="clearAll()">Clear All</button>
+        <div class="info" id="statusBar">Ready</div>
+    </div>
+    <div class="canvas-wrap">
+        <canvas id="canvas" width="528" height="498"></canvas>
+    </div>
+</div>
+
+<div class="code-panel" id="codePanel">
+    <div class="code-header">
+        <div class="code-tabs">
+            <div class="code-tab active" onclick="showCodeTab('screen')">Screen</div>
+            <div class="code-tab" onclick="showCodeTab('menu')">Menu</div>
+        </div>
+        <div>
+            <button onclick="copyCode()">Copy</button>
+            <button onclick="document.getElementById('codePanel').classList.remove('open')">Close</button>
+        </div>
+    </div>
+    <pre id="codeOutput"></pre>
+</div>
+
+<div class="context-menu" id="contextMenu">
+    <div onclick="duplicateElement()">Duplicate</div>
+    <div onclick="bringToFront()">Bring to Front</div>
+    <div onclick="sendToBack()">Send to Back</div>
+    <div class="danger" onclick="deleteElement()">Delete</div>
+</div>
+
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+let zoom = 3;
+let elements = [];
+let selectedEl = null;
+let dragging = false;
+let dragOffset = { x: 0, y: 0 };
+let nextSlotId = 0;
+
+const SLOT_SIZE = 18;
+const COLORS = {
+    slot_input: '#4a4',
+    slot_output: '#c44',
+    slot_fuel: '#a84',
+    slot_grid: '#6a8',
+    progress_arrow: '#48a',
+    energy_bar: '#a4a',
+    label: '#888',
+    player_inventory: '#555',
+    button: '#aa6'
+};
+
+const DEFAULTS = {
+    slot_input: { w: 18, h: 18, label: 'in' },
+    slot_output: { w: 18, h: 18, label: 'out' },
+    slot_fuel: { w: 18, h: 18, label: 'fuel' },
+    slot_grid: { w: 54, h: 54, label: 'grid' },
+    progress_arrow: { w: 24, h: 17, label: '' },
+    energy_bar: { w: 14, h: 42, label: '' },
+    label: { w: 60, h: 10, label: 'Title', text: 'Title' },
+    player_inventory: { w: 162, h: 76, label: '' },
+    button: { w: 20, h: 20, label: 'btn', text: 'Button' }
+};
+
+function getBgW() { return parseInt(document.getElementById('bgWidth').value) || 176; }
+function getBgH() { return parseInt(document.getElementById('bgHeight').value) || 166; }
+
+function setZoom(v) {
+    zoom = parseInt(v);
+    canvas.width = getBgW() * zoom;
+    canvas.height = getBgH() * zoom;
+    render();
+}
+
+function updateCanvasSize() {
+    canvas.width = getBgW() * zoom;
+    canvas.height = getBgH() * zoom;
+    render();
+}
+
+document.getElementById('bgWidth').addEventListener('change', updateCanvasSize);
+document.getElementById('bgHeight').addEventListener('change', updateCanvasSize);
+
+// Palette drag
+document.querySelectorAll('.palette-item').forEach(el => {
+    el.addEventListener('dragstart', e => {
+        e.dataTransfer.setData('type', el.dataset.type);
+    });
+});
+
+canvas.addEventListener('dragover', e => { e.preventDefault(); });
+canvas.addEventListener('drop', e => {
+    e.preventDefault();
+    const type = e.dataTransfer.getData('type');
+    if (!type) return;
+    const rect = canvas.getBoundingClientRect();
+    let x = Math.round((e.clientX - rect.left) / zoom);
+    let y = Math.round((e.clientY - rect.top) / zoom);
+    // Snap to grid
+    x = Math.round(x / 2) * 2;
+    y = Math.round(y / 2) * 2;
+    addElement(type, x, y);
+});
+
+function addElement(type, x, y) {
+    const def = DEFAULTS[type];
+    const el = {
+        type, x, y, w: def.w, h: def.h, label: def.label,
+        id: generateId(type),
+        slotIndex: -1,
+        text: def.text || '',
+        uvX: 0, uvY: 0
+    };
+    if (type === 'slot_grid') {
+        el.gridCols = 3;
+        el.gridRows = 3;
+        el.gridSlotType = 'input';
+        el.slotIndex = nextSlotId;
+        nextSlotId += el.gridCols * el.gridRows;
+        el.w = el.gridCols * 18;
+        el.h = el.gridRows * 18;
+    } else if (type.startsWith('slot_')) {
+        el.slotIndex = nextSlotId++;
+        el.label = el.slotIndex.toString();
+    }
+    elements.push(el);
+    selectElement(el);
+    render();
+}
+
+function recalcGridSlots(el) {
+    // Recalculate grid size and reassign slot indices
+    const oldCount = (el._prevCols || el.gridCols) * (el._prevRows || el.gridRows);
+    const newCount = el.gridCols * el.gridRows;
+    el.w = el.gridCols * 18;
+    el.h = el.gridRows * 18;
+    // If grid grew, extend nextSlotId
+    if (newCount > oldCount) {
+        nextSlotId += (newCount - oldCount);
+    }
+    el._prevCols = el.gridCols;
+    el._prevRows = el.gridRows;
+}
+
+function generateId(type) {
+    const base = type.replace('slot_', '').replace('player_', '');
+    const count = elements.filter(e => e.type === type).length;
+    return base + '_' + count;
+}
+
+// Canvas mouse events
+canvas.addEventListener('mousedown', e => {
+    const rect = canvas.getBoundingClientRect();
+    const mx = (e.clientX - rect.left) / zoom;
+    const my = (e.clientY - rect.top) / zoom;
+
+    if (e.button === 2) {
+        // Right click
+        const el = hitTest(mx, my);
+        if (el) {
+            selectElement(el);
+            showContextMenu(e.clientX, e.clientY);
+        }
+        return;
+    }
+
+    const el = hitTest(mx, my);
+    if (el) {
+        selectElement(el);
+        dragging = true;
+        dragOffset.x = mx - el.x;
+        dragOffset.y = my - el.y;
+    } else {
+        selectElement(null);
+    }
+    render();
+});
+
+canvas.addEventListener('mousemove', e => {
+    if (!dragging || !selectedEl) return;
+    const rect = canvas.getBoundingClientRect();
+    let x = (e.clientX - rect.left) / zoom - dragOffset.x;
+    let y = (e.clientY - rect.top) / zoom - dragOffset.y;
+    // Snap to 2px grid
+    selectedEl.x = Math.round(x / 2) * 2;
+    selectedEl.y = Math.round(y / 2) * 2;
+    render();
+    updateProperties();
+});
+
+canvas.addEventListener('mouseup', () => { dragging = false; });
+canvas.addEventListener('contextmenu', e => e.preventDefault());
+
+document.addEventListener('mousedown', e => {
+    if (!e.target.closest('.context-menu')) {
+        document.getElementById('contextMenu').style.display = 'none';
+    }
+});
+
+document.addEventListener('keydown', e => {
+    if (!selectedEl) return;
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (e.key === 'Delete' || e.key === 'Backspace') {
+        deleteElement();
+        e.preventDefault();
+    }
+    // Arrow keys for fine movement
+    const step = e.shiftKey ? 1 : 2;
+    if (e.key === 'ArrowLeft') { selectedEl.x -= step; render(); updateProperties(); e.preventDefault(); }
+    if (e.key === 'ArrowRight') { selectedEl.x += step; render(); updateProperties(); e.preventDefault(); }
+    if (e.key === 'ArrowUp') { selectedEl.y -= step; render(); updateProperties(); e.preventDefault(); }
+    if (e.key === 'ArrowDown') { selectedEl.y += step; render(); updateProperties(); e.preventDefault(); }
+    // Duplicate
+    if (e.key === 'd' && e.ctrlKey) { duplicateElement(); e.preventDefault(); }
+});
+
+function hitTest(mx, my) {
+    for (let i = elements.length - 1; i >= 0; i--) {
+        const el = elements[i];
+        if (mx >= el.x && mx < el.x + el.w && my >= el.y && my < el.y + el.h) {
+            return el;
+        }
+    }
+    return null;
+}
+
+function selectElement(el) {
+    selectedEl = el;
+    updateProperties();
+    render();
+}
+
+// Properties panel
+function updateProperties() {
+    const pc = document.getElementById('propContent');
+    if (!selectedEl) {
+        pc.innerHTML = '<span style="color:#667;font-size:12px;">Select an element</span>';
+        return;
+    }
+    const el = selectedEl;
+    let html = `<div class="prop-row"><label>Type:</label><span style="font-size:12px">${el.type}</span></div>`;
+    html += propInput('ID', 'id', el.id);
+    html += propInput('X', 'x', el.x, 'number');
+    html += propInput('Y', 'y', el.y, 'number');
+    html += propInput('W', 'w', el.w, 'number');
+    html += propInput('H', 'h', el.h, 'number');
+    if (el.type === 'slot_grid') {
+        html += propInput('Start #', 'slotIndex', el.slotIndex, 'number');
+        html += propInput('Cols', 'gridCols', el.gridCols, 'number');
+        html += propInput('Rows', 'gridRows', el.gridRows, 'number');
+        html += `<div class="prop-row"><label>Type:</label><select data-prop="gridSlotType">
+            <option value="input" ${el.gridSlotType==='input'?'selected':''}>Input</option>
+            <option value="output" ${el.gridSlotType==='output'?'selected':''}>Output</option>
+            <option value="fuel" ${el.gridSlotType==='fuel'?'selected':''}>Fuel</option>
+        </select></div>`;
+    } else if (el.type.startsWith('slot_')) {
+        html += propInput('Slot #', 'slotIndex', el.slotIndex, 'number');
+    }
+    if (el.type === 'label' || el.type === 'button') {
+        html += propInput('Text', 'text', el.text);
+    }
+    if (el.type === 'progress_arrow' || el.type === 'energy_bar') {
+        html += propInput('UV X', 'uvX', el.uvX, 'number');
+        html += propInput('UV Y', 'uvY', el.uvY, 'number');
+    }
+    pc.innerHTML = html;
+
+    pc.querySelectorAll('input[data-prop], select[data-prop]').forEach(input => {
+        input.addEventListener('change', () => {
+            const prop = input.dataset.prop;
+            const val = input.type === 'number' ? parseInt(input.value) || 0 : input.value;
+            el[prop] = val;
+            if (el.type === 'slot_grid' && (prop === 'gridCols' || prop === 'gridRows')) {
+                el.gridCols = Math.max(1, Math.min(9, el.gridCols));
+                el.gridRows = Math.max(1, Math.min(9, el.gridRows));
+                recalcGridSlots(el);
+                updateProperties();
+            }
+            render();
+        });
+    });
+}
+
+function propInput(label, prop, value, type = 'text') {
+    return `<div class="prop-row"><label>${label}:</label><input type="${type}" data-prop="${prop}" value="${escHtml(String(value))}"></div>`;
+}
+
+function escHtml(s) { return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+
+// Context menu
+function showContextMenu(x, y) {
+    const cm = document.getElementById('contextMenu');
+    cm.style.display = 'block';
+    cm.style.left = x + 'px';
+    cm.style.top = y + 'px';
+}
+
+function deleteElement() {
+    if (!selectedEl) return;
+    elements = elements.filter(e => e !== selectedEl);
+    selectedEl = null;
+    updateProperties();
+    render();
+    document.getElementById('contextMenu').style.display = 'none';
+}
+
+function duplicateElement() {
+    if (!selectedEl) return;
+    const clone = JSON.parse(JSON.stringify(selectedEl));
+    clone.x += 10;
+    clone.y += 10;
+    clone.id = generateId(clone.type);
+    if (clone.type === 'slot_grid') {
+        clone.slotIndex = nextSlotId;
+        nextSlotId += (clone.gridCols || 3) * (clone.gridRows || 3);
+    } else if (clone.type.startsWith('slot_')) {
+        clone.slotIndex = nextSlotId++;
+        clone.label = clone.slotIndex.toString();
+    }
+    elements.push(clone);
+    selectElement(clone);
+    render();
+    document.getElementById('contextMenu').style.display = 'none';
+}
+
+function bringToFront() {
+    if (!selectedEl) return;
+    elements = elements.filter(e => e !== selectedEl);
+    elements.push(selectedEl);
+    render();
+    document.getElementById('contextMenu').style.display = 'none';
+}
+
+function sendToBack() {
+    if (!selectedEl) return;
+    elements = elements.filter(e => e !== selectedEl);
+    elements.unshift(selectedEl);
+    render();
+    document.getElementById('contextMenu').style.display = 'none';
+}
+
+function clearAll() {
+    if (!confirm('Clear all elements?')) return;
+    elements = [];
+    nextSlotId = 0;
+    selectedEl = null;
+    updateProperties();
+    render();
+}
+
+// Rendering
+function render() {
+    const bgW = getBgW(), bgH = getBgH();
+    canvas.width = bgW * zoom;
+    canvas.height = bgH * zoom;
+    ctx.imageSmoothingEnabled = false;
+    ctx.save();
+    ctx.scale(zoom, zoom);
+
+    // Background
+    ctx.fillStyle = '#c6c6c6';
+    ctx.fillRect(0, 0, bgW, bgH);
+    // Border
+    ctx.strokeStyle = '#555';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(0.5, 0.5, bgW - 1, bgH - 1);
+    // Light border (MC style)
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(0, 0, bgW, 1);
+    ctx.fillRect(0, 0, 1, bgH);
+    ctx.fillStyle = '#555';
+    ctx.fillRect(0, bgH - 1, bgW, 1);
+    ctx.fillRect(bgW - 1, 0, 1, bgH);
+    // Inner border
+    ctx.fillStyle = '#ddd';
+    ctx.fillRect(1, 1, bgW - 2, 1);
+    ctx.fillRect(1, 1, 1, bgH - 2);
+    ctx.fillStyle = '#888';
+    ctx.fillRect(1, bgH - 2, bgW - 2, 1);
+    ctx.fillRect(bgW - 2, 1, 1, bgH - 2);
+
+    // Grid (subtle)
+    ctx.strokeStyle = 'rgba(0,0,0,0.05)';
+    ctx.lineWidth = 0.5;
+    for (let x = 0; x < bgW; x += 18) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, bgH); ctx.stroke();
+    }
+    for (let y = 0; y < bgH; y += 18) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(bgW, y); ctx.stroke();
+    }
+
+    // Elements
+    elements.forEach(el => {
+        const isSelected = el === selectedEl;
+        drawElement(el, isSelected);
+    });
+
+    ctx.restore();
+    const slotCount = elements.reduce((sum, e) => {
+        if (e.type === 'slot_grid') return sum + (e.gridCols || 3) * (e.gridRows || 3);
+        if (e.type.startsWith('slot_')) return sum + 1;
+        return sum;
+    }, 0);
+    document.getElementById('statusBar').textContent =
+        `Elements: ${elements.length} | Slots: ${slotCount} | BG: ${bgW}x${bgH}`;
+}
+
+function drawElement(el, selected) {
+    const color = COLORS[el.type] || '#888';
+    ctx.save();
+
+    switch (el.type) {
+        case 'slot_input':
+        case 'slot_output':
+        case 'slot_fuel':
+            drawSlot(el, color);
+            break;
+        case 'slot_grid':
+            drawSlotGrid(el, color);
+            break;
+        case 'progress_arrow':
+            drawProgressArrow(el, color);
+            break;
+        case 'energy_bar':
+            drawEnergyBar(el, color);
+            break;
+        case 'label':
+            drawLabel(el);
+            break;
+        case 'player_inventory':
+            drawPlayerInventory(el);
+            break;
+        case 'button':
+            drawButton(el, color);
+            break;
+    }
+
+    if (selected) {
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 0.5;
+        ctx.setLineDash([2, 2]);
+        ctx.strokeRect(el.x - 1, el.y - 1, el.w + 2, el.h + 2);
+        ctx.setLineDash([]);
+        // Resize handle
+        ctx.fillStyle = '#fff';
+        ctx.fillRect(el.x + el.w - 2, el.y + el.h - 2, 3, 3);
+    }
+    ctx.restore();
+}
+
+function drawSlot(el, color) {
+    // MC-style slot background
+    ctx.fillStyle = '#8b8b8b';
+    ctx.fillRect(el.x, el.y, 18, 18);
+    ctx.fillStyle = '#373737';
+    ctx.fillRect(el.x, el.y, 18, 1);
+    ctx.fillRect(el.x, el.y, 1, 18);
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(el.x, el.y + 17, 18, 1);
+    ctx.fillRect(el.x + 17, el.y, 1, 18);
+    ctx.fillStyle = '#8b8b8b';
+    ctx.fillRect(el.x + 1, el.y + 1, 16, 16);
+
+    // Color indicator
+    ctx.fillStyle = color + '44';
+    ctx.fillRect(el.x + 1, el.y + 1, 16, 16);
+
+    // Slot number
+    ctx.fillStyle = color;
+    ctx.font = '7px monospace';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(String(el.slotIndex), el.x + 9, el.y + 9);
+
+    // Type indicator
+    ctx.font = '4px monospace';
+    ctx.fillStyle = '#fff';
+    ctx.fillText(el.type === 'slot_input' ? 'IN' : el.type === 'slot_output' ? 'OUT' : 'FUEL', el.x + 9, el.y + 15);
+}
+
+function drawSlotGrid(el, color) {
+    const cols = el.gridCols || 3;
+    const rows = el.gridRows || 3;
+    const typeColor = el.gridSlotType === 'output' ? '#c44' : el.gridSlotType === 'fuel' ? '#a84' : '#4a4';
+    const typeLabel = el.gridSlotType === 'output' ? 'OUT' : el.gridSlotType === 'fuel' ? 'FUEL' : 'IN';
+    let slotIdx = el.slotIndex;
+    for (let row = 0; row < rows; row++) {
+        for (let col = 0; col < cols; col++) {
+            const sx = el.x + col * 18;
+            const sy = el.y + row * 18;
+            drawMiniSlot(sx, sy);
+            // Color tint
+            ctx.fillStyle = typeColor + '33';
+            ctx.fillRect(sx + 1, sy + 1, 16, 16);
+            // Slot number
+            ctx.fillStyle = typeColor;
+            ctx.font = '6px monospace';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(String(slotIdx), sx + 9, sy + 9);
+            slotIdx++;
+        }
+    }
+    // Border around entire grid
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 0.5;
+    ctx.setLineDash([2, 2]);
+    ctx.strokeRect(el.x - 0.5, el.y - 0.5, cols * 18 + 1, rows * 18 + 1);
+    ctx.setLineDash([]);
+    // Label
+    ctx.font = '4px monospace';
+    ctx.fillStyle = color;
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'top';
+    ctx.fillText(`GRID ${cols}x${rows} ${typeLabel}`, el.x + 1, el.y - 5);
+}
+
+function drawProgressArrow(el, color) {
+    ctx.fillStyle = '#ddd';
+    ctx.fillRect(el.x, el.y, el.w, el.h);
+    ctx.fillStyle = color + '88';
+    ctx.fillRect(el.x, el.y, el.w / 2, el.h);
+    // Arrow shape
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(el.x + el.w - 4, el.y + 2);
+    ctx.lineTo(el.x + el.w, el.y + el.h / 2);
+    ctx.lineTo(el.x + el.w - 4, el.y + el.h - 2);
+    ctx.fill();
+    ctx.font = '5px monospace';
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#fff';
+    ctx.fillText('PROG', el.x + el.w / 2 - 2, el.y + el.h / 2 + 1);
+}
+
+function drawEnergyBar(el, color) {
+    ctx.fillStyle = '#333';
+    ctx.fillRect(el.x, el.y, el.w, el.h);
+    ctx.strokeStyle = '#555';
+    ctx.lineWidth = 0.5;
+    ctx.strokeRect(el.x, el.y, el.w, el.h);
+    // Fill level
+    const fillH = Math.floor(el.h * 0.65);
+    ctx.fillStyle = color + 'aa';
+    ctx.fillRect(el.x + 1, el.y + el.h - fillH, el.w - 2, fillH - 1);
+    ctx.font = '4px monospace';
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#fff';
+    ctx.fillText('NRG', el.x + el.w / 2, el.y + 6);
+}
+
+function drawLabel(el) {
+    ctx.font = '8px "Segoe UI"';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'top';
+    ctx.fillStyle = '#404040';
+    ctx.fillText(el.text || 'Label', el.x, el.y);
+    el.w = Math.max(20, ctx.measureText(el.text || 'Label').width + 4);
+    el.h = 10;
+}
+
+function drawPlayerInventory(el) {
+    // Draw 27 slots (3 rows of 9) + 9 hotbar slots
+    ctx.fillStyle = '#8884';
+    ctx.fillRect(el.x, el.y, 162, 76);
+    ctx.strokeStyle = '#5558';
+    ctx.lineWidth = 0.5;
+    ctx.strokeRect(el.x, el.y, 162, 76);
+
+    for (let row = 0; row < 3; row++) {
+        for (let col = 0; col < 9; col++) {
+            drawMiniSlot(el.x + col * 18, el.y + row * 18);
+        }
+    }
+    // Hotbar (4px gap)
+    for (let col = 0; col < 9; col++) {
+        drawMiniSlot(el.x + col * 18, el.y + 58);
+    }
+    ctx.font = '5px monospace';
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#666';
+    ctx.fillText('PLAYER INVENTORY', el.x + 81, el.y + 53);
+}
+
+function drawMiniSlot(x, y) {
+    ctx.fillStyle = '#373737';
+    ctx.fillRect(x, y, 18, 1);
+    ctx.fillRect(x, y, 1, 18);
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(x, y + 17, 18, 1);
+    ctx.fillRect(x + 17, y, 1, 18);
+    ctx.fillStyle = '#8b8b8b';
+    ctx.fillRect(x + 1, y + 1, 16, 16);
+}
+
+function drawButton(el, color) {
+    ctx.fillStyle = '#aaa';
+    ctx.fillRect(el.x, el.y, el.w, el.h);
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(el.x, el.y, el.w, 1);
+    ctx.fillRect(el.x, el.y, 1, el.h);
+    ctx.fillStyle = '#555';
+    ctx.fillRect(el.x, el.y + el.h - 1, el.w, 1);
+    ctx.fillRect(el.x + el.w - 1, el.y, 1, el.h);
+    ctx.font = '6px monospace';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = '#333';
+    ctx.fillText(el.text || 'Btn', el.x + el.w / 2, el.y + el.h / 2);
+}
+
+// Code generation
+let currentCodeTab = 'screen';
+
+function exportCode() {
+    document.getElementById('codePanel').classList.add('open');
+    showCodeTab('screen');
+}
+
+function showCodeTab(tab) {
+    currentCodeTab = tab;
+    document.querySelectorAll('.code-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.code-tab').forEach(t => {
+        if (t.textContent.toLowerCase() === tab) t.classList.add('active');
+    });
+    document.getElementById('codeOutput').textContent = tab === 'screen' ? generateScreenCode() : generateMenuCode();
+}
+
+function generateScreenCode() {
+    const bgW = getBgW(), bgH = getBgH();
+    const funcName = document.getElementById('funcName').value || 'MyMachineScreen';
+    const texName = document.getElementById('bgTexture').value || 'gui_texture';
+
+    let code = `// === ${funcName} - Screen rendering code ===\n`;
+    code += `// Paste this into your AbstractContainerScreen subclass\n\n`;
+    code += `private static final ResourceLocation TEXTURE = LostdepthsMod.rl("textures/gui/${texName}.png");\n`;
+    code += `private static final int BG_WIDTH = ${bgW};\n`;
+    code += `private static final int BG_HEIGHT = ${bgH};\n\n`;
+
+    // Constructor imageWidth/imageHeight
+    code += `// In constructor:\n`;
+    code += `//   this.imageWidth = BG_WIDTH;\n`;
+    code += `//   this.imageHeight = BG_HEIGHT;\n\n`;
+
+    // renderBg method
+    code += `@Override\n`;
+    code += `protected void renderBg(GuiGraphics g, float partialTick, int mouseX, int mouseY) {\n`;
+    code += `\tRenderSystem.setShaderColor(1, 1, 1, 1);\n`;
+    code += `\tint x = this.leftPos;\n`;
+    code += `\tint y = this.topPos;\n`;
+    code += `\tg.blit(TEXTURE, x, y, 0, 0, BG_WIDTH, BG_HEIGHT);\n`;
+
+    // Progress arrows
+    elements.filter(e => e.type === 'progress_arrow').forEach(el => {
+        code += `\n\t// Progress arrow: ${el.id}\n`;
+        code += `\t// TODO: replace 'progress' with actual 0.0-1.0 value from block entity\n`;
+        code += `\tfloat progress = 0.5f;\n`;
+        code += `\tint progressWidth = (int) (progress * ${el.w});\n`;
+        code += `\tg.blit(TEXTURE, x + ${el.x}, y + ${el.y}, ${el.uvX}, ${el.uvY}, progressWidth, ${el.h});\n`;
+    });
+
+    // Energy bars
+    elements.filter(e => e.type === 'energy_bar').forEach(el => {
+        code += `\n\t// Energy bar: ${el.id}\n`;
+        code += `\t// TODO: replace 'energyPct' with actual 0.0-1.0 value from block entity\n`;
+        code += `\tfloat energyPct = 0.65f;\n`;
+        code += `\tint energyHeight = (int) (energyPct * ${el.h});\n`;
+        code += `\tg.blit(TEXTURE, x + ${el.x}, y + ${el.y} + ${el.h} - energyHeight, ${el.uvX}, ${el.uvY} + ${el.h} - energyHeight, ${el.w}, energyHeight);\n`;
+    });
+
+    code += `}\n\n`;
+
+    // Labels in renderLabels
+    const labels = elements.filter(e => e.type === 'label');
+    if (labels.length > 0) {
+        code += `@Override\n`;
+        code += `protected void renderLabels(GuiGraphics g, int mouseX, int mouseY) {\n`;
+        labels.forEach(el => {
+            code += `\tg.drawString(this.font, Component.literal("${el.text}"), ${el.x}, ${el.y}, 0x404040, false);\n`;
+        });
+        code += `}\n\n`;
+    }
+
+    // Buttons in init()
+    const buttons = elements.filter(e => e.type === 'button');
+    if (buttons.length > 0) {
+        code += `@Override\n`;
+        code += `protected void init() {\n`;
+        code += `\tsuper.init();\n`;
+        buttons.forEach(el => {
+            code += `\tthis.addRenderableWidget(Button.builder(Component.literal("${el.text}"), btn -> {\n`;
+            code += `\t\t// TODO: handle ${el.id} click\n`;
+            code += `\t}).bounds(this.leftPos + ${el.x}, this.topPos + ${el.y}, ${el.w}, ${el.h}).build());\n`;
+        });
+        code += `}\n`;
+    }
+
+    return code;
+}
+
+function generateMenuCode() {
+    const menuName = document.getElementById('menuName').value || 'MyMachineMenu';
+    const singleSlots = elements.filter(e => e.type.startsWith('slot_') && e.type !== 'slot_grid').sort((a, b) => a.slotIndex - b.slotIndex);
+    const gridSlots = elements.filter(e => e.type === 'slot_grid').sort((a, b) => a.slotIndex - b.slotIndex);
+    const allSlotEls = elements.filter(e => e.type.startsWith('slot_')).sort((a, b) => a.slotIndex - b.slotIndex);
+    const playerInv = elements.find(e => e.type === 'player_inventory');
+
+    // Count total machine slots
+    let totalMachineSlots = 0;
+    allSlotEls.forEach(el => {
+        if (el.type === 'slot_grid') totalMachineSlots += (el.gridCols || 3) * (el.gridRows || 3);
+        else totalMachineSlots += 1;
+    });
+
+    let code = `// === ${menuName} - Slot registration code ===\n`;
+    code += `// Paste this into your AbstractContainerMenu subclass constructor\n\n`;
+
+    // Container slots
+    if (allSlotEls.length > 0) {
+        code += `// Machine slots (container = your block entity / SimpleContainer)\n`;
+        allSlotEls.forEach(el => {
+            if (el.type === 'slot_grid') {
+                const cols = el.gridCols || 3;
+                const rows = el.gridRows || 3;
+                const slotClass = el.gridSlotType === 'output' ? 'SlotItemHandler /* or custom output slot */' : 'Slot';
+                code += `// Slot grid: ${el.id} (${cols}x${rows} ${el.gridSlotType}) - slots ${el.slotIndex}-${el.slotIndex + cols * rows - 1}\n`;
+                code += `for (int row = 0; row < ${rows}; row++) {\n`;
+                code += `\tfor (int col = 0; col < ${cols}; col++) {\n`;
+                code += `\t\tthis.addSlot(new ${slotClass}(container, ${el.slotIndex} + col + row * ${cols}, ${el.x + 1} + col * 18, ${el.y + 1} + row * 18));\n`;
+                code += `\t}\n`;
+                code += `}\n`;
+            } else {
+                const slotClass = el.type === 'slot_output' ? 'SlotItemHandler /* or custom output slot */' : 'Slot';
+                code += `this.addSlot(new ${slotClass}(container, ${el.slotIndex}, ${el.x + 1}, ${el.y + 1}));`;
+                code += ` // ${el.type.replace('slot_', '')}`;
+                if (el.id) code += ` - ${el.id}`;
+                code += `\n`;
+            }
+        });
+    }
+
+    // Player inventory
+    if (playerInv) {
+        code += `\n// Player inventory\n`;
+        code += `for (int row = 0; row < 3; row++) {\n`;
+        code += `\tfor (int col = 0; col < 9; col++) {\n`;
+        code += `\t\tthis.addSlot(new Slot(playerInventory, col + row * 9 + 9, ${playerInv.x + 1} + col * 18, ${playerInv.y + 1} + row * 18));\n`;
+        code += `\t}\n`;
+        code += `}\n`;
+        code += `\n// Player hotbar\n`;
+        code += `for (int col = 0; col < 9; col++) {\n`;
+        code += `\tthis.addSlot(new Slot(playerInventory, col, ${playerInv.x + 1} + col * 18, ${playerInv.y + 59}));\n`;
+        code += `}\n`;
+    }
+
+    // Slot index reference
+    if (allSlotEls.length > 0) {
+        code += `\n// === Slot index reference ===\n`;
+        allSlotEls.forEach(el => {
+            if (el.type === 'slot_grid') {
+                const count = (el.gridCols || 3) * (el.gridRows || 3);
+                code += `// Slots ${el.slotIndex}-${el.slotIndex + count - 1}: GRID ${el.gridSlotType.toUpperCase()} "${el.id}" (${el.gridCols}x${el.gridRows}) at (${el.x + 1}, ${el.y + 1})\n`;
+            } else {
+                code += `// Slot ${el.slotIndex}: ${el.type.replace('slot_', '').toUpperCase()} "${el.id}" at (${el.x + 1}, ${el.y + 1})\n`;
+            }
+        });
+        if (playerInv) {
+            code += `// Slots ${totalMachineSlots}-${totalMachineSlots + 26}: Player inventory\n`;
+            code += `// Slots ${totalMachineSlots + 27}-${totalMachineSlots + 35}: Player hotbar\n`;
+        }
+    }
+
+    // QuickMoveStack helper
+    if (allSlotEls.length > 0 && playerInv) {
+        const machineSlotCount = totalMachineSlots;
+        const totalSlots = machineSlotCount + 36;
+        code += `\n// === quickMoveStack template ===\n`;
+        code += `@Override\n`;
+        code += `public ItemStack quickMoveStack(Player player, int index) {\n`;
+        code += `\tItemStack result = ItemStack.EMPTY;\n`;
+        code += `\tSlot slot = this.slots.get(index);\n`;
+        code += `\tif (slot != null && slot.hasItem()) {\n`;
+        code += `\t\tItemStack stack = slot.getItem();\n`;
+        code += `\t\tresult = stack.copy();\n`;
+        code += `\t\tif (index < ${machineSlotCount}) {\n`;
+        code += `\t\t\t// Machine -> Player\n`;
+        code += `\t\t\tif (!this.moveItemStackTo(stack, ${machineSlotCount}, ${totalSlots}, true)) return ItemStack.EMPTY;\n`;
+        code += `\t\t} else {\n`;
+        code += `\t\t\t// Player -> Machine\n`;
+        code += `\t\t\tif (!this.moveItemStackTo(stack, 0, ${machineSlotCount}, false)) return ItemStack.EMPTY;\n`;
+        code += `\t\t}\n`;
+        code += `\t\tif (stack.isEmpty()) slot.setByPlayer(ItemStack.EMPTY);\n`;
+        code += `\t\telse slot.setChanged();\n`;
+        code += `\t}\n`;
+        code += `\treturn result;\n`;
+        code += `}\n`;
+    }
+
+    return code;
+}
+
+function copyCode() {
+    const code = document.getElementById('codeOutput').textContent;
+    navigator.clipboard.writeText(code).then(() => {
+        document.getElementById('statusBar').textContent = 'Copied to clipboard!';
+        setTimeout(() => render(), 2000);
+    });
+}
+
+// Save / Load
+function saveProject() {
+    const data = {
+        bgWidth: getBgW(), bgHeight: getBgH(),
+        bgTexture: document.getElementById('bgTexture').value,
+        funcName: document.getElementById('funcName').value,
+        menuName: document.getElementById('menuName').value,
+        elements: elements,
+        nextSlotId: nextSlotId
+    };
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = (document.getElementById('funcName').value || 'gui_layout') + '.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+}
+
+function loadProject() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.json';
+    input.onchange = e => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = ev => {
+            try {
+                const data = JSON.parse(ev.target.result);
+                document.getElementById('bgWidth').value = data.bgWidth || 176;
+                document.getElementById('bgHeight').value = data.bgHeight || 166;
+                document.getElementById('bgTexture').value = data.bgTexture || 'gui_texture';
+                document.getElementById('funcName').value = data.funcName || 'MyMachineScreen';
+                document.getElementById('menuName').value = data.menuName || 'MyMachineMenu';
+                elements = data.elements || [];
+                nextSlotId = data.nextSlotId || 0;
+                selectedEl = null;
+                updateProperties();
+                updateCanvasSize();
+            } catch (err) {
+                alert('Invalid file: ' + err.message);
+            }
+        };
+        reader.readAsText(file);
+    };
+    input.click();
+}
+
+// Initial render
+updateCanvasSize();
+</script>
+</body>
+</html>
