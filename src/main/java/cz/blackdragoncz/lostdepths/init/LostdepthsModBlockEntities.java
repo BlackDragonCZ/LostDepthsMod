@@ -4,6 +4,7 @@
  */
 package cz.blackdragoncz.lostdepths.init;
 
+import cz.blackdragoncz.lostdepths.block.creative.entity.WormholeDisruptorBlockEntity;
 import cz.blackdragoncz.lostdepths.block.entity.*;
 import cz.blackdragoncz.lostdepths.block.multiblock.MultiblockDummyBlockEntity;
 import cz.blackdragoncz.lostdepths.block.power.entity.NurostarBatteryBlockEntity;
@@ -53,6 +54,7 @@ public class LostdepthsModBlockEntities {
 	public static final RegistryObject<BlockEntityType<InfusedHangingSignBlockEntity>> INFUSED_HANGING_SIGN = REGISTRY.register("infused_hanging_sign", () -> BlockEntityType.Builder.of(InfusedHangingSignBlockEntity::new, LostdepthsModBlocks.INFUSED_HANGING_SIGN.get(), LostdepthsModBlocks.INFUSED_WALL_HANGING_SIGN.get()).build(null));
 	public static final RegistryObject<BlockEntityType<InfusedDisplayPlateBlockEntity>> INFUSED_DISPLAY_PLATE = register("infused_display_plate", LostdepthsModBlocks.INFUSED_DISPLAY_PLATE, InfusedDisplayPlateBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<MultiblockDummyBlockEntity>> MULTIBLOCK_DUMMY = register("multiblock_dummy", LostdepthsModBlocks.MULTIBLOCK_DUMMY, MultiblockDummyBlockEntity::new);
+	public static final RegistryObject<BlockEntityType<WormholeDisruptorBlockEntity>> WORMHOLE_DISRUPTOR = register("wormhole_disruptor", LostdepthsModBlocks.WORMHOLE_DISRUPTOR, WormholeDisruptorBlockEntity::new);
 	//public static final RegistryObject<BlockEntityType<ResourceExtractorBlockEntity>> RESOURCE_EXTRACTOR = REGISTRY.register("resource_extractor", LostdepthsModBlocks.RESOURCE_EXTRACTOR, ResourceExtractorBlockEntity::new);
 
 	private static <T extends BlockEntity> RegistryObject<BlockEntityType<T>> register(String registryname, RegistryObject<Block> block, BlockEntityType.BlockEntitySupplier<T> supplier) {

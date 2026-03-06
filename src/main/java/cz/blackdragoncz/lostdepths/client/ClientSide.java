@@ -40,7 +40,10 @@ public class ClientSide {
     private static char groupClearance = '0';
     private static int clearanceTime = 600;
 
+    private static boolean warpDisrupted = false;
+
     private static ResourceLocation JEI = LostdepthsMod.rl("textures/gui/jei_handler.png");
+    private static ResourceLocation ANTI_WARP = LostdepthsMod.rl("textures/mob_effect/anti_warp.png");
 
     public void setup() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -87,6 +90,14 @@ public class ClientSide {
         clearanceTime = 600;
     }
 
+    public static void setWarpDisrupted(boolean disrupted) {
+        warpDisrupted = disrupted;
+    }
+
+    public static boolean isWarpDisrupted() {
+        return warpDisrupted;
+    }
+
     private Item getSecurityClearance(int clearance, char groupClearance) {
         return switch (groupClearance) {
             case 'a' ->
@@ -113,6 +124,21 @@ public class ClientSide {
     {
         GuiGraphics g = event.getGuiGraphics();
 
+        // Warp disruption indicator (left side)
+        if (warpDisrupted) {
+            int iconSize = 18;
+            int iconX = g.guiWidth() / 4 - iconSize / 2;
+            int iconY = g.guiHeight() - iconSize - 4;
+            // Pulsing alpha effect
+            float pulse = (float) (0.6 + 0.4 * Math.sin(elapsedTicks * 0.15));
+            com.mojang.blaze3d.systems.RenderSystem.setShaderColor(1, 1, 1, pulse);
+            com.mojang.blaze3d.systems.RenderSystem.enableBlend();
+            g.blit(ANTI_WARP, iconX, iconY, 0, 0, iconSize, iconSize, iconSize, iconSize);
+            com.mojang.blaze3d.systems.RenderSystem.setShaderColor(1, 1, 1, 1);
+            com.mojang.blaze3d.systems.RenderSystem.disableBlend();
+        }
+
+        // Security clearance indicator (right side)
         if (securityClearance == 0)
             return;
 

@@ -104,6 +104,11 @@ public class LostdepthsMod {
 	public void tick(TickEvent.ServerTickEvent event) {
 		if (event.phase == TickEvent.Phase.END) {
 			SecurityClearanceSystem.update();
+			// Update wormhole disruption tracking
+			var server = net.minecraftforge.server.ServerLifecycleHooks.getCurrentServer();
+			if (server != null) {
+				cz.blackdragoncz.lostdepths.warp.WormholeDisruptorManager.tick(server.getPlayerList().getPlayers());
+			}
 			List<AbstractMap.SimpleEntry<Runnable, Integer>> actions = new ArrayList<>();
 			workQueue.forEach(work -> {
 				work.setValue(work.getValue() - 1);
@@ -119,6 +124,11 @@ public class LostdepthsMod {
 	public void onServerStarting(ServerStartingEvent event)
 	{
 		LOGGER.info("Mlem all other mods :3");
+	}
+
+	@SubscribeEvent
+	public void onServerStopping(net.minecraftforge.event.server.ServerStoppingEvent event) {
+		cz.blackdragoncz.lostdepths.warp.WormholeDisruptorManager.clear();
 	}
 
 	@SubscribeEvent

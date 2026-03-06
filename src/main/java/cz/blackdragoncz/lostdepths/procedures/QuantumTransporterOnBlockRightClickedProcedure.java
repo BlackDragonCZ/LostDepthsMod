@@ -23,6 +23,11 @@ public class QuantumTransporterOnBlockRightClickedProcedure {
 	public static void execute(Entity entity) {
 		if (entity == null)
 			return;
+		// Block teleportation if player is in wormhole disruption zone
+		if (entity instanceof ServerPlayer sp && cz.blackdragoncz.lostdepths.warp.WormholeDisruptorManager.isAffected(sp)) {
+			sp.displayClientMessage(net.minecraft.network.chat.Component.literal("\u00A7cWormhole disruption prevents teleportation!"), true);
+			return;
+		}
 		if (((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == ItemStack.EMPTY.getItem()
 				|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == LostdepthsModItems.FORGEFIRE_PICKAXE.get())
 				&& (entity.level().dimension()) == (ResourceKey.create(Registries.DIMENSION, new ResourceLocation("lostdepths:lost_dungeons")))) {
