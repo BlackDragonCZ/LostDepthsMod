@@ -19,8 +19,8 @@ run-data
 # other
 eclipse
 run
+.claude
+.gitignore
 
 # Files from Forge MDK
 forge*changelog.txt
-build
-.gradle

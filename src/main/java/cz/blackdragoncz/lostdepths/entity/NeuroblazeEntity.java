@@ -171,7 +171,7 @@ public class NeuroblazeEntity extends Monster implements RangedAttackMob, GeoEnt
 		}
 
 		public boolean canContinueToUse() {
-			return this.canUse() || this.target.isAlive() && !this.mob.getNavigation().isDone();
+			return this.canUse() || (this.target != null && this.target.isAlive() && !this.mob.getNavigation().isDone());
 		}
 
 		public void stop() {
@@ -272,16 +272,6 @@ public class NeuroblazeEntity extends Monster implements RangedAttackMob, GeoEnt
 			this.setTexture(compound.getString("Texture"));
 	}
 
-	@Override
-	public void baseTick() {
-		super.baseTick();
-		this.refreshDimensions();
-	}
-
-	@Override
-	public EntityDimensions getDimensions(Pose p_33597_) {
-		return super.getDimensions(p_33597_).scale((float) 1);
-	}
 
 	@Override
 	public void performRangedAttack(LivingEntity target, float flval) {

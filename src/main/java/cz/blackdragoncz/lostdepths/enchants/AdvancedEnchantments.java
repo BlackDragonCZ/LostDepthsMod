@@ -108,6 +108,11 @@ public abstract class AdvancedEnchantments extends Enchantment {
     }*/
 
     @Override
+    public boolean isDiscoverable() {
+        return false;
+    }
+
+    @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack) {
         return allowEnchanting && super.canApplyAtEnchantingTable(stack);
     }

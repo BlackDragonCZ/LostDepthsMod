@@ -195,16 +195,6 @@ public class AstralclawEntity extends Monster implements GeoEntity {
 			this.setTexture(compound.getString("Texture"));
 	}
 
-	@Override
-	public void baseTick() {
-		super.baseTick();
-		this.refreshDimensions();
-	}
-
-	@Override
-	public EntityDimensions getDimensions(Pose p_33597_) {
-		return super.getDimensions(p_33597_).scale((float) 1);
-	}
 
 	public static void init() {
 	}

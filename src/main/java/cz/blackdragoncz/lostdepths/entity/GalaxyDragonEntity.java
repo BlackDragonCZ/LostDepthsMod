@@ -172,12 +172,6 @@ public class GalaxyDragonEntity extends PathfinderMob implements GeoEntity {
 	public void baseTick() {
 		super.baseTick();
 		GalaxyDragonOnEntityTickUpdateProcedure.execute(this);
-		this.refreshDimensions();
-	}
-
-	@Override
-	public EntityDimensions getDimensions(Pose p_33597_) {
-		return super.getDimensions(p_33597_).scale((float) 1);
 	}
 
 	@Override

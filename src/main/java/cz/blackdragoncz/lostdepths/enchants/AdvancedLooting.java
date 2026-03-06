@@ -3,7 +3,6 @@ package cz.blackdragoncz.lostdepths.enchants;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -26,9 +25,8 @@ public class AdvancedLooting extends AdvancedEnchantments{
     }
 
     @Override
-    public boolean canApplyAtEnchantingTable(ItemStack stack) {
-        Item item = stack.getItem();
-        return false; //enable && stack.getItem() instanceof SwordItem || VALID_ITEMS.contains(item);
+    public boolean canEnchant(ItemStack stack) {
+        return enable && (super.canEnchant(stack) || VALID_ITEMS.contains(stack.getItem()));
     }
 
     @Override

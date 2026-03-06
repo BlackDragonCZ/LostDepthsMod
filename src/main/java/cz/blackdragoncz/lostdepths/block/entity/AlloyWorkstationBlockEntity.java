@@ -147,13 +147,14 @@ public class AlloyWorkstationBlockEntity extends RandomizableContainerBlockEntit
 	}
 
 	private final EnergyStorage energyStorage = new SyncedEnergyStorage(this, 25000, 1000);
+	private final LazyOptional<EnergyStorage> energyCapability = LazyOptional.of(() -> energyStorage);
 
 	@Override
 	public <T> LazyOptional<T> getCapability(Capability<T> capability, @Nullable Direction facing) {
 		if (!this.remove && facing != null && capability == ForgeCapabilities.ITEM_HANDLER)
 			return handlers[facing.ordinal()].cast();
 		if (!this.remove && capability == ForgeCapabilities.ENERGY)
-			return LazyOptional.of(() -> energyStorage).cast();
+			return energyCapability.cast();
 		return super.getCapability(capability, facing);
 	}
 
@@ -162,6 +163,7 @@ public class AlloyWorkstationBlockEntity extends RandomizableContainerBlockEntit
 		super.setRemoved();
 		for (LazyOptional<? extends IItemHandler> handler : handlers)
 			handler.invalidate();
+		energyCapability.invalidate();
 	}
 
 	@Override

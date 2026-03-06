@@ -22,10 +22,12 @@ import javax.annotation.Nullable;
 public abstract class BaseEnergyBlockEntity extends BlockEntity implements IEnergyAccessor {
 
     protected SyncedEnergyStorage energyStorage;
+    private LazyOptional<SyncedEnergyStorage> energyCapability;
 
     public BaseEnergyBlockEntity(BlockEntityType<?> pType, BlockPos pPos, BlockState pBlockState) {
         super(pType, pPos, pBlockState);
         this.energyStorage = createEnergyStorage();
+        this.energyCapability = LazyOptional.of(() -> energyStorage);
     }
 
     protected abstract SyncedEnergyStorage createEnergyStorage();
@@ -56,8 +58,14 @@ public abstract class BaseEnergyBlockEntity extends BlockEntity implements IEner
     @Override
     public <T> LazyOptional<T> getCapability(Capability<T> capability, @Nullable Direction facing) {
         if (!this.remove && capability == ForgeCapabilities.ENERGY)
-            return LazyOptional.of(() -> energyStorage).cast();
+            return energyCapability.cast();
         return super.getCapability(capability, facing);
+    }
+
+    @Override
+    public void invalidateCaps() {
+        super.invalidateCaps();
+        energyCapability.invalidate();
     }
 
     @Override

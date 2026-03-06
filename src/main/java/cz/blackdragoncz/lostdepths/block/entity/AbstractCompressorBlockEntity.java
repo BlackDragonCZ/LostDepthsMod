@@ -52,6 +52,7 @@ public abstract class AbstractCompressorBlockEntity extends RandomizableContaine
     private boolean canProcess = false;
     public boolean tickRecipeCheck = true;
     private EnergyStorage energyStorage;
+    private LazyOptional<EnergyStorage> energyCapability = LazyOptional.empty();
 
     protected AbstractCompressorBlockEntity(List<LostDepthsModRecipeType<CraftingContainer, CompressingRecipe>> recipeTypes, int craftTickTime, int requiredStackSize, int energyStorageCapacity, int energyCost, int maxEnergyTransfer, BlockEntityType<?> blockEntityType, BlockPos blockPos, BlockState blockState) {
         super(blockEntityType, blockPos, blockState);
@@ -62,6 +63,7 @@ public abstract class AbstractCompressorBlockEntity extends RandomizableContaine
 
         if (energyStorageCapacity > 0 && energyCost > 0) {
             this.energyStorage = new SyncedEnergyStorage(this, energyStorageCapacity, maxEnergyTransfer);
+            this.energyCapability = LazyOptional.of(() -> energyStorage);
         }
     }
 
@@ -164,7 +166,7 @@ public abstract class AbstractCompressorBlockEntity extends RandomizableContaine
             return handlers[facing.ordinal()].cast();
 
         if (energyStorage != null && !this.remove && capability == ForgeCapabilities.ENERGY)
-            return LazyOptional.of(() -> energyStorage).cast();
+            return energyCapability.cast();
 
         return super.getCapability(capability, facing);
     }
@@ -174,6 +176,7 @@ public abstract class AbstractCompressorBlockEntity extends RandomizableContaine
         super.setRemoved();
         for (LazyOptional<? extends IItemHandler> handler : handlers)
             handler.invalidate();
+        energyCapability.invalidate();
     }
 
     public CompressingRecipe findRecipe(ItemStack stack) {

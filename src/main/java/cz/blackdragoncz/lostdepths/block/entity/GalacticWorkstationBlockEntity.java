@@ -167,13 +167,14 @@ public class GalacticWorkstationBlockEntity extends RandomizableContainerBlockEn
 			return retval;
 		}
 	};
+	private final LazyOptional<EnergyStorage> energyCapability = LazyOptional.of(() -> energyStorage);
 
 	@Override
 	public <T> LazyOptional<T> getCapability(Capability<T> capability, @Nullable Direction facing) {
 		if (!this.remove && facing != null && capability == ForgeCapabilities.ITEM_HANDLER)
 			return handlers[facing.ordinal()].cast();
 		if (!this.remove && capability == ForgeCapabilities.ENERGY)
-			return LazyOptional.of(() -> energyStorage).cast();
+			return energyCapability.cast();
 		return super.getCapability(capability, facing);
 	}
 
@@ -182,6 +183,7 @@ public class GalacticWorkstationBlockEntity extends RandomizableContainerBlockEn
 		super.setRemoved();
 		for (LazyOptional<? extends IItemHandler> handler : handlers)
 			handler.invalidate();
+		energyCapability.invalidate();
 	}
 
 	@Override

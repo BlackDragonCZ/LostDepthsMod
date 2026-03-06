@@ -242,16 +242,6 @@ public class TheProtectorEntity extends PathfinderMob implements GeoEntity, Neut
 		this.readPersistentAngerSaveData(this.level(), compound);
 	}
 
-	@Override
-	public void baseTick() {
-		super.baseTick();
-		this.refreshDimensions();
-	}
-
-	@Override
-	public EntityDimensions getDimensions(Pose p_33597_) {
-		return super.getDimensions(p_33597_).scale((float) 1);
-	}
 
 	public static void init() {
 		SpawnPlacements.register(LostdepthsModEntities.THE_PROTECTOR.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (entityType, world, reason, pos, random) -> {
@@ -305,14 +295,10 @@ public class TheProtectorEntity extends PathfinderMob implements GeoEntity, Neut
 
 	@Override
 	protected void tickDeath() {
-		if (isPlayerCreated())
-			return;
-
 		++this.deathTime;
 		if (this.deathTime == 20) {
 			this.remove(TheProtectorEntity.RemovalReason.KILLED);
 			this.dropExperience();
-			// LogUtils.getLogger().warn("PROTECTOR DEATH TICK DEATH");
 		}
 	}
 
@@ -360,5 +346,10 @@ public class TheProtectorEntity extends PathfinderMob implements GeoEntity, Neut
 		this.setRemainingPersistentAngerTime(PERSISTENT_ANGER_TIME.sample(this.random));
 	}
 
+	@Override
+	public void checkDespawn() {
+		// Do not despawn naturally — same approach as Iron Golem.
+		// Spawn rate is controlled by biome modifier spawn weight.
+	}
 
 }

@@ -24,6 +24,8 @@ import java.util.Map;
 
 public class AdvancedEnchantmentsBlockModifiers extends LootModifier {
 
+    private static final ThreadLocal<Boolean> REROLLING = ThreadLocal.withInitial(() -> false);
+
     public static final Codec<AdvancedEnchantmentsBlockModifiers> CODEC = RecordCodecBuilder.create(inst ->
             codecStart(inst).apply(inst, AdvancedEnchantmentsBlockModifiers::new)
     );
@@ -42,6 +44,8 @@ public class AdvancedEnchantmentsBlockModifiers extends LootModifier {
     @NotNull
     @Override
     public ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
+        if (REROLLING.get()) return generatedLoot;
+
         if (!context.hasParam(LootContextParams.TOOL)) return generatedLoot;
 
         ItemStack tool = context.getParam(LootContextParams.TOOL);
@@ -74,9 +78,13 @@ public class AdvancedEnchantmentsBlockModifiers extends LootModifier {
 
         LootParams newParams = builder.create(LootContextParamSets.BLOCK);
 
-        ObjectArrayList<ItemStack> replaced = new ObjectArrayList<>();
-        table.getRandomItems(newParams, replaced::add);
-
-        return replaced;
+        REROLLING.set(true);
+        try {
+            ObjectArrayList<ItemStack> replaced = new ObjectArrayList<>();
+            table.getRandomItems(newParams, replaced::add);
+            return replaced;
+        } finally {
+            REROLLING.set(false);
+        }
     }
 }

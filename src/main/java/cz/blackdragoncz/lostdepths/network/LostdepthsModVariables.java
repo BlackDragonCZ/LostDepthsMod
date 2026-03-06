@@ -182,7 +182,9 @@ public class LostdepthsModVariables {
 			NetworkEvent.Context context = contextSupplier.get();
 			context.enqueueWork(() -> {
 				if (!context.getDirection().getReceptionSide().isServer()) {
-					PlayerVariables variables = ((PlayerVariables) Minecraft.getInstance().player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()));
+					Player player = Minecraft.getInstance().player;
+					if (player == null) return;
+					PlayerVariables variables = ((PlayerVariables) player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()));
 					variables.x = message.data.x;
 					variables.y = message.data.y;
 					variables.z = message.data.z;

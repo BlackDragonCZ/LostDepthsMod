@@ -57,9 +57,9 @@ public class SyncedEnergyStorage extends EnergyStorage {
         if (level == null)
             return;
 
-        BlockPos blockPos = blockEntity.getBlockPos();;
+        BlockPos blockPos = blockEntity.getBlockPos();
         BlockState state = level.getBlockState(blockPos);
         blockEntity.setChanged();
-        blockEntity.getLevel().sendBlockUpdated(blockPos, state, state, Block.UPDATE_CLIENTS);
+        level.sendBlockUpdated(blockPos, state, state, Block.UPDATE_CLIENTS);
     }
 }

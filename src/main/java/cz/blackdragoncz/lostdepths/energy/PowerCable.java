@@ -53,7 +53,7 @@ public class PowerCable {
     }
 
     public void collectEnergy(List<BlockEntity> energyEntities) {
-        List<PowerCable> checkedCables = new ArrayList<>();
+        Set<PowerCable> checkedCables = new HashSet<>();
         checkedCables.add(this);
 
         Queue<PowerCable> queue = new LinkedList<>();
