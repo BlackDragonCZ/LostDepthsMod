@@ -116,7 +116,7 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModBlocks.NUROSTAR_LARGE_BATTERY.get().asItem());
 				tabData.accept(LostdepthsModItems.SECURITY_PASS_A.get().asItem());
                 tabData.accept(LostdepthsModItems.INFUSED_WRITABLE_BOOK.get().asItem());
-				//tabData.accept(LostdepthsModBlocks.RESOURCE_EXTRACTOR.get().asItem());
+				tabData.accept(LostdepthsModBlocks.RESOURCE_EXTRACTOR.get().asItem());
 			})
 
 					.build());
@@ -417,6 +417,7 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModBlocks.MYRITE_ORE.get().asItem());
 				tabData.accept(LostdepthsModItems.LOSTDEPTHS_PREDICTION.get().asItem());
 				tabData.accept(LostdepthsModBlocks.SECURITY_CLEARANCE_A.get().asItem());
+                tabData.accept(LostdepthsModBlocks.WORMHOLE_DISRUPTOR.get().asItem());
 			})
 
 					.build());

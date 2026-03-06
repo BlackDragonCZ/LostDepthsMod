@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": {"model": "lostdepths:block/resource_extractor"},
+    "facing=south": {"model": "lostdepths:block/resource_extractor", "y": 180},
+    "facing=east": {"model": "lostdepths:block/resource_extractor", "y": 90},
+    "facing=west": {"model": "lostdepths:block/resource_extractor", "y": 270}
+  }
+}

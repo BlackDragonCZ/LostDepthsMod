@@ -310,6 +310,5 @@ public class LostdepthsModBlocks {
 
 	public static final RegistryObject<Block> MULTIBLOCK_DUMMY = REGISTRY.register("multiblock_dummy", MultiblockDummyBlock::new);
 
-    //TODO: finish resource extractor aka drill machine
-	//public static final RegistryObject<Block> RESOURCE_EXTRACTOR = REGISTRY.register("resource_extractor", ResourceExtractor::new);
+	public static final RegistryObject<Block> RESOURCE_EXTRACTOR = REGISTRY.register("resource_extractor", ResourceExtractorBlock::new);
 }

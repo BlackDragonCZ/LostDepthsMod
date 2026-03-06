@@ -26,4 +26,5 @@ public class LostdepthsModMenus {
 	public static final RegistryObject<MenuType<ModulatorGUIMenu>> MODULATOR_GUI = REGISTRY.register("modulator_gui", () -> IForgeMenuType.create(ModulatorGUIMenu::new));
 	public static final RegistryObject<MenuType<NurostarGeneratorMenu>> NUROSTAR_GENERATOR_MENU = REGISTRY.register("nurostar_generator_menu", () -> IForgeMenuType.create(NurostarGeneratorMenu::new));
 	public static final RegistryObject<MenuType<NurostarBatteryMenu>> NUROSTAR_BATTERY_MENU = REGISTRY.register("nurostar_battery_menu", () -> IForgeMenuType.create(NurostarBatteryMenu::new));
+	public static final RegistryObject<MenuType<ResourceExtractorMenu>> RESOURCE_EXTRACTOR_MENU = REGISTRY.register("resource_extractor_menu", () -> IForgeMenuType.create(ResourceExtractorMenu::new));
 }

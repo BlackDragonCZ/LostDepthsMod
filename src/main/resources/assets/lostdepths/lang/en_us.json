@@ -1,4 +1,6 @@
 {
+  "block.lostdepths.wormhole_disruptor": "Wormhole Disruptor (teleport blocker)",
+  "block.lostdepths.resource_extractor": "Resource Extractor",
   "message.lostdepths.not_enough_space": "Not enough space",
   "item.lostdepths.titanium_metalloy_scrap": "Titanium-Metalloy Scrap",
   "block.lostdepths.celestial_logs_red": "Celestial Log",

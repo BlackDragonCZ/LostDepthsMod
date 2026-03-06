@@ -656,8 +656,9 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> INFUSED_WRITABLE_BOOK = REGISTRY.register("infused_writable_book", InfusedWritableBookItem::new);
 	public static final RegistryObject<Item> INFUSED_WRITTEN_BOOK = REGISTRY.register("infused_written_book", InfusedWrittenBookItem::new);
 
-    //TODO: finish resource extractor
-	//public static final RegistryObject<Item> RESOURCE_EXTRACTOR = block(LostdepthsModBlocks.RESOURCE_EXTRACTOR);
+	public static final RegistryObject<Item> WORMHOLE_DISRUPTOR = block(LostdepthsModBlocks.WORMHOLE_DISRUPTOR);
+
+	public static final RegistryObject<Item> RESOURCE_EXTRACTOR = block(LostdepthsModBlocks.RESOURCE_EXTRACTOR);
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));

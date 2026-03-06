@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "top": "lostdepths:block/resource_extractor_top",
+    "front": "lostdepths:block/resource_extractor_front",
+    "side": "lostdepths:block/resource_extractor_side"
+  }
+}
