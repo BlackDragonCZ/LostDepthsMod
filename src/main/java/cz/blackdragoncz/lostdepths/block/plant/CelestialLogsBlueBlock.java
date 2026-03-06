@@ -23,6 +23,8 @@ import net.minecraft.core.BlockPos;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 
@@ -81,6 +83,13 @@ public class CelestialLogsBlueBlock extends Block {
 			return new ArrayList<>();
 		}
 
-		return List.of(new ItemStack(LostdepthsModItems.POSITIVE_MAGNECRONITE.get()));
+		int fortuneLevel = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.BLOCK_FORTUNE, tool);
+		int count = 1;
+		if (fortuneLevel > 0) {
+			// Vanilla ore fortune formula: 1 + random(0..fortuneLevel)
+			net.minecraft.util.RandomSource random = net.minecraft.util.RandomSource.create();
+			count += random.nextInt(fortuneLevel + 1);
+		}
+		return List.of(new ItemStack(LostdepthsModItems.POSITIVE_MAGNECRONITE.get(), count));
 	}
 }

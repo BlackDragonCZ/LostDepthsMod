@@ -1,6 +1,7 @@
 {
   "type": "forge:add_features",
   "biomes": [
+    "lostdepths:sun_forest"
   ],
   "features": "lostdepths:celestial_tree_blue_feature",
   "step": "surface_structures"

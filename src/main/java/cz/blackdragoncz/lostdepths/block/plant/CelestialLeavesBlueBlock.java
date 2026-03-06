@@ -32,14 +32,17 @@ public class CelestialLeavesBlueBlock extends LeavesBlock {
 				.sound(SoundType.GRASS)
 				.strength(2f, 10f)
 				.pushReaction(PushReaction.BLOCK)
+				.noOcclusion()
 				.randomTicks()
+				.isSuffocating((s, g, p) -> false)
+				.isViewBlocking((s, g, p) -> false)
 		);
 		this.registerDefaultState(this.defaultBlockState().setValue(AXIS, Direction.Axis.Y));
 	}
 
 	@Override
 	public int getLightBlock(BlockState state, BlockGetter worldIn, BlockPos pos) {
-		return 15;
+		return 1;
 	}
 
 	@Override

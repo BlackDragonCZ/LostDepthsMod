@@ -1,7 +1,10 @@
 {
   "type": "lostdepths:the_protector",
-  "biomes": [
-    "#minecraft:is_overworld",
-    "#lostdepths:is_lostdepths"
-  ]
+  "biomes": {
+    "type": "forge:any",
+    "values": [
+      "#minecraft:is_overworld",
+      "#lostdepths:is_lostdepths"
+    ]
+  }
 }

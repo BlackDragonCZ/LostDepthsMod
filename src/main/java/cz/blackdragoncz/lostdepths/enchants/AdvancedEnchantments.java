@@ -109,7 +109,7 @@ public abstract class AdvancedEnchantments extends Enchantment {
 
     @Override
     public boolean isDiscoverable() {
-        return false;
+        return enable;
     }
 
     @Override

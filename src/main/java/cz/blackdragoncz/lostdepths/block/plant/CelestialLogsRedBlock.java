@@ -2,6 +2,8 @@
 package cz.blackdragoncz.lostdepths.block.plant;
 
 import cz.blackdragoncz.lostdepths.init.LostdepthsModItems;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -81,6 +83,12 @@ public class CelestialLogsRedBlock extends Block {
 			return new ArrayList<>();
 		}
 
-		return List.of(new ItemStack(LostdepthsModItems.NEGATIVE_MAGNECRONITE.get()));
+		int fortuneLevel = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.BLOCK_FORTUNE, tool);
+		int count = 1;
+		if (fortuneLevel > 0) {
+			net.minecraft.util.RandomSource random = net.minecraft.util.RandomSource.create();
+			count += random.nextInt(fortuneLevel + 1);
+		}
+		return List.of(new ItemStack(LostdepthsModItems.NEGATIVE_MAGNECRONITE.get(), count));
 	}
 }

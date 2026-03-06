@@ -4,8 +4,7 @@
     "lostdepths:lost_souls",
     "lostdepths:sun_forest",
     "lostdepths:ancient_biome",
-    "lostdepths:ancient_biome_above",
-    "lostdepths:depth"
+    "lostdepths:ancient_biome_above"
   ],
   "features": "lostdepths:cognitium_ore",
   "step": "underground_ores"

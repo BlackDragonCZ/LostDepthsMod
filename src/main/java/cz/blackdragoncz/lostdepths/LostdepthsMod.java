@@ -23,10 +23,10 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.common.MinecraftForge;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.core.registries.Registries;
 
 import java.util.*;
 import java.util.function.Supplier;
@@ -63,6 +63,9 @@ public class LostdepthsMod {
         // TODO: verify intrusion mods populators - other mods may add structures to lostdepths dimensions
         //  Check which mods generate foreign structures in below_bedrock/between_bedrock_and_overworld/lost_dungeons
         //  and add Forge event filtering or biome tag exclusions to prevent it
+        // TODO: REMOVE in next update - stub biome files sun_forest_2.json and sun_forest_3.json
+        //  exist only for world save compatibility. Delete them after all servers have loaded
+        //  and reset the lost_dungeons dimension. Files at: worldgen/biome/sun_forest_2.json, sun_forest_3.json
 		StructureFeature.REGISTRY.register(bus);
 		LostdepthsModMobEffects.REGISTRY.register(bus);
 		LostdepthsModPotions.REGISTRY.register(bus);
@@ -116,6 +119,34 @@ public class LostdepthsMod {
 	public void onServerStarting(ServerStartingEvent event)
 	{
 		LOGGER.info("Mlem all other mods :3");
+	}
+
+	@SubscribeEvent
+	public void onPlayerChangeDimension(net.minecraftforge.event.entity.player.PlayerEvent.PlayerChangedDimensionEvent event) {
+		var player = event.getEntity();
+		var level = player.level();
+		if (level.isClientSide || !(level instanceof net.minecraft.server.level.ServerLevel serverLevel)) return;
+
+		var dimKey = event.getTo();
+		String dimId = dimKey.location().toString();
+		// Create spawn platform for lostdepths dimensions (like The End)
+		if (dimId.equals("lostdepths:below_bedrock") || dimId.equals("lostdepths:between_bedrock_and_overworld")) {
+			BlockPos platformCenter = new BlockPos(0, 64, 0);
+			// Place a 5x5 platform of space_rock at y=64, clear space above
+			for (int x = -2; x <= 2; x++) {
+				for (int z = -2; z <= 2; z++) {
+					BlockPos platformPos = platformCenter.offset(x, 0, z);
+					serverLevel.setBlockAndUpdate(platformPos,
+							net.minecraftforge.registries.ForgeRegistries.BLOCKS.getValue(
+									new ResourceLocation("lostdepths", "space_rock")).defaultBlockState());
+					// Clear 3 blocks above for breathing room
+					for (int y = 1; y <= 3; y++) {
+						serverLevel.setBlockAndUpdate(platformPos.above(y),
+								net.minecraft.world.level.block.Blocks.AIR.defaultBlockState());
+					}
+				}
+			}
+		}
 	}
 
 	@SubscribeEvent
