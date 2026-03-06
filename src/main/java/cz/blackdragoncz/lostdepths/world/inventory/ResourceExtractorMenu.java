@@ -40,26 +40,26 @@ public class ResourceExtractorMenu extends AbstractContainerMenu {
                 .ifPresent(cap -> itemHandler[0] = cap);
 
         if (itemHandler[0] != null) {
-            // Pickaxe slot (centered top)
-            this.addSlot(new SlotItemHandler(itemHandler[0], 0, 44, 20));
-            // Solution slots (row below pickaxe)
-            this.addSlot(new SlotItemHandler(itemHandler[0], 1, 26, 50));
-            this.addSlot(new SlotItemHandler(itemHandler[0], 2, 44, 50));
-            this.addSlot(new SlotItemHandler(itemHandler[0], 3, 62, 50));
-            // Output slots (2x2 on right side)
-            this.addSlot(new SlotItemHandler(itemHandler[0], 4, 116, 30));
-            this.addSlot(new SlotItemHandler(itemHandler[0], 5, 134, 30));
-            this.addSlot(new SlotItemHandler(itemHandler[0], 6, 116, 48));
-            this.addSlot(new SlotItemHandler(itemHandler[0], 7, 134, 48));
+            // Pickaxe slot
+            this.addSlot(new SlotItemHandler(itemHandler[0], 0, 27, 83)); // pickaxe
+            // Solution slots
+            this.addSlot(new SlotItemHandler(itemHandler[0], 1, 8, 56));  // solution_1
+            this.addSlot(new SlotItemHandler(itemHandler[0], 2, 26, 56)); // solution_2
+            this.addSlot(new SlotItemHandler(itemHandler[0], 3, 44, 56)); // solution_3
+            // Output slots (2x2)
+            this.addSlot(new SlotItemHandler(itemHandler[0], 4, 85, 28));  // output_1
+            this.addSlot(new SlotItemHandler(itemHandler[0], 5, 103, 28)); // output_2
+            this.addSlot(new SlotItemHandler(itemHandler[0], 6, 85, 46));  // output_3
+            this.addSlot(new SlotItemHandler(itemHandler[0], 7, 103, 46)); // output_4
         }
 
-        // Player inventory
+        // Player inventory (y=127)
         for (int row = 0; row < 3; row++)
             for (int col = 0; col < 9; col++)
-                this.addSlot(new Slot(inv, col + (row + 1) * 9, 8 + col * 18, 84 + row * 18));
-        // Hotbar
+                this.addSlot(new Slot(inv, col + (row + 1) * 9, 9 + col * 18, 127 + row * 18));
+        // Hotbar (y=185)
         for (int col = 0; col < 9; col++)
-            this.addSlot(new Slot(inv, col, 8 + col * 18, 142));
+            this.addSlot(new Slot(inv, col, 9 + col * 18, 185));
     }
 
     @Override

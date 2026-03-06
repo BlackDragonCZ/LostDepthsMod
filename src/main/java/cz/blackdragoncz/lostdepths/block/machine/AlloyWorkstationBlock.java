@@ -106,17 +106,24 @@ public class AlloyWorkstationBlock extends Block implements EntityBlock {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
+		Direction facing = context.getHorizontalDirection().getOpposite();
+		BlockPos pos = context.getClickedPos();
+		if (!MultiblockHelper.canPlace(context.getLevel(), pos, facing, PART_OFFSETS)) {
+			if (context.getPlayer() != null) {
+				context.getPlayer().displayClientMessage(
+						net.minecraft.network.chat.Component.translatable("message.lostdepths.not_enough_space"), true);
+			}
+			return null;
+		}
+		return this.defaultBlockState().setValue(FACING, facing);
 	}
 
 	@Override
 	public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
 		super.setPlacedBy(level, pos, state, placer, stack);
-		if (!level.isClientSide && placer instanceof Player player) {
+		if (!level.isClientSide) {
 			Direction facing = state.getValue(FACING);
-			if (!MultiblockHelper.tryPlace(level, pos, facing, PART_OFFSETS, player, LostdepthsModBlocks.MULTIBLOCK_DUMMY.get())) {
-				level.destroyBlock(pos, true);
-			}
+			MultiblockHelper.placeParts(level, pos, facing, PART_OFFSETS, LostdepthsModBlocks.MULTIBLOCK_DUMMY.get());
 		}
 	}
 

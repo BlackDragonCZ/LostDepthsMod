@@ -8,8 +8,6 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraftforge.energy.EnergyStorage;
-
 import java.text.DecimalFormat;
 
 public class NurostarBatteryScreen extends AbstractContainerScreen<NurostarBatteryMenu> {
@@ -22,6 +20,7 @@ public class NurostarBatteryScreen extends AbstractContainerScreen<NurostarBatte
         super(menu, playerInventory, title);
         this.imageWidth = 176;
         this.imageHeight = 206;
+        this.inventoryLabelY = this.imageHeight - 94;
     }
 
     @Override
@@ -43,34 +42,27 @@ public class NurostarBatteryScreen extends AbstractContainerScreen<NurostarBatte
 
         g.blit(BG, leftPos, topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight + 20);
 
-        int leftSideWidth = this.imageWidth / 2;
-
-        // Charge input slot (left)
-        drawSlot(g, leftSideWidth / 2 - SLOT_SIZE - 2, 54);
-        // Drain output slot (right)
-        drawSlot(g, leftSideWidth / 2 + 2, 54);
-
-        // Arrow: charge direction indicator (battery -> item) on left slot
-        g.blit(JEI, leftPos + leftSideWidth / 2 - SLOT_SIZE - 2 + 4, topPos + 44, 176, 0, 11, 8, 256, 256);
-        // Arrow: drain direction indicator (item -> battery) on right slot
-        g.blit(JEI, leftPos + leftSideWidth / 2 + 6, topPos + 44, 176, 0, 11, 8, 256, 256);
+        // Charge input slot
+        drawSlot(g, 36, 53);
+        // Drain output slot
+        drawSlot(g, 90, 54);
 
         RenderSystem.disableBlend();
 
-        // Power bar — centered on right half
+        // Energy bar
         int powerBarWidth = 30;
-        int powerBarHeight = Math.round((42.0f / 14.0f) * powerBarWidth);
-        int powerBarX = leftPos + leftSideWidth + leftSideWidth / 2 - powerBarWidth / 2;
-        int powerBarY = topPos + 50 - powerBarHeight / 2;
+        int powerBarHeight = 60;
+        int powerBarX = leftPos + 132;
+        int powerBarY = topPos + 37;
 
         // Background bar
         g.blit(JEI, powerBarX, powerBarY, powerBarWidth, powerBarHeight, 140, 144, 14, 42, 256, 256);
 
-        // Filled bar
-        EnergyStorage energyStorage = menu.getBlockEntity().getEnergyStorage();
-        float fillPct = energyStorage.getMaxEnergyStored() > 0
-                ? (float) energyStorage.getEnergyStored() / energyStorage.getMaxEnergyStored()
-                : 0;
+        // TODO: Battery energy bar not showing correct values on client — ContainerData sync not working
+        // Filled bar (synced via ContainerData)
+        int stored = menu.getEnergyStored();
+        int maxE = menu.getMaxEnergy();
+        float fillPct = maxE > 0 ? (float) stored / maxE : 0;
         int fillHeight = Math.round(powerBarHeight * fillPct);
 
         g.enableScissor(powerBarX, powerBarY + powerBarHeight - fillHeight, powerBarX + powerBarWidth, powerBarY + powerBarHeight);
@@ -85,24 +77,21 @@ public class NurostarBatteryScreen extends AbstractContainerScreen<NurostarBatte
         g.drawString(this.font, this.title, this.titleLabelX, this.titleLabelY, -16750849, false);
         g.drawString(this.font, this.playerInventoryTitle, this.inventoryLabelX, this.inventoryLabelY + 20, -16750849, false);
 
-        int leftSideWidth = this.imageWidth / 2;
-
         // Labels under slots
-        g.drawString(this.font, Component.literal("Charge"), leftSideWidth / 2 - SLOT_SIZE - 2, 76, 0x555555, false);
-        g.drawString(this.font, Component.literal("Drain"), leftSideWidth / 2 + 4, 76, 0x555555, false);
+        g.drawString(this.font, Component.literal("Charge"), 33, 78, 0x555555, false);
+        g.drawString(this.font, Component.literal("Drain"), 89, 78, 0x555555, false);
 
-        // Energy tooltip on hover
-        EnergyStorage energyStorage = menu.getBlockEntity().getEnergyStorage();
+        // Energy tooltip on hover (synced via ContainerData)
         int powerBarWidth = 30;
-        int powerBarHeight = Math.round((42.0f / 14.0f) * powerBarWidth);
-        int powerBarX = leftPos + leftSideWidth + leftSideWidth / 2 - powerBarWidth / 2;
-        int powerBarY = topPos + 50 - powerBarHeight / 2;
+        int powerBarHeight = 60;
+        int powerBarX = leftPos + 132;
+        int powerBarY = topPos + 37;
 
         if (mouseX >= powerBarX && mouseX < powerBarX + powerBarWidth
                 && mouseY >= powerBarY && mouseY < powerBarY + powerBarHeight) {
-            String text = ENERGY_FORMAT.format(energyStorage.getEnergyStored()) +
+            String text = ENERGY_FORMAT.format(menu.getEnergyStored()) +
                     "FE / " +
-                    ENERGY_FORMAT.format(energyStorage.getMaxEnergyStored()) +
+                    ENERGY_FORMAT.format(menu.getMaxEnergy()) +
                     "FE";
             g.renderTooltip(this.font, Component.literal(text), mouseX - this.leftPos, mouseY - this.topPos);
         }

@@ -1,0 +1,231 @@
+{
+  "guis": [
+    {
+      "id": "lostdepths:resource_extractor",
+      "label": "Resource Extractor",
+      "screenPath": "src/main/java/cz/blackdragoncz/lostdepths/client/gui/ResourceExtractorScreen.java",
+      "menuPath": "src/main/java/cz/blackdragoncz/lostdepths/world/inventory/ResourceExtractorMenu.java",
+      "imageWidth": 176,
+      "imageHeight": 206,
+      "bgTexture": "ld_gui_generic",
+      "elements": [
+        {
+          "type": "slot",
+          "id": "pickaxe",
+          "label": "Tool",
+          "slotIndex": 0,
+          "x": 27,
+          "y": 83
+        },
+        {
+          "type": "slot",
+          "id": "solution_1",
+          "label": "Sol.1",
+          "slotIndex": 1,
+          "x": 8,
+          "y": 56
+        },
+        {
+          "type": "slot",
+          "id": "solution_2",
+          "label": "Sol.2",
+          "slotIndex": 2,
+          "x": 26,
+          "y": 56
+        },
+        {
+          "type": "slot",
+          "id": "solution_3",
+          "label": "Sol.3",
+          "slotIndex": 3,
+          "x": 44,
+          "y": 56
+        },
+        {
+          "type": "slot",
+          "id": "output_1",
+          "label": "Out.1",
+          "slotIndex": 4,
+          "x": 85,
+          "y": 28
+        },
+        {
+          "type": "slot",
+          "id": "output_2",
+          "label": "Out.2",
+          "slotIndex": 5,
+          "x": 103,
+          "y": 28
+        },
+        {
+          "type": "slot",
+          "id": "output_3",
+          "label": "Out.3",
+          "slotIndex": 6,
+          "x": 85,
+          "y": 46
+        },
+        {
+          "type": "slot",
+          "id": "output_4",
+          "label": "Out.4",
+          "slotIndex": 7,
+          "x": 103,
+          "y": 46
+        },
+        {
+          "type": "label",
+          "id": "lbl_tool",
+          "text": "Tool",
+          "x": 49,
+          "y": 86,
+          "color": "0x555555"
+        },
+        {
+          "type": "label",
+          "id": "lbl_solutions",
+          "text": "Solutions",
+          "x": 20,
+          "y": 43,
+          "color": "0x555555"
+        },
+        {
+          "type": "label",
+          "id": "lbl_output",
+          "text": "Output",
+          "x": 88,
+          "y": 14,
+          "color": "0x555555"
+        },
+        {
+          "type": "energy_bar",
+          "id": "energy",
+          "x": 133,
+          "y": 45,
+          "w": 20,
+          "h": 60
+        },
+        {
+          "type": "progress",
+          "id": "progress",
+          "x": 131,
+          "y": 29,
+          "w": 24,
+          "h": 2
+        },
+        {
+          "type": "player_inventory",
+          "id": "player_inv",
+          "x": 8,
+          "y": 126
+        }
+      ]
+    },
+    {
+      "id": "lostdepths:nurostar_battery",
+      "label": "Nurostar Battery",
+      "screenPath": "src/main/java/cz/blackdragoncz/lostdepths/client/gui/NurostarBatteryScreen.java",
+      "menuPath": "src/main/java/cz/blackdragoncz/lostdepths/world/inventory/NurostarBatteryMenu.java",
+      "imageWidth": 176,
+      "imageHeight": 206,
+      "bgTexture": "ld_gui_generic",
+      "elements": [
+        {
+          "type": "slot",
+          "id": "charge",
+          "label": "Charge",
+          "slotIndex": 0,
+          "x": 37,
+          "y": 54
+        },
+        {
+          "type": "slot",
+          "id": "drain",
+          "label": "Drain",
+          "slotIndex": 1,
+          "x": 91,
+          "y": 55
+        },
+        {
+          "type": "label",
+          "id": "lbl_charge",
+          "text": "Charge",
+          "x": 33,
+          "y": 78,
+          "color": "0x555555"
+        },
+        {
+          "type": "label",
+          "id": "lbl_drain",
+          "text": "Drain",
+          "x": 89,
+          "y": 78,
+          "color": "0x555555"
+        },
+        {
+          "type": "energy_bar",
+          "id": "energy",
+          "x": 132,
+          "y": 37,
+          "w": 30,
+          "h": 60
+        },
+        {
+          "type": "player_inventory",
+          "id": "player_inv",
+          "x": 8,
+          "y": 126
+        }
+      ]
+    },
+    {
+      "id": "lostdepths:nurostar_generator",
+      "label": "Nurostar Generator",
+      "screenPath": "src/main/java/cz/blackdragoncz/lostdepths/client/gui/NurostarGeneratorScreen.java",
+      "menuPath": "src/main/java/cz/blackdragoncz/lostdepths/world/inventory/NurostarGeneratorMenu.java",
+      "imageWidth": 176,
+      "imageHeight": 206,
+      "bgTexture": "ld_gui_generic",
+      "elements": [
+        {
+          "type": "slot",
+          "id": "input_1",
+          "label": "In.1",
+          "slotIndex": 0,
+          "x": 26,
+          "y": 86
+        },
+        {
+          "type": "slot",
+          "id": "input_2",
+          "label": "In.2",
+          "slotIndex": 1,
+          "x": 49,
+          "y": 86
+        },
+        {
+          "type": "slot",
+          "id": "waste",
+          "label": "Waste",
+          "slotIndex": 2,
+          "x": 44,
+          "y": 21
+        },
+        {
+          "type": "energy_bar",
+          "id": "energy",
+          "x": 118,
+          "y": 18,
+          "w": 30,
+          "h": 60
+        },
+        {
+          "type": "player_inventory",
+          "id": "player_inv",
+          "x": 8,
+          "y": 126
+        }
+      ]
+    }
+  ]
+}

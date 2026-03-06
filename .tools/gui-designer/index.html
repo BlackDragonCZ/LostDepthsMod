@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lost Depths - GUI Designer</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #e0e0e0; display: flex; height: 100vh; overflow: hidden; }
+
+.sidebar { width: 280px; background: #16213e; border-right: 1px solid #0f3460; display: flex; flex-direction: column; overflow-y: auto; }
+.sidebar h2 { padding: 12px 16px; background: #0f3460; font-size: 14px; letter-spacing: 1px; }
+.sidebar section { padding: 10px 16px; border-bottom: 1px solid #0f3460; }
+.sidebar section h3 { font-size: 11px; color: #8899aa; margin-bottom: 8px; text-transform: uppercase; }
+
+.gui-list-item {
+    padding: 8px 12px; margin: 3px 0; background: #1a1a3e; border: 1px solid #334;
+    border-radius: 4px; cursor: pointer; font-size: 12px;
+}
+.gui-list-item:hover { background: #2a2a5e; border-color: #55c; }
+.gui-list-item.active { background: #22225e; border-color: #55c; }
+.gui-list-item .gui-id { color: #6688aa; font-size: 10px; }
+
+.element-list { max-height: 300px; overflow-y: auto; }
+.el-item {
+    display: flex; align-items: center; padding: 4px 8px; margin: 2px 0;
+    background: #1a1a3e; border: 1px solid #334; border-radius: 3px;
+    cursor: pointer; font-size: 11px; gap: 6px;
+}
+.el-item.active { border-color: #55c; background: #22225e; }
+.el-item .el-type { color: #6a8; font-size: 10px; width: 50px; }
+.el-item .el-name { flex: 1; }
+.el-item .el-pos { color: #888; font-size: 10px; }
+
+.prop-row { display: flex; align-items: center; margin: 4px 0; }
+.prop-row label { width: 60px; font-size: 11px; color: #8899aa; }
+.prop-row input { flex: 1; background: #1a1a3e; border: 1px solid #334; color: #e0e0e0; padding: 4px 6px; border-radius: 3px; font-size: 12px; }
+
+.btn { display: inline-block; padding: 6px 14px; background: #1a1a3e; border: 1px solid #334; color: #e0e0e0; border-radius: 4px; cursor: pointer; font-size: 12px; }
+.btn:hover { background: #2a2a5e; }
+.btn-primary { border-color: #55c; }
+.btn-primary:hover { background: #33339e; }
+.btn-danger { border-color: #a44; }
+.btn-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+
+.main-area { flex: 1; display: flex; flex-direction: column; }
+.toolbar { height: 40px; background: #16213e; border-bottom: 1px solid #0f3460; display: flex; align-items: center; padding: 0 16px; gap: 8px; }
+.toolbar .info { font-size: 11px; color: #6688aa; margin-left: auto; }
+.toolbar .sep { width: 1px; height: 20px; background: #334; }
+
+.canvas-wrap { flex: 1; overflow: auto; display: flex; align-items: center; justify-content: center; background: #111122; }
+canvas { image-rendering: pixelated; cursor: crosshair; }
+
+.status-bar { height: 28px; background: #0f1628; border-top: 1px solid #0f3460; display: flex; align-items: center; padding: 0 16px; font-size: 11px; color: #556; }
+
+/* Code diff panel */
+.diff-panel { position: fixed; top: 0; right: 0; width: 50%; height: 100%; background: #0d0d1a; border-left: 2px solid #0f3460; z-index: 100; display: none; flex-direction: column; }
+.diff-panel.open { display: flex; }
+.diff-header { padding: 10px 16px; background: #16213e; display: flex; align-items: center; justify-content: space-between; }
+.diff-tabs { display: flex; gap: 0; }
+.diff-tab { padding: 6px 16px; cursor: pointer; background: #1a1a3e; border: 1px solid #334; border-bottom: none; font-size: 12px; color: #8899aa; }
+.diff-tab.active { background: #0d0d1a; color: #e0e0e0; }
+.diff-content { flex: 1; overflow: auto; padding: 16px; font-family: Consolas, monospace; font-size: 12px; line-height: 1.6; white-space: pre; color: #c0d0e0; }
+.diff-add { color: #5c5; }
+.diff-rem { color: #c55; text-decoration: line-through; }
+
+.no-gui { padding: 40px; text-align: center; color: #556; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>GUI DESIGNER</h2>
+    <section>
+        <h3>GUIs</h3>
+        <div id="guiList"><div class="no-gui">Loading registry...</div></div>
+    </section>
+    <section>
+        <h3>Elements</h3>
+        <div class="element-list" id="elementList"></div>
+        <div class="btn-row">
+            <button class="btn" onclick="addElement('slot')">+ Slot</button>
+            <button class="btn" onclick="addElement('label')">+ Label</button>
+            <button class="btn" onclick="addElement('energy_bar')">+ Energy</button>
+            <button class="btn" onclick="addElement('progress')">+ Progress</button>
+            <button class="btn btn-danger" onclick="deleteSelected()">Delete</button>
+        </div>
+    </section>
+    <section>
+        <h3>Properties</h3>
+        <div id="propPanel"><span style="color:#556;font-size:12px">Select an element</span></div>
+    </section>
+    <section>
+        <h3>Background</h3>
+        <div class="prop-row"><label>Width:</label><input type="number" id="bgW" value="176" onchange="updateBg()"></div>
+        <div class="prop-row"><label>Height:</label><input type="number" id="bgH" value="206" onchange="updateBg()"></div>
+    </section>
+</div>
+
+<div class="main-area">
+    <div class="toolbar">
+        <button class="btn btn-primary" onclick="showDiff()">Apply Changes</button>
+        <div class="sep"></div>
+        <button class="btn" onclick="saveRegistry()">Save Config</button>
+        <button class="btn" onclick="reloadRegistry()">Reload</button>
+        <div class="sep"></div>
+        <label style="font-size:12px">Zoom:</label>
+        <input type="range" id="zoomSlider" min="1" max="5" value="3" step="1" style="width:70px" oninput="zoom=+this.value;render()">
+        <div class="info" id="statusInfo">Select a GUI to edit</div>
+    </div>
+    <div class="canvas-wrap">
+        <canvas id="canvas" width="528" height="618"></canvas>
+    </div>
+    <div class="status-bar" id="statusBar">Ready</div>
+</div>
+
+<div class="diff-panel" id="diffPanel">
+    <div class="diff-header">
+        <div class="diff-tabs">
+            <div class="diff-tab active" onclick="showDiffTab('screen')">Screen</div>
+            <div class="diff-tab" onclick="showDiffTab('menu')">Menu</div>
+        </div>
+        <div>
+            <button class="btn" onclick="copyDiff()">Copy</button>
+            <button class="btn" onclick="closeDiff()">Close</button>
+        </div>
+    </div>
+    <div class="diff-content" id="diffContent"></div>
+</div>
+
+<script>
+let registry = null;
+let currentGui = null;
+let selectedEl = null;
+let zoom = 3;
+let dragging = false;
+let dragOffset = { x: 0, y: 0 };
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+const SLOT_SIZE = 18;
+const PLAYER_INV_W = 162;
+const PLAYER_INV_H = 76;
+
+// --- Registry ---
+async function loadRegistry() {
+    try {
+        const resp = await fetch('registry.json?t=' + Date.now());
+        registry = await resp.json();
+        renderGuiList();
+    } catch (e) {
+        document.getElementById('guiList').innerHTML = '<div class="no-gui">Failed to load registry.json</div>';
+    }
+}
+
+function renderGuiList() {
+    const list = document.getElementById('guiList');
+    list.innerHTML = '';
+    registry.guis.forEach((gui, idx) => {
+        const item = document.createElement('div');
+        item.className = 'gui-list-item' + (currentGui === gui ? ' active' : '');
+        item.innerHTML = `<div>${gui.label}</div><div class="gui-id">${gui.id}</div>`;
+        item.onclick = () => selectGui(gui);
+        list.appendChild(item);
+    });
+}
+
+function selectGui(gui) {
+    currentGui = gui;
+    selectedEl = null;
+    document.getElementById('bgW').value = gui.imageWidth;
+    document.getElementById('bgH').value = gui.imageHeight;
+    renderGuiList();
+    renderElementList();
+    updateProps();
+    render();
+    document.getElementById('statusInfo').textContent = gui.id;
+}
+
+function reloadRegistry() { loadRegistry(); }
+
+function saveRegistry() {
+    if (!registry) return;
+    const blob = new Blob([JSON.stringify(registry, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'registry.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    document.getElementById('statusBar').textContent = 'Saved registry.json — replace the file in .tools/gui-designer/';
+}
+
+// --- Element List ---
+function renderElementList() {
+    const list = document.getElementById('elementList');
+    if (!currentGui) { list.innerHTML = ''; return; }
+    list.innerHTML = '';
+    currentGui.elements.forEach((el, idx) => {
+        const item = document.createElement('div');
+        item.className = 'el-item' + (selectedEl === el ? ' active' : '');
+        item.innerHTML = `<span class="el-type">${el.type}</span><span class="el-name">${el.id}</span><span class="el-pos">${el.x},${el.y}</span>`;
+        item.onclick = () => { selectedEl = el; renderElementList(); updateProps(); render(); };
+        list.appendChild(item);
+    });
+}
+
+// --- Properties ---
+function updateProps() {
+    const panel = document.getElementById('propPanel');
+    if (!selectedEl) { panel.innerHTML = '<span style="color:#556;font-size:12px">Select an element</span>'; return; }
+    const el = selectedEl;
+    let html = '';
+    html += prop('ID', 'id', el.id);
+    html += prop('X', 'x', el.x, 'number');
+    html += prop('Y', 'y', el.y, 'number');
+    if (el.type === 'slot') {
+        html += prop('Slot #', 'slotIndex', el.slotIndex, 'number');
+        html += prop('Label', 'label', el.label || '');
+    }
+    if (el.type === 'label') {
+        html += prop('Text', 'text', el.text || '');
+        html += prop('Color', 'color', el.color || '0x404040');
+    }
+    if (el.type === 'energy_bar' || el.type === 'progress') {
+        html += prop('W', 'w', el.w || 24, 'number');
+        html += prop('H', 'h', el.h || 16, 'number');
+    }
+    panel.innerHTML = html;
+    panel.querySelectorAll('input[data-prop]').forEach(input => {
+        input.addEventListener('change', () => {
+            const p = input.dataset.prop;
+            el[p] = input.type === 'number' ? parseInt(input.value) || 0 : input.value;
+            renderElementList(); render();
+        });
+    });
+}
+
+function prop(label, key, value, type = 'text') {
+    return `<div class="prop-row"><label>${label}:</label><input type="${type}" data-prop="${key}" value="${esc(String(value))}"></div>`;
+}
+function esc(s) { return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+
+function updateBg() {
+    if (!currentGui) return;
+    currentGui.imageWidth = parseInt(document.getElementById('bgW').value) || 176;
+    currentGui.imageHeight = parseInt(document.getElementById('bgH').value) || 206;
+    render();
+}
+
+// --- Add/Delete ---
+function addElement(type) {
+    if (!currentGui) return;
+    const el = { type, id: type + '_' + currentGui.elements.length, x: 40, y: 40 };
+    if (type === 'slot') { el.slotIndex = currentGui.elements.filter(e => e.type === 'slot').length; el.label = 'New'; }
+    if (type === 'label') { el.text = 'Label'; el.color = '0x555555'; }
+    if (type === 'energy_bar') { el.w = 20; el.h = 60; }
+    if (type === 'progress') { el.w = 24; el.h = 2; }
+    currentGui.elements.push(el);
+    selectedEl = el;
+    renderElementList(); updateProps(); render();
+}
+
+function deleteSelected() {
+    if (!currentGui || !selectedEl) return;
+    currentGui.elements = currentGui.elements.filter(e => e !== selectedEl);
+    selectedEl = null;
+    renderElementList(); updateProps(); render();
+}
+
+// --- Canvas ---
+canvas.addEventListener('mousedown', e => {
+    if (!currentGui) return;
+    const rect = canvas.getBoundingClientRect();
+    const mx = (e.clientX - rect.left) / zoom;
+    const my = (e.clientY - rect.top) / zoom;
+    const hit = hitTest(mx, my);
+    if (hit) {
+        selectedEl = hit;
+        dragging = true;
+        dragOffset.x = mx - hit.x;
+        dragOffset.y = my - hit.y;
+    } else {
+        selectedEl = null;
+    }
+    renderElementList(); updateProps(); render();
+});
+
+canvas.addEventListener('mousemove', e => {
+    if (!dragging || !selectedEl) return;
+    const rect = canvas.getBoundingClientRect();
+    let x = (e.clientX - rect.left) / zoom - dragOffset.x;
+    let y = (e.clientY - rect.top) / zoom - dragOffset.y;
+    selectedEl.x = Math.round(x);
+    selectedEl.y = Math.round(y);
+    render(); updateProps(); renderElementList();
+});
+
+canvas.addEventListener('mouseup', () => { dragging = false; });
+
+document.addEventListener('keydown', e => {
+    if (!selectedEl || e.target.tagName === 'INPUT') return;
+    const s = e.shiftKey ? 1 : 2;
+    if (e.key === 'ArrowLeft') { selectedEl.x -= s; }
+    else if (e.key === 'ArrowRight') { selectedEl.x += s; }
+    else if (e.key === 'ArrowUp') { selectedEl.y -= s; }
+    else if (e.key === 'ArrowDown') { selectedEl.y += s; }
+    else if (e.key === 'Delete') { deleteSelected(); return; }
+    else return;
+    e.preventDefault(); render(); updateProps(); renderElementList();
+});
+
+function hitTest(mx, my) {
+    if (!currentGui) return null;
+    for (let i = currentGui.elements.length - 1; i >= 0; i--) {
+        const el = currentGui.elements[i];
+        const w = getElW(el), h = getElH(el);
+        if (mx >= el.x && mx < el.x + w && my >= el.y && my < el.y + h) return el;
+    }
+    return null;
+}
+
+function getElW(el) {
+    if (el.type === 'slot') return SLOT_SIZE;
+    if (el.type === 'player_inventory') return PLAYER_INV_W;
+    if (el.type === 'label') return Math.max(20, (el.text || '').length * 6);
+    return el.w || 20;
+}
+function getElH(el) {
+    if (el.type === 'slot') return SLOT_SIZE;
+    if (el.type === 'player_inventory') return PLAYER_INV_H;
+    if (el.type === 'label') return 10;
+    return el.h || 16;
+}
+
+// --- Render ---
+function render() {
+    if (!currentGui) return;
+    const bgW = currentGui.imageWidth, bgH = currentGui.imageHeight;
+    canvas.width = bgW * zoom;
+    canvas.height = bgH * zoom;
+    ctx.imageSmoothingEnabled = false;
+    ctx.save();
+    ctx.scale(zoom, zoom);
+
+    // BG
+    ctx.fillStyle = '#c6c6c6';
+    ctx.fillRect(0, 0, bgW, bgH);
+    ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, bgW, 1); ctx.fillRect(0, 0, 1, bgH);
+    ctx.fillStyle = '#555'; ctx.fillRect(0, bgH - 1, bgW, 1); ctx.fillRect(bgW - 1, 0, 1, bgH);
+    ctx.fillStyle = '#ddd'; ctx.fillRect(1, 1, bgW - 2, 1); ctx.fillRect(1, 1, 1, bgH - 2);
+    ctx.fillStyle = '#888'; ctx.fillRect(1, bgH - 2, bgW - 2, 1); ctx.fillRect(bgW - 2, 1, 1, bgH - 2);
+
+    // Grid
+    ctx.strokeStyle = 'rgba(0,0,0,0.04)'; ctx.lineWidth = 0.5;
+    for (let x = 0; x < bgW; x += 18) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, bgH); ctx.stroke(); }
+    for (let y = 0; y < bgH; y += 18) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(bgW, y); ctx.stroke(); }
+
+    // Elements
+    currentGui.elements.forEach(el => drawElement(el, el === selectedEl));
+    ctx.restore();
+
+    document.getElementById('statusBar').textContent = selectedEl ? `${selectedEl.id}: (${selectedEl.x}, ${selectedEl.y})` : currentGui.id;
+}
+
+function drawElement(el, selected) {
+    ctx.save();
+    switch (el.type) {
+        case 'slot': drawSlot(el); break;
+        case 'label': drawLabel(el); break;
+        case 'energy_bar': drawEnergyBar(el); break;
+        case 'progress': drawProgress(el); break;
+        case 'player_inventory': drawPlayerInv(el); break;
+    }
+    if (selected) {
+        const w = getElW(el), h = getElH(el);
+        ctx.strokeStyle = '#ff0'; ctx.lineWidth = 0.5;
+        ctx.setLineDash([2, 2]);
+        ctx.strokeRect(el.x - 1, el.y - 1, w + 2, h + 2);
+        ctx.setLineDash([]);
+    }
+    ctx.restore();
+}
+
+function drawSlot(el) {
+    const x = el.x, y = el.y;
+    ctx.fillStyle = '#373737'; ctx.fillRect(x, y, 18, 1); ctx.fillRect(x, y, 1, 18);
+    ctx.fillStyle = '#fff'; ctx.fillRect(x, y + 17, 18, 1); ctx.fillRect(x + 17, y, 1, 18);
+    ctx.fillStyle = '#8b8b8b'; ctx.fillRect(x + 1, y + 1, 16, 16);
+    ctx.fillStyle = '#4a433'; ctx.font = '6px monospace'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillStyle = '#4a4';
+    ctx.fillText(String(el.slotIndex ?? ''), x + 9, y + 7);
+    ctx.font = '4px monospace'; ctx.fillStyle = '#666';
+    ctx.fillText(el.label || el.id, x + 9, y + 14);
+}
+
+function drawLabel(el) {
+    ctx.font = '8px Segoe UI'; ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+    ctx.fillStyle = '#404040';
+    ctx.fillText(el.text || 'Label', el.x, el.y);
+}
+
+function drawEnergyBar(el) {
+    const w = el.w || 20, h = el.h || 60;
+    ctx.fillStyle = '#333'; ctx.fillRect(el.x, el.y, w, h);
+    ctx.strokeStyle = '#555'; ctx.lineWidth = 0.5; ctx.strokeRect(el.x, el.y, w, h);
+    ctx.fillStyle = '#a4aaa'; ctx.fillRect(el.x + 1, el.y + h * 0.35, w - 2, h * 0.65 - 1);
+    ctx.font = '4px monospace'; ctx.textAlign = 'center'; ctx.fillStyle = '#fff';
+    ctx.fillText('NRG', el.x + w / 2, el.y + 6);
+}
+
+function drawProgress(el) {
+    const w = el.w || 24, h = el.h || 2;
+    ctx.fillStyle = '#ddd'; ctx.fillRect(el.x, el.y, w, Math.max(h, 4));
+    ctx.fillStyle = '#55ff5588'; ctx.fillRect(el.x, el.y, w / 2, Math.max(h, 4));
+    ctx.font = '4px monospace'; ctx.textAlign = 'center'; ctx.fillStyle = '#48a';
+    ctx.fillText('PROG', el.x + w / 2, el.y - 2);
+}
+
+function drawPlayerInv(el) {
+    ctx.fillStyle = '#8884'; ctx.fillRect(el.x, el.y, PLAYER_INV_W, PLAYER_INV_H);
+    ctx.strokeStyle = '#5558'; ctx.lineWidth = 0.5; ctx.strokeRect(el.x, el.y, PLAYER_INV_W, PLAYER_INV_H);
+    for (let r = 0; r < 3; r++) for (let c = 0; c < 9; c++) drawMiniSlot(el.x + c * 18, el.y + r * 18);
+    for (let c = 0; c < 9; c++) drawMiniSlot(el.x + c * 18, el.y + 58);
+    ctx.font = '5px monospace'; ctx.textAlign = 'center'; ctx.fillStyle = '#666';
+    ctx.fillText('PLAYER INVENTORY', el.x + 81, el.y + 53);
+}
+
+function drawMiniSlot(x, y) {
+    ctx.fillStyle = '#373737'; ctx.fillRect(x, y, 18, 1); ctx.fillRect(x, y, 1, 18);
+    ctx.fillStyle = '#fff'; ctx.fillRect(x, y + 17, 18, 1); ctx.fillRect(x + 17, y, 1, 18);
+    ctx.fillStyle = '#8b8b8b'; ctx.fillRect(x + 1, y + 1, 16, 16);
+}
+
+// --- Diff / Code Generation ---
+let diffTab = 'screen';
+
+function showDiff() {
+    if (!currentGui) return;
+    document.getElementById('diffPanel').classList.add('open');
+    showDiffTab('screen');
+}
+function closeDiff() { document.getElementById('diffPanel').classList.remove('open'); }
+
+function showDiffTab(tab) {
+    diffTab = tab;
+    document.querySelectorAll('.diff-tab').forEach(t => t.classList.toggle('active', t.textContent.toLowerCase() === tab));
+    document.getElementById('diffContent').innerHTML = tab === 'screen' ? genScreenCode() : genMenuCode();
+}
+
+function genScreenCode() {
+    if (!currentGui) return '';
+    const gui = currentGui;
+    let code = `<span class="diff-add">// === ${gui.label} Screen — generated positions ===</span>\n`;
+    code += `<span class="diff-add">// Paste into renderBg() / renderLabels()</span>\n\n`;
+    code += `this.imageWidth = ${gui.imageWidth};\n`;
+    code += `this.imageHeight = ${gui.imageHeight};\n\n`;
+
+    // Slot draws
+    const slots = gui.elements.filter(e => e.type === 'slot');
+    if (slots.length) {
+        code += `// Slot backgrounds (in renderBg)\n`;
+        slots.forEach(s => {
+            code += `drawSlot(g, ${s.x - 1}, ${s.y - 1}); // ${s.id}\n`;
+        });
+        code += '\n';
+    }
+
+    // Labels
+    const labels = gui.elements.filter(e => e.type === 'label');
+    if (labels.length) {
+        code += `// Labels (in renderLabels)\n`;
+        labels.forEach(l => {
+            code += `g.drawString(this.font, Component.literal("${l.text}"), ${l.x}, ${l.y}, ${l.color || '0x555555'}, false);\n`;
+        });
+        code += '\n';
+    }
+
+    // Energy bar
+    const energyBars = gui.elements.filter(e => e.type === 'energy_bar');
+    energyBars.forEach(e => {
+        code += `// Energy bar: ${e.id}\n`;
+        code += `int powerBarX = leftPos + ${e.x};\n`;
+        code += `int powerBarY = topPos + ${e.y};\n`;
+        code += `int powerBarWidth = ${e.w || 20};\n`;
+        code += `int powerBarHeight = ${e.h || 60};\n\n`;
+    });
+
+    // Progress
+    const progs = gui.elements.filter(e => e.type === 'progress');
+    progs.forEach(p => {
+        code += `// Progress: ${p.id} at (${p.x}, ${p.y}) size ${p.w}x${p.h}\n`;
+    });
+
+    // Player inv
+    const pinv = gui.elements.find(e => e.type === 'player_inventory');
+    if (pinv) {
+        code += `// Player inventory starts at y=${pinv.y}\n`;
+        code += `// inventoryLabelY = ${pinv.y - 12}\n`;
+    }
+
+    return escHtml(code);
+}
+
+function genMenuCode() {
+    if (!currentGui) return '';
+    const gui = currentGui;
+    let code = `// === ${gui.label} Menu — generated slot positions ===\n\n`;
+
+    const slots = gui.elements.filter(e => e.type === 'slot');
+    slots.forEach(s => {
+        code += `this.addSlot(new SlotItemHandler(itemHandler[0], ${s.slotIndex}, ${s.x}, ${s.y})); // ${s.id}\n`;
+    });
+
+    const pinv = gui.elements.find(e => e.type === 'player_inventory');
+    if (pinv) {
+        code += `\n// Player inventory\n`;
+        code += `for (int row = 0; row < 3; row++)\n`;
+        code += `    for (int col = 0; col < 9; col++)\n`;
+        code += `        this.addSlot(new Slot(inv, col + (row + 1) * 9, ${pinv.x + 1} + col * 18, ${pinv.y + 1} + row * 18));\n`;
+        code += `// Hotbar\n`;
+        code += `for (int col = 0; col < 9; col++)\n`;
+        code += `    this.addSlot(new Slot(inv, col, ${pinv.x + 1} + col * 18, ${pinv.y + 59}));\n`;
+    }
+
+    return escHtml(code);
+}
+
+function escHtml(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+
+function copyDiff() {
+    const text = document.getElementById('diffContent').textContent;
+    navigator.clipboard.writeText(text);
+    document.getElementById('statusBar').textContent = 'Copied!';
+}
+
+// --- Init ---
+loadRegistry();
+</script>
+</body>
+</html>

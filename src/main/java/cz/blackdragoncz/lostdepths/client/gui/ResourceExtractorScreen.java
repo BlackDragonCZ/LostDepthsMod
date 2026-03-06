@@ -22,7 +22,8 @@ public class ResourceExtractorScreen extends AbstractContainerScreen<ResourceExt
     public ResourceExtractorScreen(ResourceExtractorMenu menu, Inventory inv, Component title) {
         super(menu, inv, title);
         this.imageWidth = 176;
-        this.imageHeight = 166;
+        this.imageHeight = 206;
+        this.inventoryLabelY = this.imageHeight - 94;
     }
 
     @Override
@@ -45,35 +46,35 @@ public class ResourceExtractorScreen extends AbstractContainerScreen<ResourceExt
         g.blit(BG, leftPos, topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight + 20);
 
         // Pickaxe slot
-        drawSlot(g, 43, 19);
+        drawSlot(g, 26, 82);
         // Solution slots
-        drawSlot(g, 25, 49);
-        drawSlot(g, 43, 49);
-        drawSlot(g, 61, 49);
+        drawSlot(g, 7, 55);
+        drawSlot(g, 25, 55);
+        drawSlot(g, 43, 55);
         // Output slots (2x2)
-        drawSlot(g, 115, 29);
-        drawSlot(g, 133, 29);
-        drawSlot(g, 115, 47);
-        drawSlot(g, 133, 47);
+        drawSlot(g, 84, 27);
+        drawSlot(g, 102, 27);
+        drawSlot(g, 84, 45);
+        drawSlot(g, 102, 45);
 
         RenderSystem.disableBlend();
 
-        // Progress arrow between solution and output
+        // Progress arrow
         ResourceExtractorBlockEntity be = menu.getBlockEntity();
         if (be != null) {
             int maxProg = be.getMaxProgress();
             int prog = be.getProgress();
             if (maxProg > 0 && prog > 0) {
                 int arrowWidth = (int) (24.0f * prog / maxProg);
-                g.fill(leftPos + 85, topPos + 41, leftPos + 85 + arrowWidth, topPos + 43, 0xFF55FF55);
+                g.fill(leftPos + 131, topPos + 29, leftPos + 131 + arrowWidth, topPos + 31, 0xFF55FF55);
             }
         }
 
-        // Power bar (bottom right area)
+        // Energy bar
         int powerBarWidth = 20;
-        int powerBarHeight = Math.round((42.0f / 14.0f) * powerBarWidth);
-        int powerBarX = leftPos + 152;
-        int powerBarY = topPos + 10;
+        int powerBarHeight = 60;
+        int powerBarX = leftPos + 133;
+        int powerBarY = topPos + 45;
 
         g.blit(JEI, powerBarX, powerBarY, powerBarWidth, powerBarHeight, 140, 144, 14, 42, 256, 256);
 
@@ -95,17 +96,17 @@ public class ResourceExtractorScreen extends AbstractContainerScreen<ResourceExt
         g.drawString(this.font, this.playerInventoryTitle, this.inventoryLabelX, this.inventoryLabelY, -16750849, false);
 
         // Labels
-        g.drawString(this.font, Component.literal("Tool"), 44, 12, 0x555555, false);
-        g.drawString(this.font, Component.literal("Solutions"), 22, 42, 0x555555, false);
-        g.drawString(this.font, Component.literal("Output"), 117, 22, 0x555555, false);
+        g.drawString(this.font, Component.literal("Tool"), 49, 86, 0x555555, false);
+        g.drawString(this.font, Component.literal("Solutions"), 20, 43, 0x555555, false);
+        g.drawString(this.font, Component.literal("Output"), 88, 14, 0x555555, false);
 
         // Energy tooltip
         ResourceExtractorBlockEntity be = menu.getBlockEntity();
         if (be != null) {
             int powerBarWidth = 20;
-            int powerBarHeight = Math.round((42.0f / 14.0f) * powerBarWidth);
-            int powerBarX = leftPos + 152;
-            int powerBarY = topPos + 10;
+            int powerBarHeight = 60;
+            int powerBarX = leftPos + 133;
+            int powerBarY = topPos + 45;
             if (mouseX >= powerBarX && mouseX < powerBarX + powerBarWidth
                     && mouseY >= powerBarY && mouseY < powerBarY + powerBarHeight) {
                 EnergyStorage es = be.getEnergyStorage();

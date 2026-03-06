@@ -307,8 +307,7 @@ public class LostdepthsModBlocks {
 	public static final RegistryObject<Block> WORMHOLE_DISRUPTOR = REGISTRY.register("wormhole_disruptor", WormholeDisruptorBlock::new);
 	public static final RegistryObject<Block> SECURITY_CLEARANCE_A = REGISTRY.register("security_clearance_a", () -> new SecurityClearanceBlock(1, 'b'));
 	public static final RegistryObject<Block> LASER_GATE_A = REGISTRY.register("laser_gate_a", () -> new LaserGateBlock(1, 'b'));
-
 	public static final RegistryObject<Block> MULTIBLOCK_DUMMY = REGISTRY.register("multiblock_dummy", MultiblockDummyBlock::new);
-
 	public static final RegistryObject<Block> RESOURCE_EXTRACTOR = REGISTRY.register("resource_extractor", ResourceExtractorBlock::new);
+
 }

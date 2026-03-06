@@ -72,6 +72,18 @@ public class MultiblockHelper {
     }
 
     /**
+     * Places dummy blocks unconditionally (call after canPlace check passed).
+     */
+    public static void placeParts(Level level, BlockPos controllerPos, Direction facing, List<BlockPos> baseOffsets, Block dummyBlock) {
+        for (BlockPos pos : getPartPositions(controllerPos, facing, baseOffsets)) {
+            level.setBlock(pos, dummyBlock.defaultBlockState(), 3);
+            if (level.getBlockEntity(pos) instanceof MultiblockDummyBlockEntity dummy) {
+                dummy.setControllerPos(controllerPos);
+            }
+        }
+    }
+
+    /**
      * Removes all dummy blocks associated with this controller.
      */
     public static void removeParts(Level level, BlockPos controllerPos, Direction facing, List<BlockPos> baseOffsets) {

@@ -8,11 +8,14 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.energy.EnergyStorage;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
@@ -23,6 +26,7 @@ public class NurostarBatteryMenu extends AbstractContainerMenu {
     private final Level level;
     private NurostarBatteryBlockEntity blockEntity;
     private final ContainerLevelAccess access;
+    private final ContainerData energyData;
 
     public NurostarBatteryMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
         super(LostdepthsModMenus.NUROSTAR_BATTERY_MENU.get(), id);
@@ -38,25 +42,45 @@ public class NurostarBatteryMenu extends AbstractContainerMenu {
 
         this.access = ContainerLevelAccess.create(this.level, pos);
 
-        IItemHandler[] itemHandler = new IItemHandler[1];
-        this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(cap -> itemHandler[0] = cap);
+        // Sync energy data to client: [0]=stored, [1]=capacity
+        if (this.blockEntity != null && !level.isClientSide) {
+            this.energyData = new ContainerData() {
+                @Override
+                public int get(int index) {
+                    EnergyStorage es = blockEntity.getEnergyStorage();
+                    return index == 0 ? es.getEnergyStored() : es.getMaxEnergyStored();
+                }
+                @Override
+                public void set(int index, int value) {}
+                @Override
+                public int getCount() { return 2; }
+            };
+        } else {
+            this.energyData = new SimpleContainerData(2);
+        }
+        this.addDataSlots(this.energyData);
 
-        if (itemHandler[0] != null) {
-            int leftSideWidth = 176 / 2;
-            // Slot 0: charge input (left side)
-            this.addSlot(new SlotItemHandler(itemHandler[0], 0, leftSideWidth / 2 - 19 - 2, 55));
-            // Slot 1: drain output (right side — but still on left half)
-            this.addSlot(new SlotItemHandler(itemHandler[0], 1, leftSideWidth / 2 + 3, 55));
+        IItemHandler[] itemHandler = new IItemHandler[1];
+        if (this.blockEntity != null) {
+            this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(cap -> itemHandler[0] = cap);
         }
 
-        // Player inventory
+        if (itemHandler[0] != null) {
+            this.addSlot(new SlotItemHandler(itemHandler[0], 0, 37, 54)); // charge
+            this.addSlot(new SlotItemHandler(itemHandler[0], 1, 91, 55)); // drain
+        }
+
+        // Player inventory (y=127)
         for (int row = 0; row < 3; row++)
             for (int col = 0; col < 9; col++)
-                this.addSlot(new Slot(inv, col + (row + 1) * 9, 8 + col * 18, 126 + row * 18));
-        // Player hotbar
+                this.addSlot(new Slot(inv, col + (row + 1) * 9, 9 + col * 18, 127 + row * 18));
+        // Player hotbar (y=185)
         for (int col = 0; col < 9; col++)
-            this.addSlot(new Slot(inv, col, 8 + col * 18, 184));
+            this.addSlot(new Slot(inv, col, 9 + col * 18, 185));
     }
+
+    public int getEnergyStored() { return energyData.get(0); }
+    public int getMaxEnergy() { return energyData.get(1); }
 
     @Override
     public ItemStack quickMoveStack(Player player, int index) {

@@ -1,6 +1,7 @@
 {
   "block.lostdepths.wormhole_disruptor": "Wormhole Disruptor (blokátor teleportace)",
   "block.lostdepths.resource_extractor": "Resource Extractor",
+  "block.lostdepths.multiblock_dummy": "Součást stroje",
   "message.lostdepths.not_enough_space": "Nedostatek místa",
   "item.lostdepths.titanium_metalloy_scrap": "Titanium-Metalloy šrot",
   "block.lostdepths.celestial_logs_red": "Celestial kláda",

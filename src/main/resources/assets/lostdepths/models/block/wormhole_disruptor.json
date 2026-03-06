@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "lostdepths:block/wormhole_disruptor"
+    "all": "lostdepths:block/item_crate"
   }
 }

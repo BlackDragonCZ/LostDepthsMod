@@ -70,12 +70,22 @@ public class NurostarLargeBatteryBlock extends BaseHorizontalFacingEntityBlock {
     }
 
     @Override
+    public net.minecraft.world.level.block.state.BlockState getStateForPlacement(net.minecraft.world.item.context.BlockPlaceContext context) {
+        if (!MultiblockHelper.canPlace(context.getLevel(), context.getClickedPos(), Direction.NORTH, PART_OFFSETS)) {
+            if (context.getPlayer() != null) {
+                context.getPlayer().displayClientMessage(
+                        net.minecraft.network.chat.Component.translatable("message.lostdepths.not_enough_space"), true);
+            }
+            return null;
+        }
+        return super.getStateForPlacement(context);
+    }
+
+    @Override
     public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
         super.setPlacedBy(level, pos, state, placer, stack);
-        if (!level.isClientSide && placer instanceof Player player) {
-            if (!MultiblockHelper.tryPlace(level, pos, Direction.NORTH, PART_OFFSETS, player, LostdepthsModBlocks.MULTIBLOCK_DUMMY.get())) {
-                level.destroyBlock(pos, true);
-            }
+        if (!level.isClientSide) {
+            MultiblockHelper.placeParts(level, pos, Direction.NORTH, PART_OFFSETS, LostdepthsModBlocks.MULTIBLOCK_DUMMY.get());
         }
     }
 

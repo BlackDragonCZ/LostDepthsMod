@@ -21,6 +21,7 @@ eclipse
 run
 .claude
 .gitignore
+*.bat
 
 # Files from Forge MDK
 forge*changelog.txt
