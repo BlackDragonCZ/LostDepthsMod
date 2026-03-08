@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "cac",
+    "cac"
+  ],
+  "key": {
+    "a": {
+      "item": "lostdepths:crystalized_alloy"
+    },
+    "b": {
+      "item": "lostdepths:multiversite_plates"
+    },
+    "c": {
+      "item": "lostdepths:neosteel_ingot"
+    }
+  },
+  "result": {
+    "item": "lostdepths:fusion_table",
+    "count": 1
+  }
+}

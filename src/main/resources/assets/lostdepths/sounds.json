@@ -232,6 +232,14 @@
       }
     ]
   },
+  "generic_ui_5": {
+    "sounds": [
+      {
+        "name": "lostdepths:generic_ui_5",
+        "stream": false
+      }
+    ]
+  },
   "machine_craft": {
     "sounds": [
       {

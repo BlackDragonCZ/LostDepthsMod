@@ -9,7 +9,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvents;
+import cz.blackdragoncz.lostdepths.init.LostdepthsModSounds;
 import net.minecraft.world.entity.player.Inventory;
 
 public class FusionTableScreen extends AbstractContainerScreen<FusionTableMenu> {
@@ -151,7 +151,7 @@ public class FusionTableScreen extends AbstractContainerScreen<FusionTableMenu> 
                             );
                             // Play UI click sound
                             if (this.minecraft != null && this.minecraft.player != null) {
-                                this.minecraft.player.playSound(SoundEvents.UI_BUTTON_CLICK.get(), 0.5F, 1.0F);
+                                this.minecraft.player.playSound(LostdepthsModSounds.GENERIC_UI_5.get(), 0.5F, 1.0F);
                             }
                             return true;
                         }

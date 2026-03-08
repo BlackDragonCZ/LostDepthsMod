@@ -11,8 +11,13 @@ import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+
+import java.util.List;
 
 public class FusionTableRecipeCategory extends BaseRecipeCategory<FusionTableRecipe> {
 
@@ -56,5 +61,14 @@ public class FusionTableRecipeCategory extends BaseRecipeCategory<FusionTableRec
         int centerY = 20 - arrowHeight / 2;
         arrowBg.draw(guiGraphics, 50, centerY);
         arrow.draw(guiGraphics, 50, centerY);
+
+        // Tooltip on arrow hover explaining puzzle mechanic
+        if (mouseX >= 50 && mouseX <= 50 + arrowWidth && mouseY >= centerY && mouseY <= centerY + arrowHeight) {
+            guiGraphics.renderTooltip(Minecraft.getInstance().font, List.of(
+                    Component.literal("Match a 2x2 group of the same").withStyle(ChatFormatting.GRAY),
+                    Component.literal("shape to gain progress.").withStyle(ChatFormatting.GRAY),
+                    Component.literal("Complete 6 rounds to craft.").withStyle(ChatFormatting.GRAY)
+            ), (int) mouseX, (int) mouseY);
+        }
     }
 }

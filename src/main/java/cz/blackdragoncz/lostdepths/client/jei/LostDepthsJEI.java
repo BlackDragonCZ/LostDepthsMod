@@ -20,9 +20,12 @@ import mezz.jei.api.registration.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @JeiPlugin
@@ -54,6 +57,9 @@ public class LostDepthsJEI implements IModPlugin {
         registry.addRecipeCatalyst(new ItemStack(LostdepthsModItems.MODULE_CREATOR.get(), 1), recipeType(RecipeViewerRecipeType.MODULE_CREATOR));
         registry.addRecipeCatalyst(new ItemStack(LostdepthsModItems.META_MATERIALIZER.get(), 1), recipeType(RecipeViewerRecipeType.META_MATERIALIZER));
         registry.addRecipeCatalyst(new ItemStack(LostdepthsModItems.FUSION_TABLE.get(), 1), recipeType(RecipeViewerRecipeType.FUSION_TABLE));
+
+        registry.addRecipeCatalyst(new ItemStack(LostdepthsModItems.CELESTIAL_CHEST.get(), 1), ChestLootCategory.RECIPE_TYPE);
+        registry.addRecipeCatalyst(new ItemStack(LostdepthsModItems.STAR_CHEST.get(), 1), ChestLootCategory.RECIPE_TYPE);
     }
 
     @Override
@@ -69,6 +75,7 @@ public class LostDepthsJEI implements IModPlugin {
         registry.addRecipeCategories(new ItemUseCategory(guiHelper, RecipeViewerRecipeType.ITEM_USE));
         registry.addRecipeCategories(new MetaMaterializerCategory(guiHelper, RecipeViewerRecipeType.META_MATERIALIZER));
         registry.addRecipeCategories(new FusionTableRecipeCategory(guiHelper, RecipeViewerRecipeType.FUSION_TABLE));
+        registry.addRecipeCategories(new ChestLootCategory(guiHelper));
     }
 
 
@@ -90,6 +97,51 @@ public class LostDepthsJEI implements IModPlugin {
         registry.addRecipes(recipeType(RecipeViewerRecipeType.ITEM_USE), LostDepthsModRecipeType.ITEM_USE.get().getRecipeType().getRecipes(Minecraft.getInstance().level));
         registry.addRecipes(recipeType(RecipeViewerRecipeType.META_MATERIALIZER), LostDepthsModRecipeType.META_MATERIALIZER.get().getRecipeType().getRecipes(Minecraft.getInstance().level));
         registry.addRecipes(recipeType(RecipeViewerRecipeType.FUSION_TABLE), LostDepthsModRecipeType.FUSION_TABLE.get().getRecipeType().getRecipes(Minecraft.getInstance().level));
+
+        registry.addRecipes(ChestLootCategory.RECIPE_TYPE, buildChestLootRecipes());
+    }
+
+    private static List<ChestLootRecipe> buildChestLootRecipes() {
+        List<ChestLootRecipe> recipes = new ArrayList<>();
+
+        // Celestial Chest
+        recipes.add(new ChestLootRecipe(
+                "Celestial Chest",
+                new ItemStack(LostdepthsModItems.CELESTIAL_CHEST.get()),
+                1, 2,
+                List.of(
+                        lootEntry("lostdepths:infused_crystal", 50, 1, 8),
+                        lootEntry("lostdepths:titanium_metalloy_scrap", 50, 0, 2),
+                        lootEntry("lostdepths:raw_zerithium", 25, 0, 1),
+                        lootEntry("lostdepths:infused_iron", 95, 0, 27),
+                        lootEntry("lostdepths:raw_melworite", 40, 0, 1),
+                        lootEntry("lostdepths:ionite_crystal", 100, 1, 7)
+                )
+        ));
+
+        // Star Chest
+        recipes.add(new ChestLootRecipe(
+                "Star Chest",
+                new ItemStack(LostdepthsModItems.STAR_CHEST.get()),
+                1, 2,
+                List.of(
+                        lootEntry("lostdepths:purple_watchful_eye", 50, 1, 3),
+                        lootEntry("lostdepths:blue_watchful_eye", 50, 1, 3),
+                        lootEntry("lostdepths:pink_watchful_eye", 25, 1, 3),
+                        lootEntry("lostdepths:prismosis", 50, 1, 8),
+                        lootEntry("lostdepths:ionite_crystal", 75, 1, 5)
+                )
+        ));
+
+        return recipes;
+    }
+
+    private static ChestLootRecipe.LootEntry lootEntry(String itemId, int weight, int minCount, int maxCount) {
+        var item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(itemId));
+        return new ChestLootRecipe.LootEntry(
+                item != null ? new ItemStack(item) : ItemStack.EMPTY,
+                weight, minCount, maxCount
+        );
     }
 
     @Override
