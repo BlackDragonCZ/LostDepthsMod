@@ -4,6 +4,7 @@ import cz.blackdragoncz.lostdepths.LostdepthsMod;
 import cz.blackdragoncz.lostdepths.client.jei.machines.AlloyWorkstationRecipeCategory;
 import cz.blackdragoncz.lostdepths.client.jei.machines.GenericCompressorRecipeCategory;
 import cz.blackdragoncz.lostdepths.client.jei.machines.GalacticWorkstationRecipeCategory;
+import cz.blackdragoncz.lostdepths.client.jei.machines.FusionTableRecipeCategory;
 import cz.blackdragoncz.lostdepths.client.jei.machines.ModuleCreatorRecipeCategory;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModItems;
 import cz.blackdragoncz.lostdepths.init.LostDepthsModRecipeType;
@@ -52,6 +53,7 @@ public class LostDepthsJEI implements IModPlugin {
         registry.addRecipeCatalyst(new ItemStack(LostdepthsModItems.ALLOY_WORKSTATION.get(), 1), recipeType(RecipeViewerRecipeType.ALLOY_WORKSTATION));
         registry.addRecipeCatalyst(new ItemStack(LostdepthsModItems.MODULE_CREATOR.get(), 1), recipeType(RecipeViewerRecipeType.MODULE_CREATOR));
         registry.addRecipeCatalyst(new ItemStack(LostdepthsModItems.META_MATERIALIZER.get(), 1), recipeType(RecipeViewerRecipeType.META_MATERIALIZER));
+        registry.addRecipeCatalyst(new ItemStack(LostdepthsModItems.FUSION_TABLE.get(), 1), recipeType(RecipeViewerRecipeType.FUSION_TABLE));
     }
 
     @Override
@@ -66,6 +68,7 @@ public class LostDepthsJEI implements IModPlugin {
         registry.addRecipeCategories(new ModuleCreatorRecipeCategory(guiHelper, RecipeViewerRecipeType.MODULE_CREATOR));
         registry.addRecipeCategories(new ItemUseCategory(guiHelper, RecipeViewerRecipeType.ITEM_USE));
         registry.addRecipeCategories(new MetaMaterializerCategory(guiHelper, RecipeViewerRecipeType.META_MATERIALIZER));
+        registry.addRecipeCategories(new FusionTableRecipeCategory(guiHelper, RecipeViewerRecipeType.FUSION_TABLE));
     }
 
 
@@ -86,6 +89,7 @@ public class LostDepthsJEI implements IModPlugin {
 
         registry.addRecipes(recipeType(RecipeViewerRecipeType.ITEM_USE), LostDepthsModRecipeType.ITEM_USE.get().getRecipeType().getRecipes(Minecraft.getInstance().level));
         registry.addRecipes(recipeType(RecipeViewerRecipeType.META_MATERIALIZER), LostDepthsModRecipeType.META_MATERIALIZER.get().getRecipeType().getRecipes(Minecraft.getInstance().level));
+        registry.addRecipes(recipeType(RecipeViewerRecipeType.FUSION_TABLE), LostDepthsModRecipeType.FUSION_TABLE.get().getRecipeType().getRecipes(Minecraft.getInstance().level));
     }
 
     @Override
