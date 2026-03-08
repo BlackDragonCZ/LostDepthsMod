@@ -1,0 +1,13 @@
+{
+  "type": "lostdepths:fusion_table",
+  "input1": {
+    "item": "lostdepths:ionite_bar"
+  },
+  "input2": {
+    "item": "lostdepths:prismosis"
+  },
+  "output": {
+    "item": "lostdepths:poly_ionite",
+    "count": 1
+  }
+}
