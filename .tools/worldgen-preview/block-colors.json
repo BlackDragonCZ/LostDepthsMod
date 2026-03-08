@@ -1,0 +1,1532 @@
+{
+    "minecraft:dirt":  [
+                           0.55,
+                           0.38,
+                           0.25
+                       ],
+    "minecraft:terracotta":  [
+                                 0.6,
+                                 0.4,
+                                 0.3
+                             ],
+    "minecraft:soul_sand":  [
+                                0.33,
+                                0.25,
+                                0.2
+                            ],
+    "minecraft:snow_block":  [
+                                 0.95,
+                                 0.95,
+                                 0.95
+                             ],
+    "minecraft:deepslate":  [
+                                0.33,
+                                0.33,
+                                0.37
+                            ],
+    "minecraft:bedrock":  [
+                              0.2,
+                              0.2,
+                              0.2
+                          ],
+    "minecraft:obsidian":  [
+                               0.1,
+                               0.05,
+                               0.15
+                           ],
+    "minecraft:water":  [
+                            0.2,
+                            0.3,
+                            0.9
+                        ],
+    "minecraft:stone":  [
+                            0.5,
+                            0.5,
+                            0.5
+                        ],
+    "minecraft:lava":  [
+                           0.9,
+                           0.3,
+                           0
+                       ],
+    "minecraft:ice":  [
+                          0.6,
+                          0.75,
+                          0.95
+                      ],
+    "minecraft:grass_block":  [
+                                  0.4,
+                                  0.65,
+                                  0.25
+                              ],
+    "minecraft:netherrack":  [
+                                 0.45,
+                                 0.2,
+                                 0.2
+                             ],
+    "minecraft:clay":  [
+                           0.6,
+                           0.62,
+                           0.67
+                       ],
+    "minecraft:end_stone":  [
+                                0.85,
+                                0.85,
+                                0.6
+                            ],
+    "minecraft:air":  [
+                          0,
+                          0,
+                          0
+                      ],
+    "minecraft:sand":  [
+                           0.85,
+                           0.82,
+                           0.65
+                       ],
+    "minecraft:gravel":  [
+                             0.55,
+                             0.53,
+                             0.53
+                         ],
+    "lostdepths:alignment_dial":  [
+                                      0.29,
+                                      0.25,
+                                      0.116
+                                  ],
+    "lostdepths:alignment_tile":  [
+                                      0.151,
+                                      0.138,
+                                      0.087
+                                  ],
+    "lostdepths:alignment_tile_on":  [
+                                         0.354,
+                                         0.305,
+                                         0.082
+                                     ],
+    "lostdepths:arena_ani_slabs_sea":  [
+                                           0.064,
+                                           0.083,
+                                           0.252
+                                       ],
+    "lostdepths:arena_barrier_a":  [
+                                       0.135,
+                                       0.297,
+                                       0.463
+                                   ],
+    "lostdepths:arena_barrier_b":  [
+                                       0.162,
+                                       0.463,
+                                       0.135
+                                   ],
+    "lostdepths:arena_barrier_c":  [
+                                       0.393,
+                                       0.135,
+                                       0.463
+                                   ],
+    "lostdepths:arena_barrier_d":  [
+                                       0.476,
+                                       0.434,
+                                       0.152
+                                   ],
+    "lostdepths:arena_converter":  [
+                                       0.121,
+                                       0.185,
+                                       0.191
+                                   ],
+    "lostdepths:arena_lamp":  [
+                                  0.038,
+                                  0.311,
+                                  0.489
+                              ],
+    "lostdepths:arena_lamp_dark":  [
+                                       0.127,
+                                       0.271,
+                                       0.333
+                                   ],
+    "lostdepths:arena_lamp_razor_a":  [
+                                          0.182,
+                                          0.186,
+                                          0.301
+                                      ],
+    "lostdepths:arena_lamp_razor_b":  [
+                                          0.311,
+                                          0.072,
+                                          0.033
+                                      ],
+    "lostdepths:arena_lamp_razor_c":  [
+                                          0.253,
+                                          0.161,
+                                          0.027
+                                      ],
+    "lostdepths:arena_pillar":  [
+                                    0.003,
+                                    0.096,
+                                    0.166
+                                ],
+    "lostdepths:arena_pillar_b":  [
+                                      0.026,
+                                      0.13,
+                                      0.317
+                                  ],
+    "lostdepths:arena_pillar_sea":  [
+                                        0.063,
+                                        0.162,
+                                        0.413
+                                    ],
+    "lostdepths:arena_pillar_side":  [
+                                         0.198,
+                                         0.229,
+                                         0.395
+                                     ],
+    "lostdepths:arena_slabs":  [
+                                   0.035,
+                                   0.109,
+                                   0.341
+                               ],
+    "lostdepths:arena_slabs_sea":  [
+                                       0.082,
+                                       0.083,
+                                       0.265
+                                   ],
+    "lostdepths:arena_steel_black":  [
+                                         0.094,
+                                         0.094,
+                                         0.094
+                                     ],
+    "lostdepths:astrosteel":  [
+                                  0.198,
+                                  0.198,
+                                  0.198
+                              ],
+    "lostdepths:atmos_tech":  [
+                                  0.117,
+                                  0.117,
+                                  0.117
+                              ],
+    "lostdepths:biolliterite_ore":  [
+                                        0.269,
+                                        0.137,
+                                        0.361
+                                    ],
+    "lostdepths:black_hole_compressor":  [
+                                             0.117,
+                                             0.117,
+                                             0.117
+                                         ],
+    "lostdepths:black_market":  [
+                                    0.191,
+                                    0.22,
+                                    0.196
+                                ],
+    "lostdepths:blight_idol":  [
+                                   0.148,
+                                   0.18,
+                                   0.298
+                               ],
+    "lostdepths:celestial_barrier":  [
+                                         0.245,
+                                         0.676,
+                                         0.937
+                                     ],
+    "lostdepths:celestial_chest":  [
+                                       0.256,
+                                       0.286,
+                                       0.291
+                                   ],
+    "lostdepths:celestial_chest_open":  [
+                                            0.256,
+                                            0.286,
+                                            0.291
+                                        ],
+    "lostdepths:celestial_leaves_blue":  [
+                                             0.001,
+                                             0.113,
+                                             0.718
+                                         ],
+    "lostdepths:celestial_leaves_red":  [
+                                            0.718,
+                                            0.186,
+                                            0.001
+                                        ],
+    "lostdepths:celestial_logs_blue":  [
+                                           0.059,
+                                           0.282,
+                                           0.539
+                                       ],
+    "lostdepths:celestial_logs_red":  [
+                                          0.539,
+                                          0.059,
+                                          0.242
+                                      ],
+    "lostdepths:chain_cross":  [
+                                   0.207,
+                                   0.207,
+                                   0.207
+                               ],
+    "lostdepths:chain_normal":  [
+                                    0.225,
+                                    0.225,
+                                    0.225
+                                ],
+    "lostdepths:champion_steel":  [
+                                      0.829,
+                                      0.829,
+                                      0.829
+                                  ],
+    "lostdepths:champion_steel_beam":  [
+                                           0.866,
+                                           0.865,
+                                           0.865
+                                       ],
+    "lostdepths:champion_steel_floor":  [
+                                            0.829,
+                                            0.829,
+                                            0.829
+                                        ],
+    "lostdepths:champion_steel_glass_dark":  [
+                                                 0.278,
+                                                 0.278,
+                                                 0.278
+                                             ],
+    "lostdepths:champion_steel_heat_off":  [
+                                               0.053,
+                                               0.053,
+                                               0.053
+                                           ],
+    "lostdepths:champion_steel_heat_on":  [
+                                              0.18,
+                                              0.049,
+                                              0.038
+                                          ],
+    "lostdepths:champion_steel_light":  [
+                                            0.573,
+                                            0.624,
+                                            0.848
+                                        ],
+    "lostdepths:champion_steel_wall":  [
+                                           0.181,
+                                           0.181,
+                                           0.181
+                                       ],
+    "lostdepths:champion_steel_wiring_a":  [
+                                               0.829,
+                                               0.829,
+                                               0.829
+                                           ],
+    "lostdepths:champion_steel_wiring_b":  [
+                                               0.724,
+                                               0.685,
+                                               0.789
+                                           ],
+    "lostdepths:champion_steel_wiring_c":  [
+                                               0.728,
+                                               0.689,
+                                               0.793
+                                           ],
+    "lostdepths:champion_steel_wiring_d":  [
+                                               0.723,
+                                               0.684,
+                                               0.787
+                                           ],
+    "lostdepths:champion_steel_wiring_e":  [
+                                               0.725,
+                                               0.685,
+                                               0.791
+                                           ],
+    "lostdepths:champion_steel_wiring_f":  [
+                                               0.705,
+                                               0.653,
+                                               0.79
+                                           ],
+    "lostdepths:champion_steel_wiring_g":  [
+                                               0.582,
+                                               0.487,
+                                               0.737
+                                           ],
+    "lostdepths:champion_steel_wiring_h":  [
+                                               0.775,
+                                               0.754,
+                                               0.809
+                                           ],
+    "lostdepths:champion_steel_wiring_i":  [
+                                               0.698,
+                                               0.648,
+                                               0.781
+                                           ],
+    "lostdepths:champion_steel_wiring_j":  [
+                                               0.699,
+                                               0.649,
+                                               0.784
+                                           ],
+    "lostdepths:chem_tech":  [
+                                 0.117,
+                                 0.117,
+                                 0.117
+                             ],
+    "lostdepths:chip_formatter_a":  [
+                                        0.409,
+                                        0.472,
+                                        0.153
+                                    ],
+    "lostdepths:chip_formatter_b":  [
+                                        0.476,
+                                        0.587,
+                                        0.264
+                                    ],
+    "lostdepths:clovinite_ore":  [
+                                     0.693,
+                                     0.464,
+                                     0.197
+                                 ],
+    "lostdepths:cognitium_ore":  [
+                                     0.23,
+                                     0.307,
+                                     0.295
+                                 ],
+    "lostdepths:concentrated_acid":  [
+                                         0.778,
+                                         0.957,
+                                         0.183
+                                     ],
+    "lostdepths:connect_game":  [
+                                    0.202,
+                                    0.152,
+                                    0.151
+                                ],
+    "lostdepths:control_keyboard":  [
+                                        0.071,
+                                        0.119,
+                                        0.205
+                                    ],
+    "lostdepths:control_screen":  [
+                                      0,
+                                      0,
+                                      1
+                                  ],
+    "lostdepths:control_screen_keyboard":  [
+                                               0.062,
+                                               0.106,
+                                               0.188
+                                           ],
+    "lostdepths:cosmic_carpet":  [
+                                     0.013,
+                                     0.014,
+                                     0.035
+                                 ],
+    "lostdepths:crystalizer":  [
+                                   0.256,
+                                   0.329,
+                                   0.326
+                               ],
+    "lostdepths:cryzulite_ore":  [
+                                     0.102,
+                                     0.177,
+                                     0.269
+                                 ],
+    "lostdepths:dark_steel_glow_light":  [
+                                             0.203,
+                                             0.115,
+                                             0.014
+                                         ],
+    "lostdepths:dark_steel_glow_light_a":  [
+                                               0.195,
+                                               0.038,
+                                               0.193
+                                           ],
+    "lostdepths:dark_steel_glow_light_b":  [
+                                               0.014,
+                                               0.163,
+                                               0.203
+                                           ],
+    "lostdepths:dark_steel_glow_light_c":  [
+                                               0.128,
+                                               0.202,
+                                               0.038
+                                           ],
+    "lostdepths:dark_steel_glow_light_d":  [
+                                               0.158,
+                                               0.158,
+                                               0.158
+                                           ],
+    "lostdepths:deep_space_rock":  [
+                                       0.033,
+                                       0.086,
+                                       0.201
+                                   ],
+    "lostdepths:devenergy":  [
+                                 0.013,
+                                 0.014,
+                                 0.035
+                             ],
+    "lostdepths:draconic_chest":  [
+                                      0.365,
+                                      0.171,
+                                      0.11
+                                  ],
+    "lostdepths:draconic_chest_open":  [
+                                           0.365,
+                                           0.171,
+                                           0.11
+                                       ],
+    "lostdepths:draconic_flag":  [
+                                     0.349,
+                                     0.188,
+                                     0.125
+                                 ],
+    "lostdepths:drill_console":  [
+                                     0.079,
+                                     0.205,
+                                     0.316
+                                 ],
+    "lostdepths:drill_head":  [
+                                  0.596,
+                                  0.596,
+                                  0.596
+                              ],
+    "lostdepths:drill_shaft":  [
+                                   0.118,
+                                   0.118,
+                                   0.118
+                               ],
+    "lostdepths:druids_flower":  [
+                                     0.334,
+                                     0.512,
+                                     0.142
+                                 ],
+    "lostdepths:ender_loot_box":  [
+                                      0.324,
+                                      0.294,
+                                      0.395
+                                  ],
+    "lostdepths:extra_terestrial_compressor":  [
+                                                   0.116,
+                                                   0.052,
+                                                   0.051
+                                               ],
+    "lostdepths:factory_block":  [
+                                     0.531,
+                                     0.514,
+                                     0.217
+                                 ],
+    "lostdepths:factory_floor":  [
+                                     0.138,
+                                     0.161,
+                                     0.218
+                                 ],
+    "lostdepths:factory_pillar":  [
+                                      0.563,
+                                      0.426,
+                                      0.139
+                                  ],
+    "lostdepths:ferro_leaves":  [
+                                    0.38,
+                                    0.373,
+                                    0.382
+                                ],
+    "lostdepths:ferro_log":  [
+                                 0.401,
+                                 0.401,
+                                 0.401
+                             ],
+    "lostdepths:field_controller":  [
+                                        0.202,
+                                        0.139,
+                                        0.236
+                                    ],
+    "lostdepths:firerite_ore":  [
+                                    0.257,
+                                    0.193,
+                                    0.123
+                                ],
+    "lostdepths:fungal_space_rock":  [
+                                         0.082,
+                                         0.093,
+                                         0.159
+                                     ],
+    "lostdepths:fusion_table":  [
+                                    0.302,
+                                    0.18,
+                                    0.109
+                                ],
+    "lostdepths:galactic_compressor":  [
+                                           0.231,
+                                           0.052,
+                                           0.052
+                                       ],
+    "lostdepths:gravitor_block":  [
+                                      0.084,
+                                      0.11,
+                                      0.189
+                                  ],
+    "lostdepths:hard_crystal_b":  [
+                                      0.293,
+                                      0.501,
+                                      0.597
+                                  ],
+    "lostdepths:hard_crystal_r":  [
+                                      0.597,
+                                      0.293,
+                                      0.439
+                                  ],
+    "lostdepths:hyperium_ore":  [
+                                    0.224,
+                                    0.232,
+                                    0.16
+                                ],
+    "lostdepths:infusediron_pillar_cross":  [
+                                                0.062,
+                                                0.087,
+                                                0.15
+                                            ],
+    "lostdepths:infused_dark_bricks":  [
+                                           0.134,
+                                           0.134,
+                                           0.134
+                                       ],
+    "lostdepths:infused_dark_tiles":  [
+                                          0.133,
+                                          0.133,
+                                          0.133
+                                      ],
+    "lostdepths:infused_display_plate":  [
+                                             0.131,
+                                             0.297,
+                                             0.426
+                                         ],
+    "lostdepths:infused_hanging_sign":  [
+                                            0.17,
+                                            0.221,
+                                            0.351
+                                        ],
+    "lostdepths:infused_iron_bricks":  [
+                                           0.094,
+                                           0.139,
+                                           0.235
+                                       ],
+    "lostdepths:infused_iron_bricks_a":  [
+                                             0.094,
+                                             0.139,
+                                             0.235
+                                         ],
+    "lostdepths:infused_iron_bricks_wall":  [
+                                                0.092,
+                                                0.136,
+                                                0.229
+                                            ],
+    "lostdepths:infused_iron_bricks_wall_inventory":  [
+                                                          0.092,
+                                                          0.136,
+                                                          0.229
+                                                      ],
+    "lostdepths:infused_iron_bricks_wall_post":  [
+                                                     0.092,
+                                                     0.136,
+                                                     0.229
+                                                 ],
+    "lostdepths:infused_iron_bricks_wall_side_tall":  [
+                                                          0.092,
+                                                          0.136,
+                                                          0.229
+                                                      ],
+    "lostdepths:infused_iron_brick_slab":  [
+                                               0.092,
+                                               0.136,
+                                               0.229
+                                           ],
+    "lostdepths:infused_iron_brick_slab_full":  [
+                                                    0.092,
+                                                    0.136,
+                                                    0.229
+                                                ],
+    "lostdepths:infused_iron_brick_slab_top":  [
+                                                   0.092,
+                                                   0.136,
+                                                   0.229
+                                               ],
+    "lostdepths:infused_iron_brick_stairs":  [
+                                                 0.092,
+                                                 0.136,
+                                                 0.229
+                                             ],
+    "lostdepths:infused_iron_brick_stairs_inner":  [
+                                                       0.092,
+                                                       0.136,
+                                                       0.229
+                                                   ],
+    "lostdepths:infused_iron_brick_stairs_outer":  [
+                                                       0.092,
+                                                       0.136,
+                                                       0.229
+                                                   ],
+    "lostdepths:infused_iron_brick_walls":  [
+                                                0.131,
+                                                0.131,
+                                                0.131
+                                            ],
+    "lostdepths:infused_iron_brick_walls_inventory":  [
+                                                          0.131,
+                                                          0.131,
+                                                          0.131
+                                                      ],
+    "lostdepths:infused_iron_brick_walls_post":  [
+                                                     0.131,
+                                                     0.131,
+                                                     0.131
+                                                 ],
+    "lostdepths:infused_iron_brick_walls_side_tall":  [
+                                                          0.131,
+                                                          0.131,
+                                                          0.131
+                                                      ],
+    "lostdepths:infused_iron_cross_glow":  [
+                                               0.198,
+                                               0.194,
+                                               0.146
+                                           ],
+    "lostdepths:infused_iron_pillar":  [
+                                           0.106,
+                                           0.153,
+                                           0.233
+                                       ],
+    "lostdepths:infused_sign":  [
+                                    0.17,
+                                    0.221,
+                                    0.351
+                                ],
+    "lostdepths:item_challenge_blank":  [
+                                            0.092,
+                                            0.055,
+                                            0.05
+                                        ],
+    "lostdepths:item_challenge_collector":  [
+                                                0.047,
+                                                0.316,
+                                                0.512
+                                            ],
+    "lostdepths:item_crate":  [
+                                  0.121,
+                                  0.121,
+                                  0.121
+                              ],
+    "lostdepths:jammer_a":  [
+                                0.105,
+                                0.182,
+                                0.191
+                            ],
+    "lostdepths:jammer_access_module":  [
+                                            0.117,
+                                            0.117,
+                                            0.117
+                                        ],
+    "lostdepths:jammer_b":  [
+                                0.105,
+                                0.182,
+                                0.191
+                            ],
+    "lostdepths:jammer_c":  [
+                                0.105,
+                                0.182,
+                                0.191
+                            ],
+    "lostdepths:jammer_d":  [
+                                0.105,
+                                0.182,
+                                0.191
+                            ],
+    "lostdepths:jammer_gate":  [
+                                   0.094,
+                                   0.59,
+                                   0.957
+                               ],
+    "lostdepths:keyboard_screen":  [
+                                       0.065,
+                                       0.112,
+                                       0.198
+                                   ],
+    "lostdepths:labyrinth_lamp_a":  [
+                                        0.436,
+                                        0.338,
+                                        0.351
+                                    ],
+    "lostdepths:labyrinth_lamp_b":  [
+                                        0.299,
+                                        0.382,
+                                        0.435
+                                    ],
+    "lostdepths:labyrinth_lamp_c":  [
+                                        0.318,
+                                        0.435,
+                                        0.299
+                                    ],
+    "lostdepths:labyrinth_metal_blue":  [
+                                            0,
+                                            0.037,
+                                            0.082
+                                        ],
+    "lostdepths:laser_gate_vertical":  [
+                                           1,
+                                           0.285,
+                                           0.285
+                                       ],
+    "lostdepths:light_puzzle_a":  [
+                                      0.162,
+                                      0.155,
+                                      0.156
+                                  ],
+    "lostdepths:light_puzzle_b":  [
+                                      0.385,
+                                      0.206,
+                                      0.042
+                                  ],
+    "lostdepths:light_puzzle_controller":  [
+                                               0.075,
+                                               0.175,
+                                               0.286
+                                           ],
+    "lostdepths:light_receiver":  [
+                                      0.085,
+                                      0.135,
+                                      0.225
+                                  ],
+    "lostdepths:lucient_ore":  [
+                                   0.072,
+                                   0.083,
+                                   0.151
+                               ],
+    "lostdepths:lucient_ore_active":  [
+                                          0.069,
+                                          0.143,
+                                          0.227
+                                      ],
+    "lostdepths:lumio_idol":  [
+                                  0.001,
+                                  0.138,
+                                  0.33
+                              ],
+    "lostdepths:manufactory_generator":  [
+                                             0.013,
+                                             0.014,
+                                             0.035
+                                         ],
+    "lostdepths:melodic_sequencer":  [
+                                         0.281,
+                                         0.286,
+                                         0.283
+                                     ],
+    "lostdepths:melworium_ore":  [
+                                     0.201,
+                                     0.189,
+                                     0.179
+                                 ],
+    "lostdepths:meta_collector":  [
+                                      0.079,
+                                      0.205,
+                                      0.316
+                                  ],
+    "lostdepths:meta_materializer":  [
+                                         0.079,
+                                         0.205,
+                                         0.316
+                                     ],
+    "lostdepths:modulator":  [
+                                 0.117,
+                                 0.117,
+                                 0.117
+                             ],
+    "lostdepths:module_creator":  [
+                                      0.075,
+                                      0.175,
+                                      0.286
+                                  ],
+    "lostdepths:morfarite_ore":  [
+                                     0.244,
+                                     0.133,
+                                     0.099
+                                 ],
+    "lostdepths:multiversite_ore":  [
+                                        0.247,
+                                        0.351,
+                                        0.479
+                                    ],
+    "lostdepths:myrite_ore":  [
+                                  0.118,
+                                  0.118,
+                                  0.118
+                              ],
+    "lostdepths:myrite_ore_active":  [
+                                         0.199,
+                                         0.199,
+                                         0.323
+                                     ],
+    "lostdepths:necrotonite_ore":  [
+                                       0.117,
+                                       0.117,
+                                       0.117
+                                   ],
+    "lostdepths:negative_sapling":  [
+                                        0.468,
+                                        0.038,
+                                        0
+                                    ],
+    "lostdepths:neon_bricks":  [
+                                   0.189,
+                                   0.534,
+                                   0.562
+                               ],
+    "lostdepths:neon_bricks_a":  [
+                                     0.075,
+                                     0.098,
+                                     0.677
+                                 ],
+    "lostdepths:neon_bricks_b":  [
+                                     0.403,
+                                     0.562,
+                                     0.189
+                                 ],
+    "lostdepths:neon_bricks_c":  [
+                                     0.677,
+                                     0.191,
+                                     0.075
+                                 ],
+    "lostdepths:neon_bricks_d":  [
+                                     0.534,
+                                     0.189,
+                                     0.562
+                                 ],
+    "lostdepths:neon_bricks_e":  [
+                                     0.239,
+                                     0.075,
+                                     0.677
+                                 ],
+    "lostdepths:neon_bricks_f":  [
+                                     0.41,
+                                     0,
+                                     0.037
+                                 ],
+    "lostdepths:neon_bricks_g":  [
+                                     0.677,
+                                     0.52,
+                                     0.075
+                                 ],
+    "lostdepths:neosteel_lantern":  [
+                                        0.117,
+                                        0.117,
+                                        0.117
+                                    ],
+    "lostdepths:neosteel_lantern_2":  [
+                                          0.117,
+                                          0.117,
+                                          0.117
+                                      ],
+    "lostdepths:neosteel_power_beam":  [
+                                           0.079,
+                                           0.205,
+                                           0.316
+                                       ],
+    "lostdepths:neo_glass":  [
+                                 0.181,
+                                 0.219,
+                                 0.301
+                             ],
+    "lostdepths:nitro_log":  [
+                                 0.204,
+                                 0.314,
+                                 0.146
+                             ],
+    "lostdepths:noxhertium_ore":  [
+                                      0.327,
+                                      0.255,
+                                      0.113
+                                  ],
+    "lostdepths:nurostar_battery":  [
+                                        0.127,
+                                        0.127,
+                                        0.127
+                                    ],
+    "lostdepths:nurostar_cable":  [
+                                      0.204,
+                                      0.135,
+                                      0.172
+                                  ],
+    "lostdepths:nurostar_cable_interface":  [
+                                                0.184,
+                                                0.135,
+                                                0.16
+                                            ],
+    "lostdepths:nurostar_cable_multipart":  [
+                                                0.204,
+                                                0.135,
+                                                0.172
+                                            ],
+    "lostdepths:nurostar_generator":  [
+                                          0.198,
+                                          0.164,
+                                          0.184
+                                      ],
+    "lostdepths:nurostar_large_battery":  [
+                                              0.127,
+                                              0.127,
+                                              0.127
+                                          ],
+    "lostdepths:ore_empty":  [
+                                 0.106,
+                                 0.105,
+                                 0.105
+                             ],
+    "lostdepths:o_factory_block":  [
+                                       0.84,
+                                       0.579,
+                                       0.413
+                                   ],
+    "lostdepths:parkour_a":  [
+                                 0.207,
+                                 0.312,
+                                 0.054
+                             ],
+    "lostdepths:parkour_b":  [
+                                 0.014,
+                                 0.276,
+                                 0.391
+                             ],
+    "lostdepths:parkour_c_1":  [
+                                   0.158,
+                                   0.158,
+                                   0.158
+                               ],
+    "lostdepths:parkour_c_2":  [
+                                   0.014,
+                                   0.014,
+                                   0.014
+                               ],
+    "lostdepths:parkour_d":  [
+                                 0.085,
+                                 0.085,
+                                 0.085
+                             ],
+    "lostdepths:parkour_e":  [
+                                 0.274,
+                                 0.002,
+                                 0.002
+                             ],
+    "lostdepths:parkour_f":  [
+                                 0.085,
+                                 0.085,
+                                 0.085
+                             ],
+    "lostdepths:phototenzyte_ore":  [
+                                        0.032,
+                                        0.089,
+                                        0.18
+                                    ],
+    "lostdepths:phototenzyte_ore_active":  [
+                                               0.293,
+                                               0.303,
+                                               0.36
+                                           ],
+    "lostdepths:pipesplus":  [
+                                 0.272,
+                                 0.225,
+                                 0.195
+                             ],
+    "lostdepths:pipes_east":  [
+                                  0.229,
+                                  0.198,
+                                  0.177
+                              ],
+    "lostdepths:pipes_east_a":  [
+                                    0.196,
+                                    0.269,
+                                    0.138
+                                ],
+    "lostdepths:pipes_i":  [
+                               0.23,
+                               0.198,
+                               0.177
+                           ],
+    "lostdepths:pipes_ia":  [
+                                0.193,
+                                0.266,
+                                0.135
+                            ],
+    "lostdepths:pipes_north":  [
+                                   0.236,
+                                   0.203,
+                                   0.181
+                               ],
+    "lostdepths:pipes_north_a":  [
+                                     0.2,
+                                     0.276,
+                                     0.141
+                                 ],
+    "lostdepths:pipes_plus_a":  [
+                                    0.224,
+                                    0.328,
+                                    0.14
+                                ],
+    "lostdepths:pipes_south":  [
+                                   0.231,
+                                   0.199,
+                                   0.178
+                               ],
+    "lostdepths:pipes_south_a":  [
+                                     0.197,
+                                     0.27,
+                                     0.14
+                                 ],
+    "lostdepths:pipes_t":  [
+                               0.247,
+                               0.209,
+                               0.184
+                           ],
+    "lostdepths:pipes_ta":  [
+                                0.208,
+                                0.295,
+                                0.138
+                            ],
+    "lostdepths:pipes_t_east":  [
+                                    0.23,
+                                    0.198,
+                                    0.177
+                                ],
+    "lostdepths:pipes_t_east_a":  [
+                                      0.196,
+                                      0.27,
+                                      0.139
+                                  ],
+    "lostdepths:pipes_t_north":  [
+                                     0.247,
+                                     0.208,
+                                     0.183
+                                 ],
+    "lostdepths:pipes_t_north_a":  [
+                                       0.207,
+                                       0.294,
+                                       0.137
+                                   ],
+    "lostdepths:pipes_t_south":  [
+                                     0.254,
+                                     0.215,
+                                     0.189
+                                 ],
+    "lostdepths:pipes_t_south_a":  [
+                                       0.212,
+                                       0.303,
+                                       0.141
+                                   ],
+    "lostdepths:pipes_t_west":  [
+                                    0.254,
+                                    0.215,
+                                    0.188
+                                ],
+    "lostdepths:pipes_t_west_a":  [
+                                      0.212,
+                                      0.303,
+                                      0.14
+                                  ],
+    "lostdepths:pipes_west":  [
+                                  0.223,
+                                  0.192,
+                                  0.173
+                              ],
+    "lostdepths:pipes_west_a":  [
+                                    0.192,
+                                    0.261,
+                                    0.136
+                                ],
+    "lostdepths:positive_sapling":  [
+                                        0,
+                                        0.196,
+                                        0.468
+                                    ],
+    "lostdepths:power_block_blue":  [
+                                        0.016,
+                                        0.518,
+                                        0.607
+                                    ],
+    "lostdepths:power_block_green":  [
+                                         0.214,
+                                         0.608,
+                                         0.016
+                                     ],
+    "lostdepths:power_block_purple":  [
+                                          0.316,
+                                          0.016,
+                                          0.608
+                                      ],
+    "lostdepths:power_block_yellow":  [
+                                          0.608,
+                                          0.414,
+                                          0.016
+                                      ],
+    "lostdepths:power_collider":  [
+                                      0.147,
+                                      0.519,
+                                      0.623
+                                  ],
+    "lostdepths:power_conduit":  [
+                                     0.173,
+                                     0.186,
+                                     0.234
+                                 ],
+    "lostdepths:power_terminal":  [
+                                      0.079,
+                                      0.205,
+                                      0.316
+                                  ],
+    "lostdepths:print_tech":  [
+                                  0.117,
+                                  0.117,
+                                  0.117
+                              ],
+    "lostdepths:psycherium_ore":  [
+                                      0.289,
+                                      0.241,
+                                      0.281
+                                  ],
+    "lostdepths:quantum_lab_floor":  [
+                                         0.065,
+                                         0.065,
+                                         0.065
+                                     ],
+    "lostdepths:quantum_lab_gate":  [
+                                        0.397,
+                                        0.261,
+                                        0.055
+                                    ],
+    "lostdepths:quantum_lab_gate_laser":  [
+                                              0.513,
+                                              0.281,
+                                              0.923
+                                          ],
+    "lostdepths:quantum_transporter":  [
+                                           0.502,
+                                           0.359,
+                                           0.192
+                                       ],
+    "lostdepths:research_glass":  [
+                                      0.118,
+                                      0.118,
+                                      0.118
+                                  ],
+    "lostdepths:resource_extractor":  [
+                                          0.118,
+                                          0.118,
+                                          0.118
+                                      ],
+    "lostdepths:ring_slide_button":  [
+                                         0.358,
+                                         0.204,
+                                         0.227
+                                     ],
+    "lostdepths:ruined_arch":  [
+                                   0.143,
+                                   0.169,
+                                   0.322
+                               ],
+    "lostdepths:ruined_workbench":  [
+                                        0.165,
+                                        0.185,
+                                        0.2
+                                    ],
+    "lostdepths:security_clearance_1":  [
+                                            0.106,
+                                            0.153,
+                                            0.233
+                                        ],
+    "lostdepths:security_clearance_2":  [
+                                            0.106,
+                                            0.153,
+                                            0.233
+                                        ],
+    "lostdepths:security_clearance_3":  [
+                                            0.106,
+                                            0.153,
+                                            0.233
+                                        ],
+    "lostdepths:security_clearance_4":  [
+                                            0.106,
+                                            0.153,
+                                            0.233
+                                        ],
+    "lostdepths:security_clearance_5":  [
+                                            0.106,
+                                            0.153,
+                                            0.233
+                                        ],
+    "lostdepths:security_clearance_6":  [
+                                            0.106,
+                                            0.153,
+                                            0.233
+                                        ],
+    "lostdepths:security_clearance_a":  [
+                                            0.106,
+                                            0.153,
+                                            0.233
+                                        ],
+    "lostdepths:serpentine_ore":  [
+                                      0.139,
+                                      0.286,
+                                      0.137
+                                  ],
+    "lostdepths:serpentine_ore_unpowered":  [
+                                                0.145,
+                                                0.166,
+                                                0.143
+                                            ],
+    "lostdepths:shipment_filler_block":  [
+                                             0.062,
+                                             0.09,
+                                             0.158
+                                         ],
+    "lostdepths:space_rock":  [
+                                  0.144,
+                                  0.143,
+                                  0.143
+                              ],
+    "lostdepths:space_rock_dirt":  [
+                                       0.144,
+                                       0.143,
+                                       0.143
+                                   ],
+    "lostdepths:star_chest":  [
+                                  0.254,
+                                  0.215,
+                                  0.205
+                              ],
+    "lostdepths:star_chest_open":  [
+                                       0.254,
+                                       0.215,
+                                       0.205
+                                   ],
+    "lostdepths:sunder_fence":  [
+                                    0.536,
+                                    0.228,
+                                    0.113
+                                ],
+    "lostdepths:sunder_fence_inventory":  [
+                                              0.536,
+                                              0.228,
+                                              0.113
+                                          ],
+    "lostdepths:sunder_fence_post":  [
+                                         0.536,
+                                         0.228,
+                                         0.113
+                                     ],
+    "lostdepths:sunder_leaves":  [
+                                     0.672,
+                                     0.195,
+                                     0.01
+                                 ],
+    "lostdepths:sunder_planks":  [
+                                     0.536,
+                                     0.228,
+                                     0.113
+                                 ],
+    "lostdepths:sunder_slab":  [
+                                   0.536,
+                                   0.228,
+                                   0.113
+                               ],
+    "lostdepths:sunder_slab_full":  [
+                                        0.536,
+                                        0.228,
+                                        0.113
+                                    ],
+    "lostdepths:sunder_slab_top":  [
+                                       0.536,
+                                       0.228,
+                                       0.113
+                                   ],
+    "lostdepths:sunder_stairs":  [
+                                     0.536,
+                                     0.228,
+                                     0.113
+                                 ],
+    "lostdepths:sunder_stairs_inner":  [
+                                           0.536,
+                                           0.228,
+                                           0.113
+                                       ],
+    "lostdepths:sunder_stairs_outer":  [
+                                           0.536,
+                                           0.228,
+                                           0.113
+                                       ],
+    "lostdepths:sunder_wood":  [
+                                   0.693,
+                                   0.464,
+                                   0.197
+                               ],
+    "lostdepths:sunder_wood_sap":  [
+                                       0.693,
+                                       0.464,
+                                       0.197
+                                   ],
+    "lostdepths:sunder_wood_sap_empty":  [
+                                             0.693,
+                                             0.464,
+                                             0.197
+                                         ],
+    "lostdepths:terminal_console_1":  [
+                                          0.202,
+                                          0.252,
+                                          0.272
+                                      ],
+    "lostdepths:terminal_console_2":  [
+                                          0.202,
+                                          0.252,
+                                          0.272
+                                      ],
+    "lostdepths:terminal_console_3":  [
+                                          0.202,
+                                          0.252,
+                                          0.272
+                                      ],
+    "lostdepths:terminal_monitor":  [
+                                        0.202,
+                                        0.252,
+                                        0.272
+                                    ],
+    "lostdepths:timeline_stabilizer":  [
+                                           0.197,
+                                           0.161,
+                                           0.161
+                                       ],
+    "lostdepths:treasurebricks":  [
+                                      0.094,
+                                      0.139,
+                                      0.235
+                                  ],
+    "lostdepths:treasurecross":  [
+                                     0.062,
+                                     0.087,
+                                     0.15
+                                 ],
+    "lostdepths:treasurepillar":  [
+                                      0.106,
+                                      0.153,
+                                      0.233
+                                  ],
+    "lostdepths:treasureslabs":  [
+                                     0.092,
+                                     0.136,
+                                     0.229
+                                 ],
+    "lostdepths:treasureslabs_full":  [
+                                          0.092,
+                                          0.136,
+                                          0.229
+                                      ],
+    "lostdepths:treasureslabs_top":  [
+                                         0.092,
+                                         0.136,
+                                         0.229
+                                     ],
+    "lostdepths:treasurestairs":  [
+                                      0.092,
+                                      0.136,
+                                      0.229
+                                  ],
+    "lostdepths:treasurestairs_inner":  [
+                                            0.092,
+                                            0.136,
+                                            0.229
+                                        ],
+    "lostdepths:treasurestairs_outer":  [
+                                            0.092,
+                                            0.136,
+                                            0.229
+                                        ],
+    "lostdepths:treasure_cross_glow":  [
+                                           0.198,
+                                           0.194,
+                                           0.146
+                                       ],
+    "lostdepths:treasure_dark_bricks":  [
+                                            0.134,
+                                            0.134,
+                                            0.134
+                                        ],
+    "lostdepths:treasure_dark_tiles":  [
+                                           0.133,
+                                           0.133,
+                                           0.133
+                                       ],
+    "lostdepths:treasure_factory_pillar":  [
+                                               0.563,
+                                               0.426,
+                                               0.139
+                                           ],
+    "lostdepths:treasure_glass":  [
+                                      0.181,
+                                      0.219,
+                                      0.301
+                                  ],
+    "lostdepths:treasure_glowsteel":  [
+                                          0.42,
+                                          0.274,
+                                          0.068
+                                      ],
+    "lostdepths:treasure_neo_slab":  [
+                                         0.114,
+                                         0.158,
+                                         0.193
+                                     ],
+    "lostdepths:treasure_neo_slab_block":  [
+                                               0.114,
+                                               0.158,
+                                               0.193
+                                           ],
+    "lostdepths:treasure_neo_slab_full":  [
+                                              0.114,
+                                              0.158,
+                                              0.193
+                                          ],
+    "lostdepths:treasure_neo_slab_top":  [
+                                             0.114,
+                                             0.158,
+                                             0.193
+                                         ],
+    "lostdepths:treasure_power_beam":  [
+                                           0.079,
+                                           0.205,
+                                           0.316
+                                       ],
+    "lostdepths:ultra_resistive_glass":  [
+                                             1,
+                                             0,
+                                             0
+                                         ],
+    "lostdepths:varllerium_ore":  [
+                                      0.192,
+                                      0.155,
+                                      0.147
+                                  ],
+    "lostdepths:vent_blcok":  [
+                                  0.618,
+                                  0.617,
+                                  0.617
+                              ],
+    "lostdepths:workstation_1":  [
+                                     0.202,
+                                     0.252,
+                                     0.272
+                                 ],
+    "lostdepths:workstation_2":  [
+                                     0.232,
+                                     0.273,
+                                     0.303
+                                 ],
+    "lostdepths:wormhole_disruptor":  [
+                                          0.121,
+                                          0.121,
+                                          0.121
+                                      ],
+    "lostdepths:zerithium_ore":  [
+                                     0.097,
+                                     0.258,
+                                     0.107
+                                 ]
+}

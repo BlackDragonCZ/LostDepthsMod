@@ -1,231 +1,598 @@
 {
-  "guis": [
-    {
-      "id": "lostdepths:resource_extractor",
-      "label": "Resource Extractor",
-      "screenPath": "src/main/java/cz/blackdragoncz/lostdepths/client/gui/ResourceExtractorScreen.java",
-      "menuPath": "src/main/java/cz/blackdragoncz/lostdepths/world/inventory/ResourceExtractorMenu.java",
-      "imageWidth": 176,
-      "imageHeight": 206,
-      "bgTexture": "ld_gui_generic",
-      "elements": [
-        {
-          "type": "slot",
-          "id": "pickaxe",
-          "label": "Tool",
-          "slotIndex": 0,
-          "x": 27,
-          "y": 83
-        },
-        {
-          "type": "slot",
-          "id": "solution_1",
-          "label": "Sol.1",
-          "slotIndex": 1,
-          "x": 8,
-          "y": 56
-        },
-        {
-          "type": "slot",
-          "id": "solution_2",
-          "label": "Sol.2",
-          "slotIndex": 2,
-          "x": 26,
-          "y": 56
-        },
-        {
-          "type": "slot",
-          "id": "solution_3",
-          "label": "Sol.3",
-          "slotIndex": 3,
-          "x": 44,
-          "y": 56
-        },
-        {
-          "type": "slot",
-          "id": "output_1",
-          "label": "Out.1",
-          "slotIndex": 4,
-          "x": 85,
-          "y": 28
-        },
-        {
-          "type": "slot",
-          "id": "output_2",
-          "label": "Out.2",
-          "slotIndex": 5,
-          "x": 103,
-          "y": 28
-        },
-        {
-          "type": "slot",
-          "id": "output_3",
-          "label": "Out.3",
-          "slotIndex": 6,
-          "x": 85,
-          "y": 46
-        },
-        {
-          "type": "slot",
-          "id": "output_4",
-          "label": "Out.4",
-          "slotIndex": 7,
-          "x": 103,
-          "y": 46
-        },
-        {
-          "type": "label",
-          "id": "lbl_tool",
-          "text": "Tool",
-          "x": 49,
-          "y": 86,
-          "color": "0x555555"
-        },
-        {
-          "type": "label",
-          "id": "lbl_solutions",
-          "text": "Solutions",
-          "x": 20,
-          "y": 43,
-          "color": "0x555555"
-        },
-        {
-          "type": "label",
-          "id": "lbl_output",
-          "text": "Output",
-          "x": 88,
-          "y": 14,
-          "color": "0x555555"
-        },
-        {
-          "type": "energy_bar",
-          "id": "energy",
-          "x": 133,
-          "y": 45,
-          "w": 20,
-          "h": 60
-        },
-        {
-          "type": "progress",
-          "id": "progress",
-          "x": 131,
-          "y": 29,
-          "w": 24,
-          "h": 2
-        },
-        {
-          "type": "player_inventory",
-          "id": "player_inv",
-          "x": 8,
-          "y": 126
-        }
-      ]
-    },
-    {
-      "id": "lostdepths:nurostar_battery",
-      "label": "Nurostar Battery",
-      "screenPath": "src/main/java/cz/blackdragoncz/lostdepths/client/gui/NurostarBatteryScreen.java",
-      "menuPath": "src/main/java/cz/blackdragoncz/lostdepths/world/inventory/NurostarBatteryMenu.java",
-      "imageWidth": 176,
-      "imageHeight": 206,
-      "bgTexture": "ld_gui_generic",
-      "elements": [
-        {
-          "type": "slot",
-          "id": "charge",
-          "label": "Charge",
-          "slotIndex": 0,
-          "x": 37,
-          "y": 54
-        },
-        {
-          "type": "slot",
-          "id": "drain",
-          "label": "Drain",
-          "slotIndex": 1,
-          "x": 91,
-          "y": 55
-        },
-        {
-          "type": "label",
-          "id": "lbl_charge",
-          "text": "Charge",
-          "x": 33,
-          "y": 78,
-          "color": "0x555555"
-        },
-        {
-          "type": "label",
-          "id": "lbl_drain",
-          "text": "Drain",
-          "x": 89,
-          "y": 78,
-          "color": "0x555555"
-        },
-        {
-          "type": "energy_bar",
-          "id": "energy",
-          "x": 132,
-          "y": 37,
-          "w": 30,
-          "h": 60
-        },
-        {
-          "type": "player_inventory",
-          "id": "player_inv",
-          "x": 8,
-          "y": 126
-        }
-      ]
-    },
-    {
-      "id": "lostdepths:nurostar_generator",
-      "label": "Nurostar Generator",
-      "screenPath": "src/main/java/cz/blackdragoncz/lostdepths/client/gui/NurostarGeneratorScreen.java",
-      "menuPath": "src/main/java/cz/blackdragoncz/lostdepths/world/inventory/NurostarGeneratorMenu.java",
-      "imageWidth": 176,
-      "imageHeight": 206,
-      "bgTexture": "ld_gui_generic",
-      "elements": [
-        {
-          "type": "slot",
-          "id": "input_1",
-          "label": "In.1",
-          "slotIndex": 0,
-          "x": 26,
-          "y": 86
-        },
-        {
-          "type": "slot",
-          "id": "input_2",
-          "label": "In.2",
-          "slotIndex": 1,
-          "x": 49,
-          "y": 86
-        },
-        {
-          "type": "slot",
-          "id": "waste",
-          "label": "Waste",
-          "slotIndex": 2,
-          "x": 44,
-          "y": 21
-        },
-        {
-          "type": "energy_bar",
-          "id": "energy",
-          "x": 118,
-          "y": 18,
-          "w": 30,
-          "h": 60
-        },
-        {
-          "type": "player_inventory",
-          "id": "player_inv",
-          "x": 8,
-          "y": 126
-        }
-      ]
-    }
-  ]
+    "guis":  [
+                 {
+                     "id":  "lostdepths:wsgui_1",
+                     "label":  "Wsgui 1",
+                     "screenPath":  "src/main/java/cz/blackdragoncz/lostdepths/client/gui/GalacticWorkstationScreen.java",
+                     "menuPath":  "src/main/java/cz/blackdragoncz/lostdepths/world/inventory/GalacticWorkstationMenu.java",
+                     "imageWidth":  176,
+                     "imageHeight":  166,
+                     "bgTexture":  "galactic_workstation",
+                     "elements":  [
+                                      {
+                                          "type":  "slot",
+                                          "id":  "craft_slot_100",
+                                          "label":  "Craft 100",
+                                          "slotIndex":  100,
+                                          "x":  16,
+                                          "y":  17
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "result",
+                                          "label":  "Result",
+                                          "slotIndex":  0,
+                                          "x":  142,
+                                          "y":  35
+                                      },
+                                      {
+                                          "type":  "player_inventory",
+                                          "id":  "player_inv",
+                                          "x":  8,
+                                          "y":  84
+                                      }
+                                  ]
+                 },
+                 {
+                     "id":  "lostdepths:crystalizer_gui",
+                     "label":  "Crystalizer",
+                     "screenPath":  "src/main/java/cz/blackdragoncz/lostdepths/client/gui/CrystalizerGUIScreen.java",
+                     "menuPath":  "src/main/java/cz/blackdragoncz/lostdepths/world/inventory/CrystalizerGUIMenu.java",
+                     "imageWidth":  176,
+                     "imageHeight":  166,
+                     "bgTexture":  "crystalizer_gui",
+                     "elements":  [
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_0",
+                                          "label":  "Slot 0",
+                                          "slotIndex":  0,
+                                          "x":  142,
+                                          "y":  35
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_1",
+                                          "label":  "Slot 1",
+                                          "slotIndex":  1,
+                                          "x":  16,
+                                          "y":  35
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_2",
+                                          "label":  "Slot 2",
+                                          "slotIndex":  2,
+                                          "x":  43,
+                                          "y":  35
+                                      },
+                                      {
+                                          "type":  "player_inventory",
+                                          "id":  "player_inv",
+                                          "x":  8,
+                                          "y":  84
+                                      }
+                                  ]
+                 },
+                 {
+                     "id":  "lostdepths:compressor_gui",
+                     "label":  "Compressor",
+                     "screenPath":  "src/main/java/cz/blackdragoncz/lostdepths/client/gui/CompressorGUIScreen.java",
+                     "menuPath":  "src/main/java/cz/blackdragoncz/lostdepths/world/inventory/CompressorGUIMenu.java",
+                     "imageWidth":  176,
+                     "imageHeight":  166,
+                     "bgTexture":  "compression_table",
+                     "elements":  [
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_1",
+                                          "label":  "Slot 1",
+                                          "slotIndex":  1,
+                                          "x":  116,
+                                          "y":  35
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_0",
+                                          "label":  "Slot 0",
+                                          "slotIndex":  0,
+                                          "x":  39,
+                                          "y":  35
+                                      },
+                                      {
+                                          "type":  "player_inventory",
+                                          "id":  "player_inv",
+                                          "x":  8,
+                                          "y":  84
+                                      }
+                                  ]
+                 },
+                 {
+                     "id":  "lostdepths:wsgui_2",
+                     "label":  "Wsgui 2",
+                     "screenPath":  "src/main/java/cz/blackdragoncz/lostdepths/client/gui/AlloyWorkstationScreen.java",
+                     "menuPath":  "src/main/java/cz/blackdragoncz/lostdepths/world/inventory/AlloyWorkstationMenu.java",
+                     "imageWidth":  176,
+                     "imageHeight":  206,
+                     "bgTexture":  "wsgui_2",
+                     "elements":  [
+                                      {
+                                          "type":  "slot",
+                                          "id":  "craft_slot_100",
+                                          "label":  "Craft 100",
+                                          "slotIndex":  100,
+                                          "x":  7,
+                                          "y":  46
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "craft_slot_101",
+                                          "label":  "Craft 101",
+                                          "slotIndex":  101,
+                                          "x":  34,
+                                          "y":  37
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "craft_slot_102",
+                                          "label":  "Craft 102",
+                                          "slotIndex":  102,
+                                          "x":  61,
+                                          "y":  46
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "craft_slot_103",
+                                          "label":  "Craft 103",
+                                          "slotIndex":  103,
+                                          "x":  34,
+                                          "y":  64
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "craft_slot_104",
+                                          "label":  "Craft 104",
+                                          "slotIndex":  104,
+                                          "x":  7,
+                                          "y":  73
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "craft_slot_105",
+                                          "label":  "Craft 105",
+                                          "slotIndex":  105,
+                                          "x":  34,
+                                          "y":  91
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "craft_slot_106",
+                                          "label":  "Craft 106",
+                                          "slotIndex":  106,
+                                          "x":  61,
+                                          "y":  73
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "result",
+                                          "label":  "Result",
+                                          "slotIndex":  0,
+                                          "x":  142,
+                                          "y":  55
+                                      }
+                                  ]
+                 },
+                 {
+                     "id":  "lostdepths:module_creator_gui",
+                     "label":  "Module Creator",
+                     "screenPath":  "src/main/java/cz/blackdragoncz/lostdepths/client/gui/ModuleCreatorGUIScreen.java",
+                     "menuPath":  "src/main/java/cz/blackdragoncz/lostdepths/world/inventory/ModuleCreatorGUIMenu.java",
+                     "imageWidth":  176,
+                     "imageHeight":  186,
+                     "bgTexture":  "module_creator",
+                     "elements":  [
+                                      {
+                                          "type":  "slot",
+                                          "id":  "craft_slot_100",
+                                          "label":  "Craft 100",
+                                          "slotIndex":  100,
+                                          "x":  134,
+                                          "y":  35
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "craft_slot_101",
+                                          "label":  "Craft 101",
+                                          "slotIndex":  101,
+                                          "x":  17,
+                                          "y":  17
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "craft_slot_102",
+                                          "label":  "Craft 102",
+                                          "slotIndex":  102,
+                                          "x":  43,
+                                          "y":  17
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "craft_slot_103",
+                                          "label":  "Craft 103",
+                                          "slotIndex":  103,
+                                          "x":  69,
+                                          "y":  17
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "craft_slot_104",
+                                          "label":  "Craft 104",
+                                          "slotIndex":  104,
+                                          "x":  43,
+                                          "y":  54
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "result",
+                                          "label":  "Result",
+                                          "slotIndex":  0,
+                                          "x":  134,
+                                          "y":  35
+                                      }
+                                  ]
+                 },
+                 {
+                     "id":  "lostdepths:portable_beacon_gui",
+                     "label":  "Portable Beacon",
+                     "screenPath":  "src/main/java/cz/blackdragoncz/lostdepths/client/gui/PortableBeaconGUIScreen.java",
+                     "menuPath":  "src/main/java/cz/blackdragoncz/lostdepths/world/inventory/PortableBeaconGUIMenu.java",
+                     "imageWidth":  176,
+                     "imageHeight":  166,
+                     "bgTexture":  "portable_beacon_gui",
+                     "elements":  [
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_0",
+                                          "label":  "Slot 0",
+                                          "slotIndex":  0,
+                                          "x":  65,
+                                          "y":  37
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_1",
+                                          "label":  "Slot 1",
+                                          "slotIndex":  1,
+                                          "x":  95,
+                                          "y":  37
+                                      },
+                                      {
+                                          "type":  "player_inventory",
+                                          "id":  "player_inv",
+                                          "x":  8,
+                                          "y":  84
+                                      }
+                                  ]
+                 },
+                 {
+                     "id":  "lostdepths:modulator_gui",
+                     "label":  "Modulator",
+                     "screenPath":  "src/main/java/cz/blackdragoncz/lostdepths/client/gui/ModulatorGUIScreen.java",
+                     "menuPath":  "src/main/java/cz/blackdragoncz/lostdepths/world/inventory/ModulatorGUIMenu.java",
+                     "imageWidth":  176,
+                     "imageHeight":  166,
+                     "bgTexture":  "modulator_gui",
+                     "elements":  [
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_0",
+                                          "label":  "Slot 0",
+                                          "slotIndex":  0,
+                                          "x":  134,
+                                          "y":  35
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_1",
+                                          "label":  "Slot 1",
+                                          "slotIndex":  1,
+                                          "x":  13,
+                                          "y":  25
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_2",
+                                          "label":  "Slot 2",
+                                          "slotIndex":  2,
+                                          "x":  13,
+                                          "y":  45
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_3",
+                                          "label":  "Slot 3",
+                                          "slotIndex":  3,
+                                          "x":  46,
+                                          "y":  35
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_4",
+                                          "label":  "Slot 4",
+                                          "slotIndex":  4,
+                                          "x":  79,
+                                          "y":  14
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_5",
+                                          "label":  "Slot 5",
+                                          "slotIndex":  5,
+                                          "x":  79,
+                                          "y":  35
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_6",
+                                          "label":  "Slot 6",
+                                          "slotIndex":  6,
+                                          "x":  79,
+                                          "y":  56
+                                      },
+                                      {
+                                          "type":  "player_inventory",
+                                          "id":  "player_inv",
+                                          "x":  8,
+                                          "y":  84
+                                      }
+                                  ]
+                 },
+                 {
+                     "id":  "lostdepths:nurostar_generator_menu",
+                     "label":  "Nurostar Generator",
+                     "screenPath":  "src/main/java/cz/blackdragoncz/lostdepths/client/gui/NurostarGeneratorScreen.java",
+                     "menuPath":  "src/main/java/cz/blackdragoncz/lostdepths/world/inventory/NurostarGeneratorMenu.java",
+                     "imageWidth":  176,
+                     "imageHeight":  226,
+                     "bgTexture":  "ld_gui_generic",
+                     "elements":  [
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_0",
+                                          "label":  "Slot 0",
+                                          "slotIndex":  0,
+                                          "x":  24,
+                                          "y":  86
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_1",
+                                          "label":  "Slot 1",
+                                          "slotIndex":  1,
+                                          "x":  48,
+                                          "y":  86
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_2",
+                                          "label":  "Slot 2",
+                                          "slotIndex":  2,
+                                          "x":  36,
+                                          "y":  21
+                                      }
+                                  ]
+                 },
+                 {
+                     "id":  "lostdepths:nurostar_battery_menu",
+                     "label":  "Nurostar Battery",
+                     "screenPath":  "src/main/java/cz/blackdragoncz/lostdepths/client/gui/NurostarBatteryScreen.java",
+                     "menuPath":  "src/main/java/cz/blackdragoncz/lostdepths/world/inventory/NurostarBatteryMenu.java",
+                     "imageWidth":  176,
+                     "imageHeight":  206,
+                     "bgTexture":  "ld_gui_generic",
+                     "elements":  [
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_0",
+                                          "label":  "Slot 0",
+                                          "slotIndex":  0,
+                                          "x":  37,
+                                          "y":  54
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_1",
+                                          "label":  "Slot 1",
+                                          "slotIndex":  1,
+                                          "x":  91,
+                                          "y":  55
+                                      },
+                                      {
+                                          "type":  "player_inventory",
+                                          "id":  "player_inv",
+                                          "x":  9,
+                                          "y":  127
+                                      }
+                                  ]
+                 },
+                 {
+                     "id":  "lostdepths:resource_extractor_menu",
+                     "label":  "Resource Extractor",
+                     "screenPath":  "src/main/java/cz/blackdragoncz/lostdepths/client/gui/ResourceExtractorScreen.java",
+                     "menuPath":  "src/main/java/cz/blackdragoncz/lostdepths/world/inventory/ResourceExtractorMenu.java",
+                     "imageWidth":  176,
+                     "imageHeight":  206,
+                     "bgTexture":  "ld_gui_generic",
+                     "elements":  [
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_0",
+                                          "label":  "Slot 0",
+                                          "slotIndex":  0,
+                                          "x":  27,
+                                          "y":  83
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_1",
+                                          "label":  "Slot 1",
+                                          "slotIndex":  1,
+                                          "x":  8,
+                                          "y":  56
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_2",
+                                          "label":  "Slot 2",
+                                          "slotIndex":  2,
+                                          "x":  26,
+                                          "y":  56
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_3",
+                                          "label":  "Slot 3",
+                                          "slotIndex":  3,
+                                          "x":  44,
+                                          "y":  56
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_4",
+                                          "label":  "Slot 4",
+                                          "slotIndex":  4,
+                                          "x":  85,
+                                          "y":  28
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_5",
+                                          "label":  "Slot 5",
+                                          "slotIndex":  5,
+                                          "x":  103,
+                                          "y":  28
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_6",
+                                          "label":  "Slot 6",
+                                          "slotIndex":  6,
+                                          "x":  85,
+                                          "y":  46
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_7",
+                                          "label":  "Slot 7",
+                                          "slotIndex":  7,
+                                          "x":  103,
+                                          "y":  46
+                                      },
+                                      {
+                                          "type":  "player_inventory",
+                                          "id":  "player_inv",
+                                          "x":  9,
+                                          "y":  127
+                                      }
+                                  ]
+                 },
+                 {
+                     "id":  "lostdepths:fusion_table_menu",
+                     "label":  "Fusion Table",
+                     "screenPath":  "src/main/java/cz/blackdragoncz/lostdepths/client/gui/FusionTableScreen.java",
+                     "menuPath":  "src/main/java/cz/blackdragoncz/lostdepths/world/inventory/FusionTableMenu.java",
+                     "imageWidth":  176,
+                     "imageHeight":  166,
+                     "bgTexture":  "fusion_table",
+                     "elements":  [
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_0",
+                                          "label":  "Slot 0",
+                                          "slotIndex":  0,
+                                          "x":  19,
+                                          "y":  10
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_1",
+                                          "label":  "Slot 1",
+                                          "slotIndex":  1,
+                                          "x":  19,
+                                          "y":  30
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_2",
+                                          "label":  "Slot 2",
+                                          "slotIndex":  2,
+                                          "x":  142,
+                                          "y":  15
+                                      },
+                                      {
+                                          "type":  "player_inventory",
+                                          "id":  "player_inv",
+                                          "x":  8,
+                                          "y":  84
+                                      },
+                                      {
+                                          "type":  "progress",
+                                          "id":  "progress",
+                                          "x":  39,
+                                          "y":  5,
+                                          "w":  24,
+                                          "h":  17
+                                      }
+                                  ]
+                 },
+                 {
+                     "id":  "lostdepths:shipment_filler_menu",
+                     "label":  "Shipment Filler",
+                     "screenPath":  "src/main/java/cz/blackdragoncz/lostdepths/client/gui/ShipmentFillerScreen.java",
+                     "menuPath":  "src/main/java/cz/blackdragoncz/lostdepths/world/inventory/ShipmentFillerMenu.java",
+                     "imageWidth":  176,
+                     "imageHeight":  166,
+                     "bgTexture":  "shipment_filler",
+                     "elements":  [
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_0",
+                                          "label":  "Slot 0",
+                                          "slotIndex":  0,
+                                          "x":  8,
+                                          "y":  6
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_1",
+                                          "label":  "Slot 1",
+                                          "slotIndex":  1,
+                                          "x":  8,
+                                          "y":  63
+                                      },
+                                      {
+                                          "type":  "slot",
+                                          "id":  "slot_2",
+                                          "label":  "Slot 2",
+                                          "slotIndex":  2,
+                                          "x":  38,
+                                          "y":  6
+                                      },
+                                      {
+                                          "type":  "player_inventory",
+                                          "id":  "player_inv",
+                                          "x":  8,
+                                          "y":  84
+                                      },
+                                      {
+                                          "type":  "progress",
+                                          "id":  "progress",
+                                          "x":  27,
+                                          "y":  6,
+                                          "w":  8,
+                                          "h":  73
+                                      }
+                                  ]
+                 }
+             ]
 }

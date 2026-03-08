@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Worldgen Preview — Lost Depths</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #1a1a2e; color: #e0e0e0; font-family: 'Segoe UI', sans-serif; display: flex; height: 100vh; overflow: hidden; }
+
+/* Sidebar */
+#sidebar { width: 380px; min-width: 380px; background: #16213e; display: flex; flex-direction: column; border-right: 1px solid #0f3460; overflow-y: auto; }
+#sidebar h2 { padding: 12px 16px; background: #0f3460; font-size: 14px; color: #e94560; letter-spacing: 1px; }
+.section { border-bottom: 1px solid #0f3460; padding: 12px 16px; }
+.section h3 { font-size: 12px; color: #53a8b6; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+.field { margin-bottom: 8px; }
+.field label { display: block; font-size: 11px; color: #888; margin-bottom: 2px; }
+.field input[type=range] { width: 100%; accent-color: #e94560; }
+.field input[type=number], .field select { width: 100%; background: #1a1a2e; color: #e0e0e0; border: 1px solid #333; border-radius: 3px; padding: 4px 6px; font-size: 12px; }
+.field .val { float: right; font-size: 11px; color: #e94560; font-weight: bold; }
+.btn { background: #e94560; color: #fff; border: none; border-radius: 4px; padding: 8px 16px; cursor: pointer; font-size: 12px; margin: 4px 2px; }
+.btn:hover { background: #c73652; }
+.btn.secondary { background: #0f3460; }
+.btn.secondary:hover { background: #1a4a7a; }
+#json-area { width: 100%; height: 200px; background: #111; color: #0f0; border: 1px solid #333; font-family: monospace; font-size: 11px; resize: vertical; border-radius: 3px; padding: 6px; }
+.tabs { display: flex; gap: 2px; margin-bottom: 8px; }
+.tab { flex: 1; text-align: center; padding: 6px; cursor: pointer; background: #1a1a2e; border-radius: 4px 4px 0 0; font-size: 11px; }
+.tab.active { background: #0f3460; color: #e94560; }
+#file-load { margin: 8px 0; }
+
+/* Viewport */
+#viewport { flex: 1; position: relative; }
+canvas { display: block; width: 100%; height: 100%; }
+#info-overlay { position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.7); padding: 8px 12px; border-radius: 4px; font-size: 11px; pointer-events: none; }
+#info-overlay span { color: #e94560; }
+#mode-bar { position: absolute; top: 10px; right: 10px; display: flex; gap: 4px; }
+#coord-display { position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.7); padding: 6px 10px; border-radius: 4px; font-size: 11px; }
+
+/* Surface rule tree */
+.rule-tree { font-size: 11px; margin-left: 8px; }
+.rule-node { margin: 2px 0; padding: 2px 4px; border-left: 2px solid #333; }
+.rule-node.condition { border-color: #e94560; }
+.rule-node.sequence { border-color: #53a8b6; }
+.rule-node.block { border-color: #4ecca3; cursor: pointer; }
+.rule-node.block:hover { background: #1a1a2e; }
+.rule-type { color: #888; font-size: 10px; }
+
+/* Density function tree */
+.df-tree { font-size: 11px; }
+.df-node { margin: 1px 0 1px 12px; padding: 1px 4px; border-left: 2px solid #333; }
+.df-node .op { color: #e94560; font-weight: bold; }
+.df-node .num { color: #4ecca3; }
+.df-node .ref { color: #ffd700; }
+
+/* Color legend */
+.legend { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+.legend-item { font-size: 10px; display: flex; align-items: center; gap: 3px; }
+.legend-swatch { width: 12px; height: 12px; border-radius: 2px; border: 1px solid #555; }
+
+/* Biome parameter editor */
+.biome-entry { background: #1a1a2e; border-radius: 4px; padding: 8px; margin-bottom: 6px; border: 1px solid #333; }
+.biome-entry .biome-name { color: #e94560; font-weight: bold; font-size: 12px; margin-bottom: 4px; }
+.param-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+.param-grid .field { margin-bottom: 2px; }
+</style>
+</head>
+<body>
+
+<div id="sidebar">
+    <h2>WORLDGEN PREVIEW</h2>
+
+    <div class="section">
+        <h3>Load Dimension JSON</h3>
+        <input type="file" id="file-load" accept=".json" />
+        <div style="margin-top:6px">
+            <button class="btn secondary" onclick="loadExample('below_bedrock')">Below Bedrock</button>
+            <button class="btn secondary" onclick="loadExample('between_bedrock_and_overworld')">Between B&O</button>
+            <button class="btn secondary" onclick="loadExample('lost_dungeons')">Lost Dungeons</button>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="tabs">
+            <div class="tab active" data-tab="noise" onclick="switchTab(this)">Noise</div>
+            <div class="tab" data-tab="surface" onclick="switchTab(this)">Surface</div>
+            <div class="tab" data-tab="biomes" onclick="switchTab(this)">Biomes</div>
+            <div class="tab" data-tab="density" onclick="switchTab(this)">Density</div>
+            <div class="tab" data-tab="json" onclick="switchTab(this)">JSON</div>
+        </div>
+
+        <div id="panel-noise" class="tab-panel">
+            <h3>Noise Settings</h3>
+            <div class="field">
+                <label>Min Y <span class="val" id="v-min-y">0</span></label>
+                <input type="range" id="min-y" min="-2048" max="2048" step="16" value="0" oninput="updateNoise()">
+            </div>
+            <div class="field">
+                <label>Height <span class="val" id="v-height">128</span></label>
+                <input type="range" id="height" min="16" max="4064" step="16" value="128" oninput="updateNoise()">
+            </div>
+            <div class="field">
+                <label>Size Horizontal <span class="val" id="v-sh">1</span></label>
+                <input type="range" id="size-h" min="1" max="4" step="1" value="1" oninput="updateNoise()">
+            </div>
+            <div class="field">
+                <label>Size Vertical <span class="val" id="v-sv">2</span></label>
+                <input type="range" id="size-v" min="1" max="4" step="1" value="2" oninput="updateNoise()">
+            </div>
+            <div class="field">
+                <label>Sea Level <span class="val" id="v-sea">32</span></label>
+                <input type="range" id="sea-level" min="-64" max="320" step="1" value="32" oninput="updateNoise()">
+            </div>
+            <div class="field">
+                <label>Aquifers</label>
+                <input type="checkbox" id="aquifers" onchange="updateNoise()">
+            </div>
+            <div class="field">
+                <label>Ore Veins</label>
+                <input type="checkbox" id="ore-veins" onchange="updateNoise()">
+            </div>
+            <div class="field">
+                <label>Default Block</label>
+                <input type="text" id="default-block" value="minecraft:deepslate" onchange="updateNoise()">
+            </div>
+            <div class="field">
+                <label>Default Fluid</label>
+                <input type="text" id="default-fluid" value="minecraft:lava" onchange="updateNoise()">
+            </div>
+        </div>
+
+        <div id="panel-surface" class="tab-panel" style="display:none">
+            <h3>Surface Rules</h3>
+            <div id="surface-tree"></div>
+        </div>
+
+        <div id="panel-biomes" class="tab-panel" style="display:none">
+            <h3>Biome Parameters</h3>
+            <div id="biome-list"></div>
+        </div>
+
+        <div id="panel-density" class="tab-panel" style="display:none">
+            <h3>Final Density Function</h3>
+            <div id="density-tree" class="df-tree"></div>
+        </div>
+
+        <div id="panel-json" class="tab-panel" style="display:none">
+            <h3>Raw JSON</h3>
+            <textarea id="json-area" spellcheck="false"></textarea>
+            <button class="btn" onclick="applyJson()">Apply</button>
+            <button class="btn secondary" onclick="exportJson()">Export</button>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>Preview Controls</h3>
+        <div class="field">
+            <label>Render Mode</label>
+            <select id="render-mode" onchange="regenerate()">
+                <option value="terrain">3D Terrain</option>
+                <option value="heightmap">Heightmap (Top-Down)</option>
+                <option value="cross-section">Cross Section (XZ)</option>
+                <option value="density-slice">Density Slice (XY)</option>
+            </select>
+        </div>
+        <div class="field">
+            <label>Slice Y <span class="val" id="v-slice-y">64</span></label>
+            <input type="range" id="slice-y" min="-64" max="320" step="1" value="64" oninput="updateSlice()">
+        </div>
+        <div class="field">
+            <label>Noise Scale <span class="val" id="v-nscale">1.0</span></label>
+            <input type="range" id="noise-scale" min="0.1" max="5.0" step="0.1" value="1.0" oninput="updateSlice()">
+        </div>
+        <div class="field">
+            <label>Seed <span class="val" id="v-seed">12345</span></label>
+            <input type="number" id="seed" value="12345" onchange="regenerate()">
+        </div>
+        <button class="btn" onclick="regenerate()">Regenerate</button>
+        <button class="btn secondary" onclick="randomSeed()">Random Seed</button>
+
+        <div class="legend" id="block-legend"></div>
+    </div>
+</div>
+
+<div id="viewport">
+    <canvas id="canvas3d"></canvas>
+    <div id="info-overlay">
+        <span>Drag</span> to rotate | <span>Scroll</span> to zoom | <span>Shift+Drag</span> to pan<br>
+        Loaded: <span id="dim-name">none</span> | Chunks: 3x3 (48x48 blocks)
+    </div>
+    <div id="coord-display">Hover: <span id="hover-coords">-</span></div>
+</div>
+
+<script>
+// ============================================================
+// SIMPLEX NOISE (Stefan Gustavson / Joseph Gentle)
+// ============================================================
+class SimplexNoise {
+    constructor(seed) {
+        this.grad3 = [[1,1,0],[-1,1,0],[1,-1,0],[-1,-1,0],[1,0,1],[-1,0,1],[1,0,-1],[-1,0,-1],[0,1,1],[0,-1,1],[0,1,-1],[0,-1,-1]];
+        this.perm = new Uint8Array(512);
+        const p = new Uint8Array(256);
+        for (let i = 0; i < 256; i++) p[i] = i;
+        let s = seed;
+        for (let i = 255; i > 0; i--) {
+            s = (s * 16807 + 0) % 2147483647;
+            const j = s % (i + 1);
+            [p[i], p[j]] = [p[j], p[i]];
+        }
+        for (let i = 0; i < 512; i++) this.perm[i] = p[i & 255];
+    }
+
+    noise2D(x, y) {
+        const F2 = 0.5 * (Math.sqrt(3) - 1);
+        const G2 = (3 - Math.sqrt(3)) / 6;
+        const s = (x + y) * F2;
+        const i = Math.floor(x + s), j = Math.floor(y + s);
+        const t = (i + j) * G2;
+        const X0 = i - t, Y0 = j - t;
+        const x0 = x - X0, y0 = y - Y0;
+        let i1, j1;
+        if (x0 > y0) { i1 = 1; j1 = 0; } else { i1 = 0; j1 = 1; }
+        const x1 = x0 - i1 + G2, y1 = y0 - j1 + G2;
+        const x2 = x0 - 1 + 2 * G2, y2 = y0 - 1 + 2 * G2;
+        const ii = i & 255, jj = j & 255;
+        let n0 = 0, n1 = 0, n2 = 0;
+        let t0 = 0.5 - x0*x0 - y0*y0;
+        if (t0 >= 0) { t0 *= t0; const gi = this.perm[ii + this.perm[jj]] % 12; n0 = t0 * t0 * (this.grad3[gi][0]*x0 + this.grad3[gi][1]*y0); }
+        let t1 = 0.5 - x1*x1 - y1*y1;
+        if (t1 >= 0) { t1 *= t1; const gi = this.perm[ii+i1 + this.perm[jj+j1]] % 12; n1 = t1 * t1 * (this.grad3[gi][0]*x1 + this.grad3[gi][1]*y1); }
+        let t2 = 0.5 - x2*x2 - y2*y2;
+        if (t2 >= 0) { t2 *= t2; const gi = this.perm[ii+1 + this.perm[jj+1]] % 12; n2 = t2 * t2 * (this.grad3[gi][0]*x2 + this.grad3[gi][1]*y2); }
+        return 70 * (n0 + n1 + n2);
+    }
+
+    noise3D(x, y, z) {
+        const F3 = 1/3, G3 = 1/6;
+        const s = (x+y+z)*F3;
+        const i=Math.floor(x+s), j=Math.floor(y+s), k=Math.floor(z+s);
+        const t = (i+j+k)*G3;
+        const x0=x-(i-t), y0=y-(j-t), z0=z-(k-t);
+        let i1,j1,k1,i2,j2,k2;
+        if(x0>=y0){if(y0>=z0){i1=1;j1=0;k1=0;i2=1;j2=1;k2=0;}else if(x0>=z0){i1=1;j1=0;k1=0;i2=1;j2=0;k2=1;}else{i1=0;j1=0;k1=1;i2=1;j2=0;k2=1;}}
+        else{if(y0<z0){i1=0;j1=0;k1=1;i2=0;j2=1;k2=1;}else if(x0<z0){i1=0;j1=1;k1=0;i2=0;j2=1;k2=1;}else{i1=0;j1=1;k1=0;i2=1;j2=1;k2=0;}}
+        const x1=x0-i1+G3,y1=y0-j1+G3,z1=z0-k1+G3;
+        const x2=x0-i2+2*G3,y2=y0-j2+2*G3,z2=z0-k2+2*G3;
+        const x3=x0-1+3*G3,y3=y0-1+3*G3,z3=z0-1+3*G3;
+        const ii=i&255,jj=j&255,kk=k&255;
+        let n0=0,n1=0,n2=0,n3=0;
+        let tt=0.6-x0*x0-y0*y0-z0*z0;
+        if(tt>0){tt*=tt;const gi=this.perm[ii+this.perm[jj+this.perm[kk]]]%12;n0=tt*tt*(this.grad3[gi][0]*x0+this.grad3[gi][1]*y0+this.grad3[gi][2]*z0);}
+        tt=0.6-x1*x1-y1*y1-z1*z1;
+        if(tt>0){tt*=tt;const gi=this.perm[ii+i1+this.perm[jj+j1+this.perm[kk+k1]]]%12;n1=tt*tt*(this.grad3[gi][0]*x1+this.grad3[gi][1]*y1+this.grad3[gi][2]*z1);}
+        tt=0.6-x2*x2-y2*y2-z2*z2;
+        if(tt>0){tt*=tt;const gi=this.perm[ii+i2+this.perm[jj+j2+this.perm[kk+k2]]]%12;n2=tt*tt*(this.grad3[gi][0]*x2+this.grad3[gi][1]*y2+this.grad3[gi][2]*z2);}
+        tt=0.6-x3*x3-y3*y3-z3*z3;
+        if(tt>0){tt*=tt;const gi=this.perm[ii+1+this.perm[jj+1+this.perm[kk+1]]]%12;n3=tt*tt*(this.grad3[gi][0]*x3+this.grad3[gi][1]*y3+this.grad3[gi][2]*z3);}
+        return 32*(n0+n1+n2+n3);
+    }
+
+    octave2D(x, y, octaves, persistence, lacunarity) {
+        let total = 0, freq = 1, amp = 1, max = 0;
+        for (let i = 0; i < octaves; i++) {
+            total += this.noise2D(x * freq, y * freq) * amp;
+            max += amp;
+            amp *= persistence;
+            freq *= lacunarity;
+        }
+        return total / max;
+    }
+
+    octave3D(x, y, z, octaves, persistence, lacunarity) {
+        let total = 0, freq = 1, amp = 1, max = 0;
+        for (let i = 0; i < octaves; i++) {
+            total += this.noise3D(x * freq, y * freq, z * freq) * amp;
+            max += amp;
+            amp *= persistence;
+            freq *= lacunarity;
+        }
+        return total / max;
+    }
+}
+
+// ============================================================
+// 3D RENDERER (WebGL-based lightweight voxel renderer)
+// ============================================================
+const canvas = document.getElementById('canvas3d');
+const gl = canvas.getContext('webgl', { antialias: true, alpha: false });
+
+const VS = `
+attribute vec3 aPos;
+attribute vec3 aNorm;
+attribute vec3 aColor;
+uniform mat4 uMVP;
+uniform vec3 uLightDir;
+varying vec3 vColor;
+varying float vLight;
+void main() {
+    gl_Position = uMVP * vec4(aPos, 1.0);
+    vColor = aColor;
+    vLight = max(dot(normalize(aNorm), normalize(uLightDir)), 0.15) * 0.7 + 0.3;
+}`;
+
+const FS = `
+precision mediump float;
+varying vec3 vColor;
+varying float vLight;
+void main() {
+    gl_FragColor = vec4(vColor * vLight, 1.0);
+}`;
+
+function createShader(src, type) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) console.error(gl.getShaderInfoLog(s));
+    return s;
+}
+
+const prog = gl.createProgram();
+gl.attachShader(prog, createShader(VS, gl.VERTEX_SHADER));
+gl.attachShader(prog, createShader(FS, gl.FRAGMENT_SHADER));
+gl.linkProgram(prog);
+gl.useProgram(prog);
+
+const aPos = gl.getAttribLocation(prog, 'aPos');
+const aNorm = gl.getAttribLocation(prog, 'aNorm');
+const aColor = gl.getAttribLocation(prog, 'aColor');
+const uMVP = gl.getUniformLocation(prog, 'uMVP');
+const uLightDir = gl.getUniformLocation(prog, 'uLightDir');
+
+gl.enable(gl.DEPTH_TEST);
+gl.enable(gl.CULL_FACE);
+gl.clearColor(0.1, 0.1, 0.18, 1);
+
+let vbo = gl.createBuffer();
+let vertexCount = 0;
+
+// Camera
+let camDist = 80, camRotX = -30, camRotY = 45, camPanX = 0, camPanY = 0;
+let dragging = false, lastMX = 0, lastMY = 0, shiftHeld = false;
+
+canvas.addEventListener('mousedown', e => { dragging = true; lastMX = e.clientX; lastMY = e.clientY; });
+window.addEventListener('mouseup', () => dragging = false);
+canvas.addEventListener('mousemove', e => {
+    if (!dragging) {
+        updateHoverCoords(e);
+        return;
+    }
+    const dx = e.clientX - lastMX, dy = e.clientY - lastMY;
+    if (e.shiftKey) { camPanX += dx * 0.2; camPanY -= dy * 0.2; }
+    else { camRotY += dx * 0.5; camRotX += dy * 0.5; }
+    lastMX = e.clientX; lastMY = e.clientY;
+    render();
+});
+canvas.addEventListener('wheel', e => { camDist *= (1 + e.deltaY * 0.001); camDist = Math.max(10, Math.min(500, camDist)); render(); e.preventDefault(); }, { passive: false });
+
+function updateHoverCoords(e) {
+    const r = canvas.getBoundingClientRect();
+    const x = Math.floor((e.clientX - r.left) / r.width * 48);
+    const z = Math.floor((e.clientY - r.top) / r.height * 48);
+    document.getElementById('hover-coords').textContent = `X:${x} Z:${z}`;
+}
+
+// Matrix math
+function mat4Perspective(fov, aspect, near, far) {
+    const f = 1 / Math.tan(fov / 2);
+    return [f/aspect,0,0,0, 0,f,0,0, 0,0,(far+near)/(near-far),-1, 0,0,2*far*near/(near-far),0];
+}
+
+function mat4LookAt(eye, center, up) {
+    const z = normalize(sub(eye, center));
+    const x = normalize(cross(up, z));
+    const y = cross(z, x);
+    return [x[0],y[0],z[0],0, x[1],y[1],z[1],0, x[2],y[2],z[2],0, -dot(x,eye),-dot(y,eye),-dot(z,eye),1];
+}
+
+function mat4Mul(a, b) {
+    const r = new Float32Array(16);
+    for (let i=0;i<4;i++) for (let j=0;j<4;j++) { let s=0; for (let k=0;k<4;k++) s+=a[i+k*4]*b[k*4+j]; r[i+j*4]=s; }
+    return r;
+}
+
+function normalize(v) { const l = Math.sqrt(v[0]*v[0]+v[1]*v[1]+v[2]*v[2]); return [v[0]/l,v[1]/l,v[2]/l]; }
+function sub(a, b) { return [a[0]-b[0],a[1]-b[1],a[2]-b[2]]; }
+function cross(a, b) { return [a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]]; }
+function dot(a, b) { return a[0]*b[0]+a[1]*b[1]+a[2]*b[2]; }
+
+function render() {
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+    const aspect = canvas.width / canvas.height;
+    const proj = mat4Perspective(Math.PI / 4, aspect, 0.1, 1000);
+
+    const rx = camRotX * Math.PI / 180;
+    const ry = camRotY * Math.PI / 180;
+    const eye = [
+        camDist * Math.cos(rx) * Math.sin(ry) + camPanX,
+        camDist * Math.sin(rx) + camPanY,
+        camDist * Math.cos(rx) * Math.cos(ry)
+    ];
+    const center = [camPanX, camPanY, 0];
+    const view = mat4LookAt(eye, center, [0, 1, 0]);
+    const mvp = mat4Mul(view, proj);
+
+    gl.uniformMatrix4fv(uMVP, false, mvp);
+    gl.uniform3f(uLightDir, 0.5, 0.8, 0.3);
+
+    gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
+    gl.enableVertexAttribArray(aPos);
+    gl.enableVertexAttribArray(aNorm);
+    gl.enableVertexAttribArray(aColor);
+    gl.vertexAttribPointer(aPos, 3, gl.FLOAT, false, 36, 0);
+    gl.vertexAttribPointer(aNorm, 3, gl.FLOAT, false, 36, 12);
+    gl.vertexAttribPointer(aColor, 3, gl.FLOAT, false, 36, 24);
+    gl.drawArrays(gl.TRIANGLES, 0, vertexCount);
+}
+
+// ============================================================
+// BLOCK COLORS — loaded from block-colors.json (run datagen.bat)
+// ============================================================
+let BLOCK_COLORS = {
+    'minecraft:bedrock': [0.2, 0.2, 0.2],
+    'minecraft:deepslate': [0.33, 0.33, 0.37],
+    'minecraft:stone': [0.5, 0.5, 0.5],
+    'minecraft:lava': [0.9, 0.3, 0.0],
+    'minecraft:water': [0.2, 0.3, 0.9],
+    'minecraft:air': [0, 0, 0],
+    'default': [0.5, 0.5, 0.5],
+};
+
+// Load block colors from datagen output
+(async function loadBlockColors() {
+    try {
+        const resp = await fetch('block-colors.json?t=' + Date.now());
+        if (resp.ok) {
+            const colors = await resp.json();
+            // Merge loaded colors into BLOCK_COLORS (loaded takes priority)
+            for (const [name, rgb] of Object.entries(colors)) {
+                BLOCK_COLORS[name] = rgb;
+            }
+            // Ensure default always exists
+            if (!BLOCK_COLORS['default']) BLOCK_COLORS['default'] = [0.5, 0.5, 0.5];
+            console.log(`Loaded ${Object.keys(colors).length} block colors from block-colors.json`);
+            // Rebuild legend if it exists
+            if (typeof buildLegend === 'function') buildLegend();
+        } else {
+            console.warn('block-colors.json not found — using fallback colors. Run datagen.bat to generate.');
+        }
+    } catch (e) {
+        console.warn('Failed to load block-colors.json:', e);
+    }
+})();
+
+function getBlockColor(name) {
+    return BLOCK_COLORS[name] || BLOCK_COLORS['default'];
+}
+
+// ============================================================
+// DENSITY FUNCTION EVALUATOR
+// ============================================================
+let noiseGen = null;
+
+function evalDensity(df, x, y, z) {
+    if (typeof df === 'number') return df;
+    if (typeof df === 'string') {
+        // Named noise references
+        if (df.includes('base_3d_noise') || df.includes('nether')) {
+            return noiseGen.octave3D(x * 0.03, y * 0.06, z * 0.03, 4, 0.5, 2.0);
+        }
+        if (df.includes('jaggedness') || df.includes('offset')) return 0;
+        if (df.includes('factor')) return 1;
+        return noiseGen.octave3D(x * 0.01, y * 0.01, z * 0.01, 3, 0.5, 2.0);
+    }
+    if (!df || !df.type) return 0;
+
+    switch (df.type) {
+        case 'minecraft:add':
+            return evalDensity(df.argument1, x, y, z) + evalDensity(df.argument2, x, y, z);
+        case 'minecraft:mul':
+            return evalDensity(df.argument1, x, y, z) * evalDensity(df.argument2, x, y, z);
+        case 'minecraft:squeeze':
+            return Math.max(-1, Math.min(1, evalDensity(df.argument, x, y, z)));
+        case 'minecraft:clamp':
+            return Math.max(df.min, Math.min(df.max, evalDensity(df.argument, x, y, z)));
+        case 'minecraft:interpolated':
+            return evalDensity(df.argument, x, y, z);
+        case 'minecraft:blend_density':
+            return evalDensity(df.argument, x, y, z);
+        case 'minecraft:flat_cache':
+        case 'minecraft:cache_2d':
+        case 'minecraft:cache_once':
+        case 'minecraft:cache_all_in_cell':
+            return evalDensity(df.argument, x, y, z);
+        case 'minecraft:y_clamped_gradient': {
+            const t = (y - df.from_y) / (df.to_y - df.from_y);
+            const clamped = Math.max(0, Math.min(1, t));
+            return df.from_value + (df.to_value - df.from_value) * clamped;
+        }
+        case 'minecraft:noise': {
+            const params = df.noise || '';
+            const xzScale = df.xz_scale || 1;
+            const yScale = df.y_scale || 1;
+            return noiseGen.octave3D(x * 0.01 * xzScale, y * 0.01 * yScale, z * 0.01 * xzScale, 4, 0.5, 2.0);
+        }
+        case 'minecraft:shift_a':
+        case 'minecraft:shift_b':
+        case 'minecraft:shift':
+            return noiseGen.noise3D(x * 0.01, y * 0.01, z * 0.01) * 4;
+        case 'minecraft:abs':
+            return Math.abs(evalDensity(df.argument, x, y, z));
+        case 'minecraft:half_negative':
+            { const v = evalDensity(df.argument, x, y, z); return v < 0 ? v * 0.5 : v; }
+        case 'minecraft:quarter_negative':
+            { const v = evalDensity(df.argument, x, y, z); return v < 0 ? v * 0.25 : v; }
+        case 'minecraft:max':
+            return Math.max(evalDensity(df.argument1, x, y, z), evalDensity(df.argument2, x, y, z));
+        case 'minecraft:min':
+            return Math.min(evalDensity(df.argument1, x, y, z), evalDensity(df.argument2, x, y, z));
+        case 'minecraft:constant':
+            return df.argument || 0;
+        case 'minecraft:spline':
+            // Simplified: just return the midpoint
+            return 0;
+        default:
+            return 0;
+    }
+}
+
+// ============================================================
+// TERRAIN GENERATOR
+// ============================================================
+let currentConfig = null;
+const CHUNK_SIZE = 16;
+const CHUNKS = 3;
+const WORLD_SIZE = CHUNK_SIZE * CHUNKS; // 48
+
+function generateTerrain() {
+    if (!currentConfig) return;
+
+    const settings = currentConfig.generator?.settings;
+    if (!settings) return;
+
+    const seed = parseInt(document.getElementById('seed').value) || 12345;
+    noiseGen = new SimplexNoise(seed);
+
+    const noiseScale = parseFloat(document.getElementById('noise-scale').value) || 1.0;
+    const minY = settings.noise?.min_y || 0;
+    const height = settings.noise?.height || 128;
+    const maxY = minY + height;
+    const seaLevel = settings.sea_level || 32;
+    const defaultBlock = settings.default_block?.Name || 'minecraft:stone';
+    const defaultFluid = settings.default_fluid?.Name || 'minecraft:lava';
+    const finalDensity = settings.noise_router?.final_density;
+    const surfaceRule = settings.surface_rule;
+
+    const mode = document.getElementById('render-mode').value;
+    const sliceY = parseInt(document.getElementById('slice-y').value) || 64;
+
+    // Generate block data
+    const halfX = WORLD_SIZE / 2;
+    const halfZ = WORLD_SIZE / 2;
+    const vertices = [];
+
+    if (mode === 'terrain') {
+        // 3D terrain: generate heightmap + expose surface
+        for (let bx = 0; bx < WORLD_SIZE; bx++) {
+            for (let bz = 0; bz < WORLD_SIZE; bz++) {
+                const wx = (bx - halfX) * noiseScale;
+                const wz = (bz - halfZ) * noiseScale;
+
+                // Find surface height
+                let surfaceY = minY;
+                for (let y = maxY - 1; y >= minY; y--) {
+                    const d = finalDensity ? evalDensity(finalDensity, wx, y, wz) : noiseGen.octave3D(wx * 0.02, y * 0.04, wz * 0.02, 4, 0.5, 2.0);
+                    if (d > 0) {
+                        surfaceY = y;
+                        break;
+                    }
+                }
+
+                // Determine block color
+                let color = getBlockColor(defaultBlock);
+                if (surfaceRule) {
+                    const resolved = resolveSurface(surfaceRule, wx, surfaceY, wz, minY, maxY, seaLevel);
+                    if (resolved) color = getBlockColor(resolved);
+                }
+
+                if (surfaceY <= minY && defaultFluid !== 'minecraft:air') {
+                    color = getBlockColor(defaultFluid);
+                    surfaceY = seaLevel;
+                }
+
+                // Normalize height for display
+                const displayY = (surfaceY - minY) / (height) * 30 - 15;
+                addVoxelTop(vertices, bx - halfX, displayY, bz - halfZ, color);
+            }
+        }
+    } else if (mode === 'heightmap') {
+        // Top-down heightmap
+        for (let bx = 0; bx < WORLD_SIZE; bx++) {
+            for (let bz = 0; bz < WORLD_SIZE; bz++) {
+                const wx = (bx - halfX) * noiseScale;
+                const wz = (bz - halfZ) * noiseScale;
+                let surfaceY = minY;
+                for (let y = maxY - 1; y >= minY; y--) {
+                    const d = finalDensity ? evalDensity(finalDensity, wx, y, wz) : noiseGen.octave3D(wx * 0.02, y * 0.04, wz * 0.02, 4, 0.5, 2.0);
+                    if (d > 0) { surfaceY = y; break; }
+                }
+                const t = (surfaceY - minY) / height;
+                const color = heightToColor(t);
+                addVoxelTop(vertices, bx - halfX, 0, bz - halfZ, color);
+            }
+        }
+    } else if (mode === 'cross-section') {
+        // XZ cross section at slice Y
+        const wx_z = 0;
+        for (let bx = 0; bx < WORLD_SIZE; bx++) {
+            for (let y = minY; y < maxY; y += 2) {
+                const wx = (bx - halfX) * noiseScale;
+                const d = finalDensity ? evalDensity(finalDensity, wx, y, wx_z) : noiseGen.octave3D(wx * 0.02, y * 0.04, 0, 4, 0.5, 2.0);
+                let color;
+                if (d > 0) {
+                    color = getBlockColor(defaultBlock);
+                } else if (y <= seaLevel && defaultFluid !== 'minecraft:air') {
+                    color = getBlockColor(defaultFluid);
+                } else {
+                    continue; // air
+                }
+                const dy = (y - minY) / 2 - height / 4;
+                addVoxelTop(vertices, bx - halfX, dy, 0, color);
+            }
+        }
+    } else if (mode === 'density-slice') {
+        // XY density heatmap at given Y
+        for (let bx = 0; bx < WORLD_SIZE; bx++) {
+            for (let bz = 0; bz < WORLD_SIZE; bz++) {
+                const wx = (bx - halfX) * noiseScale;
+                const wz = (bz - halfZ) * noiseScale;
+                const d = finalDensity ? evalDensity(finalDensity, wx, sliceY, wz) : noiseGen.octave3D(wx * 0.02, sliceY * 0.04, wz * 0.02, 4, 0.5, 2.0);
+                const color = densityToColor(d);
+                addVoxelTop(vertices, bx - halfX, 0, bz - halfZ, color);
+            }
+        }
+    }
+
+    // Upload to GPU
+    const data = new Float32Array(vertices);
+    gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
+    gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW);
+    vertexCount = data.length / 9;
+    render();
+
+    updateLegend();
+}
+
+function addVoxelTop(verts, x, y, z, color) {
+    // Just the top face of a voxel
+    const n = [0, 1, 0];
+    const c = color;
+    verts.push(
+        x, y, z, ...n, ...c,
+        x+1, y, z, ...n, ...c,
+        x+1, y, z+1, ...n, ...c,
+        x, y, z, ...n, ...c,
+        x+1, y, z+1, ...n, ...c,
+        x, y, z+1, ...n, ...c,
+    );
+}
+
+function heightToColor(t) {
+    t = Math.max(0, Math.min(1, t));
+    if (t < 0.2) return [0.1, 0.05 + t * 2, 0.3]; // deep blue
+    if (t < 0.4) return [0.1 + (t-0.2)*2, 0.4, 0.2]; // green
+    if (t < 0.6) return [0.5, 0.5 - (t-0.4), 0.1]; // brown
+    if (t < 0.8) return [0.6 + (t-0.6), 0.4, 0.3]; // orange
+    return [0.9, 0.9, 0.9]; // white peaks
+}
+
+function densityToColor(d) {
+    if (d > 0) {
+        const t = Math.min(d, 1);
+        return [0.2 + t * 0.6, 0.2, 0.1]; // solid: brown
+    } else {
+        const t = Math.min(-d, 1);
+        return [0.1, 0.1, 0.2 + t * 0.6]; // air: blue
+    }
+}
+
+// ============================================================
+// SURFACE RULE EVALUATOR (simplified)
+// ============================================================
+function resolveSurface(rule, x, y, z, minY, maxY, seaLevel) {
+    if (!rule) return null;
+    switch (rule.type) {
+        case 'minecraft:sequence':
+            for (const sub of (rule.sequence || [])) {
+                const result = resolveSurface(sub, x, y, z, minY, maxY, seaLevel);
+                if (result) return result;
+            }
+            return null;
+        case 'minecraft:condition':
+            if (evalCondition(rule.if_true, x, y, z, minY, maxY, seaLevel)) {
+                return resolveSurface(rule.then_run, x, y, z, minY, maxY, seaLevel);
+            }
+            return null;
+        case 'minecraft:block':
+            return rule.result_state?.Name || null;
+        default:
+            return null;
+    }
+}
+
+function evalCondition(cond, x, y, z, minY, maxY, seaLevel) {
+    if (!cond) return false;
+    switch (cond.type) {
+        case 'minecraft:vertical_gradient': {
+            const trueBelow = resolveYAnchor(cond.true_at_and_below, minY, maxY);
+            const falseAbove = resolveYAnchor(cond.false_at_and_above, minY, maxY);
+            if (y <= trueBelow) return true;
+            if (y >= falseAbove) return false;
+            return Math.random() < (falseAbove - y) / (falseAbove - trueBelow);
+        }
+        case 'minecraft:stone_depth':
+            return cond.surface_type === 'floor'; // simplified
+        case 'minecraft:water':
+            return y > seaLevel; // simplified
+        case 'minecraft:biome':
+            return true; // simplified — accept all biomes
+        case 'minecraft:not':
+            return !evalCondition(cond.invert, x, y, z, minY, maxY, seaLevel);
+        case 'minecraft:above_preliminary_surface':
+            return true;
+        default:
+            return true;
+    }
+}
+
+function resolveYAnchor(anchor, minY, maxY) {
+    if (!anchor) return 0;
+    if (anchor.above_bottom !== undefined) return minY + anchor.above_bottom;
+    if (anchor.below_top !== undefined) return maxY - anchor.below_top;
+    if (anchor.absolute !== undefined) return anchor.absolute;
+    return 0;
+}
+
+// ============================================================
+// UI
+// ============================================================
+function switchTab(el) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.style.display = 'none');
+    el.classList.add('active');
+    document.getElementById('panel-' + el.dataset.tab).style.display = 'block';
+}
+
+function updateNoise() {
+    if (!currentConfig) return;
+    const s = currentConfig.generator.settings;
+    s.noise.min_y = parseInt(document.getElementById('min-y').value);
+    s.noise.height = parseInt(document.getElementById('height').value);
+    s.noise.size_horizontal = parseInt(document.getElementById('size-h').value);
+    s.noise.size_vertical = parseInt(document.getElementById('size-v').value);
+    s.sea_level = parseInt(document.getElementById('sea-level').value);
+    s.aquifers_enabled = document.getElementById('aquifers').checked;
+    s.ore_veins_enabled = document.getElementById('ore-veins').checked;
+    s.default_block = { Name: document.getElementById('default-block').value };
+    s.default_fluid = { Name: document.getElementById('default-fluid').value };
+
+    // Update display values
+    document.getElementById('v-min-y').textContent = s.noise.min_y;
+    document.getElementById('v-height').textContent = s.noise.height;
+    document.getElementById('v-sh').textContent = s.noise.size_horizontal;
+    document.getElementById('v-sv').textContent = s.noise.size_vertical;
+    document.getElementById('v-sea').textContent = s.sea_level;
+
+    regenerate();
+}
+
+function updateSlice() {
+    document.getElementById('v-slice-y').textContent = document.getElementById('slice-y').value;
+    document.getElementById('v-nscale').textContent = document.getElementById('noise-scale').value;
+    regenerate();
+}
+
+function loadConfig(config) {
+    currentConfig = config;
+    const s = config.generator?.settings;
+    if (!s) return;
+
+    document.getElementById('min-y').value = s.noise?.min_y || 0;
+    document.getElementById('height').value = s.noise?.height || 128;
+    document.getElementById('size-h').value = s.noise?.size_horizontal || 1;
+    document.getElementById('size-v').value = s.noise?.size_vertical || 2;
+    document.getElementById('sea-level').value = s.sea_level ?? 32;
+    document.getElementById('aquifers').checked = s.aquifers_enabled || false;
+    document.getElementById('ore-veins').checked = s.ore_veins_enabled || false;
+    document.getElementById('default-block').value = s.default_block?.Name || 'minecraft:stone';
+    document.getElementById('default-fluid').value = s.default_fluid?.Name || 'minecraft:lava';
+
+    document.getElementById('v-min-y').textContent = s.noise?.min_y || 0;
+    document.getElementById('v-height').textContent = s.noise?.height || 128;
+    document.getElementById('v-sh').textContent = s.noise?.size_horizontal || 1;
+    document.getElementById('v-sv').textContent = s.noise?.size_vertical || 2;
+    document.getElementById('v-sea').textContent = s.sea_level ?? 32;
+
+    const name = config.type || 'unknown';
+    document.getElementById('dim-name').textContent = name;
+    document.getElementById('json-area').value = JSON.stringify(config, null, 2);
+
+    // Slice Y range
+    const minY = s.noise?.min_y || 0;
+    const maxY = minY + (s.noise?.height || 128);
+    document.getElementById('slice-y').min = minY;
+    document.getElementById('slice-y').max = maxY;
+    document.getElementById('slice-y').value = Math.floor((minY + maxY) / 2);
+
+    buildSurfaceTree(s.surface_rule);
+    buildBiomeList(config.generator?.biome_source?.biomes || []);
+    buildDensityTree(s.noise_router?.final_density);
+    updateLegend();
+
+    regenerate();
+}
+
+function buildSurfaceTree(rule) {
+    const container = document.getElementById('surface-tree');
+    container.innerHTML = '';
+    if (!rule) { container.textContent = 'No surface rules'; return; }
+    container.appendChild(renderRuleNode(rule));
+}
+
+function renderRuleNode(rule, depth) {
+    depth = depth || 0;
+    if (depth > 10) return document.createTextNode('...');
+    const div = document.createElement('div');
+    div.className = 'rule-node';
+
+    if (rule.type === 'minecraft:sequence') {
+        div.classList.add('sequence');
+        div.innerHTML = '<span class="rule-type">sequence</span>';
+        (rule.sequence || []).forEach(sub => div.appendChild(renderRuleNode(sub, depth + 1)));
+    } else if (rule.type === 'minecraft:condition') {
+        div.classList.add('condition');
+        const condType = rule.if_true?.type?.replace('minecraft:', '') || '?';
+        let condDetail = condType;
+        if (rule.if_true?.type === 'minecraft:biome' && rule.if_true.biome_is) {
+            condDetail += ': ' + rule.if_true.biome_is.join(', ');
+        }
+        div.innerHTML = `<span class="rule-type">if ${condDetail}</span>`;
+        div.appendChild(renderRuleNode(rule.then_run, depth + 1));
+    } else if (rule.type === 'minecraft:block') {
+        div.classList.add('block');
+        const name = rule.result_state?.Name || '?';
+        const color = getBlockColor(name);
+        const hex = '#' + color.map(c => Math.round(c * 255).toString(16).padStart(2, '0')).join('');
+        div.innerHTML = `<span style="display:inline-block;width:10px;height:10px;background:${hex};border-radius:2px;vertical-align:middle;margin-right:4px;"></span><span class="rule-type">${name}</span>`;
+    } else {
+        div.innerHTML = `<span class="rule-type">${rule.type || 'unknown'}</span>`;
+    }
+    return div;
+}
+
+function buildBiomeList(biomes) {
+    const container = document.getElementById('biome-list');
+    container.innerHTML = '';
+    if (!biomes.length) { container.textContent = 'No biomes configured'; return; }
+    biomes.forEach((b, i) => {
+        const div = document.createElement('div');
+        div.className = 'biome-entry';
+        const params = b.parameters || {};
+        div.innerHTML = `
+            <div class="biome-name">${b.biome || 'unknown'}</div>
+            <div class="param-grid">
+                <div class="field"><label>Temperature</label><input type="number" step="0.1" value="${params.temperature || 0}" onchange="updateBiomeParam(${i},'temperature',this.value)"></div>
+                <div class="field"><label>Humidity</label><input type="number" step="0.1" value="${params.humidity || 0}" onchange="updateBiomeParam(${i},'humidity',this.value)"></div>
+                <div class="field"><label>Continentalness</label><input type="number" step="0.1" value="${params.continentalness || 0}" onchange="updateBiomeParam(${i},'continentalness',this.value)"></div>
+                <div class="field"><label>Erosion</label><input type="number" step="0.1" value="${params.erosion || 0}" onchange="updateBiomeParam(${i},'erosion',this.value)"></div>
+                <div class="field"><label>Weirdness</label><input type="number" step="0.1" value="${params.weirdness || 0}" onchange="updateBiomeParam(${i},'weirdness',this.value)"></div>
+                <div class="field"><label>Depth</label><input type="number" step="0.1" value="${params.depth || 0}" onchange="updateBiomeParam(${i},'depth',this.value)"></div>
+                <div class="field"><label>Offset</label><input type="number" step="0.1" value="${params.offset || 0}" onchange="updateBiomeParam(${i},'offset',this.value)"></div>
+            </div>
+        `;
+        container.appendChild(div);
+    });
+}
+
+function updateBiomeParam(index, param, value) {
+    if (!currentConfig) return;
+    const biomes = currentConfig.generator?.biome_source?.biomes;
+    if (biomes && biomes[index]) {
+        biomes[index].parameters[param] = parseFloat(value);
+    }
+}
+
+function buildDensityTree(df) {
+    const container = document.getElementById('density-tree');
+    container.innerHTML = '';
+    if (!df) { container.textContent = 'No density function'; return; }
+    container.appendChild(renderDfNode(df, 0));
+}
+
+function renderDfNode(df, depth) {
+    if (depth > 15) return document.createTextNode('...');
+    const div = document.createElement('div');
+    div.className = 'df-node';
+
+    if (typeof df === 'number') {
+        div.innerHTML = `<span class="num">${df}</span>`;
+    } else if (typeof df === 'string') {
+        div.innerHTML = `<span class="ref">${df}</span>`;
+    } else if (df && df.type) {
+        const op = df.type.replace('minecraft:', '');
+        div.innerHTML = `<span class="op">${op}</span>`;
+
+        if (df.argument !== undefined) div.appendChild(renderDfNode(df.argument, depth + 1));
+        if (df.argument1 !== undefined) div.appendChild(renderDfNode(df.argument1, depth + 1));
+        if (df.argument2 !== undefined) div.appendChild(renderDfNode(df.argument2, depth + 1));
+
+        // Show y_clamped_gradient params
+        if (df.type === 'minecraft:y_clamped_gradient') {
+            const info = document.createElement('span');
+            info.className = 'num';
+            info.textContent = ` y:[${df.from_y}→${df.to_y}] v:[${df.from_value}→${df.to_value}]`;
+            div.appendChild(info);
+        }
+    } else {
+        div.innerHTML = '<span class="num">0</span>';
+    }
+    return div;
+}
+
+function updateLegend() {
+    const legend = document.getElementById('block-legend');
+    if (!legend) return;
+    legend.innerHTML = '';
+    // Only show blocks relevant to current config if loaded, otherwise show all
+    const relevantBlocks = new Set();
+    if (currentConfig) {
+        // Collect blocks from surface rules and default block/fluid
+        const collectBlocks = (obj) => {
+            if (!obj) return;
+            if (typeof obj === 'string') return;
+            if (obj.Name) relevantBlocks.add(obj.Name);
+            if (obj.result_state && obj.result_state.Name) relevantBlocks.add(obj.result_state.Name);
+            if (obj.sequence) obj.sequence.forEach(collectBlocks);
+            if (obj.then_run) collectBlocks(obj.then_run);
+            if (obj.if_true) collectBlocks(obj.if_true);
+        };
+        const settings = currentConfig.generator?.settings;
+        if (settings) {
+            if (settings.default_block?.Name) relevantBlocks.add(settings.default_block.Name);
+            if (settings.default_fluid?.Name) relevantBlocks.add(settings.default_fluid.Name);
+            collectBlocks(settings.surface_rule);
+        }
+    }
+    const showAll = relevantBlocks.size === 0;
+    for (const [name, color] of Object.entries(BLOCK_COLORS)) {
+        if (name === 'default') continue;
+        if (!showAll && !relevantBlocks.has(name)) continue;
+        const hex = '#' + color.map(c => Math.round(c * 255).toString(16).padStart(2, '0')).join('');
+        const item = document.createElement('div');
+        item.className = 'legend-item';
+        item.innerHTML = `<div class="legend-swatch" style="background:${hex}"></div>${name.split(':')[1] || name}`;
+        legend.appendChild(item);
+    }
+}
+const buildLegend = updateLegend;
+
+function regenerate() {
+    document.getElementById('v-seed').textContent = document.getElementById('seed').value;
+    generateTerrain();
+}
+
+function randomSeed() {
+    document.getElementById('seed').value = Math.floor(Math.random() * 999999);
+    regenerate();
+}
+
+function applyJson() {
+    try {
+        const config = JSON.parse(document.getElementById('json-area').value);
+        loadConfig(config);
+    } catch (e) {
+        alert('Invalid JSON: ' + e.message);
+    }
+}
+
+function exportJson() {
+    if (!currentConfig) return;
+    const blob = new Blob([JSON.stringify(currentConfig, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = (currentConfig.type || 'dimension').replace(/[:/]/g, '_') + '.json';
+    a.click();
+    URL.revokeObjectURL(url);
+}
+
+// File loading
+document.getElementById('file-load').addEventListener('change', e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => {
+        try {
+            const config = JSON.parse(ev.target.result);
+            loadConfig(config);
+        } catch (err) {
+            alert('Failed to parse JSON: ' + err.message);
+        }
+    };
+    reader.readAsText(file);
+});
+
+// Load example dimensions (fetch from project)
+async function loadExample(name) {
+    // Try to load from a relative path or prompt user
+    const path = `../../src/main/resources/data/lostdepths/dimension/${name}.json`;
+    try {
+        const resp = await fetch(path);
+        if (resp.ok) {
+            const config = await resp.json();
+            loadConfig(config);
+            return;
+        }
+    } catch (e) {}
+
+    // Fallback: prompt to use file picker
+    alert(`Could not auto-load ${name}.json. Please use the file picker to load it from:\nsrc/main/resources/data/lostdepths/dimension/${name}.json`);
+}
+
+// Resize handler
+window.addEventListener('resize', render);
+
+// Init
+render();
+</script>
+</body>
+</html>

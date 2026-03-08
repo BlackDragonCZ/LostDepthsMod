@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JEI Designer — Lost Depths</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Segoe UI', sans-serif; background:#1a1a2e; color:#e0e0e0; display:flex; height:100vh; overflow:hidden; }
+
+/* Sidebar */
+#sidebar { width:240px; background:#16213e; border-right:1px solid #333; display:flex; flex-direction:column; }
+#sidebar h2 { padding:12px; font-size:14px; color:#7fdbca; border-bottom:1px solid #333; }
+#cat-list { overflow-y:auto; max-height:260px; }
+.cat-item { padding:8px 12px; cursor:pointer; font-size:12px; border-bottom:1px solid #222; }
+.cat-item:hover { background:#1a2744; }
+.cat-item.active { background:#0f3460; color:#e94560; font-weight:bold; }
+.cat-item .count { color:#888; font-size:10px; }
+
+.sidebar-section { padding:8px 12px; border-top:1px solid #333; }
+.sidebar-section h3 { font-size:11px; color:#8899aa; margin-bottom:6px; text-transform:uppercase; }
+
+/* Element list in sidebar */
+.el-list { max-height:200px; overflow-y:auto; }
+.el-list-item { display:flex; align-items:center; gap:6px; padding:3px 6px; margin:2px 0; background:#1a1a3e; border:1px solid #334; border-radius:3px; cursor:pointer; font-size:10px; }
+.el-list-item:hover { border-color:#55c; }
+.el-list-item.active { border-color:#e94560; background:#22225e; }
+.el-list-item .el-type { color:#6a8; width:60px; }
+.el-list-item .el-pos { color:#888; margin-left:auto; }
+
+/* Widget list in sidebar */
+.widget-item { display:flex; align-items:center; gap:6px; padding:4px 6px; margin:2px 0; background:#1a1a3e; border:1px solid #334; border-radius:3px; cursor:pointer; font-size:10px; }
+.widget-item:hover { border-color:#86a; }
+.widget-item.active { border-color:#a6c; background:#2a1a3e; }
+.widget-item canvas { image-rendering:pixelated; border:1px solid #444; }
+.widget-props { margin-top:6px; }
+.widget-props .prop-row { display:flex; gap:4px; margin:3px 0; }
+.widget-props .prop-row label { width:36px; font-size:10px; color:#888; line-height:22px; }
+.widget-props .prop-row input { flex:1; background:#1a1a3e; color:#e0e0e0; border:1px solid #334; padding:2px 4px; font-size:11px; border-radius:2px; }
+
+.btn { display:inline-block; padding:4px 10px; background:#1a1a3e; border:1px solid #334; color:#e0e0e0; border-radius:3px; cursor:pointer; font-size:11px; }
+.btn:hover { background:#2a2a5e; }
+.btn-primary { border-color:#55c; }
+.btn-danger { border-color:#a44; }
+.btn-save { border-color:#4a4; color:#8d8; }
+.btn-save:hover { background:#1a3a1a; }
+.btn-row { display:flex; gap:4px; flex-wrap:wrap; margin-top:6px; }
+
+/* Main area */
+#main { flex:1; display:flex; flex-direction:column; }
+#toolbar { background:#16213e; padding:6px 12px; border-bottom:1px solid #333; display:flex; gap:8px; align-items:center; }
+#toolbar button { background:#0f3460; color:#e0e0e0; border:1px solid #444; padding:4px 10px; border-radius:3px; cursor:pointer; font-size:12px; }
+#toolbar button:hover { background:#e94560; }
+#toolbar button.save-btn { background:#2d6a4f; }
+#toolbar button.save-btn:hover { background:#40916c; }
+.toolbar-sep { width:1px; height:20px; background:#444; }
+
+/* Tabs */
+.main-tabs { display:flex; background:#0f1628; border-bottom:1px solid #333; }
+.main-tab { padding:8px 20px; cursor:pointer; font-size:12px; color:#6688aa; border-bottom:2px solid transparent; }
+.main-tab:hover { color:#aabbcc; }
+.main-tab.active { color:#e0e0e0; border-bottom-color:#e94560; }
+
+#workspace { flex:1; display:flex; overflow:hidden; }
+
+/* Tab content areas */
+.tab-content { flex:1; display:none; flex-direction:column; overflow:hidden; }
+.tab-content.active { display:flex; }
+
+/* Layout tab canvas */
+#canvas-header { padding:6px 12px; background:#111; font-size:12px; color:#888; border-bottom:1px solid #333; }
+#canvas-container { flex:1; position:relative; overflow:auto; display:flex; align-items:flex-start; justify-content:center; padding:40px; }
+#canvas { position:relative; background:#c6c6c6; border:2px solid #555; image-rendering:pixelated; }
+
+/* Elements on canvas */
+.el { position:absolute; cursor:move; border:1px dashed transparent; }
+.el:hover { border-color:rgba(233,69,96,0.6); }
+.el.selected { border-color:#e94560; box-shadow:0 0 6px rgba(233,69,96,0.4); }
+.el-slot-inner { background:rgba(139,139,139,0.6); border:1px solid #555; }
+.el-arrow { background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; color:#555; }
+.el-power { background:rgba(255,200,0,0.5); border:1px solid #aa0; border-radius:50%; }
+.el-label { position:absolute; bottom:-14px; left:0; font-size:8px; color:#333; white-space:nowrap; pointer-events:none; }
+
+/* Widget editor canvas area */
+.widget-editor-wrap { display:flex; flex-direction:column; width:100%; height:100%; }
+.widget-editor-top { padding:8px 12px; background:#16213e; border-bottom:1px solid #333; display:flex; align-items:center; gap:8px; font-size:12px; }
+.widget-canvas-area { flex:1; overflow:auto; display:flex; align-items:flex-start; justify-content:center; background:#0a0a1a; padding:20px; }
+.widget-select-info { position:fixed; bottom:36px; left:260px; font-size:11px; color:#6688aa; background:#16213ecc; padding:4px 10px; border-radius:4px; z-index:10; }
+
+/* Preview tab */
+#preview-container { flex:1; overflow:auto; display:flex; align-items:flex-start; justify-content:center; background:#111; padding:40px; }
+#previewCanvas { image-rendering:pixelated; border:2px solid #555; }
+
+/* Recipe browser */
+#recipe-panel { width:300px; background:#111827; border-left:1px solid #333; display:flex; flex-direction:column; }
+#recipe-panel h3 { padding:8px 12px; font-size:13px; color:#7fdbca; border-bottom:1px solid #333; }
+#recipe-list { flex:1; overflow-y:auto; padding:4px; }
+.recipe-card { background:#1e293b; border:1px solid #334155; border-radius:4px; padding:8px; margin:4px 0; font-size:11px; cursor:pointer; }
+.recipe-card:hover { border-color:#e94560; }
+.recipe-card.active { border-color:#7fdbca; background:#1a2744; }
+.recipe-card .recipe-name { font-weight:bold; color:#e2e8f0; margin-bottom:4px; }
+.recipe-card .recipe-detail { color:#94a3b8; }
+.recipe-card .recipe-items { display:flex; gap:4px; flex-wrap:wrap; margin-top:4px; align-items:center; }
+.recipe-item-icon { width:24px; height:24px; background:#334155; border:1px solid #475569; display:flex; align-items:center; justify-content:center; image-rendering:pixelated; }
+.recipe-item-icon img { width:16px; height:16px; image-rendering:pixelated; }
+.recipe-arrow { color:#666; font-size:18px; display:flex; align-items:center; }
+
+/* Properties panel */
+#props-panel { width:200px; background:#111827; border-left:1px solid #333; display:flex; flex-direction:column; }
+#props-panel h3 { padding:8px 12px; font-size:13px; color:#7fdbca; border-bottom:1px solid #333; }
+#props-content { flex:1; overflow-y:auto; padding:8px; }
+.prop-group { margin-bottom:8px; }
+.prop-group label { display:block; font-size:10px; color:#888; margin-bottom:2px; }
+.prop-group input, .prop-group select { width:100%; background:#1e293b; color:#e0e0e0; border:1px solid #334155; padding:3px 6px; font-size:12px; border-radius:2px; }
+.prop-row { display:flex; gap:4px; }
+.prop-row .prop-group { flex:1; }
+
+/* Preview overlay for recipes */
+.recipe-preview-slot { position:absolute; display:flex; align-items:center; justify-content:center; pointer-events:none; }
+
+/* Zoom */
+#zoom-controls { display:flex; align-items:center; gap:4px; margin-left:auto; }
+#zoom-controls span { font-size:11px; color:#888; }
+
+/* Status bar */
+#statusbar { background:#0d1117; padding:4px 12px; font-size:11px; color:#666; border-top:1px solid #333; }
+</style>
+</head>
+<body>
+
+<div id="sidebar">
+  <h2>JEI Designer</h2>
+  <div class="sidebar-section">
+    <h3>Categories</h3>
+    <div id="cat-list"></div>
+  </div>
+  <div class="sidebar-section" id="sidebarElements">
+    <h3>Elements</h3>
+    <div class="el-list" id="el-list"></div>
+    <div class="btn-row">
+      <button class="btn" onclick="addElement('recipe_slot')">+ Slot</button>
+      <button class="btn" onclick="addElement('arrow')">+ Arrow</button>
+      <button class="btn" onclick="addElement('power_icon')">+ Power</button>
+      <button class="btn" onclick="addElement('blit')">+ Blit</button>
+      <button class="btn btn-danger" onclick="deleteSelected()">Del</button>
+    </div>
+  </div>
+  <div class="sidebar-section" id="sidebarWidgets" style="display:none">
+    <h3>Widgets</h3>
+    <div id="widget-list" style="max-height:160px;overflow-y:auto"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="addWidgetToLayout()">Add to Layout</button>
+      <button class="btn btn-danger" onclick="deleteWidget()">Delete</button>
+    </div>
+    <div id="widget-props"></div>
+  </div>
+</div>
+
+<div id="main">
+  <div id="toolbar">
+    <button class="save-btn" onclick="saveToProject()">Save to Project</button>
+    <button onclick="saveRegistry()">Save Registry</button>
+    <div class="toolbar-sep"></div>
+    <div id="zoom-controls">
+      <button onclick="setZoom(zoom-1)">-</button>
+      <span id="zoom-label">3x</span>
+      <button onclick="setZoom(zoom+1)">+</button>
+    </div>
+  </div>
+
+  <div class="main-tabs">
+    <div class="main-tab active" onclick="switchTab('layout')">Layout</div>
+    <div class="main-tab" onclick="switchTab('widgets')">Widgets</div>
+    <div class="main-tab" onclick="switchTab('preview')">Preview</div>
+  </div>
+
+  <div id="workspace">
+    <!-- Layout Tab -->
+    <div class="tab-content active" id="tab-layout">
+      <div id="canvas-header">Select a category from the sidebar</div>
+      <div id="canvas-container">
+        <div id="canvas"></div>
+      </div>
+    </div>
+
+    <!-- Widgets Tab -->
+    <div class="tab-content" id="tab-widgets">
+      <div class="widget-editor-wrap">
+        <div class="widget-editor-top">
+          <label>Texture:</label>
+          <select id="textureSelect" onchange="loadSelectedTexture()" style="flex:1;background:#1a1a3e;color:#e0e0e0;border:1px solid #334;padding:3px;font-size:11px;border-radius:2px;">
+            <option value="">-- Select texture --</option>
+          </select>
+          <label>Zoom:</label>
+          <input type="range" id="widgetZoom" min="1" max="8" value="3" step="1" style="width:60px" oninput="widgetZoomLevel=+this.value;renderWidgetEditor()">
+          <span id="widgetZoomLabel">3x</span>
+        </div>
+        <div class="widget-canvas-area">
+          <canvas id="widgetCanvas"></canvas>
+        </div>
+        <div class="widget-select-info" id="widgetSelectInfo">Click and drag to select a region</div>
+      </div>
+    </div>
+
+    <!-- Preview Tab -->
+    <div class="tab-content" id="tab-preview">
+      <div id="preview-container">
+        <canvas id="previewCanvas"></canvas>
+      </div>
+    </div>
+
+    <!-- Recipe panel (always visible) -->
+    <div id="recipe-panel">
+      <h3>Recipes <span id="recipe-count" style="color:#888;font-weight:normal"></span></h3>
+      <div id="recipe-list"></div>
+    </div>
+  </div>
+
+  <div id="props-panel">
+    <h3>Properties</h3>
+    <div id="props-content"><p style="color:#666;font-size:11px;padding:8px;">Select an element</p></div>
+  </div>
+
+  <div id="statusbar">JEI Designer — Lost Depths</div>
+</div>
+
+<script>
+let registry = null;
+let currentCat = null;
+let selectedEl = null;
+let zoom = 3;
+let dragging = null;
+let dragOff = {x:0, y:0};
+let activeRecipeIdx = -1;
+let itemTextures = {};
+let activeTab = 'layout';
+
+// Texture / widget state
+let loadedTextures = {};  // path -> Image
+let widgetZoomLevel = 3;
+let widgets = [];
+let selectedWidget = null;
+let widgetSelecting = false;
+let widgetSelectStart = {x:0,y:0};
+let widgetSelectEnd = {x:0,y:0};
+let currentTexturePath = '';
+let currentTextureImage = null;
+
+const widgetCanvas = document.getElementById('widgetCanvas');
+const widgetCtx = widgetCanvas.getContext('2d');
+const previewCanvas = document.getElementById('previewCanvas');
+const previewCtx = previewCanvas.getContext('2d');
+
+// ── Tab switching ──
+function switchTab(tab) {
+  activeTab = tab;
+  document.querySelectorAll('.main-tab').forEach((t,i) => {
+    t.className = 'main-tab' + (['layout','widgets','preview'][i] === tab ? ' active' : '');
+  });
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  document.getElementById('sidebarElements').style.display = (tab === 'layout' || tab === 'preview') ? '' : 'none';
+  document.getElementById('sidebarWidgets').style.display = tab === 'widgets' ? '' : 'none';
+  if (tab === 'layout') renderCanvas();
+  else if (tab === 'widgets') renderWidgetEditor();
+  else if (tab === 'preview') renderPreview();
+}
+
+// ── Load registry ──
+async function loadRegistry() {
+  const res = await fetch('/registry.json');
+  registry = await res.json();
+  renderCatList();
+  await loadTextureIndex();
+  loadTextureList();
+  // Pre-load widget sprite sheets
+  preloadSpriteSheets();
+}
+
+// ── Preload sprite sheet images ──
+function preloadSpriteSheets() {
+  if (!registry) return;
+  const sheets = new Set();
+  // Widget sprites
+  if (registry.widgetSprites) {
+    registry.widgetSprites.forEach(s => sheets.add(s.servePath));
+  }
+  // Category textures
+  registry.categories.forEach(cat => {
+    if (cat.bgTexture) {
+      const p = cat.bgTexture.replace('lostdepths:', '/textures/');
+      sheets.add(p);
+    }
+    if (cat.textures) {
+      cat.textures.forEach(t => {
+        if (t.servePath && !t.servePath.includes('container/')) sheets.add(t.servePath);
+      });
+    }
+  });
+  sheets.forEach(path => loadTextureImage(path));
+}
+
+function loadTextureImage(path) {
+  if (loadedTextures[path]) return loadedTextures[path];
+  const img = new Image();
+  img.onload = () => { loadedTextures[path] = img; };
+  img.onerror = () => { /* skip missing */ };
+  img.src = path + '?t=' + Date.now();
+  loadedTextures[path] = null; // mark as loading
+  return null;
+}
+
+function getTexture(path) {
+  if (!path) return null;
+  return loadedTextures[path] || null;
+}
+
+// ── Load texture index for item icons ──
+async function loadTextureIndex() {
+  try {
+    const res = await fetch('/api/list-textures');
+    const data = await res.json();
+    for (const t of data.textures) {
+      if (t.folder === 'item') itemTextures['lostdepths:' + t.name] = t.servePath;
+      if (t.folder === 'block' && !itemTextures['lostdepths:' + t.name]) {
+        itemTextures['lostdepths:' + t.name] = t.servePath;
+      }
+    }
+  } catch(e) { console.warn('Failed to load textures:', e); }
+}
+
+function getItemIcon(itemId) {
+  if (!itemId) return null;
+  if (itemTextures[itemId]) return itemTextures[itemId];
+  if (itemId.startsWith('minecraft:')) {
+    const name = itemId.split(':')[1];
+    if (itemTextures['lostdepths:' + name]) return itemTextures['lostdepths:' + name];
+  }
+  return null;
+}
+function itemName(itemId) {
+  if (!itemId) return '?';
+  return itemId.split(':')[1]?.replace(/_/g, ' ') || itemId;
+}
+
+// ── Texture list for widget editor ──
+function loadTextureList() {
+  const select = document.getElementById('textureSelect');
+  select.innerHTML = '<option value="">-- Select texture --</option>';
+  if (!registry) return;
+
+  // Add available textures from registry
+  if (registry.availableTextures) {
+    registry.availableTextures.forEach(t => {
+      const opt = document.createElement('option');
+      opt.value = t.servePath;
+      opt.textContent = `${t.folder}/${t.name}`;
+      select.appendChild(opt);
+    });
+  }
+
+  // Add widget sprite sheets
+  if (registry.widgetSprites) {
+    const sheets = [...new Set(registry.widgetSprites.map(s => s.servePath))];
+    sheets.forEach(s => {
+      // Check if already added
+      if ([...select.options].some(o => o.value === s)) return;
+      const opt = document.createElement('option');
+      opt.value = s;
+      opt.textContent = s.replace('/textures/', '');
+      select.appendChild(opt);
+    });
+  }
+}
+
+function loadSelectedTexture() {
+  const select = document.getElementById('textureSelect');
+  if (!select.value) return;
+  currentTexturePath = select.value;
+  const img = new Image();
+  img.onload = () => {
+    currentTextureImage = img;
+    loadedTextures[currentTexturePath] = img;
+    renderWidgetEditor();
+  };
+  img.src = select.value + '?t=' + Date.now();
+}
+
+// ── Render category list ──
+function renderCatList() {
+  const list = document.getElementById('cat-list');
+  list.innerHTML = '';
+  for (const cat of registry.categories) {
+    const div = document.createElement('div');
+    div.className = 'cat-item' + (currentCat && currentCat.id === cat.id ? ' active' : '');
+    div.innerHTML = `${cat.label} <span class="count">(${cat.recipes.length})</span>`;
+    div.onclick = () => selectCategory(cat);
+    list.appendChild(div);
+  }
+}
+
+// ── Select category ──
+function selectCategory(cat) {
+  currentCat = cat;
+  selectedEl = null;
+  activeRecipeIdx = -1;
+  renderCatList();
+  renderElementList();
+  renderCanvas();
+  renderRecipes();
+  renderProps();
+  document.getElementById('canvas-header').textContent =
+    `${cat.label} — ${cat.width}x${cat.height} — ${cat.categoryClass}`;
+
+  // Auto-select the category's background texture in widget editor
+  if (cat.bgTexture) {
+    const texPath = cat.bgTexture.replace('lostdepths:', '/textures/');
+    const select = document.getElementById('textureSelect');
+    if ([...select.options].some(o => o.value === texPath)) {
+      select.value = texPath;
+      loadSelectedTexture();
+    }
+  }
+}
+
+// ── Element list in sidebar ──
+function renderElementList() {
+  const list = document.getElementById('el-list');
+  list.innerHTML = '';
+  if (!currentCat) return;
+  currentCat.elements.forEach(el => {
+    const div = document.createElement('div');
+    div.className = 'el-list-item' + (selectedEl === el ? ' active' : '');
+    div.innerHTML = `<span class="el-type">${el.type}</span><span>${el.id}</span><span class="el-pos">${el.x},${el.y}</span>`;
+    div.onclick = () => { selectedEl = el; renderElementList(); renderCanvas(); renderProps(); };
+    list.appendChild(div);
+  });
+}
+
+// ── Render canvas (Layout tab) ──
+function renderCanvas() {
+  const canvas = document.getElementById('canvas');
+  canvas.innerHTML = '';
+  if (!currentCat) return;
+
+  const w = currentCat.width;
+  const h = currentCat.height;
+  canvas.style.width = (w * zoom) + 'px';
+  canvas.style.height = (h * zoom) + 'px';
+
+  // Background texture from bg_texture element
+  const bgEl = currentCat.elements.find(e => e.type === 'bg_texture');
+  if (bgEl && currentCat.bgTexture) {
+    const texPath = currentCat.bgTexture.replace('lostdepths:', '/textures/');
+    const img = getTexture(texPath);
+    if (img) {
+      const c2 = document.createElement('canvas');
+      c2.width = w; c2.height = h;
+      const ctx = c2.getContext('2d');
+      ctx.imageSmoothingEnabled = false;
+      ctx.drawImage(img, bgEl.uvX, bgEl.uvY, bgEl.w, bgEl.h, 0, 0, w, h);
+      c2.style.cssText = `width:100%;height:100%;image-rendering:pixelated;position:absolute;left:0;top:0;pointer-events:none;`;
+      canvas.appendChild(c2);
+    } else {
+      // Try loading
+      const imgEl = new Image();
+      imgEl.onload = () => { loadedTextures[texPath] = imgEl; renderCanvas(); };
+      imgEl.src = texPath;
+    }
+  }
+
+  // Render blit elements (texture regions)
+  for (const el of currentCat.elements) {
+    if (el.type === 'blit') {
+      const blitDiv = createBlitDiv(el);
+      canvas.appendChild(blitDiv);
+    }
+  }
+
+  // Render other elements
+  for (const el of currentCat.elements) {
+    if (el.type === 'bg_texture' || el.type === 'blit') continue;
+    const div = createElementDiv(el);
+    canvas.appendChild(div);
+  }
+
+  // Render recipe preview items
+  if (activeRecipeIdx >= 0) renderRecipePreview();
+}
+
+function createBlitDiv(el) {
+  const div = document.createElement('div');
+  div.className = 'el' + (selectedEl === el ? ' selected' : '');
+  div.style.left = (el.x * zoom) + 'px';
+  div.style.top = (el.y * zoom) + 'px';
+  div.style.width = ((el.w || 16) * zoom) + 'px';
+  div.style.height = ((el.h || 16) * zoom) + 'px';
+  div.style.overflow = 'hidden';
+
+  // Try to render actual texture
+  const texPath = el.texturePath || '';
+  const img = texPath ? getTexture(texPath) : null;
+  if (img) {
+    const c2 = document.createElement('canvas');
+    c2.width = el.w || 16; c2.height = el.h || 16;
+    const ctx = c2.getContext('2d');
+    ctx.imageSmoothingEnabled = false;
+    ctx.drawImage(img, el.uvX || 0, el.uvY || 0, el.w || 16, el.h || 16, 0, 0, el.w || 16, el.h || 16);
+    c2.style.cssText = `width:100%;height:100%;image-rendering:pixelated;pointer-events:none;`;
+    div.appendChild(c2);
+  } else {
+    div.style.background = 'rgba(128,64,200,0.3)';
+    div.style.border = '1px dashed #a6c';
+  }
+
+  const label = document.createElement('div');
+  label.className = 'el-label';
+  label.style.fontSize = Math.max(8, zoom * 3) + 'px';
+  label.textContent = el.label || el.id;
+  div.appendChild(label);
+
+  div.onmousedown = (e) => {
+    e.preventDefault();
+    selectedEl = el;
+    dragging = el;
+    const rect = div.getBoundingClientRect();
+    dragOff.x = e.clientX - rect.left;
+    dragOff.y = e.clientY - rect.top;
+    renderCanvas(); renderElementList(); renderProps();
+  };
+  return div;
+}
+
+function createElementDiv(el) {
+  const div = document.createElement('div');
+  div.className = 'el' + (selectedEl === el ? ' selected' : '');
+  div.dataset.id = el.id;
+  div.style.left = (el.x * zoom) + 'px';
+  div.style.top = (el.y * zoom) + 'px';
+
+  if (el.type === 'slot_bg' || el.type === 'recipe_slot') {
+    div.style.width = (18 * zoom) + 'px';
+    div.style.height = (18 * zoom) + 'px';
+
+    // Try rendering from widget sprite sheet
+    const slotSprite = findWidgetSprite('JEI_SLOT');
+    if (slotSprite) {
+      const c2 = document.createElement('canvas');
+      c2.width = 18; c2.height = 18;
+      const ctx = c2.getContext('2d');
+      ctx.imageSmoothingEnabled = false;
+      ctx.drawImage(slotSprite.img, slotSprite.startX, slotSprite.startY, 18, 18, 0, 0, 18, 18);
+      c2.style.cssText = `width:100%;height:100%;image-rendering:pixelated;pointer-events:none;`;
+      div.appendChild(c2);
+    } else {
+      const inner = document.createElement('div');
+      inner.className = 'el-slot-inner';
+      inner.style.width = (16 * zoom) + 'px';
+      inner.style.height = (16 * zoom) + 'px';
+      inner.style.margin = (1 * zoom) + 'px';
+      if (el.type === 'recipe_slot') {
+        inner.style.borderColor = el.role === 'OUTPUT' ? '#4a4' : el.role === 'CATALYST' ? '#aa4' : '#66a';
+        inner.style.borderWidth = '2px';
+      }
+      div.appendChild(inner);
+    }
+
+    if (el.type === 'recipe_slot') {
+      div.style.outline = `${zoom}px solid ${el.role === 'OUTPUT' ? 'rgba(80,200,80,0.4)' : el.role === 'CATALYST' ? 'rgba(200,200,80,0.4)' : 'rgba(80,80,200,0.4)'}`;
+    }
+
+    const label = document.createElement('div');
+    label.className = 'el-label';
+    label.style.fontSize = Math.max(8, zoom * 3) + 'px';
+    label.textContent = el.type === 'recipe_slot' ? (el.role || 'INPUT') : 'slot';
+    div.appendChild(label);
+  } else if (el.type === 'arrow') {
+    div.classList.add('el-arrow');
+    const aw = (el.w || 24) * zoom;
+    const ah = (el.h || 17) * zoom;
+    div.style.width = aw + 'px';
+    div.style.height = ah + 'px';
+
+    // Try rendering from furnace texture or widget sheet
+    const arrowSprite = findWidgetSprite('JEI_ARROW');
+    if (arrowSprite) {
+      const c2 = document.createElement('canvas');
+      c2.width = el.w || 24; c2.height = el.h || 17;
+      const ctx = c2.getContext('2d');
+      ctx.imageSmoothingEnabled = false;
+      ctx.drawImage(arrowSprite.img, arrowSprite.startX, arrowSprite.startY, arrowSprite.width, arrowSprite.height, 0, 0, el.w || 24, el.h || 17);
+      c2.style.cssText = `width:100%;height:100%;image-rendering:pixelated;pointer-events:none;`;
+      div.appendChild(c2);
+    } else {
+      div.innerHTML = '&#10132;';
+      div.style.fontSize = (zoom * 6) + 'px';
+    }
+  } else if (el.type === 'power_icon') {
+    div.classList.add('el-power');
+    div.style.width = (15 * zoom) + 'px';
+    div.style.height = (14 * zoom) + 'px';
+    div.style.borderRadius = '2px';
+
+    // Try rendering from jei_handler texture
+    const powerTex = getTexture('/textures/gui/jei_handler.png');
+    if (powerTex) {
+      const c2 = document.createElement('canvas');
+      c2.width = 15; c2.height = 14;
+      const ctx = c2.getContext('2d');
+      ctx.imageSmoothingEnabled = false;
+      ctx.drawImage(powerTex, 224, 96, 15, 14, 0, 0, 15, 14);
+      c2.style.cssText = `width:100%;height:100%;image-rendering:pixelated;pointer-events:none;`;
+      div.appendChild(c2);
+    }
+  }
+
+  div.onmousedown = (e) => {
+    e.preventDefault();
+    selectedEl = el;
+    dragging = el;
+    const rect = div.getBoundingClientRect();
+    dragOff.x = e.clientX - rect.left;
+    dragOff.y = e.clientY - rect.top;
+    renderCanvas(); renderElementList(); renderProps();
+  };
+
+  return div;
+}
+
+// Find a widget sprite by name from the registry and return its image + coords
+function findWidgetSprite(name) {
+  if (!registry || !registry.widgetSprites) return null;
+  const sprite = registry.widgetSprites.find(s => s.name === name);
+  if (!sprite) return null;
+  const img = getTexture(sprite.servePath);
+  if (!img) return null;
+  return { img, startX: sprite.startX, startY: sprite.startY, width: sprite.width, height: sprite.height };
+}
+
+// ── Drag ──
+document.addEventListener('mousemove', (e) => {
+  if (!dragging) return;
+  const container = document.getElementById('canvas');
+  const rect = container.getBoundingClientRect();
+  const x = Math.round((e.clientX - rect.left - dragOff.x) / zoom);
+  const y = Math.round((e.clientY - rect.top - dragOff.y) / zoom);
+  dragging.x = Math.max(0, x);
+  dragging.y = Math.max(0, y);
+  renderCanvas(); renderElementList(); renderProps();
+});
+document.addEventListener('mouseup', () => { dragging = null; });
+
+document.getElementById('canvas').addEventListener('mousedown', (e) => {
+  if (e.target === document.getElementById('canvas') || e.target.tagName === 'CANVAS') {
+    selectedEl = null;
+    renderCanvas(); renderElementList(); renderProps();
+  }
+});
+
+// ── Render recipes ──
+function renderRecipes() {
+  const list = document.getElementById('recipe-list');
+  const countEl = document.getElementById('recipe-count');
+  list.innerHTML = '';
+  if (!currentCat) { countEl.textContent = ''; return; }
+  countEl.textContent = `(${currentCat.recipes.length})`;
+
+  currentCat.recipes.forEach((r, idx) => {
+    const card = document.createElement('div');
+    card.className = 'recipe-card' + (idx === activeRecipeIdx ? ' active' : '');
+    card.onclick = () => {
+      activeRecipeIdx = idx;
+      renderRecipes();
+      if (activeTab === 'layout') renderCanvas();
+      else if (activeTab === 'preview') renderPreview();
+    };
+
+    let name = r.file.replace('.json', '').replace(/_/g, ' ');
+    let details = '';
+    let itemsHtml = '';
+
+    if (r.ingredients) {
+      const inputItems = Object.values(r.ingredients);
+      itemsHtml = inputItems.map(item => makeItemIconHtml(item)).join('');
+      itemsHtml += '<span class="recipe-arrow">&#10132;</span>';
+      itemsHtml += makeItemIconHtml(r.output);
+      details = `${r.recipeWidth}x${r.recipeHeight} shaped`;
+    } else if (r.ingredientList) {
+      itemsHtml = r.ingredientList.map(item => makeItemIconHtml(item)).join('');
+      itemsHtml += '<span class="recipe-arrow">&#10132;</span>';
+      itemsHtml += makeItemIconHtml(r.output);
+      details = `${r.ingredientList.length} ingredients`;
+    } else if (r.input1 && r.input2) {
+      itemsHtml = makeItemIconHtml(r.input1) + makeItemIconHtml(r.input2);
+      itemsHtml += '<span class="recipe-arrow">&#10132;</span>';
+      itemsHtml += makeItemIconHtml(r.output);
+      details = 'fusion';
+    } else if (r.useItem) {
+      itemsHtml = makeItemIconHtml(r.useItem) + ' + ' + makeItemIconHtml(r.useOn);
+      itemsHtml += '<span class="recipe-arrow">&#10132;</span>';
+      itemsHtml += makeItemIconHtml(r.output);
+      details = r.description || 'item use';
+    } else if (r.input) {
+      itemsHtml = makeItemIconHtml(r.input);
+      itemsHtml += '<span class="recipe-arrow">&#10132;</span>';
+      itemsHtml += makeItemIconHtml(r.output);
+      if (r.outputCount && r.outputCount > 1) details = `x${r.outputCount}`;
+    }
+
+    card.innerHTML = `<div class="recipe-name">${name}</div><div class="recipe-detail">${details}</div><div class="recipe-items">${itemsHtml}</div>`;
+    list.appendChild(card);
+  });
+}
+
+function makeItemIconHtml(itemId) {
+  const icon = getItemIcon(itemId);
+  const title = itemName(itemId);
+  if (icon) return `<div class="recipe-item-icon" title="${itemId}"><img src="${icon}" alt="${title}"></div>`;
+  return `<div class="recipe-item-icon" title="${itemId}" style="font-size:8px;color:#888;">${title.substring(0,4)}</div>`;
+}
+
+// ── Render recipe preview on canvas ──
+function renderRecipePreview() {
+  if (!currentCat || activeRecipeIdx < 0) return;
+  const recipe = currentCat.recipes[activeRecipeIdx];
+  if (!recipe) return;
+  const canvas = document.getElementById('canvas');
+
+  const slots = currentCat.elements.filter(e => e.type === 'recipe_slot');
+  const inputSlots = slots.filter(s => s.role === 'INPUT');
+  const outputSlots = slots.filter(s => s.role === 'OUTPUT');
+
+  if (recipe.ingredients && recipe.pattern) {
+    for (let row = 0; row < recipe.pattern.length; row++) {
+      for (let col = 0; col < recipe.pattern[row].length; col++) {
+        const ch = recipe.pattern[row][col];
+        if (ch === ' ') continue;
+        const item = recipe.ingredients[ch];
+        if (!item) continue;
+        const slotIdx = row * recipe.recipeWidth + col;
+        if (slotIdx < inputSlots.length) placeItemOnSlot(canvas, inputSlots[slotIdx], item);
+        else {
+          const base = inputSlots[0];
+          if (base) placeItemAtPos(canvas, base.x + col * 18, base.y + row * 18, item);
+        }
+      }
+    }
+  } else if (recipe.ingredientList) {
+    recipe.ingredientList.forEach((item, i) => { if (i < inputSlots.length) placeItemOnSlot(canvas, inputSlots[i], item); });
+  } else if (recipe.input1 && recipe.input2) {
+    if (inputSlots.length >= 2) { placeItemOnSlot(canvas, inputSlots[0], recipe.input1); placeItemOnSlot(canvas, inputSlots[1], recipe.input2); }
+  } else if (recipe.useItem && recipe.useOn) {
+    if (inputSlots.length >= 2) { placeItemOnSlot(canvas, inputSlots[0], recipe.useOn); placeItemOnSlot(canvas, inputSlots[1], recipe.useItem); }
+  } else if (recipe.input) {
+    if (inputSlots.length > 0) placeItemOnSlot(canvas, inputSlots[0], recipe.input);
+  }
+  if (recipe.output && outputSlots.length > 0) placeItemOnSlot(canvas, outputSlots[0], recipe.output);
+}
+
+function placeItemOnSlot(canvas, slot, itemId) { placeItemAtPos(canvas, slot.x, slot.y, itemId); }
+function placeItemAtPos(canvas, x, y, itemId) {
+  const icon = getItemIcon(itemId);
+  const div = document.createElement('div');
+  div.className = 'recipe-preview-slot';
+  div.style.left = ((x + 1) * zoom) + 'px';
+  div.style.top = ((y + 1) * zoom) + 'px';
+  div.style.width = (16 * zoom) + 'px';
+  div.style.height = (16 * zoom) + 'px';
+  div.title = itemId;
+  if (icon) {
+    div.innerHTML = `<img src="${icon}" style="width:${16*zoom}px;height:${16*zoom}px;image-rendering:pixelated;">`;
+  } else {
+    div.style.background = 'rgba(100,100,100,0.5)';
+    div.style.fontSize = Math.max(6, zoom * 2.5) + 'px';
+    div.style.color = '#ccc';
+    div.style.display = 'flex';
+    div.style.alignItems = 'center';
+    div.style.justifyContent = 'center';
+    div.style.pointerEvents = 'none';
+    div.textContent = itemName(itemId).substring(0, 6);
+  }
+  canvas.appendChild(div);
+}
+
+// ══════════════════════════════════════════════
+// ── Preview Tab (pixel-accurate rendering) ──
+// ══════════════════════════════════════════════
+function renderPreview() {
+  if (!currentCat) return;
+  const w = currentCat.width;
+  const h = currentCat.height;
+
+  previewCanvas.width = w * zoom;
+  previewCanvas.height = h * zoom;
+  previewCtx.imageSmoothingEnabled = false;
+  previewCtx.save();
+  previewCtx.scale(zoom, zoom);
+
+  // Minecraft JEI default background: light gray
+  previewCtx.fillStyle = '#c6c6c6';
+  previewCtx.fillRect(0, 0, w, h);
+
+  // Draw background texture if present
+  const bgEl = currentCat.elements.find(e => e.type === 'bg_texture');
+  if (bgEl && currentCat.bgTexture) {
+    const texPath = currentCat.bgTexture.replace('lostdepths:', '/textures/');
+    const img = getTexture(texPath);
+    if (img) {
+      previewCtx.drawImage(img, bgEl.uvX, bgEl.uvY, bgEl.w, bgEl.h, 0, 0, w, h);
+    }
+  }
+
+  // Draw blit elements from their source textures
+  currentCat.elements.forEach(el => {
+    if (el.type === 'blit' && el.texturePath) {
+      const img = getTexture(el.texturePath);
+      if (img) {
+        previewCtx.drawImage(img, el.uvX || 0, el.uvY || 0, el.w || 16, el.h || 16, el.x, el.y, el.w || 16, el.h || 16);
+      }
+    }
+  });
+
+  // Draw slots from widget sprite sheet
+  const slotSprite = findWidgetSprite('JEI_SLOT');
+  currentCat.elements.forEach(el => {
+    if (el.type === 'slot_bg' || el.type === 'recipe_slot') {
+      if (slotSprite) {
+        previewCtx.drawImage(slotSprite.img, slotSprite.startX, slotSprite.startY, 18, 18, el.x, el.y, 18, 18);
+      } else {
+        drawMiniSlot(previewCtx, el.x, el.y);
+      }
+    }
+  });
+
+  // Draw arrows
+  currentCat.elements.forEach(el => {
+    if (el.type === 'arrow') {
+      // Try to find arrow from category textures (furnace arrow) or widget sprites
+      const catArrowTex = currentCat.textures?.find(t => t.source === 'drawableBuilder' && t.uvW === (el.w || 24));
+      let drawn = false;
+
+      // Try widget sprite JEI_ARROW
+      const arrowSprite = findWidgetSprite('JEI_ARROW');
+      if (arrowSprite) {
+        previewCtx.drawImage(arrowSprite.img, arrowSprite.startX, arrowSprite.startY, arrowSprite.width, arrowSprite.height, el.x, el.y, el.w || 24, el.h || 17);
+        drawn = true;
+      }
+
+      if (!drawn) {
+        // Fallback: draw simple arrow
+        previewCtx.fillStyle = '#aaa';
+        previewCtx.fillRect(el.x, el.y + (el.h||17)/2 - 1, el.w || 24, 2);
+        previewCtx.fillStyle = '#888';
+        const ax = el.x + (el.w || 24) - 4;
+        const ay = el.y + (el.h || 17) / 2;
+        previewCtx.beginPath();
+        previewCtx.moveTo(ax, ay - 4);
+        previewCtx.lineTo(ax + 4, ay);
+        previewCtx.lineTo(ax, ay + 4);
+        previewCtx.fill();
+      }
+    }
+  });
+
+  // Draw power icons
+  currentCat.elements.forEach(el => {
+    if (el.type === 'power_icon') {
+      const powerTex = getTexture('/textures/gui/jei_handler.png');
+      if (powerTex) {
+        previewCtx.drawImage(powerTex, 224, 96, 15, 14, el.x, el.y, 15, 14);
+      } else {
+        previewCtx.fillStyle = '#ffa500';
+        previewCtx.fillRect(el.x + 2, el.y + 2, 11, 10);
+      }
+    }
+  });
+
+  // Draw AllGuiTextures references (JEI_SHADOW, JEI_DOWN_ARROW, etc.)
+  if (currentCat.textures) {
+    currentCat.textures.forEach(t => {
+      if (t.source === 'AllGuiTextures' && t.name !== 'JEI_SLOT') {
+        // These are drawn at specific positions in the draw() method
+        // We render them here as they contribute to the visual
+        const img = getTexture(t.servePath);
+        if (img) {
+          // Find the render position from the Java source — for now, render as available sprite overlay
+          // These are at category-specific positions, not tracked as elements
+        }
+      }
+    });
+  }
+
+  // Draw recipe item icons if a recipe is selected
+  if (activeRecipeIdx >= 0) {
+    const recipe = currentCat.recipes[activeRecipeIdx];
+    if (recipe) renderPreviewRecipeItems(recipe);
+  }
+
+  previewCtx.restore();
+}
+
+function renderPreviewRecipeItems(recipe) {
+  const slots = currentCat.elements.filter(e => e.type === 'recipe_slot');
+  const inputSlots = slots.filter(s => s.role === 'INPUT');
+  const outputSlots = slots.filter(s => s.role === 'OUTPUT');
+
+  const placeItem = (slot, itemId) => {
+    const icon = getItemIcon(itemId);
+    if (!icon) {
+      // Draw text fallback
+      previewCtx.fillStyle = '#ddd';
+      previewCtx.font = '5px monospace';
+      previewCtx.textAlign = 'center';
+      previewCtx.fillText(itemName(itemId).substring(0, 5), slot.x + 9, slot.y + 11);
+      return;
+    }
+    const img = getTexture(icon);
+    if (img) {
+      previewCtx.drawImage(img, slot.x + 1, slot.y + 1, 16, 16);
+    } else {
+      // Load and re-render
+      const newImg = new Image();
+      newImg.onload = () => { loadedTextures[icon] = newImg; renderPreview(); };
+      newImg.src = icon;
+      loadedTextures[icon] = null;
+    }
+  };
+
+  if (recipe.ingredients && recipe.pattern) {
+    for (let row = 0; row < recipe.pattern.length; row++) {
+      for (let col = 0; col < recipe.pattern[row].length; col++) {
+        const ch = recipe.pattern[row][col];
+        if (ch === ' ') continue;
+        const item = recipe.ingredients[ch];
+        if (!item) continue;
+        const slotIdx = row * recipe.recipeWidth + col;
+        if (slotIdx < inputSlots.length) placeItem(inputSlots[slotIdx], item);
+      }
+    }
+  } else if (recipe.ingredientList) {
+    recipe.ingredientList.forEach((item, i) => { if (i < inputSlots.length) placeItem(inputSlots[i], item); });
+  } else if (recipe.input1 && recipe.input2) {
+    if (inputSlots.length >= 2) { placeItem(inputSlots[0], recipe.input1); placeItem(inputSlots[1], recipe.input2); }
+  } else if (recipe.useItem && recipe.useOn) {
+    if (inputSlots.length >= 2) { placeItem(inputSlots[0], recipe.useOn); placeItem(inputSlots[1], recipe.useItem); }
+  } else if (recipe.input) {
+    if (inputSlots.length > 0) placeItem(inputSlots[0], recipe.input);
+  }
+  if (recipe.output && outputSlots.length > 0) placeItem(outputSlots[0], recipe.output);
+}
+
+function drawMiniSlot(c, x, y) {
+  c.fillStyle = '#373737'; c.fillRect(x, y, 18, 1); c.fillRect(x, y, 1, 18);
+  c.fillStyle = '#fff'; c.fillRect(x, y + 17, 18, 1); c.fillRect(x + 17, y, 1, 18);
+  c.fillStyle = '#8b8b8b'; c.fillRect(x + 1, y + 1, 16, 16);
+}
+
+// ══════════════════════════════════════
+// ── Widget Editor (Texture slicer) ──
+// ══════════════════════════════════════
+function renderWidgetEditor() {
+  document.getElementById('widgetZoomLabel').textContent = widgetZoomLevel + 'x';
+  renderWidgetList();
+
+  if (!currentTextureImage) {
+    widgetCanvas.width = 256 * widgetZoomLevel;
+    widgetCanvas.height = 256 * widgetZoomLevel;
+    widgetCtx.fillStyle = '#222';
+    widgetCtx.fillRect(0, 0, widgetCanvas.width, widgetCanvas.height);
+    widgetCtx.font = '14px Segoe UI'; widgetCtx.textAlign = 'center'; widgetCtx.fillStyle = '#556';
+    widgetCtx.fillText('Select a texture to edit widgets', widgetCanvas.width / 2, widgetCanvas.height / 2);
+    return;
+  }
+
+  const tw = currentTextureImage.width, th = currentTextureImage.height;
+  widgetCanvas.width = tw * widgetZoomLevel;
+  widgetCanvas.height = th * widgetZoomLevel;
+  widgetCtx.imageSmoothingEnabled = false;
+  widgetCtx.save();
+  widgetCtx.scale(widgetZoomLevel, widgetZoomLevel);
+
+  // Checkerboard
+  for (let y = 0; y < th; y += 8) {
+    for (let x = 0; x < tw; x += 8) {
+      widgetCtx.fillStyle = ((x + y) / 8 % 2 === 0) ? '#333' : '#2a2a2a';
+      widgetCtx.fillRect(x, y, 8, 8);
+    }
+  }
+
+  // Draw texture
+  widgetCtx.drawImage(currentTextureImage, 0, 0);
+
+  // Draw existing widget regions
+  widgets.forEach(w => {
+    if (w.texturePath !== currentTexturePath) return; // only show widgets for current texture
+    widgetCtx.strokeStyle = selectedWidget === w ? '#ff0' : '#a6c';
+    widgetCtx.lineWidth = selectedWidget === w ? 1 : 0.5;
+    widgetCtx.setLineDash(selectedWidget === w ? [] : [2, 2]);
+    widgetCtx.strokeRect(w.uvX, w.uvY, w.w, w.h);
+    widgetCtx.setLineDash([]);
+    widgetCtx.font = '5px monospace'; widgetCtx.textAlign = 'left'; widgetCtx.fillStyle = '#ff0a';
+    widgetCtx.fillText(w.label, w.uvX + 1, w.uvY - 1);
+  });
+
+  // Draw known widget sprites from registry overlayed as guides
+  if (registry && registry.widgetSprites && currentTexturePath) {
+    const matchingSprites = registry.widgetSprites.filter(s => s.servePath === currentTexturePath);
+    matchingSprites.forEach(s => {
+      widgetCtx.strokeStyle = 'rgba(100,200,255,0.3)';
+      widgetCtx.lineWidth = 0.5;
+      widgetCtx.setLineDash([1, 2]);
+      widgetCtx.strokeRect(s.startX, s.startY, s.width, s.height);
+      widgetCtx.setLineDash([]);
+      widgetCtx.font = '4px monospace'; widgetCtx.textAlign = 'left'; widgetCtx.fillStyle = 'rgba(100,200,255,0.4)';
+      widgetCtx.fillText(s.name, s.startX, s.startY - 1);
+    });
+  }
+
+  // Draw selection rectangle
+  if (widgetSelecting) {
+    const sx = Math.min(widgetSelectStart.x, widgetSelectEnd.x);
+    const sy = Math.min(widgetSelectStart.y, widgetSelectEnd.y);
+    const sw = Math.abs(widgetSelectEnd.x - widgetSelectStart.x);
+    const sh = Math.abs(widgetSelectEnd.y - widgetSelectStart.y);
+    widgetCtx.strokeStyle = '#0ff'; widgetCtx.lineWidth = 0.5;
+    widgetCtx.setLineDash([2, 2]);
+    widgetCtx.strokeRect(sx, sy, sw, sh);
+    widgetCtx.setLineDash([]);
+    widgetCtx.fillStyle = '#0ff2'; widgetCtx.fillRect(sx, sy, sw, sh);
+  }
+
+  widgetCtx.restore();
+}
+
+// Widget list in sidebar
+function renderWidgetList() {
+  const list = document.getElementById('widget-list');
+  list.innerHTML = '';
+  widgets.forEach(w => {
+    const item = document.createElement('div');
+    item.className = 'widget-item' + (selectedWidget === w ? ' active' : '');
+
+    // Tiny preview
+    const preview = document.createElement('canvas');
+    preview.width = Math.min(w.w, 32); preview.height = Math.min(w.h, 32);
+    preview.style.width = (preview.width * 2) + 'px'; preview.style.height = (preview.height * 2) + 'px';
+    const texImg = getTexture(w.texturePath);
+    if (texImg) {
+      const pc = preview.getContext('2d');
+      pc.imageSmoothingEnabled = false;
+      pc.drawImage(texImg, w.uvX, w.uvY, w.w, w.h, 0, 0, preview.width, preview.height);
+    }
+    item.appendChild(preview);
+
+    const info = document.createElement('span');
+    info.textContent = `${w.label} (${w.w}x${w.h})`;
+    item.appendChild(info);
+
+    item.onclick = () => { selectedWidget = w; renderWidgetList(); updateWidgetProps(); };
+    list.appendChild(item);
+  });
+}
+
+function updateWidgetProps() {
+  const panel = document.getElementById('widget-props');
+  if (!selectedWidget) { panel.innerHTML = ''; return; }
+  const w = selectedWidget;
+  panel.innerHTML = `
+    <div class="widget-props">
+      <div class="prop-row"><label>Label</label><input value="${w.label}" onchange="selectedWidget.label=this.value;renderWidgetList();renderWidgetEditor()"></div>
+      <div class="prop-row"><label>UV X</label><input type="number" value="${w.uvX}" onchange="selectedWidget.uvX=+this.value;renderWidgetEditor()"></div>
+      <div class="prop-row"><label>UV Y</label><input type="number" value="${w.uvY}" onchange="selectedWidget.uvY=+this.value;renderWidgetEditor()"></div>
+      <div class="prop-row"><label>W</label><input type="number" value="${w.w}" onchange="selectedWidget.w=+this.value;renderWidgetEditor()"></div>
+      <div class="prop-row"><label>H</label><input type="number" value="${w.h}" onchange="selectedWidget.h=+this.value;renderWidgetEditor()"></div>
+    </div>`;
+}
+
+function addWidgetToLayout() {
+  if (!currentCat || !selectedWidget) return;
+  const w = selectedWidget;
+  currentCat.elements.push({
+    type: 'blit', id: 'blit_' + currentCat.elements.length,
+    x: 10, y: 10, w: w.w, h: w.h,
+    uvX: w.uvX, uvY: w.uvY,
+    texturePath: w.texturePath,
+    label: w.label
+  });
+  renderElementList();
+  if (activeTab === 'layout') renderCanvas();
+  setStatus(`Added "${w.label}" to layout`);
+}
+
+function deleteWidget() {
+  if (!selectedWidget) return;
+  widgets = widgets.filter(w => w !== selectedWidget);
+  selectedWidget = null;
+  renderWidgetList();
+  updateWidgetProps();
+  renderWidgetEditor();
+}
+
+// Widget canvas mouse events
+widgetCanvas.addEventListener('mousedown', e => {
+  if (!currentTextureImage) return;
+  const rect = widgetCanvas.getBoundingClientRect();
+  const mx = Math.floor((e.clientX - rect.left) / widgetZoomLevel);
+  const my = Math.floor((e.clientY - rect.top) / widgetZoomLevel);
+  widgetSelecting = true;
+  widgetSelectStart = { x: mx, y: my };
+  widgetSelectEnd = { x: mx, y: my };
+  renderWidgetEditor();
+});
+
+widgetCanvas.addEventListener('mousemove', e => {
+  if (!widgetSelecting) return;
+  const rect = widgetCanvas.getBoundingClientRect();
+  widgetSelectEnd.x = Math.floor((e.clientX - rect.left) / widgetZoomLevel);
+  widgetSelectEnd.y = Math.floor((e.clientY - rect.top) / widgetZoomLevel);
+  const sx = Math.min(widgetSelectStart.x, widgetSelectEnd.x);
+  const sy = Math.min(widgetSelectStart.y, widgetSelectEnd.y);
+  const sw = Math.abs(widgetSelectEnd.x - widgetSelectStart.x);
+  const sh = Math.abs(widgetSelectEnd.y - widgetSelectStart.y);
+  document.getElementById('widgetSelectInfo').textContent = `Selection: (${sx}, ${sy}) ${sw}x${sh}`;
+  renderWidgetEditor();
+});
+
+widgetCanvas.addEventListener('mouseup', e => {
+  if (!widgetSelecting) return;
+  widgetSelecting = false;
+  const sx = Math.min(widgetSelectStart.x, widgetSelectEnd.x);
+  const sy = Math.min(widgetSelectStart.y, widgetSelectEnd.y);
+  const sw = Math.abs(widgetSelectEnd.x - widgetSelectStart.x);
+  const sh = Math.abs(widgetSelectEnd.y - widgetSelectStart.y);
+  if (sw > 1 && sh > 1) {
+    const widget = {
+      id: 'widget_' + widgets.length,
+      label: 'Widget ' + widgets.length,
+      uvX: sx, uvY: sy, w: sw, h: sh,
+      texturePath: currentTexturePath
+    };
+    widgets.push(widget);
+    selectedWidget = widget;
+    renderWidgetList();
+    updateWidgetProps();
+  }
+  document.getElementById('widgetSelectInfo').textContent = 'Click and drag to select a region';
+  renderWidgetEditor();
+});
+
+// ══════════════════════════════
+// ── Properties panel ──
+// ══════════════════════════════
+function renderProps() {
+  const content = document.getElementById('props-content');
+  if (!selectedEl) {
+    content.innerHTML = '<p style="color:#666;font-size:11px;padding:8px;">Select an element</p>';
+    return;
+  }
+  const el = selectedEl;
+  let html = `<div class="prop-group"><label>Type</label><input value="${el.type}" readonly></div>`;
+  html += `<div class="prop-group"><label>ID</label><input value="${el.id}" onchange="selectedEl.id=this.value;renderElementList()"></div>`;
+  html += `<div class="prop-row">
+    <div class="prop-group"><label>X</label><input type="number" value="${el.x}" onchange="selectedEl.x=+this.value;renderCanvas();renderElementList()"></div>
+    <div class="prop-group"><label>Y</label><input type="number" value="${el.y}" onchange="selectedEl.y=+this.value;renderCanvas();renderElementList()"></div>
+  </div>`;
+
+  if (el.type === 'recipe_slot') {
+    html += `<div class="prop-group"><label>Role</label>
+      <select onchange="selectedEl.role=this.value;renderCanvas();renderElementList()">
+        <option ${el.role==='INPUT'?'selected':''}>INPUT</option>
+        <option ${el.role==='OUTPUT'?'selected':''}>OUTPUT</option>
+        <option ${el.role==='CATALYST'?'selected':''}>CATALYST</option>
+      </select></div>`;
+  }
+
+  if (el.type === 'arrow') {
+    html += `<div class="prop-row">
+      <div class="prop-group"><label>W</label><input type="number" value="${el.w||24}" onchange="selectedEl.w=+this.value;renderCanvas()"></div>
+      <div class="prop-group"><label>H</label><input type="number" value="${el.h||17}" onchange="selectedEl.h=+this.value;renderCanvas()"></div>
+    </div>`;
+  }
+
+  if (el.type === 'blit') {
+    html += `<div class="prop-group"><label>Label</label><input value="${el.label||''}" onchange="selectedEl.label=this.value;renderCanvas();renderElementList()"></div>`;
+    html += `<div class="prop-row">
+      <div class="prop-group"><label>W</label><input type="number" value="${el.w||16}" onchange="selectedEl.w=+this.value;renderCanvas()"></div>
+      <div class="prop-group"><label>H</label><input type="number" value="${el.h||16}" onchange="selectedEl.h=+this.value;renderCanvas()"></div>
+    </div>`;
+    html += `<div class="prop-row">
+      <div class="prop-group"><label>UV X</label><input type="number" value="${el.uvX||0}" onchange="selectedEl.uvX=+this.value;renderCanvas()"></div>
+      <div class="prop-group"><label>UV Y</label><input type="number" value="${el.uvY||0}" onchange="selectedEl.uvY=+this.value;renderCanvas()"></div>
+    </div>`;
+    html += `<div class="prop-group"><label>Texture</label><input value="${el.texturePath||''}" style="font-size:9px" readonly></div>`;
+  }
+
+  if (el.type === 'bg_texture') {
+    html += `<div class="prop-row">
+      <div class="prop-group"><label>UV X</label><input type="number" value="${el.uvX}" onchange="selectedEl.uvX=+this.value;renderCanvas()"></div>
+      <div class="prop-group"><label>UV Y</label><input type="number" value="${el.uvY}" onchange="selectedEl.uvY=+this.value;renderCanvas()"></div>
+    </div>`;
+    html += `<div class="prop-row">
+      <div class="prop-group"><label>W</label><input type="number" value="${el.w}" onchange="selectedEl.w=+this.value;renderCanvas()"></div>
+      <div class="prop-group"><label>H</label><input type="number" value="${el.h}" onchange="selectedEl.h=+this.value;renderCanvas()"></div>
+    </div>`;
+    html += `<div class="prop-row">
+      <div class="prop-group"><label>Tex W</label><input type="number" value="${el.texW}" onchange="selectedEl.texW=+this.value;renderCanvas()"></div>
+      <div class="prop-group"><label>Tex H</label><input type="number" value="${el.texH}" onchange="selectedEl.texH=+this.value;renderCanvas()"></div>
+    </div>`;
+  }
+
+  if (currentCat) {
+    html += `<hr style="border-color:#333;margin:12px 0">`;
+    html += `<div class="prop-row">
+      <div class="prop-group"><label>Cat W</label><input type="number" value="${currentCat.width}" onchange="currentCat.width=+this.value;renderCanvas()"></div>
+      <div class="prop-group"><label>Cat H</label><input type="number" value="${currentCat.height}" onchange="currentCat.height=+this.value;renderCanvas()"></div>
+    </div>`;
+  }
+
+  content.innerHTML = html;
+}
+
+// ── Add/delete elements ──
+function addElement(type) {
+  if (!currentCat) return;
+  const els = currentCat.elements;
+  const id = type + '_' + els.filter(e => e.type === type).length;
+  const el = { type, id, x: 10, y: 10 };
+  if (type === 'recipe_slot') el.role = 'INPUT';
+  if (type === 'arrow') { el.w = 24; el.h = 17; }
+  if (type === 'blit') { el.w = 16; el.h = 16; el.uvX = 0; el.uvY = 0; el.texturePath = ''; el.label = 'Blit'; }
+  els.push(el);
+  selectedEl = el;
+  renderElementList(); renderCanvas(); renderProps();
+}
+
+function deleteSelected() {
+  if (!selectedEl || !currentCat) return;
+  const idx = currentCat.elements.indexOf(selectedEl);
+  if (idx >= 0) currentCat.elements.splice(idx, 1);
+  selectedEl = null;
+  renderElementList(); renderCanvas(); renderProps();
+}
+
+// ── Zoom ──
+function setZoom(z) {
+  zoom = Math.max(1, Math.min(8, z));
+  document.getElementById('zoom-label').textContent = zoom + 'x';
+  if (activeTab === 'layout') renderCanvas();
+  else if (activeTab === 'preview') renderPreview();
+}
+
+// ══════════════════════════════
+// ── Save ──
+// ══════════════════════════════
+async function saveRegistry() {
+  try {
+    const res = await fetch('/api/save-registry', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(registry)
+    });
+    const data = await res.json();
+    if (data.ok) setStatus('Registry saved!');
+    else setStatus('Error: ' + (data.error || 'unknown'));
+  } catch(e) { setStatus('Save failed: ' + e.message); }
+}
+
+async function saveToProject() {
+  if (!currentCat) { setStatus('No category selected'); return; }
+  const cat = currentCat;
+  if (!cat.categoryPath) { setStatus('No category file path'); return; }
+
+  try {
+    const res = await fetch('/api/read-file', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ path: cat.categoryPath })
+    });
+    const data = await res.json();
+    if (data.error) { setStatus('Read error: ' + data.error); return; }
+
+    let code = patchCategoryCode(data.content, cat);
+
+    const saveRes = await fetch('/api/save-file', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ path: cat.categoryPath, content: code })
+    });
+    const saveData = await saveRes.json();
+
+    await patchRecipeTypeWrapper(cat);
+
+    if (saveData.ok) setStatus(`Saved ${cat.categoryClass}.java`);
+    else setStatus('Save error: ' + (saveData.error || 'unknown'));
+
+    await saveRegistry();
+  } catch(e) { setStatus('Save failed: ' + e.message); }
+}
+
+function patchCategoryCode(code, cat) {
+  const slots = cat.elements.filter(e => e.type === 'recipe_slot');
+  let slotIdx = 0;
+  code = code.replace(
+    /addSlot\(\s*RecipeIngredientRole\.(\w+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)/g,
+    (match, role, oldX, oldY) => {
+      if (slotIdx < slots.length) {
+        const slot = slots[slotIdx++];
+        return `addSlot(RecipeIngredientRole.${slot.role || role}, ${slot.x}, ${slot.y})`;
+      }
+      return match;
+    }
+  );
+
+  const slotBgs = cat.elements.filter(e => e.type === 'slot_bg');
+  let bgIdx = 0;
+  code = code.replace(
+    /slot\.draw\(\s*(\w+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)/g,
+    (match, gfxVar) => {
+      if (bgIdx < slotBgs.length) {
+        const bg = slotBgs[bgIdx++];
+        return `slot.draw(${gfxVar}, ${bg.x}, ${bg.y})`;
+      }
+      return match;
+    }
+  );
+
+  const arrow = cat.elements.find(e => e.type === 'arrow');
+  if (arrow) {
+    code = code.replace(/arrowBg\.draw\(\s*(\w+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)/, (m, g) => `arrowBg.draw(${g}, ${arrow.x}, ${arrow.y})`);
+    code = code.replace(/arrowDrawable\.draw\(\s*(\w+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)/, (m, g) => `arrowDrawable.draw(${g}, ${arrow.x}, ${arrow.y})`);
+  }
+
+  const bgTex = cat.elements.find(e => e.type === 'bg_texture');
+  if (bgTex) {
+    code = code.replace(
+      /drawableBuilder\(\s*texture\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)\s*\.setTextureSize\(\s*(\d+)\s*,\s*(\d+)\s*\)/,
+      `drawableBuilder(texture, ${bgTex.uvX}, ${bgTex.uvY}, ${bgTex.w}, ${bgTex.h}).setTextureSize(${bgTex.texW}, ${bgTex.texH})`
+    );
+  }
+
+  return code;
+}
+
+async function patchRecipeTypeWrapper(cat) {
+  const rtPath = 'src/main/java/cz/blackdragoncz/lostdepths/client/jei/RecipeViewerRecipeType.java';
+  try {
+    const res = await fetch('/api/read-file', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({path:rtPath}) });
+    const data = await res.json();
+    if (data.error) return;
+    let code = data.content;
+    const pattern = new RegExp(`(${cat.id}\\s*=\\s*new\\s+RecipeTypeWrapper<>\\(\\s*\\w+\\.\\w+\\.get\\(\\)\\s*,\\s*\\w+\\.class\\s*,\\s*)(\\d+)(\\s*,\\s*)(\\d+)(\\s*,\\s*)(\\d+)(\\s*,\\s*)(\\d+)`);
+    code = code.replace(pattern, `$1${cat.xOffset}$3${cat.yOffset}$5${cat.width}$7${cat.height}`);
+    await fetch('/api/save-file', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({path:rtPath, content:code}) });
+  } catch(e) { console.warn('Failed to patch RecipeTypeWrapper:', e); }
+}
+
+function setStatus(msg) {
+  document.getElementById('statusbar').textContent = msg;
+  setTimeout(() => { document.getElementById('statusbar').textContent = 'JEI Designer — Lost Depths'; }, 4000);
+}
+
+// ── Keyboard shortcuts ──
+document.addEventListener('keydown', (e) => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
+  if (e.key === 'Delete' && selectedEl) deleteSelected();
+  if (e.key === 'Escape') { selectedEl = null; renderCanvas(); renderElementList(); renderProps(); }
+  if (e.key === '1') switchTab('layout');
+  if (e.key === '2') switchTab('widgets');
+  if (e.key === '3') switchTab('preview');
+});
+
+// ── Init ──
+loadRegistry();
+</script>
+</body>
+</html>

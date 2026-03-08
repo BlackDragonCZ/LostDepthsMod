@@ -1,0 +1,1528 @@
+{
+    "widgetSprites":  [
+                          {
+                              "name":  "JEI_SLOT",
+                              "sheet":  "textures/gui/jei/widgets.png",
+                              "servePath":  "/textures/gui/jei/widgets.png",
+                              "startX":  0,
+                              "startY":  0,
+                              "width":  18,
+                              "height":  18
+                          },
+                          {
+                              "name":  "JEI_CHANCE_SLOT",
+                              "sheet":  "textures/gui/jei/widgets.png",
+                              "servePath":  "/textures/gui/jei/widgets.png",
+                              "startX":  20,
+                              "startY":  156,
+                              "width":  18,
+                              "height":  18
+                          },
+                          {
+                              "name":  "JEI_CATALYST_SLOT",
+                              "sheet":  "textures/gui/jei/widgets.png",
+                              "servePath":  "/textures/gui/jei/widgets.png",
+                              "startX":  0,
+                              "startY":  156,
+                              "width":  18,
+                              "height":  18
+                          },
+                          {
+                              "name":  "JEI_ARROW",
+                              "sheet":  "textures/gui/jei/widgets.png",
+                              "servePath":  "/textures/gui/jei/widgets.png",
+                              "startX":  19,
+                              "startY":  10,
+                              "width":  42,
+                              "height":  10
+                          },
+                          {
+                              "name":  "JEI_LONG_ARROW",
+                              "sheet":  "textures/gui/jei/widgets.png",
+                              "servePath":  "/textures/gui/jei/widgets.png",
+                              "startX":  19,
+                              "startY":  0,
+                              "width":  71,
+                              "height":  10
+                          },
+                          {
+                              "name":  "JEI_DOWN_ARROW",
+                              "sheet":  "textures/gui/jei/widgets.png",
+                              "servePath":  "/textures/gui/jei/widgets.png",
+                              "startX":  0,
+                              "startY":  21,
+                              "width":  18,
+                              "height":  14
+                          },
+                          {
+                              "name":  "JEI_LIGHT",
+                              "sheet":  "textures/gui/jei/widgets.png",
+                              "servePath":  "/textures/gui/jei/widgets.png",
+                              "startX":  0,
+                              "startY":  42,
+                              "width":  52,
+                              "height":  11
+                          },
+                          {
+                              "name":  "JEI_QUESTION_MARK",
+                              "sheet":  "textures/gui/jei/widgets.png",
+                              "servePath":  "/textures/gui/jei/widgets.png",
+                              "startX":  0,
+                              "startY":  178,
+                              "width":  12,
+                              "height":  16
+                          },
+                          {
+                              "name":  "JEI_SHADOW",
+                              "sheet":  "textures/gui/jei/widgets.png",
+                              "servePath":  "/textures/gui/jei/widgets.png",
+                              "startX":  0,
+                              "startY":  56,
+                              "width":  52,
+                              "height":  11
+                          },
+                          {
+                              "name":  "BLOCKZAPPER_UPGRADE_RECIPE",
+                              "sheet":  "textures/gui/jei/widgets.png",
+                              "servePath":  "/textures/gui/jei/widgets.png",
+                              "startX":  0,
+                              "startY":  75,
+                              "width":  144,
+                              "height":  66
+                          },
+                          {
+                              "name":  "JEI_HEAT_BAR",
+                              "sheet":  "textures/gui/jei/widgets.png",
+                              "servePath":  "/textures/gui/jei/widgets.png",
+                              "startX":  0,
+                              "startY":  201,
+                              "width":  169,
+                              "height":  19
+                          },
+                          {
+                              "name":  "JEI_NO_HEAT_BAR",
+                              "sheet":  "textures/gui/jei/widgets.png",
+                              "servePath":  "/textures/gui/jei/widgets.png",
+                              "startX":  0,
+                              "startY":  221,
+                              "width":  169,
+                              "height":  19
+                          }
+                      ],
+    "availableTextures":  [
+                              {
+                                  "name":  "compression_table",
+                                  "folder":  "screens",
+                                  "path":  "textures/screens/compression_table.png",
+                                  "servePath":  "/textures/screens/compression_table.png",
+                                  "fileSize":  2695
+                              },
+                              {
+                                  "name":  "compressor_gui",
+                                  "folder":  "screens",
+                                  "path":  "textures/screens/compressor_gui.png",
+                                  "servePath":  "/textures/screens/compressor_gui.png",
+                                  "fileSize":  1128
+                              },
+                              {
+                                  "name":  "crystalizer_gui",
+                                  "folder":  "screens",
+                                  "path":  "textures/screens/crystalizer_gui.png",
+                                  "servePath":  "/textures/screens/crystalizer_gui.png",
+                                  "fileSize":  1142
+                              },
+                              {
+                                  "name":  "fusion_table",
+                                  "folder":  "screens",
+                                  "path":  "textures/screens/fusion_table.png",
+                                  "servePath":  "/textures/screens/fusion_table.png",
+                                  "fileSize":  6165
+                              },
+                              {
+                                  "name":  "galactic_workstation",
+                                  "folder":  "screens",
+                                  "path":  "textures/screens/galactic_workstation.png",
+                                  "servePath":  "/textures/screens/galactic_workstation.png",
+                                  "fileSize":  7108
+                              },
+                              {
+                                  "name":  "meta_collector_gui",
+                                  "folder":  "screens",
+                                  "path":  "textures/screens/meta_collector_gui.png",
+                                  "servePath":  "/textures/screens/meta_collector_gui.png",
+                                  "fileSize":  1108
+                              },
+                              {
+                                  "name":  "modulator",
+                                  "folder":  "screens",
+                                  "path":  "textures/screens/modulator.png",
+                                  "servePath":  "/textures/screens/modulator.png",
+                                  "fileSize":  1871
+                              },
+                              {
+                                  "name":  "modulator_gui",
+                                  "folder":  "screens",
+                                  "path":  "textures/screens/modulator_gui.png",
+                                  "servePath":  "/textures/screens/modulator_gui.png",
+                                  "fileSize":  1355
+                              },
+                              {
+                                  "name":  "module_creator",
+                                  "folder":  "screens",
+                                  "path":  "textures/screens/module_creator.png",
+                                  "servePath":  "/textures/screens/module_creator.png",
+                                  "fileSize":  5192
+                              },
+                              {
+                                  "name":  "portable_beacon",
+                                  "folder":  "screens",
+                                  "path":  "textures/screens/portable_beacon.png",
+                                  "servePath":  "/textures/screens/portable_beacon.png",
+                                  "fileSize":  2049
+                              },
+                              {
+                                  "name":  "portable_beacon_gui",
+                                  "folder":  "screens",
+                                  "path":  "textures/screens/portable_beacon_gui.png",
+                                  "servePath":  "/textures/screens/portable_beacon_gui.png",
+                                  "fileSize":  1177
+                              },
+                              {
+                                  "name":  "recipebook_arrow",
+                                  "folder":  "screens",
+                                  "path":  "textures/screens/recipebook_arrow.png",
+                                  "servePath":  "/textures/screens/recipebook_arrow.png",
+                                  "fileSize":  201
+                              },
+                              {
+                                  "name":  "shipment_filler",
+                                  "folder":  "screens",
+                                  "path":  "textures/screens/shipment_filler.png",
+                                  "servePath":  "/textures/screens/shipment_filler.png",
+                                  "fileSize":  4780
+                              },
+                              {
+                                  "name":  "voidcutbrick",
+                                  "folder":  "screens",
+                                  "path":  "textures/screens/voidcutbrick.png",
+                                  "servePath":  "/textures/screens/voidcutbrick.png",
+                                  "fileSize":  188
+                              },
+                              {
+                                  "name":  "wsgui_1",
+                                  "folder":  "screens",
+                                  "path":  "textures/screens/wsgui_1.png",
+                                  "servePath":  "/textures/screens/wsgui_1.png",
+                                  "fileSize":  7934
+                              },
+                              {
+                                  "name":  "wsgui_2",
+                                  "folder":  "screens",
+                                  "path":  "textures/screens/wsgui_2.png",
+                                  "servePath":  "/textures/screens/wsgui_2.png",
+                                  "fileSize":  11927
+                              },
+                              {
+                                  "name":  "fusion_table",
+                                  "folder":  "gui",
+                                  "path":  "textures/gui/fusion_table.png",
+                                  "servePath":  "/textures/gui/fusion_table.png",
+                                  "fileSize":  6165
+                              },
+                              {
+                                  "name":  "jei_handler",
+                                  "folder":  "gui",
+                                  "path":  "textures/gui/jei_handler.png",
+                                  "servePath":  "/textures/gui/jei_handler.png",
+                                  "fileSize":  7327
+                              },
+                              {
+                                  "name":  "ld_gui_generic",
+                                  "folder":  "gui",
+                                  "path":  "textures/gui/ld_gui_generic.png",
+                                  "servePath":  "/textures/gui/ld_gui_generic.png",
+                                  "fileSize":  11429
+                              },
+                              {
+                                  "name":  "widgets",
+                                  "folder":  "gui/jei",
+                                  "path":  "textures/gui/jei/widgets.png",
+                                  "servePath":  "/textures/gui/jei/widgets.png",
+                                  "fileSize":  3377
+                              },
+                              {
+                                  "name":  "books_drago",
+                                  "folder":  "gui/guidebook",
+                                  "path":  "textures/gui/guidebook/books_drago.png",
+                                  "servePath":  "/textures/gui/guidebook/books_drago.png",
+                                  "fileSize":  31660
+                              },
+                              {
+                                  "name":  "deepslate_dim",
+                                  "folder":  "gui/guidebook",
+                                  "path":  "textures/gui/guidebook/deepslate_dim.png",
+                                  "servePath":  "/textures/gui/guidebook/deepslate_dim.png",
+                                  "fileSize":  32511
+                              },
+                              {
+                                  "name":  "security_gate",
+                                  "folder":  "gui/guidebook",
+                                  "path":  "textures/gui/guidebook/security_gate.png",
+                                  "servePath":  "/textures/gui/guidebook/security_gate.png",
+                                  "fileSize":  25518
+                              }
+                          ],
+    "categories":  [
+                       {
+                           "id":  "V1_COMPRESSING",
+                           "label":  "V1 Compressing",
+                           "recipeType":  "v1_compressing",
+                           "categoryClass":  "GenericCompressorRecipeCategory",
+                           "categoryPath":  "src/main/java/cz/blackdragoncz/lostdepths/client/jei/machines/GenericCompressorRecipeCategory.java",
+                           "width":  144,
+                           "height":  20,
+                           "xOffset":  0,
+                           "yOffset":  0,
+                           "elements":  [
+                                            {
+                                                "type":  "slot_bg",
+                                                "id":  "slot_bg_0",
+                                                "x":  35,
+                                                "y":  1
+                                            },
+                                            {
+                                                "type":  "slot_bg",
+                                                "id":  "slot_bg_1",
+                                                "x":  95,
+                                                "y":  1
+                                            },
+                                            {
+                                                "type":  "power_icon",
+                                                "id":  "power_icon",
+                                                "x":  8,
+                                                "y":  0
+                                            }
+                                        ],
+                           "recipes":  [
+                                           {
+                                               "file":  "condensed_cryzulite.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/compressing/v1/condensed_cryzulite.json",
+                                               "input":  "lostdepths:cryzulite_ingot",
+                                               "output":  "lostdepths:condensed_cryzulite"
+                                           },
+                                           {
+                                               "file":  "condensed_firerite.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/compressing/v1/condensed_firerite.json",
+                                               "input":  "lostdepths:firerite_ingot",
+                                               "output":  "lostdepths:condensed_firerite"
+                                           },
+                                           {
+                                               "file":  "condensed_melworium.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/compressing/v1/condensed_melworium.json",
+                                               "input":  "lostdepths:melworite_ingot",
+                                               "output":  "lostdepths:condensed_melworite"
+                                           },
+                                           {
+                                               "file":  "condensed_morfarite.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/compressing/v1/condensed_morfarite.json",
+                                               "input":  "lostdepths:morfarite_ingot",
+                                               "output":  "lostdepths:condensed_morfarite"
+                                           },
+                                           {
+                                               "file":  "condensed_zerithium.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/compressing/v1/condensed_zerithium.json",
+                                               "input":  "lostdepths:zerithium_ingot",
+                                               "output":  "lostdepths:condensed_zerithium"
+                                           }
+                                       ],
+                           "textures":  [
+                                            {
+                                                "source":  "ResourceLocation",
+                                                "path":  "textures/gui/container/furnace.png",
+                                                "servePath":  "/textures/gui/container/furnace.png"
+                                            },
+                                            {
+                                                "source":  "ResourceLocation",
+                                                "path":  "textures/gui/container/furnace.png",
+                                                "servePath":  "/textures/gui/container/furnace.png"
+                                            },
+                                            {
+                                                "source":  "LostdepthsMod.rl",
+                                                "path":  "textures/gui/jei_handler.png",
+                                                "servePath":  "/textures/gui/jei_handler.png"
+                                            },
+                                            {
+                                                "source":  "drawableBuilder",
+                                                "texturePath":  "",
+                                                "uvX":  224,
+                                                "uvY":  96,
+                                                "uvW":  15,
+                                                "uvH":  14
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  "V2_COMPRESSING",
+                           "label":  "V2 Compressing",
+                           "recipeType":  "v2_compressing",
+                           "categoryClass":  "GenericCompressorRecipeCategory",
+                           "categoryPath":  "src/main/java/cz/blackdragoncz/lostdepths/client/jei/machines/GenericCompressorRecipeCategory.java",
+                           "width":  144,
+                           "height":  20,
+                           "xOffset":  0,
+                           "yOffset":  0,
+                           "elements":  [
+                                            {
+                                                "type":  "slot_bg",
+                                                "id":  "slot_bg_0",
+                                                "x":  35,
+                                                "y":  1
+                                            },
+                                            {
+                                                "type":  "slot_bg",
+                                                "id":  "slot_bg_1",
+                                                "x":  95,
+                                                "y":  1
+                                            },
+                                            {
+                                                "type":  "power_icon",
+                                                "id":  "power_icon",
+                                                "x":  8,
+                                                "y":  0
+                                            }
+                                        ],
+                           "recipes":  [
+                                           {
+                                               "file":  "condensed_biolliterite.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/compressing/v2/condensed_biolliterite.json",
+                                               "input":  "lostdepths:biolliterite_ingot",
+                                               "output":  "lostdepths:condensed_biolliterite"
+                                           },
+                                           {
+                                               "file":  "condensed_cognitium.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/compressing/v2/condensed_cognitium.json",
+                                               "input":  "lostdepths:cognitium_ingot",
+                                               "output":  "lostdepths:condensed_cognitium"
+                                           },
+                                           {
+                                               "file":  "condensed_hyperium.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/compressing/v2/condensed_hyperium.json",
+                                               "input":  "lostdepths:hyperium_ingot",
+                                               "output":  "lostdepths:condensed_hyperium"
+                                           },
+                                           {
+                                               "file":  "condensed_malicium.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/compressing/v2/condensed_malicium.json",
+                                               "input":  "lostdepths:malicium_ingot",
+                                               "output":  "lostdepths:condensed_malicium"
+                                           },
+                                           {
+                                               "file":  "condensed_noxhertium.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/compressing/v2/condensed_noxhertium.json",
+                                               "input":  "lostdepths:noxhertium_ingot",
+                                               "output":  "lostdepths:condensed_noxhertium"
+                                           },
+                                           {
+                                               "file":  "condensed_psycherium.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/compressing/v2/condensed_psycherium.json",
+                                               "input":  "lostdepths:psycherium_ingot",
+                                               "output":  "lostdepths:condensed_psycherium"
+                                           },
+                                           {
+                                               "file":  "condensed_varllerium.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/compressing/v2/condensed_varllerium.json",
+                                               "input":  "lostdepths:varllerium_ingot",
+                                               "output":  "lostdepths:condensed_varllerium"
+                                           }
+                                       ],
+                           "textures":  [
+                                            {
+                                                "source":  "ResourceLocation",
+                                                "path":  "textures/gui/container/furnace.png",
+                                                "servePath":  "/textures/gui/container/furnace.png"
+                                            },
+                                            {
+                                                "source":  "ResourceLocation",
+                                                "path":  "textures/gui/container/furnace.png",
+                                                "servePath":  "/textures/gui/container/furnace.png"
+                                            },
+                                            {
+                                                "source":  "LostdepthsMod.rl",
+                                                "path":  "textures/gui/jei_handler.png",
+                                                "servePath":  "/textures/gui/jei_handler.png"
+                                            },
+                                            {
+                                                "source":  "drawableBuilder",
+                                                "texturePath":  "",
+                                                "uvX":  224,
+                                                "uvY":  96,
+                                                "uvW":  15,
+                                                "uvH":  14
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  "V3_COMPRESSING",
+                           "label":  "V3 Compressing",
+                           "recipeType":  "v3_compressing",
+                           "categoryClass":  "GenericCompressorRecipeCategory",
+                           "categoryPath":  "src/main/java/cz/blackdragoncz/lostdepths/client/jei/machines/GenericCompressorRecipeCategory.java",
+                           "width":  144,
+                           "height":  20,
+                           "xOffset":  0,
+                           "yOffset":  0,
+                           "elements":  [
+                                            {
+                                                "type":  "slot_bg",
+                                                "id":  "slot_bg_0",
+                                                "x":  35,
+                                                "y":  1
+                                            },
+                                            {
+                                                "type":  "slot_bg",
+                                                "id":  "slot_bg_1",
+                                                "x":  95,
+                                                "y":  1
+                                            },
+                                            {
+                                                "type":  "power_icon",
+                                                "id":  "power_icon",
+                                                "x":  8,
+                                                "y":  0
+                                            }
+                                        ],
+                           "recipes":  [
+                                           {
+                                               "file":  "condensed_etherium.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/compressing/v3/condensed_etherium.json",
+                                               "input":  "lostdepths:etherium_ingot",
+                                               "output":  "lostdepths:condensed_etherium"
+                                           },
+                                           {
+                                               "file":  "condensed_kyvorium.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/compressing/v3/condensed_kyvorium.json",
+                                               "input":  "lostdepths:kyvorium_ingot",
+                                               "output":  "lostdepths:condensed_kyvorium"
+                                           },
+                                           {
+                                               "file":  "condensed_necrotonite.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/compressing/v3/condensed_necrotonite.json",
+                                               "input":  "lostdepths:necrotonite_ingot",
+                                               "output":  "lostdepths:condensed_necrotonite"
+                                           },
+                                           {
+                                               "file":  "condensed_polarium.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/compressing/v3/condensed_polarium.json",
+                                               "input":  "lostdepths:polarium_ingot",
+                                               "output":  "lostdepths:condensed_polarium"
+                                           },
+                                           {
+                                               "file":  "multiversite.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/compressing/v3/multiversite.json",
+                                               "input":  "lostdepths:fractured_multiversite",
+                                               "output":  "lostdepths:multiversite_plates"
+                                           }
+                                       ],
+                           "textures":  [
+                                            {
+                                                "source":  "ResourceLocation",
+                                                "path":  "textures/gui/container/furnace.png",
+                                                "servePath":  "/textures/gui/container/furnace.png"
+                                            },
+                                            {
+                                                "source":  "ResourceLocation",
+                                                "path":  "textures/gui/container/furnace.png",
+                                                "servePath":  "/textures/gui/container/furnace.png"
+                                            },
+                                            {
+                                                "source":  "LostdepthsMod.rl",
+                                                "path":  "textures/gui/jei_handler.png",
+                                                "servePath":  "/textures/gui/jei_handler.png"
+                                            },
+                                            {
+                                                "source":  "drawableBuilder",
+                                                "texturePath":  "",
+                                                "uvX":  224,
+                                                "uvY":  96,
+                                                "uvW":  15,
+                                                "uvH":  14
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  "GALACTIC_WORKSTATION",
+                           "label":  "Galactic Workstation",
+                           "recipeType":  "galactic_workstation",
+                           "categoryClass":  "GalacticWorkstationRecipeCategory",
+                           "categoryPath":  "src/main/java/cz/blackdragoncz/lostdepths/client/jei/machines/GalacticWorkstationRecipeCategory.java",
+                           "width":  160,
+                           "height":  60,
+                           "xOffset":  0,
+                           "yOffset":  0,
+                           "elements":  [
+                                            {
+                                                "type":  "recipe_slot",
+                                                "id":  "recipe_slot_0",
+                                                "role":  "OUTPUT",
+                                                "x":  135,
+                                                "y":  22
+                                            },
+                                            {
+                                                "type":  "bg_texture",
+                                                "id":  "bg_texture",
+                                                "uvX":  7,
+                                                "uvY":  13,
+                                                "w":  160,
+                                                "h":  60,
+                                                "texW":  176,
+                                                "texH":  166
+                                            }
+                                        ],
+                           "recipes":  [
+                                           {
+                                               "file":  "aspect_of_the_star.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/galactic_workstation/aspect_of_the_star.json",
+                                               "output":  "lostdepths:aspect_of_the_star",
+                                               "ingredients":  {
+                                                                   "I":  "lostdepths:psycherium_ingot",
+                                                                   "R":  "lostdepths:ethercut_metal",
+                                                                   "S":  "minecraft:netherite_sword"
+                                                               },
+                                               "pattern":  [
+                                                               "II ",
+                                                               "R R",
+                                                               " S "
+                                                           ],
+                                               "recipeWidth":  3,
+                                               "recipeHeight":  3
+                                           },
+                                           {
+                                               "file":  "infused_mushroom_r.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/galactic_workstation/infused_mushroom_r.json",
+                                               "output":  "lostdepths:infused_mushroom",
+                                               "ingredients":  {
+                                                                   "I":  "minecraft:red_mushroom",
+                                                                   "R":  "lostdepths:celestial_redstone",
+                                                                   "S":  "minecraft:brown_mushroom"
+                                                               },
+                                               "pattern":  [
+                                                               "III",
+                                                               "R R",
+                                                               " S "
+                                                           ],
+                                               "recipeWidth":  3,
+                                               "recipeHeight":  3
+                                           },
+                                           {
+                                               "file":  "infused_wing.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/galactic_workstation/infused_wing.json",
+                                               "output":  "lostdepths:infused_wing",
+                                               "ingredients":  {
+                                                                   "I":  "minecraft:feather",
+                                                                   "R":  "lostdepths:celestial_iron",
+                                                                   "S":  "lostdepths:magma_solution"
+                                                               },
+                                               "pattern":  [
+                                                               "III",
+                                                               "R R",
+                                                               " S "
+                                                           ],
+                                               "recipeWidth":  3,
+                                               "recipeHeight":  3
+                                           },
+                                           {
+                                               "file":  "ion_crystal.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/galactic_workstation/ion_crystal.json",
+                                               "output":  "lostdepths:ion_crystal",
+                                               "ingredients":  {
+                                                                   "I":  "lostdepths:infused_crystal",
+                                                                   "R":  "lostdepths:infused_redstone",
+                                                                   "S":  "minecraft:nether_star"
+                                                               },
+                                               "pattern":  [
+                                                               "III",
+                                                               "R R",
+                                                               " S "
+                                                           ],
+                                               "recipeWidth":  3,
+                                               "recipeHeight":  3
+                                           },
+                                           {
+                                               "file":  "rod_of_transformation.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/galactic_workstation/rod_of_transformation.json",
+                                               "output":  "lostdepths:rod_of_transformation",
+                                               "ingredients":  {
+                                                                   "S":  "minecraft:nether_star",
+                                                                   "D":  "minecraft:diamond",
+                                                                   "G":  "lostdepths:iron_golem_essence"
+                                                               },
+                                               "pattern":  [
+                                                               " S ",
+                                                               "D D",
+                                                               " G "
+                                                           ],
+                                               "recipeWidth":  3,
+                                               "recipeHeight":  3
+                                           },
+                                           {
+                                               "file":  "security_pass_1.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/galactic_workstation/security_pass_1.json",
+                                               "output":  "lostdepths:security_pass_1",
+                                               "ingredients":  {
+                                                                   "P":  "lostdepths:power_core",
+                                                                   "R":  "lostdepths:condensed_morfarite",
+                                                                   "W":  "lostdepths:condensed_melworite",
+                                                                   "U":  "lostdepths:unbreakable_chain"
+                                                               },
+                                               "pattern":  [
+                                                               "RPR",
+                                                               "W W",
+                                                               " U "
+                                                           ],
+                                               "recipeWidth":  3,
+                                               "recipeHeight":  3
+                                           },
+                                           {
+                                               "file":  "security_pass_prime_a.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/galactic_workstation/security_pass_prime_a.json",
+                                               "output":  "lostdepths:security_pass_a",
+                                               "ingredients":  {
+                                                                   "A":  "lostdepths:security_pass_2",
+                                                                   "B":  "lostdepths:basic_storage_chip",
+                                                                   "C":  "lostdepths:luminescent_cubes",
+                                                                   "D":  "lostdepths:corrosive_mix",
+                                                                   "E":  "lostdepths:biocut_metal"
+                                                               },
+                                               "pattern":  [
+                                                               "B C",
+                                                               "E D",
+                                                               " A "
+                                                           ],
+                                               "recipeWidth":  3,
+                                               "recipeHeight":  3
+                                           },
+                                           {
+                                               "file":  "the_destroyer.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/galactic_workstation/the_destroyer.json",
+                                               "output":  "lostdepths:the_destroyer",
+                                               "ingredients":  {
+                                                                   "E":  "lostdepths:energyzed_alloy",
+                                                                   "I":  "lostdepths:infused_crystal",
+                                                                   "A":  "minecraft:netherite_axe",
+                                                                   "S":  "minecraft:netherite_sword",
+                                                                   "G":  "lostdepths:iron_golem_essence"
+                                                               },
+                                               "pattern":  [
+                                                               "EIE",
+                                                               "A S",
+                                                               " G "
+                                                           ],
+                                               "recipeWidth":  3,
+                                               "recipeHeight":  3
+                                           }
+                                       ],
+                           "bgTexture":  "lostdepths:textures/screens/galactic_workstation.png",
+                           "textures":  [
+                                            {
+                                                "source":  "ResourceLocation",
+                                                "path":  "textures/screens/galactic_workstation.png",
+                                                "servePath":  "/textures/screens/galactic_workstation.png"
+                                            },
+                                            {
+                                                "source":  "drawableBuilder",
+                                                "texturePath":  "",
+                                                "uvX":  7,
+                                                "uvY":  13,
+                                                "uvW":  160,
+                                                "uvH":  60
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  "ALLOY_WORKSTATION",
+                           "label":  "Alloy Workstation",
+                           "recipeType":  "alloy_workstation",
+                           "categoryClass":  "AlloyWorkstationRecipeCategory",
+                           "categoryPath":  "src/main/java/cz/blackdragoncz/lostdepths/client/jei/machines/AlloyWorkstationRecipeCategory.java",
+                           "width":  160,
+                           "height":  60,
+                           "xOffset":  0,
+                           "yOffset":  0,
+                           "elements":  [
+                                            {
+                                                "type":  "recipe_slot",
+                                                "id":  "recipe_slot_0",
+                                                "role":  "OUTPUT",
+                                                "x":  139,
+                                                "y":  22
+                                            }
+                                        ],
+                           "recipes":  [
+                                           {
+                                               "file":  "celestial_key.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/alloy_workstation/celestial_key.json",
+                                               "output":  "lostdepths:soul_key",
+                                               "ingredients":  {
+                                                                   "1":  "lostdepths:key_fragment_1",
+                                                                   "2":  "lostdepths:key_fragment_2",
+                                                                   "3":  "lostdepths:key_fragment_3",
+                                                                   "T":  "lostdepths:titanium_metalloy",
+                                                                   "G":  "lostdepths:geo_magnetic_glue"
+                                                               },
+                                               "pattern":  [
+                                                               "213",
+                                                               " T ",
+                                                               "GGG"
+                                                           ],
+                                               "recipeWidth":  3,
+                                               "recipeHeight":  3
+                                           },
+                                           {
+                                               "file":  "celestial_key_alt.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/alloy_workstation/celestial_key_alt.json",
+                                               "output":  "lostdepths:soul_key",
+                                               "ingredients":  {
+                                                                   "1":  "lostdepths:polarium_ingot",
+                                                                   "2":  "lostdepths:malicium_ingot",
+                                                                   "T":  "lostdepths:soul_key",
+                                                                   "G":  "lostdepths:ionite_bar"
+                                                               },
+                                               "pattern":  [
+                                                               "121",
+                                                               " T ",
+                                                               "GGG"
+                                                           ],
+                                               "recipeWidth":  3,
+                                               "recipeHeight":  3
+                                           },
+                                           {
+                                               "file":  "condensed_cosmerite.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/alloy_workstation/condensed_cosmerite.json",
+                                               "output":  "lostdepths:condensed_cosmerite",
+                                               "ingredients":  {
+                                                                   "F":  "lostdepths:condensed_firerite",
+                                                                   "M":  "lostdepths:condensed_morfarite",
+                                                                   "R":  "lostdepths:condensed_melworite",
+                                                                   "N":  "minecraft:netherite_ingot"
+                                                               },
+                                               "pattern":  [
+                                                               "FMF",
+                                                               " N ",
+                                                               "RMR"
+                                                           ],
+                                               "recipeWidth":  3,
+                                               "recipeHeight":  3
+                                           },
+                                           {
+                                               "file":  "crimson_transducer_r.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/alloy_workstation/crimson_transducer_r.json",
+                                               "output":  "lostdepths:crimson_transducer",
+                                               "ingredients":  {
+                                                                   "A":  "lostdepths:power_funnel",
+                                                                   "B":  "lostdepths:starcut_metal",
+                                                                   "N":  "lostdepths:combustion_chamber"
+                                                               },
+                                               "pattern":  [
+                                                               "AAA",
+                                                               " N ",
+                                                               "BBB"
+                                                           ],
+                                               "recipeWidth":  3,
+                                               "recipeHeight":  3
+                                           },
+                                           {
+                                               "file":  "enraged_iron_alt.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/alloy_workstation/enraged_iron_alt.json",
+                                               "output":  "lostdepths:enraged_iron",
+                                               "ingredients":  {
+                                                                   "1":  "minecraft:netherite_scrap",
+                                                                   "T":  "lostdepths:titanium_metalloy",
+                                                                   "G":  "lostdepths:infused_iron"
+                                                               },
+                                               "pattern":  [
+                                                               "111",
+                                                               " T ",
+                                                               "GGG"
+                                                           ],
+                                               "recipeWidth":  3,
+                                               "recipeHeight":  3
+                                           },
+                                           {
+                                               "file":  "infused_gold_alt.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/alloy_workstation/infused_gold_alt.json",
+                                               "output":  "lostdepths:infused_gold",
+                                               "ingredients":  {
+                                                                   "1":  "minecraft:gold_ingot",
+                                                                   "T":  "lostdepths:celestial_gold"
+                                                               },
+                                               "pattern":  [
+                                                               "111",
+                                                               " T ",
+                                                               "111"
+                                                           ],
+                                               "recipeWidth":  3,
+                                               "recipeHeight":  3
+                                           },
+                                           {
+                                               "file":  "neosteel_nuggets.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/alloy_workstation/neosteel_nuggets.json",
+                                               "output":  "lostdepths:neosteel_nuggets",
+                                               "ingredients":  {
+                                                                   "C":  "lostdepths:condensed_cosmerite",
+                                                                   "Z":  "lostdepths:condensed_zerithium",
+                                                                   "T":  "lostdepths:titanium_metalloy"
+                                                               },
+                                               "pattern":  [
+                                                               "CCC",
+                                                               " T ",
+                                                               "ZZZ"
+                                                           ],
+                                               "recipeWidth":  3,
+                                               "recipeHeight":  3
+                                           },
+                                           {
+                                               "file":  "netherite_ingot.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/alloy_workstation/netherite_ingot.json",
+                                               "output":  "minecraft:netherite_ingot",
+                                               "ingredients":  {
+                                                                   "1":  "lostdepths:netherite_dust",
+                                                                   "2":  "lostdepths:lava_string",
+                                                                   "3":  "lostdepths:celestial_gold"
+                                                               },
+                                               "pattern":  [
+                                                               "111",
+                                                               " 2 ",
+                                                               "333"
+                                                           ],
+                                               "recipeWidth":  3,
+                                               "recipeHeight":  3
+                                           },
+                                           {
+                                               "file":  "power_clamp_alt.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/alloy_workstation/power_clamp_alt.json",
+                                               "output":  "lostdepths:power_clamp",
+                                               "ingredients":  {
+                                                                   "1":  "lostdepths:power_coil",
+                                                                   "T":  "lostdepths:titanium_metalloy",
+                                                                   "G":  "lostdepths:over_charge_coil",
+                                                                   "E":  "lostdepths:condensed_cryzulite"
+                                                               },
+                                               "pattern":  [
+                                                               "111",
+                                                               " T ",
+                                                               "GEG"
+                                                           ],
+                                               "recipeWidth":  3,
+                                               "recipeHeight":  3
+                                           },
+                                           {
+                                               "file":  "prime_draconic_axe.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/alloy_workstation/prime_draconic_axe.json",
+                                               "output":  "lostdepths:prime_draconic_axe",
+                                               "ingredients":  {
+                                                                   "A":  "lostdepths:condensed_etherium",
+                                                                   "T":  "minecraft:netherite_axe",
+                                                                   "G":  "lostdepths:celestial_redstone"
+                                                               },
+                                               "pattern":  [
+                                                               "AAA",
+                                                               " T ",
+                                                               "GGG"
+                                                           ],
+                                               "recipeWidth":  3,
+                                               "recipeHeight":  3
+                                           },
+                                           {
+                                               "file":  "prime_draconic_hammer.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/alloy_workstation/prime_draconic_hammer.json",
+                                               "output":  "lostdepths:prime_draconic_hammer",
+                                               "ingredients":  {
+                                                                   "A":  "lostdepths:condensed_necrotonite",
+                                                                   "T":  "lostdepths:prime_draconic_pickaxe",
+                                                                   "G":  "lostdepths:multiversite_plates"
+                                                               },
+                                               "pattern":  [
+                                                               "AAA",
+                                                               " T ",
+                                                               "GGG"
+                                                           ],
+                                               "recipeWidth":  3,
+                                               "recipeHeight":  3
+                                           },
+                                           {
+                                               "file":  "prime_draconic_pickaxe.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/alloy_workstation/prime_draconic_pickaxe.json",
+                                               "output":  "lostdepths:prime_draconic_pickaxe",
+                                               "ingredients":  {
+                                                                   "A":  "lostdepths:condensed_etherium",
+                                                                   "T":  "minecraft:netherite_pickaxe",
+                                                                   "G":  "lostdepths:celestial_redstone"
+                                                               },
+                                               "pattern":  [
+                                                               "AAA",
+                                                               " T ",
+                                                               "GGG"
+                                                           ],
+                                               "recipeWidth":  3,
+                                               "recipeHeight":  3
+                                           },
+                                           {
+                                               "file":  "prime_draconic_shovel.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/alloy_workstation/prime_draconic_shovel.json",
+                                               "output":  "lostdepths:prime_draconic_shovel",
+                                               "ingredients":  {
+                                                                   "A":  "lostdepths:condensed_etherium",
+                                                                   "T":  "minecraft:netherite_shovel",
+                                                                   "G":  "lostdepths:celestial_redstone"
+                                                               },
+                                               "pattern":  [
+                                                               "AAA",
+                                                               " T ",
+                                                               "GGG"
+                                                           ],
+                                               "recipeWidth":  3,
+                                               "recipeHeight":  3
+                                           },
+                                           {
+                                               "file":  "prime_draconic_staff.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/alloy_workstation/prime_draconic_staff.json",
+                                               "output":  "lostdepths:prime_draconic_staff",
+                                               "ingredients":  {
+                                                                   "A":  "lostdepths:condensed_etherium",
+                                                                   "T":  "minecraft:trident",
+                                                                   "G":  "lostdepths:celestial_redstone"
+                                                               },
+                                               "pattern":  [
+                                                               "AAA",
+                                                               " T ",
+                                                               "GGG"
+                                                           ],
+                                               "recipeWidth":  3,
+                                               "recipeHeight":  3
+                                           },
+                                           {
+                                               "file":  "prime_draconic_sword.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/alloy_workstation/prime_draconic_sword.json",
+                                               "output":  "lostdepths:prime_draconic_sword",
+                                               "ingredients":  {
+                                                                   "A":  "lostdepths:condensed_etherium",
+                                                                   "T":  "minecraft:netherite_sword",
+                                                                   "G":  "lostdepths:celestial_redstone"
+                                                               },
+                                               "pattern":  [
+                                                               "AAA",
+                                                               " T ",
+                                                               "GGG"
+                                                           ],
+                                               "recipeWidth":  3,
+                                               "recipeHeight":  3
+                                           },
+                                           {
+                                               "file":  "radiochronic_isotope.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/alloy_workstation/radiochronic_isotope.json",
+                                               "output":  "lostdepths:radiochronic_isotope",
+                                               "ingredients":  {
+                                                                   "P":  "lostdepths:poly_amplification_solution",
+                                                                   "V":  "lostdepths:vial_of_solarum",
+                                                                   "I":  "lostdepths:radioactive_isotopes",
+                                                                   "G":  "lostdepths:astral_generator"
+                                                               },
+                                               "pattern":  [
+                                                               "PVV",
+                                                               " G ",
+                                                               "IIP"
+                                                           ],
+                                               "recipeWidth":  3,
+                                               "recipeHeight":  3
+                                           },
+                                           {
+                                               "file":  "star_key.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/alloy_workstation/star_key.json",
+                                               "output":  "lostdepths:star_key",
+                                               "ingredients":  {
+                                                                   "A":  "lostdepths:condensed_kyvorium",
+                                                                   "T":  "lostdepths:soul_key",
+                                                                   "G":  "lostdepths:celestial_redstone"
+                                                               },
+                                               "pattern":  [
+                                                               "AAA",
+                                                               " T ",
+                                                               "GGG"
+                                                           ],
+                                               "recipeWidth":  3,
+                                               "recipeHeight":  3
+                                           }
+                                       ],
+                           "bgTexture":  "lostdepths:textures/screens/wsgui_2.png",
+                           "textures":  [
+                                            {
+                                                "source":  "ResourceLocation",
+                                                "path":  "textures/screens/wsgui_2.png",
+                                                "servePath":  "/textures/screens/wsgui_2.png"
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  "MODULE_CREATOR",
+                           "label":  "Module Creator",
+                           "recipeType":  "module_creator",
+                           "categoryClass":  "ModuleCreatorRecipeCategory",
+                           "categoryPath":  "src/main/java/cz/blackdragoncz/lostdepths/client/jei/machines/ModuleCreatorRecipeCategory.java",
+                           "width":  140,
+                           "height":  59,
+                           "xOffset":  0,
+                           "yOffset":  0,
+                           "elements":  [
+                                            {
+                                                "type":  "recipe_slot",
+                                                "id":  "recipe_slot_0",
+                                                "role":  "INPUT",
+                                                "x":  28,
+                                                "y":  39
+                                            },
+                                            {
+                                                "type":  "recipe_slot",
+                                                "id":  "recipe_slot_1",
+                                                "role":  "OUTPUT",
+                                                "x":  119,
+                                                "y":  20
+                                            },
+                                            {
+                                                "type":  "bg_texture",
+                                                "id":  "bg_texture",
+                                                "uvX":  15,
+                                                "uvY":  15,
+                                                "w":  136,
+                                                "h":  56,
+                                                "texW":  256,
+                                                "texH":  256
+                                            }
+                                        ],
+                           "recipes":  [
+                                           {
+                                               "file":  "module_acceleration.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/module_creator/module_acceleration.json",
+                                               "output":  "lostdepths:module_acceleration"
+                                           },
+                                           {
+                                               "file":  "module_conversion.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/module_creator/module_conversion.json",
+                                               "output":  "lostdepths:module_conversion"
+                                           },
+                                           {
+                                               "file":  "module_power.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/module_creator/module_power.json",
+                                               "output":  "lostdepths:module_power"
+                                           },
+                                           {
+                                               "file":  "module_restoration.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/module_creator/module_restoration.json",
+                                               "output":  "lostdepths:module_restoration"
+                                           }
+                                       ],
+                           "bgTexture":  "lostdepths:textures/screens/module_creator.png",
+                           "textures":  [
+                                            {
+                                                "source":  "ResourceLocation",
+                                                "path":  "textures/screens/module_creator.png",
+                                                "servePath":  "/textures/screens/module_creator.png"
+                                            },
+                                            {
+                                                "source":  "drawableBuilder",
+                                                "texturePath":  "",
+                                                "uvX":  15,
+                                                "uvY":  15,
+                                                "uvW":  136,
+                                                "uvH":  56
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  "ITEM_USE",
+                           "label":  "Item Use",
+                           "recipeType":  "item_use",
+                           "categoryClass":  "ItemUseCategory",
+                           "categoryPath":  "src/main/java/cz/blackdragoncz/lostdepths/client/jei/ItemUseCategory.java",
+                           "width":  177,
+                           "height":  60,
+                           "xOffset":  0,
+                           "yOffset":  0,
+                           "elements":  [
+                                            {
+                                                "type":  "recipe_slot",
+                                                "id":  "recipe_slot_0",
+                                                "role":  "INPUT",
+                                                "x":  27,
+                                                "y":  38
+                                            },
+                                            {
+                                                "type":  "recipe_slot",
+                                                "id":  "recipe_slot_1",
+                                                "role":  "INPUT",
+                                                "x":  51,
+                                                "y":  5
+                                            },
+                                            {
+                                                "type":  "recipe_slot",
+                                                "id":  "recipe_slot_2",
+                                                "role":  "OUTPUT",
+                                                "x":  132,
+                                                "y":  38
+                                            }
+                                        ],
+                           "recipes":  [
+                                           {
+                                               "file":  "burning_sap_mine.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/item_use/burning_sap_mine.json",
+                                               "output":  "lostdepths:burning_sap",
+                                               "useItem":  "lostdepths:forgefire_axe",
+                                               "useOn":  "lostdepths:sunder_wood_sap",
+                                               "description":  "lostdepths.description.burning_sap_mine"
+                                           },
+                                           {
+                                               "file":  "celestial_diamond.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/item_use/celestial_diamond.json",
+                                               "output":  "lostdepths:celestial_diamond",
+                                               "useItem":  "lostdepths:omni_pickaxe",
+                                               "useOn":  "minecraft:diamond_ore",
+                                               "description":  "lostdepths.description.celestial_diamond_ore_mine"
+                                           },
+                                           {
+                                               "file":  "celestial_gold.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/item_use/celestial_gold.json",
+                                               "output":  "lostdepths:celestial_gold",
+                                               "useItem":  "lostdepths:omni_pickaxe",
+                                               "useOn":  "minecraft:gold_ore",
+                                               "description":  "lostdepths.description.celestial_gold_ore_mine"
+                                           },
+                                           {
+                                               "file":  "celestial_iron.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/item_use/celestial_iron.json",
+                                               "output":  "lostdepths:celestial_iron",
+                                               "useItem":  "lostdepths:omni_pickaxe",
+                                               "useOn":  "minecraft:iron_ore",
+                                               "description":  "lostdepths.description.celestial_iron_ore_mine"
+                                           },
+                                           {
+                                               "file":  "celestial_redstone.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/item_use/celestial_redstone.json",
+                                               "output":  "lostdepths:celestial_redstone",
+                                               "useItem":  "lostdepths:omni_pickaxe",
+                                               "useOn":  "minecraft:redstone_ore",
+                                               "description":  "lostdepths.description.celestial_redstone_ore_mine"
+                                           },
+                                           {
+                                               "file":  "clovinite_mine.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/item_use/clovinite_mine.json",
+                                               "output":  "lostdepths:clovinite",
+                                               "useItem":  "lostdepths:forgefire_axe",
+                                               "useOn":  "lostdepths:clovinite_ore",
+                                               "description":  "lostdepths.description.clovinite_mine"
+                                           },
+                                           {
+                                               "file":  "deepslate_celestial_diamond.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/item_use/deepslate_celestial_diamond.json",
+                                               "output":  "lostdepths:celestial_diamond",
+                                               "useItem":  "lostdepths:omni_pickaxe",
+                                               "useOn":  "minecraft:deepslate_diamond_ore",
+                                               "description":  "lostdepths.description.celestial_diamond_ore_mine"
+                                           },
+                                           {
+                                               "file":  "deepslate_celestial_gold.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/item_use/deepslate_celestial_gold.json",
+                                               "output":  "lostdepths:celestial_gold",
+                                               "useItem":  "lostdepths:omni_pickaxe",
+                                               "useOn":  "minecraft:deepslate_gold_ore",
+                                               "description":  "lostdepths.description.celestial_gold_ore_mine"
+                                           },
+                                           {
+                                               "file":  "deepslate_celestial_iron.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/item_use/deepslate_celestial_iron.json",
+                                               "output":  "lostdepths:celestial_iron",
+                                               "useItem":  "lostdepths:omni_pickaxe",
+                                               "useOn":  "minecraft:deepslate_iron_ore",
+                                               "description":  "lostdepths.description.celestial_iron_ore_mine"
+                                           },
+                                           {
+                                               "file":  "deepslate_celestial_redstone.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/item_use/deepslate_celestial_redstone.json",
+                                               "output":  "lostdepths:celestial_redstone",
+                                               "useItem":  "lostdepths:omni_pickaxe",
+                                               "useOn":  "minecraft:deepslate_redstone_ore",
+                                               "description":  "lostdepths.description.celestial_redstone_ore_mine"
+                                           },
+                                           {
+                                               "file":  "lucient_activation.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/item_use/lucient_activation.json",
+                                               "output":  "lostdepths:lucient_ore_active",
+                                               "useItem":  "lostdepths:corrupted_solution",
+                                               "useOn":  "lostdepths:lucient_ore",
+                                               "description":  "lostdepths.description.lucient_ore_use"
+                                           },
+                                           {
+                                               "file":  "lucient_mine.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/item_use/lucient_mine.json",
+                                               "output":  "lostdepths:pure_lucient",
+                                               "useItem":  "lostdepths:nightmare_pickaxe",
+                                               "useOn":  "lostdepths:lucient_ore_active",
+                                               "description":  "lostdepths.description.lucient_ore_mine"
+                                           },
+                                           {
+                                               "file":  "metal_branch.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/item_use/metal_branch.json",
+                                               "output":  "lostdepths:metal_branch",
+                                               "useItem":  "lostdepths:forgefire_axe",
+                                               "useOn":  "lostdepths:ferro_log",
+                                               "description":  "lostdepths.description.metal_branch_mine"
+                                           },
+                                           {
+                                               "file":  "multiversite_mine.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/item_use/multiversite_mine.json",
+                                               "output":  "lostdepths:fractured_multiversite",
+                                               "useItem":  "lostdepths:nightmare_pickaxe",
+                                               "useOn":  "lostdepths:multiversite_ore",
+                                               "description":  "lostdepths.description.multiversite_ore_mine"
+                                           },
+                                           {
+                                               "file":  "myrite_activation.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/item_use/myrite_activation.json",
+                                               "output":  "lostdepths:myrite_ore_active",
+                                               "useItem":  "lostdepths:ultraviolet_solution",
+                                               "useOn":  "lostdepths:myrite_ore",
+                                               "description":  "lostdepths.description.myrite_ore_use"
+                                           },
+                                           {
+                                               "file":  "myrite_mine.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/item_use/myrite_mine.json",
+                                               "output":  "lostdepths:myrite_crystal",
+                                               "useItem":  "lostdepths:nightmare_pickaxe",
+                                               "useOn":  "lostdepths:myrite_ore_active",
+                                               "description":  "lostdepths.description.myrite_ore_mine"
+                                           },
+                                           {
+                                               "file":  "negative_magnecronite.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/item_use/negative_magnecronite.json",
+                                               "output":  "lostdepths:negative_magnecronite",
+                                               "useItem":  "lostdepths:forgefire_axe",
+                                               "useOn":  "lostdepths:celestial_logs_red",
+                                               "description":  "lostdepths.description.negative_mag"
+                                           },
+                                           {
+                                               "file":  "phototenzyte_activation.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/item_use/phototenzyte_activation.json",
+                                               "output":  "lostdepths:phototenzyte_ore_active",
+                                               "useItem":  "lostdepths:poly_amplification_solution",
+                                               "useOn":  "lostdepths:phototenzyte_ore",
+                                               "description":  "lostdepths.description.phototenzyte_ore_use"
+                                           },
+                                           {
+                                               "file":  "phototenzyte_mine.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/item_use/phototenzyte_mine.json",
+                                               "output":  "lostdepths:phototenzyte",
+                                               "useItem":  "lostdepths:celestial_pickaxe",
+                                               "useOn":  "lostdepths:phototenzyte_ore_active",
+                                               "description":  "lostdepths.description.phototenzyte_ore_mine"
+                                           },
+                                           {
+                                               "file":  "positive_magnecronite.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/item_use/positive_magnecronite.json",
+                                               "output":  "lostdepths:positive_magnecronite",
+                                               "useItem":  "lostdepths:forgefire_axe",
+                                               "useOn":  "lostdepths:celestial_logs_blue",
+                                               "description":  "lostdepths.description.positive_mag"
+                                           },
+                                           {
+                                               "file":  "serpentine_activation.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/item_use/serpentine_activation.json",
+                                               "output":  "lostdepths:serpentine_ore",
+                                               "useItem":  "lostdepths:ender_voltaic_solution",
+                                               "useOn":  "lostdepths:serpentine_ore_unpowered",
+                                               "description":  "lostdepths.description.serpentine_ore_use"
+                                           },
+                                           {
+                                               "file":  "serpentine_mine.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/item_use/serpentine_mine.json",
+                                               "output":  "lostdepths:serpentine_crystal",
+                                               "useItem":  "lostdepths:crystalized_pickaxe",
+                                               "useOn":  "lostdepths:serpentine_ore",
+                                               "description":  "lostdepths.description.serpentine_ore_mine"
+                                           },
+                                           {
+                                               "file":  "sunder_wood.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/item_use/sunder_wood.json",
+                                               "output":  "lostdepths:sunder_log",
+                                               "useItem":  "lostdepths:forgefire_axe",
+                                               "useOn":  "lostdepths:sunder_wood",
+                                               "description":  "lostdepths.description.sunder_wood_mine"
+                                           }
+                                       ],
+                           "textures":  [
+                                            {
+                                                "source":  "AllGuiTextures",
+                                                "name":  "JEI_SHADOW",
+                                                "sheet":  "textures/gui/jei/widgets.png",
+                                                "servePath":  "/textures/gui/jei/widgets.png",
+                                                "startX":  0,
+                                                "startY":  56,
+                                                "width":  52,
+                                                "height":  11
+                                            },
+                                            {
+                                                "source":  "AllGuiTextures",
+                                                "name":  "JEI_DOWN_ARROW",
+                                                "sheet":  "textures/gui/jei/widgets.png",
+                                                "servePath":  "/textures/gui/jei/widgets.png",
+                                                "startX":  0,
+                                                "startY":  21,
+                                                "width":  18,
+                                                "height":  14
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  "META_MATERIALIZER",
+                           "label":  "Meta Materializer",
+                           "recipeType":  "meta_materializer",
+                           "categoryClass":  "MetaMaterializerCategory",
+                           "categoryPath":  "src/main/java/cz/blackdragoncz/lostdepths/client/jei/MetaMaterializerCategory.java",
+                           "width":  177,
+                           "height":  80,
+                           "xOffset":  0,
+                           "yOffset":  0,
+                           "elements":  [
+                                            {
+                                                "type":  "recipe_slot",
+                                                "id":  "recipe_slot_0",
+                                                "role":  "INPUT",
+                                                "x":  110,
+                                                "y":  10
+                                            },
+                                            {
+                                                "type":  "recipe_slot",
+                                                "id":  "recipe_slot_1",
+                                                "role":  "OUTPUT",
+                                                "x":  155,
+                                                "y":  60
+                                            }
+                                        ],
+                           "recipes":  [
+                                           {
+                                               "file":  "etherium_ingot.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/meta_materializer/etherium_ingot.json",
+                                               "output":  "lostdepths:etherium_ingot"
+                                           },
+                                           {
+                                               "file":  "kyvorium_ingot.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/meta_materializer/kyvorium_ingot.json",
+                                               "output":  "lostdepths:kyvorium_ingot"
+                                           },
+                                           {
+                                               "file":  "malicium_ingot.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/meta_materializer/malicium_ingot.json",
+                                               "output":  "lostdepths:malicium_ingot"
+                                           },
+                                           {
+                                               "file":  "polarium_ingot.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/meta_materializer/polarium_ingot.json",
+                                               "output":  "lostdepths:polarium_ingot"
+                                           }
+                                       ],
+                           "textures":  [
+                                            {
+                                                "source":  "AllGuiTextures",
+                                                "name":  "JEI_SHADOW",
+                                                "sheet":  "textures/gui/jei/widgets.png",
+                                                "servePath":  "/textures/gui/jei/widgets.png",
+                                                "startX":  0,
+                                                "startY":  56,
+                                                "width":  52,
+                                                "height":  11
+                                            },
+                                            {
+                                                "source":  "AllGuiTextures",
+                                                "name":  "JEI_DOWN_ARROW",
+                                                "sheet":  "textures/gui/jei/widgets.png",
+                                                "servePath":  "/textures/gui/jei/widgets.png",
+                                                "startX":  0,
+                                                "startY":  21,
+                                                "width":  18,
+                                                "height":  14
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  "FUSION_TABLE",
+                           "label":  "Fusion Table",
+                           "recipeType":  "fusion_table",
+                           "categoryClass":  "FusionTableRecipeCategory",
+                           "categoryPath":  "src/main/java/cz/blackdragoncz/lostdepths/client/jei/machines/FusionTableRecipeCategory.java",
+                           "width":  130,
+                           "height":  40,
+                           "xOffset":  0,
+                           "yOffset":  0,
+                           "elements":  [
+                                            {
+                                                "type":  "slot_bg",
+                                                "id":  "slot_bg_0",
+                                                "x":  0,
+                                                "y":  0
+                                            },
+                                            {
+                                                "type":  "slot_bg",
+                                                "id":  "slot_bg_1",
+                                                "x":  0,
+                                                "y":  20
+                                            },
+                                            {
+                                                "type":  "slot_bg",
+                                                "id":  "slot_bg_2",
+                                                "x":  108,
+                                                "y":  10
+                                            },
+                                            {
+                                                "type":  "recipe_slot",
+                                                "id":  "recipe_slot_0",
+                                                "role":  "INPUT",
+                                                "x":  1,
+                                                "y":  1
+                                            },
+                                            {
+                                                "type":  "recipe_slot",
+                                                "id":  "recipe_slot_1",
+                                                "role":  "INPUT",
+                                                "x":  1,
+                                                "y":  21
+                                            },
+                                            {
+                                                "type":  "recipe_slot",
+                                                "id":  "recipe_slot_2",
+                                                "role":  "OUTPUT",
+                                                "x":  109,
+                                                "y":  11
+                                            }
+                                        ],
+                           "recipes":  [
+                                           {
+                                               "file":  "polyionite.json",
+                                               "path":  "src/main/resources/data/lostdepths/recipes/fusion_table/polyionite.json",
+                                               "input1":  "lostdepths:ionite_bar",
+                                               "input2":  "lostdepths:prismosis",
+                                               "output":  "lostdepths:poly_ionite",
+                                               "outputCount":  1
+                                           }
+                                       ],
+                           "textures":  [
+                                            {
+                                                "source":  "ResourceLocation",
+                                                "path":  "textures/gui/container/furnace.png",
+                                                "servePath":  "/textures/gui/container/furnace.png"
+                                            },
+                                            {
+                                                "source":  "ResourceLocation",
+                                                "path":  "textures/gui/container/furnace.png",
+                                                "servePath":  "/textures/gui/container/furnace.png"
+                                            }
+                                        ]
+                       }
+                   ]
+}

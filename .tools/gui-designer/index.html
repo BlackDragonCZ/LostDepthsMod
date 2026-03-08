@@ -31,15 +31,26 @@ body { font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #e0e0e0;
 .el-item .el-name { flex: 1; }
 .el-item .el-pos { color: #888; font-size: 10px; }
 
+.widget-item {
+    display: flex; align-items: center; padding: 6px 8px; margin: 2px 0;
+    background: #1a1a3e; border: 1px solid #334; border-radius: 3px;
+    cursor: pointer; font-size: 11px; gap: 8px;
+}
+.widget-item:hover { border-color: #86a; }
+.widget-item.active { border-color: #a6c; background: #2a1a3e; }
+.widget-item canvas { image-rendering: pixelated; border: 1px solid #444; }
+
 .prop-row { display: flex; align-items: center; margin: 4px 0; }
 .prop-row label { width: 60px; font-size: 11px; color: #8899aa; }
-.prop-row input { flex: 1; background: #1a1a3e; border: 1px solid #334; color: #e0e0e0; padding: 4px 6px; border-radius: 3px; font-size: 12px; }
+.prop-row input, .prop-row select { flex: 1; background: #1a1a3e; border: 1px solid #334; color: #e0e0e0; padding: 4px 6px; border-radius: 3px; font-size: 12px; }
 
 .btn { display: inline-block; padding: 6px 14px; background: #1a1a3e; border: 1px solid #334; color: #e0e0e0; border-radius: 4px; cursor: pointer; font-size: 12px; }
 .btn:hover { background: #2a2a5e; }
 .btn-primary { border-color: #55c; }
 .btn-primary:hover { background: #33339e; }
 .btn-danger { border-color: #a44; }
+.btn-save { border-color: #4a4; color: #8d8; }
+.btn-save:hover { background: #1a3a1a; }
 .btn-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
 
 .main-area { flex: 1; display: flex; flex-direction: column; }
@@ -47,7 +58,15 @@ body { font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #e0e0e0;
 .toolbar .info { font-size: 11px; color: #6688aa; margin-left: auto; }
 .toolbar .sep { width: 1px; height: 20px; background: #334; }
 
-.canvas-wrap { flex: 1; overflow: auto; display: flex; align-items: center; justify-content: center; background: #111122; }
+/* Main tabs */
+.main-tabs { display: flex; background: #0f1628; border-bottom: 1px solid #0f3460; }
+.main-tab { padding: 8px 20px; cursor: pointer; font-size: 12px; color: #6688aa; border-bottom: 2px solid transparent; }
+.main-tab:hover { color: #aabbcc; }
+.main-tab.active { color: #e0e0e0; border-bottom-color: #55c; }
+
+.tab-content { flex: 1; overflow: auto; display: none; }
+.tab-content.active { display: flex; align-items: center; justify-content: center; background: #111122; }
+
 canvas { image-rendering: pixelated; cursor: crosshair; }
 
 .status-bar { height: 28px; background: #0f1628; border-top: 1px solid #0f3460; display: flex; align-items: center; padding: 0 16px; font-size: 11px; color: #556; }
@@ -61,7 +80,12 @@ canvas { image-rendering: pixelated; cursor: crosshair; }
 .diff-tab.active { background: #0d0d1a; color: #e0e0e0; }
 .diff-content { flex: 1; overflow: auto; padding: 16px; font-family: Consolas, monospace; font-size: 12px; line-height: 1.6; white-space: pre; color: #c0d0e0; }
 .diff-add { color: #5c5; }
-.diff-rem { color: #c55; text-decoration: line-through; }
+
+/* Widget editor canvas area */
+.widget-editor-wrap { display: flex; flex-direction: column; width: 100%; height: 100%; }
+.widget-editor-top { padding: 10px 16px; background: #16213e; border-bottom: 1px solid #0f3460; display: flex; align-items: center; gap: 8px; }
+.widget-canvas-area { flex: 1; overflow: auto; display: flex; align-items: center; justify-content: center; background: #0a0a1a; position: relative; }
+.widget-select-info { position: absolute; bottom: 10px; left: 10px; font-size: 11px; color: #6688aa; background: #16213ecc; padding: 4px 10px; border-radius: 4px; }
 
 .no-gui { padding: 40px; text-align: center; color: #556; font-size: 14px; }
 </style>
@@ -74,7 +98,7 @@ canvas { image-rendering: pixelated; cursor: crosshair; }
         <h3>GUIs</h3>
         <div id="guiList"><div class="no-gui">Loading registry...</div></div>
     </section>
-    <section>
+    <section id="sidebarElements">
         <h3>Elements</h3>
         <div class="element-list" id="elementList"></div>
         <div class="btn-row">
@@ -82,7 +106,16 @@ canvas { image-rendering: pixelated; cursor: crosshair; }
             <button class="btn" onclick="addElement('label')">+ Label</button>
             <button class="btn" onclick="addElement('energy_bar')">+ Energy</button>
             <button class="btn" onclick="addElement('progress')">+ Progress</button>
+            <button class="btn" onclick="addElement('blit')">+ Blit</button>
             <button class="btn btn-danger" onclick="deleteSelected()">Delete</button>
+        </div>
+    </section>
+    <section id="sidebarWidgets" style="display:none">
+        <h3>Widgets</h3>
+        <div id="widgetList" class="element-list"></div>
+        <div class="btn-row">
+            <button class="btn" onclick="addWidgetToLayout()">Add to Layout</button>
+            <button class="btn btn-danger" onclick="deleteWidget()">Delete Widget</button>
         </div>
     </section>
     <section>
@@ -100,16 +133,50 @@ canvas { image-rendering: pixelated; cursor: crosshair; }
     <div class="toolbar">
         <button class="btn btn-primary" onclick="showDiff()">Apply Changes</button>
         <div class="sep"></div>
-        <button class="btn" onclick="saveRegistry()">Save Config</button>
+        <button class="btn" onclick="saveRegistryToServer()">Save Config</button>
         <button class="btn" onclick="reloadRegistry()">Reload</button>
         <div class="sep"></div>
         <label style="font-size:12px">Zoom:</label>
-        <input type="range" id="zoomSlider" min="1" max="5" value="3" step="1" style="width:70px" oninput="zoom=+this.value;render()">
+        <input type="range" id="zoomSlider" min="1" max="5" value="3" step="1" style="width:70px" oninput="zoom=+this.value;renderActiveTab()">
         <div class="info" id="statusInfo">Select a GUI to edit</div>
     </div>
-    <div class="canvas-wrap">
+
+    <div class="main-tabs">
+        <div class="main-tab active" onclick="switchTab('layout')">Layout</div>
+        <div class="main-tab" onclick="switchTab('widgets')">Widgets</div>
+        <div class="main-tab" onclick="switchTab('preview')">Preview</div>
+    </div>
+
+    <!-- Layout Tab -->
+    <div class="tab-content active" id="tab-layout">
         <canvas id="canvas" width="528" height="618"></canvas>
     </div>
+
+    <!-- Widgets Tab -->
+    <div class="tab-content" id="tab-widgets">
+        <div class="widget-editor-wrap">
+            <div class="widget-editor-top">
+                <label style="font-size:12px">Texture:</label>
+                <select id="textureSelect" onchange="loadSelectedTexture()" style="background:#1a1a3e;border:1px solid #334;color:#e0e0e0;padding:4px;border-radius:3px;font-size:12px;min-width:200px">
+                    <option value="">-- Select texture --</option>
+                </select>
+                <div class="sep"></div>
+                <label style="font-size:12px">Widget Zoom:</label>
+                <input type="range" id="widgetZoom" min="1" max="8" value="4" step="1" style="width:70px" oninput="widgetZoomLevel=+this.value;renderWidgetEditor()">
+                <span id="widgetZoomLabel" style="font-size:11px;color:#6688aa">4x</span>
+            </div>
+            <div class="widget-canvas-area">
+                <canvas id="widgetCanvas" width="256" height="256"></canvas>
+                <div class="widget-select-info" id="widgetSelectInfo">Click and drag to select a region</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Preview Tab -->
+    <div class="tab-content" id="tab-preview">
+        <canvas id="previewCanvas" width="528" height="618"></canvas>
+    </div>
+
     <div class="status-bar" id="statusBar">Ready</div>
 </div>
 
@@ -120,6 +187,7 @@ canvas { image-rendering: pixelated; cursor: crosshair; }
             <div class="diff-tab" onclick="showDiffTab('menu')">Menu</div>
         </div>
         <div>
+            <button class="btn btn-save" onclick="saveToProject()">Save to Project</button>
             <button class="btn" onclick="copyDiff()">Copy</button>
             <button class="btn" onclick="closeDiff()">Close</button>
         </div>
@@ -134,18 +202,60 @@ let selectedEl = null;
 let zoom = 3;
 let dragging = false;
 let dragOffset = { x: 0, y: 0 };
+let activeTab = 'layout';
+
+// Layout canvas
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
+
+// Preview canvas
+const previewCanvas = document.getElementById('previewCanvas');
+const previewCtx = previewCanvas.getContext('2d');
+
+// Widget editor
+const widgetCanvas = document.getElementById('widgetCanvas');
+const widgetCtx = widgetCanvas.getContext('2d');
+let widgetZoomLevel = 4;
+let textureImage = null;
+let texturePath = '';
+let widgetSelecting = false;
+let widgetSelectStart = { x: 0, y: 0 };
+let widgetSelectEnd = { x: 0, y: 0 };
+let widgets = []; // { id, label, uvX, uvY, w, h, texturePath }
+let selectedWidget = null;
+let availableTextures = [];
 
 const SLOT_SIZE = 18;
 const PLAYER_INV_W = 162;
 const PLAYER_INV_H = 76;
+
+// --- Tab Switching ---
+function switchTab(tab) {
+    activeTab = tab;
+    document.querySelectorAll('.main-tab').forEach(t => t.classList.toggle('active', t.textContent.toLowerCase() === tab));
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + tab).classList.add('active');
+
+    // Show/hide sidebar sections
+    document.getElementById('sidebarElements').style.display = (tab === 'layout' || tab === 'preview') ? '' : 'none';
+    document.getElementById('sidebarWidgets').style.display = tab === 'widgets' ? '' : 'none';
+
+    renderActiveTab();
+}
+
+function renderActiveTab() {
+    if (activeTab === 'layout') render();
+    else if (activeTab === 'widgets') renderWidgetEditor();
+    else if (activeTab === 'preview') renderPreview();
+}
 
 // --- Registry ---
 async function loadRegistry() {
     try {
         const resp = await fetch('registry.json?t=' + Date.now());
         registry = await resp.json();
+        // Load widgets from registry if present
+        if (registry.widgets) widgets = registry.widgets;
         renderGuiList();
     } catch (e) {
         document.getElementById('guiList').innerHTML = '<div class="no-gui">Failed to load registry.json</div>';
@@ -172,8 +282,12 @@ function selectGui(gui) {
     renderGuiList();
     renderElementList();
     updateProps();
-    render();
+    renderActiveTab();
     document.getElementById('statusInfo').textContent = gui.id;
+    // Load the GUI's texture in widget editor
+    if (gui.bgTexture && gui.bgTexture !== 'unknown') {
+        loadTextureByName(gui.bgTexture);
+    }
 }
 
 function reloadRegistry() { loadRegistry(); }
@@ -186,7 +300,7 @@ function saveRegistry() {
     a.download = 'registry.json';
     a.click();
     URL.revokeObjectURL(a.href);
-    document.getElementById('statusBar').textContent = 'Saved registry.json — replace the file in .tools/gui-designer/';
+    document.getElementById('statusBar').textContent = 'Saved registry.json (download)';
 }
 
 // --- Element List ---
@@ -198,13 +312,83 @@ function renderElementList() {
         const item = document.createElement('div');
         item.className = 'el-item' + (selectedEl === el ? ' active' : '');
         item.innerHTML = `<span class="el-type">${el.type}</span><span class="el-name">${el.id}</span><span class="el-pos">${el.x},${el.y}</span>`;
-        item.onclick = () => { selectedEl = el; renderElementList(); updateProps(); render(); };
+        item.onclick = () => { selectedEl = el; renderElementList(); updateProps(); renderActiveTab(); };
         list.appendChild(item);
     });
 }
 
+// --- Widget List ---
+function renderWidgetList() {
+    const list = document.getElementById('widgetList');
+    list.innerHTML = '';
+    widgets.forEach((w, idx) => {
+        const item = document.createElement('div');
+        item.className = 'widget-item' + (selectedWidget === w ? ' active' : '');
+        // Create tiny preview canvas
+        const preview = document.createElement('canvas');
+        preview.width = Math.min(w.w, 32); preview.height = Math.min(w.h, 32);
+        preview.style.width = (preview.width * 2) + 'px'; preview.style.height = (preview.height * 2) + 'px';
+        if (textureImage) {
+            const pc = preview.getContext('2d');
+            pc.imageSmoothingEnabled = false;
+            pc.drawImage(textureImage, w.uvX, w.uvY, w.w, w.h, 0, 0, preview.width, preview.height);
+        }
+        const info = document.createElement('div');
+        info.style.flex = '1';
+        info.innerHTML = `<div style="font-size:11px">${w.label}</div><div style="font-size:9px;color:#888">UV(${w.uvX},${w.uvY}) ${w.w}x${w.h}</div>`;
+        item.appendChild(preview);
+        item.appendChild(info);
+        item.onclick = () => { selectedWidget = w; renderWidgetList(); updateWidgetProps(); };
+        list.appendChild(item);
+    });
+}
+
+function updateWidgetProps() {
+    const panel = document.getElementById('propPanel');
+    if (!selectedWidget) { panel.innerHTML = '<span style="color:#556;font-size:12px">Select a widget</span>'; return; }
+    const w = selectedWidget;
+    let html = '';
+    html += prop('Label', 'label', w.label);
+    html += prop('UV X', 'uvX', w.uvX, 'number');
+    html += prop('UV Y', 'uvY', w.uvY, 'number');
+    html += prop('W', 'w', w.w, 'number');
+    html += prop('H', 'h', w.h, 'number');
+    panel.innerHTML = html;
+    panel.querySelectorAll('input[data-prop]').forEach(input => {
+        input.addEventListener('change', () => {
+            const p = input.dataset.prop;
+            w[p] = input.type === 'number' ? parseInt(input.value) || 0 : input.value;
+            renderWidgetList(); renderWidgetEditor();
+        });
+    });
+}
+
+function addWidgetToLayout() {
+    if (!currentGui || !selectedWidget) return;
+    const w = selectedWidget;
+    const el = {
+        type: 'blit', id: 'blit_' + currentGui.elements.length,
+        label: w.label, x: 40, y: 40,
+        w: w.w, h: w.h, uvX: w.uvX, uvY: w.uvY,
+        texW: 256, texH: 256
+    };
+    currentGui.elements.push(el);
+    selectedEl = el;
+    switchTab('layout');
+    renderElementList(); updateProps(); render();
+}
+
+function deleteWidget() {
+    if (!selectedWidget) return;
+    widgets = widgets.filter(w => w !== selectedWidget);
+    selectedWidget = null;
+    renderWidgetList();
+    document.getElementById('propPanel').innerHTML = '<span style="color:#556;font-size:12px">Select a widget</span>';
+}
+
 // --- Properties ---
 function updateProps() {
+    if (activeTab === 'widgets') { updateWidgetProps(); return; }
     const panel = document.getElementById('propPanel');
     if (!selectedEl) { panel.innerHTML = '<span style="color:#556;font-size:12px">Select an element</span>'; return; }
     const el = selectedEl;
@@ -224,12 +408,21 @@ function updateProps() {
         html += prop('W', 'w', el.w || 24, 'number');
         html += prop('H', 'h', el.h || 16, 'number');
     }
+    if (el.type === 'blit') {
+        html += prop('W', 'w', el.w || 16, 'number');
+        html += prop('H', 'h', el.h || 16, 'number');
+        html += prop('UV X', 'uvX', el.uvX || 0, 'number');
+        html += prop('UV Y', 'uvY', el.uvY || 0, 'number');
+        html += prop('Tex W', 'texW', el.texW || 256, 'number');
+        html += prop('Tex H', 'texH', el.texH || 256, 'number');
+        html += prop('Label', 'label', el.label || '');
+    }
     panel.innerHTML = html;
     panel.querySelectorAll('input[data-prop]').forEach(input => {
         input.addEventListener('change', () => {
             const p = input.dataset.prop;
             el[p] = input.type === 'number' ? parseInt(input.value) || 0 : input.value;
-            renderElementList(); render();
+            renderElementList(); renderActiveTab();
         });
     });
 }
@@ -243,7 +436,7 @@ function updateBg() {
     if (!currentGui) return;
     currentGui.imageWidth = parseInt(document.getElementById('bgW').value) || 176;
     currentGui.imageHeight = parseInt(document.getElementById('bgH').value) || 206;
-    render();
+    renderActiveTab();
 }
 
 // --- Add/Delete ---
@@ -254,6 +447,7 @@ function addElement(type) {
     if (type === 'label') { el.text = 'Label'; el.color = '0x555555'; }
     if (type === 'energy_bar') { el.w = 20; el.h = 60; }
     if (type === 'progress') { el.w = 24; el.h = 2; }
+    if (type === 'blit') { el.w = 16; el.h = 16; el.uvX = 0; el.uvY = 0; el.texW = 256; el.texH = 256; el.label = 'Blit'; }
     currentGui.elements.push(el);
     selectedEl = el;
     renderElementList(); updateProps(); render();
@@ -266,9 +460,9 @@ function deleteSelected() {
     renderElementList(); updateProps(); render();
 }
 
-// --- Canvas ---
+// --- Layout Canvas ---
 canvas.addEventListener('mousedown', e => {
-    if (!currentGui) return;
+    if (!currentGui || activeTab !== 'layout') return;
     const rect = canvas.getBoundingClientRect();
     const mx = (e.clientX - rect.left) / zoom;
     const my = (e.clientY - rect.top) / zoom;
@@ -285,7 +479,7 @@ canvas.addEventListener('mousedown', e => {
 });
 
 canvas.addEventListener('mousemove', e => {
-    if (!dragging || !selectedEl) return;
+    if (!dragging || !selectedEl || activeTab !== 'layout') return;
     const rect = canvas.getBoundingClientRect();
     let x = (e.clientX - rect.left) / zoom - dragOffset.x;
     let y = (e.clientY - rect.top) / zoom - dragOffset.y;
@@ -297,7 +491,7 @@ canvas.addEventListener('mousemove', e => {
 canvas.addEventListener('mouseup', () => { dragging = false; });
 
 document.addEventListener('keydown', e => {
-    if (!selectedEl || e.target.tagName === 'INPUT') return;
+    if (!selectedEl || e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
     const s = e.shiftKey ? 1 : 2;
     if (e.key === 'ArrowLeft') { selectedEl.x -= s; }
     else if (e.key === 'ArrowRight') { selectedEl.x += s; }
@@ -305,7 +499,7 @@ document.addEventListener('keydown', e => {
     else if (e.key === 'ArrowDown') { selectedEl.y += s; }
     else if (e.key === 'Delete') { deleteSelected(); return; }
     else return;
-    e.preventDefault(); render(); updateProps(); renderElementList();
+    e.preventDefault(); renderActiveTab(); updateProps(); renderElementList();
 });
 
 function hitTest(mx, my) {
@@ -331,7 +525,7 @@ function getElH(el) {
     return el.h || 16;
 }
 
-// --- Render ---
+// --- Layout Render ---
 function render() {
     if (!currentGui) return;
     const bgW = currentGui.imageWidth, bgH = currentGui.imageHeight;
@@ -355,80 +549,288 @@ function render() {
     for (let y = 0; y < bgH; y += 18) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(bgW, y); ctx.stroke(); }
 
     // Elements
-    currentGui.elements.forEach(el => drawElement(el, el === selectedEl));
+    currentGui.elements.forEach(el => drawElement(ctx, el, el === selectedEl));
     ctx.restore();
 
     document.getElementById('statusBar').textContent = selectedEl ? `${selectedEl.id}: (${selectedEl.x}, ${selectedEl.y})` : currentGui.id;
 }
 
-function drawElement(el, selected) {
-    ctx.save();
+function drawElement(c, el, selected) {
+    c.save();
     switch (el.type) {
-        case 'slot': drawSlot(el); break;
-        case 'label': drawLabel(el); break;
-        case 'energy_bar': drawEnergyBar(el); break;
-        case 'progress': drawProgress(el); break;
-        case 'player_inventory': drawPlayerInv(el); break;
+        case 'slot': drawSlot(c, el); break;
+        case 'label': drawLabel(c, el); break;
+        case 'energy_bar': drawEnergyBar(c, el); break;
+        case 'progress': drawProgress(c, el); break;
+        case 'player_inventory': drawPlayerInv(c, el); break;
+        case 'blit': drawBlit(c, el); break;
     }
     if (selected) {
         const w = getElW(el), h = getElH(el);
-        ctx.strokeStyle = '#ff0'; ctx.lineWidth = 0.5;
-        ctx.setLineDash([2, 2]);
-        ctx.strokeRect(el.x - 1, el.y - 1, w + 2, h + 2);
-        ctx.setLineDash([]);
+        c.strokeStyle = '#ff0'; c.lineWidth = 0.5;
+        c.setLineDash([2, 2]);
+        c.strokeRect(el.x - 1, el.y - 1, w + 2, h + 2);
+        c.setLineDash([]);
     }
-    ctx.restore();
+    c.restore();
 }
 
-function drawSlot(el) {
+function drawSlot(c, el) {
     const x = el.x, y = el.y;
-    ctx.fillStyle = '#373737'; ctx.fillRect(x, y, 18, 1); ctx.fillRect(x, y, 1, 18);
-    ctx.fillStyle = '#fff'; ctx.fillRect(x, y + 17, 18, 1); ctx.fillRect(x + 17, y, 1, 18);
-    ctx.fillStyle = '#8b8b8b'; ctx.fillRect(x + 1, y + 1, 16, 16);
-    ctx.fillStyle = '#4a433'; ctx.font = '6px monospace'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-    ctx.fillStyle = '#4a4';
-    ctx.fillText(String(el.slotIndex ?? ''), x + 9, y + 7);
-    ctx.font = '4px monospace'; ctx.fillStyle = '#666';
-    ctx.fillText(el.label || el.id, x + 9, y + 14);
+    c.fillStyle = '#373737'; c.fillRect(x, y, 18, 1); c.fillRect(x, y, 1, 18);
+    c.fillStyle = '#fff'; c.fillRect(x, y + 17, 18, 1); c.fillRect(x + 17, y, 1, 18);
+    c.fillStyle = '#8b8b8b'; c.fillRect(x + 1, y + 1, 16, 16);
+    c.font = '6px monospace'; c.textAlign = 'center'; c.textBaseline = 'middle';
+    c.fillStyle = '#4a4';
+    c.fillText(String(el.slotIndex ?? ''), x + 9, y + 7);
+    c.font = '4px monospace'; c.fillStyle = '#666';
+    c.fillText(el.label || el.id, x + 9, y + 14);
 }
 
-function drawLabel(el) {
-    ctx.font = '8px Segoe UI'; ctx.textAlign = 'left'; ctx.textBaseline = 'top';
-    ctx.fillStyle = '#404040';
-    ctx.fillText(el.text || 'Label', el.x, el.y);
+function drawLabel(c, el) {
+    c.font = '8px Segoe UI'; c.textAlign = 'left'; c.textBaseline = 'top';
+    c.fillStyle = '#404040';
+    c.fillText(el.text || 'Label', el.x, el.y);
 }
 
-function drawEnergyBar(el) {
+function drawEnergyBar(c, el) {
     const w = el.w || 20, h = el.h || 60;
-    ctx.fillStyle = '#333'; ctx.fillRect(el.x, el.y, w, h);
-    ctx.strokeStyle = '#555'; ctx.lineWidth = 0.5; ctx.strokeRect(el.x, el.y, w, h);
-    ctx.fillStyle = '#a4aaa'; ctx.fillRect(el.x + 1, el.y + h * 0.35, w - 2, h * 0.65 - 1);
-    ctx.font = '4px monospace'; ctx.textAlign = 'center'; ctx.fillStyle = '#fff';
-    ctx.fillText('NRG', el.x + w / 2, el.y + 6);
+    c.fillStyle = '#333'; c.fillRect(el.x, el.y, w, h);
+    c.strokeStyle = '#555'; c.lineWidth = 0.5; c.strokeRect(el.x, el.y, w, h);
+    c.fillStyle = '#a4aaa'; c.fillRect(el.x + 1, el.y + h * 0.35, w - 2, h * 0.65 - 1);
+    c.font = '4px monospace'; c.textAlign = 'center'; c.fillStyle = '#fff';
+    c.fillText('NRG', el.x + w / 2, el.y + 6);
 }
 
-function drawProgress(el) {
+function drawProgress(c, el) {
     const w = el.w || 24, h = el.h || 2;
-    ctx.fillStyle = '#ddd'; ctx.fillRect(el.x, el.y, w, Math.max(h, 4));
-    ctx.fillStyle = '#55ff5588'; ctx.fillRect(el.x, el.y, w / 2, Math.max(h, 4));
-    ctx.font = '4px monospace'; ctx.textAlign = 'center'; ctx.fillStyle = '#48a';
-    ctx.fillText('PROG', el.x + w / 2, el.y - 2);
+    c.fillStyle = '#ddd'; c.fillRect(el.x, el.y, w, Math.max(h, 4));
+    c.fillStyle = '#55ff5588'; c.fillRect(el.x, el.y, w / 2, Math.max(h, 4));
+    c.font = '4px monospace'; c.textAlign = 'center'; c.fillStyle = '#48a';
+    c.fillText('PROG', el.x + w / 2, el.y - 2);
 }
 
-function drawPlayerInv(el) {
-    ctx.fillStyle = '#8884'; ctx.fillRect(el.x, el.y, PLAYER_INV_W, PLAYER_INV_H);
-    ctx.strokeStyle = '#5558'; ctx.lineWidth = 0.5; ctx.strokeRect(el.x, el.y, PLAYER_INV_W, PLAYER_INV_H);
-    for (let r = 0; r < 3; r++) for (let c = 0; c < 9; c++) drawMiniSlot(el.x + c * 18, el.y + r * 18);
-    for (let c = 0; c < 9; c++) drawMiniSlot(el.x + c * 18, el.y + 58);
-    ctx.font = '5px monospace'; ctx.textAlign = 'center'; ctx.fillStyle = '#666';
-    ctx.fillText('PLAYER INVENTORY', el.x + 81, el.y + 53);
+function drawPlayerInv(c, el) {
+    c.fillStyle = '#8884'; c.fillRect(el.x, el.y, PLAYER_INV_W, PLAYER_INV_H);
+    c.strokeStyle = '#5558'; c.lineWidth = 0.5; c.strokeRect(el.x, el.y, PLAYER_INV_W, PLAYER_INV_H);
+    for (let r = 0; r < 3; r++) for (let cc = 0; cc < 9; cc++) drawMiniSlot(c, el.x + cc * 18, el.y + r * 18);
+    for (let cc = 0; cc < 9; cc++) drawMiniSlot(c, el.x + cc * 18, el.y + 58);
+    c.font = '5px monospace'; c.textAlign = 'center'; c.fillStyle = '#666';
+    c.fillText('PLAYER INVENTORY', el.x + 81, el.y + 53);
 }
 
-function drawMiniSlot(x, y) {
-    ctx.fillStyle = '#373737'; ctx.fillRect(x, y, 18, 1); ctx.fillRect(x, y, 1, 18);
-    ctx.fillStyle = '#fff'; ctx.fillRect(x, y + 17, 18, 1); ctx.fillRect(x + 17, y, 1, 18);
-    ctx.fillStyle = '#8b8b8b'; ctx.fillRect(x + 1, y + 1, 16, 16);
+function drawBlit(c, el) {
+    const w = el.w || 16, h = el.h || 16;
+    // If we have the texture loaded, draw actual texture region
+    if (textureImage) {
+        c.drawImage(textureImage, el.uvX || 0, el.uvY || 0, w, h, el.x, el.y, w, h);
+        c.strokeStyle = '#8a6aba44'; c.lineWidth = 0.3; c.strokeRect(el.x, el.y, w, h);
+    } else {
+        c.fillStyle = '#4a3a6a'; c.fillRect(el.x, el.y, w, h);
+        c.strokeStyle = '#8a6aba'; c.lineWidth = 0.5; c.strokeRect(el.x, el.y, w, h);
+        c.strokeStyle = '#6a5a9a44'; c.lineWidth = 0.3;
+        for (let d = -w; d < w + h; d += 4) {
+            c.beginPath(); c.moveTo(el.x + d, el.y); c.lineTo(el.x + d - h, el.y + h); c.stroke();
+        }
+    }
+    c.font = '4px monospace'; c.textAlign = 'center'; c.fillStyle = '#c8b8e8';
+    c.fillText(el.label || 'BLIT', el.x + w / 2, el.y - 2);
 }
+
+function drawMiniSlot(c, x, y) {
+    c.fillStyle = '#373737'; c.fillRect(x, y, 18, 1); c.fillRect(x, y, 1, 18);
+    c.fillStyle = '#fff'; c.fillRect(x, y + 17, 18, 1); c.fillRect(x + 17, y, 1, 18);
+    c.fillStyle = '#8b8b8b'; c.fillRect(x + 1, y + 1, 16, 16);
+}
+
+// --- Preview Render ---
+function renderPreview() {
+    if (!currentGui) return;
+    const bgW = currentGui.imageWidth, bgH = currentGui.imageHeight;
+    previewCanvas.width = bgW * zoom;
+    previewCanvas.height = bgH * zoom;
+    previewCtx.imageSmoothingEnabled = false;
+    previewCtx.save();
+    previewCtx.scale(zoom, zoom);
+
+    // Draw texture as background if available
+    if (textureImage) {
+        previewCtx.drawImage(textureImage, 0, 0, bgW, bgH, 0, 0, bgW, bgH);
+    } else {
+        previewCtx.fillStyle = '#c6c6c6';
+        previewCtx.fillRect(0, 0, bgW, bgH);
+        previewCtx.fillStyle = '#fff'; previewCtx.fillRect(0, 0, bgW, 1); previewCtx.fillRect(0, 0, 1, bgH);
+        previewCtx.fillStyle = '#555'; previewCtx.fillRect(0, bgH - 1, bgW, 1); previewCtx.fillRect(bgW - 1, 0, 1, bgH);
+    }
+
+    // Draw blit elements from texture
+    currentGui.elements.forEach(el => {
+        if (el.type === 'blit' && textureImage) {
+            previewCtx.drawImage(textureImage, el.uvX || 0, el.uvY || 0, el.w, el.h, el.x, el.y, el.w, el.h);
+        }
+    });
+
+    // Draw elements with preview style (no selection highlight)
+    currentGui.elements.forEach(el => drawElement(previewCtx, el, false));
+
+    previewCtx.restore();
+}
+
+// --- Widget Editor (Texture slicer) ---
+async function loadTextureList() {
+    try {
+        const resp = await fetch('/api/list-textures');
+        const data = await resp.json();
+        availableTextures = data.textures;
+        const select = document.getElementById('textureSelect');
+        select.innerHTML = '<option value="">-- Select texture --</option>';
+        data.textures.forEach(t => {
+            const opt = document.createElement('option');
+            opt.value = t.servePath;
+            opt.textContent = `${t.folder}/${t.name}`;
+            select.appendChild(opt);
+        });
+    } catch (e) {
+        console.error('Failed to load textures', e);
+    }
+}
+
+function loadSelectedTexture() {
+    const select = document.getElementById('textureSelect');
+    if (!select.value) return;
+    loadTexture(select.value);
+}
+
+function loadTextureByName(bgTexture) {
+    // Try to find the texture in available list
+    const match = availableTextures.find(t => t.name === bgTexture || t.path === 'textures/screens/' + bgTexture + '.png' || t.path === 'textures/gui/' + bgTexture + '.png');
+    if (match) {
+        const select = document.getElementById('textureSelect');
+        select.value = match.servePath;
+        loadTexture(match.servePath);
+    }
+}
+
+function loadTexture(servePath) {
+    texturePath = servePath;
+    const img = new Image();
+    img.onload = () => {
+        textureImage = img;
+        renderWidgetEditor();
+        // Re-render other tabs if active
+        if (activeTab === 'layout') render();
+        else if (activeTab === 'preview') renderPreview();
+    };
+    img.src = servePath + '?t=' + Date.now();
+}
+
+function renderWidgetEditor() {
+    document.getElementById('widgetZoomLabel').textContent = widgetZoomLevel + 'x';
+    renderWidgetList();
+
+    if (!textureImage) {
+        widgetCanvas.width = 256 * widgetZoomLevel;
+        widgetCanvas.height = 256 * widgetZoomLevel;
+        widgetCtx.fillStyle = '#222';
+        widgetCtx.fillRect(0, 0, widgetCanvas.width, widgetCanvas.height);
+        widgetCtx.font = '14px Segoe UI'; widgetCtx.textAlign = 'center'; widgetCtx.fillStyle = '#556';
+        widgetCtx.fillText('Select a texture to edit widgets', widgetCanvas.width / 2, widgetCanvas.height / 2);
+        return;
+    }
+
+    const tw = textureImage.width, th = textureImage.height;
+    widgetCanvas.width = tw * widgetZoomLevel;
+    widgetCanvas.height = th * widgetZoomLevel;
+    widgetCtx.imageSmoothingEnabled = false;
+    widgetCtx.save();
+    widgetCtx.scale(widgetZoomLevel, widgetZoomLevel);
+
+    // Checkerboard for transparency
+    for (let y = 0; y < th; y += 8) {
+        for (let x = 0; x < tw; x += 8) {
+            widgetCtx.fillStyle = ((x + y) / 8 % 2 === 0) ? '#333' : '#2a2a2a';
+            widgetCtx.fillRect(x, y, 8, 8);
+        }
+    }
+
+    // Draw texture
+    widgetCtx.drawImage(textureImage, 0, 0);
+
+    // Draw existing widget regions
+    widgets.forEach(w => {
+        widgetCtx.strokeStyle = selectedWidget === w ? '#ff0' : '#a6c';
+        widgetCtx.lineWidth = selectedWidget === w ? 1 : 0.5;
+        widgetCtx.setLineDash(selectedWidget === w ? [] : [2, 2]);
+        widgetCtx.strokeRect(w.uvX, w.uvY, w.w, w.h);
+        widgetCtx.setLineDash([]);
+        // Label
+        widgetCtx.font = '5px monospace'; widgetCtx.textAlign = 'left'; widgetCtx.fillStyle = '#ff0a';
+        widgetCtx.fillText(w.label, w.uvX + 1, w.uvY - 1);
+    });
+
+    // Draw selection rectangle
+    if (widgetSelecting) {
+        const sx = Math.min(widgetSelectStart.x, widgetSelectEnd.x);
+        const sy = Math.min(widgetSelectStart.y, widgetSelectEnd.y);
+        const sw = Math.abs(widgetSelectEnd.x - widgetSelectStart.x);
+        const sh = Math.abs(widgetSelectEnd.y - widgetSelectStart.y);
+        widgetCtx.strokeStyle = '#0ff'; widgetCtx.lineWidth = 0.5;
+        widgetCtx.setLineDash([2, 2]);
+        widgetCtx.strokeRect(sx, sy, sw, sh);
+        widgetCtx.setLineDash([]);
+        widgetCtx.fillStyle = '#0ff2'; widgetCtx.fillRect(sx, sy, sw, sh);
+    }
+
+    widgetCtx.restore();
+}
+
+// Widget canvas mouse events
+widgetCanvas.addEventListener('mousedown', e => {
+    if (!textureImage) return;
+    const rect = widgetCanvas.getBoundingClientRect();
+    const mx = Math.floor((e.clientX - rect.left) / widgetZoomLevel);
+    const my = Math.floor((e.clientY - rect.top) / widgetZoomLevel);
+    widgetSelecting = true;
+    widgetSelectStart = { x: mx, y: my };
+    widgetSelectEnd = { x: mx, y: my };
+    renderWidgetEditor();
+});
+
+widgetCanvas.addEventListener('mousemove', e => {
+    if (!widgetSelecting) return;
+    const rect = widgetCanvas.getBoundingClientRect();
+    widgetSelectEnd.x = Math.floor((e.clientX - rect.left) / widgetZoomLevel);
+    widgetSelectEnd.y = Math.floor((e.clientY - rect.top) / widgetZoomLevel);
+    const sx = Math.min(widgetSelectStart.x, widgetSelectEnd.x);
+    const sy = Math.min(widgetSelectStart.y, widgetSelectEnd.y);
+    const sw = Math.abs(widgetSelectEnd.x - widgetSelectStart.x);
+    const sh = Math.abs(widgetSelectEnd.y - widgetSelectStart.y);
+    document.getElementById('widgetSelectInfo').textContent = `Selection: (${sx}, ${sy}) ${sw}x${sh}`;
+    renderWidgetEditor();
+});
+
+widgetCanvas.addEventListener('mouseup', e => {
+    if (!widgetSelecting) return;
+    widgetSelecting = false;
+    const sx = Math.min(widgetSelectStart.x, widgetSelectEnd.x);
+    const sy = Math.min(widgetSelectStart.y, widgetSelectEnd.y);
+    const sw = Math.abs(widgetSelectEnd.x - widgetSelectStart.x);
+    const sh = Math.abs(widgetSelectEnd.y - widgetSelectStart.y);
+    if (sw > 1 && sh > 1) {
+        const widget = {
+            id: 'widget_' + widgets.length,
+            label: 'Widget ' + widgets.length,
+            uvX: sx, uvY: sy, w: sw, h: sh,
+            texturePath: texturePath
+        };
+        widgets.push(widget);
+        selectedWidget = widget;
+        renderWidgetList();
+        updateWidgetProps();
+    }
+    document.getElementById('widgetSelectInfo').textContent = 'Click and drag to select a region';
+    renderWidgetEditor();
+});
 
 // --- Diff / Code Generation ---
 let diffTab = 'screen';
@@ -449,48 +851,42 @@ function showDiffTab(tab) {
 function genScreenCode() {
     if (!currentGui) return '';
     const gui = currentGui;
-    let code = `<span class="diff-add">// === ${gui.label} Screen — generated positions ===</span>\n`;
+    let code = `<span class="diff-add">// === ${gui.label} Screen -- generated positions ===</span>\n`;
     code += `<span class="diff-add">// Paste into renderBg() / renderLabels()</span>\n\n`;
     code += `this.imageWidth = ${gui.imageWidth};\n`;
     code += `this.imageHeight = ${gui.imageHeight};\n\n`;
 
-    // Slot draws
     const slots = gui.elements.filter(e => e.type === 'slot');
     if (slots.length) {
         code += `// Slot backgrounds (in renderBg)\n`;
-        slots.forEach(s => {
-            code += `drawSlot(g, ${s.x - 1}, ${s.y - 1}); // ${s.id}\n`;
-        });
+        slots.forEach(s => { code += `drawSlot(g, ${s.x - 1}, ${s.y - 1}); // ${s.id}\n`; });
         code += '\n';
     }
 
-    // Labels
     const labels = gui.elements.filter(e => e.type === 'label');
     if (labels.length) {
         code += `// Labels (in renderLabels)\n`;
-        labels.forEach(l => {
-            code += `g.drawString(this.font, Component.literal("${l.text}"), ${l.x}, ${l.y}, ${l.color || '0x555555'}, false);\n`;
-        });
+        labels.forEach(l => { code += `g.drawString(this.font, Component.literal("${l.text}"), ${l.x}, ${l.y}, ${l.color || '0x555555'}, false);\n`; });
         code += '\n';
     }
 
-    // Energy bar
     const energyBars = gui.elements.filter(e => e.type === 'energy_bar');
     energyBars.forEach(e => {
         code += `// Energy bar: ${e.id}\n`;
-        code += `int powerBarX = leftPos + ${e.x};\n`;
-        code += `int powerBarY = topPos + ${e.y};\n`;
-        code += `int powerBarWidth = ${e.w || 20};\n`;
-        code += `int powerBarHeight = ${e.h || 60};\n\n`;
+        code += `int powerBarX = leftPos + ${e.x};\nint powerBarY = topPos + ${e.y};\n`;
+        code += `int powerBarWidth = ${e.w || 20};\nint powerBarHeight = ${e.h || 60};\n\n`;
     });
 
-    // Progress
     const progs = gui.elements.filter(e => e.type === 'progress');
-    progs.forEach(p => {
-        code += `// Progress: ${p.id} at (${p.x}, ${p.y}) size ${p.w}x${p.h}\n`;
-    });
+    progs.forEach(p => { code += `// Progress: ${p.id} at (${p.x}, ${p.y}) size ${p.w}x${p.h}\n`; });
 
-    // Player inv
+    const blits = gui.elements.filter(e => e.type === 'blit');
+    if (blits.length) {
+        code += `// Blit regions (in renderBg)\n`;
+        blits.forEach(b => { code += `g.blit(TEXTURE, leftPos + ${b.x}, topPos + ${b.y}, ${b.uvX || 0}, ${b.uvY || 0}, ${b.w || 16}, ${b.h || 16}); // ${b.label || b.id}\n`; });
+        code += '\n';
+    }
+
     const pinv = gui.elements.find(e => e.type === 'player_inventory');
     if (pinv) {
         code += `// Player inventory starts at y=${pinv.y}\n`;
@@ -503,24 +899,19 @@ function genScreenCode() {
 function genMenuCode() {
     if (!currentGui) return '';
     const gui = currentGui;
-    let code = `// === ${gui.label} Menu — generated slot positions ===\n\n`;
-
+    let code = `// === ${gui.label} Menu -- generated slot positions ===\n\n`;
     const slots = gui.elements.filter(e => e.type === 'slot');
-    slots.forEach(s => {
-        code += `this.addSlot(new SlotItemHandler(itemHandler[0], ${s.slotIndex}, ${s.x}, ${s.y})); // ${s.id}\n`;
-    });
+    slots.forEach(s => { code += `this.addSlot(new SlotItemHandler(itemHandler[0], ${s.slotIndex}, ${s.x}, ${s.y})); // ${s.id}\n`; });
 
     const pinv = gui.elements.find(e => e.type === 'player_inventory');
     if (pinv) {
         code += `\n// Player inventory\n`;
         code += `for (int row = 0; row < 3; row++)\n`;
         code += `    for (int col = 0; col < 9; col++)\n`;
-        code += `        this.addSlot(new Slot(inv, col + (row + 1) * 9, ${pinv.x + 1} + col * 18, ${pinv.y + 1} + row * 18));\n`;
-        code += `// Hotbar\n`;
-        code += `for (int col = 0; col < 9; col++)\n`;
-        code += `    this.addSlot(new Slot(inv, col, ${pinv.x + 1} + col * 18, ${pinv.y + 59}));\n`;
+        code += `        this.addSlot(new Slot(inv, col + (row + 1) * 9, ${pinv.x} + col * 18, ${pinv.y} + row * 18));\n`;
+        code += `// Hotbar\nfor (int col = 0; col < 9; col++)\n`;
+        code += `    this.addSlot(new Slot(inv, col, ${pinv.x} + col * 18, ${pinv.y + 58}));\n`;
     }
-
     return escHtml(code);
 }
 
@@ -532,8 +923,139 @@ function copyDiff() {
     document.getElementById('statusBar').textContent = 'Copied!';
 }
 
+// --- Save to Project ---
+async function readProjectFile(relPath) {
+    const resp = await fetch('/api/read-file', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ path: relPath })
+    });
+    if (!resp.ok) throw new Error('Failed to read ' + relPath);
+    const data = await resp.json();
+    return data.content;
+}
+
+async function writeProjectFile(relPath, content) {
+    const resp = await fetch('/api/save-file', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ path: relPath, content })
+    });
+    if (!resp.ok) throw new Error('Failed to write ' + relPath);
+    return await resp.json();
+}
+
+function applyScreenPatch(source, gui) {
+    let result = source;
+    result = result.replace(/(this\.imageWidth\s*=\s*)\d+/, `$1${gui.imageWidth}`);
+    result = result.replace(/(this\.imageHeight\s*=\s*)\d+/, `$1${gui.imageHeight}`);
+
+    const prog = gui.elements.find(e => e.type === 'progress');
+    if (prog) {
+        result = result.replace(/(PROGRESS_X\s*=\s*)\d+/, `$1${prog.x}`);
+        result = result.replace(/(PROGRESS_Y\s*=\s*)\d+/, `$1${prog.y}`);
+        result = result.replace(/(PROGRESS_WIDTH\s*=\s*)\d+/, `$1${prog.w || 24}`);
+        result = result.replace(/(PROGRESS_MAX_HEIGHT\s*=\s*|PROGRESS_HEIGHT\s*=\s*)\d+/, `$1${prog.h || 16}`);
+    }
+
+    const energy = gui.elements.find(e => e.type === 'energy_bar');
+    if (energy) {
+        result = result.replace(/(ENERGY[_A-Z]*X\s*=\s*)\d+/, `$1${energy.x}`);
+        result = result.replace(/(ENERGY[_A-Z]*Y\s*=\s*)\d+/, `$1${energy.y}`);
+        result = result.replace(/(ENERGY[_A-Z]*W(?:IDTH)?\s*=\s*)\d+/, `$1${energy.w || 20}`);
+        result = result.replace(/(ENERGY[_A-Z]*H(?:EIGHT)?\s*=\s*)\d+/, `$1${energy.h || 60}`);
+    }
+
+    return result;
+}
+
+function applyMenuPatch(source, gui) {
+    let result = source;
+    const slots = gui.elements.filter(e => e.type === 'slot');
+    slots.forEach(s => {
+        const pattern = new RegExp(
+            `(new\\s+SlotItemHandler\\([^,]+,\\s*${s.slotIndex}\\s*,\\s*)\\d+\\s*,\\s*\\d+(\\s*\\))`, 'g'
+        );
+        result = result.replace(pattern, `$1${s.x}, ${s.y}$2`);
+    });
+
+    const pi = gui.elements.find(e => e.type === 'player_inventory');
+    if (pi) {
+        // Match player inventory rows: new Slot(inv/playerInventory, ..., X + col * 18, Y + row * 18)
+        const piPattern = /(new\s+Slot\(\s*(?:inv|playerInventory)\s*,[^,]+,\s*)\d+(\s*\+\s*\w+\s*\*\s*18\s*,\s*)\d+(\s*\+\s*\w+\s*\*\s*18)/g;
+        let piIdx = 0;
+        result = result.replace(piPattern, (match, pre, mid, post) => {
+            if (piIdx === 0) { piIdx++; return `${pre}${pi.x}${mid}${pi.y}${post}`; }
+            return match;
+        });
+
+        // Match hotbar: new Slot(inv/playerInventory, col, X + col * 18, HOTBAR_Y)
+        const hotbarY = pi.y + 58; // hotbar is 58px below inventory top
+        const hbPattern = /(new\s+Slot\(\s*(?:inv|playerInventory)\s*,\s*\w+\s*,\s*)\d+(\s*\+\s*\w+\s*\*\s*18\s*,\s*)\d+(\s*\))/g;
+        let hbIdx = 0;
+        result = result.replace(hbPattern, (match, pre, mid, post) => {
+            if (hbIdx === 0) { hbIdx++; return `${pre}${pi.x}${mid}${hotbarY}${post}`; }
+            return match;
+        });
+    }
+    return result;
+}
+
+async function saveToProject() {
+    if (!currentGui) return;
+    const gui = currentGui;
+    const status = document.getElementById('statusBar');
+    try {
+        status.textContent = 'Reading project files...';
+        const [screenSrc, menuSrc] = await Promise.all([
+            readProjectFile(gui.screenPath),
+            readProjectFile(gui.menuPath)
+        ]);
+
+        const newScreen = applyScreenPatch(screenSrc, gui);
+        const newMenu = applyMenuPatch(menuSrc, gui);
+
+        const screenChanged = newScreen !== screenSrc;
+        const menuChanged = newMenu !== menuSrc;
+
+        if (!screenChanged && !menuChanged) {
+            status.textContent = 'No changes detected.';
+            return;
+        }
+
+        const writes = [];
+        if (screenChanged) writes.push(writeProjectFile(gui.screenPath, newScreen));
+        if (menuChanged) writes.push(writeProjectFile(gui.menuPath, newMenu));
+        await Promise.all(writes);
+
+        const parts = [];
+        if (screenChanged) parts.push('Screen');
+        if (menuChanged) parts.push('Menu');
+        status.textContent = `Saved ${parts.join(' + ')} to project.`;
+        status.style.color = '#5c5';
+        setTimeout(() => { status.style.color = ''; }, 3000);
+    } catch (err) {
+        status.textContent = 'Error: ' + err.message;
+        status.style.color = '#c55';
+        setTimeout(() => { status.style.color = ''; }, 5000);
+    }
+}
+
+async function saveRegistryToServer() {
+    if (!registry) return;
+    // Include widgets in registry
+    registry.widgets = widgets;
+    try {
+        await writeProjectFile('.tools/gui-designer/registry.json', JSON.stringify(registry, null, 2));
+        document.getElementById('statusBar').textContent = 'Registry saved to project.';
+    } catch (e) {
+        saveRegistry();
+    }
+}
+
 // --- Init ---
 loadRegistry();
+loadTextureList();
 </script>
 </body>
 </html>
