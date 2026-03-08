@@ -7,6 +7,7 @@ import cz.blackdragoncz.lostdepths.item.food.*;
 import cz.blackdragoncz.lostdepths.item.icon.*;
 import cz.blackdragoncz.lostdepths.item.ingot.*;
 import cz.blackdragoncz.lostdepths.item.part.*;
+import cz.blackdragoncz.lostdepths.item.ShipmentBoxItem;
 import cz.blackdragoncz.lostdepths.item.shield.MirrorShield;
 import cz.blackdragoncz.lostdepths.item.tool.*;
 import cz.blackdragoncz.lostdepths.item.security.*;
@@ -655,10 +656,10 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> NETHERITE_DUST = REGISTRY.register("netherite_dust", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> INFUSED_WRITABLE_BOOK = REGISTRY.register("infused_writable_book", InfusedWritableBookItem::new);
 	public static final RegistryObject<Item> INFUSED_WRITTEN_BOOK = REGISTRY.register("infused_written_book", InfusedWrittenBookItem::new);
-
 	public static final RegistryObject<Item> WORMHOLE_DISRUPTOR = block(LostdepthsModBlocks.WORMHOLE_DISRUPTOR);
-
 	public static final RegistryObject<Item> RESOURCE_EXTRACTOR = block(LostdepthsModBlocks.RESOURCE_EXTRACTOR);
+	public static final RegistryObject<Item> SHIPMENT_BOX = REGISTRY.register("shipment_box", ShipmentBoxItem::new);
+	public static final RegistryObject<Item> SOLARIUM_SHADOW = REGISTRY.register("solarium_shadow", MasterPartRegistryItem::new);
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));

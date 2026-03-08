@@ -414,6 +414,7 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModBlocks.SECURITY_CLEARANCE_6.get().asItem());
 				tabData.accept(LostdepthsModBlocks.ITEM_CRATE.get().asItem());
 				tabData.accept(LostdepthsModBlocks.SHIPMENT_FILLER_BLOCK.get().asItem());
+				tabData.accept(LostdepthsModItems.SHIPMENT_BOX.get());
 				tabData.accept(LostdepthsModBlocks.MYRITE_ORE.get().asItem());
 				tabData.accept(LostdepthsModItems.LOSTDEPTHS_PREDICTION.get().asItem());
 				tabData.accept(LostdepthsModBlocks.SECURITY_CLEARANCE_A.get().asItem());
@@ -540,6 +541,7 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModItems.REINFORCED_BOTTLE.get());
 				tabData.accept(LostdepthsModItems.COOKED_EYE.get());
 				tabData.accept(LostdepthsModItems.SOLARIUM_TOXIC.get());
+				tabData.accept(LostdepthsModItems.SOLARIUM_SHADOW.get());
 				tabData.accept(LostdepthsModItems.UNSTABLE_INGOT.get());
 				tabData.accept(LostdepthsModItems.RADIOACTIVE_ISOTOPES.get());
 				tabData.accept(LostdepthsModItems.ANCIENT_TEMPLATE.get());

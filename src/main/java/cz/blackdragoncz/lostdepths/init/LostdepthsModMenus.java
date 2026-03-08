@@ -1,7 +1,3 @@
-
-/*
- *	MCreator note: This file will be REGENERATED on each build.
- */
 package cz.blackdragoncz.lostdepths.init;
 
 import cz.blackdragoncz.lostdepths.world.inventory.*;
@@ -27,4 +23,6 @@ public class LostdepthsModMenus {
 	public static final RegistryObject<MenuType<NurostarGeneratorMenu>> NUROSTAR_GENERATOR_MENU = REGISTRY.register("nurostar_generator_menu", () -> IForgeMenuType.create(NurostarGeneratorMenu::new));
 	public static final RegistryObject<MenuType<NurostarBatteryMenu>> NUROSTAR_BATTERY_MENU = REGISTRY.register("nurostar_battery_menu", () -> IForgeMenuType.create(NurostarBatteryMenu::new));
 	public static final RegistryObject<MenuType<ResourceExtractorMenu>> RESOURCE_EXTRACTOR_MENU = REGISTRY.register("resource_extractor_menu", () -> IForgeMenuType.create(ResourceExtractorMenu::new));
+	public static final RegistryObject<MenuType<FusionTableMenu>> FUSION_TABLE_MENU = REGISTRY.register("fusion_table_menu", () -> IForgeMenuType.create(FusionTableMenu::new));
+	public static final RegistryObject<MenuType<ShipmentFillerMenu>> SHIPMENT_FILLER_MENU = REGISTRY.register("shipment_filler_menu", () -> IForgeMenuType.create(ShipmentFillerMenu::new));
 }

@@ -56,6 +56,8 @@ public class LostdepthsModBlockEntities {
 	public static final RegistryObject<BlockEntityType<MultiblockDummyBlockEntity>> MULTIBLOCK_DUMMY = register("multiblock_dummy", LostdepthsModBlocks.MULTIBLOCK_DUMMY, MultiblockDummyBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<ResourceExtractorBlockEntity>> RESOURCE_EXTRACTOR = register("resource_extractor", LostdepthsModBlocks.RESOURCE_EXTRACTOR, ResourceExtractorBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<WormholeDisruptorBlockEntity>> WORMHOLE_DISRUPTOR = register("wormhole_disruptor", LostdepthsModBlocks.WORMHOLE_DISRUPTOR, WormholeDisruptorBlockEntity::new);
+	public static final RegistryObject<BlockEntityType<FusionTableBlockEntity>> FUSION_TABLE = register("fusion_table", LostdepthsModBlocks.FUSION_TABLE, FusionTableBlockEntity::new);
+	public static final RegistryObject<BlockEntityType<ShipmentFillerBlockEntity>> SHIPMENT_FILLER = register("shipment_filler", LostdepthsModBlocks.SHIPMENT_FILLER_BLOCK, ShipmentFillerBlockEntity::new);
 	//public static final RegistryObject<BlockEntityType<ResourceExtractorBlockEntity>> RESOURCE_EXTRACTOR = REGISTRY.register("resource_extractor", LostdepthsModBlocks.RESOURCE_EXTRACTOR, ResourceExtractorBlockEntity::new);
 
 	private static <T extends BlockEntity> RegistryObject<BlockEntityType<T>> register(String registryname, RegistryObject<Block> block, BlockEntityType.BlockEntitySupplier<T> supplier) {

@@ -67,4 +67,11 @@ public class RecipeViewerRecipeType {
         }
     });
 
+    public static final RecipeTypeWrapper<CraftingContainer, FusionTableRecipe> FUSION_TABLE = new RecipeTypeWrapper<>(LostDepthsModRecipeType.FUSION_TABLE.get(), FusionTableRecipe.class, 0, 0, 130, 40, new IItemProvider() {
+        @Override
+        public @NotNull Item asItem() {
+            return LostdepthsModItems.FUSION_TABLE.get();
+        }
+    });
+
 }

@@ -25,7 +25,6 @@ import net.minecraftforge.common.MinecraftForge;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.network.FriendlyByteBuf;
 
 import java.util.*;
@@ -60,12 +59,6 @@ public class LostdepthsMod {
         LostdepthsModModifiers.REGISTRY.register(bus);
         LostdepthsModAttributes.REGISTRY.register(bus);
         //WORLD
-        // TODO: verify intrusion mods populators - other mods may add structures to lostdepths dimensions
-        //  Check which mods generate foreign structures in below_bedrock/between_bedrock_and_overworld/lost_dungeons
-        //  and add Forge event filtering or biome tag exclusions to prevent it
-        // TODO: REMOVE in next update - stub biome files sun_forest_2.json and sun_forest_3.json
-        //  exist only for world save compatibility. Delete them after all servers have loaded
-        //  and reset the lost_dungeons dimension. Files at: worldgen/biome/sun_forest_2.json, sun_forest_3.json
 		StructureFeature.REGISTRY.register(bus);
 		LostdepthsModMobEffects.REGISTRY.register(bus);
 		LostdepthsModPotions.REGISTRY.register(bus);

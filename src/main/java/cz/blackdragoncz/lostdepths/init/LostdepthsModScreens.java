@@ -1,7 +1,3 @@
-
-/*
- *	MCreator note: This file will be REGENERATED on each build.
- */
 package cz.blackdragoncz.lostdepths.init;
 
 import cz.blackdragoncz.lostdepths.client.gui.*;
@@ -27,6 +23,8 @@ public class LostdepthsModScreens {
 			MenuScreens.register(LostdepthsModMenus.NUROSTAR_GENERATOR_MENU.get(), NurostarGeneratorScreen::new);
 			MenuScreens.register(LostdepthsModMenus.NUROSTAR_BATTERY_MENU.get(), NurostarBatteryScreen::new);
 			MenuScreens.register(LostdepthsModMenus.RESOURCE_EXTRACTOR_MENU.get(), ResourceExtractorScreen::new);
+			MenuScreens.register(LostdepthsModMenus.FUSION_TABLE_MENU.get(), FusionTableScreen::new);
+			MenuScreens.register(LostdepthsModMenus.SHIPMENT_FILLER_MENU.get(), ShipmentFillerScreen::new);
 		});
 	}
 }
