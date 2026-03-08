@@ -116,7 +116,11 @@ public class LostdepthsModBlockTags extends BlockTagsProvider {
                 LostdepthsModBlocks.INFUSED_WALL_SIGN.get(),
                 LostdepthsModBlocks.NUROSTAR_GENERATOR.get(),
                 LostdepthsModBlocks.NUROSTAR_CABLE.get(),
-                LostdepthsModBlocks.BLACK_HOLE_COMPRESSOR.get()
+                LostdepthsModBlocks.BLACK_HOLE_COMPRESSOR.get(),
+                LostdepthsModBlocks.FUSION_TABLE.get()
+        );
+        tag(BlockTags.NEEDS_STONE_TOOL).add(
+                LostdepthsModBlocks.FUSION_TABLE.get()
         );
         tag(BlockTags.DIRT).add(LostdepthsModBlocks.SPACE_ROCK_DIRT.get());
         tag(BlockTags.DRAGON_IMMUNE).add(
