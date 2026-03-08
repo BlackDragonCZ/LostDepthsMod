@@ -60,7 +60,7 @@ public class WormholeDisruptorBlock extends Block implements EntityBlock {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal("\u00A7cCreative Only").append(Component.literal(" \u00A77- Prevents teleportation within radius")));
-        tooltip.add(Component.literal("\u00A77Use \u00A7e/wormhole-range <radius> <x> <y> <z>\u00A77 to configure"));
+        tooltip.add(Component.literal("§cCreative Only").append(Component.literal(" §7- Prevents teleportation within radius")));
+        tooltip.add(Component.literal("§7Use §e/wormhole-range <radius> <x> <y> <z>§7 to configure"));
     }
 }

@@ -1,6 +1,7 @@
 package cz.blackdragoncz.lostdepths.block.machine;
 
 import cz.blackdragoncz.lostdepths.block.entity.FusionTableBlockEntity;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -85,8 +86,10 @@ public class FusionTableBlock extends BaseEntityBlock {
     }
 
     @Override
-    public void appendHoverText(ItemStack itemstack, BlockGetter world, List<Component> list, TooltipFlag flag) {
-        super.appendHoverText(itemstack, world, list, flag);
+    public void appendHoverText(ItemStack itemstack, BlockGetter world, List<Component> tooltip, TooltipFlag flag) {
+        tooltip.add(Component.literal("§7Match a 2x2 group of the same"));
+        tooltip.add(Component.literal("§7shape to gain progress."));
+        tooltip.add(Component.literal("§7Complete 6 rounds to craft."));
     }
 
     @Override
