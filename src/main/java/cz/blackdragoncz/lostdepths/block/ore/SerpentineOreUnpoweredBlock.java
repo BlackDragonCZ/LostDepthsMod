@@ -25,8 +25,9 @@ import net.minecraft.core.BlockPos;
 
 import java.util.List;
 
-import cz.blackdragoncz.lostdepths.procedures.SerpentineOreUnpoweredOnBlockRightClickedProcedure;
-import cz.blackdragoncz.lostdepths.procedures.SerpentineOreUnpoweredBlockDestroyedByPlayerProcedure;
+import cz.blackdragoncz.lostdepths.init.LostdepthsModOres;
+import cz.blackdragoncz.lostdepths.procedures.OreActivationProcedure;
+import cz.blackdragoncz.lostdepths.procedures.PickaxeOreMiningProcedure;
 
 public class SerpentineOreUnpoweredBlock extends Block {
 	public SerpentineOreUnpoweredBlock() {
@@ -51,14 +52,14 @@ public class SerpentineOreUnpoweredBlock extends Block {
 	@Override
 	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
 		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
-		SerpentineOreUnpoweredBlockDestroyedByPlayerProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		PickaxeOreMiningProcedure.executeDormant(world, pos.getX(), pos.getY(), pos.getZ(), LostdepthsModOres.SERPENTINE_ORE);
 		return retval;
 	}
 
 	@Override
 	public void wasExploded(Level world, BlockPos pos, Explosion e) {
 		super.wasExploded(world, pos, e);
-		SerpentineOreUnpoweredBlockDestroyedByPlayerProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		PickaxeOreMiningProcedure.executeDormant(world, pos.getX(), pos.getY(), pos.getZ(), LostdepthsModOres.SERPENTINE_ORE);
 	}
 
 	@Override
@@ -71,7 +72,7 @@ public class SerpentineOreUnpoweredBlock extends Block {
 		double hitY = hit.getLocation().y;
 		double hitZ = hit.getLocation().z;
 		Direction direction = hit.getDirection();
-		SerpentineOreUnpoweredOnBlockRightClickedProcedure.execute(world, x, y, z, entity);
+		OreActivationProcedure.execute(world, x, y, z, entity, LostdepthsModOres.SERPENTINE_ORE);
 		return InteractionResult.SUCCESS;
 	}
 }

@@ -3,6 +3,9 @@ package cz.blackdragoncz.lostdepths.block.entity;
 import cz.blackdragoncz.lostdepths.block.entity.base.BaseEnergyContainerBlockEntity;
 import cz.blackdragoncz.lostdepths.energy.SyncedEnergyStorage;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModBlockEntities;
+import cz.blackdragoncz.lostdepths.init.LostdepthsModOres;
+import cz.blackdragoncz.lostdepths.init.LostdepthsModOres.DepletionType;
+import cz.blackdragoncz.lostdepths.init.LostdepthsModOres.OreDefinition;
 import cz.blackdragoncz.lostdepths.world.inventory.ResourceExtractorMenu;
 import io.netty.buffer.Unpooled;
 import net.minecraft.core.BlockPos;
@@ -13,12 +16,18 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
@@ -26,6 +35,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 import org.jetbrains.annotations.NotNull;
@@ -47,15 +57,46 @@ public class ResourceExtractorBlockEntity extends BaseEnergyContainerBlockEntity
 
     private static final int MAX_CAPACITY = 50000;
     private static final int MAX_TRANSFER = 800;
-    private static final int ENERGY_PER_OP = 500;
+    private static final int ENERGY_PER_TICK_VANILLA = 70;   // FE/t for non-lostdepths ores
+    private static final int ENERGY_PER_TICK_MODDED = 320;   // FE/t for lostdepths ores
     private static final int MODDED_INTERVAL = 300; // 15s
     private static final int VANILLA_INTERVAL = 100; // 5s
+
+    // Status constants
+    public static final int STATUS_RED = 0;     // Redstone disabled
+    public static final int STATUS_ORANGE = 1;  // Missing pickaxe/solution/energy
+    public static final int STATUS_GREEN = 2;   // Working
+
 
     private NonNullList<ItemStack> items = NonNullList.withSize(TOTAL_SLOTS, ItemStack.EMPTY);
     private final LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.UP, Direction.DOWN, Direction.NORTH);
 
     private int tickCounter = 0;
     private boolean redstoneActive = true;
+    private int machineStatus = STATUS_GREEN;
+
+    public final ContainerData containerData = new ContainerData() {
+        @Override
+        public int get(int index) {
+            return switch (index) {
+                case 0 -> machineStatus;
+                case 1 -> tickCounter;
+                case 2 -> getMaxProgress();
+                default -> 0;
+            };
+        }
+
+        @Override
+        public void set(int index, int value) {
+            switch (index) {
+                case 0 -> machineStatus = value;
+                case 1 -> tickCounter = value;
+            }
+        }
+
+        @Override
+        public int getCount() { return 3; }
+    };
 
     public ResourceExtractorBlockEntity(BlockPos pos, BlockState state) {
         super(LostdepthsModBlockEntities.RESOURCE_EXTRACTOR.get(), pos, state);
@@ -63,7 +104,7 @@ public class ResourceExtractorBlockEntity extends BaseEnergyContainerBlockEntity
 
     @Override
     protected SyncedEnergyStorage createEnergyStorage() {
-        return new SyncedEnergyStorage(this, MAX_CAPACITY, MAX_TRANSFER, 0);
+        return new SyncedEnergyStorage(this, MAX_CAPACITY, MAX_TRANSFER, MAX_TRANSFER);
     }
 
     public void setRedstoneActive(boolean active) { this.redstoneActive = active; }
@@ -82,32 +123,142 @@ public class ResourceExtractorBlockEntity extends BaseEnergyContainerBlockEntity
         return (int) ((filled / 4.0f) * 15);
     }
 
+    /**
+     * Checks if the solution slots contain the required solution item and returns the slot index, or -1.
+     */
+    private int findSolutionSlot(Item requiredSolution) {
+        for (int i = SLOT_SOLUTION_START; i <= SLOT_SOLUTION_END; i++) {
+            if (items.get(i).getItem() == requiredSolution) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    private static void pullEnergy(Level level, BlockPos pos, ResourceExtractorBlockEntity be) {
+        int canReceive = be.energyStorage.receiveEnergy(MAX_TRANSFER, true);
+        if (canReceive <= 0) return;
+
+        for (Direction dir : Direction.values()) {
+            BlockEntity neighbor = level.getBlockEntity(pos.relative(dir));
+            if (neighbor == null) continue;
+
+            LazyOptional<IEnergyStorage> cap = neighbor.getCapability(ForgeCapabilities.ENERGY, dir.getOpposite());
+            cap.ifPresent(storage -> {
+                if (storage.canExtract()) {
+                    int remaining = be.energyStorage.receiveEnergy(MAX_TRANSFER, true);
+                    if (remaining > 0) {
+                        int extracted = storage.extractEnergy(remaining, false);
+                        if (extracted > 0) {
+                            be.energyStorage.receiveEnergy(extracted, false);
+                        }
+                    }
+                }
+            });
+        }
+    }
+
     public static void serverTick(Level level, BlockPos pos, BlockState state, ResourceExtractorBlockEntity be) {
-        if (level.isClientSide || !be.redstoneActive) return;
+        if (level.isClientSide) return;
+
+        // Auto-pull energy from all neighboring blocks
+        pullEnergy(level, pos, be);
+
+        // Redstone check
+        if (!be.redstoneActive) {
+            be.machineStatus = STATUS_RED;
+            return;
+        }
 
         BlockState oreState = be.getOreBelow();
-        if (oreState == null) return;
+        if (oreState == null) {
+            be.machineStatus = STATUS_ORANGE;
+            be.tickCounter = 0;
+            return;
+        }
 
         ItemStack pickaxe = be.items.get(SLOT_PICKAXE);
-        if (pickaxe.isEmpty() || !(pickaxe.getItem() instanceof PickaxeItem)) return;
-        if (be.energyStorage.getEnergyStored() < ENERGY_PER_OP) return;
+        if (pickaxe.isEmpty() || !(pickaxe.getItem() instanceof PickaxeItem)) {
+            be.machineStatus = STATUS_ORANGE;
+            be.tickCounter = 0;
+            return;
+        }
 
-        int interval = be.isVanillaOre(oreState) ? VANILLA_INTERVAL : MODDED_INTERVAL;
+        Block oreBlock = oreState.getBlock();
+        OreDefinition oreDef = LostdepthsModOres.findByBlock(oreBlock);
+        boolean isVanilla = be.isVanillaOre(oreState);
+        int energyPerTick = isVanilla ? ENERGY_PER_TICK_VANILLA : ENERGY_PER_TICK_MODDED;
+
+        if (be.energyStorage.getEnergyStored() < energyPerTick) {
+            be.machineStatus = STATUS_ORANGE;
+            be.tickCounter = 0;
+            return;
+        }
+
+        BlockPos orePos = pos.below();
+
+        // Registered ore handling (lostdepths ores)
+        if (oreDef != null) {
+            // Check if ore requires solution activation and is currently unpowered
+            if (oreDef.requiresSolution() && LostdepthsModOres.isUnpowered(oreDef, oreBlock)) {
+                int solutionSlot = be.findSolutionSlot(oreDef.activationSolution().get());
+                if (solutionSlot == -1) {
+                    be.machineStatus = STATUS_ORANGE;
+                    be.tickCounter = 0;
+                    return;
+                }
+
+                // Consume one solution and activate the ore
+                be.items.get(solutionSlot).shrink(1);
+                level.setBlock(orePos, oreDef.activeBlock().get().defaultBlockState(), 3);
+                be.setChanged();
+                be.tickCounter = 0;
+                be.machineStatus = STATUS_GREEN;
+                return;
+            }
+
+            // Check if the pickaxe meets the minimum tier
+            if (!oreDef.canMine(pickaxe.getItem())) {
+                be.machineStatus = STATUS_ORANGE;
+                be.tickCounter = 0;
+                return;
+            }
+        }
+
+        be.machineStatus = STATUS_GREEN;
+
+        // Consume energy every tick while working
+        be.energyStorage.extractEnergy(energyPerTick, false);
+
+        int interval = isVanilla ? VANILLA_INTERVAL : MODDED_INTERVAL;
         be.tickCounter++;
         if (be.tickCounter < interval) return;
         be.tickCounter = 0;
 
-        // Simulate mining loot
-        ServerLevel serverLevel = (ServerLevel) level;
-        BlockPos orePos = pos.below();
+        // --- Mining complete: determine drops ---
+        List<ItemStack> drops;
 
-        LootParams.Builder builder = new LootParams.Builder(serverLevel)
-                .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(orePos))
-                .withParameter(LootContextParams.TOOL, pickaxe)
-                .withParameter(LootContextParams.BLOCK_STATE, oreState)
-                .withOptionalParameter(LootContextParams.BLOCK_ENTITY, level.getBlockEntity(orePos));
-
-        List<ItemStack> drops = oreState.getDrops(builder);
+        if (oreDef != null) {
+            // Registered ore: use hardcoded drops from OreDefinition
+            int dropCount = oreDef.getDropCount(pickaxe.getItem());
+            if (dropCount > 0) {
+                drops = List.of(new ItemStack(oreDef.dropItem().get(), dropCount));
+            } else {
+                drops = List.of();
+            }
+        } else {
+            // Vanilla/unregistered ore: use loot table
+            ServerLevel serverLevel = (ServerLevel) level;
+            LootParams.Builder builder = new LootParams.Builder(serverLevel)
+                    .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(orePos))
+                    .withParameter(LootContextParams.TOOL, pickaxe)
+                    .withParameter(LootContextParams.BLOCK_STATE, oreState)
+                    .withOptionalParameter(LootContextParams.BLOCK_ENTITY, level.getBlockEntity(orePos));
+            drops = oreState.getDrops(builder);
+            if (drops.isEmpty()) {
+                drops = Block.getDrops(oreState, serverLevel, orePos, level.getBlockEntity(orePos), null, pickaxe);
+            }
+        }
 
         boolean inserted = false;
         for (ItemStack drop : drops) {
@@ -128,8 +279,6 @@ public class ResourceExtractorBlockEntity extends BaseEnergyContainerBlockEntity
         }
 
         if (inserted) {
-            be.energyStorage.extractEnergy(ENERGY_PER_OP, false);
-
             // Damage pickaxe if damageable and not unbreakable
             if (pickaxe.isDamageableItem()) {
                 CompoundTag tag = pickaxe.getTag();
@@ -141,6 +290,13 @@ public class ResourceExtractorBlockEntity extends BaseEnergyContainerBlockEntity
                     }
                 }
             }
+
+            // Solution ores: 3/11 chance to revert to unpowered variant
+            if (oreDef != null && oreDef.depletionType() == DepletionType.CHANCE_DEACTIVATE
+                    && oreDef.unpoweredBlock() != null && 3 > Mth.nextInt(RandomSource.create(), 0, 10)) {
+                level.setBlock(orePos, oreDef.unpoweredBlock().get().defaultBlockState(), 3);
+            }
+
             be.setChanged();
         }
     }

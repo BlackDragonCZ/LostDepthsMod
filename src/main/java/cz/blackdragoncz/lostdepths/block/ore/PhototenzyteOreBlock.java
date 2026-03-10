@@ -24,8 +24,9 @@ import net.minecraft.core.BlockPos;
 
 import java.util.List;
 
-import cz.blackdragoncz.lostdepths.procedures.PhototenzyteoreunpoweredonblockrightclickedProcedure;
-import cz.blackdragoncz.lostdepths.procedures.PhototenzyteOreBlockDestroyedByPlayerProcedure;
+import cz.blackdragoncz.lostdepths.init.LostdepthsModOres;
+import cz.blackdragoncz.lostdepths.procedures.OreActivationProcedure;
+import cz.blackdragoncz.lostdepths.procedures.PickaxeOreMiningProcedure;
 
 public class PhototenzyteOreBlock extends Block {
 	public PhototenzyteOreBlock() {
@@ -50,7 +51,7 @@ public class PhototenzyteOreBlock extends Block {
 	@Override
 	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
 		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
-		PhototenzyteOreBlockDestroyedByPlayerProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		PickaxeOreMiningProcedure.executeDormant(world, pos.getX(), pos.getY(), pos.getZ(), LostdepthsModOres.PHOTOTENZYTE_ORE);
 		return retval;
 	}
 
@@ -64,7 +65,7 @@ public class PhototenzyteOreBlock extends Block {
 		double hitY = hit.getLocation().y;
 		double hitZ = hit.getLocation().z;
 		Direction direction = hit.getDirection();
-		PhototenzyteoreunpoweredonblockrightclickedProcedure.execute(world, x, y, z, entity);
+		OreActivationProcedure.execute(world, x, y, z, entity, LostdepthsModOres.PHOTOTENZYTE_ORE);
 		return InteractionResult.SUCCESS;
 	}
 }

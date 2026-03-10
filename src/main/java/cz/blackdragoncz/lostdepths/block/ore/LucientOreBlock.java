@@ -24,8 +24,9 @@ import net.minecraft.core.BlockPos;
 
 import java.util.List;
 
-import cz.blackdragoncz.lostdepths.procedures.LucientoreunpoweredonblockrightclickedProcedure;
-import cz.blackdragoncz.lostdepths.procedures.LucientOreBlockDestroyedByPlayerProcedure;
+import cz.blackdragoncz.lostdepths.init.LostdepthsModOres;
+import cz.blackdragoncz.lostdepths.procedures.OreActivationProcedure;
+import cz.blackdragoncz.lostdepths.procedures.PickaxeOreMiningProcedure;
 
 public class LucientOreBlock extends Block {
 	public LucientOreBlock() {
@@ -50,7 +51,7 @@ public class LucientOreBlock extends Block {
 	@Override
 	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
 		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
-		LucientOreBlockDestroyedByPlayerProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		PickaxeOreMiningProcedure.executeDormant(world, pos.getX(), pos.getY(), pos.getZ(), LostdepthsModOres.LUCIENT_ORE);
 		return retval;
 	}
 
@@ -64,7 +65,7 @@ public class LucientOreBlock extends Block {
 		double hitY = hit.getLocation().y;
 		double hitZ = hit.getLocation().z;
 		Direction direction = hit.getDirection();
-		LucientoreunpoweredonblockrightclickedProcedure.execute(world, x, y, z, entity);
+		OreActivationProcedure.execute(world, x, y, z, entity, LostdepthsModOres.LUCIENT_ORE);
 		return InteractionResult.SUCCESS;
 	}
 }

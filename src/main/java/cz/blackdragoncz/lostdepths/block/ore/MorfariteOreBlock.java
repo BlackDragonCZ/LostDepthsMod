@@ -25,7 +25,8 @@ import net.minecraft.core.BlockPos;
 
 import java.util.List;
 
-import cz.blackdragoncz.lostdepths.procedures.MorfariteOreBlockDestroyedByPlayerProcedure;
+import cz.blackdragoncz.lostdepths.init.LostdepthsModOres;
+import cz.blackdragoncz.lostdepths.procedures.PickaxeOreMiningProcedure;
 import cz.blackdragoncz.lostdepths.block.entity.MorfariteOreBlockEntity;
 
 public class MorfariteOreBlock extends Block implements EntityBlock {
@@ -51,7 +52,7 @@ public class MorfariteOreBlock extends Block implements EntityBlock {
 	@Override
 	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
 		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
-		MorfariteOreBlockDestroyedByPlayerProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), entity);
+		PickaxeOreMiningProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), entity, LostdepthsModOres.MORFARITE_ORE);
 		return retval;
 	}
 

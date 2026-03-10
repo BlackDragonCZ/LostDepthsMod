@@ -71,6 +71,7 @@ public class LostdepthsMod {
 		LostdepthsModLoots.REGISTER.register(bus);
 		LostDepthsBiomeModifiers.REGISTRY.register(bus);
 
+		LostdepthsModOres.init();
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> ClientSide.INSTANCE::setup);
 	}
 

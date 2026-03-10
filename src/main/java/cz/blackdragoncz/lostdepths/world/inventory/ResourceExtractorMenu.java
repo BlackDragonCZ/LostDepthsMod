@@ -8,7 +8,9 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -23,6 +25,7 @@ public class ResourceExtractorMenu extends AbstractContainerMenu {
     private final Level level;
     private ResourceExtractorBlockEntity blockEntity;
     private final ContainerLevelAccess access;
+    private final ContainerData data;
 
     public ResourceExtractorMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
         super(LostdepthsModMenus.RESOURCE_EXTRACTOR_MENU.get(), id);
@@ -35,9 +38,19 @@ public class ResourceExtractorMenu extends AbstractContainerMenu {
 
         this.access = ContainerLevelAccess.create(this.level, pos);
 
+        // ContainerData sync: server uses block entity data, client gets SimpleContainerData
+        if (this.blockEntity != null) {
+            this.data = this.blockEntity.containerData;
+        } else {
+            this.data = new SimpleContainerData(3);
+        }
+        this.addDataSlots(this.data);
+
         IItemHandler[] itemHandler = new IItemHandler[1];
-        this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
-                .ifPresent(cap -> itemHandler[0] = cap);
+        if (this.blockEntity != null) {
+            this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+                    .ifPresent(cap -> itemHandler[0] = cap);
+        }
 
         if (itemHandler[0] != null) {
             // Pickaxe slot
@@ -61,6 +74,10 @@ public class ResourceExtractorMenu extends AbstractContainerMenu {
         for (int col = 0; col < 9; col++)
             this.addSlot(new Slot(inv, col, 9 + col * 18, 185));
     }
+
+    public int getMachineStatus() { return data.get(0); }
+    public int getProgress() { return data.get(1); }
+    public int getMaxProgress() { return data.get(2); }
 
     @Override
     public ItemStack quickMoveStack(Player player, int index) {

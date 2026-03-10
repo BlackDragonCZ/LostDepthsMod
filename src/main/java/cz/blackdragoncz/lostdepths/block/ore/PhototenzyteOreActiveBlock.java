@@ -20,7 +20,8 @@ import net.minecraft.core.BlockPos;
 
 import java.util.List;
 
-import cz.blackdragoncz.lostdepths.procedures.PhototenzyteOreActiveBlockDestroyedByPlayerProcedure;
+import cz.blackdragoncz.lostdepths.init.LostdepthsModOres;
+import cz.blackdragoncz.lostdepths.procedures.PickaxeOreMiningProcedure;
 
 public class PhototenzyteOreActiveBlock extends Block {
 	public PhototenzyteOreActiveBlock() {
@@ -45,7 +46,7 @@ public class PhototenzyteOreActiveBlock extends Block {
 	@Override
 	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
 		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
-		PhototenzyteOreActiveBlockDestroyedByPlayerProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), entity);
+		PickaxeOreMiningProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), entity, LostdepthsModOres.PHOTOTENZYTE_ORE);
 		return retval;
 	}
 }

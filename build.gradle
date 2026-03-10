@@ -102,6 +102,7 @@ dependencies {
 
     compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.20.1-81-FORGE:api")
     runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.20.1-81-FORGE")
+    runtimeOnly fg.deobf("curse.maven:carpet-neoforged-1284716:7156876")
 
     implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.20.1:4.4.2')
     implementation fg.deobf("curse.maven:jade-324717:4986594")

@@ -32,7 +32,7 @@ public class CreativeRotateTransparentBlock extends Block {
 	public static final DirectionProperty FACING = DirectionalBlock.FACING;
 
 	public CreativeRotateTransparentBlock() {
-		super(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(-1, 3600000).pushReaction(PushReaction.BLOCK));
+		super(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(-1, 3600000).pushReaction(PushReaction.BLOCK).noOcclusion());
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
 

@@ -1,73 +1,48 @@
 package cz.blackdragoncz.lostdepths.procedures;
 
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.energy.IEnergyStorage;
 
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicBoolean;
-
 public class DevenergyUpdateTickProcedure {
+	private static final int PUSH_PER_SIDE = 100000;
+	private static final int MAX_ENERGY = 10000000;
+	private static final int REFILL_AMOUNT = 1000000;
+
 	public static void execute(LevelAccessor world, double x, double y, double z) {
-		double energy = 0;
-		if (new Object() {
-			public boolean canReceiveEnergy(LevelAccessor level, BlockPos pos) {
-				AtomicBoolean _retval = new AtomicBoolean(false);
-				BlockEntity _ent = level.getBlockEntity(pos);
-				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ENERGY, Direction.DOWN).ifPresent(capability -> _retval.set(capability.canReceive()));
-				return _retval.get();
+		BlockPos pos = BlockPos.containing(x, y, z);
+		BlockEntity self = world.getBlockEntity(pos);
+		if (self == null) return;
+
+		// Keep the generator topped up (creative = infinite energy)
+		self.getCapability(ForgeCapabilities.ENERGY).ifPresent(storage -> {
+			while (storage.getEnergyStored() < MAX_ENERGY) {
+				storage.receiveEnergy(REFILL_AMOUNT, false);
 			}
-		}.canReceiveEnergy(world, BlockPos.containing(x, y + 1, z))) {
-			energy = new Object() {
-				public int extractEnergySimulate(LevelAccessor level, BlockPos pos, int _amount) {
-					AtomicInteger _retval = new AtomicInteger(0);
-					BlockEntity _ent = level.getBlockEntity(pos);
-					if (_ent != null)
-						_ent.getCapability(ForgeCapabilities.ENERGY, null).ifPresent(capability -> _retval.set(capability.extractEnergy(_amount, true)));
-					return _retval.get();
+		});
+
+		// Push energy to all 6 sides
+		for (Direction dir : Direction.values()) {
+			BlockEntity neighbor = world.getBlockEntity(pos.relative(dir));
+			if (neighbor == null) continue;
+
+			neighbor.getCapability(ForgeCapabilities.ENERGY, dir.getOpposite()).ifPresent(neighborStorage -> {
+				if (neighborStorage.canReceive()) {
+					self.getCapability(ForgeCapabilities.ENERGY).ifPresent(selfStorage -> {
+						int canExtract = selfStorage.extractEnergy(PUSH_PER_SIDE, true);
+						if (canExtract > 0) {
+							int accepted = neighborStorage.receiveEnergy(canExtract, false);
+							if (accepted > 0) {
+								selfStorage.extractEnergy(accepted, false);
+							}
+						}
+					});
 				}
-			}.extractEnergySimulate(world, BlockPos.containing(x, y, z), 10000);
-			energy = new Object() {
-				public int receiveEnergySimulate(LevelAccessor level, BlockPos pos, int _amount) {
-					AtomicInteger _retval = new AtomicInteger(0);
-					BlockEntity _ent = level.getBlockEntity(pos);
-					if (_ent != null)
-						_ent.getCapability(ForgeCapabilities.ENERGY, Direction.DOWN).ifPresent(capability -> _retval.set(capability.receiveEnergy(_amount, true)));
-					return _retval.get();
-				}
-			}.receiveEnergySimulate(world, BlockPos.containing(x, y + 1, z), (int) energy);
-			{
-				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
-				int _amount = (int) energy;
-				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ENERGY, null).ifPresent(capability -> capability.extractEnergy(_amount, false));
-			}
-			{
-				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y + 1, z));
-				int _amount = (int) energy;
-				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ENERGY, Direction.DOWN).ifPresent(capability -> capability.receiveEnergy(_amount, false));
-			}
-		}
-		while (new Object() {
-			public int getEnergyStored(LevelAccessor level, BlockPos pos) {
-				AtomicInteger _retval = new AtomicInteger(0);
-				BlockEntity _ent = level.getBlockEntity(pos);
-				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ENERGY, null).ifPresent(capability -> _retval.set(capability.getEnergyStored()));
-				return _retval.get();
-			}
-		}.getEnergyStored(world, BlockPos.containing(x, y, z)) < 10000000) {
-			{
-				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
-				int _amount = 1000000;
-				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ENERGY, Direction.DOWN).ifPresent(capability -> capability.receiveEnergy(_amount, false));
-			}
+			});
 		}
 	}
 }

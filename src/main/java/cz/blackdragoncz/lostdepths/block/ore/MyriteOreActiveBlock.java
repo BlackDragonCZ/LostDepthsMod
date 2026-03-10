@@ -20,7 +20,8 @@ import net.minecraft.core.BlockPos;
 
 import java.util.List;
 
-import cz.blackdragoncz.lostdepths.procedures.MyriteOreActiveBlockDestroyedByPlayerProcedure;
+import cz.blackdragoncz.lostdepths.init.LostdepthsModOres;
+import cz.blackdragoncz.lostdepths.procedures.PickaxeOreMiningProcedure;
 
 public class MyriteOreActiveBlock extends Block {
 	public MyriteOreActiveBlock() {
@@ -46,7 +47,7 @@ public class MyriteOreActiveBlock extends Block {
 	@Override
 	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
 		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
-		MyriteOreActiveBlockDestroyedByPlayerProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), entity);
+		PickaxeOreMiningProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), entity, LostdepthsModOres.MYRITE_ORE);
 		return retval;
 	}
 }

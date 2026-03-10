@@ -247,7 +247,7 @@ public class LostdepthsModBlocks {
 	public static final RegistryObject<Block> ALIGNMENT_DIAL = REGISTRY.register("alignment_dial", CreativeStaticBlock::new);
 	public static final RegistryObject<Block> CONNECT_GAME = REGISTRY.register("connect_game", CreativeStaticBlock::new);
 	public static final RegistryObject<Block> CONTROL_SCREEN = REGISTRY.register("control_screen", CreativeRotateTransparentBlock::new);
-	public static final RegistryObject<Block> CONTROL_SCREEN_KEYBOARD = REGISTRY.register("control_screen_keyboard", CreativeStaticBlock::new);
+	public static final RegistryObject<Block> CONTROL_SCREEN_KEYBOARD = REGISTRY.register("control_screen_keyboard", CreativeRotateStaticBlock::new);
 	public static final RegistryObject<Block> CONTROL_KEYBOARD = REGISTRY.register("control_keyboard", CreativeRotateStaticBlock::new);
 	public static final RegistryObject<Block> KEYBOARD_SCREEN = REGISTRY.register("keyboard_screen", CreativeRotateStaticBlock::new);
 	public static final RegistryObject<Block> GRAVITOR_BLOCK = REGISTRY.register("gravitor_block", GravitorBlockBlock::new);

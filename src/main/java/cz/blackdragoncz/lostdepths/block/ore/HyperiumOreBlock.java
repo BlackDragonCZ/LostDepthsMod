@@ -20,7 +20,8 @@ import net.minecraft.core.BlockPos;
 
 import java.util.List;
 
-import cz.blackdragoncz.lostdepths.procedures.HyperiumOreBlockDestroyedByPlayerProcedure;
+import cz.blackdragoncz.lostdepths.init.LostdepthsModOres;
+import cz.blackdragoncz.lostdepths.procedures.PickaxeOreMiningProcedure;
 
 public class HyperiumOreBlock extends Block {
 	public HyperiumOreBlock() {
@@ -45,7 +46,7 @@ public class HyperiumOreBlock extends Block {
 	@Override
 	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
 		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
-		HyperiumOreBlockDestroyedByPlayerProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), entity);
+		PickaxeOreMiningProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), entity, LostdepthsModOres.HYPERIUM_ORE);
 		return retval;
 	}
 }
