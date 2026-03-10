@@ -43,18 +43,18 @@ public class ContractSignMessage {
 
 			// Must have contract_allowed flag set during book signing
 			if (!tag.getBoolean("contract_allowed")) {
-				player.displayClientMessage(Component.literal("\u00A7cThis book does not allow contract signing."), true);
+				player.displayClientMessage(Component.literal("§cThis book does not allow contract signing."), true);
 				return;
 			}
 
 			// Cannot re-sign
 			if (tag.contains("contract_signer")) {
-				player.displayClientMessage(Component.literal("\u00A7cThis book has already been signed."), true);
+				player.displayClientMessage(Component.literal("§cThis book has already been signed."), true);
 				return;
 			}
 
 			tag.putString("contract_signer", player.getGameProfile().getName());
-			player.displayClientMessage(Component.literal("\u00A7aContract signed!"), true);
+			player.displayClientMessage(Component.literal("§aContract signed!"), true);
 		});
 		ctx.get().setPacketHandled(true);
 	}

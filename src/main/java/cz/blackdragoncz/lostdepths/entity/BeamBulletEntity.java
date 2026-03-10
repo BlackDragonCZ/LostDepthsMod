@@ -6,12 +6,12 @@ import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.api.distmarker.Dist;
 
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.util.RandomSource;
@@ -56,7 +56,7 @@ public class BeamBulletEntity extends AbstractArrow implements ItemSupplier {
 
 	@Override
 	protected ItemStack getPickupItem() {
-		return PROJECTILE_ITEM;
+		return ItemStack.EMPTY; // Not pickupable — invisible projectile
 	}
 
 	@Override
@@ -66,23 +66,22 @@ public class BeamBulletEntity extends AbstractArrow implements ItemSupplier {
 	}
 
 	@Override
-	public void playerTouch(Player entity) {
-		super.playerTouch(entity);
-		CaneOfVenomsHitProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ(), entity);
-	}
-
-	@Override
 	public void onHitEntity(EntityHitResult entityHitResult) {
 		super.onHitEntity(entityHitResult);
 		CaneOfVenomsHitProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ(), entityHitResult.getEntity());
+		this.discard();
+	}
+
+	@Override
+	protected void onHitBlock(BlockHitResult blockHitResult) {
+		super.onHitBlock(blockHitResult);
+		this.discard();
 	}
 
 	@Override
 	public void tick() {
 		super.tick();
 		CaneOfVenomWhileProjectileFlyingTickProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ());
-		if (this.inGround)
-			this.discard();
 	}
 
 	public static BeamBulletEntity shoot(Level world, LivingEntity entity, RandomSource source) {

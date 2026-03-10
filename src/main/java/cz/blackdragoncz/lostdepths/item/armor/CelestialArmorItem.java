@@ -74,8 +74,8 @@ public abstract class CelestialArmorItem extends ArmorItem {
 		@Override
 		public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
 			super.appendHoverText(itemstack, world, list, flag);
-			list.add(Component.literal("\u00A7a\u00A7lSet Bonus:"));
-			list.add(Component.literal("\u00A7r\u00A77Allow player to fly"));
+			list.add(Component.literal("§a§lSet Bonus:"));
+			list.add(Component.literal("§r§7Allow player to fly"));
 		}
 
 		@Override
@@ -97,8 +97,8 @@ public abstract class CelestialArmorItem extends ArmorItem {
 		@Override
 		public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
 			super.appendHoverText(itemstack, world, list, flag);
-			list.add(Component.literal("\u00A7a\u00A7lSet Bonus:"));
-			list.add(Component.literal("\u00A7r\u00A77Allow player to fly"));
+			list.add(Component.literal("§a§lSet Bonus:"));
+			list.add(Component.literal("§r§7Allow player to fly"));
 		}
 
 		@Override
@@ -120,8 +120,8 @@ public abstract class CelestialArmorItem extends ArmorItem {
 		@Override
 		public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
 			super.appendHoverText(itemstack, world, list, flag);
-			list.add(Component.literal("\u00A7a\u00A7lSet Bonus:"));
-			list.add(Component.literal("\u00A7r\u00A77Allow player to fly"));
+			list.add(Component.literal("§a§lSet Bonus:"));
+			list.add(Component.literal("§r§7Allow player to fly"));
 		}
 
 		@Override

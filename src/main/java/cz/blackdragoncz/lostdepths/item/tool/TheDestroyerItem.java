@@ -16,7 +16,6 @@ import net.minecraft.network.chat.Component;
 import java.util.List;
 
 import cz.blackdragoncz.lostdepths.procedures.TheDestroyerToolInInventoryTickProcedure;
-import cz.blackdragoncz.lostdepths.procedures.TheDestroyerLivingEntityIsHitWithToolProcedure;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModItems;
 
 public class TheDestroyerItem extends SwordItem {

@@ -54,7 +54,7 @@ public class BaneOfVenomsItem extends SwordItem {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, world, list, flag);
-		list.add(Component.literal("\u00A7dPer potion effect on target:"));
-		list.add(Component.literal("\u00A76Deals 20% Max Health Damage"));
+		list.add(Component.literal("§dPer potion effect on target:"));
+		list.add(Component.literal("§6Deals 20% Max Health Damage"));
 	}
 }

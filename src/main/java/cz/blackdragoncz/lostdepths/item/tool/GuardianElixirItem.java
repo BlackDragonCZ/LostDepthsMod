@@ -43,8 +43,8 @@ public class GuardianElixirItem extends ShearsItem {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, world, list, flag);
-		list.add(Component.literal("\u00A76When drunk, grants the Ironheart buff"));
-		list.add(Component.literal("\u00A74Ironheart grants immunity to max health damage."));
+		list.add(Component.literal("§6When drunk, grants the Ironheart buff"));
+		list.add(Component.literal("§4Ironheart grants immunity to max health damage."));
 	}
 
 	@Override

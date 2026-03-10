@@ -18,6 +18,6 @@ public class SpectralIngotItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, world, list, flag);
-		list.add(Component.literal("\u00A7bUse a Frozen Ingot on The Protector."));
+		list.add(Component.literal("§bUse a Frozen Ingot on The Protector."));
 	}
 }

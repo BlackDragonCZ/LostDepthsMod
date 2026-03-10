@@ -44,8 +44,8 @@ public class RodOfTransformation extends SwordItem {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, world, list, flag);
-		list.add(Component.literal("\u00A73Convert mobs into"));
-		list.add(Component.literal("\u00A73aggressive variant"));
-		list.add(Component.literal("\u00A73after (right click)"));
+		list.add(Component.literal("§3Convert mobs into"));
+		list.add(Component.literal("§3aggressive variant"));
+		list.add(Component.literal("§3after (right click)"));
 	}
 }

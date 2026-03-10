@@ -14,7 +14,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 
-import java.awt.*;
 import java.util.Optional;
 
 public class TheDestroyerSwordFunctionality {
@@ -29,7 +28,7 @@ public class TheDestroyerSwordFunctionality {
         if (held.isEmpty() || held.getItem() != LostdepthsModItems.THE_DESTROYER.get()) return;
 
         boolean isMutated = target.getType().is(MUTATED_TAG);
-        double fraction = isMutated ? 0.6D : 0.8D;
+        double fraction = isMutated ? 0.8D : 0.6D;
 
         float amount = computeTrueDamage(target, fraction);
         if (amount <= 0f) return;

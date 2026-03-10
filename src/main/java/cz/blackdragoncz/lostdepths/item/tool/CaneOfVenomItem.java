@@ -61,9 +61,9 @@ public class CaneOfVenomItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, world, list, flag);
-		list.add(Component.literal("\u00A76Fires a projectile that deals damage based on potion effects."));
-		list.add(Component.literal("\u00A7dPer potion effect on Target:"));
-		list.add(Component.literal("\u00A76Deals 10% Max Health Damage"));
+		list.add(Component.literal("§6Fires a projectile that deals damage based on potion effects."));
+		list.add(Component.literal("§dPer potion effect on Target:"));
+		list.add(Component.literal("§6Deals 10% Max Health Damage"));
 	}
 
 	@Override

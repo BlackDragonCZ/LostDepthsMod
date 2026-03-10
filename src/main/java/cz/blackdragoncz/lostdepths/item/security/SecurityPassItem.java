@@ -23,7 +23,7 @@ public class SecurityPassItem extends Item {
     @Override
     public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
         super.appendHoverText(itemstack, world, list, flag);
-        list.add(Component.literal("\u00A76Use on security gates to grant security clearance."));
+        list.add(Component.literal("§6Use on security gates to grant security clearance."));
     }
 
     public int getClearance() {

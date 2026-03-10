@@ -75,10 +75,11 @@ public class MirrorShield extends Item {
         float incoming = event.getAmount();
         float victimMax = victim.getMaxHealth();
 
-        boolean shouldReflect = isTrueDamage || incoming >= victimMax;
-        if (!shouldReflect) return;
+        // True damage bypasses this shield entirely
+        if (isTrueDamage) return;
+        if (incoming < victimMax) return;
 
-        DamageSource reflectSource = createReflectSource(victim, isTrueDamage);
+        DamageSource reflectSource = createReflectSource(victim, false);
         withNoReflect(livingAttacker, () -> livingAttacker.hurt(reflectSource, incoming));
     }
 }

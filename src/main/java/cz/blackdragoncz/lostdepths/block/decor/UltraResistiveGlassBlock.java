@@ -34,7 +34,7 @@ public class UltraResistiveGlassBlock extends Block {
 	@Override
 	public void appendHoverText(ItemStack itemstack, BlockGetter world, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, world, list, flag);
-		list.add(Component.literal("\u00A77Wither Proof Glass"));
+		list.add(Component.literal("§7Wither Proof Glass"));
 	}
 
 	@Override

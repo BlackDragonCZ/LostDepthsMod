@@ -38,7 +38,7 @@ public class OnPlayerInDimensionTickProcedure {
 			if (entity instanceof LivingEntity _entity)
 				_entity.setHealth(1);
 			if (entity instanceof Player _player && !_player.level().isClientSide())
-				_player.displayClientMessage(Component.literal(("[\u00A74LostDepths\u00A7f] " + "\u00A74Nightvision causes your eyes to burn from fumes in the air. You feel severely weakened.")), true);
+				_player.displayClientMessage(Component.literal(("[§4LostDepths§f] " + "§4Nightvision causes your eyes to burn from fumes in the air. You feel severely weakened.")), true);
 		}
 	}
 }

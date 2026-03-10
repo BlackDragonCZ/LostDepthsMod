@@ -64,7 +64,7 @@ public class HexbreakerItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, world, list, flag);
-		list.add(Component.literal("\u00A75When held off-hand, constantly removes ALL curable potion effects."));
+		list.add(Component.literal("§5When held off-hand, constantly removes ALL curable potion effects."));
 	}
 
 	@Override

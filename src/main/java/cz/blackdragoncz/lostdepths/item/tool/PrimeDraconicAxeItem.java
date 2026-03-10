@@ -63,7 +63,7 @@ public class PrimeDraconicAxeItem extends AxeItem {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, world, list, flag);
-		list.add(Component.literal("\u00A76Right Click: Activate speed and regeneration"));
+		list.add(Component.literal("§6Right Click: Activate speed and regeneration"));
 	}
 
 	@Override

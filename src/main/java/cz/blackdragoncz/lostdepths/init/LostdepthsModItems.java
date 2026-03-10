@@ -76,7 +76,7 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> CORRUPTED_GEMSTONE = REGISTRY.register("corrupted_gemstone", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> POWER_CHARGE = REGISTRY.register("power_charge", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> LAVA_STRING = REGISTRY.register("lava_string", MasterPartRegistryItem::new);
-	public static final RegistryObject<Item> IRON_GOLEM_ESSENCE = REGISTRY.register("iron_golem_essence", () -> new MasterPartRegistryItem(32, "\u00A77Obtained by killing Iron golem"));
+	public static final RegistryObject<Item> IRON_GOLEM_ESSENCE = REGISTRY.register("iron_golem_essence", () -> new MasterPartRegistryItem(32, "§7Obtained by killing Iron golem"));
 	public static final RegistryObject<Item> ION_CRYSTAL = REGISTRY.register("ion_crystal", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> POWER_CORE = REGISTRY.register("power_core", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> UNBREAKABLE_CHAIN = REGISTRY.register("unbreakable_chain", MasterPartRegistryItem::new);
@@ -364,7 +364,7 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> SHOOTER_H = REGISTRY.register("shooter_h", () -> new ShooterHItem());
 	public static final RegistryObject<Item> CANE_OF_VENOM = REGISTRY.register("cane_of_venom", () -> new CaneOfVenomItem());
 	public static final RegistryObject<Item> FLUX_LANTERN = REGISTRY.register("flux_lantern", () -> new FluxLanternItem());
-	public static final RegistryObject<Item> ANCIENT_TEMPLATE = REGISTRY.register("ancient_template", () -> new MasterPartRegistryItem(64, "\u00A77Used to upgrade things in smithing table"));
+	public static final RegistryObject<Item> ANCIENT_TEMPLATE = REGISTRY.register("ancient_template", () -> new MasterPartRegistryItem(64, "§7Used to upgrade things in smithing table"));
 	public static final RegistryObject<Item> NULL_ELEMENT = REGISTRY.register("null_element", () -> new NullElementItem());
 	public static final RegistryObject<Item> NULL_NECKLES = REGISTRY.register("null_neckles", () -> new MasterPartRegistryItem(1));
 	public static final RegistryObject<Item> DRILL_HEAD = block(LostdepthsModBlocks.DRILL_HEAD);

@@ -37,8 +37,8 @@ public class DruidsFlowerBlock extends FlowerBlock {
 	@Override
 	public void appendHoverText(ItemStack itemstack, BlockGetter world, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, world, list, flag);
-		list.add(Component.literal("\u00A76Used to brew a potion of Ultra heal."));
-		list.add(Component.literal("\u00A76Use Druid's flower in brewing stand with instant heal potion."));
+		list.add(Component.literal("§6Used to brew a potion of Ultra heal."));
+		list.add(Component.literal("§6Use Druid's flower in brewing stand with instant heal potion."));
 	}
 
 	@Override

@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = LostdepthsMod.MODID)
 public class WormholeDisruptorEvents {
 
-    private static final Component DISRUPTED_MSG = Component.literal("\u00A7cWormhole disruption prevents teleportation!");
+    private static final Component DISRUPTED_MSG = Component.literal("§cWormhole disruption prevents teleportation!");
 
     @SubscribeEvent
     public static void onEnderPearl(EntityTeleportEvent.EnderPearl event) {

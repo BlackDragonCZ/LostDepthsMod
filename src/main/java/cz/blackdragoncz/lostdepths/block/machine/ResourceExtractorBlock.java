@@ -51,8 +51,8 @@ public class ResourceExtractorBlock extends BaseHorizontalFacingEntityBlock {
 
     @Override
     public void appendHoverText(ItemStack itemstack, @Nullable BlockGetter world, List<Component> list, TooltipFlag flag) {
-        list.add(Component.literal("\u00A77Place on top of an ore block"));
-        list.add(Component.literal("\u00A77Insert a pickaxe to extract resources"));
+        list.add(Component.literal("§7Place on top of an ore block"));
+        list.add(Component.literal("§7Insert a pickaxe to extract resources"));
     }
 
     @Override
