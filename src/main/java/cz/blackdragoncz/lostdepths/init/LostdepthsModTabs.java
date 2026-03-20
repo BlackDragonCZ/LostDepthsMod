@@ -641,4 +641,18 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModItems.DM_12_SPAWN_EGG.get());
 				tabData.accept(LostdepthsModItems.ARACHNOTA_SPAWN_EGG.get());
 			}).withSearchBar().build());
+	public static final RegistryObject<CreativeModeTab> NT_STORAGE = REGISTRY.register("nt_storage",
+			() -> CreativeModeTab.builder().title(Component.translatable("item_group.lostdepths.nt_storage")).icon(() -> new ItemStack(LostdepthsModBlocks.NT_CONTROLLER.get())).displayItems((parameters, tabData) -> {
+				tabData.accept(LostdepthsModItems.NT_CONTROLLER.get());
+				tabData.accept(LostdepthsModItems.NT_TERMINAL.get());
+				tabData.accept(LostdepthsModItems.NT_DRIVE.get());
+				tabData.accept(LostdepthsModItems.NT_IMPORT_BUS.get());
+				tabData.accept(LostdepthsModItems.NT_EXPORT_BUS.get());
+				tabData.accept(LostdepthsModItems.NT_BRIDGE.get());
+				tabData.accept(LostdepthsModItems.NT_EXTERNAL_STORAGE.get());
+				tabData.accept(LostdepthsModItems.NT_CRYSTAL_1K.get());
+				tabData.accept(LostdepthsModItems.NT_CRYSTAL_4K.get());
+				tabData.accept(LostdepthsModItems.NT_CRYSTAL_16K.get());
+				tabData.accept(LostdepthsModItems.NT_CRYSTAL_64K.get());
+			}).build());
 }

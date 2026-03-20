@@ -11,6 +11,8 @@ import cz.blackdragoncz.lostdepths.item.ShipmentBoxItem;
 import cz.blackdragoncz.lostdepths.item.shield.MirrorShield;
 import cz.blackdragoncz.lostdepths.item.tool.*;
 import cz.blackdragoncz.lostdepths.item.security.*;
+import cz.blackdragoncz.lostdepths.item.storage.StorageCrystalItem;
+import cz.blackdragoncz.lostdepths.storage.StorageType;
 import net.minecraft.world.item.*;
 import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -660,6 +662,19 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> RESOURCE_EXTRACTOR = block(LostdepthsModBlocks.RESOURCE_EXTRACTOR);
 	public static final RegistryObject<Item> SHIPMENT_BOX = REGISTRY.register("shipment_box", ShipmentBoxItem::new);
 	public static final RegistryObject<Item> SOLARIUM_SHADOW = REGISTRY.register("solarium_shadow", MasterPartRegistryItem::new);
+
+	// NuroTech Storage
+	public static final RegistryObject<Item> NT_CONTROLLER = block(LostdepthsModBlocks.NT_CONTROLLER);
+	public static final RegistryObject<Item> NT_TERMINAL = block(LostdepthsModBlocks.NT_TERMINAL);
+	public static final RegistryObject<Item> NT_DRIVE = block(LostdepthsModBlocks.NT_DRIVE);
+	public static final RegistryObject<Item> NT_IMPORT_BUS = block(LostdepthsModBlocks.NT_IMPORT_BUS);
+	public static final RegistryObject<Item> NT_EXPORT_BUS = block(LostdepthsModBlocks.NT_EXPORT_BUS);
+	public static final RegistryObject<Item> NT_BRIDGE = block(LostdepthsModBlocks.NT_BRIDGE);
+	public static final RegistryObject<Item> NT_EXTERNAL_STORAGE = block(LostdepthsModBlocks.NT_EXTERNAL_STORAGE);
+	public static final RegistryObject<Item> NT_CRYSTAL_1K = REGISTRY.register("nt_crystal_1k", () -> new StorageCrystalItem(StorageType.CRYSTAL_1K));
+	public static final RegistryObject<Item> NT_CRYSTAL_4K = REGISTRY.register("nt_crystal_4k", () -> new StorageCrystalItem(StorageType.CRYSTAL_4K));
+	public static final RegistryObject<Item> NT_CRYSTAL_16K = REGISTRY.register("nt_crystal_16k", () -> new StorageCrystalItem(StorageType.CRYSTAL_16K));
+	public static final RegistryObject<Item> NT_CRYSTAL_64K = REGISTRY.register("nt_crystal_64k", () -> new StorageCrystalItem(StorageType.CRYSTAL_64K));
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));

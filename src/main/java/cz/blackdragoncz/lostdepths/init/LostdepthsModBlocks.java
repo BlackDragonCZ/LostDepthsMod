@@ -11,6 +11,7 @@ import cz.blackdragoncz.lostdepths.block.machine.*;
 import cz.blackdragoncz.lostdepths.block.multiblock.*;
 import cz.blackdragoncz.lostdepths.block.puzzle.*;
 import cz.blackdragoncz.lostdepths.block.security.*;
+import cz.blackdragoncz.lostdepths.block.storage.*;
 import cz.blackdragoncz.lostdepths.block.structure.*;
 import cz.blackdragoncz.lostdepths.block.villager.*;
 import cz.blackdragoncz.lostdepths.world.LostDepthsTreeFeatures;
@@ -310,4 +311,12 @@ public class LostdepthsModBlocks {
 	public static final RegistryObject<Block> MULTIBLOCK_DUMMY = REGISTRY.register("multiblock_dummy", MultiblockDummyBlock::new);
 	public static final RegistryObject<Block> RESOURCE_EXTRACTOR = REGISTRY.register("resource_extractor", ResourceExtractorBlock::new);
 
+	// NuroTech Storage
+	public static final RegistryObject<Block> NT_CONTROLLER = REGISTRY.register("nurotech_controller", NTControllerBlock::new);
+	public static final RegistryObject<Block> NT_TERMINAL = REGISTRY.register("nt_terminal", NTTerminalBlock::new);
+	public static final RegistryObject<Block> NT_DRIVE = REGISTRY.register("nt_drive", NTDriveBlock::new);
+	public static final RegistryObject<Block> NT_IMPORT_BUS = REGISTRY.register("nt_import_bus", NTImportBusBlock::new);
+	public static final RegistryObject<Block> NT_EXPORT_BUS = REGISTRY.register("nt_export_bus", NTExportBusBlock::new);
+	public static final RegistryObject<Block> NT_BRIDGE = REGISTRY.register("nt_bridge", NTBridgeBlock::new);
+	public static final RegistryObject<Block> NT_EXTERNAL_STORAGE = REGISTRY.register("nt_external_storage", NTExternalStorageBlock::new);
 }

@@ -6,6 +6,7 @@ package cz.blackdragoncz.lostdepths.init;
 
 import cz.blackdragoncz.lostdepths.block.creative.entity.WormholeDisruptorBlockEntity;
 import cz.blackdragoncz.lostdepths.block.entity.*;
+import cz.blackdragoncz.lostdepths.block.entity.storage.*;
 import cz.blackdragoncz.lostdepths.block.multiblock.MultiblockDummyBlockEntity;
 import cz.blackdragoncz.lostdepths.block.power.entity.NurostarBatteryBlockEntity;
 import cz.blackdragoncz.lostdepths.block.power.entity.NurostarCableBlockEntity;
@@ -59,6 +60,15 @@ public class LostdepthsModBlockEntities {
 	public static final RegistryObject<BlockEntityType<FusionTableBlockEntity>> FUSION_TABLE = register("fusion_table", LostdepthsModBlocks.FUSION_TABLE, FusionTableBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<ShipmentFillerBlockEntity>> SHIPMENT_FILLER = register("shipment_filler", LostdepthsModBlocks.SHIPMENT_FILLER_BLOCK, ShipmentFillerBlockEntity::new);
 	//public static final RegistryObject<BlockEntityType<ResourceExtractorBlockEntity>> RESOURCE_EXTRACTOR = REGISTRY.register("resource_extractor", LostdepthsModBlocks.RESOURCE_EXTRACTOR, ResourceExtractorBlockEntity::new);
+
+	// NuroTech Storage
+	public static final RegistryObject<BlockEntityType<NTControllerBlockEntity>> NT_CONTROLLER = register("nurotech_controller", LostdepthsModBlocks.NT_CONTROLLER, NTControllerBlockEntity::new);
+	public static final RegistryObject<BlockEntityType<NTTerminalBlockEntity>> NT_TERMINAL = register("nt_terminal", LostdepthsModBlocks.NT_TERMINAL, NTTerminalBlockEntity::new);
+	public static final RegistryObject<BlockEntityType<NTDriveBlockEntity>> NT_DRIVE = register("nt_drive", LostdepthsModBlocks.NT_DRIVE, NTDriveBlockEntity::new);
+	public static final RegistryObject<BlockEntityType<NTImportBusBlockEntity>> NT_IMPORT_BUS = register("nt_import_bus", LostdepthsModBlocks.NT_IMPORT_BUS, NTImportBusBlockEntity::new);
+	public static final RegistryObject<BlockEntityType<NTExportBusBlockEntity>> NT_EXPORT_BUS = register("nt_export_bus", LostdepthsModBlocks.NT_EXPORT_BUS, NTExportBusBlockEntity::new);
+	public static final RegistryObject<BlockEntityType<NTBridgeBlockEntity>> NT_BRIDGE = register("nt_bridge", LostdepthsModBlocks.NT_BRIDGE, NTBridgeBlockEntity::new);
+	public static final RegistryObject<BlockEntityType<NTExternalStorageBlockEntity>> NT_EXTERNAL_STORAGE = register("nt_external_storage", LostdepthsModBlocks.NT_EXTERNAL_STORAGE, NTExternalStorageBlockEntity::new);
 
 	private static <T extends BlockEntity> RegistryObject<BlockEntityType<T>> register(String registryname, RegistryObject<Block> block, BlockEntityType.BlockEntitySupplier<T> supplier) {
 		return REGISTRY.register(registryname, () -> BlockEntityType.Builder.of(supplier, block.get()).build(null));
