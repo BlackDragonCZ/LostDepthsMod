@@ -846,5 +846,23 @@
   "lostdepths.description.sunder_wood_mine": "§7Vytěžte §3Sunder dřevo §7pro §3Sunder kládu",
   "lostdepths.description.metal_branch_mine": "§7Vytěžte §3Ferro kládu §7pro §3Kovovou větev",
   "lostdepths.description.positive_mag": "§7Vytěžte odpovídající §3Celestial kládu §7pro §3Pozitivní Magnecronite",
-  "lostdepths.description.negative_mag": "§7Vytěžte odpovídající §3Celestial kládu §7pro §3Negativní Magnecronite"
+  "lostdepths.description.negative_mag": "§7Vytěžte odpovídající §3Celestial kládu §7pro §3Negativní Magnecronite",
+
+  "item_group.lostdepths.nt_storage": "NuroTech Úložiště",
+  "block.lostdepths.nurotech_controller": "NuroTech Kontrolér",
+  "block.lostdepths.nt_terminal": "NT Terminál",
+  "block.lostdepths.nt_crafting_terminal": "NT Výrobní Terminál",
+  "block.lostdepths.nt_drive": "NT Jednotka",
+  "block.lostdepths.nt_drive_t2": "NT Jednotka Mk.II",
+  "block.lostdepths.nt_import_bus": "NT Importní Sběrnice",
+  "block.lostdepths.nt_export_bus": "NT Exportní Sběrnice",
+  "block.lostdepths.nt_bridge": "NT Most",
+  "block.lostdepths.nt_bridge_rs": "NT Most (Refined Storage)",
+  "block.lostdepths.nt_bridge_ae": "NT Most (Applied Energistics)",
+  "block.lostdepths.nt_external_storage": "NT Externí Úložiště",
+  "block.lostdepths.nt_security_terminal": "NT Bezpečnostní Terminál",
+  "item.lostdepths.nt_crystal_1k": "NT 1K Úložný Krystal",
+  "item.lostdepths.nt_crystal_4k": "NT 4K Úložný Krystal",
+  "item.lostdepths.nt_crystal_16k": "NT 16K Úložný Krystal",
+  "item.lostdepths.nt_crystal_64k": "NT 64K Úložný Krystal"
 }

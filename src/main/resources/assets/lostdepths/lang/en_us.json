@@ -871,5 +871,23 @@
   "entity.lostdepths.projectile_prime_draconic_trident": "Prime Draconic Trident",
   "entity.lostdepths.projectile_draconic_trident": "Draconic Trident",
   "item.lostdepths.infused_writable_book": "Infused Writing Book",
-  "item.lostdepths.infused_written_book": "Infused Written Book"
+  "item.lostdepths.infused_written_book": "Infused Written Book",
+
+  "item_group.lostdepths.nt_storage": "NuroTech Storage",
+  "block.lostdepths.nurotech_controller": "NuroTech Controller",
+  "block.lostdepths.nt_terminal": "NT Terminal",
+  "block.lostdepths.nt_crafting_terminal": "NT Crafting Terminal",
+  "block.lostdepths.nt_drive": "NT Drive",
+  "block.lostdepths.nt_drive_t2": "NT Drive Mk.II",
+  "block.lostdepths.nt_import_bus": "NT Import Bus",
+  "block.lostdepths.nt_export_bus": "NT Export Bus",
+  "block.lostdepths.nt_bridge": "NT Bridge",
+  "block.lostdepths.nt_bridge_rs": "NT Bridge (Refined Storage)",
+  "block.lostdepths.nt_bridge_ae": "NT Bridge (Applied Energistics)",
+  "block.lostdepths.nt_external_storage": "NT External Storage",
+  "block.lostdepths.nt_security_terminal": "NT Security Terminal",
+  "item.lostdepths.nt_crystal_1k": "NT 1K Storage Crystal",
+  "item.lostdepths.nt_crystal_4k": "NT 4K Storage Crystal",
+  "item.lostdepths.nt_crystal_16k": "NT 16K Storage Crystal",
+  "item.lostdepths.nt_crystal_64k": "NT 64K Storage Crystal"
 }
