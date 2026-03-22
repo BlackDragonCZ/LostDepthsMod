@@ -25,4 +25,7 @@ public class LostdepthsModMenus {
 	public static final RegistryObject<MenuType<ResourceExtractorMenu>> RESOURCE_EXTRACTOR_MENU = REGISTRY.register("resource_extractor_menu", () -> IForgeMenuType.create(ResourceExtractorMenu::new));
 	public static final RegistryObject<MenuType<FusionTableMenu>> FUSION_TABLE_MENU = REGISTRY.register("fusion_table_menu", () -> IForgeMenuType.create(FusionTableMenu::new));
 	public static final RegistryObject<MenuType<ShipmentFillerMenu>> SHIPMENT_FILLER_MENU = REGISTRY.register("shipment_filler_menu", () -> IForgeMenuType.create(ShipmentFillerMenu::new));
+	public static final RegistryObject<MenuType<NTDriveMenu>> NT_DRIVE_MENU = REGISTRY.register("nt_drive_menu", () -> IForgeMenuType.create(NTDriveMenu::new));
+	public static final RegistryObject<MenuType<NTTerminalMenu>> NT_TERMINAL_MENU = REGISTRY.register("nt_terminal_menu", () -> IForgeMenuType.create(NTTerminalMenu::new));
+	public static final RegistryObject<MenuType<NTCraftingTerminalMenu>> NT_CRAFTING_TERMINAL_MENU = REGISTRY.register("nt_crafting_terminal_menu", () -> IForgeMenuType.create(NTCraftingTerminalMenu::new));
 }

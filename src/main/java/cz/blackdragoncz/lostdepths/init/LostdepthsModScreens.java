@@ -25,6 +25,9 @@ public class LostdepthsModScreens {
 			MenuScreens.register(LostdepthsModMenus.RESOURCE_EXTRACTOR_MENU.get(), ResourceExtractorScreen::new);
 			MenuScreens.register(LostdepthsModMenus.FUSION_TABLE_MENU.get(), FusionTableScreen::new);
 			MenuScreens.register(LostdepthsModMenus.SHIPMENT_FILLER_MENU.get(), ShipmentFillerScreen::new);
+			MenuScreens.register(LostdepthsModMenus.NT_DRIVE_MENU.get(), NTDriveScreen::new);
+			MenuScreens.register(LostdepthsModMenus.NT_TERMINAL_MENU.get(), NTTerminalScreen::new);
+			MenuScreens.register(LostdepthsModMenus.NT_CRAFTING_TERMINAL_MENU.get(), NTCraftingTerminalScreen::new);
 		});
 	}
 }

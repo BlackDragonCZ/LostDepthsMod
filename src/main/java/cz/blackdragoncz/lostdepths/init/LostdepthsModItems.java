@@ -666,11 +666,16 @@ public class LostdepthsModItems {
 	// NuroTech Storage
 	public static final RegistryObject<Item> NT_CONTROLLER = block(LostdepthsModBlocks.NT_CONTROLLER);
 	public static final RegistryObject<Item> NT_TERMINAL = block(LostdepthsModBlocks.NT_TERMINAL);
+	public static final RegistryObject<Item> NT_CRAFTING_TERMINAL = block(LostdepthsModBlocks.NT_CRAFTING_TERMINAL);
 	public static final RegistryObject<Item> NT_DRIVE = block(LostdepthsModBlocks.NT_DRIVE);
+	public static final RegistryObject<Item> NT_DRIVE_T2 = block(LostdepthsModBlocks.NT_DRIVE_T2);
 	public static final RegistryObject<Item> NT_IMPORT_BUS = block(LostdepthsModBlocks.NT_IMPORT_BUS);
 	public static final RegistryObject<Item> NT_EXPORT_BUS = block(LostdepthsModBlocks.NT_EXPORT_BUS);
 	public static final RegistryObject<Item> NT_BRIDGE = block(LostdepthsModBlocks.NT_BRIDGE);
+	public static final RegistryObject<Item> NT_BRIDGE_RS = block(LostdepthsModBlocks.NT_BRIDGE_RS);
+	public static final RegistryObject<Item> NT_BRIDGE_AE = block(LostdepthsModBlocks.NT_BRIDGE_AE);
 	public static final RegistryObject<Item> NT_EXTERNAL_STORAGE = block(LostdepthsModBlocks.NT_EXTERNAL_STORAGE);
+	public static final RegistryObject<Item> NT_SECURITY_TERMINAL = block(LostdepthsModBlocks.NT_SECURITY_TERMINAL);
 	public static final RegistryObject<Item> NT_CRYSTAL_1K = REGISTRY.register("nt_crystal_1k", () -> new StorageCrystalItem(StorageType.CRYSTAL_1K));
 	public static final RegistryObject<Item> NT_CRYSTAL_4K = REGISTRY.register("nt_crystal_4k", () -> new StorageCrystalItem(StorageType.CRYSTAL_4K));
 	public static final RegistryObject<Item> NT_CRYSTAL_16K = REGISTRY.register("nt_crystal_16k", () -> new StorageCrystalItem(StorageType.CRYSTAL_16K));

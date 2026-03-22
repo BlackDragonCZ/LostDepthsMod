@@ -645,10 +645,15 @@ public class LostdepthsModTabs {
 			() -> CreativeModeTab.builder().title(Component.translatable("item_group.lostdepths.nt_storage")).icon(() -> new ItemStack(LostdepthsModBlocks.NT_CONTROLLER.get())).displayItems((parameters, tabData) -> {
 				tabData.accept(LostdepthsModItems.NT_CONTROLLER.get());
 				tabData.accept(LostdepthsModItems.NT_TERMINAL.get());
+				tabData.accept(LostdepthsModItems.NT_CRAFTING_TERMINAL.get());
 				tabData.accept(LostdepthsModItems.NT_DRIVE.get());
+				tabData.accept(LostdepthsModItems.NT_DRIVE_T2.get());
 				tabData.accept(LostdepthsModItems.NT_IMPORT_BUS.get());
 				tabData.accept(LostdepthsModItems.NT_EXPORT_BUS.get());
 				tabData.accept(LostdepthsModItems.NT_BRIDGE.get());
+				tabData.accept(LostdepthsModItems.NT_BRIDGE_RS.get());
+				tabData.accept(LostdepthsModItems.NT_BRIDGE_AE.get());
+				tabData.accept(LostdepthsModItems.NT_SECURITY_TERMINAL.get());
 				tabData.accept(LostdepthsModItems.NT_EXTERNAL_STORAGE.get());
 				tabData.accept(LostdepthsModItems.NT_CRYSTAL_1K.get());
 				tabData.accept(LostdepthsModItems.NT_CRYSTAL_4K.get());

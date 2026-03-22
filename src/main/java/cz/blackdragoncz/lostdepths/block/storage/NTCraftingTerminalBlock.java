@@ -1,5 +1,6 @@
 package cz.blackdragoncz.lostdepths.block.storage;
 
+import cz.blackdragoncz.lostdepths.block.entity.storage.NTCraftingTerminalBlockEntity;
 import cz.blackdragoncz.lostdepths.block.entity.storage.NTTerminalBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
@@ -12,10 +13,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.network.NetworkHooks;
 
-public class NTTerminalBlock extends NTBaseBlock {
+public class NTCraftingTerminalBlock extends NTBaseBlock {
 	@Override
 	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-		return new NTTerminalBlockEntity(pos, state);
+		return new NTCraftingTerminalBlockEntity(pos, state);
 	}
 
 	@Override

@@ -2,9 +2,15 @@ package cz.blackdragoncz.lostdepths.storage;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
+import cz.blackdragoncz.lostdepths.storage.data.CrystalInventory;
+import cz.blackdragoncz.lostdepths.storage.data.CrystalStorageData;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+
+import java.util.Set;
+import java.util.UUID;
 
 public class NuroTechCommand {
 
@@ -63,42 +69,80 @@ public class NuroTechCommand {
 		);
 	}
 
-	private static int purge(CommandSourceStack source, String uuid) {
-		// TODO: Look up UUID in CrystalStorageData/network registry, remove entry
-		source.sendSuccess(() -> Component.literal("§c[NuroTech] Purged entry: " + uuid), true);
+	private static int purge(CommandSourceStack source, String uuidStr) {
+		ServerLevel level = source.getLevel();
+		CrystalStorageData data = CrystalStorageData.get(level);
+
+		UUID id;
+		try {
+			id = UUID.fromString(uuidStr);
+		} catch (IllegalArgumentException e) {
+			source.sendFailure(Component.literal("§c[NuroTech] Invalid UUID: " + uuidStr));
+			return 0;
+		}
+
+		if (data.removeCrystal(id)) {
+			source.sendSuccess(() -> Component.literal("§c[NuroTech] Purged crystal: " + uuidStr), true);
+		} else {
+			source.sendFailure(Component.literal("§c[NuroTech] No crystal found with UUID: " + uuidStr));
+			return 0;
+		}
 		return 1;
 	}
 
 	private static int listNetworks(CommandSourceStack source) {
 		// TODO: List all active NT networks with controller positions and stats
-		source.sendSuccess(() -> Component.literal("§b[NuroTech] No networks registered yet."), false);
+		source.sendSuccess(() -> Component.literal("§b[NuroTech] Network listing not yet implemented."), false);
 		return 1;
 	}
 
 	private static int listCrystals(CommandSourceStack source) {
-		// TODO: List all crystal UUIDs with their storage type and usage
-		source.sendSuccess(() -> Component.literal("§b[NuroTech] No crystals registered yet."), false);
+		ServerLevel level = source.getLevel();
+		CrystalStorageData data = CrystalStorageData.get(level);
+
+		Set<UUID> ids = data.getAllCrystalIds();
+		if (ids.isEmpty()) {
+			source.sendSuccess(() -> Component.literal("§b[NuroTech] No crystals registered."), false);
+			return 1;
+		}
+
+		source.sendSuccess(() -> Component.literal("§b[NuroTech] Registered crystals (" + ids.size() + "):"), false);
+		for (UUID id : ids) {
+			CrystalInventory inv = data.getCrystal(id);
+			if (inv != null) {
+				String info = "§7  " + id + " §f[" + inv.getType().getDisplayName() + "] §7"
+						+ inv.getTotalCount() + "/" + inv.getType().getCapacity()
+						+ " (" + inv.getTypeCount() + "/" + inv.getType().getTypeLimit() + " types)";
+				source.sendSuccess(() -> Component.literal(info), false);
+			}
+		}
 		return 1;
 	}
 
 	private static int listOrphans(CommandSourceStack source) {
-		// TODO: Find crystal entries in SavedData that have no matching item in any loaded inventory/block entity
-		source.sendSuccess(() -> Component.literal("§b[NuroTech] No orphaned crystals found."), false);
+		// TODO: Scan all loaded block entities and player inventories for crystal items,
+		// compare against SavedData entries to find orphans
+		source.sendSuccess(() -> Component.literal("§b[NuroTech] Orphan detection not yet implemented."), false);
 		return 1;
 	}
 
 	private static int purgeOrphans(CommandSourceStack source) {
 		// TODO: Remove all orphaned crystal entries from SavedData
-		source.sendSuccess(() -> Component.literal("§c[NuroTech] Purged all orphaned crystal data."), true);
+		source.sendSuccess(() -> Component.literal("§b[NuroTech] Orphan purge not yet implemented."), false);
 		return 1;
 	}
 
 	private static int status(CommandSourceStack source) {
-		// TODO: Show global NT stats — total networks, crystals, storage used
+		ServerLevel level = source.getLevel();
+		CrystalStorageData data = CrystalStorageData.get(level);
+
+		int crystalCount = data.getCrystalCount();
+		int totalItems = data.getTotalStoredItems();
+
 		source.sendSuccess(() -> Component.literal("§b[NuroTech] Storage system status:"), false);
-		source.sendSuccess(() -> Component.literal("§7  Networks: 0"), false);
-		source.sendSuccess(() -> Component.literal("§7  Crystals: 0"), false);
-		source.sendSuccess(() -> Component.literal("§7  Total stored: 0 items"), false);
+		source.sendSuccess(() -> Component.literal("§7  Networks: §fnot yet tracked"), false);
+		source.sendSuccess(() -> Component.literal("§7  Crystals: §f" + crystalCount), false);
+		source.sendSuccess(() -> Component.literal("§7  Total stored: §f" + totalItems + " items"), false);
 		return 1;
 	}
 

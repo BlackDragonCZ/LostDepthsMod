@@ -314,9 +314,14 @@ public class LostdepthsModBlocks {
 	// NuroTech Storage
 	public static final RegistryObject<Block> NT_CONTROLLER = REGISTRY.register("nurotech_controller", NTControllerBlock::new);
 	public static final RegistryObject<Block> NT_TERMINAL = REGISTRY.register("nt_terminal", NTTerminalBlock::new);
-	public static final RegistryObject<Block> NT_DRIVE = REGISTRY.register("nt_drive", NTDriveBlock::new);
+	public static final RegistryObject<Block> NT_CRAFTING_TERMINAL = REGISTRY.register("nt_crafting_terminal", NTCraftingTerminalBlock::new);
+	public static final RegistryObject<Block> NT_DRIVE = REGISTRY.register("nt_drive", () -> new NTDriveBlock(3));
+	public static final RegistryObject<Block> NT_DRIVE_T2 = REGISTRY.register("nt_drive_t2", () -> new NTDriveBlock(7));
 	public static final RegistryObject<Block> NT_IMPORT_BUS = REGISTRY.register("nt_import_bus", NTImportBusBlock::new);
 	public static final RegistryObject<Block> NT_EXPORT_BUS = REGISTRY.register("nt_export_bus", NTExportBusBlock::new);
 	public static final RegistryObject<Block> NT_BRIDGE = REGISTRY.register("nt_bridge", NTBridgeBlock::new);
+	public static final RegistryObject<Block> NT_BRIDGE_RS = REGISTRY.register("nt_bridge_rs", NTBridgeRSBlock::new);
+	public static final RegistryObject<Block> NT_BRIDGE_AE = REGISTRY.register("nt_bridge_ae", NTBridgeAEBlock::new);
 	public static final RegistryObject<Block> NT_EXTERNAL_STORAGE = REGISTRY.register("nt_external_storage", NTExternalStorageBlock::new);
+	public static final RegistryObject<Block> NT_SECURITY_TERMINAL = REGISTRY.register("nt_security_terminal", NTSecurityTerminalBlock::new);
 }
