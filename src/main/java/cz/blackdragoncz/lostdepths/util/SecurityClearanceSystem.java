@@ -43,7 +43,7 @@ public class SecurityClearanceSystem {
 
         PlayerClearanceData data = playerClearanceData.get(player);
 
-        return clearance <= data.Clearance && data.Duration > 0 && data.Group == group;
+        return data.Duration > 0 && (data.Group == '*' || (clearance <= data.Clearance && data.Group == group));
     }
 
     public static void update()

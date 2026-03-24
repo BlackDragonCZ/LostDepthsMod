@@ -71,7 +71,7 @@ public class SecurityClearanceBlock extends Block {
 
         if (player.getItemInHand(InteractionHand.MAIN_HAND).getItem() instanceof SecurityPassItem securityPass)
         {
-            if (this.requiredClearance <= securityPass.getClearance() && this.groupClearance == securityPass.getGroupClearance())
+            if (securityPass.getGroupClearance() == '*' || (this.requiredClearance <= securityPass.getClearance() && this.groupClearance == securityPass.getGroupClearance()))
             {
                 if (!world.isClientSide()) {
                     world.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("lostdepths:security_gate_clear"))), SoundSource.MASTER, 1, 1);
@@ -97,6 +97,12 @@ public class SecurityClearanceBlock extends Block {
             return InteractionResult.SUCCESS;
         }
 
-        return InteractionResult.FAIL;
+        // Empty hand or non-pass item — play error sound
+        if (!world.isClientSide()) {
+            world.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("lostdepths:gate_error"))), SoundSource.MASTER, 1, 1);
+        } else {
+            world.playLocalSound(x, y, z, Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("lostdepths:gate_error"))), SoundSource.MASTER, 1, 1, false);
+        }
+        return InteractionResult.SUCCESS;
     }
 }

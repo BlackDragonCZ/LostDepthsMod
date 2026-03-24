@@ -648,6 +648,7 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> NUROSTAR_LARGE_BATTERY = block(LostdepthsModBlocks.NUROSTAR_LARGE_BATTERY);
 	public static final RegistryObject<Item> LOSTDEPTHS_PREDICTION = REGISTRY.register("lostdepths_prediction", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> SECURITY_PASS_A = REGISTRY.register("security_pass_a", () -> new SecurityPassItem(1, 'b'));
+	public static final RegistryObject<Item> SECURITY_PASS_OMEGA = REGISTRY.register("security_pass_omega", SecurityPassOmegaItem::new);
 	public static final RegistryObject<Item> SECURITY_CLEARANCE_A = block(LostdepthsModBlocks.SECURITY_CLEARANCE_A);
 	public static final RegistryObject<Item> INFUSED_WING = REGISTRY.register("infused_wing", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> INFUSED_MUSHROOM = REGISTRY.register("infused_mushroom", MasterPartRegistryItem::new);

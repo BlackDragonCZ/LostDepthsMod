@@ -134,7 +134,7 @@ public class LostdepthsMod {
 		var dimKey = event.getTo();
 		String dimId = dimKey.location().toString();
 		// Create spawn platform for lostdepths dimensions (like The End)
-		if (dimId.equals("lostdepths:below_bedrock") || dimId.equals("lostdepths:between_bedrock_and_overworld")) {
+		if (dimId.equals("lostdepths:below_bedrock") || dimId.equals("lostdepths:between_bedrock_and_overworld") || dimId.equals("lostdepths:lost_dungeons")) {
 			BlockPos platformCenter = new BlockPos(0, 64, 0);
 			// Place a 5x5 platform of space_rock at y=64, clear space above
 			for (int x = -2; x <= 2; x++) {
