@@ -593,6 +593,42 @@
                                           "h":  73
                                       }
                                   ]
+                 },
+                 {
+                     "id":  "lostdepths:nt_drive_menu",
+                     "label":  "Nt Drive",
+                     "screenPath":  "src/main/java/cz/blackdragoncz/lostdepths/client/gui/NTDriveScreen.java",
+                     "menuPath":  "src/main/java/cz/blackdragoncz/lostdepths/world/inventory/NTDriveMenu.java",
+                     "imageWidth":  176,
+                     "imageHeight":  166,
+                     "bgTexture":  "container/generic_54",
+                     "elements":  [
+
+                                  ]
+                 },
+                 {
+                     "id":  "lostdepths:nt_terminal_menu",
+                     "label":  "Nt Terminal",
+                     "screenPath":  "src/main/java/cz/blackdragoncz/lostdepths/client/gui/NTTerminalScreen.java",
+                     "menuPath":  "src/main/java/cz/blackdragoncz/lostdepths/world/inventory/NTTerminalMenu.java",
+                     "imageWidth":  176,
+                     "imageHeight":  222,
+                     "bgTexture":  "unknown",
+                     "elements":  [
+
+                                  ]
+                 },
+                 {
+                     "id":  "lostdepths:nt_crafting_terminal_menu",
+                     "label":  "Nt Crafting Terminal",
+                     "screenPath":  "src/main/java/cz/blackdragoncz/lostdepths/client/gui/NTCraftingTerminalScreen.java",
+                     "menuPath":  "src/main/java/cz/blackdragoncz/lostdepths/world/inventory/NTCraftingTerminalMenu.java",
+                     "imageWidth":  176,
+                     "imageHeight":  256,
+                     "bgTexture":  "unknown",
+                     "elements":  [
+
+                                  ]
                  }
              ]
 }

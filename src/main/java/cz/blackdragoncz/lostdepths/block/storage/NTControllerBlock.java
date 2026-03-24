@@ -1,7 +1,15 @@
 package cz.blackdragoncz.lostdepths.block.storage;
 
 import cz.blackdragoncz.lostdepths.block.entity.storage.NTControllerBlockEntity;
+import cz.blackdragoncz.lostdepths.util.TextEffects;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
@@ -14,6 +22,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MapColor;
 
 import javax.annotation.Nullable;
+import java.util.List;
 
 public class NTControllerBlock extends Block implements EntityBlock {
 	public NTControllerBlock() {
@@ -38,6 +47,22 @@ public class NTControllerBlock extends Block implements EntityBlock {
 				NTControllerBlockEntity.serverTick(lvl, pos, st, controller);
 			}
 		};
+	}
+
+	@Override
+	public void appendHoverText(ItemStack stack, BlockGetter world, List<Component> list, TooltipFlag flag) {
+		long tick = 0;
+		try {
+			if (Minecraft.getInstance().level != null) {
+				tick = Minecraft.getInstance().level.getGameTime();
+			}
+		} catch (Exception ignored) {}
+
+		MutableComponent line = Component.empty();
+		line.append(Component.literal("You just need ").withStyle(ChatFormatting.GRAY));
+		line.append(TextEffects.rainbow("imagination", tick));
+		line.append(Component.literal(" to use this.").withStyle(ChatFormatting.GRAY));
+		list.add(line);
 	}
 
 	@Override
