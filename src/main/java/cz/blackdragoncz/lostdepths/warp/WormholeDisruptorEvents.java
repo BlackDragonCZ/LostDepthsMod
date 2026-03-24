@@ -68,5 +68,6 @@ public class WormholeDisruptorEvents {
     public static void onRegisterCommands(RegisterCommandsEvent event) {
         WormholeRangeCommand.register(event.getDispatcher());
         cz.blackdragoncz.lostdepths.storage.NuroTechCommand.register(event.getDispatcher());
+        cz.blackdragoncz.lostdepths.puzzle.LightPuzzleCommand.register(event.getDispatcher());
     }
 }

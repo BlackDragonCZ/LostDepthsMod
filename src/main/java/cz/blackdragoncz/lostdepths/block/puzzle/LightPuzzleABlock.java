@@ -30,7 +30,6 @@ import java.util.List;
 import java.util.Collections;
 
 import cz.blackdragoncz.lostdepths.procedures.LightPuzzleAOnBlockRightClickedProcedure;
-import cz.blackdragoncz.lostdepths.procedures.LightPuzzleABlockAddedProcedure;
 import cz.blackdragoncz.lostdepths.block.entity.LightPuzzleABlockEntity;
 
 public class LightPuzzleABlock extends Block implements EntityBlock {
@@ -64,7 +63,13 @@ public class LightPuzzleABlock extends Block implements EntityBlock {
 	@Override
 	public void onPlace(BlockState blockstate, Level world, BlockPos pos, BlockState oldState, boolean moving) {
 		super.onPlace(blockstate, world, pos, oldState, moving);
-		LightPuzzleABlockAddedProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		// Initialize status to false (OFF)
+		if (!world.isClientSide()) {
+			BlockEntity be = world.getBlockEntity(pos);
+			if (be != null) {
+				be.getPersistentData().putBoolean("status", false);
+			}
+		}
 	}
 
 	@Override

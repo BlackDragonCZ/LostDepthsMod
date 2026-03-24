@@ -117,4 +117,6 @@ public class LostdepthsModRecipeSerializers {
             return LostdepthsModRecipeSerializers.SHIPMENT_FILLER.get();
         }
     }));
+
+    public static final RegistryObject<LightPuzzleRecipe.Serializer> LIGHT_PUZZLE = REGISTRY_SERIALIZER.register("light_puzzle", LightPuzzleRecipe.Serializer::new);
 }

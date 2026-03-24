@@ -1,0 +1,11 @@
+{
+  "type": "lostdepths:light_puzzle",
+  "input": {
+    "item": "lostdepths:carbonic_acid",
+    "count": 1
+  },
+  "output": {
+    "item": "lostdepths:infused_crystal",
+    "count": 2
+  }
+}

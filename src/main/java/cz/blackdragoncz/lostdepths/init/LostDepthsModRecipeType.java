@@ -2,6 +2,7 @@ package cz.blackdragoncz.lostdepths.init;
 
 import cz.blackdragoncz.lostdepths.LostdepthsMod;
 import cz.blackdragoncz.lostdepths.recipe.*;
+import cz.blackdragoncz.lostdepths.recipe.LightPuzzleRecipe;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.inventory.CraftingContainer;
@@ -29,6 +30,7 @@ public class LostDepthsModRecipeType<C extends Container, RECIPE extends LDRecip
     public static final RegistryObject<LostDepthsModRecipeType<RecipeWrapper, MetaMaterializerRecipe>> META_MATERIALIZER = REGISTRY.register("meta_materializer", () -> new LostDepthsModRecipeType<>("meta_materializer"));
     public static final RegistryObject<LostDepthsModRecipeType<CraftingContainer, FusionTableRecipe>> FUSION_TABLE = REGISTRY.register("fusion_table", () -> new LostDepthsModRecipeType<>("fusion_table"));
     public static final RegistryObject<LostDepthsModRecipeType<RecipeWrapper, ShipmentFillerRecipe>> SHIPMENT_FILLER = REGISTRY.register("shipment_filler", () -> new LostDepthsModRecipeType<>("shipment_filler"));
+    public static final RegistryObject<LostDepthsModRecipeType<RecipeWrapper, LightPuzzleRecipe>> LIGHT_PUZZLE = REGISTRY.register("light_puzzle", () -> new LostDepthsModRecipeType<>("light_puzzle"));
 
     private final ResourceLocation registryName;
 
