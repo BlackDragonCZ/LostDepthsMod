@@ -2,6 +2,7 @@ package cz.blackdragoncz.lostdepths.client.jade;
 
 import cz.blackdragoncz.lostdepths.block.entity.AbstractCompressorBlockEntity;
 import cz.blackdragoncz.lostdepths.block.base.AbstractCompressorBlock;
+import net.minecraft.world.level.block.Block;
 import snownee.jade.api.IWailaClientRegistration;
 import snownee.jade.api.IWailaCommonRegistration;
 import snownee.jade.api.IWailaPlugin;
@@ -18,5 +19,6 @@ public class JadePlugin implements IWailaPlugin {
     @Override
     public void registerClient(IWailaClientRegistration registration) {
         registration.registerBlockComponent(JadeComponentProvider.INSTANCE, AbstractCompressorBlock.class);
+        registration.registerBlockComponent(JadeOreProvider.INSTANCE, Block.class);
     }
 }
