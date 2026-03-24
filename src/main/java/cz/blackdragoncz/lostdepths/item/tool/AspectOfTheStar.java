@@ -19,6 +19,9 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.CarpetBlock;
+import net.minecraft.world.level.block.SnowLayerBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
@@ -69,8 +72,14 @@ public class AspectOfTheStar extends SwordItem {
 
         AtomicReference<BlockPos> lastCheckedPos = new AtomicReference<>();
         BlockPos checkedPos = BlockGetter.traverseBlocks(startPos, finalPos, level, (lvl, blockPos) -> {
-            if (lvl.getBlockState(blockPos).is(BlockTags.create(LostdepthsMod.rl("unbreakable"))) ||
-                    lvl.getBlockState(blockPos.below()).is(BlockTags.create(LostdepthsMod.rl("unbreakable"))))
+            BlockState state = lvl.getBlockState(blockPos);
+            BlockState stateBelow = lvl.getBlockState(blockPos.below());
+            // Skip non-full blocks like carpet and snow layers
+            if (state.getBlock() instanceof CarpetBlock || state.getBlock() instanceof SnowLayerBlock) return null;
+            if (stateBelow.getBlock() instanceof CarpetBlock || stateBelow.getBlock() instanceof SnowLayerBlock) return null;
+
+            if (state.is(BlockTags.create(LostdepthsMod.rl("unbreakable"))) ||
+                    stateBelow.is(BlockTags.create(LostdepthsMod.rl("unbreakable"))))
             {
                 return blockPos;
             }
@@ -91,7 +100,11 @@ public class AspectOfTheStar extends SwordItem {
             {
                 return blockPos;
             }
-            if (lvl.getBlockState(blockPos).isAir() && lvl.getBlockState(blockPos.below()).isAir()) {
+            BlockState bsHere = lvl.getBlockState(blockPos);
+            BlockState bsBelow = lvl.getBlockState(blockPos.below());
+            boolean herePassable = bsHere.isAir() || bsHere.getBlock() instanceof CarpetBlock || bsHere.getBlock() instanceof SnowLayerBlock;
+            boolean belowPassable = bsBelow.isAir() || bsBelow.getBlock() instanceof CarpetBlock || bsBelow.getBlock() instanceof SnowLayerBlock;
+            if (herePassable && belowPassable) {
                 return blockPos;
             }
             return null;
