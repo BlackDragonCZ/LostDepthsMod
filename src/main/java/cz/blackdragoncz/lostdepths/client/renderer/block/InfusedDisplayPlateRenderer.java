@@ -36,9 +36,9 @@ public class InfusedDisplayPlateRenderer implements BlockEntityRenderer<InfusedD
 		BakedModel model = itemRenderer.getModel(heldItem, be.getLevel(), null, 0);
 		boolean isBlockItem = model.isGui3d();
 
-		// Plate is 2px thick. Item sits 1px above the plate surface = 3px from attachment face.
-		// 3px = 3/16 = 0.1875
-		float itemOffset = 3f / 16f;
+		// Plate is 2px thick. Item sits above the plate surface.
+		// 4px = 4/16 = 0.25
+		float itemOffset = 2f / 16f;
 
 		poseStack.pushPose();
 
@@ -79,7 +79,7 @@ public class InfusedDisplayPlateRenderer implements BlockEntityRenderer<InfusedD
 				// Flat items lay flat on floor/ceiling plate
 				poseStack.mulPose(Axis.XP.rotationDegrees(90));
 			}
-			poseStack.scale(0.375f, 0.375f, 0.375f);
+			poseStack.scale(0.5f, 0.5f, 0.5f);
 		}
 
 		itemRenderer.render(heldItem, ItemDisplayContext.FIXED, false, poseStack, buffer, packedLight, packedOverlay, model);
