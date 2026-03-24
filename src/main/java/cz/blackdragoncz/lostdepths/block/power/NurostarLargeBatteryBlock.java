@@ -40,6 +40,7 @@ public class NurostarLargeBatteryBlock extends BaseHorizontalFacingEntityBlock {
         super(BlockBehaviour.Properties.of()
                 .sound(SoundType.METAL)
                 .strength(6f, 12f)
+                .noOcclusion()
                 .pushReaction(PushReaction.BLOCK));
     }
 

@@ -118,7 +118,23 @@ public class LostdepthsModBlockTags extends BlockTagsProvider {
                 LostdepthsModBlocks.NUROSTAR_CABLE.get(),
                 LostdepthsModBlocks.BLACK_HOLE_COMPRESSOR.get(),
                 LostdepthsModBlocks.FUSION_TABLE.get(),
-                LostdepthsModBlocks.RESOURCE_EXTRACTOR.get()
+                LostdepthsModBlocks.RESOURCE_EXTRACTOR.get(),
+                // Power blocks
+                LostdepthsModBlocks.NUROSTAR_BATTERY.get(),
+                LostdepthsModBlocks.NUROSTAR_LARGE_BATTERY.get(),
+                // NuroTech storage blocks
+                LostdepthsModBlocks.NT_CONTROLLER.get(),
+                LostdepthsModBlocks.NT_TERMINAL.get(),
+                LostdepthsModBlocks.NT_CRAFTING_TERMINAL.get(),
+                LostdepthsModBlocks.NT_DRIVE.get(),
+                LostdepthsModBlocks.NT_DRIVE_T2.get(),
+                LostdepthsModBlocks.NT_IMPORT_BUS.get(),
+                LostdepthsModBlocks.NT_EXPORT_BUS.get(),
+                LostdepthsModBlocks.NT_BRIDGE.get(),
+                LostdepthsModBlocks.NT_BRIDGE_RS.get(),
+                LostdepthsModBlocks.NT_BRIDGE_AE.get(),
+                LostdepthsModBlocks.NT_EXTERNAL_STORAGE.get(),
+                LostdepthsModBlocks.NT_SECURITY_TERMINAL.get()
         );
         tag(BlockTags.NEEDS_STONE_TOOL).add(
                 LostdepthsModBlocks.FUSION_TABLE.get(),

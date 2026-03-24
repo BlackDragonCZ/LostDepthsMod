@@ -1,5 +1,6 @@
 {
   "variants": {
-    "": {"model": "lostdepths:block/multiblock_dummy"}
+    "debug_visible=false": { "model": "lostdepths:block/multiblock_dummy" },
+    "debug_visible=true": { "model": "lostdepths:block/multiblock_dummy_visible" }
   }
 }

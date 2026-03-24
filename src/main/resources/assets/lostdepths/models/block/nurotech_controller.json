@@ -1,0 +1,7 @@
+{
+	"parent": "minecraft:block/cube_all",
+	"textures": {
+		"all": "lostdepths:block/nt_side",
+		"particle": "lostdepths:block/nt_side"
+	}
+}

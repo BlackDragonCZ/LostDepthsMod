@@ -1,0 +1,12 @@
+{
+	"parent": "minecraft:block/cube",
+	"textures": {
+		"north": "lostdepths:block/nt_front_grid",
+		"south": "lostdepths:block/nt_back",
+		"east": "lostdepths:block/nt_side",
+		"west": "lostdepths:block/nt_side",
+		"up": "lostdepths:block/nt_side",
+		"down": "lostdepths:block/nt_side",
+		"particle": "lostdepths:block/nt_side"
+	}
+}

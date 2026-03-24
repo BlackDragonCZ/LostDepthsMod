@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "lostdepths:block/nt_terminal" },
+    "facing=east": { "model": "lostdepths:block/nt_terminal", "y": 90 },
+    "facing=south": { "model": "lostdepths:block/nt_terminal", "y": 180 },
+    "facing=west": { "model": "lostdepths:block/nt_terminal", "y": 270 }
+  }
+}

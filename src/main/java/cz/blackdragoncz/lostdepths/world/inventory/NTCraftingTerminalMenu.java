@@ -34,8 +34,17 @@ public class NTCraftingTerminalMenu extends AbstractContainerMenu {
 	private int scrollOffset = 0;
 
 	public static final int GRID_COLS = 9;
-	public static final int GRID_ROWS = 4; // slightly smaller to fit crafting grid
+	public static final int GRID_ROWS = 4;
 	public static final int GRID_SLOTS = GRID_COLS * GRID_ROWS;
+
+	// Layout constants matching the screen
+	private static final int GRID_Y = 18;
+	private static final int CRAFT_Y = GRID_Y + GRID_ROWS * 18 + 4;
+	private static final int CRAFT_X = 30;
+	private static final int RESULT_X = 124;
+	private static final int RESULT_Y = CRAFT_Y + 18;
+	private static final int INV_Y = CRAFT_Y + 3 * 18 + 8;
+	private static final int HOTBAR_Y = INV_Y + 3 * 18 + 4;
 
 	// Slot indices: 0-8 = crafting grid, 9 = result, 10-36 = player inv, 37-45 = hotbar
 	public static final int CRAFT_SLOT_START = 0;
@@ -52,20 +61,19 @@ public class NTCraftingTerminalMenu extends AbstractContainerMenu {
 			this.terminal = t;
 		}
 
-		// Crafting grid: 3x3 at right side of GUI
+		// Crafting grid: 3x3 below the item grid (RS-style)
 		this.craftingGrid = new TransientCraftingContainer(this, 3, 3);
 		for (int row = 0; row < 3; row++) {
 			for (int col = 0; col < 3; col++) {
-				addSlot(new Slot(craftingGrid, col + row * 3, 188 + col * 18, 18 + row * 18));
+				addSlot(new Slot(craftingGrid, col + row * 3, CRAFT_X + 1 + col * 18, CRAFT_Y + 1 + row * 18));
 			}
 		}
 
 		// Result slot
-		addSlot(new ResultSlot(player, craftingGrid, resultContainer, 0, 244, 36) {
+		addSlot(new ResultSlot(player, craftingGrid, resultContainer, 0, RESULT_X + 1, RESULT_Y + 1) {
 			@Override
 			public void onTake(Player player, ItemStack stack) {
 				super.onTake(player, stack);
-				// After crafting, try to refill grid from network
 				if (terminal != null && level instanceof net.minecraft.server.level.ServerLevel) {
 					refillGridFromNetwork();
 				}
@@ -75,13 +83,13 @@ public class NTCraftingTerminalMenu extends AbstractContainerMenu {
 		// Player inventory (3 rows)
 		for (int row = 0; row < 3; row++) {
 			for (int col = 0; col < 9; col++) {
-				addSlot(new Slot(playerInv, col + row * 9 + 9, 8 + col * 18, 140 + row * 18));
+				addSlot(new Slot(playerInv, col + row * 9 + 9, 8 + col * 18, INV_Y + 1 + row * 18));
 			}
 		}
 
 		// Player hotbar
 		for (int col = 0; col < 9; col++) {
-			addSlot(new Slot(playerInv, col, 8 + col * 18, 198));
+			addSlot(new Slot(playerInv, col, 8 + col * 18, HOTBAR_Y + 1));
 		}
 	}
 
@@ -197,17 +205,11 @@ public class NTCraftingTerminalMenu extends AbstractContainerMenu {
 		resultContainer.setItem(0, recipe.map(r -> r.assemble(craftingGrid, level.registryAccess())).orElse(ItemStack.EMPTY));
 	}
 
-	/**
-	 * After crafting, attempt to refill the crafting grid from the network.
-	 * Matches the pattern that was in the grid before crafting.
-	 */
 	private void refillGridFromNetwork() {
 		if (terminal == null) return;
 		for (int i = 0; i < 9; i++) {
 			ItemStack gridItem = craftingGrid.getItem(i);
 			if (gridItem.isEmpty()) {
-				// Check if this slot had something before (it was consumed by crafting)
-				// We can't know the old pattern here, so skip auto-refill for now
 				// TODO: Store pattern before crafting for auto-refill
 			}
 		}
@@ -216,7 +218,6 @@ public class NTCraftingTerminalMenu extends AbstractContainerMenu {
 	@Override
 	public void removed(Player player) {
 		super.removed(player);
-		// Return crafting grid items to player or network
 		if (!level.isClientSide() && terminal != null) {
 			for (int i = 0; i < 9; i++) {
 				ItemStack stack = craftingGrid.getItem(i);
@@ -245,13 +246,11 @@ public class NTCraftingTerminalMenu extends AbstractContainerMenu {
 		ItemStack result = slotStack.copy();
 
 		if (slotIndex == RESULT_SLOT) {
-			// Crafting result → player inventory
 			if (!moveItemStackTo(slotStack, PLAYER_INV_START, PLAYER_INV_START + 36, true)) {
 				return ItemStack.EMPTY;
 			}
 			slot.onQuickCraft(slotStack, result);
 		} else if (slotIndex >= PLAYER_INV_START) {
-			// Player inventory → try network first, then crafting grid
 			if (terminal != null) {
 				int remaining = terminal.insertIntoNetwork(slotStack.copy());
 				if (remaining < slotStack.getCount()) {
@@ -262,12 +261,10 @@ public class NTCraftingTerminalMenu extends AbstractContainerMenu {
 					return result;
 				}
 			}
-			// Fallback: try crafting grid
 			if (!moveItemStackTo(slotStack, CRAFT_SLOT_START, CRAFT_SLOT_START + 9, false)) {
 				return ItemStack.EMPTY;
 			}
 		} else if (slotIndex >= CRAFT_SLOT_START && slotIndex < CRAFT_SLOT_START + 9) {
-			// Crafting grid → player inventory
 			if (!moveItemStackTo(slotStack, PLAYER_INV_START, PLAYER_INV_START + 36, true)) {
 				return ItemStack.EMPTY;
 			}
