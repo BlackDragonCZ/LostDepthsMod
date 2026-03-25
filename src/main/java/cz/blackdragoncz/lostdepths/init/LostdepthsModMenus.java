@@ -28,4 +28,6 @@ public class LostdepthsModMenus {
 	public static final RegistryObject<MenuType<NTDriveMenu>> NT_DRIVE_MENU = REGISTRY.register("nt_drive_menu", () -> IForgeMenuType.create(NTDriveMenu::new));
 	public static final RegistryObject<MenuType<NTTerminalMenu>> NT_TERMINAL_MENU = REGISTRY.register("nt_terminal_menu", () -> IForgeMenuType.create(NTTerminalMenu::new));
 	public static final RegistryObject<MenuType<NTCraftingTerminalMenu>> NT_CRAFTING_TERMINAL_MENU = REGISTRY.register("nt_crafting_terminal_menu", () -> IForgeMenuType.create(NTCraftingTerminalMenu::new));
+	public static final RegistryObject<MenuType<NTPatternEncoderMenu>> NT_PATTERN_ENCODER_MENU = REGISTRY.register("nt_pattern_encoder_menu", () -> IForgeMenuType.create(NTPatternEncoderMenu::new));
+	public static final RegistryObject<MenuType<NTPatternProviderMenu>> NT_PATTERN_PROVIDER_MENU = REGISTRY.register("nt_pattern_provider_menu", () -> IForgeMenuType.create(NTPatternProviderMenu::new));
 }

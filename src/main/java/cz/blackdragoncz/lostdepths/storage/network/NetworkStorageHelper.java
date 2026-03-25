@@ -1,6 +1,7 @@
 package cz.blackdragoncz.lostdepths.storage.network;
 
 import cz.blackdragoncz.lostdepths.block.entity.storage.NTDriveBlockEntity;
+import cz.blackdragoncz.lostdepths.block.entity.storage.NTExternalStorageBlockEntity;
 import cz.blackdragoncz.lostdepths.item.storage.StorageCrystalItem;
 import cz.blackdragoncz.lostdepths.storage.data.CrystalInventory;
 import cz.blackdragoncz.lostdepths.storage.data.CrystalStorageData;
@@ -30,20 +31,35 @@ public final class NetworkStorageHelper {
 
 		for (BlockPos pos : network.getComponents()) {
 			BlockEntity be = level.getBlockEntity(pos);
-			if (!(be instanceof NTDriveBlockEntity drive)) continue;
 
-			for (int i = 0; i < drive.getSlotCount(); i++) {
-				ItemStack crystalStack = drive.getCrystalSlots().getStackInSlot(i);
-				CrystalInventory inv = StorageCrystalItem.getInventory(crystalStack, level);
-				if (inv == null) continue;
+			// Crystal drives
+			if (be instanceof NTDriveBlockEntity drive) {
+				for (int i = 0; i < drive.getSlotCount(); i++) {
+					ItemStack crystalStack = drive.getCrystalSlots().getStackInSlot(i);
+					CrystalInventory inv = StorageCrystalItem.getInventory(crystalStack, level);
+					if (inv == null) continue;
 
-				for (CrystalInventory.StoredItem stored : inv.getItems()) {
-					String key = stored.template.save(new CompoundTag()).toString();
+					for (CrystalInventory.StoredItem stored : inv.getItems()) {
+						String key = stored.template.save(new CompoundTag()).toString();
+						CrystalInventory.StoredItem existing = merged.get(key);
+						if (existing != null) {
+							existing.count += stored.count;
+						} else {
+							merged.put(key, new CrystalInventory.StoredItem(stored.template.copy(), stored.count));
+						}
+					}
+				}
+			}
+
+			// External storage — wraps adjacent inventories
+			if (be instanceof NTExternalStorageBlockEntity ext) {
+				for (NTExternalStorageBlockEntity.ExternalStoredItem extItem : ext.getExternalItems()) {
+					String key = extItem.stack().save(new CompoundTag()).toString();
 					CrystalInventory.StoredItem existing = merged.get(key);
 					if (existing != null) {
-						existing.count += stored.count;
+						existing.count += extItem.stack().getCount();
 					} else {
-						merged.put(key, new CrystalInventory.StoredItem(stored.template.copy(), stored.count));
+						merged.put(key, new CrystalInventory.StoredItem(extItem.stack().copy(), extItem.stack().getCount()));
 					}
 				}
 			}
@@ -60,6 +76,7 @@ public final class NetworkStorageHelper {
 		CrystalStorageData data = CrystalStorageData.get(level);
 		int remaining = count;
 
+		// Try crystal drives first (preferred storage)
 		for (BlockPos pos : network.getComponents()) {
 			if (remaining <= 0) break;
 			BlockEntity be = level.getBlockEntity(pos);
@@ -82,6 +99,16 @@ public final class NetworkStorageHelper {
 			}
 		}
 
+		// Then try external storage
+		for (BlockPos pos : network.getComponents()) {
+			if (remaining <= 0) break;
+			BlockEntity be = level.getBlockEntity(pos);
+			if (!(be instanceof NTExternalStorageBlockEntity ext)) continue;
+
+			int notInserted = ext.insertExternal(stack, remaining);
+			remaining = notInserted;
+		}
+
 		return remaining;
 	}
 
@@ -94,6 +121,7 @@ public final class NetworkStorageHelper {
 		int remaining = count;
 		ItemStack result = ItemStack.EMPTY;
 
+		// Try crystal drives first
 		for (BlockPos pos : network.getComponents()) {
 			if (remaining <= 0) break;
 			BlockEntity be = level.getBlockEntity(pos);
@@ -115,6 +143,23 @@ public final class NetworkStorageHelper {
 					remaining -= extracted.getCount();
 					data.markModified();
 				}
+			}
+		}
+
+		// Then try external storage
+		for (BlockPos pos : network.getComponents()) {
+			if (remaining <= 0) break;
+			BlockEntity be = level.getBlockEntity(pos);
+			if (!(be instanceof NTExternalStorageBlockEntity ext)) continue;
+
+			ItemStack extracted = ext.extractExternal(match, remaining);
+			if (!extracted.isEmpty()) {
+				if (result.isEmpty()) {
+					result = extracted;
+				} else {
+					result.grow(extracted.getCount());
+				}
+				remaining -= extracted.getCount();
 			}
 		}
 

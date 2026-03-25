@@ -74,6 +74,9 @@ public class LostdepthsModBlockEntities {
 	public static final RegistryObject<BlockEntityType<NTBridgeAEBlockEntity>> NT_BRIDGE_AE = register("nt_bridge_ae", LostdepthsModBlocks.NT_BRIDGE_AE, NTBridgeAEBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<NTExternalStorageBlockEntity>> NT_EXTERNAL_STORAGE = register("nt_external_storage", LostdepthsModBlocks.NT_EXTERNAL_STORAGE, NTExternalStorageBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<NTSecurityTerminalBlockEntity>> NT_SECURITY_TERMINAL = register("nt_security_terminal", LostdepthsModBlocks.NT_SECURITY_TERMINAL, NTSecurityTerminalBlockEntity::new);
+	public static final RegistryObject<BlockEntityType<NTPatternEncoderBlockEntity>> NT_PATTERN_ENCODER = register("nt_pattern_encoder", LostdepthsModBlocks.NT_PATTERN_ENCODER, NTPatternEncoderBlockEntity::new);
+	public static final RegistryObject<BlockEntityType<NTPatternProviderBlockEntity>> NT_PATTERN_PROVIDER = REGISTRY.register("nt_pattern_provider", () -> BlockEntityType.Builder.of((pos, state) -> new NTPatternProviderBlockEntity(pos, state, 9), LostdepthsModBlocks.NT_PATTERN_PROVIDER.get()).build(null));
+	public static final RegistryObject<BlockEntityType<NTPatternProviderBlockEntity>> NT_PATTERN_PROVIDER_T2 = REGISTRY.register("nt_pattern_provider_t2", () -> BlockEntityType.Builder.of(NTPatternProviderBlockEntity::createTier2, LostdepthsModBlocks.NT_PATTERN_PROVIDER_T2.get()).build(null));
 
 	private static <T extends BlockEntity> RegistryObject<BlockEntityType<T>> register(String registryname, RegistryObject<Block> block, BlockEntityType.BlockEntitySupplier<T> supplier) {
 		return REGISTRY.register(registryname, () -> BlockEntityType.Builder.of(supplier, block.get()).build(null));

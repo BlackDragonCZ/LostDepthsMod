@@ -660,5 +660,9 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModItems.NT_CRYSTAL_4K.get());
 				tabData.accept(LostdepthsModItems.NT_CRYSTAL_16K.get());
 				tabData.accept(LostdepthsModItems.NT_CRYSTAL_64K.get());
+				tabData.accept(LostdepthsModItems.NT_BLANK_PATTERN.get());
+				tabData.accept(LostdepthsModItems.NT_PATTERN_ENCODER.get());
+				tabData.accept(LostdepthsModItems.NT_PATTERN_PROVIDER.get());
+				tabData.accept(LostdepthsModItems.NT_PATTERN_PROVIDER_T2.get());
 			}).build());
 }

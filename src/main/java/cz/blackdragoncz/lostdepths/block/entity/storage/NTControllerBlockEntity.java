@@ -2,6 +2,7 @@ package cz.blackdragoncz.lostdepths.block.entity.storage;
 
 import cz.blackdragoncz.lostdepths.init.LostdepthsModBlockEntities;
 import cz.blackdragoncz.lostdepths.storage.NTPerformanceTracker;
+import cz.blackdragoncz.lostdepths.storage.crafting.CraftingManager;
 import cz.blackdragoncz.lostdepths.storage.network.StorageNetwork;
 import cz.blackdragoncz.lostdepths.storage.network.StorageNetworkNode;
 import net.minecraft.core.BlockPos;
@@ -27,6 +28,7 @@ public class NTControllerBlockEntity extends BlockEntity implements StorageNetwo
 	private final LazyOptional<EnergyStorage> energyCap = LazyOptional.of(() -> energyStorage);
 
 	private StorageNetwork network;
+	private CraftingManager craftingManager;
 	private UUID networkId;
 	private boolean needsRebuild = true;
 	private boolean redstoneDisabled = false;
@@ -49,6 +51,10 @@ public class NTControllerBlockEntity extends BlockEntity implements StorageNetwo
 
 	public boolean isNetworkActive() {
 		return network != null && network.isActive();
+	}
+
+	public CraftingManager getCraftingManager() {
+		return craftingManager;
 	}
 
 	public boolean isSlave() {
@@ -142,6 +148,9 @@ public class NTControllerBlockEntity extends BlockEntity implements StorageNetwo
 				be.network = new StorageNetwork(be.networkId, pos);
 			}
 			be.network.rebuild(level);
+			if (be.craftingManager == null) {
+				be.craftingManager = new CraftingManager(be.network);
+			}
 		}
 
 		if (be.network == null) {
@@ -172,6 +181,11 @@ public class NTControllerBlockEntity extends BlockEntity implements StorageNetwo
 			if (be.network.isActive()) {
 				be.network.setActive(false);
 			}
+		}
+
+		// Tick crafting manager
+		if (be.craftingManager != null && be.network.isActive() && level instanceof net.minecraft.server.level.ServerLevel serverLevel) {
+			be.craftingManager.tick(serverLevel);
 		}
 
 		NTPerformanceTracker.endMeasure(perfStart);

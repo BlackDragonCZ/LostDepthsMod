@@ -11,6 +11,8 @@ import cz.blackdragoncz.lostdepths.item.ShipmentBoxItem;
 import cz.blackdragoncz.lostdepths.item.shield.MirrorShield;
 import cz.blackdragoncz.lostdepths.item.tool.*;
 import cz.blackdragoncz.lostdepths.item.security.*;
+import cz.blackdragoncz.lostdepths.item.storage.BlankPatternItem;
+import cz.blackdragoncz.lostdepths.item.storage.EncodedPatternItem;
 import cz.blackdragoncz.lostdepths.item.storage.StorageCrystalItem;
 import cz.blackdragoncz.lostdepths.storage.StorageType;
 import net.minecraft.world.item.*;
@@ -681,6 +683,11 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> NT_CRYSTAL_4K = REGISTRY.register("nt_crystal_4k", () -> new StorageCrystalItem(StorageType.CRYSTAL_4K));
 	public static final RegistryObject<Item> NT_CRYSTAL_16K = REGISTRY.register("nt_crystal_16k", () -> new StorageCrystalItem(StorageType.CRYSTAL_16K));
 	public static final RegistryObject<Item> NT_CRYSTAL_64K = REGISTRY.register("nt_crystal_64k", () -> new StorageCrystalItem(StorageType.CRYSTAL_64K));
+	public static final RegistryObject<Item> NT_BLANK_PATTERN = REGISTRY.register("nt_blank_pattern", BlankPatternItem::new);
+	public static final RegistryObject<Item> NT_ENCODED_PATTERN = REGISTRY.register("nt_encoded_pattern", EncodedPatternItem::new);
+	public static final RegistryObject<Item> NT_PATTERN_ENCODER = block(LostdepthsModBlocks.NT_PATTERN_ENCODER);
+	public static final RegistryObject<Item> NT_PATTERN_PROVIDER = block(LostdepthsModBlocks.NT_PATTERN_PROVIDER);
+	public static final RegistryObject<Item> NT_PATTERN_PROVIDER_T2 = block(LostdepthsModBlocks.NT_PATTERN_PROVIDER_T2);
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));

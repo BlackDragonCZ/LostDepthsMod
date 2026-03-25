@@ -134,7 +134,10 @@ public class LostdepthsModBlockTags extends BlockTagsProvider {
                 LostdepthsModBlocks.NT_BRIDGE_RS.get(),
                 LostdepthsModBlocks.NT_BRIDGE_AE.get(),
                 LostdepthsModBlocks.NT_EXTERNAL_STORAGE.get(),
-                LostdepthsModBlocks.NT_SECURITY_TERMINAL.get()
+                LostdepthsModBlocks.NT_SECURITY_TERMINAL.get(),
+                LostdepthsModBlocks.NT_PATTERN_ENCODER.get(),
+                LostdepthsModBlocks.NT_PATTERN_PROVIDER.get(),
+                LostdepthsModBlocks.NT_PATTERN_PROVIDER_T2.get()
         );
         tag(BlockTags.NEEDS_STONE_TOOL).add(
                 LostdepthsModBlocks.FUSION_TABLE.get(),

@@ -196,6 +196,12 @@ public class NTCraftingTerminalScreen extends AbstractContainerScreen<NTCrafting
 			int actualIndex = gridIndex + menu.getScrollOffset() * COLS;
 
 			if (actualIndex < filtered.size()) {
+				if (button == 2) {
+					// Middle-click: open craft request screen
+					CrystalInventory.StoredItem item = filtered.get(actualIndex);
+					minecraft.setScreen(new NTCraftRequestScreen(this, item.template, net.minecraft.world.item.ItemStack.EMPTY));
+					return true;
+				}
 				LostdepthsMod.PACKET_HANDLER.sendToServer(new NTGridClickPacket(gridIndex, button));
 			} else {
 				LostdepthsMod.PACKET_HANDLER.sendToServer(new NTGridInsertPacket(button));

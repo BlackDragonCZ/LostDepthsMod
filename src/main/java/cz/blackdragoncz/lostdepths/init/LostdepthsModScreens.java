@@ -28,6 +28,8 @@ public class LostdepthsModScreens {
 			MenuScreens.register(LostdepthsModMenus.NT_DRIVE_MENU.get(), NTDriveScreen::new);
 			MenuScreens.register(LostdepthsModMenus.NT_TERMINAL_MENU.get(), NTTerminalScreen::new);
 			MenuScreens.register(LostdepthsModMenus.NT_CRAFTING_TERMINAL_MENU.get(), NTCraftingTerminalScreen::new);
+			MenuScreens.register(LostdepthsModMenus.NT_PATTERN_ENCODER_MENU.get(), NTPatternEncoderScreen::new);
+			MenuScreens.register(LostdepthsModMenus.NT_PATTERN_PROVIDER_MENU.get(), NTPatternProviderScreen::new);
 		});
 	}
 }

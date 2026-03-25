@@ -1,8 +1,8 @@
 package cz.blackdragoncz.lostdepths.block.storage;
 
-import cz.blackdragoncz.lostdepths.block.entity.storage.NTExternalStorageBlockEntity;
+import cz.blackdragoncz.lostdepths.block.entity.storage.NTPatternEncoderBlockEntity;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -10,12 +10,13 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraftforge.network.NetworkHooks;
 
-public class NTExternalStorageBlock extends NTBaseBlock {
+public class NTPatternEncoderBlock extends NTBaseBlock {
 
 	@Override
 	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-		return new NTExternalStorageBlockEntity(pos, state);
+		return new NTPatternEncoderBlockEntity(pos, state);
 	}
 
 	@Override
@@ -23,14 +24,19 @@ public class NTExternalStorageBlock extends NTBaseBlock {
 		if (level.isClientSide()) return InteractionResult.SUCCESS;
 		if (player.isSpectator()) return InteractionResult.CONSUME;
 
-		if (level.getBlockEntity(pos) instanceof NTExternalStorageBlockEntity ext) {
-			int count = ext.getConnectedCount();
-			if (count > 0) {
-				player.displayClientMessage(Component.literal("§aExternal Storage: §f" + count + " §ainventory(s) connected"), true);
-			} else {
-				player.displayClientMessage(Component.literal("§cExternal Storage: No inventories detected"), true);
-			}
+		if (level.getBlockEntity(pos) instanceof NTPatternEncoderBlockEntity encoder) {
+			NetworkHooks.openScreen((ServerPlayer) player, encoder, pos);
 		}
 		return InteractionResult.CONSUME;
+	}
+
+	@Override
+	public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
+		if (!state.is(newState.getBlock())) {
+			if (level.getBlockEntity(pos) instanceof NTPatternEncoderBlockEntity encoder) {
+				encoder.dropContents(level, pos);
+			}
+		}
+		super.onRemove(state, level, pos, newState, movedByPiston);
 	}
 }
