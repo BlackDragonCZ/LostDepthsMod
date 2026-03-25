@@ -52,6 +52,11 @@ public class NTPatternEncoderMenu extends AbstractContainerMenu {
 			}
 		});
 
+		// Processing output slots (slots 11-13, visible in processing mode)
+		for (int i = 0; i < encoder.getProcessingOutputs().getSlots(); i++) {
+			addSlot(new SlotItemHandler(encoder.getProcessingOutputs(), i, 116 + i * 18, 58));
+		}
+
 		// Player inventory
 		for (int row = 0; row < 3; row++) {
 			for (int col = 0; col < 9; col++) {
@@ -82,11 +87,11 @@ public class NTPatternEncoderMenu extends AbstractContainerMenu {
 		ItemStack slotStack = slot.getItem();
 		ItemStack result = slotStack.copy();
 
-		int encoderSlots = NTPatternEncoderBlockEntity.TOTAL_SLOTS;
-		int playerStart = encoderSlots;
+		int totalEncoderSlots = NTPatternEncoderBlockEntity.TOTAL_SLOTS + encoder.getProcessingOutputs().getSlots();
+		int playerStart = totalEncoderSlots;
 		int playerEnd = playerStart + 36;
 
-		if (slotIndex < encoderSlots) {
+		if (slotIndex < totalEncoderSlots) {
 			if (!moveItemStackTo(slotStack, playerStart, playerEnd, true)) return ItemStack.EMPTY;
 		} else {
 			if (slotStack.getItem() instanceof BlankPatternItem) {
