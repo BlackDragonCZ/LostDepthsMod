@@ -15,6 +15,7 @@ out
 build
 .gradle
 run-data
+gradle
 
 # other
 eclipse
@@ -22,6 +23,7 @@ run
 .claude
 .gitignore
 *.bat
+models
 
 # Files from Forge MDK
 forge*changelog.txt
