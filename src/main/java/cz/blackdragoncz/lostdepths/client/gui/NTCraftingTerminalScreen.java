@@ -51,26 +51,9 @@ public class NTCraftingTerminalScreen extends AbstractContainerScreen<NTCrafting
 
 	@Override
 	protected void renderBg(GuiGraphics graphics, float partialTick, int mouseX, int mouseY) {
-		// Main background
-		graphics.fill(this.leftPos, this.topPos, this.leftPos + imageWidth, this.topPos + imageHeight, 0xFFC6C6C6);
-
-		// --- Virtual item grid ---
-		graphics.fill(this.leftPos + GRID_X - 1, this.topPos + GRID_Y - 1,
-				this.leftPos + GRID_X + COLS * SLOT_SIZE + 1, this.topPos + GRID_Y + ROWS * SLOT_SIZE + 1,
-				0xFF373737);
-		graphics.fill(this.leftPos + GRID_X, this.topPos + GRID_Y,
-				this.leftPos + GRID_X + COLS * SLOT_SIZE, this.topPos + GRID_Y + ROWS * SLOT_SIZE,
-				0xFF8B8B8B);
-
-		// Grid lines
-		for (int row = 0; row <= ROWS; row++) {
-			int y = this.topPos + GRID_Y + row * SLOT_SIZE;
-			graphics.fill(this.leftPos + GRID_X, y, this.leftPos + GRID_X + COLS * SLOT_SIZE, y + 1, 0xFF373737);
-		}
-		for (int col = 0; col <= COLS; col++) {
-			int x = this.leftPos + GRID_X + col * SLOT_SIZE;
-			graphics.fill(x, this.topPos + GRID_Y, x + 1, this.topPos + GRID_Y + ROWS * SLOT_SIZE, 0xFF373737);
-		}
+		// Themed background + virtual item grid frames
+		NTGuiTheme.background(graphics, leftPos, topPos, imageWidth, imageHeight);
+		NTGuiTheme.slotGrid(graphics, leftPos, topPos, GRID_X, GRID_Y, COLS, ROWS);
 
 		// Scrollbar
 		List<CrystalInventory.StoredItem> filtered = menu.getFilteredItems();
@@ -79,51 +62,27 @@ public class NTCraftingTerminalScreen extends AbstractContainerScreen<NTCrafting
 			int scrollBarX = this.leftPos + GRID_X + COLS * SLOT_SIZE + 2;
 			int scrollBarY = this.topPos + GRID_Y;
 			int scrollBarH = ROWS * SLOT_SIZE;
-			graphics.fill(scrollBarX, scrollBarY, scrollBarX + 6, scrollBarY + scrollBarH, 0xFF555555);
+			graphics.fill(scrollBarX, scrollBarY, scrollBarX + 6, scrollBarY + scrollBarH, 0xFF0E1430);
 
 			int thumbH = Math.max(10, scrollBarH * ROWS / totalRows);
 			int thumbY = scrollBarY + (int) ((scrollBarH - thumbH) * ((float) menu.getScrollOffset() / (totalRows - ROWS)));
-			graphics.fill(scrollBarX, thumbY, scrollBarX + 6, thumbY + thumbH, 0xFFAAAAAA);
+			graphics.fill(scrollBarX, thumbY, scrollBarX + 6, thumbY + thumbH, 0xFF3E4F79);
 		}
 
-		// --- Crafting grid (3x3) below item grid ---
-		for (int row = 0; row < 3; row++) {
-			for (int col = 0; col < 3; col++) {
-				int sx = this.leftPos + CRAFT_X + col * 18;
-				int sy = this.topPos + CRAFT_Y + row * 18;
-				graphics.fill(sx, sy, sx + 18, sy + 18, 0xFF373737);
-				graphics.fill(sx + 1, sy + 1, sx + 17, sy + 17, 0xFF8B8B8B);
-			}
-		}
+		// --- Crafting grid (3x3) below item grid --- (functional slots at CRAFT_X+1, CRAFT_Y+1)
+		NTGuiTheme.slotGrid(graphics, leftPos, topPos, CRAFT_X + 1, CRAFT_Y + 1, 3, 3);
 
 		// Arrow between crafting grid and result
 		int arrowX = this.leftPos + CRAFT_X + 3 * 18 + 6;
 		int arrowY = this.topPos + CRAFT_Y + 18 + 2;
-		graphics.drawString(font, "\u2192", arrowX, arrowY, 0x404040, false);
+		graphics.drawString(font, "\u2192", arrowX, arrowY, NTGuiTheme.BODY, false);
 
-		// Result slot background (gold tinted)
-		int rx = this.leftPos + RESULT_X;
-		int ry = this.topPos + RESULT_Y;
-		graphics.fill(rx, ry, rx + 18, ry + 18, 0xFF373737);
-		graphics.fill(rx + 1, ry + 1, rx + 17, ry + 17, 0xFFB8B800);
+		// Result slot (gold tinted) \u2014 functional slot at RESULT_X+1, RESULT_Y+1
+		NTGuiTheme.slot(graphics, leftPos, topPos, RESULT_X + 1, RESULT_Y + 1);
+		NTGuiTheme.tint(graphics, leftPos, topPos, RESULT_X + 1, RESULT_Y + 1, NTGuiTheme.TINT_OUTPUT);
 
-		// --- Player inventory ---
-		int invY = this.topPos + CRAFT_Y + 3 * 18 + 8;
-		for (int row = 0; row < 3; row++) {
-			for (int col = 0; col < 9; col++) {
-				int sx = this.leftPos + 7 + col * 18;
-				int sy = invY + row * 18;
-				graphics.fill(sx, sy, sx + 18, sy + 18, 0xFF373737);
-				graphics.fill(sx + 1, sy + 1, sx + 17, sy + 17, 0xFF8B8B8B);
-			}
-		}
-		// Hotbar
-		int hotbarY = invY + 3 * 18 + 4;
-		for (int col = 0; col < 9; col++) {
-			int sx = this.leftPos + 7 + col * 18;
-			graphics.fill(sx, hotbarY, sx + 18, hotbarY + 18, 0xFF373737);
-			graphics.fill(sx + 1, hotbarY + 1, sx + 17, hotbarY + 17, 0xFF8B8B8B);
-		}
+		// --- Player inventory --- (functional slots at INV_Y+1 / HOTBAR_Y+1 per menu)
+		NTGuiTheme.playerInventory(graphics, leftPos, topPos, 8, CRAFT_Y + 3 * 18 + 8 + 1);
 
 		// --- Render stored items in virtual grid ---
 		int startIdx = menu.getScrollOffset() * COLS;
@@ -153,7 +112,12 @@ public class NTCraftingTerminalScreen extends AbstractContainerScreen<NTCrafting
 		}
 
 		// Title
-		graphics.drawString(font, "NuroTech Crafting", this.leftPos + 8, this.topPos + 6, 0x404040, false);
+		graphics.drawString(font, "NuroTech Crafting", this.leftPos + 8, this.topPos + 6, NTGuiTheme.HEADING, false);
+	}
+
+	@Override
+	protected void renderLabels(GuiGraphics graphics, int mouseX, int mouseY) {
+		graphics.drawString(this.font, this.playerInventoryTitle, this.inventoryLabelX, this.inventoryLabelY, NTGuiTheme.BODY, false);
 	}
 
 	@Override

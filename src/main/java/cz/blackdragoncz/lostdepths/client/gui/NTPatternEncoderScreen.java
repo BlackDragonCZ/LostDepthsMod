@@ -39,62 +39,47 @@ public class NTPatternEncoderScreen extends AbstractContainerScreen<NTPatternEnc
 
 	@Override
 	protected void renderBg(GuiGraphics graphics, float partialTick, int mouseX, int mouseY) {
-		graphics.fill(this.leftPos, this.topPos, this.leftPos + imageWidth, this.topPos + imageHeight, 0xFFC6C6C6);
+		NTGuiTheme.background(graphics, leftPos, topPos, imageWidth, imageHeight);
 
 		// Crafting/input grid (3x3)
-		for (int row = 0; row < 3; row++) {
-			for (int col = 0; col < 3; col++) {
-				int sx = this.leftPos + 7 + col * 18;
-				int sy = this.topPos + 17 + row * 18;
-				graphics.fill(sx, sy, sx + 18, sy + 18, 0xFF373737);
-				graphics.fill(sx + 1, sy + 1, sx + 17, sy + 17, 0xFF8B8B8B);
-			}
-		}
+		NTGuiTheme.slotGrid(graphics, leftPos, topPos, 8, 18, 3, 3);
 
 		// Blank pattern slot
-		int bx = this.leftPos + 115;
-		int by = this.topPos + 35;
-		graphics.fill(bx, by, bx + 18, by + 18, 0xFF373737);
-		graphics.fill(bx + 1, by + 1, bx + 17, by + 17, 0xFF6060B0);
+		NTGuiTheme.slot(graphics, leftPos, topPos, 116, 36);
+		NTGuiTheme.tint(graphics, leftPos, topPos, 116, 36, NTGuiTheme.TINT_PATTERN);
 
 		// Output slot
-		int ox = this.leftPos + 151;
-		int oy = this.topPos + 35;
-		graphics.fill(ox, oy, ox + 18, oy + 18, 0xFF373737);
-		graphics.fill(ox + 1, oy + 1, ox + 17, oy + 17, 0xFFB8B800);
+		NTGuiTheme.slot(graphics, leftPos, topPos, 152, 36);
+		NTGuiTheme.tint(graphics, leftPos, topPos, 152, 36, NTGuiTheme.TINT_OUTPUT);
 
 		// Arrow
-		graphics.drawString(font, "\u2192", this.leftPos + 137, this.topPos + 39, 0x404040, false);
+		graphics.drawString(font, "→", this.leftPos + 137, this.topPos + 39, NTGuiTheme.BODY, false);
 
 		// Labels
-		graphics.drawString(font, "Pattern Encoder", this.leftPos + 8, this.topPos + 6, 0x404040, false);
-		graphics.drawString(font, "Blank", this.leftPos + 112, this.topPos + 24, 0x404040, false);
+		graphics.drawString(font, "Pattern Encoder", this.leftPos + 8, this.topPos + 6, NTGuiTheme.HEADING, false);
+		graphics.drawString(font, "Blank", this.leftPos + 112, this.topPos + 24, NTGuiTheme.BODY, false);
 
-		// Processing output slots (shown only in processing mode)
+		// Processing output slots (real slots 11-13, shown only in processing mode)
 		if (menu.getEncoder().isProcessingMode()) {
-			graphics.drawString(font, "Output:", this.leftPos + 114, this.topPos + 58, 0x404040, false);
-			// Processing outputs are not real slots in current menu — TODO: add them
-		}
-
-		// Player inventory backgrounds
-		for (int row = 0; row < 3; row++) {
-			for (int col = 0; col < 9; col++) {
-				int sx = this.leftPos + 7 + col * 18;
-				int sy = this.topPos + 89 + row * 18;
-				graphics.fill(sx, sy, sx + 18, sy + 18, 0xFF373737);
-				graphics.fill(sx + 1, sy + 1, sx + 17, sy + 17, 0xFF8B8B8B);
+			graphics.drawString(font, "Output:", this.leftPos + 114, this.topPos + 58, NTGuiTheme.BODY, false);
+			int outs = menu.getEncoder().getProcessingOutputs().getSlots();
+			for (int i = 0; i < outs; i++) {
+				NTGuiTheme.slot(graphics, leftPos, topPos, 116 + i * 18, 58);
+				NTGuiTheme.tint(graphics, leftPos, topPos, 116 + i * 18, 58, NTGuiTheme.TINT_OUTPUT);
 			}
 		}
-		for (int col = 0; col < 9; col++) {
-			int sx = this.leftPos + 7 + col * 18;
-			int sy = this.topPos + 147;
-			graphics.fill(sx, sy, sx + 18, sy + 18, 0xFF373737);
-			graphics.fill(sx + 1, sy + 1, sx + 17, sy + 17, 0xFF8B8B8B);
-		}
+
+		// Player inventory
+		NTGuiTheme.playerInventory(graphics, leftPos, topPos, 8, 90);
 
 		// Mode indicator
 		String mode = menu.getEncoder().isProcessingMode() ? "§dProcessing" : "§aCrafting";
-		graphics.drawString(font, mode, this.leftPos + 68, this.topPos + 34, 0x404040, false);
+		graphics.drawString(font, mode, this.leftPos + 68, this.topPos + 34, NTGuiTheme.BODY, false);
+	}
+
+	@Override
+	protected void renderLabels(GuiGraphics graphics, int mouseX, int mouseY) {
+		// Titles drawn in renderBg (custom positions).
 	}
 
 	@Override

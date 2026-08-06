@@ -95,27 +95,27 @@ public class NTCraftRequestScreen extends Screen {
 		int px = cx - panelW / 2;
 		int py = cy - panelH / 2;
 
-		graphics.fill(px - 1, py - 1, px + panelW + 1, py + panelH + 1, 0xFF222222);
-		graphics.fill(px, py, px + panelW, py + panelH, 0xFF3C3C3C);
+		graphics.fill(px - 1, py - 1, px + panelW + 1, py + panelH + 1, 0xFF03081D);
+		graphics.fill(px, py, px + panelW, py + panelH, 0xFF101C30);
 
 		if (phase == Phase.AMOUNT) {
 			// Title + item icon
-			graphics.drawString(font, "Craft Request", cx - font.width("Craft Request") / 2, cy - 46, 0xFFFFFF, true);
+			graphics.drawString(font, "Craft Request", cx - font.width("Craft Request") / 2, cy - 46, NTGuiTheme.HEADING, true);
 
 			// Render target item
 			graphics.renderItem(targetOutput, cx - 8, cy - 38);
-			graphics.drawString(font, targetOutput.getHoverName(), cx + 12, cy - 34, 0xFFFFFF, false);
+			graphics.drawString(font, targetOutput.getHoverName(), cx + 12, cy - 34, NTGuiTheme.BODY, false);
 
-			graphics.drawString(font, "Amount:", cx - 60, cy - 16, 0xAAAAAA, false);
+			graphics.drawString(font, "Amount:", cx - 60, cy - 16, NTGuiTheme.HINT, false);
 
 		} else {
 			// Confirm phase
 			graphics.drawString(font, "Crafting: " + targetOutput.getHoverName().getString(),
-					px + 6, py + 6, 0xFFFFFF, false);
-			graphics.drawString(font, "Amount: §e" + requestedAmount, px + 6, py + 18, 0xAAAAAA, false);
+					px + 6, py + 6, NTGuiTheme.HEADING, false);
+			graphics.drawString(font, "Amount: §e" + requestedAmount, px + 6, py + 18, NTGuiTheme.BODY, false);
 
 			// Ingredient tree
-			graphics.drawString(font, "§7Required ingredients:", px + 6, py + 34, 0xAAAAAA, false);
+			graphics.drawString(font, "§7Required ingredients:", px + 6, py + 34, NTGuiTheme.HINT, false);
 
 			List<ItemStack> inputs = EncodedPatternItem.getInputs(pattern);
 			List<ItemStack> outputs = EncodedPatternItem.getOutputs(pattern);

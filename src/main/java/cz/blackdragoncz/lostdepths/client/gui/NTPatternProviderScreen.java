@@ -19,7 +19,7 @@ public class NTPatternProviderScreen extends AbstractContainerScreen<NTPatternPr
 
 	@Override
 	protected void renderBg(GuiGraphics graphics, float partialTick, int mouseX, int mouseY) {
-		graphics.fill(this.leftPos, this.topPos, this.leftPos + imageWidth, this.topPos + imageHeight, 0xFFC6C6C6);
+		NTGuiTheme.background(graphics, leftPos, topPos, imageWidth, imageHeight);
 
 		int slotCount = menu.getProvider().getSlotCount();
 		int cols = 9;
@@ -27,42 +27,32 @@ public class NTPatternProviderScreen extends AbstractContainerScreen<NTPatternPr
 
 		// Pattern slots
 		for (int i = 0; i < slotCount; i++) {
-			int row = i / cols;
-			int col = i % cols;
-			int sx = this.leftPos + 7 + col * 18;
-			int sy = this.topPos + 17 + row * 18;
-			graphics.fill(sx, sy, sx + 18, sy + 18, 0xFF373737);
-			graphics.fill(sx + 1, sy + 1, sx + 17, sy + 17, 0xFF6060B0);
+			int fx = 8 + (i % cols) * 18;
+			int fy = 18 + (i / cols) * 18;
+			NTGuiTheme.slot(graphics, leftPos, topPos, fx, fy);
+			NTGuiTheme.tint(graphics, leftPos, topPos, fx, fy, NTGuiTheme.TINT_PATTERN);
 		}
 
-		// Result buffer
-		int resultY = this.topPos + 17 + rows * 18 + 6;
-		graphics.drawString(font, "Results:", this.leftPos + 8, resultY - 10, 0x404040, false);
+		// Result buffer (row below patterns)
+		int resultY = 18 + rows * 18 + 6;
+		graphics.drawString(font, "Results:", this.leftPos + 8, this.topPos + resultY - 10, NTGuiTheme.BODY, false);
 		for (int i = 0; i < 9; i++) {
-			int sx = this.leftPos + 7 + i * 18;
-			graphics.fill(sx, resultY, sx + 18, resultY + 18, 0xFF373737);
-			graphics.fill(sx + 1, resultY + 1, sx + 17, resultY + 17, 0xFFB8B800);
+			int fx = 8 + i * 18;
+			NTGuiTheme.slot(graphics, leftPos, topPos, fx, resultY);
+			NTGuiTheme.tint(graphics, leftPos, topPos, fx, resultY, NTGuiTheme.TINT_OUTPUT);
 		}
 
-		// Player inventory backgrounds
+		// Player inventory
 		int playerY = resultY + 24;
-		for (int row = 0; row < 3; row++) {
-			for (int col = 0; col < 9; col++) {
-				int sx = this.leftPos + 7 + col * 18;
-				int sy = playerY + row * 18;
-				graphics.fill(sx, sy, sx + 18, sy + 18, 0xFF373737);
-				graphics.fill(sx + 1, sy + 1, sx + 17, sy + 17, 0xFF8B8B8B);
-			}
-		}
-		for (int col = 0; col < 9; col++) {
-			int sx = this.leftPos + 7 + col * 18;
-			int sy = playerY + 58;
-			graphics.fill(sx, sy, sx + 18, sy + 18, 0xFF373737);
-			graphics.fill(sx + 1, sy + 1, sx + 17, sy + 17, 0xFF8B8B8B);
-		}
+		NTGuiTheme.playerInventory(graphics, leftPos, topPos, 8, playerY);
 
 		// Title
-		graphics.drawString(font, "Pattern Provider", this.leftPos + 8, this.topPos + 6, 0x404040, false);
+		graphics.drawString(font, "Pattern Provider", this.leftPos + 8, this.topPos + 6, NTGuiTheme.HEADING, false);
+	}
+
+	@Override
+	protected void renderLabels(GuiGraphics graphics, int mouseX, int mouseY) {
+		// Titles drawn in renderBg (custom positions); nothing default here.
 	}
 
 	@Override

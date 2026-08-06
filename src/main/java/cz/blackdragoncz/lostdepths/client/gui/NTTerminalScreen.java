@@ -49,43 +49,10 @@ public class NTTerminalScreen extends AbstractContainerScreen<NTTerminalMenu> {
 
 	@Override
 	protected void renderBg(GuiGraphics graphics, float partialTick, int mouseX, int mouseY) {
-		// Background fill
-		graphics.fill(this.leftPos, this.topPos, this.leftPos + imageWidth, this.topPos + imageHeight, 0xFFC6C6C6);
-
-		// Grid background
-		graphics.fill(this.leftPos + GRID_X - 1, this.topPos + GRID_Y - 1,
-				this.leftPos + GRID_X + COLS * SLOT_SIZE + 1, this.topPos + GRID_Y + ROWS * SLOT_SIZE + 1,
-				0xFF373737);
-		graphics.fill(this.leftPos + GRID_X, this.topPos + GRID_Y,
-				this.leftPos + GRID_X + COLS * SLOT_SIZE, this.topPos + GRID_Y + ROWS * SLOT_SIZE,
-				0xFF8B8B8B);
-
-		// Grid slot lines
-		for (int row = 0; row <= ROWS; row++) {
-			int y = this.topPos + GRID_Y + row * SLOT_SIZE;
-			graphics.fill(this.leftPos + GRID_X, y, this.leftPos + GRID_X + COLS * SLOT_SIZE, y + 1, 0xFF373737);
-		}
-		for (int col = 0; col <= COLS; col++) {
-			int x = this.leftPos + GRID_X + col * SLOT_SIZE;
-			graphics.fill(x, this.topPos + GRID_Y, x + 1, this.topPos + GRID_Y + ROWS * SLOT_SIZE, 0xFF373737);
-		}
-
-		// Player inventory background
-		for (int row = 0; row < 3; row++) {
-			for (int col = 0; col < 9; col++) {
-				int sx = this.leftPos + 7 + col * 18;
-				int sy = this.topPos + 139 + row * 18;
-				graphics.fill(sx, sy, sx + 18, sy + 18, 0xFF373737);
-				graphics.fill(sx + 1, sy + 1, sx + 17, sy + 17, 0xFF8B8B8B);
-			}
-		}
-		// Hotbar background
-		for (int col = 0; col < 9; col++) {
-			int sx = this.leftPos + 7 + col * 18;
-			int sy = this.topPos + 197;
-			graphics.fill(sx, sy, sx + 18, sy + 18, 0xFF373737);
-			graphics.fill(sx + 1, sy + 1, sx + 17, sy + 17, 0xFF8B8B8B);
-		}
+		// Themed background + slot frames
+		NTGuiTheme.background(graphics, leftPos, topPos, imageWidth, imageHeight);
+		NTGuiTheme.slotGrid(graphics, leftPos, topPos, GRID_X, GRID_Y, COLS, ROWS);
+		NTGuiTheme.playerInventory(graphics, leftPos, topPos, 8, 140);
 
 		// Render stored items in grid
 		List<CrystalInventory.StoredItem> filtered = menu.getFilteredItems();
@@ -124,15 +91,20 @@ public class NTTerminalScreen extends AbstractContainerScreen<NTTerminalMenu> {
 			int scrollBarX = this.leftPos + GRID_X + COLS * SLOT_SIZE + 2;
 			int scrollBarY = this.topPos + GRID_Y;
 			int scrollBarH = ROWS * SLOT_SIZE;
-			graphics.fill(scrollBarX, scrollBarY, scrollBarX + 6, scrollBarY + scrollBarH, 0xFF555555);
+			graphics.fill(scrollBarX, scrollBarY, scrollBarX + 6, scrollBarY + scrollBarH, 0xFF0E1430);
 
 			int thumbH = Math.max(10, scrollBarH * ROWS / totalRows);
 			int thumbY = scrollBarY + (int) ((scrollBarH - thumbH) * ((float) menu.getScrollOffset() / (totalRows - ROWS)));
-			graphics.fill(scrollBarX, thumbY, scrollBarX + 6, thumbY + thumbH, 0xFFAAAAAA);
+			graphics.fill(scrollBarX, thumbY, scrollBarX + 6, thumbY + thumbH, 0xFF3E4F79);
 		}
 
 		// Title
-		graphics.drawString(font, "NuroTech Terminal", this.leftPos + 8, this.topPos + 6, 0x404040, false);
+		graphics.drawString(font, "NuroTech Terminal", this.leftPos + 8, this.topPos + 6, NTGuiTheme.HEADING, false);
+	}
+
+	@Override
+	protected void renderLabels(GuiGraphics graphics, int mouseX, int mouseY) {
+		graphics.drawString(this.font, this.playerInventoryTitle, this.inventoryLabelX, this.inventoryLabelY, NTGuiTheme.BODY, false);
 	}
 
 	@Override

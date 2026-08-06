@@ -1,15 +1,12 @@
 package cz.blackdragoncz.lostdepths.client.gui;
 
-import cz.blackdragoncz.lostdepths.LostdepthsMod;
 import cz.blackdragoncz.lostdepths.world.inventory.NTDriveMenu;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
 public class NTDriveScreen extends AbstractContainerScreen<NTDriveMenu> {
-	private static final ResourceLocation TEXTURE = new ResourceLocation("minecraft", "textures/gui/container/generic_54.png");
 
 	public NTDriveScreen(NTDriveMenu menu, Inventory inv, Component title) {
 		super(menu, inv, title);
@@ -19,21 +16,25 @@ public class NTDriveScreen extends AbstractContainerScreen<NTDriveMenu> {
 
 	@Override
 	protected void renderBg(GuiGraphics graphics, float partialTick, int mouseX, int mouseY) {
-		// Draw a simple background — using generic chest texture as placeholder
-		graphics.blit(TEXTURE, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight);
+		NTGuiTheme.background(graphics, leftPos, topPos, imageWidth, imageHeight);
 
-		// Draw slot highlights for crystal slots
+		// Crystal slots — centered horizontally (mirrors NTDriveMenu placement)
 		int slotCount = menu.getSlotCount();
 		int startX = (176 - slotCount * 18) / 2;
 		for (int i = 0; i < slotCount; i++) {
-			graphics.fill(
-					this.leftPos + startX + i * 18,
-					this.topPos + 34,
-					this.leftPos + startX + 18 + i * 18,
-					this.topPos + 52,
-					0x408B5CF6 // purple tint for crystal slots
-			);
+			int fx = startX + 1 + i * 18;
+			NTGuiTheme.slot(graphics, leftPos, topPos, fx, 35);
+			NTGuiTheme.tint(graphics, leftPos, topPos, fx, 35, NTGuiTheme.TINT_CRYSTAL);
 		}
+
+		// Player inventory
+		NTGuiTheme.playerInventory(graphics, leftPos, topPos, 8, 84);
+	}
+
+	@Override
+	protected void renderLabels(GuiGraphics graphics, int mouseX, int mouseY) {
+		graphics.drawString(this.font, this.title, this.titleLabelX, this.titleLabelY, NTGuiTheme.HEADING, false);
+		graphics.drawString(this.font, this.playerInventoryTitle, this.inventoryLabelX, this.inventoryLabelY, NTGuiTheme.BODY, false);
 	}
 
 	@Override
