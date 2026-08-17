@@ -1,6 +1,6 @@
 package cz.blackdragoncz.lostdepths.item.book;
 
-import cz.blackdragoncz.lostdepths.client.gui.InfusedBookEditScreen;
+import cz.blackdragoncz.lostdepths.client.ClientBookHooks;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.stats.Stats;
@@ -25,14 +25,10 @@ public class InfusedWritableBookItem extends Item {
 	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
 		ItemStack stack = player.getItemInHand(hand);
 		if (level.isClientSide()) {
-			DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> openBookScreen(player, stack, hand));
+			DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> ClientBookHooks.openWritableBook(player, stack, hand));
 		}
 		player.awardStat(Stats.ITEM_USED.get(this));
 		return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
-	}
-
-	private static void openBookScreen(Player player, ItemStack stack, InteractionHand hand) {
-		net.minecraft.client.Minecraft.getInstance().setScreen(new InfusedBookEditScreen(player, stack, hand));
 	}
 
 	public static boolean makeSureTagIsValid(@Nullable CompoundTag tag) {

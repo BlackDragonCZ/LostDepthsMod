@@ -1,6 +1,6 @@
 package cz.blackdragoncz.lostdepths.item.book;
 
-import cz.blackdragoncz.lostdepths.client.gui.InfusedBookViewScreen;
+import cz.blackdragoncz.lostdepths.client.ClientBookHooks;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModItems;
 import cz.blackdragoncz.lostdepths.network.ContractSignMessage;
 import net.minecraft.ChatFormatting;
@@ -38,14 +38,10 @@ public class InfusedWrittenBookItem extends Item {
 			return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
 		}
 		if (level.isClientSide()) {
-			DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> openBookScreen(stack));
+			DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> ClientBookHooks.openWrittenBook(stack));
 		}
 		player.awardStat(Stats.ITEM_USED.get(this));
 		return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
-	}
-
-	private static void openBookScreen(ItemStack stack) {
-		net.minecraft.client.Minecraft.getInstance().setScreen(new InfusedBookViewScreen(stack));
 	}
 
 	public static boolean makeSureTagIsValid(@Nullable CompoundTag tag) {
