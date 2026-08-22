@@ -3,6 +3,7 @@ package cz.blackdragoncz.lostdepths.advancements;
 import cz.blackdragoncz.lostdepths.LostdepthsMod;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModBlocks;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModItems;
+import cz.blackdragoncz.lostdepths.init.LostdepthsModStructures;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.advancements.FrameType;
 import net.minecraft.advancements.critereon.ChangeDimensionTrigger;
@@ -10,6 +11,8 @@ import net.minecraft.advancements.critereon.ImpossibleTrigger;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.ItemUsedOnLocationTrigger;
+import net.minecraft.advancements.critereon.LocationPredicate;
+import net.minecraft.advancements.critereon.PlayerTrigger;
 import net.minecraft.advancements.critereon.MinMaxBounds;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -18,6 +21,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 
@@ -50,8 +54,8 @@ public final class LostdepthsAdvancements {
 	public static final LostdepthsAdvancementBuilder FROM_ABOVE = travel(FROM_BELOW, "from_above", LostdepthsModItems.FERRO_LOG, "between_bedrock_and_overworld", TASK).hidden();
 	public static final LostdepthsAdvancementBuilder CLOVINITE_ADV = obtain(FROM_ABOVE, "clovinite_adv", LostdepthsModItems.CLOVINITE, GOAL);
 	public static final LostdepthsAdvancementBuilder SUNDER_LOG_ADV = obtain(FROM_ABOVE, "sunder_log_adv", LostdepthsModItems.SUNDER_LOG, GOAL);
-	public static final LostdepthsAdvancementBuilder RUINS_ADV = manual(FROM_BELOW, "ruins_adv", LostdepthsModItems.TREASUREBRICKS, GOAL).hidden();
-	public static final LostdepthsAdvancementBuilder RUINS_2_ADV = travel(RUINS_ADV, "ruins_2_adv", LostdepthsModItems.TREASURE_DARK_BRICKS, "below_bedrock", GOAL);
+	public static final LostdepthsAdvancementBuilder RUINS_ADV = explore(FROM_BELOW, "ruins_adv", LostdepthsModItems.TREASUREBRICKS, LostdepthsModStructures.RUINS, GOAL).hidden();
+	public static final LostdepthsAdvancementBuilder RUINS_2_ADV = explore(RUINS_ADV, "ruins_2_adv", LostdepthsModItems.TREASURE_DARK_BRICKS, LostdepthsModStructures.MANUFACTORY, GOAL);
 	public static final LostdepthsAdvancementBuilder META_CONSTRUCTOR_ADV = obtain(RUINS_2_ADV, "meta_constructor_adv", LostdepthsModItems.SECURITY_PASS_3, GOAL);
 	public static final LostdepthsAdvancementBuilder GETTING_STARTED = obtain(INSTALL_ADV, "getting_started", LostdepthsModItems.INFUSED_IRON, TASK).hidden().noToast();
 	public static final LostdepthsAdvancementBuilder ACIDIC_OOZE_ADV = obtain(GETTING_STARTED, "acidic_ooze_adv", LostdepthsModItems.ACIDIC_OOZE, TASK);
@@ -118,6 +122,15 @@ public final class LostdepthsAdvancements {
 
 	private static LostdepthsAdvancementBuilder travel(@Nullable LostdepthsAdvancementBuilder parent, String name, Supplier<? extends ItemLike> icon, String dimension, FrameType frame) {
 		return register(parent, name, icon, frame).criterion(name, () -> ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(ResourceKey.create(Registries.DIMENSION, LostdepthsMod.rl(dimension))));
+	}
+
+	// Fires while the player stands anywhere inside the structure's bounding box, the same way vanilla detects a fortress or stronghold.
+	private static LostdepthsAdvancementBuilder explore(@Nullable LostdepthsAdvancementBuilder parent, String name, Supplier<? extends ItemLike> icon, ResourceKey<Structure> structure, FrameType frame) {
+		return register(parent, name, icon, frame).criterion(name, () -> inStructure(structure));
+	}
+
+	private static CriterionTriggerInstance inStructure(ResourceKey<Structure> structure) {
+		return PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setStructure(structure).build());
 	}
 
 	// Granted from code via LostdepthsAdvancementTriggers, so the criterion itself can never fire on its own.

@@ -1,0 +1,109 @@
+{
+  "type": "lostdepths:template_grid",
+  "biomes": "#lostdepths:has_structure/manufactory",
+  "step": "surface_structures",
+  "terrain_adaptation": "none",
+  "spawn_overrides": {},
+  "offsets": [
+    [
+      8,
+      0,
+      7
+    ],
+    [
+      23,
+      0,
+      7
+    ],
+    [
+      38,
+      0,
+      7
+    ],
+    [
+      53,
+      0,
+      7
+    ],
+    [
+      8,
+      0,
+      22
+    ],
+    [
+      23,
+      0,
+      22
+    ],
+    [
+      38,
+      0,
+      22
+    ],
+    [
+      53,
+      0,
+      22
+    ],
+    [
+      8,
+      0,
+      37
+    ],
+    [
+      23,
+      0,
+      37
+    ],
+    [
+      38,
+      0,
+      37
+    ],
+    [
+      53,
+      0,
+      37
+    ],
+    [
+      8,
+      0,
+      52
+    ],
+    [
+      23,
+      0,
+      52
+    ],
+    [
+      38,
+      0,
+      52
+    ],
+    [
+      53,
+      0,
+      52
+    ]
+  ],
+  "templates": [
+    "lostdepths:manufactory_part1",
+    "lostdepths:manufactory_part2",
+    "lostdepths:manufactory_part3",
+    "lostdepths:manufactory_part4",
+    "lostdepths:manufactory_part5",
+    "lostdepths:manufactory_part6",
+    "lostdepths:manufactory_part7",
+    "lostdepths:manufactory_part8",
+    "lostdepths:manufactory_part9",
+    "lostdepths:manufactory_part10",
+    "lostdepths:manufactory_part11",
+    "lostdepths:manufactory_part12",
+    "lostdepths:manufactory_part13",
+    "lostdepths:manufactory_part14",
+    "lostdepths:manufactory_part15",
+    "lostdepths:manufactory_part16"
+  ],
+  "random_rotation": false,
+  "random_mirror": false
+}

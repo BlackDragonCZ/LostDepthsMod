@@ -1,0 +1,19 @@
+{
+  "type": "lostdepths:template_grid",
+  "biomes": "#lostdepths:has_structure/ruins",
+  "step": "surface_structures",
+  "terrain_adaptation": "none",
+  "spawn_overrides": {},
+  "offsets": [
+    [
+      0,
+      0,
+      0
+    ]
+  ],
+  "templates": [
+    "lostdepths:small_structure_treasure"
+  ],
+  "random_rotation": true,
+  "random_mirror": true
+}

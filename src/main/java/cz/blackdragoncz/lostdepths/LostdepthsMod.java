@@ -60,6 +60,8 @@ public class LostdepthsMod {
         LostdepthsModAttributes.REGISTRY.register(bus);
         //WORLD
 		StructureFeature.REGISTRY.register(bus);
+		LostdepthsModStructures.TYPES.register(bus);
+		LostdepthsModStructures.PIECES.register(bus);
 		LostdepthsModMobEffects.REGISTRY.register(bus);
 		LostdepthsModPotions.REGISTRY.register(bus);
         //MISC

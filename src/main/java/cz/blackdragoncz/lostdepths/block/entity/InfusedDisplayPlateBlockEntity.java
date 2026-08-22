@@ -27,6 +27,7 @@ public class InfusedDisplayPlateBlockEntity extends BlockEntity {
 		this.setChanged();
 		if (this.level != null && !this.level.isClientSide) {
 			this.level.sendBlockUpdated(this.worldPosition, this.getBlockState(), this.getBlockState(), 3);
+			DisplayPlateMapSync.onHeldItemChanged(this.level, this);
 		}
 	}
 

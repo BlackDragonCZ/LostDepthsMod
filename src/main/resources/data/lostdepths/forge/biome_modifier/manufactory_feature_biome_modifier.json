@@ -1,9 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": [
-    "lostdepths:lost_souls",
-    "lostdepths:sun_forest"
-  ],
-  "features": "lostdepths:manufactory_feature",
-  "step": "surface_structures"
-}

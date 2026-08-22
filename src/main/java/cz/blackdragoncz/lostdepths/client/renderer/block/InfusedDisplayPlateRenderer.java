@@ -13,8 +13,10 @@ import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.MapItem;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.AttachFace;
+import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
 
 public class InfusedDisplayPlateRenderer implements BlockEntityRenderer<InfusedDisplayPlateBlockEntity> {
 
@@ -31,6 +33,11 @@ public class InfusedDisplayPlateRenderer implements BlockEntityRenderer<InfusedD
 		BlockState state = be.getBlockState();
 		AttachFace face = state.getValue(InfusedDisplayPlateBlock.FACE);
 		Direction facing = state.getValue(InfusedDisplayPlateBlock.FACING);
+
+		if (heldItem.getItem() instanceof MapItem) {
+			renderMap(be, heldItem, face, facing, poseStack, buffer, packedLight);
+			return;
+		}
 
 		ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
 		BakedModel model = itemRenderer.getModel(heldItem, be.getLevel(), null, 0);
@@ -83,6 +90,47 @@ public class InfusedDisplayPlateRenderer implements BlockEntityRenderer<InfusedD
 		}
 
 		itemRenderer.render(heldItem, ItemDisplayContext.FIXED, false, poseStack, buffer, packedLight, packedOverlay, model);
+
+		poseStack.popPose();
+	}
+
+	// Maps draw as a flat 128x128 quad instead of an item model, so they need their own transform. Pixels arrive via DisplayPlateMapSync, not with the chunk.
+	private void renderMap(InfusedDisplayPlateBlockEntity be, ItemStack stack, AttachFace face, Direction facing, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
+		Integer mapId = MapItem.getMapId(stack);
+		if (mapId == null || be.getLevel() == null)
+			return;
+		MapItemSavedData data = MapItem.getSavedData(mapId, be.getLevel());
+		if (data == null)
+			return;
+
+		float surfaceOffset = 1f / 16f;
+
+		poseStack.pushPose();
+		poseStack.translate(0.5, 0.5, 0.5);
+
+		switch (face) {
+			case FLOOR -> {
+				poseStack.translate(0, -0.5 + surfaceOffset, 0);
+				poseStack.mulPose(Axis.YP.rotationDegrees(getHorizontalAngle(facing)));
+				poseStack.mulPose(Axis.XP.rotationDegrees(90));
+			}
+			case CEILING -> {
+				poseStack.translate(0, 0.5 - surfaceOffset, 0);
+				poseStack.mulPose(Axis.YP.rotationDegrees(getHorizontalAngle(facing)));
+				poseStack.mulPose(Axis.XP.rotationDegrees(-90));
+			}
+			case WALL -> {
+				poseStack.translate(-facing.getStepX() * (0.5f - surfaceOffset), 0, -facing.getStepZ() * (0.5f - surfaceOffset));
+				poseStack.mulPose(Axis.YP.rotationDegrees(getHorizontalAngle(facing)));
+			}
+		}
+
+		// The map renderer draws into a 128x128 area with its origin in a corner, so scale it down to just under one block and recentre it.
+		poseStack.scale(0.0078125f, 0.0078125f, 0.0078125f);
+		poseStack.translate(-64, -64, 0);
+		poseStack.translate(0, 0, -1);
+
+		Minecraft.getInstance().gameRenderer.getMapRenderer().render(poseStack, buffer, mapId, data, false, packedLight);
 
 		poseStack.popPose();
 	}
