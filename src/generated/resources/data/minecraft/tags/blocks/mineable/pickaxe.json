@@ -76,6 +76,24 @@
     "lostdepths:nurostar_generator",
     "lostdepths:nurostar_cable",
     "lostdepths:black_hole_compressor",
-    "lostdepths:fusion_table"
+    "lostdepths:fusion_table",
+    "lostdepths:resource_extractor",
+    "lostdepths:nurostar_battery",
+    "lostdepths:nurostar_large_battery",
+    "lostdepths:nurotech_controller",
+    "lostdepths:nt_terminal",
+    "lostdepths:nt_crafting_terminal",
+    "lostdepths:nt_drive",
+    "lostdepths:nt_drive_t2",
+    "lostdepths:nt_import_bus",
+    "lostdepths:nt_export_bus",
+    "lostdepths:nt_bridge",
+    "lostdepths:nt_bridge_rs",
+    "lostdepths:nt_bridge_ae",
+    "lostdepths:nt_external_storage",
+    "lostdepths:nt_security_terminal",
+    "lostdepths:nt_pattern_encoder",
+    "lostdepths:nt_pattern_provider",
+    "lostdepths:nt_pattern_provider_t2"
   ]
 }

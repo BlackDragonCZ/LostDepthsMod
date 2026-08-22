@@ -1,0 +1,42 @@
+{
+  "parent": "lostdepths:infused_redstone_adv",
+  "criteria": {
+    "crying_ghast_adv": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "max": 64,
+              "min": 1
+            },
+            "items": [
+              "lostdepths:corrosive_tear"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.crying_ghast_adv.descr"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "lostdepths:corrosive_tear"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.crying_ghast_adv.title"
+    }
+  },
+  "requirements": [
+    [
+      "crying_ghast_adv"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

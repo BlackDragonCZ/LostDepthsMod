@@ -1,0 +1,42 @@
+{
+  "parent": "lostdepths:terrestrial",
+  "criteria": {
+    "noxhertium": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "max": 64,
+              "min": 1
+            },
+            "items": [
+              "lostdepths:condensed_noxhertium"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.noxhertium.descr"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "lostdepths:condensed_noxhertium"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.noxhertium.title"
+    }
+  },
+  "requirements": [
+    [
+      "noxhertium"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

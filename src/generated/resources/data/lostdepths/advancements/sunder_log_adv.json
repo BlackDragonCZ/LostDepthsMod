@@ -1,0 +1,42 @@
+{
+  "parent": "lostdepths:from_above",
+  "criteria": {
+    "sunder_log_adv": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "max": 64,
+              "min": 1
+            },
+            "items": [
+              "lostdepths:sunder_log"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.sunder_log_adv.descr"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "lostdepths:sunder_log"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.sunder_log_adv.title"
+    }
+  },
+  "requirements": [
+    [
+      "sunder_log_adv"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

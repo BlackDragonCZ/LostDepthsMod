@@ -16,6 +16,7 @@ build
 .gradle
 run-data
 gradle
+src/generated/resources/.cache
 
 # other
 eclipse

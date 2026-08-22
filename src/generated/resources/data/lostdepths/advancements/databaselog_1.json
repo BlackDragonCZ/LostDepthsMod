@@ -1,0 +1,29 @@
+{
+  "parent": "lostdepths:databaseadv",
+  "criteria": {
+    "databaselog_1": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.databaselog_1.descr"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "lostdepths:lorebookicon"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.databaselog_1.title"
+    }
+  },
+  "requirements": [
+    [
+      "databaselog_1"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

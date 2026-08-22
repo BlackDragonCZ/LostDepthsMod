@@ -1,0 +1,42 @@
+{
+  "parent": "lostdepths:galactic_compressor_adv",
+  "criteria": {
+    "terrestrial": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "max": 64,
+              "min": 1
+            },
+            "items": [
+              "lostdepths:extra_terestrial_compressor"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.terrestrial.descr"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "lostdepths:extra_terestrial_compressor"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.terrestrial.title"
+    }
+  },
+  "requirements": [
+    [
+      "terrestrial"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

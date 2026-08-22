@@ -1,0 +1,42 @@
+{
+  "parent": "lostdepths:atmos_tech_adv",
+  "criteria": {
+    "acidbloodsolution_adv": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "max": 64,
+              "min": 1
+            },
+            "items": [
+              "lostdepths:acidblood_solution"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.acidbloodsolution_adv.descr"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "lostdepths:acidblood_solution"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.acidbloodsolution_adv.title"
+    }
+  },
+  "requirements": [
+    [
+      "acidbloodsolution_adv"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

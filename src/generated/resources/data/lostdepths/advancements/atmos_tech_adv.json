@@ -1,0 +1,42 @@
+{
+  "parent": "lostdepths:tech_adv",
+  "criteria": {
+    "atmos_tech_adv": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "max": 64,
+              "min": 1
+            },
+            "items": [
+              "lostdepths:atmos_tech"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.atmos_tech_adv.descr"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "lostdepths:atmos_tech"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.atmos_tech_adv.title"
+    }
+  },
+  "requirements": [
+    [
+      "atmos_tech_adv"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

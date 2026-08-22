@@ -1,0 +1,42 @@
+{
+  "parent": "lostdepths:getting_started",
+  "criteria": {
+    "slime_on_bedrock": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "max": 64,
+              "min": 1
+            },
+            "items": [
+              "lostdepths:slimed_bedrock"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.slime_on_bedrock.descr"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "lostdepths:slimed_bedrock"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.slime_on_bedrock.title"
+    }
+  },
+  "requirements": [
+    [
+      "slime_on_bedrock"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

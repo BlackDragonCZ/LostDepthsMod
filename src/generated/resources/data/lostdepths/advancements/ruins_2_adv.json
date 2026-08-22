@@ -1,0 +1,32 @@
+{
+  "parent": "lostdepths:ruins_adv",
+  "criteria": {
+    "ruins_2_adv": {
+      "conditions": {
+        "to": "lostdepths:below_bedrock"
+      },
+      "trigger": "minecraft:changed_dimension"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.ruins_2_adv.descr"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "lostdepths:treasure_dark_bricks"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.ruins_2_adv.title"
+    }
+  },
+  "requirements": [
+    [
+      "ruins_2_adv"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

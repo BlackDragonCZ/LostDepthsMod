@@ -1,0 +1,42 @@
+{
+  "parent": "lostdepths:blackhole",
+  "criteria": {
+    "necrotonite": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "max": 64,
+              "min": 1
+            },
+            "items": [
+              "lostdepths:condensed_necrotonite"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.necrotonite.descr"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "lostdepths:condensed_necrotonite"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.necrotonite.title"
+    }
+  },
+  "requirements": [
+    [
+      "necrotonite"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,29 @@
+{
+  "criteria": {
+    "databaseadv": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "lostdepths:textures/screens/voidcutbrick.png",
+    "description": {
+      "translate": "advancements.databaseadv.descr"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "lostdepths:lorebookicon"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.databaseadv.title"
+    }
+  },
+  "requirements": [
+    [
+      "databaseadv"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

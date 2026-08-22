@@ -1,0 +1,40 @@
+{
+  "parent": "lostdepths:w_1_adv",
+  "criteria": {
+    "galactic_compressor_adv": {
+      "conditions": {
+        "location": [
+          {
+            "block": "lostdepths:galactic_compressor",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.galactic_compressor_adv.descr"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "item": "lostdepths:galactic_compressor"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galactic_compressor_adv.title"
+    }
+  },
+  "requirements": [
+    [
+      "galactic_compressor_adv"
+    ]
+  ],
+  "rewards": {
+    "experience": 15
+  },
+  "sends_telemetry_event": false
+}

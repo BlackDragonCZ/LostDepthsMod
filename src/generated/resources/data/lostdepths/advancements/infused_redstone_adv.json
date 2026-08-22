@@ -1,0 +1,42 @@
+{
+  "parent": "lostdepths:getting_started",
+  "criteria": {
+    "infused_redstone_adv": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "max": 64,
+              "min": 1
+            },
+            "items": [
+              "lostdepths:infused_redstone"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.infused_redstone_adv.descr"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "lostdepths:infused_redstone"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.infused_redstone_adv.title"
+    }
+  },
+  "requirements": [
+    [
+      "infused_redstone_adv"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

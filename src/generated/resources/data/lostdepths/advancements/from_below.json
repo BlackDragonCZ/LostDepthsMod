@@ -1,0 +1,32 @@
+{
+  "parent": "lostdepths:onmyway",
+  "criteria": {
+    "from_below": {
+      "conditions": {
+        "to": "lostdepths:below_bedrock"
+      },
+      "trigger": "minecraft:changed_dimension"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.from_below.descr"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "lostdepths:space_rock"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.from_below.title"
+    }
+  },
+  "requirements": [
+    [
+      "from_below"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

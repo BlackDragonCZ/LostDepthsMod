@@ -1,0 +1,37 @@
+{
+  "parent": "lostdepths:angry_adv",
+  "criteria": {
+    "tech_adv": {
+      "conditions": {
+        "location": [
+          {
+            "block": "lostdepths:print_tech",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.tech_adv.descr"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "lostdepths:print_tech"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tech_adv.title"
+    }
+  },
+  "requirements": [
+    [
+      "tech_adv"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

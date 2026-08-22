@@ -1,0 +1,42 @@
+{
+  "parent": "lostdepths:hardened_glass_adv",
+  "criteria": {
+    "heat_glass_adv": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "max": 64,
+              "min": 1
+            },
+            "items": [
+              "lostdepths:heat_resistance_glass"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.heat_glass_adv.descr"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "lostdepths:heat_resistance_glass"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.heat_glass_adv.title"
+    }
+  },
+  "requirements": [
+    [
+      "heat_glass_adv"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

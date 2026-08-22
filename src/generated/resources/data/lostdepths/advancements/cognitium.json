@@ -1,0 +1,42 @@
+{
+  "parent": "lostdepths:terrestrial",
+  "criteria": {
+    "cognitium": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "max": 64,
+              "min": 1
+            },
+            "items": [
+              "lostdepths:condensed_cognitium"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.cognitium.descr"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "lostdepths:condensed_cognitium"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.cognitium.title"
+    }
+  },
+  "requirements": [
+    [
+      "cognitium"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,42 @@
+{
+  "parent": "lostdepths:onmyway",
+  "criteria": {
+    "fragile_adv": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "max": 64,
+              "min": 1
+            },
+            "items": [
+              "lostdepths:crystalized_alloy"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.fragile_adv.descr"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "lostdepths:crystalized_alloy"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.fragile_adv.title"
+    }
+  },
+  "requirements": [
+    [
+      "fragile_adv"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

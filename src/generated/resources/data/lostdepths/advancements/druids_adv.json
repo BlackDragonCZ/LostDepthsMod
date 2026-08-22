@@ -1,0 +1,42 @@
+{
+  "parent": "lostdepths:getting_started",
+  "criteria": {
+    "druids_adv": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "max": 64,
+              "min": 1
+            },
+            "items": [
+              "lostdepths:druids_flower"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.druids_adv.descr"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "item": "lostdepths:druids_flower"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.druids_adv.title"
+    }
+  },
+  "requirements": [
+    [
+      "druids_adv"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

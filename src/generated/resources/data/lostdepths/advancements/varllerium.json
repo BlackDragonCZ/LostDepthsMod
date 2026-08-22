@@ -1,0 +1,42 @@
+{
+  "parent": "lostdepths:terrestrial",
+  "criteria": {
+    "varllerium": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "max": 64,
+              "min": 1
+            },
+            "items": [
+              "lostdepths:condensed_varllerium"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.varllerium.descr"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "lostdepths:condensed_varllerium"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.varllerium.title"
+    }
+  },
+  "requirements": [
+    [
+      "varllerium"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

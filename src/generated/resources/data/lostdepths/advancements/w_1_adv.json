@@ -1,0 +1,40 @@
+{
+  "parent": "lostdepths:getting_started",
+  "criteria": {
+    "w_1_adv": {
+      "conditions": {
+        "location": [
+          {
+            "block": "lostdepths:workstation_1",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.w_1_adv.descr"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "lostdepths:workstation_1"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.w_1_adv.title"
+    }
+  },
+  "requirements": [
+    [
+      "w_1_adv"
+    ]
+  ],
+  "rewards": {
+    "experience": 5
+  },
+  "sends_telemetry_event": false
+}

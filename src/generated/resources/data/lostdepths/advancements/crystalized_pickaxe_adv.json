@@ -1,0 +1,39 @@
+{
+  "parent": "lostdepths:w_2_adv",
+  "criteria": {
+    "crystalized_pickaxe_adv": {
+      "conditions": {
+        "items": [
+          {
+            "count": 1,
+            "items": [
+              "lostdepths:crystalized_pickaxe"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.crystalized_pickaxe_adv.descr"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "lostdepths:crystalized_pickaxe"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.crystalized_pickaxe_adv.title"
+    }
+  },
+  "requirements": [
+    [
+      "crystalized_pickaxe_adv"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

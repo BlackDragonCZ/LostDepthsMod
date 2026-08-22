@@ -1,0 +1,42 @@
+{
+  "parent": "lostdepths:terrestrial",
+  "criteria": {
+    "blackhole": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "max": 64,
+              "min": 1
+            },
+            "items": [
+              "lostdepths:black_hole_compressor"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.blackhole.descr"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "lostdepths:black_hole_compressor"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.blackhole.title"
+    }
+  },
+  "requirements": [
+    [
+      "blackhole"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,29 @@
+{
+  "parent": "lostdepths:onmyway",
+  "criteria": {
+    "cheater": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.cheater.descr"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "item": "minecraft:enchanted_book"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.cheater.title"
+    }
+  },
+  "requirements": [
+    [
+      "cheater"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

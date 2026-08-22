@@ -1,0 +1,42 @@
+{
+  "parent": "lostdepths:terrestrial",
+  "criteria": {
+    "psycherium": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "max": 64,
+              "min": 1
+            },
+            "items": [
+              "lostdepths:condensed_psycherium"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.psycherium.descr"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "lostdepths:condensed_psycherium"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.psycherium.title"
+    }
+  },
+  "requirements": [
+    [
+      "psycherium"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

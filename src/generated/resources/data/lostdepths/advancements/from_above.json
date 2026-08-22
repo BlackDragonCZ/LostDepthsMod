@@ -1,0 +1,32 @@
+{
+  "parent": "lostdepths:from_below",
+  "criteria": {
+    "from_above": {
+      "conditions": {
+        "to": "lostdepths:between_bedrock_and_overworld"
+      },
+      "trigger": "minecraft:changed_dimension"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.from_above.descr"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "lostdepths:ferro_log"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.from_above.title"
+    }
+  },
+  "requirements": [
+    [
+      "from_above"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

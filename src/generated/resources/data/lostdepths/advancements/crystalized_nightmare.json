@@ -1,0 +1,42 @@
+{
+  "parent": "lostdepths:install_adv",
+  "criteria": {
+    "crystalized_nightmare": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "max": 64,
+              "min": 1
+            },
+            "items": [
+              "lostdepths:infused_crystal"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.crystalized_nightmare.descr"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "item": "lostdepths:infused_crystal"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancements.crystalized_nightmare.title"
+    }
+  },
+  "requirements": [
+    [
+      "crystalized_nightmare"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

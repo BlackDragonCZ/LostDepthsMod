@@ -1,0 +1,42 @@
+{
+  "parent": "lostdepths:from_above",
+  "criteria": {
+    "clovinite_adv": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "max": 64,
+              "min": 1
+            },
+            "items": [
+              "lostdepths:clovinite"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.clovinite_adv.descr"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "lostdepths:clovinite"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.clovinite_adv.title"
+    }
+  },
+  "requirements": [
+    [
+      "clovinite_adv"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

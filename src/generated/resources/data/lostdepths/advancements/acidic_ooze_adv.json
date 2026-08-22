@@ -1,0 +1,42 @@
+{
+  "parent": "lostdepths:getting_started",
+  "criteria": {
+    "acidic_ooze_adv": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "max": 64,
+              "min": 1
+            },
+            "items": [
+              "lostdepths:acidic_ooze"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.acidic_ooze_adv.descr"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "lostdepths:acidic_ooze"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.acidic_ooze_adv.title"
+    }
+  },
+  "requirements": [
+    [
+      "acidic_ooze_adv"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

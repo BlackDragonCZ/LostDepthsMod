@@ -1,0 +1,45 @@
+{
+  "parent": "lostdepths:morfarite_adv",
+  "criteria": {
+    "cosmerite_adv": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "max": 64,
+              "min": 1
+            },
+            "items": [
+              "lostdepths:condensed_cosmerite"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.cosmerite_adv.descr"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "lostdepths:condensed_cosmerite"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.cosmerite_adv.title"
+    }
+  },
+  "requirements": [
+    [
+      "cosmerite_adv"
+    ]
+  ],
+  "rewards": {
+    "experience": 20
+  },
+  "sends_telemetry_event": false
+}

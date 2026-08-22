@@ -1,0 +1,42 @@
+{
+  "parent": "lostdepths:getting_started",
+  "criteria": {
+    "angry_adv": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "max": 64,
+              "min": 1
+            },
+            "items": [
+              "lostdepths:enraged_iron"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.angry_adv.descr"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "lostdepths:enraged_iron"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.angry_adv.title"
+    }
+  },
+  "requirements": [
+    [
+      "angry_adv"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

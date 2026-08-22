@@ -1,0 +1,42 @@
+{
+  "parent": "lostdepths:keymaster_adv",
+  "criteria": {
+    "infusedmetal_adv": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "max": 64,
+              "min": 1
+            },
+            "items": [
+              "lostdepths:malicium_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.infusedmetal_adv.descr"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "lostdepths:malicium_ingot"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.infusedmetal_adv.title"
+    }
+  },
+  "requirements": [
+    [
+      "infusedmetal_adv"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

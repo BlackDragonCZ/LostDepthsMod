@@ -1,0 +1,40 @@
+{
+  "parent": "lostdepths:infusedmetal_adv",
+  "criteria": {
+    "bladeof_forgotten_adv": {
+      "conditions": {
+        "items": [
+          {
+            "count": 1,
+            "items": [
+              "lostdepths:blade_of_forgotten"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.bladeof_forgotten_adv.descr"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "lostdepths:blade_of_forgotten",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.bladeof_forgotten_adv.title"
+    }
+  },
+  "requirements": [
+    [
+      "bladeof_forgotten_adv"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

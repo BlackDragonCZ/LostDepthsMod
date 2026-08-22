@@ -1,0 +1,42 @@
+{
+  "parent": "lostdepths:install_adv",
+  "criteria": {
+    "getting_started": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "max": 64,
+              "min": 1
+            },
+            "items": [
+              "lostdepths:infused_iron"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.getting_started.descr"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "lostdepths:infused_iron"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancements.getting_started.title"
+    }
+  },
+  "requirements": [
+    [
+      "getting_started"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

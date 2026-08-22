@@ -2,10 +2,12 @@ package cz.blackdragoncz.lostdepths.datagen;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.common.data.ForgeAdvancementProvider;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -30,6 +32,8 @@ public final class LostdepthsModDataGenEntryPoint {
 
             var poiTags = new LostdepthsModPoITags(out, patchedLookup, efh);
             gen.addProvider(true, poiTags);
+
+            gen.addProvider(true, new ForgeAdvancementProvider(out, patchedLookup, efh, List.of(new LostdepthsAdvancementProvider())));
         }
     }
 

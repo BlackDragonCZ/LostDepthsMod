@@ -1,0 +1,42 @@
+{
+  "parent": "lostdepths:tech_adv",
+  "criteria": {
+    "hardened_glass_adv": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "max": 64,
+              "min": 1
+            },
+            "items": [
+              "lostdepths:hardened_glass_panel"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.hardened_glass_adv.descr"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "lostdepths:hardened_glass_panel"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.hardened_glass_adv.title"
+    }
+  },
+  "requirements": [
+    [
+      "hardened_glass_adv"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

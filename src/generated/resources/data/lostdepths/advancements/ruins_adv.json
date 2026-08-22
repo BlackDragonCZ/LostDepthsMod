@@ -1,0 +1,29 @@
+{
+  "parent": "lostdepths:from_below",
+  "criteria": {
+    "ruins_adv": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.ruins_adv.descr"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "item": "lostdepths:treasurebricks"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.ruins_adv.title"
+    }
+  },
+  "requirements": [
+    [
+      "ruins_adv"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

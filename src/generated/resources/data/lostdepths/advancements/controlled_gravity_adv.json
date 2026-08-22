@@ -1,0 +1,42 @@
+{
+  "parent": "lostdepths:atmos_tech_adv",
+  "criteria": {
+    "controlled_gravity_adv": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "max": 64,
+              "min": 1
+            },
+            "items": [
+              "lostdepths:ultralight_dust"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.controlled_gravity_adv.descr"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "lostdepths:ultralight_dust"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.controlled_gravity_adv.title"
+    }
+  },
+  "requirements": [
+    [
+      "controlled_gravity_adv"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

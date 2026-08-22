@@ -1,0 +1,42 @@
+{
+  "parent": "lostdepths:atmos_tech_adv",
+  "criteria": {
+    "volatility_solution_adv": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "max": 64,
+              "min": 1
+            },
+            "items": [
+              "lostdepths:volatility_solution"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.volatility_solution_adv.descr"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "lostdepths:volatility_solution"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.volatility_solution_adv.title"
+    }
+  },
+  "requirements": [
+    [
+      "volatility_solution_adv"
+    ]
+  ],
+  "sends_telemetry_event": false
+}
