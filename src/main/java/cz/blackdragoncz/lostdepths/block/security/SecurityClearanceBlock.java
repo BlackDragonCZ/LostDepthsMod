@@ -22,6 +22,8 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
@@ -84,7 +86,7 @@ public class SecurityClearanceBlock extends Block {
                 }
                 else
                 {
-                    ClientSide.setSecurityClearance(this.requiredClearance, this.groupClearance);
+                    DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> ClientSide.setSecurityClearance(this.requiredClearance, this.groupClearance));
                 }
             } else {
                 if (!world.isClientSide()) {

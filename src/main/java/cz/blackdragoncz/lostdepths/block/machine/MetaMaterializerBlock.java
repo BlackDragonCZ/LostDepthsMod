@@ -6,7 +6,6 @@ import cz.blackdragoncz.lostdepths.init.LostDepthsModRecipeType;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModBlocks;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModSounds;
 import cz.blackdragoncz.lostdepths.recipe.MetaMaterializerRecipe;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.Vec3i;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.item.ItemEntity;

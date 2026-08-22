@@ -1,7 +1,7 @@
 package cz.blackdragoncz.lostdepths.util;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.GraphicsStatus;
+import cz.blackdragoncz.lostdepths.client.ClientEnvHooks;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
@@ -19,11 +19,7 @@ public class TextEffects {
 	 * Falls back to true if called on the server or options are unavailable.
 	 */
 	private static boolean isFancy() {
-		try {
-			return Minecraft.getInstance().options.graphicsMode().get() != GraphicsStatus.FAST;
-		} catch (Exception e) {
-			return true;
-		}
+		return !FMLEnvironment.dist.isClient() || ClientEnvHooks.isFancyGraphics();
 	}
 
 	// --- Rainbow ---

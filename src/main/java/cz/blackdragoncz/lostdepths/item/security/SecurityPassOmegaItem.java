@@ -1,8 +1,9 @@
 package cz.blackdragoncz.lostdepths.item.security;
 
 import cz.blackdragoncz.lostdepths.util.TextEffects;
+import cz.blackdragoncz.lostdepths.client.ClientEnvHooks;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.item.ItemStack;
@@ -25,13 +26,7 @@ public class SecurityPassOmegaItem extends SecurityPassItem {
 
 	@Override
 	public Component getName(ItemStack stack) {
-		long tick = 0;
-		try {
-			if (Minecraft.getInstance().level != null) {
-				tick = Minecraft.getInstance().level.getGameTime();
-			}
-		} catch (Exception ignored) {}
-
+		long tick = FMLEnvironment.dist.isClient() ? ClientEnvHooks.clientGameTime() : 0L;
 		MutableComponent name = Component.empty();
 		name.append(Component.literal("Security Pass (").withStyle(ChatFormatting.WHITE));
 		name.append(TextEffects.wave("OMEGA", 0xFFAA00, tick, true).withStyle(ChatFormatting.BOLD));

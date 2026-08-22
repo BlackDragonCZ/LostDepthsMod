@@ -2,6 +2,8 @@ package cz.blackdragoncz.lostdepths.network;
 
 import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.NetworkEvent;
+import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -23,11 +25,11 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.nbt.Tag;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.Direction;
-import net.minecraft.client.Minecraft;
 
 import java.util.function.Supplier;
 
 import cz.blackdragoncz.lostdepths.LostdepthsMod;
+import cz.blackdragoncz.lostdepths.client.ClientVariableHooks;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class LostdepthsModVariables {
@@ -181,22 +183,8 @@ public class LostdepthsModVariables {
 		public static void handler(PlayerVariablesSyncMessage message, Supplier<NetworkEvent.Context> contextSupplier) {
 			NetworkEvent.Context context = contextSupplier.get();
 			context.enqueueWork(() -> {
-				if (!context.getDirection().getReceptionSide().isServer()) {
-					Player player = Minecraft.getInstance().player;
-					if (player == null) return;
-					PlayerVariables variables = ((PlayerVariables) player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()));
-					variables.x = message.data.x;
-					variables.y = message.data.y;
-					variables.z = message.data.z;
-					variables.modidShieldTimer = message.data.modidShieldTimer;
-					variables.dragonDown = message.data.dragonDown;
-					variables.dragonUp = message.data.dragonUp;
-					variables.flux_x = message.data.flux_x;
-					variables.flux_y = message.data.flux_y;
-					variables.flux_z = message.data.flux_z;
-					variables.flux_dim = message.data.flux_dim;
-					variables.flux_set = message.data.flux_set;
-				}
+				if (!context.getDirection().getReceptionSide().isServer())
+					DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> ClientVariableHooks.applyPlayerVariables(message.data));
 			});
 			context.setPacketHandled(true);
 		}

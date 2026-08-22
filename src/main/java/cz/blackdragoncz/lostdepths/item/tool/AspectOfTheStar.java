@@ -1,8 +1,9 @@
 package cz.blackdragoncz.lostdepths.item.tool;
 
 import cz.blackdragoncz.lostdepths.LostdepthsMod;
+import cz.blackdragoncz.lostdepths.client.ClientEnvHooks;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModItems;
-import cz.blackdragoncz.lostdepths.init.LostdepthsModKeyMappings;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
@@ -167,7 +168,8 @@ public class AspectOfTheStar extends SwordItem {
         list.add(Component.literal("§5deals 8% Max Health of target as damage"));
         list.add(Component.literal("§dDeals 2% True Damage to entities near the trail"));
 
-        list.add(Component.literal("§6Toggle damage by teleport ability with ").append(LostdepthsModKeyMappings.ACTION_BUTTON.getTranslatedKeyMessage()).withStyle(ChatFormatting.GREEN));
+        if (FMLEnvironment.dist.isClient())
+            list.add(Component.literal("§6Toggle damage by teleport ability with ").append(ClientEnvHooks.actionButtonKeyName()).withStyle(ChatFormatting.GREEN));
 
         boolean hasDamage = stack.getOrCreateTagElement("LostDepths").getBoolean("UseDamage");
         list.add(Component.literal("§6Damage: " + (hasDamage ? "§2On" : "§4Off")));

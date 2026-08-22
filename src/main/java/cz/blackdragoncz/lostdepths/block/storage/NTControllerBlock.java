@@ -1,9 +1,10 @@
 package cz.blackdragoncz.lostdepths.block.storage;
 
 import cz.blackdragoncz.lostdepths.block.entity.storage.NTControllerBlockEntity;
+import cz.blackdragoncz.lostdepths.client.ClientEnvHooks;
 import cz.blackdragoncz.lostdepths.util.TextEffects;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -51,13 +52,7 @@ public class NTControllerBlock extends Block implements EntityBlock {
 
 	@Override
 	public void appendHoverText(ItemStack stack, BlockGetter world, List<Component> list, TooltipFlag flag) {
-		long tick = 0;
-		try {
-			if (Minecraft.getInstance().level != null) {
-				tick = Minecraft.getInstance().level.getGameTime();
-			}
-		} catch (Exception ignored) {}
-
+		long tick = FMLEnvironment.dist.isClient() ? ClientEnvHooks.clientGameTime() : 0L;
 		MutableComponent line = Component.empty();
 		line.append(Component.literal("You just need ").withStyle(ChatFormatting.GRAY));
 		line.append(TextEffects.rainbow("imagination", tick));
