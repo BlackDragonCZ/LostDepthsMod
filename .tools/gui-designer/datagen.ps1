@@ -334,6 +334,103 @@ foreach ($reg in $menuRegistrations) {
     Write-Host "  OK: $($elements.Count) elements found" -ForegroundColor Green
 }
 
+# ===== STANDALONE SCREENS (no Menu) =====
+# Opt-in by marker: any Screen carrying "// gui:<type>:<id>" comments is scanned for widget bounds. Menu-less screens have no slots, so buttons and
+# edit boxes are all there is to lay out. Bounds must be literals in the form (leftPos + X, topPos + Y, W, H) or they cannot be rewritten.
+Write-Host ""
+Write-Host "Scanning standalone screens..." -ForegroundColor Cyan
+
+$standaloneFiles = Get-ChildItem "$screenDir\*.java" -ErrorAction SilentlyContinue
+foreach ($file in $standaloneFiles) {
+    $content = Get-Content $file.FullName -Raw
+    if ($content -notmatch '//\s*gui:') { continue }
+
+    $className = $file.BaseName
+    Write-Host "Processing: $className" -ForegroundColor Yellow
+
+    $imgW = 176; $imgH = 166
+    if ($content -match 'int\s+WIDTH\s*=\s*(\d+)') { $imgW = [int]$Matches[1] }
+    if ($content -match 'int\s+HEIGHT\s*=\s*(\d+)') { $imgH = [int]$Matches[1] }
+    if ($content -match 'imageWidth\s*=\s*(\d+)') { $imgW = [int]$Matches[1] }
+    if ($content -match 'imageHeight\s*=\s*(\d+)') { $imgH = [int]$Matches[1] }
+
+    $bgTexture = "unknown"
+    if ($content -match 'NTGuiTheme') {
+        $bgTexture = "ld_gui_generic"
+    } elseif ($content -match 'rl\("textures/(?:gui|screens)/([^"]+)\.png"\)') {
+        $bgTexture = $Matches[1]
+    }
+
+    $elements = @()
+    foreach ($line in ($content -split "`r?`n")) {
+        $mk = [regex]::Match($line, '//\s*gui:(\w+):(\w+)')
+        if (-not $mk.Success) { continue }
+        $wType = $mk.Groups[1].Value
+        $wId = $mk.Groups[2].Value
+
+        if ($wType -eq 'label') {
+            # Labels are drawString calls: position only, no size.
+            $co = [regex]::Match($line, 'leftPos\s*\+\s*(\d+)\s*,\s*(?:this\.)?topPos\s*\+\s*(\d+)')
+            if (-not $co.Success) {
+                Write-Host "    WARN: label $wId has no literal (leftPos + X, topPos + Y)" -ForegroundColor DarkYellow
+                continue
+            }
+            # Prefer the literal string if the call has one, else fall back to the marker id.
+            $text = $wId
+            $lit = [regex]::Match($line, 'drawString\([^,]+,\s*"([^"]*)"')
+            if ($lit.Success) { $text = $lit.Groups[1].Value }
+            $elements += [ordered]@{
+                type = 'label'
+                id = $wId
+                text = $text
+                x = [int]$co.Groups[1].Value
+                y = [int]$co.Groups[2].Value
+                color = '0xFFFFFF'
+            }
+            continue
+        }
+
+        $co = [regex]::Match($line, 'leftPos\s*\+\s*(\d+)\s*,\s*(?:this\.)?topPos\s*\+\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)')
+        if (-not $co.Success) {
+            Write-Host "    WARN: marker $wType / $wId has no literal (leftPos + X, topPos + Y, W, H) bounds" -ForegroundColor DarkYellow
+            continue
+        }
+
+        $elements += [ordered]@{
+            type = $wType
+            id = $wId
+            label = $wId
+            x = [int]$co.Groups[1].Value
+            y = [int]$co.Groups[2].Value
+            w = [int]$co.Groups[3].Value
+            h = [int]$co.Groups[4].Value
+        }
+    }
+
+    if ($elements.Count -eq 0) {
+        Write-Host "    WARNING: markers present but no bounds resolved, skipping" -ForegroundColor Red
+        continue
+    }
+
+    $base = $className -replace 'Screen$', ''
+    $registryId = ([regex]::Replace($base, '(?<!^)([A-Z])', '_$1')).ToLower()
+    $labelParts = $registryId -split '_'
+    $label = ($labelParts | ForEach-Object { $_.Substring(0,1).ToUpper() + $_.Substring(1) }) -join ' '
+    $screenRelPath = $file.FullName.Replace($projectRoot + '\', '').Replace('\', '/')
+
+    $guis += [ordered]@{
+        id = "lostdepths:$registryId"
+        label = $label
+        screenPath = $screenRelPath
+        menuPath = ""
+        imageWidth = $imgW
+        imageHeight = $imgH
+        bgTexture = $bgTexture
+        elements = $elements
+    }
+    Write-Host "  OK: $($elements.Count) widgets found" -ForegroundColor Green
+}
+
 # Build and write JSON
 $registry = [ordered]@{ guis = $guis }
 $json = $registry | ConvertTo-Json -Depth 5

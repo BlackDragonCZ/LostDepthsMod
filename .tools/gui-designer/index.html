@@ -107,6 +107,9 @@ canvas { image-rendering: pixelated; cursor: crosshair; }
             <button class="btn" onclick="addElement('energy_bar')">+ Energy</button>
             <button class="btn" onclick="addElement('progress')">+ Progress</button>
             <button class="btn" onclick="addElement('blit')">+ Blit</button>
+            <button class="btn" onclick="addElement('button')">+ Button</button>
+            <button class="btn" onclick="addElement('edit_box')">+ Edit Box</button>
+            <button class="btn" onclick="addElement('checkbox')">+ Checkbox</button>
             <button class="btn btn-danger" onclick="deleteSelected()">Delete</button>
         </div>
     </section>
@@ -404,6 +407,11 @@ function updateProps() {
         html += prop('Text', 'text', el.text || '');
         html += prop('Color', 'color', el.color || '0x404040');
     }
+    if (el.type === 'button' || el.type === 'edit_box' || el.type === 'checkbox') {
+        html += prop('W', 'w', el.w || 60, 'number');
+        html += prop('H', 'h', el.h || 20, 'number');
+        html += prop('Label', 'label', el.label || '');
+    }
     if (el.type === 'energy_bar' || el.type === 'progress') {
         html += prop('W', 'w', el.w || 24, 'number');
         html += prop('H', 'h', el.h || 16, 'number');
@@ -447,6 +455,9 @@ function addElement(type) {
     if (type === 'label') { el.text = 'Label'; el.color = '0x555555'; }
     if (type === 'energy_bar') { el.w = 20; el.h = 60; }
     if (type === 'progress') { el.w = 24; el.h = 2; }
+    if (type === 'button') { el.w = 60; el.h = 20; el.label = 'Button'; }
+    if (type === 'edit_box') { el.w = 50; el.h = 16; el.label = 'Field'; }
+    if (type === 'checkbox') { el.w = 150; el.h = 20; el.label = 'Checkbox'; }
     if (type === 'blit') { el.w = 16; el.h = 16; el.uvX = 0; el.uvY = 0; el.texW = 256; el.texH = 256; el.label = 'Blit'; }
     currentGui.elements.push(el);
     selectedEl = el;
@@ -555,6 +566,46 @@ function render() {
     document.getElementById('statusBar').textContent = selectedEl ? `${selectedEl.id}: (${selectedEl.x}, ${selectedEl.y})` : currentGui.id;
 }
 
+// Vanilla widget look-alikes so standalone (menu-less) screens can be laid out visually.
+function drawButton(c, el) {
+    const w = el.w || 60, h = el.h || 20;
+    c.fillStyle = '#2b2b2b'; c.fillRect(el.x, el.y, w, h);
+    c.fillStyle = '#6a6a6a'; c.fillRect(el.x, el.y, w, 1); c.fillRect(el.x, el.y, 1, h);
+    c.fillStyle = '#141414'; c.fillRect(el.x, el.y + h - 1, w, 1); c.fillRect(el.x + w - 1, el.y, 1, h);
+    c.fillStyle = '#e0e0e0';
+    c.font = '7px monospace'; c.textAlign = 'center'; c.textBaseline = 'middle';
+    c.fillText(String(el.label || el.id || ''), el.x + w / 2, el.y + h / 2);
+    c.textAlign = 'left'; c.textBaseline = 'alphabetic';
+}
+
+function drawEditBox(c, el) {
+    const w = el.w || 50, h = el.h || 16;
+    c.fillStyle = '#000'; c.fillRect(el.x, el.y, w, h);
+    c.strokeStyle = '#a0a0a0'; c.lineWidth = 1;
+    c.strokeRect(el.x + 0.5, el.y + 0.5, w - 1, h - 1);
+    c.fillStyle = '#909090';
+    c.font = '7px monospace'; c.textBaseline = 'middle';
+    c.fillText(String(el.label || el.id || ''), el.x + 3, el.y + h / 2);
+    c.textBaseline = 'alphabetic';
+}
+
+function drawCheckbox(c, el) {
+    const w = el.w || 150, h = el.h || 20, box = Math.min(h, 20);
+    c.fillStyle = '#000'; c.fillRect(el.x, el.y, box, box);
+    c.strokeStyle = '#a0a0a0'; c.lineWidth = 1;
+    c.strokeRect(el.x + 0.5, el.y + 0.5, box - 1, box - 1);
+    c.strokeStyle = '#e0e0e0';
+    c.beginPath();
+    c.moveTo(el.x + 4, el.y + box / 2);
+    c.lineTo(el.x + box / 2 - 1, el.y + box - 5);
+    c.lineTo(el.x + box - 4, el.y + 4);
+    c.stroke();
+    c.fillStyle = '#e0e0e0';
+    c.font = '7px monospace'; c.textBaseline = 'middle';
+    c.fillText(String(el.label || el.id || ''), el.x + box + 4, el.y + box / 2);
+    c.textBaseline = 'alphabetic';
+}
+
 function drawElement(c, el, selected) {
     c.save();
     switch (el.type) {
@@ -564,6 +615,9 @@ function drawElement(c, el, selected) {
         case 'progress': drawProgress(c, el); break;
         case 'player_inventory': drawPlayerInv(c, el); break;
         case 'blit': drawBlit(c, el); break;
+        case 'button': drawButton(c, el); break;
+        case 'edit_box': drawEditBox(c, el); break;
+        case 'checkbox': drawCheckbox(c, el); break;
     }
     if (selected) {
         const w = getElW(el), h = getElH(el);
@@ -969,6 +1023,40 @@ function applyScreenPatch(source, gui) {
     return result;
 }
 
+// Standalone screens carry "// gui:<type>:<id>" markers; rewrite the literal (leftPos + X, topPos + Y, W, H) on that line.
+function applyWidgetPatch(source, gui) {
+    let result = source;
+    gui.elements.filter(e => e.type === 'button' || e.type === 'edit_box' || e.type === 'checkbox' || e.type === 'label').forEach(el => {
+        // Plain substring, not a RegExp: escaping backslashes through this file has bitten us, and the marker is a fixed literal anyway.
+        const marker = 'gui:' + el.type + ':' + el.id;
+        const lines = result.split('\n');
+        for (let i = 0; i < lines.length; i++) {
+            const at = lines[i].indexOf(marker);
+            if (at === -1) continue;
+            const after = lines[i].charAt(at + marker.length);
+            if (after && /[A-Za-z0-9_]/.test(after)) continue;
+            if (el.type === 'label') {
+                // drawString carries position only; leave everything after topPos alone.
+                lines[i] = lines[i].replace(
+                    /(leftPos\s*\+\s*)\d+(\s*,\s*(?:this\.)?topPos\s*\+\s*)\d+/,
+                    `$1${el.x}$2${el.y}`
+                );
+            } else {
+                lines[i] = lines[i].replace(
+                    /(leftPos\s*\+\s*)\d+(\s*,\s*(?:this\.)?topPos\s*\+\s*)\d+(\s*,\s*)\d+(\s*,\s*)\d+/,
+                    `$1${el.x}$2${el.y}$3${el.w}$4${el.h}`
+                );
+            }
+            result = lines.join('\n');
+            break;
+        }
+    });
+    // Window size lives in WIDTH/HEIGHT constants on menu-less screens.
+    result = result.replace(/(int\s+WIDTH\s*=\s*)\d+/, `$1${gui.imageWidth}`);
+    result = result.replace(/(int\s+HEIGHT\s*=\s*)\d+/, `$1${gui.imageHeight}`);
+    return result;
+}
+
 function applyMenuPatch(source, gui) {
     let result = source;
     const slots = gui.elements.filter(e => e.type === 'slot');
@@ -1007,16 +1095,16 @@ async function saveToProject() {
     const status = document.getElementById('statusBar');
     try {
         status.textContent = 'Reading project files...';
-        const [screenSrc, menuSrc] = await Promise.all([
-            readProjectFile(gui.screenPath),
-            readProjectFile(gui.menuPath)
-        ]);
+        // Standalone screens have no menu file; everything lives in the screen itself.
+        const hasMenu = !!gui.menuPath;
+        const screenSrc = await readProjectFile(gui.screenPath);
+        const menuSrc = hasMenu ? await readProjectFile(gui.menuPath) : null;
 
-        const newScreen = applyScreenPatch(screenSrc, gui);
-        const newMenu = applyMenuPatch(menuSrc, gui);
+        const newScreen = hasMenu ? applyScreenPatch(screenSrc, gui) : applyWidgetPatch(screenSrc, gui);
+        const newMenu = hasMenu ? applyMenuPatch(menuSrc, gui) : null;
 
         const screenChanged = newScreen !== screenSrc;
-        const menuChanged = newMenu !== menuSrc;
+        const menuChanged = hasMenu && newMenu !== menuSrc;
 
         if (!screenChanged && !menuChanged) {
             status.textContent = 'No changes detected.';
