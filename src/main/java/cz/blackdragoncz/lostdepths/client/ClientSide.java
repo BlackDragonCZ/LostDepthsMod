@@ -31,6 +31,8 @@ import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
+import cz.blackdragoncz.lostdepths.client.renderer.block.HologramProjectorRenderer;
+
 public class ClientSide {
 
     public static final ClientSide INSTANCE = new ClientSide();
@@ -196,6 +198,7 @@ public class ClientSide {
         BlockEntityRenderers.register(LostdepthsModBlockEntities.INFUSED_HANGING_SIGN.get(), HangingSignRenderer::new);
         BlockEntityRenderers.register(LostdepthsModBlockEntities.META_COLLECTOR.get(), MetaCollectorBlockEntityRenderer::new);
         BlockEntityRenderers.register(LostdepthsModBlockEntities.INFUSED_DISPLAY_PLATE.get(), InfusedDisplayPlateRenderer::new);
+        BlockEntityRenderers.register(LostdepthsModBlockEntities.HOLOGRAM_PROJECTOR.get(), HologramProjectorRenderer::new);
     }
 
 }

@@ -326,5 +326,6 @@ public class LostdepthsModBlocks {
 	public static final RegistryObject<Block> NT_SECURITY_TERMINAL = REGISTRY.register("nt_security_terminal", NTSecurityTerminalBlock::new);
 	public static final RegistryObject<Block> NT_PATTERN_ENCODER = REGISTRY.register("nt_pattern_encoder", NTPatternEncoderBlock::new);
 	public static final RegistryObject<Block> NT_PATTERN_PROVIDER = REGISTRY.register("nt_pattern_provider", () -> new NTPatternProviderBlock(9));
+	public static final RegistryObject<Block> HOLOGRAM_PROJECTOR = REGISTRY.register("hologram_projector", HologramProjectorBlock::new);
 	public static final RegistryObject<Block> NT_PATTERN_PROVIDER_T2 = REGISTRY.register("nt_pattern_provider_t2", () -> new NTPatternProviderBlock(27));
 }

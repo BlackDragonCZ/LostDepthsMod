@@ -1,0 +1,11 @@
+{
+  "template": "lostdepths:small_treasure",
+  "scale": 0.0625,
+  "offset": [
+    0,
+    1.0,
+    0
+  ],
+  "tint": "#66CCFF",
+  "alpha": 0.65
+}

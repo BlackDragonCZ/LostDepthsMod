@@ -78,6 +78,8 @@ public class LostdepthsModBlockEntities {
 	public static final RegistryObject<BlockEntityType<NTPatternProviderBlockEntity>> NT_PATTERN_PROVIDER = REGISTRY.register("nt_pattern_provider", () -> BlockEntityType.Builder.of((pos, state) -> new NTPatternProviderBlockEntity(pos, state, 9), LostdepthsModBlocks.NT_PATTERN_PROVIDER.get()).build(null));
 	public static final RegistryObject<BlockEntityType<NTPatternProviderBlockEntity>> NT_PATTERN_PROVIDER_T2 = REGISTRY.register("nt_pattern_provider_t2", () -> BlockEntityType.Builder.of(NTPatternProviderBlockEntity::createTier2, LostdepthsModBlocks.NT_PATTERN_PROVIDER_T2.get()).build(null));
 
+	public static final RegistryObject<BlockEntityType<HologramProjectorBlockEntity>> HOLOGRAM_PROJECTOR = register("hologram_projector", LostdepthsModBlocks.HOLOGRAM_PROJECTOR, HologramProjectorBlockEntity::new);
+
 	private static <T extends BlockEntity> RegistryObject<BlockEntityType<T>> register(String registryname, RegistryObject<Block> block, BlockEntityType.BlockEntitySupplier<T> supplier) {
 		return REGISTRY.register(registryname, () -> BlockEntityType.Builder.of(supplier, block.get()).build(null));
 	}

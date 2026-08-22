@@ -666,6 +666,8 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> SHIPMENT_BOX = REGISTRY.register("shipment_box", ShipmentBoxItem::new);
 	public static final RegistryObject<Item> SOLARIUM_SHADOW = REGISTRY.register("solarium_shadow", MasterPartRegistryItem::new);
 
+	public static final RegistryObject<Item> HOLOGRAM_PROJECTOR = block(LostdepthsModBlocks.HOLOGRAM_PROJECTOR);
+
 	// NuroTech Storage
 	public static final RegistryObject<Item> NT_CONTROLLER = block(LostdepthsModBlocks.NT_CONTROLLER);
 	public static final RegistryObject<Item> NT_TERMINAL = block(LostdepthsModBlocks.NT_TERMINAL);

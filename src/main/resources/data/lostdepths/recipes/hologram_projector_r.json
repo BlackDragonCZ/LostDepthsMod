@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "AAA",
+    "BCB",
+    "BBB"
+  ],
+  "key": {
+    "A": {
+      "item": "lostdepths:holoscreen"
+    },
+    "B": {
+      "item": "lostdepths:infused_iron"
+    },
+    "C": {
+      "item": "lostdepths:celestial_redstone"
+    }
+  },
+  "result": {
+    "item": "lostdepths:hologram_projector",
+    "count": 1
+  }
+}

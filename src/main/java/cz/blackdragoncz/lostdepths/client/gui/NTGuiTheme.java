@@ -69,6 +69,37 @@ public final class NTGuiTheme {
         g.blit(BG, leftPos, topPos, 0, 0, width, artH, TEX_W, TEX_H);
     }
 
+    // Row 77 is the deepest row of the sheet with no brick edge crossing it, so stretching it downward leaves no vertical streaks, and because the
+    // art is cut directly above it the join is seamless by construction. Tiling a taller band does not work: the diagonal shine means no vertical
+    // repeat lines up.
+    private static final int PANEL_STRETCH_V = 77;
+    private static final int PANEL_TOP_H = PANEL_STRETCH_V + 1;
+    private static final int RIM_SHADOW = 0xFF030B1D;
+    private static final int RIM_EDGE = 0xFF000000;
+
+    /**
+     * Draw a full-height panel for a window with no slots. background() stops its art at 120px and leaves flat navy with no side or bottom rim below
+     * that, which reads as a cropped window. Kept separate from background() so the slot-based screens are untouched.
+     */
+    public static void panel(GuiGraphics g, int leftPos, int topPos, int width, int height) {
+        RenderSystem.setShaderColor(1, 1, 1, 1);
+        RenderSystem.enableBlend();
+        RenderSystem.defaultBlendFunc();
+
+        int top = Math.min(PANEL_TOP_H, height);
+        g.blit(BG, leftPos, topPos, 0, 0, width, top, TEX_W, TEX_H);
+
+        int fill = height - top - 2;
+        if (fill > 0)
+            g.blit(BG, leftPos, topPos + top, width, fill, 0.0F, (float) PANEL_STRETCH_V, TEX_W, 1, TEX_W, TEX_H);
+
+        // The sheet has no bottom rim to sample - the slot grid starts straight after the brick - so mirror the side rim shading.
+        if (height >= 2) {
+            g.fill(leftPos, topPos + height - 2, leftPos + width, topPos + height - 1, RIM_SHADOW);
+            g.fill(leftPos, topPos + height - 1, leftPos + width, topPos + height, RIM_EDGE);
+        }
+    }
+
     /** Stamp one 19x19 slot frame for a functional slot whose top-left is (fx,fy). */
     public static void slot(GuiGraphics g, int leftPos, int topPos, int fx, int fy) {
         g.blit(BG, leftPos + fx - 1, topPos + fy - 1, SLOT_U, SLOT_V, SLOT, SLOT, TEX_W, TEX_H);
