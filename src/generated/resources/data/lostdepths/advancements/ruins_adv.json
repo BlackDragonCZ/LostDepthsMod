@@ -2,7 +2,20 @@
   "parent": "lostdepths:from_below",
   "criteria": {
     "ruins_adv": {
-      "trigger": "minecraft:impossible"
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "lostdepths:ruins"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
     }
   },
   "display": {

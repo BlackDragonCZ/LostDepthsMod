@@ -1,4 +1,4 @@
-// 1.20.1	2026-08-22T13:03:01.8674142	Advancements
+// 1.20.1	2026-08-22T17:48:06.1521413	Advancements
 7ca16fca15702a01dbe54b6d3b5eeb2e94d290db data/lostdepths/advancements/acidbloodsolution_adv.json
 a31ac809ee4849cd888f72139917ba1e178b8a93 data/lostdepths/advancements/acidic_ooze_adv.json
 e9e3a027ab3a2003d7a7c2b0d662d4f922cf0f87 data/lostdepths/advancements/angry_adv.json
@@ -41,8 +41,8 @@ ba1e562c8fb2ade3c7b03095a9c4d0b80065248c data/lostdepths/advancements/meta_const
 69cdad7f5ef1756824ad6619ba33be26f83d620b data/lostdepths/advancements/onmyway.json
 f322c83f1ab150d49c5a217f6e65548f89d3b796 data/lostdepths/advancements/power_capacitor_adv.json
 d16c96034b83c403cbc160a2240227b758ad28fd data/lostdepths/advancements/psycherium.json
-c0c87d177c09057be5c799b50c825d2284b551a9 data/lostdepths/advancements/ruins_2_adv.json
-4912caaa1b020cdfdd61f76473c6e1a97ae33e0a data/lostdepths/advancements/ruins_adv.json
+f26f00cb6e42ba023b936f1ec841b255cc5861e5 data/lostdepths/advancements/ruins_2_adv.json
+5a24bb36076dd8aa496468d085f97db9b46fb0ee data/lostdepths/advancements/ruins_adv.json
 7764b1c07c48fc3b09f134b80a94ec7bea7a7435 data/lostdepths/advancements/slime_on_bedrock.json
 def99a6f8a53ce3c0574768c51de5e04498b0a8b data/lostdepths/advancements/sunder_log_adv.json
 a98964dac6f691391f1853b0714f229a818ed566 data/lostdepths/advancements/tech_adv.json

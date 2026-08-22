@@ -1,11 +1,12 @@
-// 1.20.1	2026-08-22T12:57:15.9830786	Tags for minecraft:block mod id lostdepths
+// 1.20.1	2026-08-22T17:48:06.1493057	Tags for minecraft:block mod id lostdepths
 fef52719b0083cec2a456b8ac677cb7edcbdef0d data/minecraft/tags/blocks/dirt.json
 3f1d153faceef8d21398278bfe4d305293d64314 data/minecraft/tags/blocks/dragon_immune.json
 eae19c33f3684507cc2bf222a561f4247a7c00bd data/minecraft/tags/blocks/fences.json
 04e92347dcdaff08abc463ba93934c434b0ad11d data/minecraft/tags/blocks/leaves.json
 0da26d1e513e3e3e71363aa590f61ba61d46381f data/minecraft/tags/blocks/logs.json
 886ad30225d4819d78764eddbfd78f813b3593cf data/minecraft/tags/blocks/mineable/axe.json
-d5bc60fa6a481d7bf1212cb76c584a0565e0ec79 data/minecraft/tags/blocks/mineable/pickaxe.json
+a966740df663426f24b0a7511560b3da4366cc3b data/minecraft/tags/blocks/mineable/pickaxe.json
+183af91d5d6dd2678f151bfb40c954b964c1d8bd data/minecraft/tags/blocks/needs_iron_tool.json
 9016ac40a4a4d2e0a9b21ef81400641f1c2b7d9a data/minecraft/tags/blocks/needs_stone_tool.json
 7ac0b0ef5dc93bd248822267d1ea549530069a7d data/minecraft/tags/blocks/overworld_carver_replaceables.json
 950db306dd8f51259dcfab50bd03527101a8fde4 data/minecraft/tags/blocks/planks.json

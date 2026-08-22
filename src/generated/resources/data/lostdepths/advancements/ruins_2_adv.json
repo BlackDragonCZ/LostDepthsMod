@@ -3,9 +3,19 @@
   "criteria": {
     "ruins_2_adv": {
       "conditions": {
-        "to": "lostdepths:below_bedrock"
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "lostdepths:manufactory"
+              }
+            }
+          }
+        ]
       },
-      "trigger": "minecraft:changed_dimension"
+      "trigger": "minecraft:location"
     }
   },
   "display": {

@@ -137,11 +137,16 @@ public class LostdepthsModBlockTags extends BlockTagsProvider {
                 LostdepthsModBlocks.NT_SECURITY_TERMINAL.get(),
                 LostdepthsModBlocks.NT_PATTERN_ENCODER.get(),
                 LostdepthsModBlocks.NT_PATTERN_PROVIDER.get(),
-                LostdepthsModBlocks.NT_PATTERN_PROVIDER_T2.get()
+                LostdepthsModBlocks.NT_PATTERN_PROVIDER_T2.get(),
+                LostdepthsModBlocks.HOLOGRAM_PROJECTOR.get()
         );
         tag(BlockTags.NEEDS_STONE_TOOL).add(
                 LostdepthsModBlocks.FUSION_TABLE.get(),
                 LostdepthsModBlocks.RESOURCE_EXTRACTOR.get()
+        );
+        // Pairs with requiresCorrectToolForDrops() on the block; without that property the tier tag is ignored and it drops to any tool.
+        tag(BlockTags.NEEDS_IRON_TOOL).add(
+                LostdepthsModBlocks.HOLOGRAM_PROJECTOR.get()
         );
         tag(BlockTags.DIRT).add(LostdepthsModBlocks.SPACE_ROCK_DIRT.get());
         tag(BlockTags.DRAGON_IMMUNE).add(

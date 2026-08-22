@@ -94,6 +94,7 @@
     "lostdepths:nt_security_terminal",
     "lostdepths:nt_pattern_encoder",
     "lostdepths:nt_pattern_provider",
-    "lostdepths:nt_pattern_provider_t2"
+    "lostdepths:nt_pattern_provider_t2",
+    "lostdepths:hologram_projector"
   ]
 }
