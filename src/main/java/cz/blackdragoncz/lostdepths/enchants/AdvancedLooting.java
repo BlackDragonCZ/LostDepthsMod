@@ -39,10 +39,6 @@ public class AdvancedLooting extends AdvancedEnchantments{
         return getMinCost(level) + 50;
     }
 
-    public boolean isTreasureOnly() {
-        return true;
-    }
-
     @Override
     public boolean checkCompatibility(@NotNull Enchantment validity) {
         return super.checkCompatibility(validity) && validity != Enchantments.MOB_LOOTING;

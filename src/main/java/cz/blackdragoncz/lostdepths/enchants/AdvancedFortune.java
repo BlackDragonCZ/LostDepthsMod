@@ -39,8 +39,11 @@ public class AdvancedFortune extends AdvancedEnchantments{
         return getMinCost(level) + 50;
     }
 
+    // Silk Touch only excludes vanilla BLOCK_FORTUNE by name, so the exclusion has to come from this side.
     @Override
     public boolean checkCompatibility(@NotNull Enchantment validity) {
-        return super.checkCompatibility(validity) && validity != Enchantments.BLOCK_FORTUNE;
+        return super.checkCompatibility(validity)
+                && validity != Enchantments.BLOCK_FORTUNE
+                && validity != Enchantments.SILK_TOUCH;
     }
 }

@@ -12,8 +12,12 @@ public abstract class AdvancedEnchantments extends Enchantment {
     protected boolean enable = true;
 
     protected boolean allowGenLoot = false;
-    protected boolean allowBooks = true;
-    protected boolean allowTreasure = false;
+    // false: otherwise a plain book in an enchanting table can roll this, via the isAllowedOnBooks branch
+    // of EnchantmentHelper.getAvailableEnchantmentResults. Loot chests hand these out as explicit NBT instead.
+    protected boolean allowBooks = false;
+    // Advanced enchants are treasure-only as a category. Does not affect enchant_randomly loot, which
+    // filters on isDiscoverable alone, but does keep them out of enchanting-table rolls.
+    protected boolean allowTreasure = true;
     protected boolean allowTrades = false;
     protected boolean allowEnchanting = false;
 
@@ -115,5 +119,12 @@ public abstract class AdvancedEnchantments extends Enchantment {
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack) {
         return allowEnchanting && super.canApplyAtEnchantingTable(stack);
+    }
+
+    // Forge routes Enchantment#canEnchant through canApplyAtEnchantingTable, so the allowEnchanting=false gate
+    // above would otherwise also block /enchant, anvils and loot application. Ask the category directly instead.
+    @Override
+    public boolean canEnchant(ItemStack stack) {
+        return enable && this.category.canEnchant(stack.getItem());
     }
 }

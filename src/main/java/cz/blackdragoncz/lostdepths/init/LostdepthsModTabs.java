@@ -6,10 +6,16 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.EnchantedBookItem;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.network.chat.Component;
 import net.minecraft.core.registries.Registries;
 
+import java.util.List;
+
 import cz.blackdragoncz.lostdepths.LostdepthsMod;
+import cz.blackdragoncz.lostdepths.enchants.AdvancedEnchantments;
 
 public class LostdepthsModTabs {
 	public static final DeferredRegister<CreativeModeTab> REGISTRY = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, LostdepthsMod.MODID);
@@ -115,6 +121,12 @@ public class LostdepthsModTabs {
                 tabData.accept(LostdepthsModItems.INFUSED_WRITABLE_BOOK.get().asItem());
 				tabData.accept(LostdepthsModBlocks.RESOURCE_EXTRACTOR.get().asItem());
                 tabData.accept(LostdepthsModBlocks.HOLOGRAM_PROJECTOR.get().asItem());
+				// Every level of each advanced enchant, as books - normally these only come from loot chests.
+				for (RegistryObject<AdvancedEnchantments> holder : List.of(LostdepthsModEnchantments.ADVANCED_FORTUNE, LostdepthsModEnchantments.ADVANCED_LOOTING)) {
+					Enchantment enchantment = holder.get();
+					for (int level = 1; level <= enchantment.getMaxLevel(); level++)
+						tabData.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(enchantment, level)));
+				}
 			})
 
 					.build());
