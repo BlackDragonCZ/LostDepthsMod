@@ -49,6 +49,13 @@ public class AnvilMergeHandler {
 
             if (!specification.advanced.canEnchant(out)) return false;
 
+            // The vanilla counterpart is swapped out below so it is not a conflict, but anything else that
+            // declares an incompatibility - Silk Touch against Advanced Fortune - has to block the merge.
+            for (Enchantment present : result.keySet()) {
+                if (present == specification.advanced || present == specification.vanilla) continue;
+                if (!present.isCompatibleWith(specification.advanced)) return false;
+            }
+
             int leftLvl = result.getOrDefault(specification.advanced, 0);
             int merged;
             if (leftLvl > 0) {

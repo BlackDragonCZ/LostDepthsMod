@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ABA",
+    "CDC",
+    "ECE"
+  ],
+  "key": {
+    "A": {
+      "item": "lostdepths:reinforced_plate"
+    },
+    "B": {
+      "item": "lostdepths:digital_panel"
+    },
+    "C": {
+      "item": "lostdepths:terracut_metal"
+    },
+    "D": {
+      "item": "lostdepths:organic_power_cell"
+    },
+    "E": {
+      "item": "lostdepths:reflective_shard"
+    }
+  },
+  "result": {
+    "item": "lostdepths:resource_extractor",
+    "count": 1
+  }
+}
