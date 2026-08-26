@@ -8,14 +8,11 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.energy.EnergyStorage;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
@@ -26,7 +23,6 @@ public class NurostarBatteryMenu extends AbstractContainerMenu {
     private final Level level;
     private NurostarBatteryBlockEntity blockEntity;
     private final ContainerLevelAccess access;
-    private final ContainerData energyData;
 
     public NurostarBatteryMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
         super(LostdepthsModMenus.NUROSTAR_BATTERY_MENU.get(), id);
@@ -41,24 +37,6 @@ public class NurostarBatteryMenu extends AbstractContainerMenu {
         }
 
         this.access = ContainerLevelAccess.create(this.level, pos);
-
-        // Sync energy data to client: [0]=stored, [1]=capacity
-        if (this.blockEntity != null && !level.isClientSide) {
-            this.energyData = new ContainerData() {
-                @Override
-                public int get(int index) {
-                    EnergyStorage es = blockEntity.getEnergyStorage();
-                    return index == 0 ? es.getEnergyStored() : es.getMaxEnergyStored();
-                }
-                @Override
-                public void set(int index, int value) {}
-                @Override
-                public int getCount() { return 2; }
-            };
-        } else {
-            this.energyData = new SimpleContainerData(2);
-        }
-        this.addDataSlots(this.energyData);
 
         IItemHandler[] itemHandler = new IItemHandler[1];
         if (this.blockEntity != null) {
@@ -79,8 +57,14 @@ public class NurostarBatteryMenu extends AbstractContainerMenu {
             this.addSlot(new Slot(inv, col, 9 + col * 18, 185));
     }
 
-    public int getEnergyStored() { return energyData.get(0); }
-    public int getMaxEnergy() { return energyData.get(1); }
+    // Off the BE, not ContainerData: that packet is short-sized, so 100,000 arrived as -31,072.
+    public int getEnergyStored() {
+        return blockEntity != null ? blockEntity.getEnergyStorage().getEnergyStored() : 0;
+    }
+
+    public int getMaxEnergy() {
+        return blockEntity != null ? blockEntity.getEnergyStorage().getMaxEnergyStored() : 0;
+    }
 
     @Override
     public ItemStack quickMoveStack(Player player, int index) {
@@ -104,6 +88,7 @@ public class NurostarBatteryMenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player player) {
+        if (this.blockEntity == null) return false;
         return AbstractContainerMenu.stillValid(this.access, player, this.blockEntity.getBlockState().getBlock());
     }
 

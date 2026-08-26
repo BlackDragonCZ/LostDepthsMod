@@ -104,6 +104,7 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModBlocks.TERMINAL_CONSOLE_3.get().asItem());
 				tabData.accept(LostdepthsModBlocks.INFUSED_SIGN.get().asItem());
 				tabData.accept(LostdepthsModBlocks.INFUSED_HANGING_SIGN.get().asItem());
+				tabData.accept(LostdepthsModBlocks.INFUSED_IRON_DOOR.get().asItem());
 				tabData.accept(LostdepthsModBlocks.FUSION_TABLE.get().asItem());
 				tabData.accept(LostdepthsModBlocks.INFUSED_DISPLAY_PLATE.get().asItem());
 				tabData.accept(LostdepthsModBlocks.POSITIVE_SAPLING.get().asItem());

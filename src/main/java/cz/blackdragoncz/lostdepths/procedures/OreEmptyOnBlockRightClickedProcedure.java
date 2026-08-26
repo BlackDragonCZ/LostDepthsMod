@@ -1,30 +1,30 @@
 package cz.blackdragoncz.lostdepths.procedures;
 
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.network.chat.Component;
+import cz.blackdragoncz.lostdepths.init.LostdepthsModOres;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.entity.BlockEntity;
 
+/** Holding a celestial tool and right-clicking an empty node reports how long it still needs to regrow. */
 public class OreEmptyOnBlockRightClickedProcedure {
+
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
-		if (entity == null)
-			return;
-		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).is(ItemTags.create(new ResourceLocation("lostdepths:celestial_tools")))) {
-			if (entity instanceof Player _player && !_player.level().isClientSide())
-				_player.displayClientMessage(Component.literal(((200 - (new Object() {
-					public double getValue(LevelAccessor world, BlockPos pos, String tag) {
-						BlockEntity blockEntity = world.getBlockEntity(pos);
-						if (blockEntity != null)
-							return blockEntity.getPersistentData().getDouble(tag);
-						return -1;
-					}
-				}.getValue(world, BlockPos.containing(x, y, z), "timeLeft"))) + " seconds for regrow.")), false);
-		}
+		if (!(entity instanceof Player player) || player.level().isClientSide()) return;
+
+		ItemStack held = entity instanceof LivingEntity liv ? liv.getMainHandItem() : ItemStack.EMPTY;
+		if (!held.is(ItemTags.create(new ResourceLocation("lostdepths:celestial_tools")))) return;
+
+		BlockEntity be = world.getBlockEntity(BlockPos.containing(x, y, z));
+		double elapsed = be != null ? be.getPersistentData().getDouble("timeLeft") : 0;
+		int remaining = (int) Math.max(0, LostdepthsModOres.REGROW_SECONDS - elapsed);
+
+		player.displayClientMessage(Component.literal(remaining + " seconds for regrow."), false);
 	}
 }

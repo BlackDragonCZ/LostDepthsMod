@@ -35,20 +35,10 @@ public enum JadeOreProvider implements IBlockComponentProvider {
 	private static Map<Block, ToolRequirement> getExtraOres() {
 		if (extraOres == null) {
 			extraOres = new IdentityHashMap<>();
-			// Celestial pickaxe tier
+			// Crystal blocks - not ores, so they have no OreDefinition
 			ToolRequirement celestial = new ToolRequirement(LostdepthsModItems.CELESTIAL_PICKAXE::get, "Celestial", ChatFormatting.LIGHT_PURPLE);
-			extraOres.put(LostdepthsModBlocks.COGNITIUM_ORE.get(), celestial);
-			extraOres.put(LostdepthsModBlocks.NOXHERTIUM_ORE.get(), celestial);
-			extraOres.put(LostdepthsModBlocks.NECROTONITE_ORE.get(), celestial);
-			extraOres.put(LostdepthsModBlocks.PSYCHERIUM_ORE.get(), celestial);
-			extraOres.put(LostdepthsModBlocks.VARLLERIUM_ORE.get(), celestial);
-			extraOres.put(LostdepthsModBlocks.BIOLLITERITE_ORE.get(), celestial);
 			extraOres.put(LostdepthsModBlocks.HARD_CRYSTAL_B.get(), celestial);
 			extraOres.put(LostdepthsModBlocks.HARD_CRYSTAL_R.get(), celestial);
-			// Crystalized pickaxe tier
-			ToolRequirement crystalized = new ToolRequirement(LostdepthsModItems.CRYSTALIZED_PICKAXE::get, "Crystalized", ChatFormatting.AQUA);
-			extraOres.put(LostdepthsModBlocks.CRYZULITE_ORE.get(), crystalized);
-			extraOres.put(LostdepthsModBlocks.ZERITHIUM_ORE.get(), crystalized);
 			// Forgefire axe tier
 			ToolRequirement forgefireAxe = new ToolRequirement(LostdepthsModItems.FORGEFIRE_AXE::get, "Forgefire", ChatFormatting.GOLD);
 			extraOres.put(LostdepthsModBlocks.CLOVINITE_ORE.get(), forgefireAxe);

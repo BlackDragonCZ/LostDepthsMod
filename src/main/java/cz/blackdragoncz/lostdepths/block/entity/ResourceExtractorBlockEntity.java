@@ -3,9 +3,12 @@ package cz.blackdragoncz.lostdepths.block.entity;
 import cz.blackdragoncz.lostdepths.block.entity.base.BaseEnergyContainerBlockEntity;
 import cz.blackdragoncz.lostdepths.energy.SyncedEnergyStorage;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModBlockEntities;
+import cz.blackdragoncz.lostdepths.init.LostdepthsModItems;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModOres;
+import cz.blackdragoncz.lostdepths.init.LostdepthsModOres.CrystalDefinition;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModOres.DepletionType;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModOres.OreDefinition;
+import cz.blackdragoncz.lostdepths.procedures.OmniPickaxeBlockDestroyedWithToolProcedure;
 import cz.blackdragoncz.lostdepths.world.inventory.ResourceExtractorMenu;
 import io.netty.buffer.Unpooled;
 import net.minecraft.core.BlockPos;
@@ -16,8 +19,6 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -25,6 +26,8 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PickaxeItem;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -35,12 +38,12 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ResourceExtractorBlockEntity extends BaseEnergyContainerBlockEntity {
@@ -57,23 +60,25 @@ public class ResourceExtractorBlockEntity extends BaseEnergyContainerBlockEntity
 
     private static final int MAX_CAPACITY = 50000;
     private static final int MAX_TRANSFER = 800;
-    private static final int ENERGY_PER_TICK_VANILLA = 70;   // FE/t for non-lostdepths ores
-    private static final int ENERGY_PER_TICK_MODDED = 320;   // FE/t for lostdepths ores
-    private static final int MODDED_INTERVAL = 300; // 15s
-    private static final int VANILLA_INTERVAL = 100; // 5s
+    /** Energy bar resyncs only once stored has moved this far. */
+    private static final int SYNC_THRESHOLD = MAX_CAPACITY / 100;
 
-    // Status constants
-    public static final int STATUS_RED = 0;     // Redstone disabled
-    public static final int STATUS_ORANGE = 1;  // Missing pickaxe/solution/energy
-    public static final int STATUS_GREEN = 2;   // Working
+    private static final int VANILLA_ENERGY_PER_TICK = 70;  // FE/t for vanilla ores
+    private static final int VANILLA_INTERVAL = 100;        // 5s
+    private static final int MODDED_INTERVAL = 300;         // 15s - lostdepths ores, FE/t comes from the ore tier
 
+    // Status constants. 0-1 render red, 2-3 orange, 4 green.
+    public static final int STATUS_REDSTONE = 0;  // switched off by a redstone signal
+    public static final int STATUS_NO_ORE = 1;    // nothing valid underneath
+    public static final int STATUS_MISSING = 2;   // no pickaxe / wrong tier / no solution / no energy
+    public static final int STATUS_FULL = 3;      // output slots cannot take the next yield
+    public static final int STATUS_ACTIVE = 4;    // working
 
     private NonNullList<ItemStack> items = NonNullList.withSize(TOTAL_SLOTS, ItemStack.EMPTY);
     private final LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.UP, Direction.DOWN, Direction.NORTH);
 
     private int tickCounter = 0;
-    private boolean redstoneActive = true;
-    private int machineStatus = STATUS_GREEN;
+    private int machineStatus = STATUS_NO_ORE;
 
     public final ContainerData containerData = new ContainerData() {
         @Override
@@ -104,16 +109,27 @@ public class ResourceExtractorBlockEntity extends BaseEnergyContainerBlockEntity
 
     @Override
     protected SyncedEnergyStorage createEnergyStorage() {
-        return new SyncedEnergyStorage(this, MAX_CAPACITY, MAX_TRANSFER, MAX_TRANSFER);
+        // maxExtract 0: consumer only. Otherwise two adjacent extractors shuffle energy between each other.
+        return new SyncedEnergyStorage(this, MAX_CAPACITY, MAX_TRANSFER, 0) {
+            private int lastSynced = -1;
+
+            @Override
+            protected void updateClients() {
+                // Was resyncing the whole BE every tick while running; 1% steps are finer than the bar anyway.
+                int now = getEnergyStored();
+                boolean edge = now == 0 || now == getMaxEnergyStored();
+                if (lastSynced >= 0 && !edge && Math.abs(now - lastSynced) < SYNC_THRESHOLD) return;
+                lastSynced = now;
+                super.updateClients();
+            }
+        };
     }
 
-    public void setRedstoneActive(boolean active) { this.redstoneActive = active; }
     public int getProgress() { return tickCounter; }
 
     public int getMaxProgress() {
-        BlockState below = getOreBelow();
-        if (below == null) return MODDED_INTERVAL;
-        return isVanillaOre(below) ? VANILLA_INTERVAL : MODDED_INTERVAL;
+        Target target = resolveTarget();
+        return target == null ? MODDED_INTERVAL : target.interval();
     }
 
     public int getOutputSignal() {
@@ -123,189 +139,29 @@ public class ResourceExtractorBlockEntity extends BaseEnergyContainerBlockEntity
         return (int) ((filled / 4.0f) * 15);
     }
 
-    /**
-     * Checks if the solution slots contain the required solution item and returns the slot index, or -1.
-     */
-    private int findSolutionSlot(Item requiredSolution) {
-        for (int i = SLOT_SOLUTION_START; i <= SLOT_SOLUTION_END; i++) {
-            if (items.get(i).getItem() == requiredSolution) {
-                return i;
-            }
-        }
-        return -1;
-    }
+    // --- What is underneath ---
 
-    private static void pullEnergy(Level level, BlockPos pos, ResourceExtractorBlockEntity be) {
-        int canReceive = be.energyStorage.receiveEnergy(MAX_TRANSFER, true);
-        if (canReceive <= 0) return;
-
-        for (Direction dir : Direction.values()) {
-            BlockEntity neighbor = level.getBlockEntity(pos.relative(dir));
-            if (neighbor == null) continue;
-
-            LazyOptional<IEnergyStorage> cap = neighbor.getCapability(ForgeCapabilities.ENERGY, dir.getOpposite());
-            cap.ifPresent(storage -> {
-                if (storage.canExtract()) {
-                    int remaining = be.energyStorage.receiveEnergy(MAX_TRANSFER, true);
-                    if (remaining > 0) {
-                        int extracted = storage.extractEnergy(remaining, false);
-                        if (extracted > 0) {
-                            be.energyStorage.receiveEnergy(extracted, false);
-                        }
-                    }
-                }
-            });
-        }
-    }
-
-    public static void serverTick(Level level, BlockPos pos, BlockState state, ResourceExtractorBlockEntity be) {
-        if (level.isClientSide) return;
-
-        // Auto-pull energy from all neighboring blocks
-        pullEnergy(level, pos, be);
-
-        // Redstone check
-        if (!be.redstoneActive) {
-            be.machineStatus = STATUS_RED;
-            return;
-        }
-
-        BlockState oreState = be.getOreBelow();
-        if (oreState == null) {
-            be.machineStatus = STATUS_ORANGE;
-            be.tickCounter = 0;
-            return;
-        }
-
-        ItemStack pickaxe = be.items.get(SLOT_PICKAXE);
-        if (pickaxe.isEmpty() || !(pickaxe.getItem() instanceof PickaxeItem)) {
-            be.machineStatus = STATUS_ORANGE;
-            be.tickCounter = 0;
-            return;
-        }
-
-        Block oreBlock = oreState.getBlock();
-        OreDefinition oreDef = LostdepthsModOres.findByBlock(oreBlock);
-        boolean isVanilla = be.isVanillaOre(oreState);
-        int energyPerTick = isVanilla ? ENERGY_PER_TICK_VANILLA : ENERGY_PER_TICK_MODDED;
-
-        if (be.energyStorage.getEnergyStored() < energyPerTick) {
-            be.machineStatus = STATUS_ORANGE;
-            be.tickCounter = 0;
-            return;
-        }
-
-        BlockPos orePos = pos.below();
-
-        // Registered ore handling (lostdepths ores)
-        if (oreDef != null) {
-            // Check if ore requires solution activation and is currently unpowered
-            if (oreDef.requiresSolution() && LostdepthsModOres.isUnpowered(oreDef, oreBlock)) {
-                int solutionSlot = be.findSolutionSlot(oreDef.activationSolution().get());
-                if (solutionSlot == -1) {
-                    be.machineStatus = STATUS_ORANGE;
-                    be.tickCounter = 0;
-                    return;
-                }
-
-                // Consume one solution and activate the ore
-                be.items.get(solutionSlot).shrink(1);
-                level.setBlock(orePos, oreDef.activeBlock().get().defaultBlockState(), 3);
-                be.setChanged();
-                be.tickCounter = 0;
-                be.machineStatus = STATUS_GREEN;
-                return;
-            }
-
-            // Check if the pickaxe meets the minimum tier
-            if (!oreDef.canMine(pickaxe.getItem())) {
-                be.machineStatus = STATUS_ORANGE;
-                be.tickCounter = 0;
-                return;
-            }
-        }
-
-        be.machineStatus = STATUS_GREEN;
-
-        // Consume energy every tick while working
-        be.energyStorage.extractEnergy(energyPerTick, false);
-
-        int interval = isVanilla ? VANILLA_INTERVAL : MODDED_INTERVAL;
-        be.tickCounter++;
-        if (be.tickCounter < interval) return;
-        be.tickCounter = 0;
-
-        // --- Mining complete: determine drops ---
-        List<ItemStack> drops;
-
-        if (oreDef != null) {
-            // Registered ore: use hardcoded drops from OreDefinition
-            int dropCount = oreDef.getDropCount(pickaxe.getItem());
-            if (dropCount > 0) {
-                drops = List.of(new ItemStack(oreDef.dropItem().get(), dropCount));
-            } else {
-                drops = List.of();
-            }
-        } else {
-            // Vanilla/unregistered ore: use loot table
-            ServerLevel serverLevel = (ServerLevel) level;
-            LootParams.Builder builder = new LootParams.Builder(serverLevel)
-                    .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(orePos))
-                    .withParameter(LootContextParams.TOOL, pickaxe)
-                    .withParameter(LootContextParams.BLOCK_STATE, oreState)
-                    .withOptionalParameter(LootContextParams.BLOCK_ENTITY, level.getBlockEntity(orePos));
-            drops = oreState.getDrops(builder);
-            if (drops.isEmpty()) {
-                drops = Block.getDrops(oreState, serverLevel, orePos, level.getBlockEntity(orePos), null, pickaxe);
-            }
-        }
-
-        boolean inserted = false;
-        for (ItemStack drop : drops) {
-            ItemStack remaining = drop.copy();
-            for (int i = SLOT_OUTPUT_START; i <= SLOT_OUTPUT_END && !remaining.isEmpty(); i++) {
-                ItemStack slot = be.items.get(i);
-                if (slot.isEmpty()) {
-                    be.items.set(i, remaining.copy());
-                    remaining = ItemStack.EMPTY;
-                    inserted = true;
-                } else if (ItemStack.isSameItemSameTags(slot, remaining) && slot.getCount() < slot.getMaxStackSize()) {
-                    int toAdd = Math.min(slot.getMaxStackSize() - slot.getCount(), remaining.getCount());
-                    slot.grow(toAdd);
-                    remaining.shrink(toAdd);
-                    inserted = true;
-                }
-            }
-        }
-
-        if (inserted) {
-            // Damage pickaxe if damageable and not unbreakable
-            if (pickaxe.isDamageableItem()) {
-                CompoundTag tag = pickaxe.getTag();
-                boolean unbreakable = tag != null && tag.getBoolean("Unbreakable");
-                if (!unbreakable) {
-                    pickaxe.setDamageValue(pickaxe.getDamageValue() + 1);
-                    if (pickaxe.getDamageValue() >= pickaxe.getMaxDamage()) {
-                        be.items.set(SLOT_PICKAXE, ItemStack.EMPTY);
-                    }
-                }
-            }
-
-            // Solution ores: 3/11 chance to revert to unpowered variant
-            if (oreDef != null && oreDef.depletionType() == DepletionType.CHANCE_DEACTIVATE
-                    && oreDef.unpoweredBlock() != null && 3 > Mth.nextInt(RandomSource.create(), 0, 10)) {
-                level.setBlock(orePos, oreDef.unpoweredBlock().get().defaultBlockState(), 3);
-            }
-
-            be.setChanged();
-        }
-    }
+    /** Resolved via the registries, not description-id matching, so ore_empty and tree blocks are refused. */
+    private record Target(@Nullable OreDefinition ore, @Nullable CrystalDefinition crystal, boolean vanilla,
+                          BlockState state, int energyPerTick, int interval) {}
 
     @Nullable
-    private BlockState getOreBelow() {
+    private Target resolveTarget() {
         if (level == null) return null;
-        BlockState state = level.getBlockState(getBlockPos().below());
-        if (isVanillaOre(state) || isModdedOre(state)) return state;
+        BlockState below = level.getBlockState(getBlockPos().below());
+        Block block = below.getBlock();
+
+        OreDefinition ore = LostdepthsModOres.findByBlock(block);
+        if (ore != null)
+            return new Target(ore, null, false, below, ore.minTier().energyPerTick(), MODDED_INTERVAL);
+
+        CrystalDefinition crystal = LostdepthsModOres.findCrystal(block);
+        if (crystal != null)
+            return new Target(null, crystal, false, below, crystal.minTier().energyPerTick(), MODDED_INTERVAL);
+
+        if (isVanillaOre(below))
+            return new Target(null, null, true, below, VANILLA_ENERGY_PER_TICK, VANILLA_INTERVAL);
+
         return null;
     }
 
@@ -316,9 +172,222 @@ public class ResourceExtractorBlockEntity extends BaseEnergyContainerBlockEntity
                 || state.is(BlockTags.COAL_ORES) || state.is(BlockTags.EMERALD_ORES);
     }
 
-    private boolean isModdedOre(BlockState state) {
-        String id = state.getBlock().getDescriptionId();
-        return id.contains("lostdepths") && (id.contains("ore") || id.contains("crystal"));
+    /** Tier for mod ores, harvest level for vanilla ones. */
+    private boolean toolAccepts(Target target, ItemStack pickaxe) {
+        if (pickaxe.isEmpty() || !(pickaxe.getItem() instanceof PickaxeItem)) return false;
+        if (target.crystal() != null) return target.crystal().canMine(pickaxe.getItem());
+        if (target.ore() != null) return target.ore().canMine(pickaxe.getItem());
+        return pickaxe.isCorrectToolForDrops(target.state());
+    }
+
+    private int findSolutionSlot(Item requiredSolution) {
+        for (int i = SLOT_SOLUTION_START; i <= SLOT_SOLUTION_END; i++) {
+            if (items.get(i).getItem() == requiredSolution) return i;
+        }
+        return -1;
+    }
+
+    // --- Energy ---
+
+    private static void pullEnergy(Level level, BlockPos pos, ResourceExtractorBlockEntity be) {
+        if (be.energyStorage.receiveEnergy(MAX_TRANSFER, true) <= 0) return;
+
+        for (Direction dir : Direction.values()) {
+            BlockEntity neighbor = level.getBlockEntity(pos.relative(dir));
+            if (neighbor == null) continue;
+
+            neighbor.getCapability(ForgeCapabilities.ENERGY, dir.getOpposite()).ifPresent(storage -> {
+                // canExtract == "is a provider": mod consumers report false, so they are never drained.
+                if (!storage.canExtract()) return;
+                int room = be.energyStorage.receiveEnergy(MAX_TRANSFER, true);
+                if (room <= 0) return;
+                int moved = storage.extractEnergy(room, false);
+                if (moved > 0) be.energyStorage.receiveEnergy(moved, false);
+            });
+        }
+    }
+
+    // --- Tick ---
+
+    public static void serverTick(Level level, BlockPos pos, BlockState state, ResourceExtractorBlockEntity be) {
+        if (level.isClientSide) return;
+
+        pullEnergy(level, pos, be);
+
+        if (level.hasNeighborSignal(pos)) {
+            be.setStatus(STATUS_REDSTONE, true);
+            return;
+        }
+
+        Target target = be.resolveTarget();
+        if (target == null) {
+            be.setStatus(STATUS_NO_ORE, true);
+            return;
+        }
+
+        ItemStack pickaxe = be.items.get(SLOT_PICKAXE);
+        if (!be.toolAccepts(target, pickaxe)) {
+            be.setStatus(STATUS_MISSING, true);
+            return;
+        }
+
+        if (be.energyStorage.getEnergyStored() < target.energyPerTick()) {
+            // Not enough power: progress is cancelled outright rather than paused.
+            be.setStatus(STATUS_MISSING, true);
+            return;
+        }
+
+        // Dormant solution ore: charge it first, costs one solution, cycle restarts on the live ore.
+        OreDefinition ore = target.ore();
+        if (ore != null && ore.requiresSolution() && LostdepthsModOres.isUnpowered(ore, target.state().getBlock())) {
+            int solutionSlot = be.findSolutionSlot(ore.activationSolution().get());
+            if (solutionSlot == -1) {
+                be.setStatus(STATUS_MISSING, true);
+                return;
+            }
+            be.items.get(solutionSlot).shrink(1);
+            level.setBlock(pos.below(), ore.oreBlock().get().defaultBlockState(), 3);
+            be.energyStorage.extractEnergy(target.energyPerTick(), false);
+            be.setStatus(STATUS_ACTIVE, true);
+            be.setChanged();
+            return;
+        }
+
+        if (!be.hasOutputRoom()) {
+            // Hold progress: frees up mid-cycle and finishes rather than restarting.
+            be.setStatus(STATUS_FULL, false);
+            return;
+        }
+
+        // Validate the finishing tick before spending, so a blocked machine burns no energy.
+        boolean completes = be.tickCounter + 1 >= target.interval();
+        List<ItemStack> drops = null;
+        if (completes) {
+            drops = be.rollDrops(target, pickaxe);
+            if (!be.insertAll(drops, true)) {
+                be.setStatus(STATUS_FULL, false);
+                return;
+            }
+        }
+
+        be.setStatus(STATUS_ACTIVE, false);
+        be.energyStorage.extractEnergy(target.energyPerTick(), false);
+        be.tickCounter++;
+
+        if (!completes) return;
+
+        be.tickCounter = 0;
+        be.insertAll(drops, false);
+        be.onCycleComplete(target, pickaxe);
+        be.setChanged();
+    }
+
+    private void setStatus(int status, boolean resetProgress) {
+        this.machineStatus = status;
+        if (resetProgress) this.tickCounter = 0;
+    }
+
+    /** Ore is never consumed; the only block change is a re-chargeable rolling 50/50 back to dormant. */
+    private void onCycleComplete(Target target, ItemStack pickaxe) {
+        if (pickaxe.isDamageableItem()) {
+            CompoundTag tag = pickaxe.getTag();
+            boolean unbreakable = tag != null && tag.getBoolean("Unbreakable");
+            if (!unbreakable) {
+                pickaxe.setDamageValue(pickaxe.getDamageValue() + 1);
+                if (pickaxe.getDamageValue() >= pickaxe.getMaxDamage()) items.set(SLOT_PICKAXE, ItemStack.EMPTY);
+            }
+        }
+
+        OreDefinition ore = target.ore();
+        if (level != null && ore != null && ore.depletionType() == DepletionType.CHANCE_DEACTIVATE
+                && ore.unpoweredBlock() != null && level.getRandom().nextBoolean()) {
+            level.setBlock(getBlockPos().below(), ore.unpoweredBlock().get().defaultBlockState(), 3);
+        }
+    }
+
+    // --- Yield ---
+
+    private List<ItemStack> rollDrops(Target target, ItemStack pickaxe) {
+        if (target.crystal() != null) {
+            CrystalDefinition crystal = target.crystal();
+            return List.of(new ItemStack(crystal.dropItem().get(), crystal.dropCount()));
+        }
+
+        if (target.ore() != null) {
+            int count = target.ore().getDropCount(pickaxe.getItem());
+            return count > 0 ? List.of(new ItemStack(target.ore().dropItem().get(), count)) : List.of();
+        }
+
+        // Loot table so fortune and other mods' tweaks apply.
+        ServerLevel serverLevel = (ServerLevel) level;
+        BlockPos orePos = getBlockPos().below();
+        LootParams.Builder builder = new LootParams.Builder(serverLevel)
+                .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(orePos))
+                .withParameter(LootContextParams.TOOL, pickaxe)
+                .withParameter(LootContextParams.BLOCK_STATE, target.state())
+                .withOptionalParameter(LootContextParams.BLOCK_ENTITY, serverLevel.getBlockEntity(orePos));
+
+        List<ItemStack> drops = new ArrayList<>(target.state().getDrops(builder));
+
+        // Omni Pickaxe celestial bonus, same roll as hand-mining.
+        if (pickaxe.getItem() == LostdepthsModItems.OMNI_PICKAXE.get()) {
+            Item celestial = OmniPickaxeBlockDestroyedWithToolProcedure.getDropForOre(target.state().getBlock());
+            if (celestial != null) {
+                int fortune = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.BLOCK_FORTUNE, pickaxe);
+                int bonus = OmniPickaxeBlockDestroyedWithToolProcedure.rollBonusCount(serverLevel.getRandom(), fortune);
+                if (bonus > 0) drops.add(new ItemStack(celestial, bonus));
+            }
+        }
+
+        return drops;
+    }
+
+    // --- Output handling ---
+
+    /** Cheap "any room at all" test for the full-storage status. */
+    private boolean hasOutputRoom() {
+        for (int i = SLOT_OUTPUT_START; i <= SLOT_OUTPUT_END; i++) {
+            ItemStack slot = items.get(i);
+            if (slot.isEmpty() || slot.getCount() < slot.getMaxStackSize()) return true;
+        }
+        return false;
+    }
+
+    /** All or nothing, so a yield is never partially voided. */
+    private boolean insertAll(List<ItemStack> drops, boolean simulate) {
+        if (drops.isEmpty()) return true;
+
+        int[] counts = new int[TOTAL_SLOTS];
+        for (int i = SLOT_OUTPUT_START; i <= SLOT_OUTPUT_END; i++) counts[i] = items.get(i).getCount();
+
+        for (ItemStack drop : drops) {
+            int remaining = drop.getCount();
+            for (int i = SLOT_OUTPUT_START; i <= SLOT_OUTPUT_END && remaining > 0; i++) {
+                ItemStack slot = items.get(i);
+                boolean empty = slot.isEmpty() && counts[i] == 0;
+                if (!empty && !(ItemStack.isSameItemSameTags(slot, drop) && counts[i] < slot.getMaxStackSize())) continue;
+
+                int limit = empty ? drop.getMaxStackSize() : slot.getMaxStackSize();
+                int room = limit - counts[i];
+                int moved = Math.min(room, remaining);
+                if (moved <= 0) continue;
+
+                counts[i] += moved;
+                remaining -= moved;
+
+                if (!simulate) {
+                    if (slot.isEmpty()) {
+                        ItemStack placed = drop.copy();
+                        placed.setCount(moved);
+                        items.set(i, placed);
+                    } else {
+                        slot.grow(moved);
+                    }
+                }
+            }
+            if (remaining > 0) return false;
+        }
+        return true;
     }
 
     // --- Container ---
@@ -327,7 +396,7 @@ public class ResourceExtractorBlockEntity extends BaseEnergyContainerBlockEntity
     public Component getDisplayName() { return getDefaultName(); }
 
     @Override
-    protected Component getDefaultName() { return Component.literal("Resource Extractor"); }
+    protected Component getDefaultName() { return Component.translatable("block.lostdepths.resource_extractor"); }
 
     @Override
     protected AbstractContainerMenu createMenu(int id, Inventory inv) {
@@ -349,7 +418,6 @@ public class ResourceExtractorBlockEntity extends BaseEnergyContainerBlockEntity
         this.items = NonNullList.withSize(TOTAL_SLOTS, ItemStack.EMPTY);
         ContainerHelper.loadAllItems(tag, this.items);
         this.tickCounter = tag.getInt("tickCounter");
-        this.redstoneActive = !tag.contains("redstoneActive") || tag.getBoolean("redstoneActive");
     }
 
     @Override
@@ -357,7 +425,6 @@ public class ResourceExtractorBlockEntity extends BaseEnergyContainerBlockEntity
         super.saveAdditional(tag);
         ContainerHelper.saveAllItems(tag, this.items);
         tag.putInt("tickCounter", tickCounter);
-        tag.putBoolean("redstoneActive", redstoneActive);
     }
 
     @Override
@@ -368,8 +435,7 @@ public class ResourceExtractorBlockEntity extends BaseEnergyContainerBlockEntity
 
     @Override
     public boolean canPlaceItemThroughFace(int i, ItemStack stack, @Nullable Direction dir) {
-        if (i == SLOT_PICKAXE) return stack.getItem() instanceof PickaxeItem;
-        return i >= SLOT_SOLUTION_START && i <= SLOT_SOLUTION_END;
+        return canPlaceItem(i, stack);
     }
 
     @Override

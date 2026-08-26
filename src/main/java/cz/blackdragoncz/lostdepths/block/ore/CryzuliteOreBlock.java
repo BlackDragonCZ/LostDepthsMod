@@ -25,7 +25,8 @@ import net.minecraft.core.BlockPos;
 
 import java.util.List;
 
-import cz.blackdragoncz.lostdepths.procedures.CryzuliteOreBlockDestroyProcedure;
+import cz.blackdragoncz.lostdepths.init.LostdepthsModOres;
+import cz.blackdragoncz.lostdepths.procedures.PickaxeOreMiningProcedure;
 import cz.blackdragoncz.lostdepths.block.entity.CryzuliteOreBlockEntity;
 
 public class CryzuliteOreBlock extends Block implements EntityBlock {
@@ -51,7 +52,7 @@ public class CryzuliteOreBlock extends Block implements EntityBlock {
 	@Override
 	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
 		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
-		CryzuliteOreBlockDestroyProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), entity);
+		PickaxeOreMiningProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), entity, LostdepthsModOres.CRYZULITE_ORE);
 		return retval;
 	}
 

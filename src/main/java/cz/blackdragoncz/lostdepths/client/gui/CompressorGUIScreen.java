@@ -2,6 +2,7 @@ package cz.blackdragoncz.lostdepths.client.gui;
 
 import cz.blackdragoncz.lostdepths.LostdepthsMod;
 import cz.blackdragoncz.lostdepths.block.entity.AbstractCompressorBlockEntity;
+import cz.blackdragoncz.lostdepths.util.EnergyFormat;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
@@ -75,8 +76,6 @@ public class CompressorGUIScreen extends AbstractContainerScreen<CompressorGUIMe
 		super.containerTick();
 	}
 
-	private static final DecimalFormat energyStringFormat = new DecimalFormat("#,###"); // #,###
-
 	@Override
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
 		guiGraphics.drawString(this.font, "§4" + blockEntity.getDisplayName().getString(), 4, 5, -6750208, false);
@@ -84,17 +83,14 @@ public class CompressorGUIScreen extends AbstractContainerScreen<CompressorGUIMe
 		float percent = ((float)blockEntity.getCurrentCraftTime() / (float)blockEntity.getCraftTickTime()) * 100.0F;
 
 		if (mouseX >= this.leftPos + 77 && mouseX < this.leftPos + 77 + 24 && mouseY >= this.topPos + 35 && mouseY < this.topPos + 35 + 17) {
-			String val = "Progress: " + new java.text.DecimalFormat("##.#").format(percent) + "%";
+			String val = "Progress: " + new DecimalFormat("##.#").format(percent) + "%";
 			guiGraphics.renderTooltip(this.font, Component.literal(val), mouseX - this.leftPos, mouseY - this.topPos);
 		}
 
 		EnergyStorage energyStorage = blockEntity.getEnergyStorage();
 		if (energyStorage != null) {
 			if (mouseX >= this.leftPos + 148 && mouseX < this.leftPos + 148 + 14 && mouseY >= this.topPos + 22 && mouseY < this.topPos + 22 + 42) {
-                String builder = energyStringFormat.format(energyStorage.getEnergyStored()) +
-                        "FE / " +
-                        energyStringFormat.format(energyStorage.getMaxEnergyStored()) +
-                        "FE";
+                String builder = EnergyFormat.stored(energyStorage.getEnergyStored(), energyStorage.getMaxEnergyStored());
 
 				if (blockEntity.haveEnergy()) {
 					guiGraphics.setColor(0, 1, 0, 1);

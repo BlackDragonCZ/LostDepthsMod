@@ -29,21 +29,20 @@ public class OmniPickaxeBlockDestroyedWithToolProcedure {
 		Item dropItem = getDropForOre(block);
 		if (dropItem == null) return;
 
-		// 40% chance to drop (6 out of 0-10 range)
-		RandomSource random = level.getRandom();
-		if (Mth.nextInt(random, 0, 10) < 6) return;
-
-		int count = 1;
-		if (fortuneLevel > 0) {
-			count = Mth.nextInt(random, 1, Math.min(7, fortuneLevel + 3));
-		}
-
+		int count = rollBonusCount(level.getRandom(), fortuneLevel);
 		for (int i = 0; i < count; i++) {
 			Block.popResource(level, pos, new ItemStack(dropItem));
 		}
 	}
 
-	private static Item getDropForOre(net.minecraft.world.level.block.Block block) {
+	/** 40% to yield anything, fortune widens the count. Shared with the Resource Extractor. */
+	public static int rollBonusCount(RandomSource random, int fortuneLevel) {
+		if (random.nextFloat() >= 0.40f) return 0;
+		return fortuneLevel > 0 ? Mth.nextInt(random, 1, Math.min(7, fortuneLevel + 3)) : 1;
+	}
+
+	/** Null if the block is not one of the four vanilla ores. */
+	public static Item getDropForOre(net.minecraft.world.level.block.Block block) {
 		if (block == Blocks.IRON_ORE || block == Blocks.DEEPSLATE_IRON_ORE)
 			return LostdepthsModItems.CELESTIAL_IRON.get();
 		if (block == Blocks.DIAMOND_ORE || block == Blocks.DEEPSLATE_DIAMOND_ORE)

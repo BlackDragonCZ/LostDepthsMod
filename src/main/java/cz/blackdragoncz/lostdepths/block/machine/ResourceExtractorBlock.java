@@ -24,10 +24,12 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Collections;
 import java.util.List;
 
 public class ResourceExtractorBlock extends BaseHorizontalFacingEntityBlock {
@@ -95,12 +97,10 @@ public class ResourceExtractorBlock extends BaseHorizontalFacingEntityBlock {
         }
     }
 
+    // Mod convention: drop self, no loot table.
     @Override
-    @SuppressWarnings("deprecation")
-    public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
-        if (!level.isClientSide && level.getBlockEntity(pos) instanceof ResourceExtractorBlockEntity be) {
-            be.setRedstoneActive(!level.hasNeighborSignal(pos));
-        }
+    public List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
+        return Collections.singletonList(new ItemStack(this, 1));
     }
 
     @Override

@@ -299,6 +299,7 @@ public class LostdepthsModBlocks {
 	public static final RegistryObject<Block> INFUSED_WALL_SIGN = REGISTRY.register("infused_wall_sign", InfusedWallSignBlock::new);
 	public static final RegistryObject<Block> INFUSED_HANGING_SIGN = REGISTRY.register("infused_hanging_sign", InfusedHangingSignBlock::new);
 	public static final RegistryObject<Block> INFUSED_WALL_HANGING_SIGN = REGISTRY.register("infused_wall_hanging_sign", InfusedWallHangingSignBlock::new);
+	public static final RegistryObject<Block> INFUSED_IRON_DOOR = REGISTRY.register("infused_iron_door", cz.blackdragoncz.lostdepths.block.decor.InfusedIronDoorBlock::new);
 	public static final RegistryObject<Block> FUSION_TABLE = REGISTRY.register("fusion_table", FusionTableBlock::new);
 	public static final RegistryObject<Block> INFUSED_DISPLAY_PLATE = REGISTRY.register("infused_display_plate", InfusedDisplayPlateBlock::new);
 	public static final RegistryObject<Block> POSITIVE_SAPLING = REGISTRY.register("positive_sapling", () -> new SaplingBlock(new BasicTreeGrower(LostDepthsTreeFeatures.CELESTIAL_TREE_BLUE), BlockBehaviour.Properties.of().noCollission().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)));

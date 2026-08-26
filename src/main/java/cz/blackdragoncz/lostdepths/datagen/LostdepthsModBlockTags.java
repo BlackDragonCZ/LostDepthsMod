@@ -37,7 +37,8 @@ public class LostdepthsModBlockTags extends BlockTagsProvider {
                 LostdepthsModBlocks.INFUSED_SIGN.get(),
                 LostdepthsModBlocks.INFUSED_HANGING_SIGN.get(),
                 LostdepthsModBlocks.INFUSED_WALL_HANGING_SIGN.get(),
-                LostdepthsModBlocks.INFUSED_WALL_SIGN.get()
+                LostdepthsModBlocks.INFUSED_WALL_SIGN.get(),
+                LostdepthsModBlocks.INFUSED_IRON_DOOR.get()
         );
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
@@ -138,16 +139,18 @@ public class LostdepthsModBlockTags extends BlockTagsProvider {
                 LostdepthsModBlocks.NT_PATTERN_ENCODER.get(),
                 LostdepthsModBlocks.NT_PATTERN_PROVIDER.get(),
                 LostdepthsModBlocks.NT_PATTERN_PROVIDER_T2.get(),
-                LostdepthsModBlocks.HOLOGRAM_PROJECTOR.get()
+                LostdepthsModBlocks.HOLOGRAM_PROJECTOR.get(),
+                LostdepthsModBlocks.INFUSED_IRON_DOOR.get()
         );
         tag(BlockTags.NEEDS_STONE_TOOL).add(
                 LostdepthsModBlocks.FUSION_TABLE.get(),
                 LostdepthsModBlocks.RESOURCE_EXTRACTOR.get()
         );
-        // Pairs with requiresCorrectToolForDrops() on the block; without that property the tier tag is ignored and it drops to any tool.
+        // Needs requiresCorrectToolForDrops() on the block or the tier tag is ignored.
         tag(BlockTags.NEEDS_IRON_TOOL).add(
                 LostdepthsModBlocks.HOLOGRAM_PROJECTOR.get()
         );
+        tag(BlockTags.DOORS).add(LostdepthsModBlocks.INFUSED_IRON_DOOR.get());
         tag(BlockTags.DIRT).add(LostdepthsModBlocks.SPACE_ROCK_DIRT.get());
         tag(BlockTags.DRAGON_IMMUNE).add(
                 LostdepthsModBlocks.TREASUREPILLAR.get(),

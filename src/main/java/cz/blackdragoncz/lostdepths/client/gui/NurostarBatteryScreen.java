@@ -2,13 +2,13 @@ package cz.blackdragoncz.lostdepths.client.gui;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import cz.blackdragoncz.lostdepths.LostdepthsMod;
+import cz.blackdragoncz.lostdepths.util.EnergyFormat;
 import cz.blackdragoncz.lostdepths.world.inventory.NurostarBatteryMenu;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
-import java.text.DecimalFormat;
 
 public class NurostarBatteryScreen extends AbstractContainerScreen<NurostarBatteryMenu> {
 
@@ -58,8 +58,7 @@ public class NurostarBatteryScreen extends AbstractContainerScreen<NurostarBatte
         // Background bar
         g.blit(JEI, powerBarX, powerBarY, powerBarWidth, powerBarHeight, 140, 144, 14, 42, 256, 256);
 
-        // TODO: Battery energy bar not showing correct values on client — ContainerData sync not working
-        // Filled bar (synced via ContainerData)
+        // Filled bar
         int stored = menu.getEnergyStored();
         int maxE = menu.getMaxEnergy();
         float fillPct = maxE > 0 ? (float) stored / maxE : 0;
@@ -70,8 +69,6 @@ public class NurostarBatteryScreen extends AbstractContainerScreen<NurostarBatte
         g.disableScissor();
     }
 
-    private static final DecimalFormat ENERGY_FORMAT = new DecimalFormat("#,###");
-
     @Override
     protected void renderLabels(GuiGraphics g, int mouseX, int mouseY) {
         g.drawString(this.font, this.title, this.titleLabelX, this.titleLabelY, -16750849, false);
@@ -81,7 +78,7 @@ public class NurostarBatteryScreen extends AbstractContainerScreen<NurostarBatte
         g.drawString(this.font, Component.literal("Charge"), 33, 78, 0x555555, false);
         g.drawString(this.font, Component.literal("Drain"), 89, 78, 0x555555, false);
 
-        // Energy tooltip on hover (synced via ContainerData)
+        // Energy tooltip on hover
         int powerBarWidth = 30;
         int powerBarHeight = 60;
         int powerBarX = leftPos + 132;
@@ -89,10 +86,7 @@ public class NurostarBatteryScreen extends AbstractContainerScreen<NurostarBatte
 
         if (mouseX >= powerBarX && mouseX < powerBarX + powerBarWidth
                 && mouseY >= powerBarY && mouseY < powerBarY + powerBarHeight) {
-            String text = ENERGY_FORMAT.format(menu.getEnergyStored()) +
-                    "FE / " +
-                    ENERGY_FORMAT.format(menu.getMaxEnergy()) +
-                    "FE";
+            String text = EnergyFormat.stored(menu.getEnergyStored(), menu.getMaxEnergy());
             g.renderTooltip(this.font, Component.literal(text), mouseX - this.leftPos, mouseY - this.topPos);
         }
     }

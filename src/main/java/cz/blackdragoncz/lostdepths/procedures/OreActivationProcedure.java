@@ -17,14 +17,14 @@ import net.minecraft.world.level.LevelAccessor;
 public class OreActivationProcedure {
 
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, OreDefinition oreDef) {
-		if (entity == null || oreDef.activationSolution() == null || oreDef.activeBlock() == null) return;
+		if (entity == null || oreDef.activationSolution() == null) return;
 
 		Item heldItem = (entity instanceof LivingEntity liv ? liv.getMainHandItem() : ItemStack.EMPTY).getItem();
 		Item requiredSolution = oreDef.activationSolution().get();
 
 		if (heldItem == requiredSolution) {
 			BlockPos pos = BlockPos.containing(x, y, z);
-			world.setBlock(pos, oreDef.activeBlock().get().defaultBlockState(), 3);
+			world.setBlock(pos, oreDef.oreBlock().get().defaultBlockState(), 3);
 
 			if (entity instanceof Player player) {
 				player.getInventory().clearOrCountMatchingItems(

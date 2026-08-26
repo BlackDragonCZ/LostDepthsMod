@@ -51,7 +51,7 @@ public class SyncedEnergyStorage extends EnergyStorage {
         return val;
     }
 
-    private void updateClients() {
+    protected void updateClients() {
         Level level = blockEntity.getLevel();
 
         if (level == null)

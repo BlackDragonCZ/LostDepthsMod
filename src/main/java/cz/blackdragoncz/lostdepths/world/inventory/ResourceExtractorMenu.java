@@ -101,6 +101,8 @@ public class ResourceExtractorMenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player player) {
+        // Null before the chunk arrives, or if the block was broken with the screen open.
+        if (this.blockEntity == null) return false;
         return AbstractContainerMenu.stillValid(this.access, player, this.blockEntity.getBlockState().getBlock());
     }
 

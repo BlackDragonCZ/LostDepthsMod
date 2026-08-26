@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import cz.blackdragoncz.lostdepths.LostdepthsMod;
 import cz.blackdragoncz.lostdepths.block.power.entity.NurostarGeneratorBlockEntity;
 import cz.blackdragoncz.lostdepths.world.inventory.NurostarGeneratorMenu;
+import cz.blackdragoncz.lostdepths.util.EnergyFormat;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
@@ -13,7 +14,6 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraftforge.energy.EnergyStorage;
 import net.minecraftforge.energy.IEnergyStorage;
 
-import java.text.DecimalFormat;
 import java.util.Optional;
 
 public class NurostarGeneratorScreen extends AbstractContainerScreen<NurostarGeneratorMenu> {
@@ -94,8 +94,6 @@ public class NurostarGeneratorScreen extends AbstractContainerScreen<NurostarGen
         g.disableScissor();
     }
 
-    private static final DecimalFormat energyStringFormat = new DecimalFormat("#,###"); // #,###
-
     @Override
     protected void renderLabels(GuiGraphics g, int mouseX, int mouseY) {
         g.drawString(this.font, this.title, this.titleLabelX, this.titleLabelY, -16750849, false);
@@ -110,10 +108,7 @@ public class NurostarGeneratorScreen extends AbstractContainerScreen<NurostarGen
 
         if (mouseX >= powerBarX && mouseX < powerBarX + powerBarWidth) {
             if (mouseY >= powerBarY && mouseY < powerBarY + powerBarHeight) {
-                String builder = energyStringFormat.format(energyStorage.getEnergyStored()) +
-                        "FE / " +
-                        energyStringFormat.format(energyStorage.getMaxEnergyStored()) +
-                        "FE";
+                String builder = EnergyFormat.stored(energyStorage.getEnergyStored(), energyStorage.getMaxEnergyStored());
                 g.renderTooltip(this.font, Component.literal(builder), mouseX - this.leftPos, mouseY - this.topPos);
             }
         }

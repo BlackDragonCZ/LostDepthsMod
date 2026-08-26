@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "AA ",
+    "AB ",
+    "AA "
+  ],
+  "key": {
+    "A": {
+      "item": "lostdepths:infused_iron"
+    },
+    "B": {
+      "tag": "minecraft:wooden_doors"
+    }
+  },
+  "result": {
+    "item": "lostdepths:infused_iron_door",
+    "count": 1
+  }
+}

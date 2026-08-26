@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import cz.blackdragoncz.lostdepths.LostdepthsMod;
 import cz.blackdragoncz.lostdepths.block.entity.ResourceExtractorBlockEntity;
 import cz.blackdragoncz.lostdepths.world.inventory.ResourceExtractorMenu;
+import cz.blackdragoncz.lostdepths.util.EnergyFormat;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
@@ -11,7 +12,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraftforge.energy.EnergyStorage;
 
-import java.text.DecimalFormat;
 import java.util.List;
 
 public class ResourceExtractorScreen extends AbstractContainerScreen<ResourceExtractorMenu> {
@@ -24,6 +24,41 @@ public class ResourceExtractorScreen extends AbstractContainerScreen<ResourceExt
     private static final int COLOR_GREEN = 0xFF00CC00;
     private static final int COLOR_ORANGE = 0xFFFF8800;
     private static final int COLOR_RED = 0xFFCC0000;
+
+    // Source sprite is 42x14 in jei_handler.png, drawn at half size.
+    private static final int PROGRESS_X = 133;
+    private static final int PROGRESS_Y = 31;
+    private static final int PROGRESS_W = 21;
+    private static final int PROGRESS_H = 7;
+
+    private float progressFraction() {
+        int max = menu.getMaxProgress();
+        if (max <= 0) return 0f;
+        return Math.min(1f, (float) menu.getProgress() / max);
+    }
+
+    private static int statusColor(int status) {
+        return switch (status) {
+            case ResourceExtractorBlockEntity.STATUS_ACTIVE -> COLOR_GREEN;
+            case ResourceExtractorBlockEntity.STATUS_MISSING, ResourceExtractorBlockEntity.STATUS_FULL -> COLOR_ORANGE;
+            default -> COLOR_RED;
+        };
+    }
+
+    private static Component statusText(int status) {
+        return switch (status) {
+            case ResourceExtractorBlockEntity.STATUS_ACTIVE ->
+                    Component.literal("Status: Active").withStyle(s -> s.withColor(0x00CC00));
+            case ResourceExtractorBlockEntity.STATUS_MISSING ->
+                    Component.literal("Status: Missing requirement").withStyle(s -> s.withColor(0xFF8800));
+            case ResourceExtractorBlockEntity.STATUS_FULL ->
+                    Component.literal("Status: Full storage").withStyle(s -> s.withColor(0xFF8800));
+            case ResourceExtractorBlockEntity.STATUS_NO_ORE ->
+                    Component.literal("Status: No valid ore below").withStyle(s -> s.withColor(0xCC0000));
+            default ->
+                    Component.literal("Status: Disabled by redstone").withStyle(s -> s.withColor(0xCC0000));
+        };
+    }
 
     public ResourceExtractorScreen(ResourceExtractorMenu menu, Inventory inv, Component title) {
         super(menu, inv, title);
@@ -63,23 +98,20 @@ public class ResourceExtractorScreen extends AbstractContainerScreen<ResourceExt
         drawSlot(g, 84, 45);
         drawSlot(g, 102, 45);
 
-        RenderSystem.disableBlend();
-
-        // Progress arrow (using synced ContainerData)
-        int maxProg = menu.getMaxProgress();
-        int prog = menu.getProgress();
-        if (maxProg > 0 && prog > 0) {
-            int arrowWidth = (int) (24.0f * prog / maxProg);
-            g.fill(leftPos + 131, topPos + 29, leftPos + 131 + arrowWidth, topPos + 31, 0xFF55FF55);
+        // Blue arrow pair from the widget atlas.
+        g.blit(JEI, leftPos + PROGRESS_X, topPos + PROGRESS_Y, PROGRESS_W, PROGRESS_H, 96, 144, 42, 14, 256, 256);
+        int filled = Math.round(PROGRESS_W * progressFraction());
+        if (filled > 0) {
+            g.enableScissor(leftPos + PROGRESS_X, topPos + PROGRESS_Y,
+                    leftPos + PROGRESS_X + filled, topPos + PROGRESS_Y + PROGRESS_H);
+            g.blit(JEI, leftPos + PROGRESS_X, topPos + PROGRESS_Y, PROGRESS_W, PROGRESS_H, 96, 160, 42, 14, 256, 256);
+            g.disableScissor();
         }
 
+        RenderSystem.disableBlend();
+
         // Status indicator
-        int status = menu.getMachineStatus();
-        int statusColor = switch (status) {
-            case ResourceExtractorBlockEntity.STATUS_GREEN -> COLOR_GREEN;
-            case ResourceExtractorBlockEntity.STATUS_ORANGE -> COLOR_ORANGE;
-            default -> COLOR_RED;
-        };
+        int statusColor = statusColor(menu.getMachineStatus());
         int statusX = leftPos + 66;
         int statusY = topPos + 36;
         int statusSize = 8;
@@ -107,8 +139,6 @@ public class ResourceExtractorScreen extends AbstractContainerScreen<ResourceExt
         }
     }
 
-    private static final DecimalFormat ENERGY_FMT = new DecimalFormat("#,###");
-
     @Override
     protected void renderLabels(GuiGraphics g, int mouseX, int mouseY) {
         g.drawString(this.font, this.title, this.titleLabelX, this.titleLabelY, -16750849, false);
@@ -125,13 +155,14 @@ public class ResourceExtractorScreen extends AbstractContainerScreen<ResourceExt
         int statusSize = 8;
         if (mouseX >= leftPos + statusX - 1 && mouseX < leftPos + statusX + statusSize + 1
                 && mouseY >= topPos + statusY - 1 && mouseY < topPos + statusY + statusSize + 1) {
-            int status = menu.getMachineStatus();
-            Component statusText = switch (status) {
-                case ResourceExtractorBlockEntity.STATUS_GREEN -> Component.literal("Status: Active").withStyle(s -> s.withColor(0x00CC00));
-                case ResourceExtractorBlockEntity.STATUS_ORANGE -> Component.literal("Status: Missing requirements").withStyle(s -> s.withColor(0xFF8800));
-                default -> Component.literal("Status: Disabled by redstone").withStyle(s -> s.withColor(0xCC0000));
-            };
-            g.renderTooltip(this.font, statusText, mouseX - this.leftPos, mouseY - this.topPos);
+            g.renderTooltip(this.font, statusText(menu.getMachineStatus()), mouseX - this.leftPos, mouseY - this.topPos);
+        }
+
+        // Progress tooltip
+        if (mouseX >= leftPos + PROGRESS_X && mouseX < leftPos + PROGRESS_X + PROGRESS_W
+                && mouseY >= topPos + PROGRESS_Y && mouseY < topPos + PROGRESS_Y + PROGRESS_H) {
+            String text = "Progress: " + Math.round(progressFraction() * 100) + "%";
+            g.renderTooltip(this.font, Component.literal(text), mouseX - this.leftPos, mouseY - this.topPos);
         }
 
         // Energy tooltip
@@ -144,7 +175,7 @@ public class ResourceExtractorScreen extends AbstractContainerScreen<ResourceExt
             if (mouseX >= powerBarX && mouseX < powerBarX + powerBarWidth
                     && mouseY >= powerBarY && mouseY < powerBarY + powerBarHeight) {
                 EnergyStorage es = be.getEnergyStorage();
-                String text = ENERGY_FMT.format(es.getEnergyStored()) + "FE / " + ENERGY_FMT.format(es.getMaxEnergyStored()) + "FE";
+                String text = EnergyFormat.stored(es.getEnergyStored(), es.getMaxEnergyStored());
                 g.renderTooltip(this.font, Component.literal(text), mouseX - this.leftPos, mouseY - this.topPos);
             }
         }

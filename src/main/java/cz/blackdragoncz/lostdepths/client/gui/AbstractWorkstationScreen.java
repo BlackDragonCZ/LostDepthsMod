@@ -3,6 +3,7 @@ package cz.blackdragoncz.lostdepths.client.gui;
 import com.mojang.blaze3d.systems.RenderSystem;
 import cz.blackdragoncz.lostdepths.util.IEnergyAccessor;
 import cz.blackdragoncz.lostdepths.world.inventory.AbstractWorkstationMenu;
+import cz.blackdragoncz.lostdepths.util.EnergyFormat;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
@@ -12,7 +13,6 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.ResultSlot;
 import net.minecraftforge.energy.EnergyStorage;
 
-import java.text.DecimalFormat;
 
 public class AbstractWorkstationScreen<MENU extends AbstractWorkstationMenu> extends AbstractContainerScreen<MENU> {
 
@@ -72,18 +72,13 @@ public class AbstractWorkstationScreen<MENU extends AbstractWorkstationMenu> ext
         return super.keyPressed(key, b, c);
     }
 
-    private static final DecimalFormat energyStringFormat = new DecimalFormat("#,###"); // #,###
-
     @Override
     protected void renderLabels(GuiGraphics graphics, int mouseX, int mouseY) {
         if (this.energyAccessor != null) {
             EnergyStorage energyStorage = this.energyAccessor.getEnergyStorage();
 
             if (mouseX >= this.leftPos + 120 && mouseX < this.leftPos + 120 + 42 && mouseY >= this.topPos + 10 && mouseY < this.topPos + 10 + 14) {
-                String builder = energyStringFormat.format(energyStorage.getEnergyStored()) +
-                        "FE / " +
-                        energyStringFormat.format(energyStorage.getMaxEnergyStored()) +
-                        "FE";
+                String builder = EnergyFormat.stored(energyStorage.getEnergyStored(), energyStorage.getMaxEnergyStored());
 
                 graphics.renderTooltip(this.font, Component.literal(builder), mouseX - this.leftPos, mouseY - this.topPos);
             }
