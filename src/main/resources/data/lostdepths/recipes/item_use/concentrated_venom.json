@@ -1,0 +1,13 @@
+{
+  "type": "lostdepths:item_use",
+  "use_item": {
+    "item": "lostdepths:reinforced_bottle"
+  },
+  "use_on": {
+    "entity": "minecraft:cave_spider"
+  },
+  "result": {
+    "item": "lostdepths:concentrated_venom"
+  },
+  "use_description": "lostdepths.description.concentrated_venom_use"
+}

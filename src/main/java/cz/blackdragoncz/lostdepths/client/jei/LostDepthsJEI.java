@@ -9,6 +9,7 @@ import cz.blackdragoncz.lostdepths.client.jei.machines.ModuleCreatorRecipeCatego
 import cz.blackdragoncz.lostdepths.init.LostdepthsModItems;
 import cz.blackdragoncz.lostdepths.init.LostDepthsModRecipeType;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModMenus;
+import cz.blackdragoncz.lostdepths.recipe.ItemUseRecipe;
 import cz.blackdragoncz.lostdepths.world.inventory.AlloyWorkstationMenu;
 import cz.blackdragoncz.lostdepths.world.inventory.GalacticWorkstationMenu;
 import cz.blackdragoncz.lostdepths.world.inventory.ModuleCreatorGUIMenu;
@@ -73,6 +74,7 @@ public class LostDepthsJEI implements IModPlugin {
         registry.addRecipeCategories(new AlloyWorkstationRecipeCategory(guiHelper, RecipeViewerRecipeType.ALLOY_WORKSTATION));
         registry.addRecipeCategories(new ModuleCreatorRecipeCategory(guiHelper, RecipeViewerRecipeType.MODULE_CREATOR));
         registry.addRecipeCategories(new ItemUseCategory(guiHelper, RecipeViewerRecipeType.ITEM_USE));
+        registry.addRecipeCategories(new EntityUseCategory(guiHelper, RecipeViewerRecipeType.ENTITY_USE));
         registry.addRecipeCategories(new MetaMaterializerCategory(guiHelper, RecipeViewerRecipeType.META_MATERIALIZER));
         registry.addRecipeCategories(new FusionTableRecipeCategory(guiHelper, RecipeViewerRecipeType.FUSION_TABLE));
         registry.addRecipeCategories(new ChestLootCategory(guiHelper));
@@ -94,7 +96,9 @@ public class LostDepthsJEI implements IModPlugin {
         registry.addRecipes(recipeType(RecipeViewerRecipeType.ALLOY_WORKSTATION), LostDepthsModRecipeType.ALLOY_WORKSTATION.get().getRecipeType().getRecipes(Minecraft.getInstance().level));
         registry.addRecipes(recipeType(RecipeViewerRecipeType.MODULE_CREATOR), LostDepthsModRecipeType.MODULE_CREATOR.get().getRecipeType().getRecipes(Minecraft.getInstance().level));
 
-        registry.addRecipes(recipeType(RecipeViewerRecipeType.ITEM_USE), LostDepthsModRecipeType.ITEM_USE.get().getRecipeType().getRecipes(Minecraft.getInstance().level));
+        List<ItemUseRecipe> itemUse = LostDepthsModRecipeType.ITEM_USE.get().getRecipeType().getRecipes(Minecraft.getInstance().level);
+        registry.addRecipes(recipeType(RecipeViewerRecipeType.ITEM_USE), itemUse.stream().filter(r -> r.getUseOnEntity() == null).toList());
+        registry.addRecipes(recipeType(RecipeViewerRecipeType.ENTITY_USE), itemUse.stream().filter(r -> r.getUseOnEntity() != null).toList());
         registry.addRecipes(recipeType(RecipeViewerRecipeType.META_MATERIALIZER), LostDepthsModRecipeType.META_MATERIALIZER.get().getRecipeType().getRecipes(Minecraft.getInstance().level));
         registry.addRecipes(recipeType(RecipeViewerRecipeType.FUSION_TABLE), LostDepthsModRecipeType.FUSION_TABLE.get().getRecipeType().getRecipes(Minecraft.getInstance().level));
 

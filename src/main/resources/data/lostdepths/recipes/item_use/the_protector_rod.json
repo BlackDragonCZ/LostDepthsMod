@@ -1,0 +1,13 @@
+{
+  "type": "lostdepths:item_use",
+  "use_item": {
+    "item": "lostdepths:rod_of_transformation"
+  },
+  "use_on": {
+    "entity": "minecraft:iron_golem"
+  },
+  "result": {
+    "entity": "lostdepths:the_protector"
+  },
+  "use_description": "lostdepths.description.the_protector_rod_use"
+}

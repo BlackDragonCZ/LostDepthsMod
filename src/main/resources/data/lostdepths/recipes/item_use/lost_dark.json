@@ -1,0 +1,13 @@
+{
+  "type": "lostdepths:item_use",
+  "use_item": {
+    "item": "lostdepths:rod_of_transformation"
+  },
+  "use_on": {
+    "entity": "minecraft:ghast"
+  },
+  "result": {
+    "entity": "lostdepths:lost_dark"
+  },
+  "use_description": "lostdepths.description.lost_dark_use"
+}

@@ -1,0 +1,13 @@
+{
+  "type": "lostdepths:item_use",
+  "use_item": {
+    "item": "lostdepths:rod_of_transformation"
+  },
+  "use_on": {
+    "entity": "minecraft:spider"
+  },
+  "result": {
+    "entity": "lostdepths:arachnota"
+  },
+  "use_description": "lostdepths.description.arachnota_use"
+}

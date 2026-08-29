@@ -1,0 +1,13 @@
+{
+  "type": "lostdepths:item_use",
+  "use_item": {
+    "item": "lostdepths:slippery_ingot"
+  },
+  "use_on": {
+    "entity": "minecraft:blaze"
+  },
+  "result": {
+    "item": "lostdepths:unstable_ingot"
+  },
+  "use_description": "lostdepths.description.unstable_ingot_use"
+}

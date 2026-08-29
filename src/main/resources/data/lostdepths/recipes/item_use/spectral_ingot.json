@@ -1,0 +1,13 @@
+{
+  "type": "lostdepths:item_use",
+  "use_item": {
+    "item": "lostdepths:frozen_ingot"
+  },
+  "use_on": {
+    "entity": "lostdepths:the_protector"
+  },
+  "result": {
+    "item": "lostdepths:spectral_ingot"
+  },
+  "use_description": "lostdepths.description.spectral_ingot_use"
+}

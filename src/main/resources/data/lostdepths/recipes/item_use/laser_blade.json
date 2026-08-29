@@ -1,0 +1,13 @@
+{
+  "type": "lostdepths:item_use",
+  "use_item": {
+    "item": "lostdepths:reinforced_blade"
+  },
+  "use_on": {
+    "entity": "lostdepths:the_protector"
+  },
+  "result": {
+    "item": "lostdepths:laser_blade"
+  },
+  "use_description": "lostdepths.description.laser_blade_use"
+}

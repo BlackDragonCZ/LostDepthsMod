@@ -1,11 +1,15 @@
 package cz.blackdragoncz.lostdepths.client.jei;
 
+import cz.blackdragoncz.lostdepths.LostdepthsMod;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModItems;
 import cz.blackdragoncz.lostdepths.recipe.*;
 import cz.blackdragoncz.lostdepths.init.LostDepthsModRecipeType;
 import cz.blackdragoncz.lostdepths.util.IItemProvider;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.items.wrapper.RecipeWrapper;
 import org.jetbrains.annotations.NotNull;
 
@@ -59,6 +63,10 @@ public class RecipeViewerRecipeType {
             return LostdepthsModItems.USE_ICON.get();
         }
     });
+
+    // Same lostdepths:item_use recipes, split off at JEI registration by whether use_on is a mob.
+    public static final EntityUseRecipeType ENTITY_USE = new EntityUseRecipeType(new ResourceLocation(LostdepthsMod.MODID, "entity_use"),
+            Component.translatable("gui.lostdepths.jei.entity_use"), () -> new ItemStack(LostdepthsModItems.USE_ICON.get()), 0, 0, 177, 60);
 
     public static final RecipeTypeWrapper<RecipeWrapper, MetaMaterializerRecipe> META_MATERIALIZER = new RecipeTypeWrapper<>(LostDepthsModRecipeType.META_MATERIALIZER.get(), MetaMaterializerRecipe.class, 0, 0, 177, 80, new IItemProvider() {
         @Override

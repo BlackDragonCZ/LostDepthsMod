@@ -1,0 +1,13 @@
+{
+  "type": "lostdepths:item_use",
+  "use_item": {
+    "item": "lostdepths:rod_of_transformation"
+  },
+  "use_on": {
+    "entity": "minecraft:slime"
+  },
+  "result": {
+    "entity": "lostdepths:guoon"
+  },
+  "use_description": "lostdepths.description.guoon_use"
+}

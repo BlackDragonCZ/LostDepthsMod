@@ -5,7 +5,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.ShearsItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.entity.player.Player;
@@ -18,7 +17,7 @@ import java.util.List;
 
 import cz.blackdragoncz.lostdepths.procedures.GuardianElixirOnRightClickProcedure;
 
-public class GuardianElixirItem extends ShearsItem {
+public class GuardianElixirItem extends Item {
 	public GuardianElixirItem() {
 		super(new Item.Properties().durability(0).fireResistant());
 	}

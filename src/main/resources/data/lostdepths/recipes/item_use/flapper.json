@@ -1,0 +1,13 @@
+{
+  "type": "lostdepths:item_use",
+  "use_item": {
+    "item": "lostdepths:rod_of_transformation"
+  },
+  "use_on": {
+    "entity": "minecraft:bee"
+  },
+  "result": {
+    "entity": "lostdepths:flapper"
+  },
+  "use_description": "lostdepths.description.flapper_use"
+}

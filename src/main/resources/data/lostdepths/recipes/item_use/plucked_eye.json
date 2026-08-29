@@ -1,0 +1,13 @@
+{
+  "type": "lostdepths:item_use",
+  "use_item": {
+    "item": "minecraft:stick"
+  },
+  "use_on": {
+    "entity": "minecraft:zombie"
+  },
+  "result": {
+    "item": "lostdepths:plucked_eye"
+  },
+  "use_description": "lostdepths.description.plucked_eye_use"
+}
