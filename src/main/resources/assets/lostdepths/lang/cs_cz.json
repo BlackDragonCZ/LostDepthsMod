@@ -875,5 +875,9 @@
   "item.lostdepths.nt_crystal_1k": "NT 1K Úložný Krystal",
   "item.lostdepths.nt_crystal_4k": "NT 4K Úložný Krystal",
   "item.lostdepths.nt_crystal_16k": "NT 16K Úložný Krystal",
-  "item.lostdepths.nt_crystal_64k": "NT 64K Úložný Krystal"
+  "item.lostdepths.nt_crystal_64k": "NT 64K Úložný Krystal",
+  "enchantment.lostdepths.advanced_fortune": "§3Pokročilé štěstí",
+  "enchantment.lostdepths.advanced_looting": "§3Pokročilé drancování",
+  "enchantment.lostdepths.advanced_fortune.desc": "Některé bloky, například uhelná a diamantová ruda, mají vyšší šanci vypadnout ve větším množství.",
+  "enchantment.lostdepths.advanced_looting.desc": "Mobové po zabití zanechají ještě více kořisti."
 }
