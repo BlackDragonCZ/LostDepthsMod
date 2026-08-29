@@ -912,5 +912,7 @@
   "gui.lostdepths.hologram_set": "Set Hologram",
   "gui.lostdepths.hologram_state_shown": "State: shown",
   "gui.lostdepths.hologram_state_hidden": "State: hidden",
-  "gui.lostdepths.hologram_cull": "Cull back faces"
+  "gui.lostdepths.hologram_cull": "Cull back faces",
+  "enchantment.lostdepths.advanced_fortune.desc": "Some blocks like coal and diamond ore may drop additional items more likely.",
+  "enchantment.lostdepths.advanced_looting.desc": "Mobs will drop even more loot when killed."
 }
