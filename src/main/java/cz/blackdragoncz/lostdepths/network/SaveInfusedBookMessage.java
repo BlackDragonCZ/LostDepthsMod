@@ -81,6 +81,7 @@ public class SaveInfusedBookMessage {
 				newTag.put("pages", pagesList);
 				newTag.putString("title", bookTitle);
 				newTag.putString("author", player.getGameProfile().getName());
+				newTag.putUUID("author_id", player.getUUID());
 				newTag.putInt("generation", 0);
 				if (msg.contractAllowed) {
 					newTag.putBoolean("contract_allowed", true);

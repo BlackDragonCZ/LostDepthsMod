@@ -45,4 +45,5 @@ public class LostdepthsModSounds {
 	public static final RegistryObject<SoundEvent> CONVERSION = REGISTRY.register("conversion", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("lostdepths", "conversion")));
 	public static final RegistryObject<SoundEvent> MACHINE_CRAFT = REGISTRY.register("machine_craft", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("lostdepths", "machine_craft")));
     public static final RegistryObject<SoundEvent> GENERIC_UI_5 = REGISTRY.register("generic_ui_5", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("lostdepths", "generic_ui_5")));
+    public static final RegistryObject<SoundEvent> DASH = REGISTRY.register("dash", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("lostdepths", "dash")));
 }

@@ -34,29 +34,37 @@ public class ContractSignMessage {
 	public static void handler(ContractSignMessage msg, Supplier<NetworkEvent.Context> ctx) {
 		ctx.get().enqueueWork(() -> {
 			Player player = ctx.get().getSender();
-			if (player == null) return;
-			ItemStack stack = player.getItemInHand(msg.hand);
-			if (!stack.is(LostdepthsModItems.INFUSED_WRITTEN_BOOK.get())) return;
-
-			CompoundTag tag = stack.getTag();
-			if (tag == null) return;
-
-			// Must have contract_allowed flag set during book signing
-			if (!tag.getBoolean("contract_allowed")) {
-				player.displayClientMessage(Component.literal("§cThis book does not allow contract signing."), true);
-				return;
-			}
-
-			// Cannot re-sign
-			if (tag.contains("contract_signer")) {
-				player.displayClientMessage(Component.literal("§cThis book has already been signed."), true);
-				return;
-			}
-
-			tag.putString("contract_signer", player.getGameProfile().getName());
-			player.displayClientMessage(Component.literal("§aContract signed!"), true);
+			if (player != null)
+				trySign(player, player.getItemInHand(msg.hand));
 		});
 		ctx.get().setPacketHandled(true);
+	}
+
+	/**
+	 * Server side signing. Called straight from the item's use() so it also works for players that have
+	 * no client to send the packet - Carpet fake players in particular.
+	 */
+	public static void trySign(Player player, ItemStack stack) {
+		if (!stack.is(LostdepthsModItems.INFUSED_WRITTEN_BOOK.get())) return;
+
+		CompoundTag tag = stack.getTag();
+		if (tag == null) return;
+
+		// Must have contract_allowed flag set during book signing
+		if (!tag.getBoolean("contract_allowed")) {
+			player.displayClientMessage(Component.literal("§cThis book does not allow contract signing."), true);
+			return;
+		}
+
+		// Cannot re-sign
+		if (tag.contains("contract_signer")) {
+			player.displayClientMessage(Component.literal("§cThis book has already been signed."), true);
+			return;
+		}
+
+		tag.putString("contract_signer", player.getGameProfile().getName());
+		tag.putUUID("contract_signer_id", player.getUUID());
+		player.displayClientMessage(Component.literal("§aContract signed!"), true);
 	}
 
 	public static void sendToServer(InteractionHand hand) {

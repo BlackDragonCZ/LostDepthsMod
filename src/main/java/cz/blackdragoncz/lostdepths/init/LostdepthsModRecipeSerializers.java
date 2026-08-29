@@ -93,6 +93,7 @@ public class LostdepthsModRecipeSerializers {
     public static final RegistryObject<ItemUseRecipe.Serializer> ITEM_USE = REGISTRY_SERIALIZER.register("item_use", ItemUseRecipe.Serializer::new);
     public static final RegistryObject<MetaMaterializerRecipe.Serializer> META_MATERIALIZER = REGISTRY_SERIALIZER.register("meta_materializer", MetaMaterializerRecipe.Serializer::new);
     public static final RegistryObject<SimpleCraftingRecipeSerializer<InfusedBookCloningRecipe>> INFUSED_BOOK_CLONING = REGISTRY_SERIALIZER.register("infused_book_cloning", () -> new SimpleCraftingRecipeSerializer<>(InfusedBookCloningRecipe::new));
+    public static final RegistryObject<SimpleCraftingRecipeSerializer<SoulbinderSignRecipe>> SOULBINDER_SIGN = REGISTRY_SERIALIZER.register("soulbinder_sign", () -> new SimpleCraftingRecipeSerializer<>(SoulbinderSignRecipe::new));
 
     public static final RegistryObject<FusionTableRecipeSerializer> FUSION_TABLE = REGISTRY_SERIALIZER.register("fusion_table", () -> new FusionTableRecipeSerializer((ResourceLocation id, ItemStack input1, ItemStack input2, ItemStack output) -> new FusionTableRecipe(id, input1, input2, output) {
         @Override

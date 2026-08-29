@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "key": {
+    "A": {
+      "item": "lostdepths:clovinite_bar"
+    },
+    "B": {
+      "item": "lostdepths:cooked_eye"
+    },
+    "C": {
+      "item": "lostdepths:lifestrain_enigma"
+    }
+  },
+  "result": {
+    "item": "lostdepths:soulbinder",
+    "count": 1
+  }
+}

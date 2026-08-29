@@ -1,5 +1,6 @@
 package cz.blackdragoncz.lostdepths.item.book;
 
+import cz.blackdragoncz.lostdepths.ability.SoulBinding;
 import cz.blackdragoncz.lostdepths.client.ClientBookHooks;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModItems;
 import cz.blackdragoncz.lostdepths.network.ContractSignMessage;
@@ -27,13 +28,21 @@ public class InfusedWrittenBookItem extends Item {
 		super(new Item.Properties().stacksTo(1));
 	}
 
+	// Books signed before UUIDs were recorded get theirs filled in when the player is online. Throttled
+	// because it walks the player list; the tag check alone runs every tick.
+	@Override
+	public void inventoryTick(ItemStack stack, Level level, net.minecraft.world.entity.Entity entity, int slot, boolean selected) {
+		if (!level.isClientSide() && level.getGameTime() % 100 == 0)
+			SoulBinding.backfillBookIds(stack, level.getServer());
+	}
+
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
 		ItemStack stack = player.getItemInHand(hand);
 		if (player.isShiftKeyDown()) {
-			// Contract signing
-			if (level.isClientSide()) {
-				ContractSignMessage.sendToServer(hand);
+			// Contract signing, server side so it does not depend on a client sending the packet
+			if (!level.isClientSide()) {
+				ContractSignMessage.trySign(player, stack);
 			}
 			return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
 		}

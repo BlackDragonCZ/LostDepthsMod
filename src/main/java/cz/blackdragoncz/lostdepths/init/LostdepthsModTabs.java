@@ -450,6 +450,7 @@ public class LostdepthsModTabs {
 	public static final RegistryObject<CreativeModeTab> LD_PROTECTIVE = REGISTRY.register("ld_protective",
 					() -> CreativeModeTab.builder().title(Component.translatable("item_group.lostdepths.ld_protective")).icon(() -> new ItemStack(LostdepthsModItems.MIRROR_SHIELD.get())).displayItems((parameters, tabData) -> {
 						tabData.accept(LostdepthsModItems.MIRROR_SHIELD.get());
+						tabData.accept(LostdepthsModItems.SOULBINDER.get());
 					})
 					.build());
 	public static final RegistryObject<CreativeModeTab> LD_ITEMS = REGISTRY.register("ld_items",

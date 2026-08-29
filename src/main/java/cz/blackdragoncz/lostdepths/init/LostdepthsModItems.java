@@ -8,6 +8,7 @@ import cz.blackdragoncz.lostdepths.item.icon.*;
 import cz.blackdragoncz.lostdepths.item.ingot.*;
 import cz.blackdragoncz.lostdepths.item.part.*;
 import cz.blackdragoncz.lostdepths.item.ShipmentBoxItem;
+import cz.blackdragoncz.lostdepths.item.ability.SoulbinderItem;
 import cz.blackdragoncz.lostdepths.item.shield.MirrorShield;
 import cz.blackdragoncz.lostdepths.item.tool.*;
 import cz.blackdragoncz.lostdepths.item.security.*;
@@ -643,6 +644,7 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> GEM_DREAD = REGISTRY.register("gem_dread", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> CELESTIAL_GOLD = REGISTRY.register("celestial_gold", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> MIRROR_SHIELD = REGISTRY.register("mirror_shield", MirrorShield::new);
+	public static final RegistryObject<Item> SOULBINDER = REGISTRY.register("soulbinder", SoulbinderItem::new);
 	public static final RegistryObject<Item> CRIMSON_TRANSDUCER = REGISTRY.register("crimson_transducer", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> COMBUSTION_CHAMBER = REGISTRY.register("combustion_chamber", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> VOLATILE_GLOOP = REGISTRY.register("volatile_gloop", MasterPartRegistryItem::new);

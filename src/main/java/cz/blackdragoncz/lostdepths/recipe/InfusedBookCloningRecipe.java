@@ -60,6 +60,7 @@ public class InfusedBookCloningRecipe extends CustomRecipe {
 			newTag.putInt("generation", Math.min(gen + 1, 2));
 			// Do not copy contract_signer
 			newTag.remove("contract_signer");
+			newTag.remove("contract_signer_id");
 			newTag.remove("contract_allowed");
 			copy.setTag(newTag);
 		}

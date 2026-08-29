@@ -894,5 +894,6 @@
   "lostdepths.description.flapper_use": "§7Use §3Rod of Transformation §7on §3Bee §7pro vytvoření §3Flapper",
   "lostdepths.description.neuroblaze_use": "§7Use §3Rod of Transformation §7on §3Blaze §7pro vytvoření §3Neuroblaze",
   "lostdepths.description.arachnota_use": "§7Use §3Rod of Transformation §7on §3Spider §7pro vytvoření §3Arachnota",
-  "lostdepths.description.astralclaw_use": "§7Use §3Rod of Transformation §7on §3Wolf §7pro vytvoření §3Astralclaw"
+  "lostdepths.description.astralclaw_use": "§7Use §3Rod of Transformation §7on §3Wolf §7pro vytvoření §3Astralclaw",
+  "item.lostdepths.soulbinder": "Soulbinder"
 }

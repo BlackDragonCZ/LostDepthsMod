@@ -247,5 +247,13 @@
         "stream": false
       }
     ]
+  },
+  "dash": {
+    "sounds": [
+      {
+        "name": "lostdepths:dash",
+        "stream": false
+      }
+    ]
   }
 }
