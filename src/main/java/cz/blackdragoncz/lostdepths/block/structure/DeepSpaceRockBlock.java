@@ -17,7 +17,7 @@ import net.minecraft.core.BlockPos;
 
 import java.util.List;
 
-import cz.blackdragoncz.lostdepths.procedures.DeepSpaceRockBlockDestroyedByPlayerProcedure;
+import cz.blackdragoncz.lostdepths.procedures.SpaceRockRestoreProcedure;
 
 public class DeepSpaceRockBlock extends Block {
 	public DeepSpaceRockBlock() {
@@ -37,7 +37,7 @@ public class DeepSpaceRockBlock extends Block {
 	@Override
 	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
 		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
-		DeepSpaceRockBlockDestroyedByPlayerProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), entity);
+		SpaceRockRestoreProcedure.execute(world, pos, entity, this);
 		return retval;
 	}
 }

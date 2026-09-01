@@ -8,6 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -17,12 +18,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.Nullable;
 
-/**
- * A signature is a one-way oath: someone who signed the owner's contract book cannot land a Lost Depths
- * hit on that owner. The owner is not bound in return and hits the signer normally, even if the signer
- * carries their own bound item.
- */
+// A signature is a one-way oath: a signer cannot land a Lost Depths hit on the book's owner, but the
+// owner is not bound in return and hits the signer normally. Do not make this mutual.
 public class DodgeAbility extends SpecialAbility {
 
     private static final Direction[] HORIZONTAL = {Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST};
@@ -40,7 +39,7 @@ public class DodgeAbility extends SpecialAbility {
             return false;
         if (!SoulBinding.matchesSigner(stack, attackingPlayer))
             return false;
-        if (!isLostdepthsGear(attackingPlayer.getMainHandItem()))
+        if (!isLostdepthsWeapon(source, attackingPlayer))
             return false;
 
         sidestep(target);
@@ -48,13 +47,20 @@ public class DodgeAbility extends SpecialAbility {
         return true;
     }
 
-    /** Namespace check rather than a tag, so every current and future mod weapon counts with no list to maintain. */
-    private static boolean isLostdepthsGear(ItemStack stack) {
-        ResourceLocation id = ForgeRegistries.ITEMS.getKey(stack.getItem());
+    // Namespace check rather than a tag, so every current and future mod weapon counts with no list to maintain.
+    private static boolean isLostdepthsWeapon(DamageSource source, Player attacker) {
+        Entity direct = source.getDirectEntity();
+        // Judge a projectile by the projectile: by the time it lands the shooter may have swapped hands.
+        if (direct != null && direct != attacker)
+            return isLostdepths(ForgeRegistries.ENTITY_TYPES.getKey(direct.getType()));
+        return isLostdepths(ForgeRegistries.ITEMS.getKey(attacker.getMainHandItem().getItem()));
+    }
+
+    private static boolean isLostdepths(@Nullable ResourceLocation id) {
         return id != null && LostdepthsMod.MODID.equals(id.getNamespace());
     }
 
-    /** One block in a random horizontal direction. The hit is negated either way; a blocked player just stands still. */
+    // One block in a random horizontal direction. The hit is negated either way; a blocked player just stands still.
     private static void sidestep(Player target) {
         int start = target.level().getRandom().nextInt(HORIZONTAL.length);
         for (int i = 0; i < HORIZONTAL.length; i++) {

@@ -2,5 +2,28 @@
   "parent": "item/handheld",
   "textures": {
     "layer0": "lostdepths:item/venom_knife"
+  },
+  "_comment": "Art runs top-left to bottom-right, the opposite diagonal to vanilla tools, so bare item/handheld hangs it pointing down. Rotations are the house fix (as blade_of_the_dead / ghost_hunter / cane_of_venom); translation and scale are stock item/handheld so the size is unchanged. Do not touch the rotations.",
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [ -75, -90, -125 ],
+      "translation": [ 0, 4.0, 0.5 ],
+      "scale": [ 0.85, 0.85, 0.85 ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [ 75, 90, -35 ],
+      "translation": [ 0, 4.0, 0.5 ],
+      "scale": [ 0.85, 0.85, 0.85 ]
+    },
+    "firstperson_righthand": {
+      "rotation": [ 90, -90, 25 ],
+      "translation": [ 1.13, 3.2, 1.13 ],
+      "scale": [ 0.68, 0.68, 0.68 ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [ 90, 90, -25 ],
+      "translation": [ 1.13, 3.2, 1.13 ],
+      "scale": [ 0.68, 0.68, 0.68 ]
+    }
   }
 }

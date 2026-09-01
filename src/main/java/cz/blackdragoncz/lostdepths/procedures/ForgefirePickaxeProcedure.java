@@ -23,9 +23,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import java.util.Optional;
 
 @Mod.EventBusSubscriber
 public class ForgefirePickaxeProcedure {
@@ -35,6 +38,20 @@ public class ForgefirePickaxeProcedure {
     private static boolean isLava(Level level, BlockPos pos) {
         FluidState fluidState = level.getFluidState(pos);
         return fluidState.getType() == Fluids.LAVA || fluidState.getType() == Fluids.FLOWING_LAVA;
+    }
+
+    // No saved dive coordinates: prefer the player's own bed or anchor, then world spawn. The last flag is
+    // "respawning after the end fight", which here just means do not burn a respawn anchor charge - the
+    // player is travelling home, not dying. Bed/anchor is only usable if it is in the level we return to.
+    private static Vec3 safeReturnPos(ServerPlayer player, ServerLevel level) {
+        BlockPos respawn = player.getRespawnPosition();
+        if (respawn != null && player.getRespawnDimension() == level.dimension()) {
+            Optional<Vec3> found = Player.findRespawnPositionAndUseSpawnBlock(level, respawn, player.getRespawnAngle(), player.isRespawnForced(), true);
+            if (found.isPresent())
+                return found.get();
+        }
+        BlockPos spawn = level.getSharedSpawnPos();
+        return new Vec3(spawn.getX() + 0.5, spawn.getY(), spawn.getZ() + 0.5);
     }
 
     private static boolean isDivingInLava(Level level, BlockPos pos) {
@@ -105,8 +122,18 @@ public class ForgefirePickaxeProcedure {
 
                             LostdepthsModVariables.PlayerVariables variables = player.getCapability(LostdepthsModVariables.PLAYER_VARIABLES_CAPABILITY).orElse(new LostdepthsModVariables.PlayerVariables());
 
+                            // Reaching lost_dungeons any other way (portal, command, respawn) leaves these unset,
+                            // and 0/0/0 would drop the player into the void on the way back.
+                            double returnX = variables.x, returnY = variables.y + 2, returnZ = variables.z;
+                            if (variables.x == 0 && variables.y == 0 && variables.z == 0) {
+                                Vec3 fallback = safeReturnPos(serverPlayer, nextLevel);
+                                returnX = fallback.x;
+                                returnY = fallback.y;
+                                returnZ = fallback.z;
+                            }
+
                             serverPlayer.connection.send(new ClientboundGameEventPacket(ClientboundGameEventPacket.WIN_GAME, 0));
-                            serverPlayer.teleportTo(nextLevel, variables.x, variables.y + 2, variables.z, serverPlayer.getYRot(), serverPlayer.getXRot());
+                            serverPlayer.teleportTo(nextLevel, returnX, returnY, returnZ, serverPlayer.getYRot(), serverPlayer.getXRot());
                             serverPlayer.connection.send(new ClientboundPlayerAbilitiesPacket(serverPlayer.getAbilities()));
                             for (MobEffectInstance _effectinstance : serverPlayer.getActiveEffects())
                                 serverPlayer.connection.send(new ClientboundUpdateMobEffectPacket(serverPlayer.getId(), _effectinstance));

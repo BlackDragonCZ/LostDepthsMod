@@ -20,7 +20,8 @@ import net.minecraft.core.BlockPos;
 
 import java.util.List;
 
-import cz.blackdragoncz.lostdepths.procedures.CloviniteOreBlockDestroyedByPlayerProcedure;
+import cz.blackdragoncz.lostdepths.init.LostdepthsModItems;
+import cz.blackdragoncz.lostdepths.procedures.RegrowingBlockProcedure;
 
 public class CloviniteOreBlock extends Block {
 	public CloviniteOreBlock() {
@@ -45,7 +46,7 @@ public class CloviniteOreBlock extends Block {
 	@Override
 	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
 		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
-		CloviniteOreBlockDestroyedByPlayerProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), entity);
+		RegrowingBlockProcedure.execute(world, pos, entity, LostdepthsModItems.FORGEFIRE_AXE.get(), LostdepthsModItems.CLOVINITE.get(), this);
 		return retval;
 	}
 }

@@ -10,10 +10,8 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-/**
- * Runs carried abilities. LivingAttackEvent rather than LivingHurtEvent so a negated hit costs the
- * attacker everything - damage, knockback and the hurt animation - instead of just zeroing the number.
- */
+// LivingAttackEvent, not LivingHurtEvent: cancelling here costs the attacker damage, knockback and the
+// hurt animation, instead of landing a hit for zero.
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class AbilityEvents {
 

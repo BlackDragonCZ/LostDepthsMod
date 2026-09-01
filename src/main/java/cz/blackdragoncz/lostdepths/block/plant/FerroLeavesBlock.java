@@ -22,7 +22,7 @@ import net.minecraft.core.BlockPos;
 
 import java.util.List;
 
-import cz.blackdragoncz.lostdepths.procedures.FerroLeavesBlockDestroyedByPlayerProcedure;
+import cz.blackdragoncz.lostdepths.procedures.RegrowingBlockProcedure;
 
 public class FerroLeavesBlock extends Block {
 	public FerroLeavesBlock() {
@@ -52,7 +52,7 @@ public class FerroLeavesBlock extends Block {
 	@Override
 	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
 		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
-		FerroLeavesBlockDestroyedByPlayerProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		RegrowingBlockProcedure.execute(world, pos, this);
 		return retval;
 	}
 }

@@ -21,11 +21,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-/**
- * Bind by using it, unbind with shift-use. While its owner carries it anywhere in their inventory it
- * revives them like a Totem of Undying without being consumed, and makes them unhittable by anyone who
- * signed a contract book the owner wrote. See {@link SoulBinding}.
- */
+// Bind by using it, shift-use to unbind. Protects its owner from anyone who signed their contract book.
 public class SoulbinderItem extends Item implements SpecialAbilityProvider {
 
     public SoulbinderItem() {
@@ -34,7 +30,7 @@ public class SoulbinderItem extends Item implements SpecialAbilityProvider {
 
     @Override
     public List<SpecialAbility> getAbilities(ItemStack stack) {
-        return List.of(LostdepthsModAbilities.SOUL_DODGE, LostdepthsModAbilities.SOUL_REVIVAL);
+        return List.of(LostdepthsModAbilities.SOUL_DODGE);
     }
 
     @Override

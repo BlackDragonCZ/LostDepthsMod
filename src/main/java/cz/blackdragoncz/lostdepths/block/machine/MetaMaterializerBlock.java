@@ -36,7 +36,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
 
-import cz.blackdragoncz.lostdepths.procedures.MetaMaterializerOnBlockRightClickedProcedure;
 import cz.blackdragoncz.lostdepths.block.entity.MetaMaterializerBlockEntity;
 
 public class MetaMaterializerBlock extends Block implements EntityBlock {

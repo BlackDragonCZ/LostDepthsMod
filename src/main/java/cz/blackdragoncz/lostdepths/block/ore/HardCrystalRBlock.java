@@ -24,7 +24,7 @@ import net.minecraft.core.BlockPos;
 
 import java.util.List;
 
-import cz.blackdragoncz.lostdepths.procedures.HardCrystalRBlockDestroyedProcedure;
+import cz.blackdragoncz.lostdepths.procedures.HardCrystalMiningProcedure;
 
 public class HardCrystalRBlock extends Block {
 	public HardCrystalRBlock() {
@@ -59,7 +59,7 @@ public class HardCrystalRBlock extends Block {
 	@Override
 	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
 		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
-		HardCrystalRBlockDestroyedProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), entity);
+		HardCrystalMiningProcedure.execute(world, pos, entity, this);
 		return retval;
 	}
 }

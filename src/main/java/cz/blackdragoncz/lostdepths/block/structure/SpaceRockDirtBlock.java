@@ -19,7 +19,7 @@ import net.minecraft.core.BlockPos;
 
 import java.util.List;
 
-import cz.blackdragoncz.lostdepths.procedures.SpaceRockDirtBlockDestroyedByPlayerProcedure;
+import cz.blackdragoncz.lostdepths.procedures.SpaceRockRestoreProcedure;
 
 public class SpaceRockDirtBlock extends Block {
 	public SpaceRockDirtBlock() {
@@ -44,7 +44,7 @@ public class SpaceRockDirtBlock extends Block {
 	@Override
 	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
 		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
-		SpaceRockDirtBlockDestroyedByPlayerProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), entity);
+		SpaceRockRestoreProcedure.execute(world, pos, entity, this);
 		return retval;
 	}
 }

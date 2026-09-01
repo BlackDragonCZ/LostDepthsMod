@@ -21,7 +21,8 @@ import net.minecraft.core.BlockPos;
 
 import java.util.List;
 
-import cz.blackdragoncz.lostdepths.procedures.JammerABlockDestroyedByPlayerProcedure;
+import cz.blackdragoncz.lostdepths.init.LostdepthsModItems;
+import cz.blackdragoncz.lostdepths.procedures.JammerFragmentProcedure;
 
 public class JammerABlock extends Block {
 	public JammerABlock() {
@@ -46,7 +47,7 @@ public class JammerABlock extends Block {
 	@Override
 	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
 		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
-		JammerABlockDestroyedByPlayerProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), entity);
+		JammerFragmentProcedure.execute(world, pos, entity, LostdepthsModItems.JAMMER_FRAGMENT_A.get());
 		return retval;
 	}
 }
