@@ -1,6 +1,5 @@
 package cz.blackdragoncz.lostdepths.ability;
 
-import cz.blackdragoncz.lostdepths.LostdepthsMod;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -8,7 +7,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -17,8 +15,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.registries.ForgeRegistries;
-import org.jetbrains.annotations.Nullable;
 
 // A signature is a one-way oath: a signer cannot land a Lost Depths hit on the book's owner, but the
 // owner is not bound in return and hits the signer normally. Do not make this mutual.
@@ -39,25 +35,12 @@ public class DodgeAbility extends SpecialAbility {
             return false;
         if (!SoulBinding.matchesSigner(stack, attackingPlayer))
             return false;
-        if (!isLostdepthsWeapon(source, attackingPlayer))
+        if (!DamageOrigin.isLostdepthsWeapon(source))
             return false;
 
         sidestep(target);
         target.level().playSound(null, target.blockPosition(), LostdepthsModSounds.DASH.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
         return true;
-    }
-
-    // Namespace check rather than a tag, so every current and future mod weapon counts with no list to maintain.
-    private static boolean isLostdepthsWeapon(DamageSource source, Player attacker) {
-        Entity direct = source.getDirectEntity();
-        // Judge a projectile by the projectile: by the time it lands the shooter may have swapped hands.
-        if (direct != null && direct != attacker)
-            return isLostdepths(ForgeRegistries.ENTITY_TYPES.getKey(direct.getType()));
-        return isLostdepths(ForgeRegistries.ITEMS.getKey(attacker.getMainHandItem().getItem()));
-    }
-
-    private static boolean isLostdepths(@Nullable ResourceLocation id) {
-        return id != null && LostdepthsMod.MODID.equals(id.getNamespace());
     }
 
     // One block in a random horizontal direction. The hit is negated either way; a blocked player just stands still.

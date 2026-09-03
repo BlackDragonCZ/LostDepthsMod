@@ -783,7 +783,7 @@
   "item.lostdepths.infused_cutters": "Infused Wire Cutters",
   "config.jade.plugin_lostdepths.time": "Test",
   "config.jade.plugin_lostdepths.ore_tier": "Ore Tier Requirement",
-  "lostdepths.time": "Time: %d s",
+  "lostdepths.time": "Time: %s s",
   "block.lostdepths.infused_sign": "Infused Sign",
   "block.lostdepths.infused_hanging_sign": "Infused Hanging Sign",
   "block.lostdepths.infused_iron_door": "Infused Iron Door",
@@ -930,5 +930,11 @@
   "lostdepths.description.neuroblaze_use": "§7Use §3Rod of Transformation §7on §3Blaze §7to create §3Neuroblaze",
   "lostdepths.description.arachnota_use": "§7Use §3Rod of Transformation §7on §3Spider §7to create §3Arachnota",
   "lostdepths.description.astralclaw_use": "§7Use §3Rod of Transformation §7on §3Wolf §7to create §3Astralclaw",
-  "item.lostdepths.soulbinder": "Soulbinder"
+  "item.lostdepths.soulbinder": "Soulbinder",
+  "lostdepths.shipment_box.weight": "Weight: %s/%s lbs",
+  "lostdepths.shipment_box.contents": "Contents: %s items",
+  "item.lostdepths.spectros_armor_helmet": "Spectros Helmet",
+  "item.lostdepths.spectros_armor_chestplate": "Spectros Chestplate",
+  "item.lostdepths.spectros_armor_leggings": "Spectros Leggings",
+  "item.lostdepths.spectros_armor_boots": "Spectros Boots"
 }

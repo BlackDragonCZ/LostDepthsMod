@@ -13,12 +13,14 @@ import cz.blackdragoncz.lostdepths.client.model.Modelthe_protector;
 import cz.blackdragoncz.lostdepths.client.model.Modelmr_boomer;
 import cz.blackdragoncz.lostdepths.client.model.Modelcustom_model;
 import cz.blackdragoncz.lostdepths.client.model.Modelcrying_ghast;
+import cz.blackdragoncz.lostdepths.client.model.armor.SpectrosArmorModel;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = {Dist.CLIENT})
 public class LostdepthsModModels {
 	@SubscribeEvent
 	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
 		event.registerLayerDefinition(Modelcrying_ghast.LAYER_LOCATION, Modelcrying_ghast::createBodyLayer);
+		event.registerLayerDefinition(SpectrosArmorModel.LAYER, SpectrosArmorModel::createBodyLayer);
 		event.registerLayerDefinition(Modelthe_protector.LAYER_LOCATION, Modelthe_protector::createBodyLayer);
 		event.registerLayerDefinition(Modelcustom_model.LAYER_LOCATION, Modelcustom_model::createBodyLayer);
 		event.registerLayerDefinition(Modelmr_boomer.LAYER_LOCATION, Modelmr_boomer::createBodyLayer);

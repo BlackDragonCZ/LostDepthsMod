@@ -248,6 +248,10 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModItems.STAR_ARMOR_BOOTS.get());
 				tabData.accept(LostdepthsModItems.STAR_KEY.get());
 				tabData.accept(LostdepthsModItems.DRACONIC_KEY.get());
+				tabData.accept(LostdepthsModItems.SPECTROS_ARMOR_HELMET.get());
+				tabData.accept(LostdepthsModItems.SPECTROS_ARMOR_CHESTPLATE.get());
+				tabData.accept(LostdepthsModItems.SPECTROS_ARMOR_LEGGINGS.get());
+				tabData.accept(LostdepthsModItems.SPECTROS_ARMOR_BOOTS.get());
 				tabData.accept(LostdepthsModItems.DRACONIC_ARMOR_CHESTPLATE.get());
 				tabData.accept(LostdepthsModItems.DRACONIC_ARMOR_LEGGINGS.get());
 				tabData.accept(LostdepthsModItems.DRACONIC_ARMOR_BOOTS.get());

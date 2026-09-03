@@ -26,11 +26,13 @@ public class ShipmentBoxItem extends Item {
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, level, tooltip, flag);
         int weight = getWeight(stack);
-        tooltip.add(Component.literal("Weight: " + weight + "/" + MAX_WEIGHT + " lbs").withStyle(ChatFormatting.GRAY));
+        // The unit is a label, not a conversion - the number is identical in every language, only lbs/kg
+        // differs so it reads naturally for the player. Keep the unit inside the lang string.
+        tooltip.add(Component.translatable("lostdepths.shipment_box.weight", weight, MAX_WEIGHT).withStyle(ChatFormatting.GRAY));
 
         ListTag items = getStoredItems(stack);
         if (!items.isEmpty()) {
-            tooltip.add(Component.literal("Contents: " + items.size() + " items").withStyle(ChatFormatting.DARK_GRAY));
+            tooltip.add(Component.translatable("lostdepths.shipment_box.contents", items.size()).withStyle(ChatFormatting.DARK_GRAY));
         }
     }
 

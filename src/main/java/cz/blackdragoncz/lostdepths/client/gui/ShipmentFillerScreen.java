@@ -46,7 +46,7 @@ public class ShipmentFillerScreen extends AbstractContainerScreen<ShipmentFiller
                 && mouseY >= barY && mouseY <= barY + PROGRESS_MAX_HEIGHT) {
             int weight = menu.getWeight();
             g.renderTooltip(this.font,
-                    List.of(Component.literal("Weight: " + weight + "/" + ShipmentBoxItem.MAX_WEIGHT + " lbs")),
+                    List.of(Component.translatable("lostdepths.shipment_box.weight", weight, ShipmentBoxItem.MAX_WEIGHT)),
                     Optional.empty(), mouseX, mouseY);
         }
     }

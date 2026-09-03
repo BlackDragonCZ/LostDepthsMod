@@ -781,7 +781,7 @@
   "item.lostdepths.infused_cutters": "Infused drátové kleště",
   "config.jade.plugin_lostdepths.time": "Test",
   "config.jade.plugin_lostdepths.ore_tier": "Požadavek na úroveň krumpáče",
-  "lostdepths.time": "Čas: %d s",
+  "lostdepths.time": "Čas: %s s",
   "block.lostdepths.infused_sign": "Infused cedule",
   "block.lostdepths.infused_hanging_sign": "Infused závěsná cedule",
   "block.lostdepths.infused_iron_door": "Infusovane zelezne dvere",
@@ -895,5 +895,11 @@
   "lostdepths.description.neuroblaze_use": "§7Use §3Rod of Transformation §7on §3Blaze §7pro vytvoření §3Neuroblaze",
   "lostdepths.description.arachnota_use": "§7Use §3Rod of Transformation §7on §3Spider §7pro vytvoření §3Arachnota",
   "lostdepths.description.astralclaw_use": "§7Use §3Rod of Transformation §7on §3Wolf §7pro vytvoření §3Astralclaw",
-  "item.lostdepths.soulbinder": "Soulbinder"
+  "item.lostdepths.soulbinder": "Soulbinder",
+  "lostdepths.shipment_box.weight": "Hmotnost: %s/%s kg",
+  "lostdepths.shipment_box.contents": "Obsah: %s předmětů",
+  "item.lostdepths.spectros_armor_helmet": "Spectros přilba",
+  "item.lostdepths.spectros_armor_chestplate": "Spectros hrudní plát",
+  "item.lostdepths.spectros_armor_leggings": "Spectros nohavice",
+  "item.lostdepths.spectros_armor_boots": "Spectros boty"
 }

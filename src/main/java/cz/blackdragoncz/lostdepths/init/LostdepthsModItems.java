@@ -518,6 +518,10 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> DRACONIC_CHEST_OPEN = block(LostdepthsModBlocks.DRACONIC_CHEST_OPEN);
 	public static final RegistryObject<Item> STAR_KEY = REGISTRY.register("star_key", MasterPartRegistryItem::new);
 	public static final RegistryObject<Item> DRACONIC_KEY = REGISTRY.register("draconic_key", MasterPartRegistryItem::new);
+	public static final RegistryObject<Item> SPECTROS_ARMOR_HELMET = REGISTRY.register("spectros_armor_helmet", () -> new SpectrosArmorItem.Helmet());
+	public static final RegistryObject<Item> SPECTROS_ARMOR_CHESTPLATE = REGISTRY.register("spectros_armor_chestplate", () -> new SpectrosArmorItem.Chestplate());
+	public static final RegistryObject<Item> SPECTROS_ARMOR_LEGGINGS = REGISTRY.register("spectros_armor_leggings", () -> new SpectrosArmorItem.Leggings());
+	public static final RegistryObject<Item> SPECTROS_ARMOR_BOOTS = REGISTRY.register("spectros_armor_boots", () -> new SpectrosArmorItem.Boots());
 	public static final RegistryObject<Item> DRACONIC_ARMOR_CHESTPLATE = REGISTRY.register("draconic_armor_chestplate", () -> new DraconicArmorItem.Chestplate());
 	public static final RegistryObject<Item> DRACONIC_ARMOR_LEGGINGS = REGISTRY.register("draconic_armor_leggings", () -> new DraconicArmorItem.Leggings());
 	public static final RegistryObject<Item> DRACONIC_ARMOR_BOOTS = REGISTRY.register("draconic_armor_boots", () -> new DraconicArmorItem.Boots());
