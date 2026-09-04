@@ -35,6 +35,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
@@ -66,6 +67,10 @@ public class ResourceExtractorBlockEntity extends BaseEnergyContainerBlockEntity
     private static final int VANILLA_ENERGY_PER_TICK = 70;  // FE/t for vanilla ores
     private static final int VANILLA_INTERVAL = 100;        // 5s
     private static final int MODDED_INTERVAL = 300;         // 15s - lostdepths ores, FE/t comes from the ore tier
+    // Ancient debris outprices every lostdepths ore: 640 FE/t beats Nightmare's 480, 30s doubles the cycle, 384,000 FE per debris.
+    // Must stay under MAX_TRANSFER or no feed could sustain it.
+    private static final int DEBRIS_ENERGY_PER_TICK = 640;
+    private static final int DEBRIS_INTERVAL = 600;
 
     // Status constants. 0-1 render red, 2-3 orange, 4 green.
     public static final int STATUS_REDSTONE = 0;  // switched off by a redstone signal
@@ -142,7 +147,7 @@ public class ResourceExtractorBlockEntity extends BaseEnergyContainerBlockEntity
     // --- What is underneath ---
 
     /** Resolved via the registries, not description-id matching, so ore_empty and tree blocks are refused. */
-    private record Target(@Nullable OreDefinition ore, @Nullable CrystalDefinition crystal, boolean vanilla,
+    private record Target(@Nullable OreDefinition ore, @Nullable CrystalDefinition crystal,
                           BlockState state, int energyPerTick, int interval) {}
 
     @Nullable
@@ -153,14 +158,18 @@ public class ResourceExtractorBlockEntity extends BaseEnergyContainerBlockEntity
 
         OreDefinition ore = LostdepthsModOres.findByBlock(block);
         if (ore != null)
-            return new Target(ore, null, false, below, ore.minTier().energyPerTick(), MODDED_INTERVAL);
+            return new Target(ore, null, below, ore.minTier().energyPerTick(), MODDED_INTERVAL);
 
         CrystalDefinition crystal = LostdepthsModOres.findCrystal(block);
         if (crystal != null)
-            return new Target(null, crystal, false, below, crystal.minTier().energyPerTick(), MODDED_INTERVAL);
+            return new Target(null, crystal, below, crystal.minTier().energyPerTick(), MODDED_INTERVAL);
+
+        // Ancient debris: vanilla loot table and vanilla mining level, priced above every lostdepths ore.
+        if (below.is(Tags.Blocks.ORES_NETHERITE_SCRAP))
+            return new Target(null, null, below, DEBRIS_ENERGY_PER_TICK, DEBRIS_INTERVAL);
 
         if (isVanillaOre(below))
-            return new Target(null, null, true, below, VANILLA_ENERGY_PER_TICK, VANILLA_INTERVAL);
+            return new Target(null, null, below, VANILLA_ENERGY_PER_TICK, VANILLA_INTERVAL);
 
         return null;
     }
