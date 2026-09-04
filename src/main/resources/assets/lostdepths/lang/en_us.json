@@ -936,5 +936,6 @@
   "item.lostdepths.spectros_armor_helmet": "Spectros Helmet",
   "item.lostdepths.spectros_armor_chestplate": "Spectros Chestplate",
   "item.lostdepths.spectros_armor_leggings": "Spectros Leggings",
-  "item.lostdepths.spectros_armor_boots": "Spectros Boots"
+  "item.lostdepths.spectros_armor_boots": "Spectros Boots",
+  "death.attack.elimination.player": "%1$s was eliminated"
 }
