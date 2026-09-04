@@ -1,6 +1,7 @@
 package cz.blackdragoncz.lostdepths.block.entity;
 
-import net.minecraft.network.protocol.Packet;
+import com.google.common.collect.Lists;
+import net.minecraft.network.protocol.game.ClientboundMapItemDataPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
@@ -51,9 +52,11 @@ public final class DisplayPlateMapSync {
 		MapItemSavedData data = MapItem.getSavedData(mapId, player.level());
 		if (data == null)
 			return;
-		data.tickCarriedBy(player, stack);
-		Packet<?> packet = data.getUpdatePacket(mapId, player);
-		if (packet != null)
-			player.connection.send(packet);
+		// Not tickCarriedBy + getUpdatePacket: that pair drops any player who neither holds the stack nor has it in a real ItemFrame
+		// (MapItemSavedData:175 needs inventory.contains || stack.isFramed), so it returns null and the map stays blank for everyone
+		// except whoever once carried it. Push the whole 128x128 instead. Clone because the array serializes later on the netty thread.
+		player.connection.send(new ClientboundMapItemDataPacket(mapId, data.scale, data.locked,
+				Lists.newArrayList(data.getDecorations()),
+				new MapItemSavedData.MapPatch(0, 0, 128, 128, data.colors.clone())));
 	}
 }

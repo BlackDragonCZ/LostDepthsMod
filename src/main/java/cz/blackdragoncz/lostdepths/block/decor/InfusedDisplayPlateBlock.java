@@ -26,10 +26,15 @@ import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.eventbus.api.Event;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 
 import java.util.Collections;
 import java.util.List;
 
+@Mod.EventBusSubscriber
 public class InfusedDisplayPlateBlock extends FaceAttachedHorizontalDirectionalBlock implements EntityBlock {
 
     private static final VoxelShape SHAPE_FLOOR = Block.box(0, 0, 0, 16, 2, 16);
@@ -116,6 +121,11 @@ public class InfusedDisplayPlateBlock extends FaceAttachedHorizontalDirectionalB
         ItemStack inPlate = plate.getHeldItem();
 
         if (!inPlate.isEmpty()) {
+            if (player.isSecondaryUseActive()) {
+                plate.setRotation(plate.getRotation() + 1);
+                level.playSound(null, pos, SoundEvents.ITEM_FRAME_ROTATE_ITEM, SoundSource.BLOCKS, 1, 1);
+                return InteractionResult.CONSUME;
+            }
             player.getInventory().placeItemBackInInventory(inPlate.copy());
             plate.setHeldItem(ItemStack.EMPTY);
             level.playSound(null, pos, SoundEvents.ITEM_FRAME_REMOVE_ITEM, SoundSource.BLOCKS, 1, 1);
@@ -165,6 +175,18 @@ public class InfusedDisplayPlateBlock extends FaceAttachedHorizontalDirectionalB
             }
         }
         super.onRemove(state, level, pos, newState, isMoving);
+    }
+
+    // Sneaking with anything in hand normally skips use() entirely (ServerPlayerGameMode:346), so sneak-rotate would only ever
+    // work bare-handed. Force the block use through, but only on a filled plate, so an empty one still takes builds normally.
+    @SubscribeEvent
+    public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
+        if (!event.getEntity().isSecondaryUseActive())
+            return;
+        if (!(event.getLevel().getBlockState(event.getPos()).getBlock() instanceof InfusedDisplayPlateBlock))
+            return;
+        if (event.getLevel().getBlockEntity(event.getPos()) instanceof InfusedDisplayPlateBlockEntity plate && !plate.getHeldItem().isEmpty())
+            event.setUseBlock(Event.Result.ALLOW);
     }
 
     @Override

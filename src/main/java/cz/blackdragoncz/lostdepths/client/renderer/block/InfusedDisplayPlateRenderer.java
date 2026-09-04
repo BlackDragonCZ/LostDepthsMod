@@ -39,6 +39,8 @@ public class InfusedDisplayPlateRenderer implements BlockEntityRenderer<InfusedD
 			return;
 		}
 
+		float spin = be.getRotation() * 45f;
+
 		ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
 		BakedModel model = itemRenderer.getModel(heldItem, be.getLevel(), null, 0);
 		boolean isBlockItem = model.isGui3d();
@@ -54,28 +56,22 @@ public class InfusedDisplayPlateRenderer implements BlockEntityRenderer<InfusedD
 
 		switch (face) {
 			case FLOOR -> {
-				// Plate on floor, item faces up
-				// Move item down toward floor: 0.5 - itemOffset = distance from center
+				// Plate on floor, item faces up. Spin folds into the Y angle so upright block items stay upright.
 				poseStack.translate(0, -0.5 + itemOffset, 0);
-				// Rotate item to face up (lay flat on plate)
-				// Y rotation for horizontal facing
-				poseStack.mulPose(Axis.YP.rotationDegrees(getHorizontalAngle(facing)));
+				poseStack.mulPose(Axis.YP.rotationDegrees(getHorizontalAngle(facing) + spin));
 			}
 			case CEILING -> {
-				// Plate on ceiling, item faces down
 				poseStack.translate(0, 0.5 - itemOffset, 0);
-				// Flip upside down
 				poseStack.mulPose(Axis.ZP.rotationDegrees(180));
-				poseStack.mulPose(Axis.YP.rotationDegrees(getHorizontalAngle(facing)));
+				poseStack.mulPose(Axis.YP.rotationDegrees(getHorizontalAngle(facing) + spin));
 			}
 			case WALL -> {
-				// Plate on wall, item faces outward (facing direction)
+				// Plate on wall, item faces outward (facing direction). Wall spin is about the outward axis, like a vanilla frame.
 				float dx = facing.getStepX() * (0.5f - itemOffset);
 				float dz = facing.getStepZ() * (0.5f - itemOffset);
-				// Move toward the wall (opposite of facing = where the wall is)
 				poseStack.translate(-dx, 0, -dz);
-				// Rotate to face outward
 				poseStack.mulPose(Axis.YP.rotationDegrees(getHorizontalAngle(facing)));
+				poseStack.mulPose(Axis.ZP.rotationDegrees(spin));
 			}
 		}
 
@@ -124,6 +120,10 @@ public class InfusedDisplayPlateRenderer implements BlockEntityRenderer<InfusedD
 				poseStack.mulPose(Axis.YP.rotationDegrees(getHorizontalAngle(facing)));
 			}
 		}
+
+		// The map quad's texture runs top-to-bottom, so without the 180 it hangs upside down and reads south-up. Same flip vanilla
+		// applies in ItemFrameRenderer:84. Maps snap to 4 steps of the 8, also like a vanilla frame.
+		poseStack.mulPose(Axis.ZP.rotationDegrees(be.getRotation() % 4 * 90f + 180f));
 
 		// The map renderer draws into a 128x128 area with its origin in a corner, so scale it down to just under one block and recentre it.
 		poseStack.scale(0.0078125f, 0.0078125f, 0.0078125f);

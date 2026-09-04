@@ -1,5 +1,6 @@
 package cz.blackdragoncz.lostdepths.item.shield;
 
+import cz.blackdragoncz.lostdepths.ability.DamageOrigin;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModDamageTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -33,18 +34,19 @@ public class MirrorShield extends Item {
     @Override
     public void appendHoverText(@NotNull ItemStack stack, Level world, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, world, list, flag);
-        list.add(Component.literal("§bWhen held in the offhand, reflect 100% of max health damage taken."));
+        list.add(Component.literal("§bOffhand: reflects any single hit of at least your full max health back at the attacker."));
+        list.add(Component.literal("§7Smaller hits and true damage pass straight through."));
     }
 
-    private boolean isTrueDamage(DamageSource source, LivingEntity context) {
+    private boolean isTrueDamage(DamageSource source) {
         Optional<ResourceKey<DamageType>> key = source.typeHolder().unwrapKey();
         return key.isPresent() && key.get().equals(LostdepthsModDamageTypes.TRUE_DAMAGE);
     }
 
-    private DamageSource createReflectSource(LivingEntity victim, boolean trueDamage) {
+    // Reflected, not a plain thorns source: the Soulbinder must not let its owner dodge this and Spectros must not absorb it.
+    private DamageSource createReflectSource(LivingEntity victim) {
         var registry = victim.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE);
-        var holder = trueDamage ?  registry.getHolderOrThrow(LostdepthsModDamageTypes.TRUE_DAMAGE) : registry.getHolderOrThrow(DamageTypes.THORNS);
-        return new DamageSource(holder, victim);
+        return new DamageOrigin.Reflected(registry.getHolderOrThrow(DamageTypes.THORNS), victim);
     }
 
     private static void withNoReflect(LivingEntity target, Runnable action) {
@@ -70,16 +72,13 @@ public class MirrorShield extends Item {
         Entity attacker = event.getSource().getEntity();
         if (!(attacker instanceof LivingEntity livingAttacker)) return;
 
-        boolean isTrueDamage = isTrueDamage(event.getSource(), victim);
-
         float incoming = event.getAmount();
-        float victimMax = victim.getMaxHealth();
 
         // True damage bypasses this shield entirely
-        if (isTrueDamage) return;
-        if (incoming < victimMax) return;
+        if (isTrueDamage(event.getSource())) return;
+        if (incoming < victim.getMaxHealth()) return;
 
-        DamageSource reflectSource = createReflectSource(victim, false);
+        DamageSource reflectSource = createReflectSource(victim);
         withNoReflect(livingAttacker, () -> livingAttacker.hurt(reflectSource, incoming));
     }
 }

@@ -35,6 +35,9 @@ public class DodgeAbility extends SpecialAbility {
             return false;
         if (!SoulBinding.matchesSigner(stack, attackingPlayer))
             return false;
+        // A mirror shield's reflect is the bond's one counter: it is the signer's shield answering, not their swing, so it cannot be dodged.
+        if (DamageOrigin.isReflected(source))
+            return false;
         if (!DamageOrigin.isLostdepthsWeapon(source))
             return false;
 

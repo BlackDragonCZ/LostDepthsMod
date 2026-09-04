@@ -50,6 +50,9 @@ public class SpectrosArmorEffects {
 			return true;
 		if (source.is(LostdepthsModDamageTypes.TRUE_DAMAGE))
 			return true;
+		// A mirror shield throws your own hit back: Lost Depths gear dealt it, so the armour does not shrug it off.
+		if (DamageOrigin.isReflected(source))
+			return true;
 		return DamageOrigin.isLostdepthsWeapon(source);
 	}
 
