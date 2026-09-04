@@ -5,6 +5,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.entity.EntityTeleportEvent;
+import net.minecraftforge.event.entity.EntityTravelToDimensionEvent;
 import net.minecraftforge.event.CommandEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -42,6 +43,17 @@ public class WormholeDisruptorEvents {
         }
     }
 
+    // EntityTeleportEvent is never fired for a dimension change - it only covers /tp, /spreadplayers, endermen, ender pearls
+    // and chorus fruit. Portal mods go through changeDimension/teleportTo, which fire this instead
+    // (Entity:2713, ServerPlayer:752 and :1530). Cancelling here stops the travel before the teleport that follows it.
+    @SubscribeEvent
+    public static void onTravelToDimension(EntityTravelToDimensionEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player && WormholeDisruptorManager.isAffected(player)) {
+            event.setCanceled(true);
+            player.displayClientMessage(DISRUPTED_MSG, true);
+        }
+    }
+
     @SubscribeEvent
     public static void onCommand(CommandEvent event) {
         // Block /tp, /teleport, /warp, /tpa, /home and similar teleport commands
@@ -67,6 +79,7 @@ public class WormholeDisruptorEvents {
     @SubscribeEvent
     public static void onRegisterCommands(RegisterCommandsEvent event) {
         WormholeRangeCommand.register(event.getDispatcher());
+        cz.blackdragoncz.lostdepths.disruptor.DisruptorCommands.register(event.getDispatcher());
         cz.blackdragoncz.lostdepths.storage.NuroTechCommand.register(event.getDispatcher());
         cz.blackdragoncz.lostdepths.puzzle.LightPuzzleCommand.register(event.getDispatcher());
     }

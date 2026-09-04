@@ -104,6 +104,8 @@ public class LostdepthsMod {
 			var server = net.minecraftforge.server.ServerLifecycleHooks.getCurrentServer();
 			if (server != null) {
 				cz.blackdragoncz.lostdepths.warp.WormholeDisruptorManager.tick(server.getPlayerList().getPlayers());
+				cz.blackdragoncz.lostdepths.disruptor.RealityDisruptorManager.tick(server.getPlayerList().getPlayers());
+				cz.blackdragoncz.lostdepths.disruptor.GravatorDisruptorManager.tick(server.getPlayerList().getPlayers());
 			}
 			List<AbstractMap.SimpleEntry<Runnable, Integer>> actions = new ArrayList<>();
 			workQueue.forEach(work -> {
@@ -125,6 +127,8 @@ public class LostdepthsMod {
 	@SubscribeEvent
 	public void onServerStopping(net.minecraftforge.event.server.ServerStoppingEvent event) {
 		cz.blackdragoncz.lostdepths.warp.WormholeDisruptorManager.clear();
+		cz.blackdragoncz.lostdepths.disruptor.RealityDisruptorManager.clear();
+		cz.blackdragoncz.lostdepths.disruptor.GravatorDisruptorManager.clear();
 	}
 
 	@SubscribeEvent

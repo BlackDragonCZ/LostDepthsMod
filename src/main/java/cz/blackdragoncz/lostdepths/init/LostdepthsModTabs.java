@@ -433,6 +433,8 @@ public class LostdepthsModTabs {
 				tabData.accept(LostdepthsModItems.LOSTDEPTHS_PREDICTION.get().asItem());
 				tabData.accept(LostdepthsModBlocks.SECURITY_CLEARANCE_A.get().asItem());
                 tabData.accept(LostdepthsModBlocks.WORMHOLE_DISRUPTOR.get().asItem());
+                tabData.accept(LostdepthsModBlocks.REALITY_DISRUPTOR.get().asItem());
+                tabData.accept(LostdepthsModBlocks.GRAVATOR_DISRUPTOR.get().asItem());
 				tabData.accept(LostdepthsModItems.SECURITY_PASS_OMEGA.get());
 			})
 

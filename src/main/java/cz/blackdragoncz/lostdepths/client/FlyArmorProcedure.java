@@ -52,7 +52,8 @@ public class FlyArmorProcedure {
             });
     }
 
-    private static void apply(Player player) {
+    // Public so the Gravator Disruptor can re-derive flight when a player leaves its radius.
+    public static void apply(Player player) {
         if (player.isCreative() || player.isSpectator()) {
             if (!player.getAbilities().mayfly) {
                 player.getAbilities().mayfly = true;

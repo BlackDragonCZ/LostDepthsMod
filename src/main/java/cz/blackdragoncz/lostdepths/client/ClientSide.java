@@ -46,6 +46,8 @@ public class ClientSide {
 
     private static ResourceLocation JEI = LostdepthsMod.rl("textures/gui/jei_handler.png");
     private static ResourceLocation ANTI_WARP = LostdepthsMod.rl("textures/mob_effect/anti_warp.png");
+    // Sheet of 18x18 icons in the bottom-left of a 256x256 texture, grid origin (0,198), 8 columns x 3 rows.
+    private static ResourceLocation POTION_ICONS = LostdepthsMod.rl("textures/mob_effect/potion_icons.png");
 
     public void setup() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -122,23 +124,32 @@ public class ClientSide {
         };
     }
 
+    // sheetW/sheetH must be the full texture size: anti_warp is a lone 18x18 file, potion_icons is a 256x256 atlas.
+    private static void drawIndicator(GuiGraphics g, int slot, ResourceLocation texture, int u, int v, int sheetW, int sheetH) {
+        int size = 18;
+        int x = g.guiWidth() / 4 - size / 2 + slot * (size + 4);
+        int y = g.guiHeight() - size - 4;
+        float pulse = (float) (0.6 + 0.4 * Math.sin(elapsedTicks * 0.15));
+        com.mojang.blaze3d.systems.RenderSystem.setShaderColor(1, 1, 1, pulse);
+        com.mojang.blaze3d.systems.RenderSystem.enableBlend();
+        g.blit(texture, x, y, u, v, size, size, sheetW, sheetH);
+        com.mojang.blaze3d.systems.RenderSystem.setShaderColor(1, 1, 1, 1);
+        com.mojang.blaze3d.systems.RenderSystem.disableBlend();
+    }
+
     public void renderOverlay(RenderGuiEvent.Post event)
     {
         GuiGraphics g = event.getGuiGraphics();
 
-        // Warp disruption indicator (left side)
-        if (warpDisrupted) {
-            int iconSize = 18;
-            int iconX = g.guiWidth() / 4 - iconSize / 2;
-            int iconY = g.guiHeight() - iconSize - 4;
-            // Pulsing alpha effect
-            float pulse = (float) (0.6 + 0.4 * Math.sin(elapsedTicks * 0.15));
-            com.mojang.blaze3d.systems.RenderSystem.setShaderColor(1, 1, 1, pulse);
-            com.mojang.blaze3d.systems.RenderSystem.enableBlend();
-            g.blit(ANTI_WARP, iconX, iconY, 0, 0, iconSize, iconSize, iconSize, iconSize);
-            com.mojang.blaze3d.systems.RenderSystem.setShaderColor(1, 1, 1, 1);
-            com.mojang.blaze3d.systems.RenderSystem.disableBlend();
-        }
+        // Disruption indicators, stacked left to right from the same anchor.
+        int slot = 0;
+        if (warpDisrupted)
+            drawIndicator(g, slot++, ANTI_WARP, 0, 0, 18, 18);
+        // Reality only draws when it is not hiding the GUI - GameRenderer:964 skips the whole GUI render in that case.
+        if (DisruptorClientState.showRealityIcon())
+            drawIndicator(g, slot++, POTION_ICONS, 0, 216, 256, 256);
+        if (DisruptorClientState.isGravatorActive())
+            drawIndicator(g, slot, POTION_ICONS, 54, 198, 256, 256);
 
         // Security clearance indicator (right side)
         if (securityClearance == 0)

@@ -15,7 +15,7 @@ import java.util.List;
 
 public class WormholeDisruptorBlockEntity extends BlockEntity {
 
-    private int range = 32;
+    private int range = 5;
     private int tickCounter = 0;
 
     public WormholeDisruptorBlockEntity(BlockPos pos, BlockState state) {

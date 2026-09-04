@@ -669,6 +669,8 @@ public class LostdepthsModItems {
 	public static final RegistryObject<Item> INFUSED_WRITABLE_BOOK = REGISTRY.register("infused_writable_book", InfusedWritableBookItem::new);
 	public static final RegistryObject<Item> INFUSED_WRITTEN_BOOK = REGISTRY.register("infused_written_book", InfusedWrittenBookItem::new);
 	public static final RegistryObject<Item> WORMHOLE_DISRUPTOR = block(LostdepthsModBlocks.WORMHOLE_DISRUPTOR);
+	public static final RegistryObject<Item> REALITY_DISRUPTOR = block(LostdepthsModBlocks.REALITY_DISRUPTOR);
+	public static final RegistryObject<Item> GRAVATOR_DISRUPTOR = block(LostdepthsModBlocks.GRAVATOR_DISRUPTOR);
 	public static final RegistryObject<Item> RESOURCE_EXTRACTOR = block(LostdepthsModBlocks.RESOURCE_EXTRACTOR);
 	public static final RegistryObject<Item> SHIPMENT_BOX = REGISTRY.register("shipment_box", ShipmentBoxItem::new);
 	public static final RegistryObject<Item> SOLARIUM_SHADOW = REGISTRY.register("solarium_shadow", MasterPartRegistryItem::new);

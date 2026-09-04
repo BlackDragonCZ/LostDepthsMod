@@ -937,5 +937,7 @@
   "item.lostdepths.spectros_armor_chestplate": "Spectros Chestplate",
   "item.lostdepths.spectros_armor_leggings": "Spectros Leggings",
   "item.lostdepths.spectros_armor_boots": "Spectros Boots",
-  "death.attack.elimination.player": "%1$s was eliminated"
+  "death.attack.elimination.player": "%1$s was eliminated",
+  "block.lostdepths.reality_disruptor": "Reality Disruptor",
+  "block.lostdepths.gravator_disruptor": "Gravator Disruptor"
 }
