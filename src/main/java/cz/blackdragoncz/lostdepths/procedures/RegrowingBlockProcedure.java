@@ -1,6 +1,7 @@
 package cz.blackdragoncz.lostdepths.procedures;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -8,6 +9,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.phys.Vec3;
 
 /*
  * A block that is never actually consumed: breaking it puts it straight back. With the resource overload
@@ -30,8 +32,16 @@ public class RegrowingBlockProcedure {
 		if (entity != null) {
 			ItemStack held = entity instanceof LivingEntity living ? living.getMainHandItem() : ItemStack.EMPTY;
 			if (held.getItem() == tool && world instanceof ServerLevel level)
-				Block.popResource(level, pos, new ItemStack(drop));
+				popTowardEntity(level, pos, entity, new ItemStack(drop));
 		}
 		execute(world, pos, block);
+	}
+
+	// These blocks come straight back, so a centre spawn lands inside solid stone and collision flings the item off at speed.
+	// Drop it just outside the face the breaker is standing on instead. Shared by every never-consumed block that yields a resource.
+	public static void popTowardEntity(ServerLevel level, BlockPos pos, Entity entity, ItemStack stack) {
+		Vec3 eye = entity.getEyePosition();
+		Direction face = Direction.getNearest(eye.x - (pos.getX() + 0.5), eye.y - (pos.getY() + 0.5), eye.z - (pos.getZ() + 0.5));
+		Block.popResourceFromFace(level, pos, face, stack);
 	}
 }

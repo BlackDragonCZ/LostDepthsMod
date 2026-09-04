@@ -35,7 +35,7 @@ public class FerroLogBlockDestroyedByPlayerProcedure {
 				world.setBlock(_bp, _bs, 3);
 			}
 			if (world instanceof ServerLevel _level) {
-				Block.popResource(_level, BlockPos.containing(x, y, z), new ItemStack(LostdepthsModItems.METAL_BRANCH.get()));
+				RegrowingBlockProcedure.popTowardEntity(_level, BlockPos.containing(x, y, z), entity, new ItemStack(LostdepthsModItems.METAL_BRANCH.get()));
 			}
 		} else {
 			{

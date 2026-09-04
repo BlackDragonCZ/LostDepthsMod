@@ -22,7 +22,7 @@ public class HardCrystalMiningProcedure {
 		ItemStack held = entity instanceof LivingEntity living ? living.getMainHandItem() : ItemStack.EMPTY;
 		if (held.getItem() == LostdepthsModItems.CELESTIAL_PICKAXE.get() && world instanceof ServerLevel serverLevel) {
 			for (int i = 0; i < DROP_COUNT; i++)
-				Block.popResource(serverLevel, pos, new ItemStack(LostdepthsModItems.HARD_CRYSTALS.get()));
+				RegrowingBlockProcedure.popTowardEntity(serverLevel, pos, entity, new ItemStack(LostdepthsModItems.HARD_CRYSTALS.get()));
 		}
 		world.setBlock(pos, block.defaultBlockState(), 3);
 	}

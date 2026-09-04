@@ -63,9 +63,11 @@ public class SunderWoodSapBlockDestroyedByPlayerProcedure {
 				if (world instanceof Level _level)
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
-			for (int index0 = 0; index0 < Mth.nextInt(RandomSource.create(), 1, 3); index0++) {
+			// Count was rolled fresh in the loop condition, so it was re-rolled every iteration off a brand new RandomSource.
+			int sapCount = Mth.nextInt(RandomSource.create(), 1, 3);
+			for (int index0 = 0; index0 < sapCount; index0++) {
 				if (world instanceof ServerLevel _level) {
-					Block.popResource(_level, BlockPos.containing(x, y, z), new ItemStack(LostdepthsModItems.BURNING_SAP.get()));
+					RegrowingBlockProcedure.popTowardEntity(_level, BlockPos.containing(x, y, z), entity, new ItemStack(LostdepthsModItems.BURNING_SAP.get()));
 				}
 			}
 		} else {
