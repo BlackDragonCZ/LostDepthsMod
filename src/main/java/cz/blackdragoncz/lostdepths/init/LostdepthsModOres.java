@@ -1,6 +1,10 @@
 package cz.blackdragoncz.lostdepths.init;
 
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 
 import javax.annotation.Nullable;
@@ -12,6 +16,25 @@ import java.util.function.Supplier;
 public class LostdepthsModOres {
 
     private static final List<OreDefinition> ALL_ORES = new ArrayList<>();
+
+    /**
+     * Fortune for ores that never touch a loot table, so ApplyBonusCount cannot reach them. Same maths as vanilla's ore_drops
+     * formula, rolled separately on top of the tier base rather than folded into getDropCount, which only sees the Item.
+     */
+    public static int applyFortune(RandomSource random, ItemStack tool, int baseCount) {
+        if (baseCount <= 0 || tool.isEmpty())
+            return baseCount;
+
+        int level = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.BLOCK_FORTUNE, tool);
+        // Advanced Fortune reaches vanilla ores through a global loot modifier that rerolls at level+3; mirror that here.
+        int advanced = EnchantmentHelper.getItemEnchantmentLevel(LostdepthsModEnchantments.ADVANCED_FORTUNE.get(), tool);
+        if (advanced > 0)
+            level = Math.max(level, advanced + 3);
+        if (level <= 0)
+            return baseCount;
+
+        return baseCount * (Math.max(0, random.nextInt(level + 2) - 1) + 1);
+    }
 
     /** Flat for every ore by design - ores are needed in bulk. */
     public static final int REGROW_SECONDS = 150;

@@ -1,6 +1,7 @@
 package cz.blackdragoncz.lostdepths.procedures;
 
 import cz.blackdragoncz.lostdepths.init.LostdepthsModBlocks;
+import cz.blackdragoncz.lostdepths.init.LostdepthsModOres;
 import cz.blackdragoncz.lostdepths.init.LostdepthsModOres.OreDefinition;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -29,8 +30,8 @@ public class PickaxeOreMiningProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, OreDefinition oreDef) {
 		if (entity == null) return;
 
-		Item heldItem = (entity instanceof LivingEntity liv ? liv.getMainHandItem() : ItemStack.EMPTY).getItem();
-		int dropCount = oreDef.getDropCount(heldItem);
+		ItemStack held = entity instanceof LivingEntity liv ? liv.getMainHandItem() : ItemStack.EMPTY;
+		int dropCount = oreDef.getDropCount(held.getItem());
 		BlockPos pos = BlockPos.containing(x, y, z);
 
 		if (dropCount <= 0 || !(entity instanceof Player player)) {
@@ -39,6 +40,7 @@ public class PickaxeOreMiningProcedure {
 			return;
 		}
 
+		dropCount = LostdepthsModOres.applyFortune(world.getRandom(), held, dropCount);
 		ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(oreDef.dropItem().get(), dropCount));
 
 		switch (oreDef.depletionType()) {

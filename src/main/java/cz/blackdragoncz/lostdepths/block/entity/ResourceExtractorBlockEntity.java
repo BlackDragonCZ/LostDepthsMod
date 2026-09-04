@@ -323,7 +323,7 @@ public class ResourceExtractorBlockEntity extends BaseEnergyContainerBlockEntity
         }
 
         if (target.ore() != null) {
-            int count = target.ore().getDropCount(pickaxe.getItem());
+            int count = LostdepthsModOres.applyFortune(level.getRandom(), pickaxe, target.ore().getDropCount(pickaxe.getItem()));
             return count > 0 ? List.of(new ItemStack(target.ore().dropItem().get(), count)) : List.of();
         }
 
